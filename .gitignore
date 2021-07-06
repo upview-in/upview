@@ -11,3 +11,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+!/vendor/dipeshsukhia/*
+!/vendor/sanctum/*
+!/vendor/spatie/*
