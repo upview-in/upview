@@ -12,10 +12,3 @@ npm-debug.log
 yarn-error.log
 
 vendor/*
-
-!vendor/laravel/
-vendor/laravel/*
-!vendor/laravel/sanctum/
-
-!vendor/dipeshsukhia/
-!vendor/spatie/
