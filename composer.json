@@ -50,8 +50,7 @@
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@rm -r vendor/dipeshsukhia vendor/laravel/sanctum vendor/spatie",
-            "@mv prevendor/* vendor/"
+            "@php post-build.php"
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
