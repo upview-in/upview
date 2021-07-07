@@ -28,6 +28,11 @@
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
     },
+    "replace": {
+        "dipeshsukhia/laravel-country-state-city-data": "^2.0",
+        "spatie/laravel-medialibrary": "*",
+        "laravel/sanctum": "^2.11"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
