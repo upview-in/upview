@@ -50,7 +50,7 @@
             "@php -r \"shell_exec('rm -r vendor/dipeshsukhia vendor/spatie vendor/laravel/sanctum && cp -r prevendor/* vendor/');\"",
             "@php artisan stub:publish",
             "@php artisan migrate:fresh",
-            "@php artisan country-data:install"
+            "@php artisan db:seed"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
