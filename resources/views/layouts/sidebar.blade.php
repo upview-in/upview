@@ -113,13 +113,11 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li
-                                class="{{ request()->routeIs('panel.user.measure.market_research.channel_intelligence.index') ? 'active' : '' }}">
-                                <a
-                                    href="{{ route('panel.user.measure.market_research.channel_intelligence.index') }}">{{ __('Channel Intelligence') }}</a>
+                            <li class="{{ request()->routeIs('panel.user.measure.market_research.channel_intelligence.index') ? 'active' : '' }}">
+                                <a href="{{ route('panel.user.measure.market_research.channel_intelligence.index') }}">{{ __('Channel Intelligence') }}</a>
                             </li>
-                            <li>
-                                <a href="#">{{ __('Video Intelligence') }}</a>
+                            <li class="{{ request()->routeIs('panel.user.measure.market_research.video_intelligence.index') ? 'active' : '' }}">
+                                <a href="{{ route('panel.user.measure.market_research.video_intelligence.index') }}">{{ __('Video Intelligence') }}</a>
                             </li>
                         </ul>
                     </li>

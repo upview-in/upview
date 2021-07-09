@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube;
+namespace App\Http\Requests\Api\Youtube\Channel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetCommentThreadFromVideoID extends FormRequest
+class GetChannelDetailsFromID extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

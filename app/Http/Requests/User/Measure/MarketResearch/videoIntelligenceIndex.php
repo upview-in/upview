@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube;
+namespace App\Http\Requests\User\Measure\MarketResearch;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetVideoListFromChannelID extends FormRequest
+class videoIntelligenceIndex extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class GetVideoListFromChannelID extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
+            //
         ];
     }
 }
