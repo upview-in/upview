@@ -5,6 +5,14 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\getAcc;
+use App\Http\Controllers\getPages;
+use App\Http\Controllers\getPosts;
+use App\Http\Controllers\managePosts;
+use App\Http\Controllers\postContent;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +57,71 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
                 });
             });
         });
+
+        Route::prefix('analyse')->as('analyse.')->group(function () {
+            Route::prefix('instagram')->as('instagram.')->group(function () {
+                Route::prefix('overview')->as('overview.')->group(function () {
+                    Route::get('/', [ChannelIntelligence::class, 'index'])->name('index');
+                    Route::get('/youtube/channel/details', [ChannelIntelligence::class, 'channelDetails'])->name('channel_details');
+                });
+            });
+        });
     });
 });
+
+
+Route::get('/get-token', function () {
+    return view('get-access-token');
+});
+
+
+Route::get('/get-pages', [getPages::class, 'index']);
+
+Route::get('/get-insta-acc', [getAcc::class, 'index']);
+
+
+Route::get('/get-posts', [getPosts::class, 'index']);
+
+
+Route::get('/manage/posts', function () {
+    return view('manage-posts');
+});
+
+Route::post('/manage/posts', function () {
+    return view('manage-posts');
+});
+
+
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::get('/hashtags', function () {
+    return view('search-hashtag');
+});
+
+Route::post('/hashtags', function () {
+    return view('search-hashtag');
+});
+
+Route::get('/insights/profile', function () {
+    return view('profile-compare');
+});
+
+
+Route::get('/insights/posts', function () {
+    return view('post-insights');
+});
+
+
+Route::post('insights-result', function () {
+    return view('profile-insights');
+});
+
+Route::get('post-upload', [postContent::class, 'index']);
+Route::post('post-upload', [postContent::class, 'uploadFile'])->name('uploadFile');
+
+
 
 require __DIR__ . '/auth.php';

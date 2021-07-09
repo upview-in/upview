@@ -20,7 +20,7 @@
                     </li>
                 </ul>
             </li>
-            {{-- <li class="nav-item dropdown {{ request()->is('panel/user/analyse/*') ? 'open' : '' }}">
+            <li class="nav-item dropdown {{ request()->is('panel/user/analyse/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <i class="anticon anticon-pie-chart"></i>
@@ -53,6 +53,7 @@
                             </li>
                         </ul>
                     </li>
+                    {{-- Instagram Here --}}
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
@@ -65,7 +66,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">{{ __('Overview') }}</a>
+                                <a href="#">{{ __('Overview') }}</a> {{-- {{ route('panel.dashboard.insta') }} --}}
                             </li>
                             <li>
                                 <a href="#">{{ __('Media') }}</a>
@@ -92,7 +93,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
             <li class="nav-item dropdown {{ request()->is('panel/user/measure/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">

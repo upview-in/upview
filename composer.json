@@ -23,6 +23,11 @@
         "spatie/laravel-medialibrary": "^9.6",
         "ext-mongo": "*"
     },
+
+     "provide" : {
+        "ext-mongo": "*"
+    },
+
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
