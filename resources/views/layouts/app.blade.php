@@ -111,8 +111,7 @@
                             <h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
                             <div class="header-sub-title">
                                 <nav class="breadcrumb breadcrumb-dash">
-                                    <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><i
-                                            class="anticon anticon-home m-r-5"></i>Dashboard</a>
+                                    <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Dashboard</a>
                                     @yield('path-navigation')
                                 </nav>
                             </div>
@@ -199,6 +198,28 @@
             "Science and Technology",
             "Travel"
         ];
+
+        function toast(title, message, delay) {
+            var toastHTML =
+                '<div class="toast fade hide" data-delay="' + delay + '">' +
+                '   <div class="toast-header">' +
+                '       <i class="anticon anticon-info-circle text-primary m-r-5"></i>' +
+                '       <strong class="mr-auto">' + title + '</strong>' +
+                '       <button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">' +
+                '           <span aria-hidden="true">&times;</span>' +
+                '       </button>' +
+                '   </div>' +
+                '   <div class="toast-body">' +
+                '       ' + message +
+                '   </div>' +
+                '</div>';
+
+            $('#notification-toast').append(toastHTML);
+            $('#notification-toast .toast').toast('show');
+            setTimeout(function() {
+                $('#notification-toast .toast:first-child').remove();
+            }, delay);
+        }
 
         function convertToInternationalCurrencySystem(labelValue) {
             // Nine Zeroes for Billions

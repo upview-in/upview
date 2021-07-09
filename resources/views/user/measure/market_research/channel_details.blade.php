@@ -270,25 +270,7 @@
 
                 $("#btnCopyTags").click(function() {
                     copyToClipboard(tagsForCopy);
-
-                    var toastHTML = '<div class="toast fade hide" data-delay="3000">' +
-                        '<div class="toast-header">' +
-                        '<i class="anticon anticon-info-circle text-primary m-r-5"></i>' +
-                        '<strong class="mr-auto">Info</strong>' +
-                        '<button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">' +
-                        '<span aria-hidden="true">&times;</span>' +
-                        '</button>' +
-                        '</div>' +
-                        '<div class="toast-body">' +
-                        'Copied!' +
-                        '</div>' +
-                        '</div>';
-
-                    $('#notification-toast').append(toastHTML);
-                    $('#notification-toast .toast').toast('show');
-                    setTimeout(function() {
-                        $('#notification-toast .toast:first-child').remove();
-                    }, 3000);
+                    toast('Info', 'Copied successfully!', 3000);
                 });
 
             } else {

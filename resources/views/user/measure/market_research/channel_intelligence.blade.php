@@ -32,22 +32,18 @@
                     loadImages();
                 }
             }).data("ui-autocomplete")._renderItem = function(ul, item) {
-                var html = '<div class="row mt-1">' +
+                var html =
+                    '<div class="row mt-1 pointer">' +
                     '        <div class="col-auto">' +
                     '            <div class="media align-items-center">' +
                     '              <div class="media-left">' +
                     '                <a href="#">' +
-                    '                  <img class="lazyload media-object rounded-circle mr-4" src="{{ asset('/images/others/loading.gif') }}" data-src="' +
-                    item.items[0].snippet.thumbnails.default.url +
-                    '" alt="Profile" height="60px" width="auto">' +
+                    '                  <img class="lazyload media-object rounded-circle mr-4" src="{{ asset('/images/others/loading.gif') }}" data-src="' + item.items[0].snippet.thumbnails.default.url + '" alt="Profile" height="60px" width="auto">' +
                     '                </a>' +
                     '              </div>' +
                     '              <div class="media-body">' +
-                    '                <label class="h5 font-weight-bold">' + item.items[0].snippet.title +
-                    '</label><br/>' +
-                    '                <span class="text-muted font-weight-light">Subscribers: ' +
-                    convertToInternationalCurrencySystem(item.items[0].statistics.subscriberCount) +
-                    ' | Videos: ' + item.items[0].statistics.videoCount + '</span>' +
+                    '                <label class="h5 font-weight-bold">' + item.items[0].snippet.title + '</label><br/>' +
+                    '                <span class="text-muted font-weight-light">Subscribers: ' + convertToInternationalCurrencySystem(item.items[0].statistics.subscriberCount) + ' | Videos: ' + item.items[0].statistics.videoCount + '</span>' +
                     '              </div>' +
                     '            </div>' +
                     '        </div>' +
@@ -70,8 +66,7 @@
                 <div class="col-md-6 col-sm-9 col-12">
                     <div class="input-affix m-b-10">
                         <i class="prefix-icon anticon anticon-search"></i>
-                        <input type="text" id="searchChannel" class="form-control"
-                            placeholder="{{ __('Search Channel') }}">
+                        <input type="text" id="searchChannel" class="form-control" placeholder="{{ __('Search Channel') }}">
                     </div>
                 </div>
             </div>
