@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\YoutubeController;
+use App\Http\Controllers\Api\Youtube\ChannelController;
+use App\Http\Controllers\Api\Youtube\CommentController;
+use App\Http\Controllers\Api\Youtube\VideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,17 +30,18 @@ Route::middleware('auth:sanctum')->group(function () {
     // Youtube api routes
     Route::prefix('youtube')->as('youtube.')->group(function () {
         Route::prefix('channel')->as('channel.')->group(function () {
-            Route::post('/channel/search', [YoutubeController::class, 'getChannelListFromName'])->name('getChannelListFromName');
-            Route::post('/channel/details', [YoutubeController::class, 'getChannelDetailsFromID'])->name('getChannelDetailsFromID');
+            Route::post('/search', [ChannelController::class, 'getChannelListFromName'])->name('getChannelListFromName');
+            Route::post('/details', [ChannelController::class, 'getChannelDetailsFromID'])->name('getChannelDetailsFromID');
         });
 
         Route::prefix('videos')->as('videos.')->group(function () {
-            Route::post('/', [YoutubeController::class, 'getVideoListFromChannelID'])->name('getVideoListFromChannelID');
-            Route::post('/details', [YoutubeController::class, 'getVideoDetailsFromVideoID'])->name('getVideoDetailsFromVideoID');
+            Route::post('/', [VideoController::class, 'getVideoListFromChannelID'])->name('getVideoListFromChannelID');
+            Route::post('/search', [VideoController::class, 'getVideoListFromName'])->name('getVideoListFromName');
+            Route::post('/details', [VideoController::class, 'getVideoDetailsFromVideoID'])->name('getVideoDetailsFromVideoID');
         });
 
         Route::prefix('comments')->as('comments.')->group(function () {
-            Route::post('/', [YoutubeController::class, 'getCommentThreadFromVideoID'])->name('getCommentThreadFromVideoID');
+            Route::post('/', [CommentController::class, 'getCommentThreadFromVideoID'])->name('getCommentThreadFromVideoID');
         });
     });
 });
