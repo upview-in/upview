@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 
 define("ENDPOINT_BASE", Config::get('instagram.endPoint'));
 
-class managePosts extends Controller
+class ManagePostsController extends Controller
 {
     
     function CallAPI( $endpoint, $type, $params )

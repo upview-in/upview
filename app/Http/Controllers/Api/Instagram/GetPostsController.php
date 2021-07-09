@@ -11,7 +11,7 @@ define("ENDPOINT_BASE", Config::get('instagram.endPoint'));
 
 
 
-class getPosts extends Controller
+class GetPostsController extends Controller
 {
     public function index()
     {

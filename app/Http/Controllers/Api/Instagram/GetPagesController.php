@@ -6,7 +6,7 @@ use Facebook\Exceptions\FacebookSDKException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
-class getPages extends Controller
+class GetPagesController extends Controller
 {
     public function index()
     {
