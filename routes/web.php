@@ -7,11 +7,11 @@ use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\getAcc;
-use App\Http\Controllers\getPages;
-use App\Http\Controllers\getPosts;
-use App\Http\Controllers\managePosts;
-use App\Http\Controllers\postContent;
+use App\Http\Controllers\Api\Instagram\GetAccountController;
+use App\Http\Controllers\Api\Instagram\GetPagesController;
+use App\Http\Controllers\Api\Instagram\GetPostsController;
+use App\Http\Controllers\Api\Instagram\ManagePostsController;
+use App\Http\Controllers\Api\Instagram\PostContentControllerController;
 
 
 /*
@@ -80,12 +80,12 @@ Route::get('/get-token', function () {
 });
 
 
-Route::get('/get-pages', [getPages::class, 'index']);
+Route::get('/get-pages', [GetPagesController::class, 'index']);
 
-Route::get('/get-insta-acc', [getAcc::class, 'index']);
+Route::get('/get-insta-acc', [GetAccountController::class, 'index']);
 
 
-Route::get('/get-posts', [getPosts::class, 'index']);
+Route::get('/get-posts', [GetPostsController::class, 'index']);
 
 
 Route::get('/manage/posts', function () {
@@ -124,8 +124,8 @@ Route::post('insights-result', function () {
     return view('profile-insights');
 });
 
-Route::get('post-upload', [postContent::class, 'index']);
-Route::post('post-upload', [postContent::class, 'uploadFile'])->name('uploadFile');
+Route::get('post-upload', [PostContentController::class, 'index']);
+Route::post('post-upload', [PostContentController::class, 'uploadFile'])->name('uploadFile');
 
 
 

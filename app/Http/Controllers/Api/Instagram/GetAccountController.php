@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 
 
 
-class getAcc extends Controller
+class GetAccountController extends Controller
 {
 
 
