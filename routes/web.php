@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
+use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,10 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
                 Route::prefix('channel-intelligence')->as('channel_intelligence.')->group(function () {
                     Route::get('/', [ChannelIntelligence::class, 'index'])->name('index');
                     Route::get('/youtube/channel/details', [ChannelIntelligence::class, 'channelDetails'])->name('channel_details');
+                });
+                Route::prefix('video-intelligence')->as('video_intelligence.')->group(function () {
+                    Route::get('/', [VideoIntelligence::class, 'index'])->name('index');
+                    Route::get('/youtube/video/details', [VideoIntelligence::class, 'videoDetails'])->name('video_details');
                 });
             });
         });
