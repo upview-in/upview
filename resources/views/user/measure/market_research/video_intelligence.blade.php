@@ -15,14 +15,14 @@
                             videoName: request.term
                         },
                         success: function(data) {
-                            response(data);
+                            response(data.items);
                         },
                         dataType: 'json'
                     });
                 },
-                minLength: 2,
+                minLength: 3,
                 select: function(event, ui) {
-                    var videoID = ui.item.items[0].id;
+                    var videoID = ui.item.id;
                     var linkToOpen = "{{ route('panel.user.measure.market_research.video_intelligence.video_details') }}?id=" + videoID;
                     openTab(linkToOpen);
                 },
@@ -30,9 +30,9 @@
                     loadImages();
                 }
             }).data("ui-autocomplete")._renderItem = function(ul, item) {
-                var id = item.items[0].id;
-                var snippet = item.items[0].snippet;
-                var statistics = item.items[0].statistics;
+                var id = item.id;
+                var snippet = item.snippet;
+                var statistics = item.statistics;
                 var html =
                     '    <div class="row mt-2 pointer">' +
                     '        <div class="col-auto">' +

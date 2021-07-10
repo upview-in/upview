@@ -24,21 +24,16 @@ class VideoController extends Controller
             ]
         );
 
-        $ids = "";
+        $ids = [];
         foreach ($result as $value) {
             if (empty($value->id->videoId)) {
                 continue;
             }
-            $ids .= $value->id->videoId . ",";
+            $ids[] = $value->id->videoId;
         }
-        $ids = rtrim($ids, ',');
+        $ids = implode(',', $ids);
 
-        $videoList = $service->videos->listVideos(
-            'contentDetails,id,liveStreamingDetails,localizations,player,recordingDetails,snippet,statistics,status,topicDetails',
-            [
-                'id' => $ids
-            ]
-        );
+        $videoList = $service->videos->listVideos('contentDetails,id,liveStreamingDetails,localizations,player,recordingDetails,snippet,statistics,status,topicDetails', ['id' => $ids]);
 
         return response()->json($videoList, 200);
     }
@@ -56,10 +51,16 @@ class VideoController extends Controller
             ]
         );
 
-        $videoList = collect();
+        $ids = [];
         foreach ($result as $value) {
-            $videoList->push($service->videos->listVideos('id,snippet,statistics', ['id' => $value->id->videoId]));
+            if (empty($value->id->videoId)) {
+                continue;
+            }
+            $ids[] = $value->id->videoId;
         }
+        $ids = implode(',', $ids);
+
+        $videoList = $service->videos->listVideos('id,snippet,statistics', ['id' => $ids]);
 
         return response()->json($videoList, 200);
     }
