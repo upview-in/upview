@@ -14,8 +14,8 @@ return array(
     |
     */
 
-    'clientId' =>        '463253968310138',
-    'clientSecret' =>    '297792cf7e6608d6c9ce53064c97d285',
+    'clientId' =>        '1957120897773504',
+    'clientSecret' =>    '21a7f77eef0e7b066da12d73763d51d5',
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
     |
     */
 
-    'redirectUri' =>    'http://localhost:1234/get-token/',
+    'redirectUri' =>    'http://localhost:8000/get-token/',
 
     /*
     |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ return array(
     |
     */
 
-    'accessToken' => 'EAAGlU7g4z3oBAAkldTjOJtOyY8b0X31leIgZBpWZAj1Bj7Pg2SSBnfIFJFgQxWOGFpZAZBPaTEgYFTu9Psrq0pt7XP2gApKSQeU7JPlaz9xbwIzOyxgkZCyfy0naI1PcWq3OBw4pXbAIw34sBOKHq83L7ZChzeDleKDrV7ECsoDgnjWOnf2oZBM',
+    'accessToken' => 'EAAbzZCbfk78ABALjKYiji4BbmxtZBTzZAqIARkCJvAX4hXOxY5anQbIVqe85NukjZCRbTs8tZBTYb4FXcN7TgI6lFV59JTpSlIlHTOqRdqznZCE585sXvun8t6iSMVJgS8RLZCdPmAHQNV5Wla1UX3QoPpyw049wkXjgFhcMyj7jvkVEFx8U71X',
 
     
     'endPoint' => 'https://graph.facebook.com/v10.0/',
