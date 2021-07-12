@@ -29,9 +29,13 @@ class PostContentController extends Controller
         $filetype = $request->file->getClientMimeType();
 
 
-        if(strpos($filetype, "image") != false)
+        if(strpos($filetype, "image") !== false)
         {
-            
+            dd($filetype);
+        }
+        else
+        {
+            dd('video');
         }
 
         return back()
