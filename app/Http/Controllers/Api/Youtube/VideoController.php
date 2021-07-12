@@ -6,6 +6,7 @@ use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Youtube\Video\GetVideoDetailsFromVideoID;
 use App\Http\Requests\Api\Youtube\Video\GetVideoListFromChannelID;
+use App\Http\Requests\Api\Youtube\Video\GetVideoListFromName;
 
 class VideoController extends Controller
 {
@@ -23,21 +24,43 @@ class VideoController extends Controller
             ]
         );
 
-        $ids = "";
+        $ids = [];
         foreach ($result as $value) {
             if (empty($value->id->videoId)) {
                 continue;
             }
-            $ids .= $value->id->videoId . ",";
+            $ids[] = $value->id->videoId;
         }
-        $ids = rtrim($ids, ',');
+        $ids = implode(',', $ids);
 
-        $videoList = $service->videos->listVideos(
-            'contentDetails,id,liveStreamingDetails,localizations,player,recordingDetails,snippet,statistics,status,topicDetails',
+        $videoList = $service->videos->listVideos('contentDetails,id,liveStreamingDetails,localizations,player,recordingDetails,snippet,statistics,status,topicDetails', ['id' => $ids]);
+
+        return response()->json($videoList, 200);
+    }
+
+    public function getVideoListFromName(GetVideoListFromName $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeService();
+        $result = $service->search->listSearch(
+            'id',
             [
-                'id' => $ids
+                'q' => $request->videoName,
+                'type' => 'video',
+                'maxResults' => 2,
             ]
         );
+
+        $ids = [];
+        foreach ($result as $value) {
+            if (empty($value->id->videoId)) {
+                continue;
+            }
+            $ids[] = $value->id->videoId;
+        }
+        $ids = implode(',', $ids);
+
+        $videoList = $service->videos->listVideos('id,snippet,statistics', ['id' => $ids]);
 
         return response()->json($videoList, 200);
     }

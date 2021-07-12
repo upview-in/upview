@@ -10,19 +10,19 @@
             $("#searchVideo").autocomplete({
                 source: function(request, response) {
                     $.post({
-                        url: "{{ route('api.youtube.video.getVideoListFromName') }}",
+                        url: "{{ route('api.youtube.videos.getVideoListFromName') }}",
                         data: {
                             videoName: request.term
                         },
                         success: function(data) {
-                            response(data);
+                            response(data.items);
                         },
                         dataType: 'json'
                     });
                 },
-                minLength: 2,
+                minLength: 3,
                 select: function(event, ui) {
-                    var videoID = ui.item.items[0].id;
+                    var videoID = ui.item.id;
                     var linkToOpen = "{{ route('panel.user.measure.market_research.video_intelligence.video_details') }}?id=" + videoID;
                     openTab(linkToOpen);
                 },
@@ -30,18 +30,21 @@
                     loadImages();
                 }
             }).data("ui-autocomplete")._renderItem = function(ul, item) {
+                var id = item.id;
+                var snippet = item.snippet;
+                var statistics = item.statistics;
                 var html =
-                    '<div class="row mt-1">' +
+                    '    <div class="row mt-2 pointer">' +
                     '        <div class="col-auto">' +
                     '            <div class="media align-items-center">' +
                     '              <div class="media-left">' +
                     '                <a href="#">' +
-                    '                  <img class="lazyload media-object rounded mr-4" src="{{ asset('/images/others/loading.gif') }}" data-src="' + item.items[0].snippet.thumbnails.default.url + '" alt="Profile" height="60px" width="auto">' +
+                    '                  <img class="lazyload rounded media-object mr-4" src="{{ asset('/images/others/loading.gif') }}" data-src="' + snippet.thumbnails.medium.url + '" alt="Profile" height="60px" width="auto">' +
                     '                </a>' +
                     '              </div>' +
                     '              <div class="media-body">' +
-                    '                <label class="h5 font-weight-bold">' + item.items[0].snippet.title + '</label><br/>' +
-                    '                <span class="text-muted font-weight-light">Subscribers: ' + convertToInternationalCurrencySystem(item.items[0].statistics.subscriberCount) + ' | Videos: ' + item.items[0].statistics.videoCount + '</span>' +
+                    '                <label class="h5 font-weight-bold">' + snippet.title + '</label><br/>' +
+                    '                <label class="text-muted">' + convertToInternationalCurrencySystem(statistics.viewCount) + ' Views • ' + timeSince(snippet.publishedAt) + '<br/>' + snippet.channelTitle + '</label>' +
                     '              </div>' +
                     '            </div>' +
                     '        </div>' +
