@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Instagram;
 
 use Facebook\Exceptions\FacebookSDKException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use App\Http\Controllers\Controller;
+
 
 class GetPagesController extends Controller
 {

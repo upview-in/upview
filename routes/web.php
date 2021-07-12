@@ -11,7 +11,7 @@ use App\Http\Controllers\Api\Instagram\GetAccountController;
 use App\Http\Controllers\Api\Instagram\GetPagesController;
 use App\Http\Controllers\Api\Instagram\GetPostsController;
 use App\Http\Controllers\Api\Instagram\ManagePostsController;
-use App\Http\Controllers\Api\Instagram\PostContentControllerController;
+use App\Http\Controllers\Api\Instagram\PostContentController;
 
 
 /*
