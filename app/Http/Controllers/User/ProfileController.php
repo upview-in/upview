@@ -63,4 +63,9 @@ class ProfileController extends Controller
         $user->update();
         return redirect()->back()->with('message2', 'Avatar updated!');
     }
+
+    public function accountsManager()
+    {
+        return view('user.account_manage');
+    }
 }
