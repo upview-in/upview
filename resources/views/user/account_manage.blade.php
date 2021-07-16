@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="row">
-                    <div class="col-md-6 col-sm-9 col-12">
+                    <div class="col-12">
                         <div class="input-affix m-b-10">
                             <div class="container-fluid">
                                 <div class="card shadow w-100" id="ChannelMainDiv">
@@ -92,6 +92,8 @@
             </div>
         </div>
     </x-app-layout>
+
+    
 </body>
 </html>
 
