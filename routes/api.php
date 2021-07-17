@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::prefix('channel')->as('channel.')->group(function () {
             Route::post('/search', [ChannelController::class, 'getChannelListFromName'])->name('getChannelListFromName');
             Route::post('/details', [ChannelController::class, 'getChannelDetailsFromID'])->name('getChannelDetailsFromID');
+            Route::post('/top', [ChannelController::class, 'getTopChannelsList'])->name('getTopChannelsList');
         });
 
         Route::prefix('videos')->as('videos.')->group(function () {

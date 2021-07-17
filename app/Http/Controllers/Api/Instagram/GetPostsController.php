@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-
 use App\Http\Controllers\Controller;
 
-
 define("ENDPOINT_BASE", Config::get('instagram.endPoint'));
-
-
 
 class GetPostsController extends Controller
 {
     public function index()
     {
-
         $instagramAccountId = Config::get('instagram.instaAccID');
         $accessToken = Config::get("instagram.accessToken");
 
@@ -34,22 +28,21 @@ class GetPostsController extends Controller
         );
 
         // add params to endpoint
-        $endpoint .= '?' . http_build_query( $igParams );
+        $endpoint .= '?' . http_build_query($igParams);
 
         // setup curl
         $ch = curl_init();
-        curl_setopt( $ch, CURLOPT_URL, $endpoint );
-        curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false );
-        curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        curl_setopt($ch, CURLOPT_URL, $endpoint);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         // make call and get response
-        $response = curl_exec( $ch );
-        curl_close( $ch );
-        $responseArray = json_decode( $response, true );
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $responseArray = json_decode($response, true);
 
         // print_r($response);
-         return view('get-posts-metadata', ['responseArr' => $response]);
-
+        return view('get-posts-metadata', ['responseArr' => $response]);
     }
 }

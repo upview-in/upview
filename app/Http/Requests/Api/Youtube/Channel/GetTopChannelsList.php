@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\Youtube\Channel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetTopSubscribedChannelsList extends FormRequest
+class GetTopChannelsList extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class GetTopSubscribedChannelsList extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class GetTopSubscribedChannelsList extends FormRequest
     public function rules()
     {
         return [
-            //
+            'maxResults' => ['sometimes', 'numeric', 'min:3'],
+            'order' => ['sometimes', 'string'],
         ];
     }
 }

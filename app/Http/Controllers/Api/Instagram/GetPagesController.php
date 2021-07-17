@@ -3,60 +3,36 @@
 namespace App\Http\Controllers\Api\Instagram;
 
 use Facebook\Exceptions\FacebookSDKException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use App\Http\Controllers\Controller;
-
 
 class GetPagesController extends Controller
 {
     public function index()
     {
-        
         try {
-                $pagesEndPoint = config('instagram.endPoint').'me/accounts';
+            $pagesEndPoint = config('instagram.endPoint') . 'me/accounts';
+            $pagesParams = [
+                'access_token' => config('instagram.accessToken')
+            ];
 
-            
-                $pagesParams = array(
+            $pagesEndPoint .= '?' . http_build_query($pagesParams);
 
-                        'access_token' => config('instagram.accessToken')
-                );
+            //CURL Initialization
+            $cu = curl_init($pagesEndPoint);
+            curl_setopt($cu, CURLOPT_URL, $pagesEndPoint);
+            curl_setopt($cu, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($cu, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
 
+            //CURL CALL
+            $response = curl_exec($cu);
+            curl_close($cu);
 
-                $pagesEndPoint .= '?'. http_build_query( $pagesParams );
-
-
-            
-
-                //CURL Initialization
-
-                $cu = curl_init($pagesEndPoint);
-
-                curl_setopt($cu, CURLOPT_URL, $pagesEndPoint);
-                curl_setopt($cu, CURLOPT_SSL_VERIFYHOST, false);
-                curl_setopt($cu, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
-
-
-                //CURL CALL
-
-                $response = curl_exec($cu);
-                curl_close($cu);
-
-                $responseArr = json_decode($response, true);
-
-        
-
-        } 
-        catch (FacebookSDKException $e) 
-        {
-             dd($$e->message);
+            $responseArr = json_decode($response, true);
+        } catch (FacebookSDKException $e) {
+            dd($$e->message);
         }
 
         return view('get-pages', ['responseArr' => $responseArr['data'][0]]);
     }
-
-    
-
-
 }
