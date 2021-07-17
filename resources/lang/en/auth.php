@@ -14,10 +14,7 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-<<<<<<< HEAD
     'password' => 'The provided password is incorrect.',
-=======
->>>>>>>  Initial commit
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
