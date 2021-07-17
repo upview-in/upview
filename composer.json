@@ -24,9 +24,6 @@
         "laravel/tinker": "^2.5",
         "spatie/laravel-medialibrary": "^9.6"
     },
-    "provide": {
-        "ext-mongo": "*"
-    },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
