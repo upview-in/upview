@@ -2,9 +2,25 @@
 
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\ListController;
+
+//Youtube User classes
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
+
+
+//Instagram User Classes
+use App\Http\Controllers\User\Analyze\Instagram\OverviewController;
+
+
 use Illuminate\Support\Facades\Route;
+
+//Instagram API Classes
+use App\Http\Controllers\Api\Instagram\GetAccountController;
+use App\Http\Controllers\Api\Instagram\GetPagesController;
+use App\Http\Controllers\Api\Instagram\GetPostsController;
+use App\Http\Controllers\Api\Instagram\ManagePostsController;
+use App\Http\Controllers\Api\Instagram\PostContentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +56,7 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
             Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
             Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
             Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
+            Route::get('/accounts_manager', [ProfileController::class, 'accountsManager'])->name('accm');
         });
 
         Route::prefix('measure')->as('measure.')->group(function () {
@@ -54,7 +71,70 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
                 });
             });
         });
+
+        Route::prefix('analyze')->as('analyze.')->group(function () {
+            Route::prefix('instagram')->as('instagram.')->group(function () {
+                Route::prefix('overview')->as('overview.')->group(function () {
+                    Route::get('/', [OverviewController::class, 'index'])->name('index');
+                });
+            });
+        });
     });
 });
+
+
+Route::get('/get-token', function () {
+    return view('get-access-token');
+});
+
+
+Route::get('/get-pages', [GetPagesController::class, 'index']);
+
+Route::get('/get-insta-acc', [GetAccountController::class, 'index']);
+
+
+Route::get('/get-posts', [GetPostsController::class, 'index']);
+
+
+Route::get('/manage/posts', function () {
+    return view('manage-posts');
+});
+
+Route::post('/manage/posts', function () {
+    return view('manage-posts');
+});
+
+
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::get('/hashtags', function () {
+    return view('search-hashtag');
+});
+
+Route::post('/hashtags', function () {
+    return view('search-hashtag');
+});
+
+Route::get('/insights/profile', function () {
+    return view('profile-compare');
+});
+
+
+Route::get('/insights/posts', function () {
+    return view('post-insights');
+});
+
+
+Route::post('insights-result', function () {
+    return view('profile-insights');
+});
+
+Route::get('post-upload', [PostContentController::class, 'index']);
+Route::post('post-upload', [PostContentController::class, 'uploadFile'])->name('uploadFile');
+
+
 
 require __DIR__ . '/auth.php';

@@ -2,30 +2,28 @@
 <div class="side-nav">
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+            <li class="nav-item  {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
+                <a class="" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
                         <i class="anticon anticon-dashboard"></i>
                     </span>
                     <span class="title">{{ __('Dashboard') }}</span>
-                    <span class="arrow">
-                        <i class="arrow-icon"></i>
-                    </span>
+                    
                 </a>
-                <ul class="dropdown-menu">
+                {{-- <ul class="dropdown-menu">
                     <li class="{{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                         <a href="{{ route('panel.dashboard') }}">
                             <span class="title">{{ __('Main') }}</span>
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
-            {{-- <li class="nav-item dropdown {{ request()->is('panel/user/analyse/*') ? 'open' : '' }}">
+            <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <i class="anticon anticon-pie-chart"></i>
                     </span>
-                    <span class="title">{{ __('Analyse') }}</span>
+                    <span class="title">{{ __('Analyze') }}</span>
                     <span class="arrow">
                         <i class="arrow-icon"></i>
                     </span>
@@ -53,6 +51,7 @@
                             </li>
                         </ul>
                     </li>
+                    {{-- Instagram Here --}}
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
@@ -65,7 +64,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">{{ __('Overview') }}</a>
+                                <a href="{{ route('panel.user.analyze.instagram.overview.index') }}">{{ __('Overview') }}</a> {{-- {{ route('panel.dashboard.insta') }} --}}
                             </li>
                             <li>
                                 <a href="#">{{ __('Media') }}</a>
@@ -92,7 +91,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
             <li class="nav-item dropdown {{ request()->is('panel/user/measure/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
