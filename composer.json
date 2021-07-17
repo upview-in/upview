@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-mongodb": "*",
         "dipeshsukhia/laravel-country-state-city-data": "^2.0",
         "facebook/graph-sdk": "^5.1",
         "fideloper/proxy": "^4.4",
@@ -24,7 +25,7 @@
         "spatie/laravel-medialibrary": "^9.6"
     },
     "provide": {
-        "ext-mongodb": "*"
+        "ext-mongo": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
