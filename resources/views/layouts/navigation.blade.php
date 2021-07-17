@@ -86,7 +86,7 @@
                             </div>
                             <div class="m-l-10">
                                 <p class="m-b-0 text-dark font-weight-semibold">{{ Auth::user()->name }}</p>
-                                <p class="m-b-0 opacity-07">UI/UX Desinger</p>
+                                <p class="m-b-0 opacity-07">Admin</p>
                             </div>
                         </div>
                     </div>
@@ -99,11 +99,11 @@
                             <i class="anticon font-size-10 anticon-right"></i>
                         </div>
                     </a>
-                    <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
+                    <a href="{{ route('panel.user.profile.accm') }}" class="dropdown-item d-block p-h-15 p-v-10">
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
                                 <i class="anticon opacity-04 font-size-16 anticon-lock"></i>
-                                <span class="m-l-10">Account Setting</span>
+                                <span class="m-l-10">Accounts Management</span>
                             </div>
                             <i class="anticon font-size-10 anticon-right"></i>
                         </div>

@@ -1,0 +1,70 @@
+.title-nav {
+
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+
+}
+
+.nav-yt {
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .nav-yt a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .nav-yt a:hover {
+    border-bottom: 3px solid red;
+  }
+  
+  .nav-yt a.active {
+    border-bottom: 3px solid red;
+  }
+
+
+  /* Instagram */
+  .nav-ig a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .nav-ig a:hover {
+    border-bottom: 3px solid yellow;
+  }
+  
+  .nav-ig a.active {
+    border-bottom: 3px solid yellow;
+  }
+
+  .nav-fb a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .nav-fb a:hover {
+    border-bottom: 3px solid blue;
+  }
+  
+  .nav-fb a.active {
+    border-bottom: 3px solid blue;
+  }
