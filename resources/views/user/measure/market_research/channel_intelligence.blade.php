@@ -12,7 +12,7 @@
                     $.post({
                         url: "{{ route('api.youtube.channel.getChannelListFromName') }}",
                         data: {
-                            channelName: request.term
+                            channelName: request.term,
                         },
                         success: function(data) {
                             response(data.items);

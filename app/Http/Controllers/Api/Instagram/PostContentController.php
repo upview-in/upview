@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Api\Instagram;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
-
 class FB_PostContentController extends Controller
 {
     public function index()
@@ -14,20 +12,15 @@ class FB_PostContentController extends Controller
         return view('post-content');
     }
 
-
     public function uploadFile(Request $request)
     {
         $request->validate([
             'file' => 'required|mimes:jpg,png,mp4|max:5000'
         ]);
-  
-        $fileName = time().'.'.$request->file->extension();  
-   
+
+        $fileName = time() . '.' . $request->file->extension();
         $request->file->move(public_path('uploads'), $fileName);
-   
-
         $filetype = $request->file->getClientMimeType();
-
 
         // if(strpos($filetype, "image") !== false)
         // {
@@ -39,7 +32,7 @@ class FB_PostContentController extends Controller
         // }
 
         return back()
-            ->with('success','You have successfully uploaded the file.')
+            ->with('success', 'You have successfully uploaded the file.')
             ->with('file', $fileName);
     }
 }

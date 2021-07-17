@@ -18,7 +18,7 @@ class VideoController extends Controller
             'id',
             [
                 'channelId' => $request->id,
-                'maxResults' => 12,
+                'maxResults' => $request->maxResults ?? 12,
                 'type' => 'video',
                 'order' => 'date',
             ]
@@ -47,7 +47,7 @@ class VideoController extends Controller
             [
                 'q' => $request->videoName,
                 'type' => 'video',
-                'maxResults' => 2,
+                'maxResults' => $request->maxResults ?? 2,
             ]
         );
 

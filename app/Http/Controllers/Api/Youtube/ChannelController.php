@@ -6,7 +6,7 @@ use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Youtube\Channel\GetChannelDetailsFromID;
 use App\Http\Requests\Api\Youtube\Channel\GetChannelListFromName;
-use App\Http\Requests\Api\Youtube\Channel\GetTopSubscribedChannelsList;
+use App\Http\Requests\Api\Youtube\Channel\GetTopChannelsList;
 
 class ChannelController extends Controller
 {
@@ -19,7 +19,7 @@ class ChannelController extends Controller
             [
                 'q' => $request->channelName,
                 'type' => 'channel',
-                'maxResults' => 2,
+                'maxResults' => $request->maxResults ?? 2,
             ]
         );
 
@@ -45,7 +45,7 @@ class ChannelController extends Controller
         return response()->json($result, 200);
     }
 
-    public function getTopChannelsList(GetTopSubscribedChannelsList $request)
+    public function getTopChannelsList(GetTopChannelsList $request)
     {
         $yt = new YoutubeHelper();
         $service = $yt->getYoutubeService();

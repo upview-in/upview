@@ -25,6 +25,7 @@ class GetChannelListFromName extends FormRequest
     {
         return [
             'channelName' => ['required', 'string', 'min:1', 'max:255'],
+            'maxResults' => ['sometimes', 'numeric', 'min:2', 'max:100'],
         ];
     }
 }
