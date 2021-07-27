@@ -2,10 +2,10 @@
 
 namespace App\Helper;
 
-use Google_Client;
-use Google_Service_Analytics;
-use Google_Service_YouTube;
-use Google_Service_YouTubeAnalytics;
+use Google\Client;
+use Google\Service\Oauth2;
+use Google\Service\YouTube;
+use Google\Service\YouTubeAnalytics;
 
 class YoutubeHelper
 {
@@ -20,26 +20,51 @@ class YoutubeHelper
         return $this->clientInstance;
     }
 
-    public function getGoogleClient(): Google_Client
+    public function withAuth()
     {
-        $client = new Google_Client();
+        $accountIndex = session('AccountIndex', 0);
+        $accessCode = TokenHelper::getAuthToken_YT();
+        if (count($accessCode)) {
+            $expire_at = $accessCode[$accountIndex]->created + $accessCode[$accountIndex]->expire_in;
+            if (time() > $expire_at) {
+                $token = $this->clientInstance->fetchAccessTokenWithRefreshToken($accessCode[$accountIndex]->refresh_token);
+                $accessCode[$accountIndex]->access_token = $token['access_token'];
+                $accessCode[$accountIndex]->refresh_token = $token['refresh_token'];
+                $accessCode[$accountIndex]->expire_in = $token['expires_in'];
+                $accessCode[$accountIndex]->created = $token['created'];
+                $accessCode[$accountIndex]->update();
+            } else {
+                $token = $accessCode[$accountIndex]->access_token;
+            }
+            $this->clientInstance->setAccessToken($token);
+        }
+    }
+
+    public function getGoogleClient(): Client
+    {
+        $client = new Client();
+
         $client->setApplicationName(config('app.name'));
-        $client->setDeveloperKey(env('GOOGLE_YOUTUBE_DATA_API_V3', 'AIzaSyCYMb-LEFE3EM5Ow97pZ_GAyEEzXkPR4dU'));
-        $client->useApplicationDefaultCredentials();
-        $client->addScope(Google_Service_YouTube::YOUTUBE);
-        $client->addScope(Google_Service_YouTubeAnalytics::YT_ANALYTICS_READONLY);
+        $client->setDeveloperKey(config('youtube.developerKey'));
+        $client->setRedirectUri(route(config('youtube.redirectUrl')));
+        $client->setAuthConfig(config('youtube.oauthCreds'));
+        $client->setAccessType('offline');
+        $client->setScopes(config('youtube.scopes'));
+
         return $client;
     }
 
-    public function getYoutubeService(): Google_Service_YouTube
+    public function getYoutubeService($requiredAuth = false): YouTube
     {
-        return new Google_Service_YouTube($this->clientInstance);
+        if ($requiredAuth) {
+            $this->withAuth();
+        }
+        return new YouTube($this->clientInstance);
     }
 
-    public function getYoutubeAnalyticsService(): Google_Service_YouTubeAnalytics
+    public function getYoutubeAnalyticsService(): YouTubeAnalytics
     {
-        // $service1 = $yt->getYoutubeAnalyticsService();
-        // dd($service1->reports->query(['ids' => 'channel==UCq-Fj5jknLsUf-MWSy4_brA', 'startDate' => '2021-07-01', 'endDate' => '2021-07-16', 'dimensions' => 'day', 'metrics' => 'views', 'filters' => 'isCurated==1']));
-        return new Google_Service_YouTubeAnalytics($this->clientInstance);
+        $this->withAuth();
+        return new YouTubeAnalytics($this->clientInstance);
     }
 }

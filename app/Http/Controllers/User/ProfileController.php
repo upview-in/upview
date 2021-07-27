@@ -7,12 +7,14 @@ use App\Http\Requests\User\Profile\ChangeAddressRequest;
 use App\Http\Requests\User\Profile\ChangeAvatarRequest;
 use App\Http\Requests\User\Profile\ChangeBasicProfileRequest;
 use App\Http\Requests\User\Profile\ChangePasswordRequest;
+use App\Models\LinkedAccounts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -56,7 +58,7 @@ class ProfileController extends Controller
     public function changeAvatar(ChangeAvatarRequest $request)
     {
         $user = Auth::user();
-        if($user->hasMedia('avatars')) {
+        if ($user->hasMedia('avatars')) {
             $user->media()->delete();
         }
         $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
@@ -66,6 +68,7 @@ class ProfileController extends Controller
 
     public function accountsManager()
     {
-        return view('user.account_manage');
+        $linkedAccounts = LinkedAccounts::where(['user_id' => Auth::id()])->get();
+        return view('user.account_manage', ['linkedAccounts' => $linkedAccounts]);
     }
 }

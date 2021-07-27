@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Youtube\ChannelController;
 use App\Http\Controllers\Api\Youtube\CommentController;
 use App\Http\Controllers\Api\Youtube\VideoController;
+use App\Http\Controllers\User\AccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::post('/search', [ChannelController::class, 'getChannelListFromName'])->name('getChannelListFromName');
             Route::post('/details', [ChannelController::class, 'getChannelDetailsFromID'])->name('getChannelDetailsFromID');
             Route::post('/top', [ChannelController::class, 'getTopChannelsList'])->name('getTopChannelsList');
+            Route::post('/mine', [ChannelController::class, 'getMineChannelList'])->name('getMineChannelList');
+            Route::post('/analytics/mine', [ChannelController::class, 'getMineChannelAnalytics'])->name('getMineChannelAnalytics');
         });
 
         Route::prefix('videos')->as('videos.')->group(function () {
