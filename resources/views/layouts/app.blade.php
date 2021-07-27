@@ -15,6 +15,7 @@
 <!-- page css -->
 
 <!-- Core css -->
+<link href="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet">
@@ -88,7 +89,6 @@
     .fs-7 {
         font-size: .8rem;
     }
-
 </style>
 
 @yield('custom-css')
@@ -107,15 +107,15 @@
                 <!-- Content Wrapper START -->
                 <div class="main-content">
                     @if ($pageHeader ?? true === true)
-                        <div class="page-header">
-                            <h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
-                            <div class="header-sub-title">
-                                <nav class="breadcrumb breadcrumb-dash">
-                                    <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Dashboard</a>
-                                    @yield('path-navigation')
-                                </nav>
-                            </div>
+                    <div class="page-header">
+                        <h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
+                        <div class="header-sub-title">
+                            <nav class="breadcrumb breadcrumb-dash">
+                                <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                @yield('path-navigation')
+                            </nav>
                         </div>
+                    </div>
                     @endif
 
                     <!-- Content goes Here -->
@@ -168,6 +168,9 @@
         </div>
     </div>
 
+    <!-- Show Toast -->
+    <div class="notification-toast bottom-right" id="notification-toast"></div>
+
     <!-- Div Loader -->
     <div class="d-none div-loader justify-content-center align-items-center" id="divLoadingTemplate">
         <img src="{{ asset('images/others/div-loader.gif') }}" height="60px" width="auto" />
@@ -184,6 +187,7 @@
     <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('vendor/country-list/country-list.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
 
     <script>
         var noData = '<div class="no-data">No Data Found</div>';
@@ -199,12 +203,12 @@
             "Travel"
         ];
 
-        function toast(title, message, delay) {
+        function toast(title, message, delay, icon = 'info', color = 'info') {
             var toastHTML =
-                '<div class="toast fade hide" data-delay="' + delay + '">' +
+                '<div class="toast fade hide text-' + color + '" data-delay="' + delay + '">' +
                 '   <div class="toast-header">' +
-                '       <i class="anticon anticon-info-circle text-primary m-r-5"></i>' +
-                '       <strong class="mr-auto">' + title + '</strong>' +
+                '       <i class="anticon anticon-' + icon + '-circle text-' + color + ' m-r-5"></i>' +
+                '       <strong class="mr-auto text-' + color + '">' + title + '</strong>' +
                 '       <button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">' +
                 '           <span aria-hidden="true">&times;</span>' +
                 '       </button>' +
@@ -312,6 +316,10 @@
             }
         }
 
+        function redirectTo(link) {
+            window.location.href = link;
+        }
+
         // Before ajax request send
         function __BS(queryID) {
             var loaderTemplate = $("#divLoadingTemplate").clone();
@@ -354,7 +362,6 @@
                 format: 'yyyy-mm-dd',
             });
         });
-
     </script>
 
     @yield('custom-scripts')

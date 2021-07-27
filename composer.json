@@ -48,7 +48,7 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php -r \"shell_exec('rm -r vendor/dipeshsukhia vendor/spatie vendor/laravel/sanctum && cp -r prevendor/* vendor/');\"",
+            "@php -r \"shell_exec('cp -rf prevendor/* vendor/');\"",
             "@php artisan stub:publish",
             "@php artisan migrate:fresh",
             "@php artisan db:seed",

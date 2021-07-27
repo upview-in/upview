@@ -20,7 +20,7 @@ use App\Http\Controllers\Api\Instagram\GetPagesController;
 use App\Http\Controllers\Api\Instagram\GetPostsController;
 use App\Http\Controllers\Api\Instagram\ManagePostsController;
 use App\Http\Controllers\Api\Instagram\PostContentController;
-
+use App\Http\Controllers\User\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +56,17 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
             Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
             Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
             Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
-            Route::get('/accounts_manager', [ProfileController::class, 'accountsManager'])->name('accm');
+        });
+
+        Route::prefix('account')->as('account.')->group(function () {
+            Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
+            Route::get('/add/youtube', [AccountController::class, 'addYoutubeAccount'])->name('addYoutubeAccount');
+            Route::get('/add/facebook', [AccountController::class, 'addFacebookAccount'])->name('addFacebookAccount');
+            Route::get('/add/instagram', [AccountController::class, 'addInstagramAccount'])->name('addInstagramAccount');
+            Route::get('/connect/youtube', [AccountController::class, 'getYoutubeAccess'])->name('getYoutubeAccess');
+            Route::get('/connect/facebook', [AccountController::class, 'getFacebookAccess'])->name('getFacebookAccess');
+            Route::get('/connect/instagram', [AccountController::class, 'getInstagramAccess'])->name('getInstagramAccess');
+            Route::get('/unlink/{id}', [AccountController::class, 'unlinkAccount'])->name('unlinkAccount');
         });
 
         Route::prefix('measure')->as('measure.')->group(function () {

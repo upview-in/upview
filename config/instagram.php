@@ -1,7 +1,7 @@
 <?php
 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -14,8 +14,9 @@ return array(
     |
     */
 
-    'clientId' =>        '1957120897773504',
-    'clientSecret' =>    '21a7f77eef0e7b066da12d73763d51d5',
+    'clientId' =>        env('FB_INSTA_CLIENT_ID'),
+    'clientSecret' =>    env('FB_INSTA_CLIENT_SECRET'),
+    'defaultGraphVersion' => env('FB_INSTA_DEFAULT_GRAPH_VERSION'),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ return array(
     |
     */
 
-    'redirectUri' =>    'http://localhost:8000/get-token/',
+    'redirectUrl' => 'panel.user.account.addInstagramAccount',
 
     /*
     |--------------------------------------------------------------------------
@@ -47,11 +48,8 @@ return array(
     |
     */
 
-    'accessToken' => 'EAAbzZCbfk78ABALjKYiji4BbmxtZBTzZAqIARkCJvAX4hXOxY5anQbIVqe85NukjZCRbTs8tZBTYb4FXcN7TgI6lFV59JTpSlIlHTOqRdqznZCE585sXvun8t6iSMVJgS8RLZCdPmAHQNV5Wla1UX3QoPpyw049wkXjgFhcMyj7jvkVEFx8U71X',
+    'endPoint' => env('FB_INSTA_ENDPOINT', ''),
 
-    
-    'endPoint' => 'https://graph.facebook.com/v10.0/',
-    
     /*
     |--------------------------------------------------------------------------
 	| Secure Requests
@@ -65,11 +63,13 @@ return array(
     |
     */
 
-    'enforceSignedRequests' => false,
-    
+    'enforceSignedRequests' => env('FB_INSTA_ENFORCE_SIGNED_REQUESTS', ''),
 
+
+    // Temp keys
+    'accessToken' => 'EAAbzZCbfk78ABALjKYiji4BbmxtZBTzZAqIARkCJvAX4hXOxY5anQbIVqe85NukjZCRbTs8tZBTYb4FXcN7TgI6lFV59JTpSlIlHTOqRdqznZCE585sXvun8t6iSMVJgS8RLZCdPmAHQNV5Wla1UX3QoPpyw049wkXjgFhcMyj7jvkVEFx8U71X',
     'pageID' => '106029175032377',
+    'instaAccID' => '17841448412470894',
+    'redirectUri' => env('FB_INSTA_REDIRECT_URL', ''),
 
-    'instaAccID' => '17841448412470894', 
-
-);
+];

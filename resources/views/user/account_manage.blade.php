@@ -1,100 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Upview - Account Management</title>
-    <script src="https://kit.fontawesome.com/efdf2100de.js" crossorigin="anonymous"></script>
+@section('path-navigation')
+<span class="breadcrumb-item active">Account Management</span>
+@endsection
 
-    <link rel="stylesheet" href="{{ asset('css/nav-design.css') }}" />
+@section('custom-scripts')
 
-</head>
-<body>
+@if(session()->has('unlink'))
+<script>
+	toast('Success', 'Account Unlinked Successfully!', 5000, 'check', 'success');
+</script>
+@endif
 
-    <x-app-layout title="Account Management">
-        <div class="container-fluid">
-            <div class="card">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="input-affix m-b-10">
-                            <div class="container-fluid">
-                                <div class="card shadow w-100" id="ChannelMainDiv">
-                                    <div class="card shadow" id="highlights">
-                                        <div class="card-header p-15 ml-3 w-500">
-                                            <label class="h3 m-0">Manage Accounts</label>
-                                        </div>
-                                        <div class="card-header p-15 ml-3">
-                                            
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-append">
-                                                  <button class="btn  btn-lg float-sm-right btn-outline-secondary" type="button"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Add Account</button>
-                                                </div>
-                                              </div>
-                                            
-                                              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                                                <a class=" navbar-brand font-size-15" href="#">Connected Profiles</a><br>
-                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                                  <span class="navbar-toggler-icon"></span>
-                                                </button>
-                                                <div class="collapse navbar-collapse" id="navbarNav">
-                                                  <ul class="navbar-nav">
-                                                    <li class="nav-item nav-yt active">
-                                                      <a class="nav-link" href="#">Youtube <span class="sr-only"></span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-ig">
-                                                      <a class="nav-link" href="#">Instagram</a>
-                                                    </li>
-                                                    <li class="nav-item nav-fb">
-                                                      <a class="nav-link" href="#">Facebook</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                      <a class="nav-link disabled" href="#">Twitter</a>
-                                                    </li>
-                                                  </ul>
-                                                </div>
-                                              </nav>                                              
-                                              <div>
-                                                    {{-- User Accounts Table Start --}}
+@if(session()->has('linked'))
+<script>
+	toast('Success', 'Account linked Successfully!', 5000, 'check', 'success');
+</script>
+@endif
 
-                                                <table class="table">
-                                                    <thead>
-                                                      <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">Linked Account</th>
-                                                        <th scope="col">Token Status</th>
-                                                        <th scope="col">Authorized Since</th>
-                                                        <th scope="col">Actions</th>
-                                                      </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                      <tr>
-                                                        <th scope="row">1</th>
-                                                        <td><i class="fas fa-user-alt-slash"></i> Mark</td>
-                                                        <td class="text-info">Active</td>
-                                                        <td>date format</td>
-                                                        <td><a href="#"><i class="fas fa-trash text-danger justify-center" data-toggle="tooltip" data-placement="bottom" title="Delete Account" aria-hidden="false"></i></a>
-                                                            <i class="far fa-star text-warning" data-toggle="tooltip" data-placement="bottom" title="Set as default" aria-hidden="false"></i>
-                                                        </td>
-                                                      </tr>
-                                                    </tbody>
-                                                  </table>
-                                              </div>
+@if(session()->has('error'))
+<script>
+	toast('Success', 'Error to add account!', 5000, 'close', 'danger');
+</script>
+@endif
 
-                                                     {{-- User Accounts Table End --}}
+@if(session()->has('retry'))
+<script>
+	toast('Notice', 'Retry to add account. required info missing', 5000, 'close', 'danger');
+</script>
+@endif
 
-                                        </div>
-                                </div>
-                            </div>   
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </x-app-layout>
+@if(session()->has('already_linked'))
+<script>
+	toast('Notice', 'Account already linked!', 5000, 'check', 'warning');
+</script>
+@endif
 
-    
-</body>
-</html>
+@if(session()->has('renewed'))
+<script>
+	toast('Notice', 'Account renewed successfully!', 5000, 'check', 'success');
+</script>
+@endif
 
+@endsection
 
+<x-app-layout title="Account Management">
+	<div class="container-fluid">
+		<div class="card shadow" id="highlights">
+			<div class="card-header p-15 ml-3 w-500">
+				<label class="h3 m-0">Manage Accounts</label>
+				<button class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" data-target="#addAccountModal">
+					<i class="anticon anticon-user-add"></i> Add Account
+				</button>
+			</div>
+			<div class="card-body p-15 ml-3">
+				<div class="table-responsive">
+					<table class="table" data-toggle="table" data-pagination="true" data-search="true">
+						<thead>
+							<tr>
+								<th scope="col" data-sortable="true">#</th>
+								<th scope="col" data-sortable="true" data-field="name">Name</th>
+								<th scope="col" data-sortable="true" data-field="email">Email</th>
+								<th scope="col" data-sortable="true" data-field="linked_account">Linked Account</th>
+								<th scope="col" data-sortable="true" data-field="authorized_since">Authorized Since</th>
+								<th scope="col" data-sortable="true" data-field="status">Expire In</th>
+								<th scope="col" data-sortable="true" data-field="renew">Renew</th>
+								<th scope="col">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+
+							$platforms = [
+								null,
+								'<span class="text-danger"><i class="anticon anticon-youtube"></i> YouTube</span>',
+								'<span class="text-primary"><i class="anticon anticon-facebook"></i> Facebook</span>',
+								'<span class="text-warning"><i class="anticon anticon-instagram"></i> Instagram</span>',
+							];
+
+							?>
+							@foreach($linkedAccounts as $key => $linkedAccount)
+							<tr>
+								<th scope="row">{{ $key + 1 }}</th>
+								<td><img class="rounded-circle mr-3" src="{{ $linkedAccount->picture }}" width="50px" /> {{ $linkedAccount->name ?? 'N/A' }}</td>
+								<td>{{ $linkedAccount->email ?? 'N/A' }}</td>
+								<td>{!! $platforms[$linkedAccount->platform] !!}</td>
+								<td>{{ $linkedAccount->created_at->diffForHumans() }}</td>
+								<td>
+									<?php
+									if ($linkedAccount->platform == 1) {
+										echo \Carbon\Carbon::parse($linkedAccount->created + $linkedAccount->expire_in)->diffInMinutes(\Carbon\Carbon::now()) . ' Minutes';
+									} else if ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
+										echo \Carbon\Carbon::parse($linkedAccount->expire_in)->diffInDays(\Carbon\Carbon::now()) . ' Days';
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									if ($linkedAccount->platform == 1) {
+										echo "Auto";
+									} else if ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
+										echo "Manually";
+									}
+									?>
+								</td>
+								<td>
+									<a href="{{ route('panel.user.account.unlinkAccount', $linkedAccount->id) }}">
+										<i class="fas fa-unlink text-danger justify-center" data-toggle="tooltip" data-placement="bottom" title="Unlink Account" aria-hidden="false"></i>
+									</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="addAccountModal" tabindex="-1" role="dialog" aria-labelledby="addAccountModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Choose Platform</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-50"><i class="anticon anticon-youtube"></i> Youtube</a>
+						</div>
+						<div class="col-12 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-50"><i class="anticon anticon-facebook"></i> FaceBook</a>
+						</div>
+						<div class="col-12 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-50"><i class="anticon anticon-instagram"></i> Instagram</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</x-app-layout>
