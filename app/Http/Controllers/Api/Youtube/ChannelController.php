@@ -8,6 +8,7 @@ use App\Http\Requests\Api\Youtube\Channel\GetChannelDetailsFromID;
 use App\Http\Requests\Api\Youtube\Channel\GetChannelListFromName;
 use App\Http\Requests\Api\Youtube\Channel\GetMineChannelAnalytics;
 use App\Http\Requests\Api\Youtube\Channel\GetMineChannelList;
+use Illuminate\Http\Request;
 
 class ChannelController extends Controller
 {
@@ -82,17 +83,17 @@ class ChannelController extends Controller
         return response()->json($channelList, 200);
     }
 
-    public function getMineChannelAnalytics(GetMineChannelAnalytics $request)
+    public function getMineChannelAnalytics(GetMineChannelAnalytics $request, $startDate, $endDate, $dimensions = 'day', $sort = 'day')
     {
         $yt = new YoutubeHelper();
         $service = $yt->getYoutubeAnalyticsService();
         $analytics = $service->reports->query([
             'ids' => 'channel==MINE',
-            'startDate' => '2020-03-25',
-            'endDate' => '2020-04-15',
-            'dimensions' => 'day',
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+            'dimensions' => $dimensions,
             'metrics' => 'estimatedMinutesWatched,views,comments,averageViewDuration,likes,subscribersGained',
-            'sort' => 'day'
+            'sort' => $sort
         ]);
         return response()->json($analytics, 200);
     }

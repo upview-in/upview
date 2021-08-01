@@ -40,6 +40,12 @@
 </script>
 @endif
 
+@if(session()->has('default'))
+<script>
+	toast('Notice', 'Default account updated!', 5000, 'check', 'success');
+</script>
+@endif
+
 @endsection
 
 <x-app-layout title="Account Management">
@@ -86,23 +92,30 @@
 								<td>{{ $linkedAccount->created_at->diffForHumans() }}</td>
 								<td>
 									<?php
+
 									if ($linkedAccount->platform == 1) {
 										echo \Carbon\Carbon::parse($linkedAccount->created + $linkedAccount->expire_in)->diffInMinutes(\Carbon\Carbon::now()) . ' Minutes';
 									} else if ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
 										echo \Carbon\Carbon::parse($linkedAccount->expire_in)->diffInDays(\Carbon\Carbon::now()) . ' Days';
 									}
+
 									?>
 								</td>
 								<td>
 									<?php
+
 									if ($linkedAccount->platform == 1) {
 										echo "Auto";
 									} else if ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
 										echo "Manually";
 									}
+
 									?>
 								</td>
 								<td>
+									<a href="{{ route('panel.user.account.setDefaultAccount', ['id' => $linkedAccount->id, 'platform' => $linkedAccount->platform]) }}">
+										<i class="{{ (!is_null($linkedAccount->default) && $linkedAccount->default)?'fa':'far' }} fa-star text-warning justify-center" data-toggle="tooltip" data-placement="bottom" title="Set as default account" aria-hidden="false"></i>
+									</a>
 									<a href="{{ route('panel.user.account.unlinkAccount', $linkedAccount->id) }}">
 										<i class="fas fa-unlink text-danger justify-center" data-toggle="tooltip" data-placement="bottom" title="Unlink Account" aria-hidden="false"></i>
 									</a>

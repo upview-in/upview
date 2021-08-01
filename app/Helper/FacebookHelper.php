@@ -25,8 +25,17 @@ class FacebookHelper
             'persistent_data_handler' => new LaravelPersistentDataHandler(),
         ]);
 
-        $accountIndex = session('AccountIndex', 0);
         $accessCode = TokenHelper::getAuthToken_FB();
+
+        $accountIndex = session('AccountIndex', null);
+        if (is_null($accountIndex)) {
+            foreach ($accessCode as $index => $_) {
+                if (!is_null($_->default) && $_->default) {
+                    $accountIndex = $index;
+                }
+            }
+        }
+
         if (count($accessCode) && time() < $accessCode[$accountIndex]->expire_in) {
             $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
         }

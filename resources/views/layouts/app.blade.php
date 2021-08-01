@@ -354,12 +354,53 @@
             imgTargets.forEach(lazyLoad);
         }
 
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
         $(document).ready(function() {
             $('.select2').select2({
                 allowClear: true,
             });
+
             $('.datepicker-input').datepicker({
                 format: 'yyyy-mm-dd',
+            });
+
+            if (getCookie('isFolded') != "" && getCookie('isFolded') == "true") {
+                $(".app").addClass("is-folded");
+            }
+
+            var $div = $(".app");
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === "class") {
+                        var isFolded = getCookie('isFolded') == "true" ? true : false;
+                        setCookie('isFolded', !isFolded, 365);
+                    }
+                });
+            });
+            observer.observe($div[0], {
+                attributes: true
             });
         });
     </script>

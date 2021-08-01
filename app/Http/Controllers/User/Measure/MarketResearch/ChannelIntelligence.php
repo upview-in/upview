@@ -12,8 +12,6 @@ class ChannelIntelligence extends Controller
 {
     public function index(ChannelIntelligenceIndex $request)
     {
-        //app(ChannelController::class)->getMineChannelAnalytics(new GetMineChannelAnalytics())->getData();
-        //dd(app(ChannelController::class)->getMineChannelList(new GetMineChannelList())->getData());
         return view('user.measure.market_research.channel_intelligence');
     }
 

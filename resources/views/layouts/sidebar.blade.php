@@ -2,21 +2,23 @@
 <div class="side-nav">
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
-            <li class="nav-item  {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
-                <a class="" href="{{ route('panel.dashboard') }}">
+            <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <i class="anticon anticon-dashboard"></i>
                     </span>
                     <span class="title">{{ __('Dashboard') }}</span>
-                    
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
                 </a>
-                {{-- <ul class="dropdown-menu">
+                <ul class="dropdown-menu">
                     <li class="{{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                         <a href="{{ route('panel.dashboard') }}">
                             <span class="title">{{ __('Main') }}</span>
                         </a>
                     </li>
-                </ul> --}}
+                </ul>
             </li>
             <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -40,14 +42,14 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">{{ __('Overview') }}</a>
+                            <li class="{{ request()->routeIs('panel.user.analyze.youtube.overview') ? 'active' : '' }}">
+                                <a href="{{ route('panel.user.analyze.youtube.overview') }}">{{ __('Overview') }}</a>
                             </li>
-                            <li>
-                                <a href="#">{{ __('Videos') }}</a>
+                            <li class="{{ request()->routeIs('panel.user.analyze.youtube.videos') ? 'active' : '' }}">
+                                <a href="{{ route('panel.user.analyze.youtube.videos') }}">{{ __('Videos') }}</a>
                             </li>
-                            <li>
-                                <a href="#">{{ __('Audience') }}</a>
+                            <li class="{{ request()->routeIs('panel.user.analyze.youtube.audience') ? 'active' : '' }}">
+                                <a href="{{ route('panel.user.analyze.youtube.audience') }}">{{ __('Audience') }}</a>
                             </li>
                         </ul>
                     </li>
@@ -122,33 +124,33 @@
                 </ul>
             </li>
             {{-- <li class="nav-item dropdown {{ request()->is('panel/user/track/*') ? 'open' : '' }}">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder">
-                        <i class="anticon anticon-fund"></i>
-                    </span>
-                    <span class="title">{{ __('Track') }}</span>
-                    <span class="arrow">
-                        <i class="arrow-icon"></i>
-                    </span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item dropdown open">
-                        <a href="javascript:void(0);">
-                            <span>{{ __('Comp. Analysis') }}</span>
-                            <span class="arrow">
-                                <i class="arrow-icon"></i>
-                            </span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">{{ __('Video Tracking') }}</a>
-                            </li>
-                            <li>
-                                <a href="#">{{ __('Series Tracking') }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <a class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="anticon anticon-fund"></i>
+                </span>
+                <span class="title">{{ __('Track') }}</span>
+                <span class="arrow">
+                    <i class="arrow-icon"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="nav-item dropdown open">
+                    <a href="javascript:void(0);">
+                        <span>{{ __('Comp. Analysis') }}</span>
+                        <span class="arrow">
+                            <i class="arrow-icon"></i>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">{{ __('Video Tracking') }}</a>
+                        </li>
+                        <li>
+                            <a href="#">{{ __('Series Tracking') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
             </li> --}}
         </ul>
     </div>

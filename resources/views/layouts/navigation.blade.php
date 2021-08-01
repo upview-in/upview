@@ -2,13 +2,13 @@
     <div class="logo logo-dark">
         <a href="#">
             <img src="{{ asset('images/logo/named_logo.svg') }}" alt="Logo" style="height: 70px;">
-            <img class="logo-fold" src="{{ asset('images/logo/logo.svg') }}" alt="Logo">
+            <img class="logo-fold" src="{{ asset('images/logo/logo.svg') }}" alt="Logo" style="height: 70px; padding: 12px;">
         </a>
     </div>
     <div class="logo logo-white">
         <a href="#">
             <img src="{{ asset('images/logo/named_logo.svg') }}" alt="Logo" style="height: 70px;">
-            <img class="logo-fold" src="{{ asset('images/logo/logo.svg') }}" alt="Logo">
+            <img class="logo-fold" src="{{ asset('images/logo/logo.svg') }}" alt="Logo" style="height: 70px; padding: 12px;">
         </a>
     </div>
     <div class="nav-wrap">

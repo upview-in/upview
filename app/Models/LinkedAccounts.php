@@ -20,5 +20,6 @@ class LinkedAccounts extends Model
         'created',
         'platform',
         'fb_id',
+        'default',
     ];
 }
