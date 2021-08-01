@@ -3,7 +3,6 @@
 namespace App\Helper;
 
 use Google\Client;
-use Google\Service\Oauth2;
 use Google\Service\YouTube;
 use Google\Service\YouTubeAnalytics;
 
@@ -22,8 +21,19 @@ class YoutubeHelper
 
     public function withAuth()
     {
-        $accountIndex = session('AccountIndex', 0);
         $accessCode = TokenHelper::getAuthToken_YT();
+
+        $accountIndex = session('AccountIndex', null);
+        if (is_null($accountIndex)) {
+            foreach ($accessCode as $index => $_) {
+                if (!is_null($_->default) && $_->default) {
+                    $accountIndex = $index;
+                }
+            }
+        }
+
+        $accountIndex = is_null($accountIndex) ? 0 : $accountIndex;
+
         if (count($accessCode)) {
             $expire_at = $accessCode[$accountIndex]->created + $accessCode[$accountIndex]->expire_in;
             if (time() > $expire_at) {
@@ -62,9 +72,11 @@ class YoutubeHelper
         return new YouTube($this->clientInstance);
     }
 
-    public function getYoutubeAnalyticsService(): YouTubeAnalytics
+    public function getYoutubeAnalyticsService($requiredAuth = true): YouTubeAnalytics
     {
-        $this->withAuth();
+        if ($requiredAuth) {
+            $this->withAuth();
+        }
         return new YouTubeAnalytics($this->clientInstance);
     }
 }

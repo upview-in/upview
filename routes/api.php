@@ -35,7 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::post('/details', [ChannelController::class, 'getChannelDetailsFromID'])->name('getChannelDetailsFromID');
             Route::post('/top', [ChannelController::class, 'getTopChannelsList'])->name('getTopChannelsList');
             Route::post('/mine', [ChannelController::class, 'getMineChannelList'])->name('getMineChannelList');
-            Route::post('/analytics/mine', [ChannelController::class, 'getMineChannelAnalytics'])->name('getMineChannelAnalytics');
+            Route::post('/analytics/mine/{startDate}/{endDate}/{dimensions?}/{sort?}', [ChannelController::class, 'getMineChannelAnalytics'])->name('getMineChannelAnalytics');
         });
 
         Route::prefix('videos')->as('videos.')->group(function () {

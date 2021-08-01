@@ -4,12 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Helper\FacebookHelper;
 use App\Helper\InstagramHelper;
+use App\Helper\TokenHelper;
 use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
 use App\Models\LinkedAccounts;
-use Carbon\Carbon;
+use Google\Service\CloudSourceRepositories\Repo;
 use Google\Service\Oauth2;
-use Google\Service\ShoppingContent\LinkedAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -208,5 +208,34 @@ class AccountController extends Controller
             $acc->delete();
         }
         return redirect()->back()->with('unlink', 'true');
+    }
+
+    public function setDefaultAccount(Request $request, $id, $platform)
+    {
+        $acc = LinkedAccounts::find($id);
+        if (!is_null($acc) && $acc->user_id === Auth::id()) {
+            LinkedAccounts::where(['platform' => (int)$platform, 'user_id' => Auth::id()])->update(['default' => false]);
+            $acc->default = true;
+            $acc->update();
+        }
+        return redirect()->back()->with('default', 'true');
+    }
+
+    public function setSessionDefaultAccount(Request $request)
+    {
+        if ($request->has(['id'])) {
+            $acc = LinkedAccounts::find($request->id);
+            if (!is_null($acc) && $acc->user_id === Auth::id()) {
+                $accessCode = TokenHelper::getAuthToken_YT();
+                foreach ($accessCode as $index => $_) {
+                    if ($_->id == $request->id) {
+                        $accountIndex = $index;
+                    }
+                }
+                if (isset($accountIndex)) {
+                    session()->put('AccountIndex', $accountIndex);
+                }
+            }
+        }
     }
 }

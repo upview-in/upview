@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Instagram\GetAccountController;
 use App\Http\Controllers\Api\Instagram\GetPagesController;
 use App\Http\Controllers\Api\Instagram\GetPostsController;
-use App\Http\Controllers\Api\Instagram\ManagePostsController;
 use App\Http\Controllers\Api\Instagram\PostContentController;
 use App\Http\Controllers\User\AccountController;
 
@@ -67,6 +66,8 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
             Route::get('/connect/facebook', [AccountController::class, 'getFacebookAccess'])->name('getFacebookAccess');
             Route::get('/connect/instagram', [AccountController::class, 'getInstagramAccess'])->name('getInstagramAccess');
             Route::get('/unlink/{id}', [AccountController::class, 'unlinkAccount'])->name('unlinkAccount');
+            Route::get('/setDefault/{id}/{platform}', [AccountController::class, 'setDefaultAccount'])->name('setDefaultAccount');
+            Route::get('/setDefault/session', [AccountController::class, 'setSessionDefaultAccount'])->name('setSessionDefaultAccount');
         });
 
         Route::prefix('measure')->as('measure.')->group(function () {
@@ -83,6 +84,18 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
         });
 
         Route::prefix('analyze')->as('analyze.')->group(function () {
+            Route::prefix('youtube')->as('youtube.')->group(function () {
+                Route::get('/overview', [App\Http\Controllers\User\Analyze\Youtube\OverviewController::class, 'overview'])->name('overview');
+                Route::get('/videos', [App\Http\Controllers\User\Analyze\Youtube\VideosController::class, 'videos'])->name('videos');
+                Route::get('/audience', [App\Http\Controllers\User\Analyze\Youtube\AudienceController::class, 'audience'])->name('audience');
+            });
+
+            Route::prefix('facebook')->as('facebook.')->group(function () {
+                Route::prefix('overview')->as('overview.')->group(function () {
+                    Route::get('/', [OverviewController::class, 'index'])->name('index');
+                });
+            });
+
             Route::prefix('instagram')->as('instagram.')->group(function () {
                 Route::prefix('overview')->as('overview.')->group(function () {
                     Route::get('/', [OverviewController::class, 'index'])->name('index');
