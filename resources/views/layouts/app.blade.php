@@ -17,9 +17,10 @@
 <!-- Core css -->
 <link href="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
-<link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
 <link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet">
 
 <style>
     @keyframes shine-lines {
@@ -184,8 +185,10 @@
 
     <!-- Core JS -->
     <script src="{{ asset('js/theme-app.min.js') }}"></script>
-    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
     <script src="{{ asset('vendor/country-list/country-list.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
 

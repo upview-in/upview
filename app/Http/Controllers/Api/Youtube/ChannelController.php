@@ -8,7 +8,7 @@ use App\Http\Requests\Api\Youtube\Channel\GetChannelDetailsFromID;
 use App\Http\Requests\Api\Youtube\Channel\GetChannelListFromName;
 use App\Http\Requests\Api\Youtube\Channel\GetMineChannelAnalytics;
 use App\Http\Requests\Api\Youtube\Channel\GetMineChannelList;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\Youtube\Channel\GetTopChannelsList;
 
 class ChannelController extends Controller
 {
@@ -47,33 +47,45 @@ class ChannelController extends Controller
         return response()->json($result, 200);
     }
 
-    // public function getTopChannelsList(GetTopChannelsList $request)
-    // {
-    //     $yt = new YoutubeHelper();
-    //     $service = $yt->getYoutubeService();
-    //     $result = $service->search->listSearch(
-    //         'id',
-    //         [
-    //             'type' => 'channel',
-    //             'maxResults' => $request->maxResults ?? 10,
-    //             'order' => $request->order ?? 'viewCount',
-    //             'safeSearch' => 'strict'
-    //         ]
-    //     );
+    public function getTopChannelsList(GetTopChannelsList $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeService();
+        // $result = $service->search->listSearch(
+        //     'id',
+        //     [
+        //         'type' => 'channel',
+        //         'maxResults' => $request->maxResults ?? 10,
+        //         'order' => $request->order ?? 'viewCount',
+        //         'safeSearch' => 'strict'
+        //     ]
+        // );
 
-    //     $ids = [];
-    //     foreach ($result as $value) {
-    //         if (empty($value->id->channelId)) {
-    //             continue;
-    //         }
-    //         $ids[] = $value->id->channelId;
-    //     }
-    //     $ids = implode(',', $ids);
+        // $ids = [];
+        // foreach ($result as $value) {
+        //     if (empty($value->id->channelId)) {
+        //         continue;
+        //     }
+        //     $ids[] = $value->id->channelId;
+        // }
+        // $ids = implode(',', $ids);
 
-    //     $channelList = $service->channels->listChannels('id,snippet,statistics', ['id' => $ids]);
+        // $channelList = $service->channels->listChannels('id,snippet,statistics', ['id' => $ids]);
 
-    //     return response()->json($channelList, 200);
-    // }
+        $result = $service->search->listSearch(
+            'id,snippet',
+            [
+                'type' => 'channel',
+                'maxResults' => $request->maxResults ?? 10,
+                'order' => $request->order ?? 'viewCount',
+                'regionCode' => 'IN',
+            ]
+        );
+
+        dd($result);
+
+        //return response()->json($channelList, 200);
+    }
 
     public function getMineChannelList(GetMineChannelList $request)
     {
@@ -83,17 +95,17 @@ class ChannelController extends Controller
         return response()->json($channelList, 200);
     }
 
-    public function getMineChannelAnalytics(GetMineChannelAnalytics $request, $startDate, $endDate, $dimensions = 'day', $sort = 'day')
+    public function getMineChannelAnalytics(GetMineChannelAnalytics $request)
     {
         $yt = new YoutubeHelper();
         $service = $yt->getYoutubeAnalyticsService();
         $analytics = $service->reports->query([
             'ids' => 'channel==MINE',
-            'startDate' => $startDate,
-            'endDate' => $endDate,
-            'dimensions' => $dimensions,
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+            'dimensions' => $request->dimensions ?? 'day',
             'metrics' => 'estimatedMinutesWatched,views,comments,averageViewDuration,likes,subscribersGained',
-            'sort' => $sort
+            'sort' => $request->sort ?? 'day'
         ]);
         return response()->json($analytics, 200);
     }

@@ -78,7 +78,7 @@
             formatSelection: formatSelectionData,
         });
 
-        $('#select2Accounts').val(accounts["{{ session('AccountIndex', null) }}"]['_id']).trigger('change');
+        $('#select2Accounts').val(accounts["{{ session('AccountIndex', 0) }}"]['_id']).trigger('change');
 
         $('#select2Accounts').on('change', function(e) {
             var data = $(this).select2('data');
@@ -121,7 +121,7 @@
                                         var imgUrl = typeof item.snippet.thumbnails.medium !== 'undefined' ? item.snippet.thumbnails.medium.url : item.snippet.thumbnails.high.url;
                                         var statistics = item.statistics;
                                         VideoListCols +=
-                                            '<div class="col-md-3 col-sm-4 col-12 pt-4 pb-4 pl-4 pr-4 border border-dark">' +
+                                            '<div class="col-md-3 col-sm-6 col-12 pt-4 pb-4 pl-4 pr-4 border border-dark">' +
                                             '    <div class="row justify-content-center mb-3">' +
                                             '        <div class="col-auto">' +
                                             '            <img class="lazyload pointer openVideoDetails" src="{{ asset("images/others/loading.gif") }}" data-src="' + imgUrl + '" width="100%" height="auto" data-id="' + item.id + '"/>' +
@@ -297,7 +297,7 @@
 
         $("#btnCopyTags").click(function() {
             copyToClipboard(tagsForCopy);
-            __toast('Info', 'Copied successfully!', 3000);
+            toast('Info', 'Copied successfully!', 3000);
         });
     });
 </script>
@@ -305,7 +305,7 @@
 
 <x-app-layout title="Videos">
     <div class="container-fluid">
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-end">
             <div class="col-md-5 col-12">
                 <input class="shadow" id="select2Accounts" />
             </div>
