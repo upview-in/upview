@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\Measure\MarketResearch;
 
+use App\Http\Controllers\Api\Youtube\VideoController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Measure\MarketResearch\VideoDetailsRequest;
 use App\Http\Requests\User\Measure\MarketResearch\VideoIntelligenceIndex;

@@ -72,4 +72,18 @@ class VideoController extends Controller
         $videoDetails = $service->videos->listVideos('contentDetails,id,liveStreamingDetails,localizations,player,recordingDetails,snippet,statistics,status,topicDetails', ['id' => $request->id]);
         return response()->json($videoDetails, 200);
     }
+
+    public function getTrendingVideos()
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeService();
+        $videoList = $service->videos->listVideos(
+            'id,snippet,contentDetails,liveStreamingDetails,localizations,player,recordingDetails,statistics,status,topicDetails',
+            [
+                'chart' => 'mostPopular',
+                'maxResults' => '10'
+            ]
+        );
+        return response()->json($videoList, 200);
+    }
 }

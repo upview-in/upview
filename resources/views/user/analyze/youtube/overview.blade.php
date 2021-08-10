@@ -26,7 +26,18 @@
 <script>
     $(document).ready(function() {
 
+        var __startDate = moment().subtract(29, 'days'),
+            __endDate = moment();
+        var accounts = JSON.parse('{!! App\Helper\TokenHelper::getAuthToken_YT()->toJson() !!}');
+        var GroupBy = "day";
+
+        cb(__startDate, __endDate);
         loadData();
+        loadAnalytics();
+
+        function cb(start, end) {
+            $('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
 
         function formatData(state) {
             var $state = $(
@@ -60,8 +71,6 @@
             return $state;
         }
 
-        var accounts = JSON.parse('{!! App\Helper\TokenHelper::getAuthToken_YT()->toJson() !!}');
-
         $('#select2Accounts').select2({
             id: function(item) {
                 return item._id
@@ -77,7 +86,7 @@
             formatSelection: formatSelectionData,
         });
 
-        $('#select2Accounts').val(accounts["{{ session('AccountIndex', null) }}"]['_id']).trigger('change');
+        $('#select2Accounts').val(accounts["{{ session('AccountIndex', 0) }}"]['_id']).trigger('change');
 
         $('#select2Accounts').on('change', function(e) {
             var data = $(this).select2('data');
@@ -90,6 +99,34 @@
                     loadData();
                 }
             });
+        });
+
+        $('#daterange').daterangepicker({
+            startDate: __startDate,
+            endDate: __endDate,
+            ranges: {
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+                'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
+            }
+        }, cb);
+
+        $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+            __startDate = picker.startDate;
+            __endDate = picker.endDate;
+            loadAnalytics();
+        });
+
+        $("#GroupBy").prop('selectedIndex', 0);
+
+        $("#GroupBy").change(function() {
+            GroupBy = $(this).val();
+            loadAnalytics();
         });
 
         function loadData() {
@@ -116,8 +153,7 @@
                         $("#c1ChannelSubscriber").html(convertToInternationalCurrencySystem(
                             statistics.subscriberCount));
                         $("#c1ChannelVideos").html(statistics.videoCount);
-                        $("#c1ChannelJoiningDate").html($.datepicker.formatDate('M dd, yy',
-                            new Date(snippet.publishedAt)));
+                        $("#c1ChannelJoiningDate").html($.datepicker.formatDate('M dd, yy', new Date(snippet.publishedAt)));
 
                         if (snippet.country != null) {
                             $("#c1ChannelCountry").html('<img class="mr-2 align-middle" src="{{ asset("/images/country-icons") }}/' + snippet.country.toLowerCase() + '.svg" height="18px" width="auto" /> ' + snippet.country + ' (' + getCountryName(snippet.country) + ')');
@@ -142,13 +178,30 @@
                 }
             });
         }
+
+        function loadAnalytics() {
+            $.ajax({
+                type: "post",
+                url: "{{ route('api.youtube.channel.getMineChannelAnalytics') }}",
+                data: {
+                    startDate: GroupBy == 'month' ? __startDate.format('YYYY-MM') + '-01' : __startDate.format('YYYY-MM-DD'),
+                    endDate: GroupBy == 'month' ? __endDate.format('YYYY-MM') + '-01' : __endDate.format('YYYY-MM-DD'),
+                    dimensions: GroupBy,
+                    sort: GroupBy,
+                },
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        }
     });
 </script>
 @endsection
 
 <x-app-layout title="Overview">
     <div class="container-fluid">
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-end">
             <div class="col-md-5 col-12">
                 <input class="shadow" id="select2Accounts" />
             </div>
@@ -202,5 +255,32 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="row justify-content-end">
+            <div class="col-md-auto col-12">
+                <div class="form-group">
+                    <select class="form-control shadow" id="GroupBy">
+                        <option value="day" selected>Day Wise</option>
+                        <option value="month">Month Wise</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-auto col-12">
+                <div class="form-group">
+                    <div class="form-control shadow" id="daterange">
+                        <i class="fa fa-calendar"></i>&nbsp;
+                        <span></span> <i class="fa fa-caret-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow" id="ChannelMainDiv">
+            <div class="card-header p-15 ml-3">
+                <label class="h3 m-0">Highlights</label>
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
 </x-app-layout>
