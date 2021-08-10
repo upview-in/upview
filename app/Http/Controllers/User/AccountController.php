@@ -81,7 +81,9 @@ class AccountController extends Controller
                 $linkedAccount->picture = $auth_user_info['picture'] ?? '';
                 $linkedAccount->code = $request->code;
                 $linkedAccount->access_token = $token['access_token'];
-                $linkedAccount->refresh_token = $token['refresh_token'];
+                if (isset($token['refresh_token'])) {
+                    $linkedAccount->refresh_token = $token['refresh_token'];
+                }
                 $linkedAccount->expire_in = $token['expires_in'];
                 $linkedAccount->created = $token['created'];
                 $linkedAccount->platform = 1;

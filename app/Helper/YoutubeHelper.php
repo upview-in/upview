@@ -37,9 +37,15 @@ class YoutubeHelper
         if (count($accessCode)) {
             $expire_at = $accessCode[$accountIndex]->created + $accessCode[$accountIndex]->expire_in;
             if (time() > $expire_at) {
-                $token = $this->clientInstance->fetchAccessTokenWithRefreshToken($accessCode[$accountIndex]->refresh_token);
+                if (isset($accessCode[$accountIndex]->refresh_token)) {
+                    $token = $this->clientInstance->fetchAccessTokenWithRefreshToken($accessCode[$accountIndex]->refresh_token);
+                } else {
+                    $token = $this->clientInstance->fetchAccessTokenWithAuthCode($accessCode[$accountIndex]->code);
+                }
                 $accessCode[$accountIndex]->access_token = $token['access_token'];
-                $accessCode[$accountIndex]->refresh_token = $token['refresh_token'];
+                if (isset($token['refresh_token'])) {
+                    $accessCode[$accountIndex]->refresh_token = $token['refresh_token'];
+                }
                 $accessCode[$accountIndex]->expire_in = $token['expires_in'];
                 $accessCode[$accountIndex]->created = $token['created'];
                 $accessCode[$accountIndex]->update();
