@@ -7,22 +7,33 @@ use App\Models\Country;
 use App\Models\State;
 use Illuminate\Support\Facades\Auth;
 
-class Functions {
+class Functions
+{
 
     public static function getAvailableLanguages(): array
     {
         $languages = array();
         $langDir = resource_path('lang');
         $files = scandir($langDir);
-        foreach($files as $file) {
-            if(is_file($langDir.'/'.$file)) {
+        foreach ($files as $file) {
+            if (is_file($langDir . '/' . $file)) {
                 $languages[] = str_replace('.json', '', $file);
             }
         }
         return $languages;
-        
+
         // $langDir = resource_path('lang');
         // return array_diff(scandir($langDir), array('..', '.'));
+    }
+
+    public static function getIndexFromHeaderName(array $columnHeaders, string $name): int
+    {
+        foreach ($columnHeaders as $key => $value) {
+            if ($value->name == $name) {
+                return $key;
+            }
+        }
+        return 0;
     }
 
     public static function getUserCountry()
@@ -42,5 +53,4 @@ class Functions {
         $user = Auth::user();
         return City::find($user->city);
     }
-
 }

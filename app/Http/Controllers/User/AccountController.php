@@ -8,7 +8,6 @@ use App\Helper\TokenHelper;
 use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
 use App\Models\LinkedAccounts;
-use Google\Service\CloudSourceRepositories\Repo;
 use Google\Service\Oauth2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,29 +67,30 @@ class AccountController extends Controller
             $yt = new YoutubeHelper();
             $client = $yt->getGoogleClient();
             $token = $client->fetchAccessTokenWithAuthCode($request->code);
+            if (isset($token['refresh_token'])) {
+                $oauth = new Oauth2($client);
+                $auth_user_info = $oauth->userinfo->get();
 
-            $oauth = new Oauth2($client);
-            $auth_user_info = $oauth->userinfo->get();
-
-            $__ = LinkedAccounts::where(['user_id' => Auth::id(), 'platform' => 1, 'email' => $auth_user_info['email']]);
-            if ($__->count() !== 1) {
-                $linkedAccount = new LinkedAccounts();
-                $linkedAccount->user_id = Auth::id();
-                $linkedAccount->email = $auth_user_info['email'] ?? '';
-                $linkedAccount->name = $auth_user_info['name'] ?? '';
-                $linkedAccount->picture = $auth_user_info['picture'] ?? '';
-                $linkedAccount->code = $request->code;
-                $linkedAccount->access_token = $token['access_token'];
-                if (isset($token['refresh_token'])) {
+                $__ = LinkedAccounts::where(['user_id' => Auth::id(), 'platform' => 1, 'email' => $auth_user_info['email']]);
+                if ($__->count() !== 1) {
+                    $linkedAccount = new LinkedAccounts();
+                    $linkedAccount->user_id = Auth::id();
+                    $linkedAccount->email = $auth_user_info['email'] ?? '';
+                    $linkedAccount->name = $auth_user_info['name'] ?? '';
+                    $linkedAccount->picture = $auth_user_info['picture'] ?? '';
+                    $linkedAccount->code = $request->code;
+                    $linkedAccount->access_token = $token['access_token'];
                     $linkedAccount->refresh_token = $token['refresh_token'];
+                    $linkedAccount->expire_in = $token['expires_in'];
+                    $linkedAccount->created = $token['created'];
+                    $linkedAccount->platform = 1;
+                    $linkedAccount->save();
+                    $rr->with('linked', 'true');
+                } else {
+                    $rr->with('already_linked', 'true');
                 }
-                $linkedAccount->expire_in = $token['expires_in'];
-                $linkedAccount->created = $token['created'];
-                $linkedAccount->platform = 1;
-                $linkedAccount->save();
-                $rr->with('linked', 'true');
             } else {
-                $rr->with('already_linked', 'true');
+                $rr->with('error', 'true');
             }
         } else {
             $rr->with('error', 'true');

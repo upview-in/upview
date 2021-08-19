@@ -10,7 +10,7 @@
                                     <img class="img-fluid" alt="Logo" src="{{ asset('images/logo/named_logo.svg') }}" style="height: 100px;">
                                     <h2 class="m-b-0">Sign In</h2>
                                 </div>
-                                                                
+
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="form-group">
@@ -20,24 +20,24 @@
                                             <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
                                         </div>
                                         @error('email')
-                                            <span class="invalid-feedback d-block" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
                                         @if (Route::has('password.request'))
-                                            <a class="float-right font-size-13 text-muted" href="{{ route('password.request') }}">{{ __('Forgot password?') }}</a>
+                                        <a class="float-right font-size-13 text-muted" href="{{ route('password.request') }}">{{ __('Forgot password?') }}</a>
                                         @endif
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon anticon anticon-lock"></i>
                                             <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
                                         </div>
                                         @error('password')
-                                            <span class="invalid-feedback d-block" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                     <div class="checkbox">
@@ -47,10 +47,10 @@
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between">
                                             @if (Route::has('register'))
-                                                <span class="font-size-13 text-muted">
-                                                    {{ __('Don\'t have an account?') }}
-                                                    <a class="small" href="{{ route('register') }}"> {{ __('Signup') }}</a>
-                                                </span>
+                                            <span class="font-size-13 text-muted">
+                                                {{ __('Don\'t have an account?') }}
+                                                <a class="small" href="{{ route('register') }}"> {{ __('Signup') }}</a>
+                                            </span>
                                             @endif
                                             <button class="btn btn-primary">{{ __('Sign In') }}</button>
                                         </div>

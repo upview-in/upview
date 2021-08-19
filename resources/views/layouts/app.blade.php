@@ -251,6 +251,10 @@
                 Math.abs(Number(labelValue));
         }
 
+        function formatTime(mins) {
+            return Math.floor(mins / 60) + ":" + (mins % 60) + " (" + mins + " Minutes)";
+        }
+
         function timeSince(date) {
             if (typeof date !== 'object') {
                 date = new Date(date);
@@ -378,6 +382,26 @@
             d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
             let expires = "expires=" + d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getIndexFromHeaderName(columnHeaders, name) {
+            var retIndex = 0;
+            columnHeaders.forEach((element, index) => {
+                if (element.name === name) {
+                    retIndex = index;
+                }
+            });
+            return retIndex;
+        }
+
+        function getElementFromHeaderName(columnHeaders, name) {
+            let ele = null;
+            columnHeaders.forEach(index => {
+                if (element.name === name) {
+                    ele = element;
+                }
+            });
+            return ele;
         }
 
         $(document).ready(function() {
