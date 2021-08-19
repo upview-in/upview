@@ -19,6 +19,10 @@
     .select2-arrow>b {
         height: auto !important;
     }
+
+    #s2id_countryList>.select2-choice {
+        border: none;
+    }
 </style>
 @endsection
 
@@ -30,6 +34,7 @@
             __endDate = moment();
         var accounts = JSON.parse('{!! App\Helper\TokenHelper::getAuthToken_YT()->toJson() !!}');
         var GroupBy = "day";
+        var country = "";
 
         cb(__startDate, __endDate);
         loadData();
@@ -71,6 +76,27 @@
             return $state;
         }
 
+        var _countryList = getCountryData().map(
+            ({
+                code,
+                name
+            }) => ({
+                id: code,
+                text: name
+            })
+        );
+
+        $("#countryList").select2({
+            allowClear: true,
+            data: _countryList,
+            placeholder: 'Country Wise',
+        });
+
+        $('#countryList').on('change', function(e) {
+            country = $(this).val();
+            loadAnalytics();
+        });
+
         $('#select2Accounts').select2({
             id: function(item) {
                 return item._id
@@ -84,6 +110,7 @@
             },
             formatResult: formatData,
             formatSelection: formatSelectionData,
+            minimumResultsForSearch: -1
         });
 
         $('#select2Accounts').val(accounts["{{ session('AccountIndex', 0) }}"]['_id']).trigger('change');
@@ -101,24 +128,31 @@
             });
         });
 
+        let listRanges = {
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+            'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
+            'Overall': [moment(), moment()],
+        };
+
         $('#daterange').daterangepicker({
             startDate: __startDate,
             endDate: __endDate,
-            ranges: {
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
-                'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
-            }
+            ranges: listRanges
         }, cb);
 
         $('#daterange').on('apply.daterangepicker', function(ev, picker) {
             __startDate = picker.startDate;
             __endDate = picker.endDate;
+            if (__endDate.diff(__startDate, 'days') > 62) {
+                $("#GroupBy").prop('selectedIndex', 1);
+                GroupBy = $("#GroupBy").val();
+            }
             loadAnalytics();
         });
 
@@ -133,46 +167,31 @@
             __BS("ChannelMainDiv");
 
             $.ajax({
-                type: "post",
-                url: "{{ route('api.youtube.channel.getMineChannelList') }}",
+                data: {
+                    part: 'ChannelDetails',
+                },
                 dataType: "json",
                 success: function(response) {
-                    if (typeof response.items !== 'undefined' && response.items.length > 0) {
-                        var item = response.items[0];
-                        var snippet = item.snippet;
-                        var statistics = item.statistics;
-                        var topicDetails = item.topicDetails ?? null;
+                    let data = response.ChannelDetails;
 
-                        $("#c1ChannelProfileImage").attr('data-src', snippet.thumbnails.medium.url);
-                        $("#c1ChannelProfileImage").attr('src',
-                            "{{ asset('images/others/loading.gif') }}");
-                        loadImages();
-                        $("#c1ChannelName").html(snippet.title);
-                        $("#c1ChannelViews").html(convertToInternationalCurrencySystem(statistics
-                            .viewCount));
-                        $("#c1ChannelSubscriber").html(convertToInternationalCurrencySystem(
-                            statistics.subscriberCount));
-                        $("#c1ChannelVideos").html(statistics.videoCount);
-                        $("#c1ChannelJoiningDate").html($.datepicker.formatDate('M dd, yy', new Date(snippet.publishedAt)));
+                    $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(data.publishedAt), moment()];
 
-                        if (snippet.country != null) {
-                            $("#c1ChannelCountry").html('<img class="mr-2 align-middle" src="{{ asset("/images/country-icons") }}/' + snippet.country.toLowerCase() + '.svg" height="18px" width="auto" /> ' + snippet.country + ' (' + getCountryName(snippet.country) + ')');
-                        } else {
-                            $("#c1ChannelCountry").html("N/A");
-                        }
+                    $("#c1ChannelProfileImage").attr('data-src', data.profileURL);
+                    $("#c1ChannelProfileImage").attr('src', "{{ asset('images/others/loading.gif') }}");
+                    loadImages();
+                    $("#c1ChannelName").html(data.channelName);
+                    $("#c1ChannelViews").html(convertToInternationalCurrencySystem(data.viewCount));
+                    $("#c1ChannelSubscriber").html(convertToInternationalCurrencySystem(data.subscriberCount));
+                    $("#c1ChannelVideos").html(data.videoCount);
+                    $("#c1ChannelJoiningDate").html($.datepicker.formatDate('M dd, yy', new Date(data.publishedAt)));
 
-                        if (topicDetails != null) {
-                            var channelCategory = "";
-                            topicDetails.topicCategories.forEach(function(value) {
-                                channelCategory += "<a href='" + value + "' target='_blank'>" + value.replace('https://en.wikipedia.org/wiki/', '').replace('_', ' ').replace('_', ' ').replace('-', ' ') + "</a><br />";
-                            });
-                        }
-
-                        $("#c1ChannelCategory").html(channelCategory ?? 'N/A');
-
+                    if (data.country != null) {
+                        $("#c1ChannelCountry").html('<img class="mr-2 align-middle" src="{{ asset("/images/country-icons") }}/' + data.country.toLowerCase() + '.svg" height="18px" width="auto" /> ' + data.country + ' (' + getCountryName(data.country) + ')');
                     } else {
-                        $("#ChannelMainDiv").html(noData);
+                        $("#c1ChannelCountry").html("N/A");
                     }
+
+                    $("#c1ChannelCategory").html(data.channelCategory ?? 'N/A');
 
                     __AC("ChannelMainDiv");
                 }
@@ -180,21 +199,30 @@
         }
 
         function loadAnalytics() {
+            __BS("ChannelHighlights");
+
             $.ajax({
-                type: "post",
-                url: "{{ route('api.youtube.channel.getMineChannelAnalytics') }}",
                 data: {
+                    part: 'Analytics',
                     startDate: GroupBy == 'month' ? __startDate.format('YYYY-MM') + '-01' : __startDate.format('YYYY-MM-DD'),
                     endDate: GroupBy == 'month' ? __endDate.format('YYYY-MM') + '-01' : __endDate.format('YYYY-MM-DD'),
                     dimensions: GroupBy,
                     sort: GroupBy,
+                    filters: country != "" ? "country==" + country : "",
                 },
                 dataType: "json",
-                success: function(response) {
-                    console.log(response);
+                success: function(data) {
+                    let Highlights = data.Heighlights;
+                    $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
+                    $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
+                    $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
+                    // $("Highlights").html(convertToInternationalCurrencySystem());
+                    __AC("ChannelHighlights");
+
                 }
             });
         }
+
     });
 </script>
 @endsection
@@ -257,6 +285,9 @@
         </div>
 
         <div class="row justify-content-end">
+            <div class="col-md-2 col-12">
+                <input class="form-control shadow" id="countryList" />
+            </div>
             <div class="col-md-auto col-12">
                 <div class="form-group">
                     <select class="form-control shadow" id="GroupBy">
@@ -275,12 +306,82 @@
             </div>
         </div>
 
-        <div class="card shadow" id="ChannelMainDiv">
+        <div class="card shadow" id="ChannelHighlights">
             <div class="card-header p-15 ml-3">
                 <label class="h3 m-0">Highlights</label>
             </div>
             <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-2 border-right">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <span class="font-weight-lighter text-red">Subscribers Growth</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsSubscribersGrowth"></label>
+                            </div>
+                        </div>
 
+                        <div class="row mb-3">
+                            <div class="col">
+                                <span class="font-weight-lighter text-red">Views</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsViews"></label>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <span class="font-weight-lighter text-red">Avg. View Duration (in min)</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsAvgViewDuration"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <div class="row">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Top Country</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsTopCountry"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Top Device</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsTopDevice"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Traffic Source</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsTrafficSource"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Embedded Traffic Source</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsEmbeddedTrafficSource"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Ads VS Organic</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsAdsVsOrganic"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Top Social Media</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsTopSocialMedia"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Subs VS Non-Subs</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsSubsVsNonSubs"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="font-weight-lighter text-red">Best Day and Time</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsBestDayandTime"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 </x-app-layout>

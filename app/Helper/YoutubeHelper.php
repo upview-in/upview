@@ -37,15 +37,8 @@ class YoutubeHelper
         if (count($accessCode)) {
             $expire_at = $accessCode[$accountIndex]->created + $accessCode[$accountIndex]->expire_in;
             if (time() > $expire_at) {
-                if (isset($accessCode[$accountIndex]->refresh_token)) {
-                    $token = $this->clientInstance->fetchAccessTokenWithRefreshToken($accessCode[$accountIndex]->refresh_token);
-                } else {
-                    $token = $this->clientInstance->fetchAccessTokenWithAuthCode($accessCode[$accountIndex]->code);
-                }
+                $token = $this->clientInstance->fetchAccessTokenWithRefreshToken($accessCode[$accountIndex]->refresh_token);
                 $accessCode[$accountIndex]->access_token = $token['access_token'];
-                if (isset($token['refresh_token'])) {
-                    $accessCode[$accountIndex]->refresh_token = $token['refresh_token'];
-                }
                 $accessCode[$accountIndex]->expire_in = $token['expires_in'];
                 $accessCode[$accountIndex]->created = $token['created'];
                 $accessCode[$accountIndex]->update();
@@ -66,6 +59,8 @@ class YoutubeHelper
         $client->setAuthConfig(config('youtube.oauthCreds'));
         $client->setAccessType('offline');
         $client->setScopes(config('youtube.scopes'));
+        $client->setIncludeGrantedScopes(true);
+        $client->setPrompt('consent');
 
         return $client;
     }
