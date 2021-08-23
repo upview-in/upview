@@ -31,6 +31,7 @@ return [
 
     'redirectUrl' => 'panel.user.account.addInstagramAccount',
 
+
     /*
     |--------------------------------------------------------------------------
     | Permission scope.
@@ -67,7 +68,7 @@ return [
 
 
     // Temp keys
-    'accessToken' => 'EAAbzZCbfk78ABALjKYiji4BbmxtZBTzZAqIARkCJvAX4hXOxY5anQbIVqe85NukjZCRbTs8tZBTYb4FXcN7TgI6lFV59JTpSlIlHTOqRdqznZCE585sXvun8t6iSMVJgS8RLZCdPmAHQNV5Wla1UX3QoPpyw049wkXjgFhcMyj7jvkVEFx8U71X',
+    'accessToken' => 'EAAb0iTc4IMoBAPvelZCZA9rANeNv3oetwZC9ZAm8NoKjKHdV0Bh4I1y8ZCZBixugwVcgfwlSzK66fZBy7TEmQ17YbQMrA3vEOcLUOJxaZBoTJk054CdY2AgdZAitYkAFIu2wIfG1JZBcfqCniN5e49BNfjfjUsjsLF1qEwapTE8TSZCyhzcXUOzK3r5HnowPuYowzQZD',
     'pageID' => '106029175032377',
     'instaAccID' => '17841448412470894',
     'redirectUri' => env('FB_INSTA_REDIRECT_URL', ''),

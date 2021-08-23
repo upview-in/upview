@@ -161,8 +161,6 @@ class AccountController extends Controller
             $accessToken = $redirectHelper->getAccessToken();
             $oAuth2Client = $client->getOAuth2Client();
             $longLiveAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-            dd($longLiveAccessToken, $accessToken);
-
             $fbUser = $client->get('/me?fields=name,email,picture', $longLiveAccessToken->getValue())->getGraphUser();
             if (isset($fbUser['name'], $fbUser['email'], $fbUser['picture'])) {
                 $__ = LinkedAccounts::where(['user_id' => Auth::id(), 'platform' => 3, 'email' => $fbUser['email']]);
@@ -174,6 +172,7 @@ class AccountController extends Controller
                     $linkedAccount->name = $fbUser['name'] ?? '';
                     $linkedAccount->picture = $fbUser['picture']['url'] ?? '';
                     $linkedAccount->access_token = $longLiveAccessToken->getValue();
+                    dd($longLiveAccessToken);
                     $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
                     $linkedAccount->platform = 3;
                     $linkedAccount->save();

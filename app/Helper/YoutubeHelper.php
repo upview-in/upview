@@ -53,6 +53,8 @@ class YoutubeHelper
     {
         $client = new Client();
 
+        //dd(file_get_contents("../storage/client_secret_840868942685-1h6ul3vl2hspfh91smjag8ufhelbct8v.apps.googleusercontent.com.json"));
+
         $client->setApplicationName(config('app.name'));
         $client->setDeveloperKey(config('youtube.developerKey'));
         $client->setRedirectUri(route(config('youtube.redirectUrl')));
