@@ -38,10 +38,10 @@
 
         cb(__startDate, __endDate);
         loadData();
-        loadAnalytics();
-
         google.charts.load('current', {
-            'packages': ['corechart']
+            'packages': ['corechart', 'controls']
+        }).then(() => {
+            loadAnalytics();
         });
 
         function drawChart(data) {

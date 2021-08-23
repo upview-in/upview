@@ -2,6 +2,7 @@
 
 namespace App\Helper;
 
+use App\Models\LinkedAccounts;
 use Facebook\Facebook;
 
 class InstagramHelper
@@ -25,7 +26,8 @@ class InstagramHelper
             'persistent_data_handler' => new LaravelPersistentDataHandler(),
         ]);
 
-        $accessCode = TokenHelper::getAuthToken_FB();
+        $accessCode = TokenHelper::getAuthToken_IG();
+
 
         $accountIndex = session('AccountIndex', null);
         if (is_null($accountIndex)) {

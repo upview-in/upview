@@ -66,7 +66,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('panel.user.analyze.instagram.overview.index') }}">{{ __('Overview') }}</a> {{-- {{ route('panel.dashboard.insta') }} --}}
+                                <a href="{{ route('panel.user.analyze.instagram.overview') }}">{{ __('Overview') }}</a> {{-- {{ route('panel.dashboard.insta') }} --}}
                             </li>
                             <li>
                                 <a href="#">{{ __('Media') }}</a>
