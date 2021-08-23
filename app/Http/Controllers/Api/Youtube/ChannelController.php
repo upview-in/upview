@@ -104,7 +104,7 @@ class ChannelController extends Controller
             'startDate' => $request->startDate,
             'endDate' => $request->endDate,
             'dimensions' => $request->dimensions ?? 'day',
-            'metrics' => $request->metrics ?? 'estimatedMinutesWatched,views,comments,averageViewDuration,likes,subscribersGained,subscribersLost',
+            'metrics' => $request->metrics ?? 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
             'sort' => $request->sort ?? 'day',
             'filters' => $request->filters ?? '',
         ]);
