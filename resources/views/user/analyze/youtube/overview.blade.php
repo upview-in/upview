@@ -40,6 +40,82 @@
         loadData();
         loadAnalytics();
 
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+
+        function drawChart(data) {
+            var data = new google.visualization.arrayToDataTable(data);
+
+            var columns = [];
+            var series = {};
+            for (var i = 0; i < data.getNumberOfColumns(); i++) {
+                columns.push(i);
+                if (i > 0) {
+                    series[i - 1] = {};
+                }
+            }
+
+            var options = {
+                series: series,
+                isStacked: true,
+                animation: {
+                    duration: 1000,
+                    easing: 'linear',
+                    startup: true
+                },
+                hAxis: {
+                    slantedText: true,
+                    slantedTextAngle: 80
+                },
+                chartArea: {
+                    left: 50,
+                    top: 30,
+                    right: 150,
+                    bottom: 80,
+                },
+                explorer: {
+                    axis: 'horizontal',
+                    keepInBounds: true,
+                    maxZoomIn: 4.0
+                }
+            };
+
+            var chart = new google.visualization.LineChart($('#OverviewStatisticsChart')[0]);
+            chart.draw(data, options);
+
+            google.visualization.events.addListener(chart, 'select', function() {
+                var sel = chart.getSelection();
+                // if selection length is 0, we deselected an element
+                if (sel.length > 0) {
+                    // if row is undefined, we clicked on the legend
+                    if (sel[0].row === null) {
+                        var col = sel[0].column;
+                        if (columns[col] == col) {
+                            // hide the data series
+                            columns[col] = {
+                                label: data.getColumnLabel(col),
+                                type: data.getColumnType(col),
+                                calc: function() {
+                                    return null;
+                                }
+                            };
+
+                            // grey out the legend entry
+                            series[col - 1].color = '#CCCCCC';
+                        } else {
+                            // show the data series
+                            columns[col] = col;
+                            series[col - 1].color = null;
+                        }
+                        var view = new google.visualization.DataView(data);
+                        view.setColumns(columns);
+                        chart.draw(view, options);
+                    }
+                }
+            });
+        }
+
         function cb(start, end) {
             $('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         }
@@ -213,10 +289,21 @@
                 dataType: "json",
                 success: function(data) {
                     let Highlights = data.Heighlights;
+                    let OverviewStatistics = data.OverviewStatistics;
+
                     $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
                     $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
                     $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
                     // $("Highlights").html(convertToInternationalCurrencySystem());
+
+                    $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
+                    $("#OverviewStatisticsDislikes").html(convertToInternationalCurrencySystem(OverviewStatistics.DisLikes));
+                    $("#OverviewStatisticsShares").html(convertToInternationalCurrencySystem(OverviewStatistics.Shares));
+                    $("#OverviewStatisticsComments").html(convertToInternationalCurrencySystem(OverviewStatistics.Comments));
+                    $("#OverviewStatisticsEstMinWatched").html(formatTime(OverviewStatistics.EstMinWatched));
+
+                    drawChart(OverviewStatistics.ChartData);
+
                     __AC("ChannelHighlights");
 
                 }
@@ -384,4 +471,47 @@
                 </div>
             </div>
         </div>
+
+        <div class="card shadow" id="ChannelHighlights">
+            <div class="card-header p-15 ml-3">
+                <label class="h3 m-0">Statistics Overview</label>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div id="OverviewStatisticsChart" class="w-100"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="col-12">
+                                <span class="font-weight-lighter text-red">Likes</span>
+                                <br />
+                                <label class="font-weight-bolder" id="OverviewStatisticsLikes"></label>
+                            </div>
+                            <div class="col-12">
+                                <span class="font-weight-lighter text-red">Dislikes</span>
+                                <br />
+                                <label class="font-weight-bolder" id="OverviewStatisticsDislikes"></label>
+                            </div>
+                            <div class="col-12">
+                                <span class="font-weight-lighter text-red">Shares</span>
+                                <br />
+                                <label class="font-weight-bolder" id="OverviewStatisticsShares"></label>
+                            </div>
+                            <div class="col-12">
+                                <span class="font-weight-lighter text-red">Comments</span>
+                                <br />
+                                <label class="font-weight-bolder" id="OverviewStatisticsComments"></label>
+                            </div>
+                            <div class="col-12">
+                                <span class="font-weight-lighter text-red">Est. Minutes Watched</span>
+                                <br />
+                                <label class="font-weight-bolder" id="OverviewStatisticsEstMinWatched"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>

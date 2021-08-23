@@ -27,25 +27,51 @@ class OverviewController extends Controller
 
                         $SubsciberGained = 0;
                         $Views = 0;
-                        $EstMinWatched = 0;
                         $AvgViewDuration = 0;
+
+                        $Likes = 0;
+                        $DisLikes = 0;
+                        $Shares = 0;
+                        $Comments = 0;
+                        $EstMinWatched = 0;
 
                         $indexSubscribersGained = Functions::getIndexFromHeaderName($response->columnHeaders, 'subscribersGained');
                         $indexViews = Functions::getIndexFromHeaderName($response->columnHeaders, 'views');
-                        $indexEstMinWatched = Functions::getIndexFromHeaderName($response->columnHeaders, 'estimatedMinutesWatched');
                         $indexAvgViewDuration = Functions::getIndexFromHeaderName($response->columnHeaders, 'averageViewDuration');
 
+                        $indexDates = Functions::getIndexFromHeaderName($response->columnHeaders, '');
+                        $indexLikes = Functions::getIndexFromHeaderName($response->columnHeaders, 'likes');
+                        $indexDisLikes = Functions::getIndexFromHeaderName($response->columnHeaders, 'dislikes');
+                        $indexShares = Functions::getIndexFromHeaderName($response->columnHeaders, 'shares');
+                        $indexComments = Functions::getIndexFromHeaderName($response->columnHeaders, 'comments');
+                        $indexEstMinWatched = Functions::getIndexFromHeaderName($response->columnHeaders, 'estimatedMinutesWatched');
+
+                        $ChartData = [];
+                        $ChartData[] = ['Date', 'Likes', 'Dislikes', 'Shares', 'Comments'];
+
                         foreach ($response->rows as $key => $value) {
+                            $ChartData[] = [$value[$indexDates], $value[$indexLikes], $value[$indexDisLikes], $value[$indexShares], $value[$indexComments]];
                             $SubsciberGained += $value[$indexSubscribersGained];
                             $Views += $value[$indexViews];
-                            $EstMinWatched += $value[$indexEstMinWatched];
                             $AvgViewDuration += $value[$indexAvgViewDuration];
+
+                            $Likes += $value[$indexLikes];
+                            $DisLikes += $value[$indexDisLikes];
+                            $Shares += $value[$indexShares];
+                            $Comments += $value[$indexComments];
+                            $EstMinWatched += $value[$indexEstMinWatched];
                         }
 
                         $data["Heighlights"]["SubsciberGained"] = $SubsciberGained;
                         $data["Heighlights"]["Views"] = $Views;
-                        $data["Heighlights"]["EstMinWatched"] = $EstMinWatched;
                         $data["Heighlights"]["AvgViewDuration"] = $AvgViewDuration;
+
+                        $data["OverviewStatistics"]["Likes"] = $Likes;
+                        $data["OverviewStatistics"]["DisLikes"] = $DisLikes;
+                        $data["OverviewStatistics"]["Shares"] = $Shares;
+                        $data["OverviewStatistics"]["Comments"] = $Comments;
+                        $data["OverviewStatistics"]["EstMinWatched"] = $EstMinWatched;
+                        $data["OverviewStatistics"]["ChartData"] = $ChartData;
 
                         return response()->json(collect($data));
                     } else {
