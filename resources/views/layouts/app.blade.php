@@ -405,6 +405,164 @@
             return ele;
         }
 
+        function viewFullScreenDiv(__id) {
+            if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            } else {
+                let element = __id;
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            }
+        }
+
+        class Chart {
+            defaultHideSeries = [];
+            series = {};
+            columns = [];
+            options = {
+                selectionMode: 'multiple',
+                tooltip: {
+                    trigger: 'both'
+                },
+                curveType: 'function',
+                focusTarget: 'category',
+                aggregationTarget: 'none',
+                animation: {
+                    duration: 1000,
+                    easing: 'linear',
+                    startup: true
+                },
+                hAxis: {
+                    textPosition: 'none'
+                },
+                vAxis: {
+                    minValue: 0,
+                    viewWindow: {
+                        min: 0
+                    }
+                },
+                legend: {
+                    position: 'bottom'
+                },
+                chartArea: {
+                    left: 50,
+                    right: 50,
+                },
+                crosshair: {
+                    trigger: 'both',
+                    orientation: 'vertical'
+                },
+                explorer: {
+                    actions: ["dragToZoom", "rightClickToReset"],
+                }
+            };
+
+            constructor(id, data, options = {}, defaultHide = []) {
+                this.id = id;
+                this.data = data;
+                this.options.series = this.series;
+
+                // Override default options
+                let options_keys = Object.keys(options);
+                for (let i = 0; i < options.length; i++) {
+                    this.options[options_keys[i]] = options[options_keys[i]];
+                }
+
+                this.defaultHideSeries = defaultHide;
+                for (var i = 0; i < this.data.getNumberOfColumns(); i++) {
+                    if (this.defaultHideSeries.indexOf(i) > -1) {
+                        this.columns.push({
+                            label: this.data.getColumnLabel(i),
+                            type: this.data.getColumnType(i),
+                            calc: function() {
+                                return null;
+                            }
+                        });
+
+                        if (i > 0) {
+                            this.series[i - 1] = {};
+                            this.series[i - 1].color = '#CCCCCC';
+                        }
+                    } else {
+                        this.columns.push(i);
+                        if (i > 0) {
+                            this.series[i - 1] = {};
+                            this.series[i - 1].color = null;
+                        }
+                    }
+                }
+            }
+
+            reDrawChart() {
+                this.chart.draw(this.data, this.options);
+            }
+
+            init() {
+                this.chart = new google.visualization.LineChart(this.id);
+                this.chart.draw(this.data, this.options);
+
+                let _view = new google.visualization.DataView(this.data);
+                _view.setColumns(this.columns);
+                this.chart.draw(_view, this.options);
+
+                var _this = this;
+
+                google.visualization.events.addListener(this.chart, 'select', function() {
+                    var sel = _this.chart.getSelection();
+
+                    // if selection length is 0, we deselected an element
+                    if (sel.length > 0) {
+                        // if row is undefined, we clicked on the legend
+                        if (sel[0].row === null) {
+                            var col = sel[0].column;
+                            if (_this.columns[col] == col) {
+                                // hide the data series
+                                _this.columns[col] = {
+                                    label: _this.data.getColumnLabel(col),
+                                    type: _this.data.getColumnType(col),
+                                    calc: function() {
+                                        return null;
+                                    }
+                                };
+
+                                // grey out the legend entry
+                                _this.series[col - 1].color = '#CCCCCC';
+                            } else {
+                                // show the data series
+                                _this.columns[col] = col;
+                                _this.series[col - 1].color = null;
+                            }
+
+                            let view = new google.visualization.DataView(_this.data);
+                            view.setColumns(_this.columns);
+                            _this.chart.draw(view, _this.options);
+                        }
+                    }
+                });
+
+                $(document).bind('fscreenchange', function(e, state, elem) {
+                    setTimeout(function() {
+                        _this.reDrawChart();
+                    });
+                });
+            }
+        }
+
         $(document).ready(function() {
             $('.select2').select2({
                 allowClear: true,
