@@ -47,13 +47,14 @@ class OverviewController extends Controller
                         $indexEstMinWatched = Functions::getIndexFromHeaderName($response->columnHeaders, 'estimatedMinutesWatched');
 
                         $ChartData = [];
-                        $ChartData[] = ['Date', 'Likes', 'Dislikes', 'Shares', 'Comments'];
+                        $ChartData[] = ['Date', 'Subsciber', 'Views', 'Likes', 'Dislikes', 'Shares', 'Comments', 'Est. Min. Watched', 'Avg. View Duration'];
 
                         foreach ($response->rows as $key => $value) {
-                            $ChartData[] = [$value[$indexDates], $value[$indexLikes], $value[$indexDisLikes], $value[$indexShares], $value[$indexComments]];
                             $SubsciberGained += $value[$indexSubscribersGained];
                             $Views += $value[$indexViews];
                             $AvgViewDuration += $value[$indexAvgViewDuration];
+
+                            $ChartData[] = [$value[$indexDates], $value[$indexSubscribersGained], $value[$indexViews], $value[$indexLikes], $value[$indexDisLikes], $value[$indexShares], $value[$indexComments], $value[$indexEstMinWatched], $value[$indexAvgViewDuration]];
 
                             $Likes += $value[$indexLikes];
                             $DisLikes += $value[$indexDisLikes];
