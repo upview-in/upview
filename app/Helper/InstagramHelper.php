@@ -25,7 +25,7 @@ class InstagramHelper
             'persistent_data_handler' => new LaravelPersistentDataHandler(),
         ]);
 
-        $accessCode = TokenHelper::getAuthToken_FB();
+        $accessCode = TokenHelper::getAuthToken_IG();
 
         $accountIndex = session('AccountIndex', null);
         if (is_null($accountIndex)) {
@@ -36,7 +36,7 @@ class InstagramHelper
             }
         }
 
-        if (count($accessCode) && time() < $accessCode[$accountIndex]->expire_in) {
+        if (count($accessCode) && $accessCode[$accountIndex]->expire_in !== -1 && time() < $accessCode[$accountIndex]->expire_in) {
             $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
         }
 
