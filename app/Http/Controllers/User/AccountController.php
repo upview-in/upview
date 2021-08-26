@@ -134,7 +134,7 @@ class AccountController extends Controller
                             'name' => $fbUser['name'] ?? '',
                             'picture' => $fbUser['picture']['url'] ?? '',
                             'access_token' => $longLiveAccessToken->getValue(),
-                            'expire_in' => $longLiveAccessToken->getExpiresAt()->getTimestamp(),
+                            'expire_in' => !is_null($longLiveAccessToken->getExpiresAt()) ? $longLiveAccessToken->getExpiresAt()->getTimestamp() : -1,
                         ]);
                         $rr->with('renewed', 'true');
                     } else {
@@ -173,7 +173,11 @@ class AccountController extends Controller
                     $linkedAccount->name = $fbUser['name'] ?? '';
                     $linkedAccount->picture = $fbUser['picture']['url'] ?? '';
                     $linkedAccount->access_token = $longLiveAccessToken->getValue();
-                    $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
+                    if (!is_null($longLiveAccessToken->getExpiresAt())) {
+                        $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
+                    } else {
+                        $linkedAccount->expire_in = -1;
+                    }
                     $linkedAccount->platform = 3;
                     $linkedAccount->save();
                     $rr->with('linked', 'true');
@@ -186,7 +190,7 @@ class AccountController extends Controller
                             'name' => $fbUser['name'] ?? '',
                             'picture' => $fbUser['picture']['url'] ?? '',
                             'access_token' => $longLiveAccessToken->getValue(),
-                            'expire_in' => $longLiveAccessToken->getExpiresAt()->getTimestamp(),
+                            'expire_in' => !is_null($longLiveAccessToken->getExpiresAt()) ? $longLiveAccessToken->getExpiresAt()->getTimestamp() : -1,
                         ]);
                         $rr->with('renewed', 'true');
                     } else {
