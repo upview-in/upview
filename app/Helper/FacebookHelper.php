@@ -36,7 +36,7 @@ class FacebookHelper
             }
         }
 
-        if (count($accessCode) && $accessCode[$accountIndex]->expire_in !== -1 && time() < $accessCode[$accountIndex]->expire_in) {
+        if (count($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
             $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
         }
 

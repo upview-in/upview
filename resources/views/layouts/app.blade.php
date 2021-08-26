@@ -191,6 +191,7 @@
     <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
     <script src="{{ asset('vendor/country-list/country-list.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+    <script src="{{ asset('vendor/jsPDF/jspdf.umd.min.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script>
@@ -431,6 +432,7 @@
         }
 
         class Chart {
+            chartType = "Line";
             defaultHideSeries = [];
             series = {};
             columns = [];
@@ -443,7 +445,7 @@
                 focusTarget: 'category',
                 aggregationTarget: 'none',
                 animation: {
-                    duration: 1000,
+                    duration: 100,
                     easing: 'linear',
                     startup: true
                 },
@@ -462,6 +464,7 @@
                 chartArea: {
                     left: 50,
                     right: 50,
+                    top: 16,
                 },
                 crosshair: {
                     trigger: 'both',
@@ -472,10 +475,13 @@
                 }
             };
 
-            constructor(id, data, options = {}, defaultHide = []) {
+            constructor(id, data, options = {}, defaultHide = [], chartType = "Line") {
                 this.id = id;
                 this.data = data;
                 this.options.series = this.series;
+                this.chartType = chartType;
+
+                $("#" + this.id.id + "ContextMenu").remove();
 
                 // Override default options
                 let options_keys = Object.keys(options);
@@ -508,12 +514,88 @@
                 }
             }
 
+            downloadChartPNG() {
+                var a = document.createElement("a");
+                a.href = this.chart.getImageURI();
+                a.download = this.id.id + "_" + new Date().getTime() + ".png";
+                a.click();
+            }
+
+            downloadChartPDF() {
+                const {
+                    jsPDF
+                } = window.jspdf;
+
+                let doc = new jsPDF({
+                    orientation: 'landscape',
+                });
+
+                let imgData = this.chart.getImageURI();
+                const imgProps = doc.getImageProperties(imgData);
+                const pdfWidth = doc.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                const marginX = (doc.internal.pageSize.getWidth() - pdfWidth) / 2;
+                const marginY = (doc.internal.pageSize.getHeight() - pdfHeight) / 2;
+                doc.addImage(imgData, marginX, marginY, pdfWidth, pdfHeight);
+                doc.save(this.id.id + "_" + new Date().getTime() + ".pdf");
+            }
+
             reDrawChart() {
-                this.chart.draw(this.data, this.options);
+                let _view = new google.visualization.DataView(this.data);
+                _view.setColumns(this.columns);
+                this.chart.draw(_view, this.options);
+            }
+
+            buildContextMenu() {
+                let _this = this;
+                let menu = '<div id="' + this.id.id + 'ContextMenu" class="dropdown dropdown-animated scale-right float-right mr-5 pointer"><i class="anticon anticon-menu" data-toggle="dropdown"></i><div class="dropdown-menu"><button id="DownloadPdf' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PDF</button><button id="DownloadPng' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PNG</button><button id="Fullscreen' + this.id.id + 'Chart" class="dropdown-item" type="button">Fullscreen</button></div></div>';
+                this.id.parentNode.insertAdjacentHTML("afterbegin", menu);
+
+                $("#Fullscreen" + this.id.id + "Chart").click(function() {
+                    viewFullScreenDiv(_this.id);
+                });
+
+                $("#DownloadPdf" + this.id.id + "Chart").click(function() {
+                    _this.downloadChartPDF();
+                });
+
+                $("#DownloadPng" + this.id.id + "Chart").click(function() {
+                    _this.downloadChartPNG();
+                });
             }
 
             init() {
-                this.chart = new google.visualization.LineChart(this.id);
+                this.buildContextMenu();
+
+                switch (this.chartType) {
+                    case "Bar":
+                        this.chart = new google.visualization.BarChart(this.id);
+                        break;
+                    case "Pie":
+                        this.chart = new google.visualization.PieChart(this.id);
+                        break;
+                    case "Candlestick":
+                        this.chart = new google.visualization.CandlestickChart(this.id);
+                        break;
+                    case "Column":
+                        this.chart = new google.visualization.ColumnChart(this.id);
+                        break;
+                    case "Donut":
+                        this.chart = new google.visualization.DonutChart(this.id);
+                        break;
+                    case "Area":
+                        this.chart = new google.visualization.AreaChart(this.id);
+                        break;
+                    case "Line":
+                        this.chart = new google.visualization.LineChart(this.id);
+                        break;
+                    case "Table":
+                        this.chart = new google.visualization.Table(this.id);
+                        break;
+                    default:
+                        this.chart = new google.visualization.Table(this.id);
+                        break;
+                }
                 this.chart.draw(this.data, this.options);
 
                 let _view = new google.visualization.DataView(this.data);
@@ -524,14 +606,10 @@
 
                 google.visualization.events.addListener(this.chart, 'select', function() {
                     var sel = _this.chart.getSelection();
-
-                    // if selection length is 0, we deselected an element
                     if (sel.length > 0) {
-                        // if row is undefined, we clicked on the legend
                         if (sel[0].row === null) {
                             var col = sel[0].column;
                             if (_this.columns[col] == col) {
-                                // hide the data series
                                 _this.columns[col] = {
                                     label: _this.data.getColumnLabel(col),
                                     type: _this.data.getColumnType(col),
@@ -540,10 +618,8 @@
                                     }
                                 };
 
-                                // grey out the legend entry
                                 _this.series[col - 1].color = '#CCCCCC';
                             } else {
-                                // show the data series
                                 _this.columns[col] = col;
                                 _this.series[col - 1].color = null;
                             }
@@ -555,10 +631,10 @@
                     }
                 });
 
-                $(document).bind('fscreenchange', function(e, state, elem) {
+                document.addEventListener('fullscreenchange', (event) => {
                     setTimeout(function() {
                         _this.reDrawChart();
-                    });
+                    }, 100);
                 });
             }
         }
