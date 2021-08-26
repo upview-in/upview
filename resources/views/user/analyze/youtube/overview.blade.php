@@ -46,7 +46,7 @@
         loadData();
 
         google.charts.load('current', {
-            'packages': ['corechart']
+            'packages': ['corechart', 'table']
         }).then(() => {
             loadAnalytics();
         });
@@ -179,10 +179,6 @@
         $("#GroupBy").change(function() {
             GroupBy = $(this).val();
             loadAnalytics();
-        });
-
-        $("#DownloadOverviewStaticsticsChart").click(function() {
-            viewFullScreenDiv(document.getElementById('OverviewStatisticsChart'));
         });
 
         function loadData() {
@@ -427,19 +423,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10">
-
-                        <div class="dropdown dropdown-animated scale-right">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <i class="anticon anticon-menu"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                                <button class="dropdown-item" type="button">Download as pdf</button>
-                                <button class="dropdown-item" type="button">Download as png</button>
-                                <button id="DownloadOverviewStaticsticsChart" class="dropdown-item" type="button">View in fullscreen</button>
-                            </div>
-                        </div>
-
-                        <div id="OverviewStatisticsChart" class="w-100" style="height: 400px"></div>
+                        <div id="OverviewStatisticsChart" class="w-100 mt-3" style="height: 400px"></div>
                     </div>
                     <div class=" col-md-2 align-self-center">
                         <div class="d-flex flex-column">
