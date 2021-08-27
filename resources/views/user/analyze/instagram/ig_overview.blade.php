@@ -25,6 +25,7 @@
         }
 
     </style>
+
 @endsection
 
 @section('custom-scripts')
@@ -45,77 +46,12 @@
                 loadAnalytics();
             });
 
-            function drawChart(data) {
-                var data = new google.visualization.arrayToDataTable(data);
 
-                var columns = [];
-                var series = {};
-                for (var i = 0; i < data.getNumberOfColumns(); i++) {
-                    columns.push(i);
-                    if (i > 0) {
-                        series[i - 1] = {};
-                    }
-                }
-
-                var options = {
-                    series: series,
-                    isStacked: true,
-                    animation: {
-                        duration: 1000,
-                        easing: 'linear',
-                        startup: true
-                    },
-                    hAxis: {
-                        slantedText: true,
-                        slantedTextAngle: 80
-                    },
-                    chartArea: {
-                        left: 50,
-                        top: 30,
-                        right: 150,
-                        bottom: 80,
-                    },
-                    explorer: {
-                        axis: 'horizontal',
-                        keepInBounds: true,
-                        maxZoomIn: 4.0
-                    }
-                };
-
-                var chart = new google.visualization.LineChart($('#OverviewStatisticsChart')[0]);
-                chart.draw(data, options);
-
-                google.visualization.events.addListener(chart, 'select', function() {
-                    var sel = chart.getSelection();
-                    // if selection length is 0, we deselected an element
-                    if (sel.length > 0) {
-                        // if row is undefined, we clicked on the legend
-                        if (sel[0].row === null) {
-                            var col = sel[0].column;
-                            if (columns[col] == col) {
-                                // hide the data series
-                                columns[col] = {
-                                    label: data.getColumnLabel(col),
-                                    type: data.getColumnType(col),
-                                    calc: function() {
-                                        return null;
-                                    }
-                                };
-
-                                // grey out the legend entry
-                                series[col - 1].color = '#CCCCCC';
-                            } else {
-                                // show the data series
-                                columns[col] = col;
-                                series[col - 1].color = null;
-                            }
-                            var view = new google.visualization.DataView(data);
-                            view.setColumns(columns);
-                            chart.draw(view, options);
-                        }
-                    }
-                });
-            }
+            function drawChart(data, chartType) {
+            var data = new google.visualization.arrayToDataTable(data);
+            OverviewStatisticsChart = new Chart($('#OverviewStatisticsChart')[0], data, {}, [7, 8]);
+            OverviewStatisticsChart.init(chartType);
+        }
 
             function cb(start, end) {
                 $('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -198,6 +134,8 @@
                     url: '{{ route('panel.user.account.setSessionDefaultAccount') }}',
                     data: {
                         id: data._id
+                        platform: parseInt('{{ App\Helper\TokenHelper::$INSTAGRAM }}'),
+
                     },
                     success: function() {
                         loadData();
@@ -311,7 +249,9 @@
                         reach));
                         $("#igPage1Views").html(convertToInternationalCurrencySystem(
                         views));
-
+                        var chartData = [["This title lmfao","Impressions", "Reach", "Views"], ["Insights",impressions,reach,views]];
+                         drawChart(chartData, "COLUMN");
+                        console.log(chartData);
                         __AC("InstaInsights");
 
                     }
@@ -320,6 +260,7 @@
 
         });
     </script>
+    
 @endsection
 
 <x-app-layout title="Overview">
@@ -404,29 +345,43 @@
             <div class="card-header p-15 ml-3">
                 <label class="h3 m-0">Statistics Overview</label>
             </div>
+            <div>
+                <!-- Nav Tabs -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-title" href="#">Graph Actions</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Insights</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Account Details</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Options
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <button class="dropdown-item" type="button">Download as pdf</button>
+                            <button class="dropdown-item" type="button">Download as png</button>
+                            <div class="dropdown-divider"></div>
+                            <button id="DownloadOverviewStatisticsChart" class="dropdown-item" type="button">View in fullscreen</button>
+                          </div>
+                        </li>
+                      </ul>
+                      
+                    </div>
+                  </nav>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10">
-                        <div id="OverviewStatisticsChart" class="w-100"></div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="row">
-                            <div class="col-12">
-                                <span class="font-weight-lighter text-red">Impressions</span>
-                                <br />
-                                <label class="font-weight-bolder" id="OverviewStatisticsLikes"></label>
-                            </div>
-                            <div class="col-12">
-                                <span class="font-weight-lighter text-red">Profile Reach</span>
-                                <br />
-                                <label class="font-weight-bolder" id="OverviewStatisticsDislikes"></label>
-                            </div>
-                            <div class="col-12">
-                                <span class="font-weight-lighter text-red">Profile Views</span>
-                                <br />
-                                <label class="font-weight-bolder" id="OverviewStatisticsShares"></label>
-                            </div>
-                        </div>
+
+                        <div id="OverviewStatisticsChart" class="w-100" style="height: 400px"></div>
                     </div>
                 </div>
             </div>

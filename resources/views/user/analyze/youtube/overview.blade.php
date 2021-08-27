@@ -137,6 +137,7 @@
                 url: '{{ route("panel.user.account.setSessionDefaultAccount") }}',
                 data: {
                     id: data._id
+                    platform: parseInt('{{ App\Helper\TokenHelper::$YOUTUBE }}'),
                 },
                 success: function() {
                     loadData();
