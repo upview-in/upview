@@ -439,6 +439,8 @@
                 tooltip: {
                     trigger: 'both'
                 },
+                bar: {groupWidth: "10%"},
+                width: "50%",
                 curveType: 'function',
                 focusTarget: 'category',
                 aggregationTarget: 'none',
@@ -512,8 +514,14 @@
                 this.chart.draw(this.data, this.options);
             }
 
-            init() {
-                this.chart = new google.visualization.LineChart(this.id);
+            init(chartType) {
+               switch(chartType) {
+                case "COLUMN": this.chart = new google.visualization.ColumnChart(this.id);
+                            break;
+                default: this.chart = new google.visualization.LineChart(this.id);
+                         break;
+               }
+            //    console.log(chartType);
                 this.chart.draw(this.data, this.options);
 
                 let _view = new google.visualization.DataView(this.data);

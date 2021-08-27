@@ -25,8 +25,7 @@ class InstagramOverviewController extends Controller
                     if ($request->has(['fields'])) {
                         $data = [];
                         $response = app(InstagramController::class)->getMineAccountInsights(new GetMineAccountDetails($request->all(['fields'])))->getData();
-                        
-                     //   dd($response->data[1]);
+                    
                         $data['impressions']['dayBeforeYest'] = $response->data[0]->values[0]->value;
                         $data['impressions']['yest'] = $response->data[0]->values[1]->value;
                         $data['reach']['dayBeforeYest'] = $response->data[1]->values[0]->value;
@@ -34,12 +33,7 @@ class InstagramOverviewController extends Controller
                         $data['profile_views']['dayBeforeYest'] = $response->data[2]->values[0]->value;
                         $data['profile_views']['yest'] = $response->data[2]->values[1]->value;
 
-
-                      //  $data = response()->json(collect($response));
-                       // dd(response()->json(collect($data), 200));
-                      // dd($data) ;
                        return response()->json(collect($data), 200);
-                       //return $response;
                     } else {
                         return response()->json(['status' => 400, 'message' => 'Missing required fields']);
                     }
@@ -50,7 +44,6 @@ class InstagramOverviewController extends Controller
                     $response = app(InstagramController::class)->getMineAccountData(new GetMineAccountDetails($request->all(['fields'])))->getData();
 
 
-                    //dd($response->ig_id);
 
                     $data["id"] = $response->id;
                     $data["name"]= $response->name;
@@ -62,7 +55,6 @@ class InstagramOverviewController extends Controller
                     $data["username"]= $response->username;
 
                     $data["is_verified"] = app(InstagramController::class)->getUserVerifiedStatus($response->username);
-                //    dd($data);
                     return response()->json(collect($data));
                 default:
                     return response()->json(['status' => 400, 'message' => 'Missing required fields']);

@@ -27,7 +27,7 @@ class FacebookHelper
 
         $accessCode = TokenHelper::getAuthToken_FB();
 
-        $accountIndex = session('AccountIndex', null);
+        $accountIndex = session('AccountIndex_FB', null);
         if (is_null($accountIndex)) {
             foreach ($accessCode as $index => $_) {
                 if (!is_null($_->default) && $_->default) {
@@ -36,7 +36,7 @@ class FacebookHelper
             }
         }
 
-        if (count($accessCode) && $accessCode[$accountIndex]->expire_in !== -1 && time() < $accessCode[$accountIndex]->expire_in) {
+        if (count($accessCode) && $accessCode[$accountIndex]->expire_in == -1 && time() < $accessCode[$accountIndex]->expire_in) {
             $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
         }
 
