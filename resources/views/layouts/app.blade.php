@@ -23,6 +23,14 @@
 <link href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet">
 
 <style>
+    label,
+    span {
+        font-feature-settings: "kern";
+        font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+        font-kerning: normal;
+        line-height: 1.6;
+    }
+
     @keyframes shine-lines {
         0% {
             background-position: -100px;
@@ -61,7 +69,7 @@
         width: 100%;
         height: 100%;
         background-color: white;
-        z-index: 9999999;
+        /* z-index: 9999999; */
         position: absolute;
     }
 
@@ -330,17 +338,33 @@
         }
 
         // Before ajax request send
-        function __BS(queryID) {
-            var loaderTemplate = $("#divLoadingTemplate").clone();
-            loaderTemplate.attr('id', queryID + "_DivLoader");
-            loaderTemplate.removeClass("d-none");
-            loaderTemplate.addClass("d-flex");
-            $("#" + queryID).append(loaderTemplate);
+        function __BS(queryIDS) {
+            if (typeof queryIDS === "object") {
+                queryIDS.forEach(queryID => {
+                    var loaderTemplate = $("#divLoadingTemplate").clone();
+                    loaderTemplate.attr('id', queryID + "_DivLoader");
+                    loaderTemplate.removeClass("d-none");
+                    loaderTemplate.addClass("d-flex");
+                    $("#" + queryID).append(loaderTemplate);
+                });
+            } else {
+                var loaderTemplate = $("#divLoadingTemplate").clone();
+                loaderTemplate.attr('id', queryIDS + "_DivLoader");
+                loaderTemplate.removeClass("d-none");
+                loaderTemplate.addClass("d-flex");
+                $("#" + queryIDS).append(loaderTemplate);
+            }
         }
 
         // After ajax complete
-        function __AC(queryID) {
-            $("#" + queryID + "_DivLoader").remove();
+        function __AC(queryIDS) {
+            if (typeof queryIDS === "object") {
+                queryIDS.forEach(queryID => {
+                    $("#" + queryID + "_DivLoader").remove();
+                });
+            } else {
+                $("#" + queryIDS + "_DivLoader").remove();
+            }
         }
 
         // Lazy Load image
@@ -431,6 +455,12 @@
             }
         }
 
+        function drawChart(eleId, data, type, options = {}, removeOptions = {}) {
+            var chartData = new google.visualization.arrayToDataTable(data);
+            var chart = new Chart(eleId, chartData, options, removeOptions, [7, 8], type);
+            chart.init();
+        }
+
         class Chart {
             chartType = "Line";
             defaultHideSeries = [];
@@ -464,7 +494,8 @@
                 chartArea: {
                     left: 50,
                     right: 50,
-                    top: 16,
+                    top: 26,
+                    bottom: 70,
                 },
                 crosshair: {
                     trigger: 'both',
@@ -475,7 +506,7 @@
                 }
             };
 
-            constructor(id, data, options = {}, defaultHide = [], chartType = "Line") {
+            constructor(id, data, options = {}, removeOptions = {}, defaultHide = [], chartType = "Line") {
                 this.id = id;
                 this.data = data;
                 this.options.series = this.series;
@@ -485,8 +516,14 @@
 
                 // Override default options
                 let options_keys = Object.keys(options);
-                for (let i = 0; i < options.length; i++) {
+                for (let i = 0; i < options_keys.length; i++) {
                     this.options[options_keys[i]] = options[options_keys[i]];
+                }
+
+                // Remove options
+                let remove_options_keys = Object.keys(removeOptions);
+                for (let i = 0; i < remove_options_keys.length; i++) {
+                    delete this.options[remove_options_keys[i]];
                 }
 
                 this.defaultHideSeries = defaultHide;

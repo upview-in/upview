@@ -213,6 +213,18 @@ class AccountController extends Controller
         if (!is_null($acc) && $acc->user_id === Auth::id()) {
             $acc->delete();
         }
+
+        switch ($acc->platform) {
+            case (int)(TokenHelper::$YOUTUBE):
+                session()->forget('AccountIndex_YT');
+                break;
+            case (int)(TokenHelper::$INSTAGRAM):
+                session()->forget('AccountIndex_IG');
+                break;
+            case (int)(TokenHelper::$FACEBOOK):
+                session()->forget('AccountIndex_FB');
+                break;
+        }
         return redirect()->back()->with('unlink', 'true');
     }
 
@@ -229,17 +241,28 @@ class AccountController extends Controller
 
     public function setSessionDefaultAccount(Request $request)
     {
-        if ($request->has(['id'])) {
+        if ($request->has(['id', 'platform'])) {
             $acc = LinkedAccounts::find($request->id);
             if (!is_null($acc) && $acc->user_id === Auth::id()) {
-                $accessCode = TokenHelper::getAuthToken_YT();
+                if ($request->platform == TokenHelper::$YOUTUBE) {
+                    $sKey = "AccountIndex_YT";
+                    $accessCode = TokenHelper::getAuthToken_YT();
+                } elseif ($request->platform == TokenHelper::$FACEBOOK) {
+                    $sKey = "AccountIndex_FB";
+                    $accessCode = TokenHelper::getAuthToken_FB();
+                } elseif ($request->platform == TokenHelper::$INSTAGRAM) {
+                    $sKey = "AccountIndex_IG";
+                    $accessCode = TokenHelper::getAuthToken_IG();
+                }
+
                 foreach ($accessCode as $index => $_) {
                     if ($_->id == $request->id) {
                         $accountIndex = $index;
                     }
                 }
+
                 if (isset($accountIndex)) {
-                    session()->put('AccountIndex', $accountIndex);
+                    session()->put($sKey, $accountIndex);
                 }
             }
         }

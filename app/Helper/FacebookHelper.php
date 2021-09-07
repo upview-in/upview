@@ -27,7 +27,7 @@ class FacebookHelper
 
         $accessCode = TokenHelper::getAuthToken_FB();
 
-        $accountIndex = session('AccountIndex', null);
+        $accountIndex = session('AccountIndex_FB', null);
         if (is_null($accountIndex)) {
             foreach ($accessCode as $index => $_) {
                 if (!is_null($_->default) && $_->default) {

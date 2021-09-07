@@ -23,7 +23,9 @@ class OverviewController extends Controller
                 case 'Analytics':
                     if ($request->has(['startDate', 'endDate', 'dimensions', 'sort', 'filters'])) {
                         $data = [];
-                        $response = app(ChannelController::class)->getMineChannelAnalytics(new GetMineChannelAnalytics($request->all(['startDate', 'endDate', 'dimensions', 'sort', 'filters'])))->getData();
+
+
+                        $ChannelAnalyticsResponse = app(ChannelController::class)->getMineChannelAnalytics(new GetMineChannelAnalytics($request->all(['startDate', 'endDate', 'dimensions', 'sort', 'filters'])))->getData();
 
                         $SubsciberGained = 0;
                         $Views = 0;
@@ -35,26 +37,26 @@ class OverviewController extends Controller
                         $Comments = 0;
                         $EstMinWatched = 0;
 
-                        $indexSubscribersGained = Functions::getIndexFromHeaderName($response->columnHeaders, 'subscribersGained');
-                        $indexViews = Functions::getIndexFromHeaderName($response->columnHeaders, 'views');
-                        $indexAvgViewDuration = Functions::getIndexFromHeaderName($response->columnHeaders, 'averageViewDuration');
+                        $indexSubscribersGained = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'subscribersGained');
+                        $indexViews = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'views');
+                        $indexAvgViewDuration = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'averageViewDuration');
 
-                        $indexDates = Functions::getIndexFromHeaderName($response->columnHeaders, '');
-                        $indexLikes = Functions::getIndexFromHeaderName($response->columnHeaders, 'likes');
-                        $indexDisLikes = Functions::getIndexFromHeaderName($response->columnHeaders, 'dislikes');
-                        $indexShares = Functions::getIndexFromHeaderName($response->columnHeaders, 'shares');
-                        $indexComments = Functions::getIndexFromHeaderName($response->columnHeaders, 'comments');
-                        $indexEstMinWatched = Functions::getIndexFromHeaderName($response->columnHeaders, 'estimatedMinutesWatched');
+                        $indexDates = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'day');
+                        $indexLikes = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'likes');
+                        $indexDisLikes = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'dislikes');
+                        $indexShares = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'shares');
+                        $indexComments = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'comments');
+                        $indexEstMinWatched = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'estimatedMinutesWatched');
 
-                        $ChartData = [];
-                        $ChartData[] = ['Date', 'Subsciber', 'Views', 'Likes', 'Dislikes', 'Shares', 'Comments', 'Est. Min. Watched', 'Avg. View Duration'];
+                        $OverviewStatisticsChartData = [];
+                        $OverviewStatisticsChartData[] = ['Date', 'Subsciber', 'Views', 'Likes', 'Dislikes', 'Shares', 'Comments', 'Est. Min. Watched', 'Avg. View Duration'];
 
-                        foreach ($response->rows as $key => $value) {
+                        foreach ($ChannelAnalyticsResponse->rows as $key => $value) {
                             $SubsciberGained += $value[$indexSubscribersGained];
                             $Views += $value[$indexViews];
                             $AvgViewDuration += $value[$indexAvgViewDuration];
 
-                            $ChartData[] = [$value[$indexDates], $value[$indexSubscribersGained], $value[$indexViews], $value[$indexLikes], $value[$indexDisLikes], $value[$indexShares], $value[$indexComments], $value[$indexEstMinWatched], $value[$indexAvgViewDuration]];
+                            $OverviewStatisticsChartData[] = [$value[$indexDates], $value[$indexSubscribersGained], $value[$indexViews], $value[$indexLikes], $value[$indexDisLikes], $value[$indexShares], $value[$indexComments], $value[$indexEstMinWatched], $value[$indexAvgViewDuration]];
 
                             $Likes += $value[$indexLikes];
                             $DisLikes += $value[$indexDisLikes];
@@ -72,7 +74,119 @@ class OverviewController extends Controller
                         $data["OverviewStatistics"]["Shares"] = $Shares;
                         $data["OverviewStatistics"]["Comments"] = $Comments;
                         $data["OverviewStatistics"]["EstMinWatched"] = $EstMinWatched;
-                        $data["OverviewStatistics"]["ChartData"] = $ChartData;
+                        $data["OverviewStatistics"]["ChartData"] = $OverviewStatisticsChartData;
+
+
+
+                        $ChannelDemoGraphicsAnalyticsResponse = app(ChannelController::class)->getMineChannelDemoGraphicsAnalytics($request)->getData();
+
+                        $indexAgeGroup = Functions::getIndexFromHeaderName($ChannelDemoGraphicsAnalyticsResponse->columnHeaders, 'ageGroup');
+                        $indexGender = Functions::getIndexFromHeaderName($ChannelDemoGraphicsAnalyticsResponse->columnHeaders, 'gender');
+                        $indexViewerPercentage = Functions::getIndexFromHeaderName($ChannelDemoGraphicsAnalyticsResponse->columnHeaders, 'viewerPercentage');
+
+                        $DemoGraphicsChartData = [];
+                        $DemoGraphicsChartData[] = ['AgeGroup', 'Male', 'Female'];
+
+                        foreach (collect($ChannelDemoGraphicsAnalyticsResponse->rows)->groupBy($indexAgeGroup) as $key => $value) {
+                            $tempArr = [];
+                            $tempArr[0] = $key;
+
+                            // Set default 0
+                            $tempArr[1] = 0;
+                            $tempArr[2] = 0;
+
+                            foreach ($value as $___) {
+                                if ($___[$indexGender] == "male") {
+                                    $tempArr[1] = $___[$indexViewerPercentage];
+                                } else {
+                                    $tempArr[2] = $___[$indexViewerPercentage];
+                                }
+                            }
+
+                            $DemoGraphicsChartData[] = $tempArr;
+                        }
+
+                        if (count($DemoGraphicsChartData) <= 1) {
+                            $DemoGraphicsChartData[] = ["age18-24", 0, 0];
+                        }
+
+                        $data["Demographics"]["ChartData"] = $DemoGraphicsChartData;
+
+
+
+                        $DeviceWiseAnalyticsResponse = app(ChannelController::class)->getMineChannelDeviceWiseAnalytics($request)->getData();
+
+                        $indexDeviceType = Functions::getIndexFromHeaderName($DeviceWiseAnalyticsResponse->columnHeaders, 'deviceType');
+                        $indexDeviceWiseViews = Functions::getIndexFromHeaderName($DeviceWiseAnalyticsResponse->columnHeaders, 'views');
+
+                        $DeviceWiseChartData = [];
+                        $DeviceWiseChartData[] = ['Device Type', 'Views'];
+
+                        foreach ($DeviceWiseAnalyticsResponse->rows as $key => $value) {
+                            $DeviceWiseChartData[] = [Functions::ConvertToRegularString($value[$indexDeviceType]), $value[$indexDeviceWiseViews]];
+                        }
+
+                        if (count($DeviceWiseChartData) <= 1) {
+                            $DeviceWiseChartData[] = ["Mobile", 0];
+                        }
+                        $data["DeviceWise"]["ChartData"] = $DeviceWiseChartData;
+
+
+
+                        $OsWiseAnalyticsResponse = app(ChannelController::class)->getMineChannelOsWiseAnalytics($request)->getData();
+
+                        $indexOsType = Functions::getIndexFromHeaderName($DeviceWiseAnalyticsResponse->columnHeaders, 'operatingSystem');
+                        $indexOsWiseViews = Functions::getIndexFromHeaderName($DeviceWiseAnalyticsResponse->columnHeaders, 'views');
+
+                        $OsWiseChartData = [];
+                        $OsWiseChartData[] = ['OS', 'Views'];
+
+                        foreach ($OsWiseAnalyticsResponse->rows as $key => $value) {
+                            $OsWiseChartData[] = [Functions::ConvertToRegularString($value[$indexOsType]), $value[$indexOsWiseViews]];
+                        }
+                        if (count($OsWiseChartData) <= 1) {
+                            $OsWiseChartData[] = ["Android", 0];
+                        }
+                        $data["OsWise"]["ChartData"] = $OsWiseChartData;
+
+
+
+                        $TrafficSourceAnalyticsResponse = app(ChannelController::class)->getMineChannelTrafficSourceAnalytics($request)->getData();
+
+                        $indexTrafficSourceInsightTrafficSourceType = Functions::getIndexFromHeaderName($TrafficSourceAnalyticsResponse->columnHeaders, 'insightTrafficSourceType');
+                        $indexTrafficSourceViews = Functions::getIndexFromHeaderName($TrafficSourceAnalyticsResponse->columnHeaders, 'views');
+                        $indexTrafficSourceEstimatedMinutesWatched = Functions::getIndexFromHeaderName($TrafficSourceAnalyticsResponse->columnHeaders, 'estimatedMinutesWatched');
+
+                        $TrafficSourceChartData = [];
+                        $TrafficSourceChartData[] = ['Traffic Source Type', 'Views', 'Est. Min. Watched'];
+
+                        foreach ($TrafficSourceAnalyticsResponse->rows as $key => $value) {
+                            $TrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]), $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];
+                        }
+
+                        if (count($TrafficSourceChartData) <= 1) {
+                            $TrafficSourceChartData[] = ["Other", 0, 0];
+                        }
+                        $data["TrafficSource"]["ChartData"] = $TrafficSourceChartData;
+
+
+
+                        $SocialMediaTrafficSourceAnalyticsResponse = app(ChannelController::class)->getMineChannelSocialMediaTrafficSourceAnalytics($request)->getData();
+
+                        $indexSocialMediaTrafficSourceType = Functions::getIndexFromHeaderName($SocialMediaTrafficSourceAnalyticsResponse->columnHeaders, 'sharingService');
+                        $indexSocialMediaTrafficSourceShares = Functions::getIndexFromHeaderName($SocialMediaTrafficSourceAnalyticsResponse->columnHeaders, 'shares');
+
+                        $SocialMediaTrafficSourceChartData = [];
+                        $SocialMediaTrafficSourceChartData[] = ['Source', 'Shares'];
+
+                        foreach ($SocialMediaTrafficSourceAnalyticsResponse->rows as $key => $value) {
+                            $SocialMediaTrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]), $value[$indexSocialMediaTrafficSourceShares]];
+                        }
+
+                        if (count($SocialMediaTrafficSourceChartData) <= 1) {
+                            $SocialMediaTrafficSourceChartData[] = ["Whatsapp", 0];
+                        }
+                        $data["SocialMediaTrafficSource"]["ChartData"] = $SocialMediaTrafficSourceChartData;
 
                         return response()->json(collect($data));
                     } else {
