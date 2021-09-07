@@ -27,7 +27,7 @@ class InstagramHelper
 
         $accessCode = TokenHelper::getAuthToken_IG();
 
-        $accountIndex = session('AccountIndex', null);
+        $accountIndex = session('AccountIndex_IG', null);
         if (is_null($accountIndex)) {
             foreach ($accessCode as $index => $_) {
                 if (!is_null($_->default) && $_->default) {

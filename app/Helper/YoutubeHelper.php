@@ -2,6 +2,7 @@
 
 namespace App\Helper;
 
+use Carbon\Carbon;
 use Google\Client;
 use Google\Service\YouTube;
 use Google\Service\YouTubeAnalytics;
@@ -23,7 +24,7 @@ class YoutubeHelper
     {
         $accessCode = TokenHelper::getAuthToken_YT();
 
-        $accountIndex = session('AccountIndex', null);
+        $accountIndex = session('AccountIndex_YT', null);
         if (is_null($accountIndex)) {
             foreach ($accessCode as $index => $_) {
                 if (!is_null($_->default) && $_->default) {
