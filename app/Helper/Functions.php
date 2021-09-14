@@ -36,6 +36,11 @@ class Functions
         return 0;
     }
 
+    public static function ConvertToRegularString($str)
+    {
+        return ucfirst(strtolower(str_replace('_', ' ', $str)));
+    }
+
     public static function getUserCountry()
     {
         $user = Auth::user();

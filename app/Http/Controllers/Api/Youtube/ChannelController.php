@@ -9,6 +9,7 @@ use App\Http\Requests\Api\Youtube\Channel\GetChannelListFromName;
 use App\Http\Requests\Api\Youtube\Channel\GetMineChannelAnalytics;
 use App\Http\Requests\Api\Youtube\Channel\GetMineChannelList;
 use App\Http\Requests\Api\Youtube\Channel\GetTopChannelsList;
+use Illuminate\Http\Request;
 
 class ChannelController extends Controller
 {
@@ -103,10 +104,87 @@ class ChannelController extends Controller
             'ids' => 'channel==MINE',
             'startDate' => $request->startDate,
             'endDate' => $request->endDate,
-            'dimensions' => $request->dimensions ?? 'day',
-            'metrics' => $request->metrics ?? 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
-            'sort' => $request->sort ?? 'day',
-            'filters' => $request->filters ?? '',
+            'dimensions' => 'day',
+            'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
+            'sort' => 'day',
+            'filters' => $request->filters ?? ''
+        ]);
+        return response()->json($analytics, 200);
+    }
+
+    public function getMineChannelDemoGraphicsAnalytics(Request $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeAnalyticsService();
+        $analytics = $service->reports->query([
+            'ids' => 'channel==MINE',
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+            'dimensions' => 'ageGroup,gender',
+            'sort' => 'gender,ageGroup',
+            'metrics' => 'viewerPercentage',
+            'filters' => $request->filters ?? ''
+        ]);
+        return response()->json($analytics, 200);
+    }
+
+    public function getMineChannelDeviceWiseAnalytics(Request $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeAnalyticsService();
+        $analytics = $service->reports->query([
+            'ids' => 'channel==MINE',
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+            'dimensions' => 'deviceType',
+            'metrics' => 'views',
+            'filters' => $request->filters ?? ''
+        ]);
+        return response()->json($analytics, 200);
+    }
+
+    public function getMineChannelOsWiseAnalytics(Request $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeAnalyticsService();
+        $analytics = $service->reports->query([
+            'ids' => 'channel==MINE',
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+            'dimensions' => 'operatingSystem',
+            'metrics' => 'views',
+            'filters' => $request->filters ?? ''
+        ]);
+        return response()->json($analytics, 200);
+    }
+
+    public function getMineChannelTrafficSourceAnalytics(Request $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeAnalyticsService();
+        $analytics = $service->reports->query([
+            'ids' => 'channel==MINE',
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+            'dimensions' => 'insightTrafficSourceType',
+            'metrics' => 'views,estimatedMinutesWatched',
+            'filters' => $request->filters ?? ''
+        ]);
+        return response()->json($analytics, 200);
+    }
+
+    public function getMineChannelSocialMediaTrafficSourceAnalytics(Request $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeAnalyticsService();
+        $analytics = $service->reports->query([
+            'ids' => 'channel==MINE',
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+            'dimensions' => 'sharingService',
+            'metrics' => 'shares',
+            'sort' => '-shares',
+            'filters' => $request->filters ?? ''
         ]);
         return response()->json($analytics, 200);
     }
