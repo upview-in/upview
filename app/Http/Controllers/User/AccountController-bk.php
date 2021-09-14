@@ -38,19 +38,7 @@ class AccountController extends Controller
             'pages_read_user_content',
             'ads_management',
             'business_management',
-            'pages_read_engagement',
-           'user_birthday',
-           'user_hometown',
-           'user_location',
-           'user_likes',
-           'user_photos',
-           'user_videos',
-           'user_friends',
-            'user_posts',
-            'user_gender',
-            'user_age_range',
-            'user_link',
-
+            'pages_read_engagement'
         ];
         $loginUrl = $redirectHelper->getLoginUrl(route(config('facebook.redirectUrl')), $permissions);
         return redirect(filter_var($loginUrl, FILTER_SANITIZE_URL));
@@ -133,11 +121,7 @@ class AccountController extends Controller
                     $linkedAccount->name = $fbUser['name'] ?? '';
                     $linkedAccount->picture = $fbUser['picture']['url'] ?? '';
                     $linkedAccount->access_token = $longLiveAccessToken->getValue();
-                    if (!is_null($longLiveAccessToken->getExpiresAt())) {
-                        $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
-                    } else {
-                        $linkedAccount->expire_in = -1;
-                    }
+                    $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
                     $linkedAccount->platform = 2;
                     $linkedAccount->save();
                     $rr->with('linked', 'true');
@@ -150,7 +134,7 @@ class AccountController extends Controller
                             'name' => $fbUser['name'] ?? '',
                             'picture' => $fbUser['picture']['url'] ?? '',
                             'access_token' => $longLiveAccessToken->getValue(),
-                            'expire_in' => !is_null($longLiveAccessToken->getExpiresAt()) ? $longLiveAccessToken->getExpiresAt()->getTimestamp() : -1,
+                            'expire_in' => $longLiveAccessToken->getExpiresAt()->getTimestamp(),
                         ]);
                         $rr->with('renewed', 'true');
                     } else {
@@ -172,13 +156,11 @@ class AccountController extends Controller
         $rr = redirect()->route('panel.user.account.accounts_manager');
         if ($request->has('code', 'state')) {
             $fb = new InstagramHelper();
-            $client = $fb->getInstagramClient(false);
+            $client = $fb->getInstagramClient();
             $redirectHelper = $client->getRedirectLoginHelper();
             $accessToken = $redirectHelper->getAccessToken();
             $oAuth2Client = $client->getOAuth2Client();
             $longLiveAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-            // dd($longLiveAccessToke, $accessToken);
-
             $fbUser = $client->get('/me?fields=name,email,picture', $longLiveAccessToken->getValue())->getGraphUser();
             if (isset($fbUser['name'], $fbUser['email'], $fbUser['picture'])) {
                 $__ = LinkedAccounts::where(['user_id' => Auth::id(), 'platform' => 3, 'email' => $fbUser['email']]);
@@ -190,11 +172,8 @@ class AccountController extends Controller
                     $linkedAccount->name = $fbUser['name'] ?? '';
                     $linkedAccount->picture = $fbUser['picture']['url'] ?? '';
                     $linkedAccount->access_token = $longLiveAccessToken->getValue();
-                    if (!is_null($longLiveAccessToken->getExpiresAt())) {
-                        $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
-                    } else {
-                        $linkedAccount->expire_in = -1;
-                    }
+                    dd($longLiveAccessToken);
+                    $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
                     $linkedAccount->platform = 3;
                     $linkedAccount->save();
                     $rr->with('linked', 'true');
@@ -207,7 +186,7 @@ class AccountController extends Controller
                             'name' => $fbUser['name'] ?? '',
                             'picture' => $fbUser['picture']['url'] ?? '',
                             'access_token' => $longLiveAccessToken->getValue(),
-                            'expire_in' => !is_null($longLiveAccessToken->getExpiresAt()) ? $longLiveAccessToken->getExpiresAt()->getTimestamp() : -1,
+                            'expire_in' => $longLiveAccessToken->getExpiresAt()->getTimestamp(),
                         ]);
                         $rr->with('renewed', 'true');
                     } else {
@@ -227,40 +206,9 @@ class AccountController extends Controller
     public function unlinkAccount(Request $request, $id)
     {
         $acc = LinkedAccounts::find($id);
-     
-        // dd($acc->platform);
         if (!is_null($acc) && $acc->user_id === Auth::id()) {
             $acc->delete();
         }
-<<<<<<< HEAD
-        switch($acc->platform)
-        {
-            case (int)(TokenHelper::$YOUTUBE):
-               session()->forget('AccountIndex_YT');
-                break;
-            case (int)(TokenHelper::$INSTAGRAM):
-               session()->forget('AccountIndex_IG');
-                break;
-            case (int)(TokenHelper::$FACEBOOK):
-               session()->forget('AccountIndex_FB');
-                break;
-        }
-        
-        
-=======
-
-        switch ($acc->platform) {
-            case (int)(TokenHelper::$YOUTUBE):
-                session()->forget('AccountIndex_YT');
-                break;
-            case (int)(TokenHelper::$INSTAGRAM):
-                session()->forget('AccountIndex_IG');
-                break;
-            case (int)(TokenHelper::$FACEBOOK):
-                session()->forget('AccountIndex_FB');
-                break;
-        }
->>>>>>> e819c51a3a11b2f50f5be45040de5486d3b7036b
         return redirect()->back()->with('unlink', 'true');
     }
 
@@ -277,28 +225,17 @@ class AccountController extends Controller
 
     public function setSessionDefaultAccount(Request $request)
     {
-        if ($request->has(['id', 'platform'])) {
+        if ($request->has(['id'])) {
             $acc = LinkedAccounts::find($request->id);
             if (!is_null($acc) && $acc->user_id === Auth::id()) {
-                if ($request->platform == TokenHelper::$YOUTUBE) {
-                    $sKey = "AccountIndex_YT";
-                    $accessCode = TokenHelper::getAuthToken_YT();
-                } elseif ($request->platform == TokenHelper::$FACEBOOK) {
-                    $sKey = "AccountIndex_FB";
-                    $accessCode = TokenHelper::getAuthToken_FB();
-                } elseif ($request->platform == TokenHelper::$INSTAGRAM) {
-                    $sKey = "AccountIndex_IG";
-                    $accessCode = TokenHelper::getAuthToken_IG();
-                }
-
+                $accessCode = TokenHelper::getAuthToken_YT();
                 foreach ($accessCode as $index => $_) {
                     if ($_->id == $request->id) {
                         $accountIndex = $index;
                     }
                 }
-
                 if (isset($accountIndex)) {
-                    session()->put($sKey, $accountIndex);
+                    session()->put('AccountIndex', $accountIndex);
                 }
             }
         }

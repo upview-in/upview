@@ -16,7 +16,6 @@
 
         cb(__startDate, __endDate);
         loadData();
-
         google.charts.load('current', {
             'packages': ['corechart', 'table', 'geochart']
         }).then(() => {
