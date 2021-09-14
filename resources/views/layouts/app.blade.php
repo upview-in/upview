@@ -74,10 +74,16 @@
     }
 
     .no-data {
-        width: 100%;
+        /* width: 100%;
         height: 120px;
         line-height: 120px;
-        text-align: center;
+        text-align: center; */
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 
     .overflow-dot {
@@ -97,6 +103,32 @@
 
     .fs-7 {
         font-size: .8rem;
+    }
+
+    .google-visualization-tooltip-item {
+        white-space: nowrap;
+    }
+
+    .select2-choice {
+        height: auto !important;
+        line-height: inherit !important;
+    }
+
+    .select2-arrow {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .select2-arrow>b {
+        height: auto !important;
+    }
+
+    #s2id_countryList>.select2-choice {
+        border: none;
+    }
+
+    text {
+        cursor: pointer;
     }
 </style>
 
@@ -456,9 +488,14 @@
         }
 
         function drawChart(eleId, data, type, options = {}, removeOptions = {}) {
-            var chartData = new google.visualization.arrayToDataTable(data);
-            var chart = new Chart(eleId, chartData, options, removeOptions, [7, 8], type);
-            chart.init();
+            if (data.length <= 1) {
+                $("#" + eleId.id + "ContextMenu").remove();
+                $('#' + eleId.id).html(noData);
+            } else {
+                var chartData = new google.visualization.arrayToDataTable(data);
+                var chart = new Chart(eleId, chartData, options, removeOptions, [7, 8], type);
+                chart.init();
+            }
         }
 
         class Chart {
@@ -628,7 +665,13 @@
                     case "line":
                         this.chart = new google.visualization.LineChart(this.id);
                         break;
-                    case "table":
+                    case "Geo":
+                        this.chart = new google.visualization.GeoChart(this.id);
+                        break;
+                    case "WordTree":
+                        this.chart = new google.visualization.WordTree(this.id);
+                        break;
+                    case "Table":
                         this.chart = new google.visualization.Table(this.id);
                         break;
                     default:
