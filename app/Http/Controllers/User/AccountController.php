@@ -38,7 +38,19 @@ class AccountController extends Controller
             'pages_read_user_content',
             'ads_management',
             'business_management',
-            'pages_read_engagement'
+            'pages_read_engagement',
+           'user_birthday',
+           'user_hometown',
+           'user_location',
+           'user_likes',
+           'user_photos',
+           'user_videos',
+           'user_friends',
+            'user_posts',
+            'user_gender',
+            'user_age_range',
+            'user_link',
+
         ];
         $loginUrl = $redirectHelper->getLoginUrl(route(config('facebook.redirectUrl')), $permissions);
         return redirect(filter_var($loginUrl, FILTER_SANITIZE_URL));
@@ -121,7 +133,11 @@ class AccountController extends Controller
                     $linkedAccount->name = $fbUser['name'] ?? '';
                     $linkedAccount->picture = $fbUser['picture']['url'] ?? '';
                     $linkedAccount->access_token = $longLiveAccessToken->getValue();
-                    $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
+                    if (!is_null($longLiveAccessToken->getExpiresAt())) {
+                        $linkedAccount->expire_in = $longLiveAccessToken->getExpiresAt()->getTimestamp();
+                    } else {
+                        $linkedAccount->expire_in = -1;
+                    }
                     $linkedAccount->platform = 2;
                     $linkedAccount->save();
                     $rr->with('linked', 'true');
@@ -156,7 +172,7 @@ class AccountController extends Controller
         $rr = redirect()->route('panel.user.account.accounts_manager');
         if ($request->has('code', 'state')) {
             $fb = new InstagramHelper();
-            $client = $fb->getInstagramClient();
+            $client = $fb->getInstagramClient(false);
             $redirectHelper = $client->getRedirectLoginHelper();
             $accessToken = $redirectHelper->getAccessToken();
             $oAuth2Client = $client->getOAuth2Client();
@@ -211,9 +227,25 @@ class AccountController extends Controller
     public function unlinkAccount(Request $request, $id)
     {
         $acc = LinkedAccounts::find($id);
+     
+        // dd($acc->platform);
         if (!is_null($acc) && $acc->user_id === Auth::id()) {
             $acc->delete();
         }
+        switch($acc->platform)
+        {
+            case (int)(TokenHelper::$YOUTUBE):
+               session()->forget('AccountIndex_YT');
+                break;
+            case (int)(TokenHelper::$INSTAGRAM):
+               session()->forget('AccountIndex_IG');
+                break;
+            case (int)(TokenHelper::$FACEBOOK):
+               session()->forget('AccountIndex_FB');
+                break;
+        }
+        
+        
         return redirect()->back()->with('unlink', 'true');
     }
 

@@ -73,6 +73,8 @@
                             </li>
                         </ul>
                     </li>
+                    
+                    {{-- Facebook Here --}}
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
@@ -85,10 +87,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">{{ __('Overview') }}</a>
+                                <a href="{{ route('panel.user.analyze.facebook.overview') }}">{{ __('Overview') }}</a>
                             </li>
                             <li>
-                                <a href="#">{{ __('Media') }}</a>
+                                <a href="{{ route('panel.user.analyze.facebook.media') }}">{{ __('Media') }}</a>
                             </li>
                         </ul>
                     </li>
