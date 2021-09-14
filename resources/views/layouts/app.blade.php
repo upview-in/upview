@@ -508,7 +508,9 @@
                 tooltip: {
                     trigger: 'both'
                 },
-                bar: {groupWidth: "10%"},
+                bar: {
+                    groupWidth: "10%"
+                },
                 width: "50%",
                 curveType: 'function',
                 focusTarget: 'category',
@@ -643,7 +645,8 @@
             init() {
                 this.buildContextMenu();
 
-                switch ((this.chartType).toLocaleLowerCase()) { //Keep this, so even in case we by mistake give the chart name in wrong case.
+                switch ((this.chartType).toLocaleLowerCase()) {
+                    //Keep this, so even in case we by mistake give the chart name in wrong case.
                     case "bar":
                         this.chart = new google.visualization.BarChart(this.id);
                         break;
@@ -665,13 +668,13 @@
                     case "line":
                         this.chart = new google.visualization.LineChart(this.id);
                         break;
-                    case "Geo":
+                    case "geo":
                         this.chart = new google.visualization.GeoChart(this.id);
                         break;
-                    case "WordTree":
+                    case "wordtree":
                         this.chart = new google.visualization.WordTree(this.id);
                         break;
-                    case "Table":
+                    case "table":
                         this.chart = new google.visualization.Table(this.id);
                         break;
                     default:
