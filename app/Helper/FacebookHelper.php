@@ -25,7 +25,6 @@ class FacebookHelper
             'persistent_data_handler' => new LaravelPersistentDataHandler(),
         ]);
 
-
         if ($withAuth) {
             $accessCode = TokenHelper::getAuthToken_FB();
             $accountIndex = session('AccountIndex_FB', null);
