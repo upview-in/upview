@@ -40,8 +40,6 @@
         var GroupBy = "day";
         var country = "";
 
-        var OverviewStatisticsChart = null;
-
         cb(__startDate, __endDate);
         loadData();
         google.charts.load('current', {
@@ -49,12 +47,6 @@
         }).then(() => {
             loadAnalytics();
         });
-
-        function drawChart(data) {
-            var data = new google.visualization.arrayToDataTable(data);
-            OverviewStatisticsChart = new Chart($('#OverviewStatisticsChart')[0], data, {}, [7, 8]);
-            OverviewStatisticsChart.init();
-        }
 
         function cb(start, end) {
             $('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -129,7 +121,7 @@
             minimumResultsForSearch: -1
         });
 
-        $('#select2Accounts').val(accounts["{{ session('AccountIndex', 0) }}"]['_id']).trigger('change');
+        $('#select2Accounts').val(accounts["{{ session('AccountIndex_YT', 0) }}"]['_id']).trigger('change');
 
         $('#select2Accounts').on('change', function(e) {
             var data = $(this).select2('data');
@@ -217,8 +209,7 @@
         }
 
         function loadAnalytics() {
-            __BS("ChannelHighlights");
-            __BS("StatisticsOverview");
+            __BS(["ChannelHighlights", "StatisticsOverview", "Demographics", "DeviceWise", "OsWise", "TrafficSource", "SocialMediaTrafficSource"]);
 
             $.ajax({
                 data: {
@@ -233,11 +224,15 @@
                 success: function(data) {
                     let Highlights = data.Heighlights;
                     let OverviewStatistics = data.OverviewStatistics;
+                    let Demographics = data.Demographics;
+                    let DeviceWise = data.DeviceWise;
+                    let OsWise = data.OsWise;
+                    let TrafficSource = data.TrafficSource;
+                    let SocialMediaTrafficSource = data.SocialMediaTrafficSource;
 
                     $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
                     $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
                     $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
-                    // $("Highlights").html(convertToInternationalCurrencySystem());
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
                     $("#OverviewStatisticsDislikes").html(convertToInternationalCurrencySystem(OverviewStatistics.DisLikes));
@@ -245,10 +240,68 @@
                     $("#OverviewStatisticsComments").html(convertToInternationalCurrencySystem(OverviewStatistics.Comments));
                     $("#OverviewStatisticsEstMinWatched").html(formatTime(OverviewStatistics.EstMinWatched));
 
-                    drawChart(OverviewStatistics.ChartData);
 
-                    __AC("ChannelHighlights");
-                    __AC("StatisticsOverview");
+                    drawChart($('#OverviewStatisticsChart')[0], OverviewStatistics.ChartData, 'Area');
+
+                    drawChart($('#DemographicsChart')[0], Demographics.ChartData, 'Column', {
+                        vAxis: {
+                            format: "#'%'"
+                        },
+                        hAxis: {
+                            textPosition: 'out'
+                        },
+                        bar: {
+                            groupWidth: 50
+                        }
+                    });
+
+                    drawChart($('#DeviceWiseChart')[0], DeviceWise.ChartData, 'Pie', {
+                        pieHole: 0.5,
+                        chartArea: {
+                            top: 10,
+                            bottom: 60,
+                        },
+                    }, {
+                        explorer: ""
+                    });
+
+                    drawChart($('#OsWiseChart')[0], OsWise.ChartData, 'Pie', {
+                        pieHole: 0.5,
+                        chartArea: {
+                            top: 10,
+                            bottom: 60,
+                        },
+                    }, {
+                        explorer: ""
+                    });
+
+                    drawChart($('#TrafficSourceChart')[0], TrafficSource.ChartData, 'Column', {
+                        hAxis: {
+                            textPosition: 'out',
+                            slantedText: true,
+                            slantedTextAngle: 25,
+                        },
+                        chartArea: {
+                            left: 50,
+                            right: 50,
+                            top: 26,
+                            bottom: 100,
+                        },
+                        bar: {
+                            groupWidth: 50
+                        }
+                    });
+
+                    drawChart($('#SocialMediaTrafficSourceChart')[0], SocialMediaTrafficSource.ChartData, 'Column', {
+                        hAxis: {
+                            textPosition: 'out',
+                        },
+                        bar: {
+                            groupWidth: 25
+                        }
+                    });
+
+                    __AC(["ChannelHighlights", "StatisticsOverview", "Demographics", "DeviceWise", "OsWise", "TrafficSource", "SocialMediaTrafficSource"]);
 
                 }
             });
@@ -346,7 +399,7 @@
                     <div class="col-12 col-md-2 border-right">
                         <div class="row mb-3">
                             <div class="col">
-                                <span class="font-weight-lighter text-red">Subscribers Growth</span>
+                                <span class="text-red">Subscribers Growth</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsSubscribersGrowth"></label>
                             </div>
@@ -354,7 +407,7 @@
 
                         <div class="row mb-3">
                             <div class="col">
-                                <span class="font-weight-lighter text-red">Views</span>
+                                <span class="text-red">Views</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsViews"></label>
                             </div>
@@ -362,7 +415,7 @@
 
                         <div class="row mb-3">
                             <div class="col">
-                                <span class="font-weight-lighter text-red">Avg. View Duration (in min)</span>
+                                <span class="text-red">Avg. View Duration (in min)</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsAvgViewDuration"></label>
                             </div>
@@ -371,42 +424,42 @@
                     <div class="col-12 col-md-10">
                         <div class="row">
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Top Country</span>
+                                <span class="text-red">Top Country</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopCountry"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Top Device</span>
+                                <span class="text-red">Top Device</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopDevice"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Traffic Source</span>
+                                <span class="text-red">Traffic Source</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTrafficSource"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Embedded Traffic Source</span>
+                                <span class="text-red">Embedded Traffic Source</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsEmbeddedTrafficSource"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Ads VS Organic</span>
+                                <span class="text-red">Ads VS Organic</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsAdsVsOrganic"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Top Social Media</span>
+                                <span class="text-red">Top Social Media</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopSocialMedia"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Subs VS Non-Subs</span>
+                                <span class="text-red">Subs VS Non-Subs</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsSubsVsNonSubs"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="font-weight-lighter text-red">Best Day and Time</span>
+                                <span class="text-red">Best Day and Time</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsBestDayandTime"></label>
                             </div>
@@ -428,29 +481,106 @@
                     <div class=" col-md-2 align-self-center">
                         <div class="d-flex flex-column">
                             <div class="mb-2">
-                                <span class="font-weight-lighter text-red">Likes</span>
+                                <span class="text-red">Likes</span>
                                 <br />
                                 <label class="font-weight-bolder" id="OverviewStatisticsLikes"></label>
                             </div>
                             <div class="mt-2 mb-2">
-                                <span class="font-weight-lighter text-red">Dislikes</span>
+                                <span class="text-red">Dislikes</span>
                                 <br />
                                 <label class="font-weight-bolder" id="OverviewStatisticsDislikes"></label>
                             </div>
                             <div class="mt-2 mb-2">
-                                <span class="font-weight-lighter text-red">Shares</span>
+                                <span class="text-red">Shares</span>
                                 <br />
                                 <label class="font-weight-bolder" id="OverviewStatisticsShares"></label>
                             </div>
                             <div class="mt-2 mb-2">
-                                <span class="font-weight-lighter text-red">Comments</span>
+                                <span class="text-red">Comments</span>
                                 <br />
                                 <label class="font-weight-bolder" id="OverviewStatisticsComments"></label>
                             </div>
                             <div class="mt-2">
-                                <span class="font-weight-lighter text-red">Est. Minutes Watched</span>
+                                <span class="text-red">Est. Minutes Watched</span>
                                 <br />
                                 <label class="font-weight-bolder" id="OverviewStatisticsEstMinWatched"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="Demographics">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Demographics</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="DemographicsChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="DeviceWise">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Device Wise</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="DeviceWiseChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="OsWise">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Platform Wise</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="OsWiseChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="TrafficSource">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Traffic Source</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="TrafficSourceChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="SocialMediaTrafficSource">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Social Media Traffic Source</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="SocialMediaTrafficSourceChart" class="w-100 mt-3" style="height: 400px"></div>
                             </div>
                         </div>
                     </div>
