@@ -232,22 +232,6 @@ class AccountController extends Controller
         if (!is_null($acc) && $acc->user_id === Auth::id()) {
             $acc->delete();
         }
-<<<<<<< HEAD
-        switch($acc->platform)
-        {
-            case (int)(TokenHelper::$YOUTUBE):
-               session()->forget('AccountIndex_YT');
-                break;
-            case (int)(TokenHelper::$INSTAGRAM):
-               session()->forget('AccountIndex_IG');
-                break;
-            case (int)(TokenHelper::$FACEBOOK):
-               session()->forget('AccountIndex_FB');
-                break;
-        }
-        
-        
-=======
 
         switch ($acc->platform) {
             case (int)(TokenHelper::$YOUTUBE):
@@ -260,7 +244,6 @@ class AccountController extends Controller
                 session()->forget('AccountIndex_FB');
                 break;
         }
->>>>>>> e819c51a3a11b2f50f5be45040de5486d3b7036b
         return redirect()->back()->with('unlink', 'true');
     }
 
