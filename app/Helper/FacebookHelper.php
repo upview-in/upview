@@ -16,7 +16,7 @@ class FacebookHelper
         return $this->clientInstance;
     }
 
-    public function getFacebookClient($withAuth=true): Facebook
+    public function getFacebookClient($withAuth = true): Facebook
     {
         $client = new Facebook([
             'app_id' => config('facebook.clientId'),
@@ -26,31 +26,21 @@ class FacebookHelper
         ]);
 
 
-<<<<<<< HEAD
-        if($withAuth)
-        {
+        if ($withAuth) {
             $accessCode = TokenHelper::getAuthToken_FB();
-
             $accountIndex = session('AccountIndex_FB', null);
             if (is_null($accountIndex)) {
                 foreach ($accessCode as $index => $_) {
                     if (!is_null($_->default) && $_->default) {
                         $accountIndex = $index;
                     }
-=======
-        $accountIndex = session('AccountIndex_FB', null);
-        if (is_null($accountIndex)) {
-            foreach ($accessCode as $index => $_) {
-                if (!is_null($_->default) && $_->default) {
-                    $accountIndex = $index;
->>>>>>> e819c51a3a11b2f50f5be45040de5486d3b7036b
                 }
-            }
 
-            $accountIndex = is_null($accountIndex) ? 0 : $accountIndex;
+                $accountIndex = is_null($accountIndex) ? 0 : $accountIndex;
 
-            if (count($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
-                $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
+                if (count($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
+                    $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
+                }
             }
         }
 
