@@ -569,29 +569,29 @@
             init() {
                 this.buildContextMenu();
 
-                switch (this.chartType) {
-                    case "Bar":
+                switch ((this.chartType).toLocaleLowerCase()) { //Keep this, so even in case we by mistake give the chart name in wrong case.
+                    case "bar":
                         this.chart = new google.visualization.BarChart(this.id);
                         break;
-                    case "Pie":
+                    case "pie":
                         this.chart = new google.visualization.PieChart(this.id);
                         break;
-                    case "Candlestick":
+                    case "candlestick":
                         this.chart = new google.visualization.CandlestickChart(this.id);
                         break;
-                    case "Column":
+                    case "column":
                         this.chart = new google.visualization.ColumnChart(this.id);
                         break;
-                    case "Donut":
+                    case "donut":
                         this.chart = new google.visualization.DonutChart(this.id);
                         break;
-                    case "Area":
+                    case "area":
                         this.chart = new google.visualization.AreaChart(this.id);
                         break;
-                    case "Line":
+                    case "line":
                         this.chart = new google.visualization.LineChart(this.id);
                         break;
-                    case "Table":
+                    case "table":
                         this.chart = new google.visualization.Table(this.id);
                         break;
                     default:

@@ -16,7 +16,7 @@ class FacebookHelper
         return $this->clientInstance;
     }
 
-    public function getFacebookClient(): Facebook
+    public function getFacebookClient($withAuth=true): Facebook
     {
         $client = new Facebook([
             'app_id' => config('facebook.clientId'),
@@ -25,24 +25,27 @@ class FacebookHelper
             'persistent_data_handler' => new LaravelPersistentDataHandler(),
         ]);
 
-        $accessCode = TokenHelper::getAuthToken_FB();
 
-        $accountIndex = session('AccountIndex_FB', null);
-        if (is_null($accountIndex)) {
-            foreach ($accessCode as $index => $_) {
-                if (!is_null($_->default) && $_->default) {
-                    $accountIndex = $index;
+        if($withAuth)
+        {
+            $accessCode = TokenHelper::getAuthToken_FB();
+
+            $accountIndex = session('AccountIndex_FB', null);
+            if (is_null($accountIndex)) {
+                foreach ($accessCode as $index => $_) {
+                    if (!is_null($_->default) && $_->default) {
+                        $accountIndex = $index;
+                    }
                 }
+            }
+
+            $accountIndex = is_null($accountIndex) ? 0 : $accountIndex;
+
+            if (count($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
+                $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
             }
         }
 
-<<<<<<< HEAD
-        if (count($accessCode) && $accessCode[$accountIndex]->expire_in == -1 && time() < $accessCode[$accountIndex]->expire_in) {
-=======
-        if (count($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
->>>>>>> 5a91cdbb69c73a1de81c97a63c8afe325ac11585
-            $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
-        }
 
         return $client;
     }

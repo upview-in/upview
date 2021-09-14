@@ -92,7 +92,9 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
             });
 
             Route::prefix('facebook')->as('facebook.')->group(function () {
-                    Route::get('/overview', [App\Http\Controllers\User\Analyze\Facebook\OverviewController::class, 'overview'])->name('overview');
+                    Route::get('/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
+                    Route::get('/media', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('media');
+
    
             });
 
