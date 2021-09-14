@@ -29,6 +29,7 @@ class FacebookHelper
         if ($withAuth) {
             $accessCode = TokenHelper::getAuthToken_FB();
             $accountIndex = session('AccountIndex_FB', null);
+
             if (is_null($accountIndex)) {
                 foreach ($accessCode as $index => $_) {
                     if (!is_null($_->default) && $_->default) {
@@ -43,7 +44,6 @@ class FacebookHelper
                 }
             }
         }
-
 
         return $client;
     }
