@@ -106,7 +106,6 @@ class ChannelController extends Controller
             'endDate' => $request->endDate,
             'dimensions' => 'day',
             'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
-            'sort' => 'day',
             'filters' => $request->filters ?? ''
         ]);
         return response()->json($analytics, 200);
@@ -185,6 +184,21 @@ class ChannelController extends Controller
             'metrics' => 'shares',
             'sort' => '-shares',
             'filters' => $request->filters ?? ''
+        ]);
+        return response()->json($analytics, 200);
+    }
+
+    public function getMineChannelGeographicStatisticsAnalytics(Request $request)
+    {
+        $yt = new YoutubeHelper();
+        $service = $yt->getYoutubeAnalyticsService();
+        $analytics = $service->reports->query([
+            'ids' => 'channel==MINE',
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+            'dimensions' => 'country',
+            'metrics' => 'views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained',
+            'sort' => '-estimatedMinutesWatched',
         ]);
         return response()->json($analytics, 200);
     }
