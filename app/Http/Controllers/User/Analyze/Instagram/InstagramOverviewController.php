@@ -26,12 +26,18 @@ class InstagramOverviewController extends Controller
                         $data = [];
                         $response = app(InstagramController::class)->getMineAccountInsights(new GetMineAccountDetails($request->all(['fields'])))->getData();
                     
-                        $data['impressions']['dayBeforeYest'] = $response->data[0]->values[0]->value;
-                        $data['impressions']['yest'] = $response->data[0]->values[1]->value;
-                        $data['reach']['dayBeforeYest'] = $response->data[1]->values[0]->value;
-                        $data['reach']['yest'] = $response->data[1]->values[1]->value;
-                        $data['profile_views']['dayBeforeYest'] = $response->data[2]->values[0]->value;
-                        $data['profile_views']['yest'] = $response->data[2]->values[1]->value;
+                        $data['chartData'][0] = ["This title lmfao","Impressions", "Reach", "Views"];
+                        $data['impressions'] = $response->data[0]->values[0]->value;
+                        $data['reach'] = $response->data[1]->values[0]->value;
+                        // $data['profile_views']['dayBeforeYest'] = $response->data[2]->values[0]->value;
+                        // $data['profile_views']['yest'] = $response->data[2]->values[1]->value;
+
+                        $response =  app(InstagramController::class)->getMineAccountProfileViews()->getData();
+                        dd($response);
+
+                        $data['chartData'][1] = ["Insights",0,0,0];
+                        $data['chartData'][2] = ["Insights",$data['impressions'],$data['reach'],10];
+                       
 
                        return response()->json(collect($data), 200);
                     } else {

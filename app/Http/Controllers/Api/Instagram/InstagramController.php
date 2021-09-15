@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Api\Instagram\Account\GetMineAccountDetails;
 
 use App\Helper\InstagramHelper;
+use DateTime;
 use Exception;
 use SebastianBergmann\Environment\Console;
 
@@ -25,10 +26,31 @@ class InstagramController extends Controller
         $MINEUserID = $ig_client->get('/me/accounts')->getGraphEdge();
         $MINEUserID = $ig_client->get('/' . $MINEUserID[0]['id'] . '?fields=instagram_business_account')->getGraphUser();
         $MINE = $MINEUserID['instagram_business_account']['id'];
-        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=day')->getBody();
+        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=days_28')->getBody();        
+
         //dd(response()->json($igUser, 200));
         return response()->json(json_decode($igUser, true), 200);
     }
+
+    public function getMineAccountProfileViews()
+    {
+        $ig = new InstagramHelper();
+        $ig_client = $ig->getInstagramClient();
+
+        $MINEUserID = $ig_client->get('/me/accounts')->getGraphEdge();
+        $MINEUserID = $ig_client->get('/' . $MINEUserID[0]['id'] . '?fields=instagram_business_account')->getGraphUser();
+        $MINE = $MINEUserID['instagram_business_account']['id'];
+        $since = new DateTime();
+        $until = new DateTime();
+        $since->modify("-28 day");
+        dd('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp());
+        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();        
+        dd($igUser);
+        //dd(response()->json($igUser, 200));
+        return response()->json(json_decode($igUser, true), 200);
+    }
+
+
 
     public function getMineAccountData(GetMineAccountDetails $request)
     {
