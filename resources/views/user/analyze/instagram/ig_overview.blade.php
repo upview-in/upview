@@ -228,17 +228,15 @@
                 $.ajax({
                     data: {
                         part: 'Analytics',
-                        fields: 'impressions,reach,profile_views',
+                        fields: 'impressions,reach',
                     },
                     dataType: "json",
                     success: function(response) {
                         data = response;
-                        day1 = parseInt(data.impressions.dayBeforeYest);
-                        impressions = day1 + parseInt(data.impressions.yest);
-                        day1 = parseInt(data.reach.dayBeforeYest);
-                        reach = day1 + parseInt(data.reach.yest);
-                        day1 = parseInt(data.profile_views.dayBeforeYest);
-                        views = day1 + parseInt(data.profile_views.yest);
+                        impressions = parseInt(data.impressions);
+                        reach = parseInt(data.reach);
+                        // day1 = parseInt(data.profile_views.dayBeforeYest);
+                        // views = day1 + parseInt(data.profile_views.yest);
                         
                         
                         $("#igPage1Impressions").html(convertToInternationalCurrencySystem(
@@ -246,10 +244,9 @@
                         $("#igPage1Reach").html(convertToInternationalCurrencySystem(
                         reach));
                         $("#igPage1Views").html(convertToInternationalCurrencySystem(
-                        views));
-                        var chartData = [["This title lmfao","Impressions", "Reach", "Views"], ["Insights",impressions,reach,views]];
-                         drawChart(chartData);
-                        console.log(chartData);
+                        0));
+                         drawChart(data.chartData);
+                        console.log(data.chartData);
                         __AC("InstaInsights");
 
                     }
@@ -313,7 +310,7 @@
         </div>
         <div class="card shadow" id="InstaInsights">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Insights <i class="fas fa-xs fa-question-circle " title="Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></i></label>
+                <label class="h3 m-0">Insights <i class="fas fa-xs fa-question-circle " title="(Data is provided as on Today) Subject to Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></i></label>
             </div>
             <div class="card-body">
                 <div class="row">
