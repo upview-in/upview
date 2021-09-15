@@ -4,32 +4,6 @@
 <span class="breadcrumb-item active">Overview</span>
 @endsection
 
-@section('custom-css')
-<style>
-    .select2-choice {
-        height: auto !important;
-        line-height: inherit !important;
-    }
-
-    .select2-arrow {
-        display: flex !important;
-        align-items: center !important;
-    }
-
-    .select2-arrow>b {
-        height: auto !important;
-    }
-
-    #s2id_countryList>.select2-choice {
-        border: none;
-    }
-
-    text {
-        cursor: pointer;
-    }
-</style>
-@endsection
-
 @section('custom-scripts')
 <script>
     $(document).ready(function() {
@@ -43,7 +17,7 @@
         cb(__startDate, __endDate);
         loadData();
         google.charts.load('current', {
-            'packages': ['corechart', 'table']
+            'packages': ['corechart', 'table', 'geochart']
         }).then(() => {
             loadAnalytics();
         });
@@ -209,7 +183,7 @@
         }
 
         function loadAnalytics() {
-            __BS(["ChannelHighlights", "StatisticsOverview", "Demographics", "DeviceWise", "OsWise", "TrafficSource", "SocialMediaTrafficSource"]);
+            __BS(["ChannelHighlights", "StatisticsOverview", "Demographics", "DeviceWise", "OsWise", "TrafficSource", "SocialMediaTrafficSource", "GeographicStatistics"]);
 
             $.ajax({
                 data: {
@@ -229,10 +203,17 @@
                     let OsWise = data.OsWise;
                     let TrafficSource = data.TrafficSource;
                     let SocialMediaTrafficSource = data.SocialMediaTrafficSource;
+                    let GeographicStatistics = data.GeographicStatistics;
 
                     $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
                     $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
                     $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
+                    $("#HighlightsTopCountry").html(Highlights.TopCountry.Country + "<br>" + convertToInternationalCurrencySystem(Highlights.TopCountry.Views));
+                    $("#HighlightsTopDevice").html(Highlights.TopDevice.Device + "<br>" + convertToInternationalCurrencySystem(Highlights.TopDevice.Views));
+                    $("#HighlightsTopPlatform").html(Highlights.TopPlatform.Platform + "<br>" + convertToInternationalCurrencySystem(Highlights.TopPlatform.Views));
+                    $("#HighlightsTrafficSource").html(Highlights.TrafficSource.Source + "<br>" + convertToInternationalCurrencySystem(Highlights.TrafficSource.Views));
+                    $("#HighlightsTopSocialMedia").html(Highlights.SocialMediaTrafficSource.Source + "<br>" + convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares));
+                    // $("#HighlightsSubsVsNonSubs").html();
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
                     $("#OverviewStatisticsDislikes").html(convertToInternationalCurrencySystem(OverviewStatistics.DisLikes));
@@ -278,11 +259,9 @@
                     drawChart($('#TrafficSourceChart')[0], TrafficSource.ChartData, 'Column', {
                         hAxis: {
                             textPosition: 'out',
-                            slantedText: true,
-                            slantedTextAngle: 25,
                         },
                         chartArea: {
-                            left: 50,
+                            left: 100,
                             right: 50,
                             top: 26,
                             bottom: 100,
@@ -301,7 +280,13 @@
                         }
                     });
 
-                    __AC(["ChannelHighlights", "StatisticsOverview", "Demographics", "DeviceWise", "OsWise", "TrafficSource", "SocialMediaTrafficSource"]);
+                    drawChart($('#GeographicStatisticsChart')[0], GeographicStatistics.ChartData, 'Geo', {
+                        tooltip: {
+                            isHtml: true
+                        }
+                    });
+
+                    __AC(["ChannelHighlights", "StatisticsOverview", "Demographics", "DeviceWise", "OsWise", "TrafficSource", "SocialMediaTrafficSource", "GeographicStatistics"]);
 
                 }
             });
@@ -434,35 +419,25 @@
                                 <label class="font-weight-bolder" id="HighlightsTopDevice"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                                <span class="text-red">Top Platform</span>
+                                <br />
+                                <label class="font-weight-bolder" id="HighlightsTopPlatform"></label>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
                                 <span class="text-red">Traffic Source</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTrafficSource"></label>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Embedded Traffic Source</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsEmbeddedTrafficSource"></label>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Ads VS Organic</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsAdsVsOrganic"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
                                 <span class="text-red">Top Social Media</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopSocialMedia"></label>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+                            <!-- <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
                                 <span class="text-red">Subs VS Non-Subs</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsSubsVsNonSubs"></label>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Best Day and Time</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsBestDayandTime"></label>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -513,21 +488,6 @@
 
         <div class="row">
             <div class="col-md-6 col-12">
-                <div class="card shadow" id="Demographics">
-                    <div class="card-header p-15 ml-3">
-                        <label class="h3 m-0">Demographics</label>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <div id="DemographicsChart" class="w-100 mt-3" style="height: 400px"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-12">
                 <div class="card shadow" id="DeviceWise">
                     <div class="card-header p-15 ml-3">
                         <label class="h3 m-0">Device Wise</label>
@@ -557,7 +517,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-12">
+            <div class="col-12">
                 <div class="card shadow" id="TrafficSource">
                     <div class="card-header p-15 ml-3">
                         <label class="h3 m-0">Traffic Source</label>
@@ -573,6 +533,21 @@
             </div>
 
             <div class="col-md-6 col-12">
+                <div class="card shadow" id="Demographics">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Demographics</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="DemographicsChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
                 <div class="card shadow" id="SocialMediaTrafficSource">
                     <div class="card-header p-15 ml-3">
                         <label class="h3 m-0">Social Media Traffic Source</label>
@@ -581,6 +556,21 @@
                         <div class="row">
                             <div class="col">
                                 <div id="SocialMediaTrafficSourceChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card shadow" id="GeographicStatistics">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Geographic Statistics</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="GeographicStatisticsChart" class="w-100 mt-3" style="height: 400px"></div>
                             </div>
                         </div>
                     </div>
