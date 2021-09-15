@@ -65,10 +65,6 @@ class OverviewController extends Controller
                             $EstMinWatched += $value[$indexEstMinWatched];
                         }
 
-                        $data["Heighlights"]["SubsciberGained"] = $SubsciberGained;
-                        $data["Heighlights"]["Views"] = $Views;
-                        $data["Heighlights"]["AvgViewDuration"] = $AvgViewDuration;
-
                         $data["OverviewStatistics"]["Likes"] = $Likes;
                         $data["OverviewStatistics"]["DisLikes"] = $DisLikes;
                         $data["OverviewStatistics"]["Shares"] = $Shares;
@@ -106,10 +102,6 @@ class OverviewController extends Controller
                             $DemoGraphicsChartData[] = $tempArr;
                         }
 
-                        if (count($DemoGraphicsChartData) <= 1) {
-                            $DemoGraphicsChartData[] = ["age18-24", 0, 0];
-                        }
-
                         $data["Demographics"]["ChartData"] = $DemoGraphicsChartData;
 
 
@@ -121,14 +113,18 @@ class OverviewController extends Controller
 
                         $DeviceWiseChartData = [];
                         $DeviceWiseChartData[] = ['Device Type', 'Views'];
+                        $TopDevice = [];
+                        $TopDevice["Views"] = 0;
+                        $TopDevice["Device"] = "";
 
                         foreach ($DeviceWiseAnalyticsResponse->rows as $key => $value) {
                             $DeviceWiseChartData[] = [Functions::ConvertToRegularString($value[$indexDeviceType]), $value[$indexDeviceWiseViews]];
+                            if ($value[$indexDeviceWiseViews] > $TopDevice["Views"]) {
+                                $TopDevice["Views"] = $value[$indexDeviceWiseViews];
+                                $TopDevice["Device"] = Functions::ConvertToRegularString($value[$indexDeviceType]);
+                            }
                         }
 
-                        if (count($DeviceWiseChartData) <= 1) {
-                            $DeviceWiseChartData[] = ["Mobile", 0];
-                        }
                         $data["DeviceWise"]["ChartData"] = $DeviceWiseChartData;
 
 
@@ -140,12 +136,16 @@ class OverviewController extends Controller
 
                         $OsWiseChartData = [];
                         $OsWiseChartData[] = ['OS', 'Views'];
+                        $TopPlatform = [];
+                        $TopPlatform["Views"] = 0;
+                        $TopPlatform["Platform"] = "";
 
                         foreach ($OsWiseAnalyticsResponse->rows as $key => $value) {
                             $OsWiseChartData[] = [Functions::ConvertToRegularString($value[$indexOsType]), $value[$indexOsWiseViews]];
-                        }
-                        if (count($OsWiseChartData) <= 1) {
-                            $OsWiseChartData[] = ["Android", 0];
+                            if ($value[$indexOsWiseViews] > $TopPlatform["Views"]) {
+                                $TopPlatform["Views"] = $value[$indexOsWiseViews];
+                                $TopPlatform["Platform"] = Functions::ConvertToRegularString($value[$indexOsType]);
+                            }
                         }
                         $data["OsWise"]["ChartData"] = $OsWiseChartData;
 
@@ -159,14 +159,18 @@ class OverviewController extends Controller
 
                         $TrafficSourceChartData = [];
                         $TrafficSourceChartData[] = ['Traffic Source Type', 'Views', 'Est. Min. Watched'];
+                        $TrafficSource = [];
+                        $TrafficSource["Views"] = 0;
+                        $TrafficSource["Source"] = "";
 
                         foreach ($TrafficSourceAnalyticsResponse->rows as $key => $value) {
                             $TrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]), $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];
+                            if ($value[$indexTrafficSourceViews] > $TrafficSource["Views"]) {
+                                $TrafficSource["Views"] = $value[$indexTrafficSourceViews];
+                                $TrafficSource["Source"] = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
+                            }
                         }
 
-                        if (count($TrafficSourceChartData) <= 1) {
-                            $TrafficSourceChartData[] = ["Other", 0, 0];
-                        }
                         $data["TrafficSource"]["ChartData"] = $TrafficSourceChartData;
 
 
@@ -178,15 +182,71 @@ class OverviewController extends Controller
 
                         $SocialMediaTrafficSourceChartData = [];
                         $SocialMediaTrafficSourceChartData[] = ['Source', 'Shares'];
+                        $SocialMediaTrafficSource = [];
+                        $SocialMediaTrafficSource["Shares"] = 0;
+                        $SocialMediaTrafficSource["Source"] = "";
 
                         foreach ($SocialMediaTrafficSourceAnalyticsResponse->rows as $key => $value) {
                             $SocialMediaTrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]), $value[$indexSocialMediaTrafficSourceShares]];
+
+                            if ($value[$indexTrafficSourceViews] > $SocialMediaTrafficSource["Shares"]) {
+                                $SocialMediaTrafficSource["Shares"] = $value[$indexSocialMediaTrafficSourceShares];
+                                $SocialMediaTrafficSource["Source"] = Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]);
+                            }
                         }
 
-                        if (count($SocialMediaTrafficSourceChartData) <= 1) {
-                            $SocialMediaTrafficSourceChartData[] = ["Whatsapp", 0];
-                        }
                         $data["SocialMediaTrafficSource"]["ChartData"] = $SocialMediaTrafficSourceChartData;
+
+
+
+                        $GeographicStatisticsAnalyticsResponse = app(ChannelController::class)->getMineChannelGeographicStatisticsAnalytics($request)->getData();
+
+                        $indexGeographicStatisticsCountry = Functions::getIndexFromHeaderName($GeographicStatisticsAnalyticsResponse->columnHeaders, 'country');
+                        $indexGeographicStatisticsViews = Functions::getIndexFromHeaderName($GeographicStatisticsAnalyticsResponse->columnHeaders, 'views');
+                        $indexGeographicStatisticsEstimatedMinutesWatched = Functions::getIndexFromHeaderName($GeographicStatisticsAnalyticsResponse->columnHeaders, 'estimatedMinutesWatched');
+                        $indexGeographicStatisticsAverageViewDuration = Functions::getIndexFromHeaderName($GeographicStatisticsAnalyticsResponse->columnHeaders, 'averageViewDuration');
+                        $indexGeographicStatisticsAverageViewPercentage = Functions::getIndexFromHeaderName($GeographicStatisticsAnalyticsResponse->columnHeaders, 'averageViewPercentage');
+                        $indexGeographicStatisticsSubscribersGained = Functions::getIndexFromHeaderName($GeographicStatisticsAnalyticsResponse->columnHeaders, 'subscribersGained');
+
+                        $GeographicStatisticsChartData = [];
+                        // $GeographicStatisticsChartData[] = ["Country", "Views", "Est. Min. Watched", "Avg. View Duration", "Avg. View Percentage", "Subscribers Gained"];
+                        $GeographicStatisticsChartData[] = [
+                            "Country",
+                            "Views",
+                            [
+                                "role" => "tooltip",
+                                "type" => "string",
+                                "p" => [
+                                    "html" => true
+                                ]
+                            ]
+                        ];
+                        $TopCountry = [];
+                        $TopCountry["Views"] = 0;
+                        $TopCountry["Country"] = "";
+
+                        foreach ($GeographicStatisticsAnalyticsResponse->rows as $key => $value) {
+                            // $GeographicStatisticsChartData[] = [$value[$indexGeographicStatisticsCountry], $value[$indexGeographicStatisticsViews], $value[$indexGeographicStatisticsEstimatedMinutesWatched], $value[$indexGeographicStatisticsAverageViewDuration], $value[$indexGeographicStatisticsAverageViewPercentage], $value[$indexGeographicStatisticsSubscribersGained]];
+                            $GeographicStatisticsChartData[] = [$value[$indexGeographicStatisticsCountry], $value[$indexGeographicStatisticsViews], "<strong>Views:</strong> " . $value[$indexGeographicStatisticsViews] . "<br><strong>Est. Min. Watched:</strong> " . $value[$indexGeographicStatisticsEstimatedMinutesWatched] . "<br><strong>Avg. View Duration:</strong> " . $value[$indexGeographicStatisticsAverageViewDuration] . "<br><strong>Avg. View Percentage:</strong> " . $value[$indexGeographicStatisticsAverageViewPercentage] . "%<br><strong>Subscribers Gained:</strong> " . $value[$indexGeographicStatisticsSubscribersGained]];
+                            if ($value[$indexGeographicStatisticsViews] > $TopCountry["Views"]) {
+                                $TopCountry["Views"] = $value[$indexGeographicStatisticsViews];
+                                $TopCountry["Country"] = $value[$indexGeographicStatisticsCountry];
+                            }
+                        }
+
+                        $data["GeographicStatistics"]["ChartData"] = $GeographicStatisticsChartData;
+
+
+
+                        $data["Heighlights"]["SubsciberGained"] = $SubsciberGained;
+                        $data["Heighlights"]["Views"] = $Views;
+                        $data["Heighlights"]["AvgViewDuration"] = $AvgViewDuration;
+                        $data["Heighlights"]["TopCountry"] = $TopCountry;
+                        $data["Heighlights"]["TopDevice"] = $TopDevice;
+                        $data["Heighlights"]["TopPlatform"] = $TopPlatform;
+                        $data["Heighlights"]["TrafficSource"] = $TrafficSource;
+                        $data["Heighlights"]["SocialMediaTrafficSource"] = $SocialMediaTrafficSource;
+                        // $data["Heighlights"][""] = $;
 
                         return response()->json(collect($data));
                     } else {
