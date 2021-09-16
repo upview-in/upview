@@ -287,5 +287,3 @@ class AccountController extends Controller
         }
     }
 }
-
-?>
