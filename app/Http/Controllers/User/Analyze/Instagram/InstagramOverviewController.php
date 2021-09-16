@@ -33,10 +33,9 @@ class InstagramOverviewController extends Controller
                         // $data['profile_views']['yest'] = $response->data[2]->values[1]->value;
 
                         $response =  app(InstagramController::class)->getMineAccountProfileViews()->getData();
-                        dd($response);
-
+                        $data['profile_views'] = $response->profile_views;
                         $data['chartData'][1] = ["Insights",0,0,0];
-                        $data['chartData'][2] = ["Insights",$data['impressions'],$data['reach'],10];
+                        $data['chartData'][2] = ["Insights", $data['impressions'], $data['reach'], $data['profile_views']];
                        
 
                        return response()->json(collect($data), 200);

@@ -47,12 +47,6 @@
             });
 
 
-            function drawChart(data) {
-            var data = new google.visualization.arrayToDataTable(data);
-            OverviewStatisticsChart = new Chart($('#OverviewStatisticsChart')[0], data, {}, [7, 8], "Column");
-            OverviewStatisticsChart.init();
-        }
-
             function cb(start, end) {
                 $('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
@@ -235,6 +229,7 @@
                         data = response;
                         impressions = parseInt(data.impressions);
                         reach = parseInt(data.reach);
+                        profile_views = parseInt(data.profile_views);
                         // day1 = parseInt(data.profile_views.dayBeforeYest);
                         // views = day1 + parseInt(data.profile_views.yest);
                         
@@ -244,9 +239,9 @@
                         $("#igPage1Reach").html(convertToInternationalCurrencySystem(
                         reach));
                         $("#igPage1Views").html(convertToInternationalCurrencySystem(
-                        0));
-                         drawChart(data.chartData);
+                        profile_views));
                         console.log(data.chartData);
+                        drawChart($('#OverviewStatisticsChart')[0], data.chartData, 'Area');
                         __AC("InstaInsights");
 
                     }
@@ -310,7 +305,7 @@
         </div>
         <div class="card shadow" id="InstaInsights">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Insights <i class="fas fa-xs fa-question-circle " title="(Data is provided as on Today) Subject to Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></i></label>
+                <label class="h3 m-0">Insights <i class="fas fa-xs fa-question-circle " title="(Data according to last 28 days) Subject to Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></i></label>
             </div>
             <div class="card-body">
                 <div class="row">

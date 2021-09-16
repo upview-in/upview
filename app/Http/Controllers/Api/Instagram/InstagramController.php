@@ -43,13 +43,46 @@ class InstagramController extends Controller
         $since = new DateTime();
         $until = new DateTime();
         $since->modify("-28 day");
-        dd('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp());
         $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();        
-        dd($igUser);
+        $igUser = json_decode($igUser);
+        
+        $sum = 0;
+        foreach($igUser->data[0]->values as $value)
+        {
+            $sum = $sum + $value->value;
+        }
+        $dataArr['profile_views'] = $sum;
         //dd(response()->json($igUser, 200));
-        return response()->json(json_decode($igUser, true), 200);
+        return response()->json(($dataArr), 200);
     }
 
+    public function listMINEInstagramPages()
+    {
+            $ig = new InstagramHelper();
+            $ig_client = $ig->getInstagramClient();
+
+            $pagesEndPoint = config('instagram.endPoint') . 'me/accounts';
+            $pagesParams = [
+                'access_token' => config('instagram.accessToken')
+            ];
+
+            $pagesEndPoint .= '?' . http_build_query($pagesParams);
+
+            //CURL Initialization
+            $cu = curl_init($pagesEndPoint);
+            curl_setopt($cu, CURLOPT_URL, $pagesEndPoint);
+            curl_setopt($cu, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($cu, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
+
+            //CURL CALL
+            $response = curl_exec($cu);
+            curl_close($cu);
+
+            $responseArr = json_decode($response, true);
+       
+             return view('get-pages', ['responseArr' => $responseArr['data'][0]]);
+    }
 
 
     public function getMineAccountData(GetMineAccountDetails $request)
