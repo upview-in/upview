@@ -17,7 +17,11 @@
 
                                 @if (session('status') == 'verification-link-sent')
                                 <div class="mb-4 font-medium text-sm text-success">
-                                    {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                                    {{ __('A new verification link has been sent to the email address ') . Auth::user()->email }}
+                                </div>
+                                @else
+                                <div class="mb-4 font-medium text-sm text-success">
+                                    We just sent you verification email on {{ Auth::user()->email }}
                                 </div>
                                 @endif
 
