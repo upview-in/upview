@@ -35,6 +35,7 @@
             var __startDate = moment().subtract(29, 'days'),
                 __endDate = moment();
             var accounts = JSON.parse('{!! App\Helper\TokenHelper::getAuthToken_IG()->toJson() !!}');
+            var pages = JSON.parse(('{!! App\Http\Controllers\Api\Instagram\InstagramController::listMINEInstagramPages() !!}'));          
             var GroupBy = "day";
             var country = "";
 
@@ -68,6 +69,38 @@
             }
 
             function formatSelectionData(state) {
+                var $state = $(
+                    '<div class="row align-items-center p-2">' +
+                    '   <div class="col-auto">' +
+                    '       <img class="rounded-circle" src="' + state.picture + '" width="70px"/>' +
+                    '   </div>' +
+                    '   <div class="col-auto">' +
+                    '       <span class="font-weight-bold">' + state.name + '</span>' +
+                    '       <br/>' +
+                    '       <span>' + state.email + '</span>' +
+                    '   </div>' +
+                    '</div>'
+                );
+                return $state;
+            }
+            
+            function formatPagesData(state) {
+                var $state = $(
+                    '<div class="row align-items-center">' +
+                    '   <div class="col-auto">' +
+                    '       <img class="rounded-circle" src="' + state.picture + '" width="70px"/>' +
+                    '   </div>' +
+                    '   <div class="col-auto">' +
+                    '       <span class="font-weight-bold">' + state.name + '</span>' +
+                    '       <br/>' +
+                    '       <span>' + state.email + '</span>' +
+                    '   </div>' +
+                    '</div>'
+                );
+                return $state;
+            }
+
+            function formatPagesSelectionData(state) {
                 var $state = $(
                     '<div class="row align-items-center p-2">' +
                     '   <div class="col-auto">' +
@@ -132,11 +165,45 @@
 
                     },
                     success: function() {
-                        loadData();
+                       loadPages();
                     }
                 });
             });
 
+            $('#select2Pages').select2({
+                id: function(item) {
+                    return item._id
+                },
+                text: function(item) {
+                    return item.name
+                },
+                allowClear: true,
+                data: {
+                    results: accounts //HERE
+                },
+                formatResult: formatPagesData,
+                formatSelection: formatPagesSelectionData,
+                minimumResultsForSearch: -1
+            });
+
+            $('#select2Pages').val(pages.data["{{ session('PagesIndex_IG', 0) }}"].id).trigger('change');
+
+            $('#select2Pages').on('change', function(e) {
+                var data = $(this).select2('data');
+                $.ajax({
+                    url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
+                    data: {
+                        id: data.id,
+                        platform: parseInt('{{ App\Helper\TokenHelper::$INSTAGRAM }}'),
+
+                    },
+                    success: function() {
+                       loadData();
+                    }
+                });
+            });
+
+           
             let listRanges = {
                 'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
@@ -179,9 +246,15 @@
                 loadAnalytics();
             });
 
+
+
+            function loadPages()
+            {
+                loadData();
+            }
+
             function loadData() {
                 __BS("ChannelMainDiv");
-
                 $.ajax({
                     data: {
                         part: 'accountDetails',
@@ -189,6 +262,7 @@
                     },
                     dataType: "json",
                     success: function(response) {
+
                         let data = response;
                         $("#igPage1ProfileImage").attr('data-src', data.profile_picture_url);
                         $("#igPagelProfileImage").attr('src',
@@ -241,6 +315,7 @@
                         $("#igPage1Views").html(convertToInternationalCurrencySystem(
                         profile_views));
                         console.log(data.chartData);
+                        console.log(pages);
                         drawChart($('#OverviewStatisticsChart')[0], data.chartData, 'Area');
                         __AC("InstaInsights");
 
@@ -256,6 +331,9 @@
 <x-app-layout title="Overview">
     <div class="container-fluid">
         <div class="row mb-3 justify-content-end">
+            <div class="col-md-5 col-12">
+                <input class="shadow" id="select2Pages" />
+            </div>
             <div class="col-md-5 col-12">
                 <input class="shadow" id="select2Accounts" />
             </div>
