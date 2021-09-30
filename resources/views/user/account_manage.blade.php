@@ -28,9 +28,9 @@
 </script>
 @endif
 
-@if(session()->has('already_linked'))
+@if(session()->has('re_linked'))
 <script>
-	toast('Notice', 'Account already linked!', 5000, 'check', 'warning');
+	toast('Success', 'Account re-linked!', 5000, 'check', 'success');
 </script>
 @endif
 
@@ -59,7 +59,7 @@
 			</div>
 			<div class="card-body p-15 ml-3">
 				<div class="table-responsive">
-					<table class="table" data-toggle="table" data-pagination="true" data-search="true">
+					<table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
 						<thead>
 							<tr>
 								<th scope="col" data-sortable="true">#</th>
@@ -94,9 +94,19 @@
 									<?php
 
 									if ($linkedAccount->platform == 1) {
-										echo \Carbon\Carbon::parse($linkedAccount->created + $linkedAccount->expire_in)->diffInMinutes(\Carbon\Carbon::now()) . ' Minutes';
+										$expireAt = \Carbon\Carbon::parse($linkedAccount->created + $linkedAccount->expire_in)->diffInMinutes(\Carbon\Carbon::now());
+										if (($linkedAccount->created + $linkedAccount->expire_in) < \Carbon\Carbon::now()->timestamp) {
+											echo  'Expired';
+										} else {
+											echo $expireAt . ' Minutes';
+										}
 									} else if ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
-										echo \Carbon\Carbon::parse($linkedAccount->expire_in)->diffInDays(\Carbon\Carbon::now()) . ' Days';
+										$expireAt = \Carbon\Carbon::parse($linkedAccount->expire_in)->diffInDays(\Carbon\Carbon::now());
+										if ($linkedAccount->expire_in < \Carbon\Carbon::now()->timestamp) {
+											echo  'Expired';
+										} else {
+											echo  $expireAt . ' Days';
+										}
 									}
 
 									?>

@@ -74,11 +74,6 @@
     }
 
     .no-data {
-        /* width: 100%;
-        height: 120px;
-        line-height: 120px;
-        text-align: center; */
-
         position: absolute;
         left: 50%;
         top: 50%;
@@ -101,8 +96,28 @@
         color: silver;
     }
 
+    .text-purple {
+        color: purple;
+    }
+
+    .text-gold {
+        color: gold;
+    }
+
+    .text-cyan {
+        color: cyan;
+    }
+
+    .text-blue {
+        color: blue;
+    }
+
     .fs-7 {
         font-size: .8rem;
+    }
+
+    .fs-20 {
+        font-size: 2rem;
     }
 
     .google-visualization-tooltip-item {

@@ -41,7 +41,7 @@ Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get
 Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
 // Routes for user panel
-Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
+Route::prefix('panel')->as('panel.')->middleware(['auth', 'verified'])->group(function () {
 
     Route::redirect('/', '/panel/dashboard', 301);
 
@@ -85,21 +85,19 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
         });
 
         Route::prefix('analyze')->as('analyze.')->group(function () {
-            Route::prefix('youtube')->as('youtube.')->group(function () {
+            Route::prefix('youtube')->as('youtube.')->middleware('yt.token.validate')->group(function () {
                 Route::get('/overview', [App\Http\Controllers\User\Analyze\Youtube\OverviewController::class, 'overview'])->name('overview');
                 Route::get('/videos', [App\Http\Controllers\User\Analyze\Youtube\VideosController::class, 'videos'])->name('videos');
                 Route::get('/audience', [App\Http\Controllers\User\Analyze\Youtube\AudienceController::class, 'audience'])->name('audience');
             });
 
             Route::prefix('facebook')->as('facebook.')->group(function () {
-                    Route::get('/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
-                    Route::get('/media', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('media');
-
-   
+                Route::get('/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
+                Route::get('/media', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('media');
             });
 
             Route::prefix('instagram')->as('instagram.')->group(function () {
-                    Route::get('/overview', [InstagramOverviewController::class, 'overview'])->name('overview');
+                Route::get('/overview', [InstagramOverviewController::class, 'overview'])->name('overview');
             });
         });
     });

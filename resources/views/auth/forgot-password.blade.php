@@ -7,10 +7,16 @@
                         <div class="card shadow-lg">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between m-b-30">
-                                    <img class="img-fluid" alt="Logo" src="{{ asset('images/logo/logo.png') }}">
-                                    <h2 class="m-b-0">Password Recovery</h2>
+                                    <img class="img-fluid" alt="Logo" src="{{ asset('images/logo/named_logo.svg') }}" style="height: 100px;">
+                                    <h2 class="m-b-0">Recovery</h2>
                                 </div>
-                                
+
+                                @if (session('status'))
+                                <div class="mb-4 font-medium text-sm text-success">
+                                    {{ session('status') }}
+                                </div>
+                                @endif
+
                                 <div class="m-b-10">
                                     <label>{{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}</label>
                                 </div>
@@ -24,9 +30,9 @@
                                             <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
                                         </div>
                                         @error('email')
-                                            <span class="invalid-feedback d-block" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                     <div class="form-group">

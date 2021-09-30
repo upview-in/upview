@@ -60,13 +60,11 @@
 
 <x-app-layout title="Channel Intelligence">
     <div class="container-fluid">
-        <div class="card">
-            <div class="row justify-content-end mt-3 mr-1">
-                <div class="col-md-6 col-sm-9 col-12">
-                    <div class="input-affix m-b-10">
-                        <i class="prefix-icon anticon anticon-search"></i>
-                        <input type="text" id="searchChannel" class="form-control border-primary" placeholder="{{ __('Search Channel') }}">
-                    </div>
+        <div class="row justify-content-end mt-3 mr-1">
+            <div class="col-md-6 col-sm-9 col-12">
+                <div class="input-affix m-b-10">
+                    <i class="prefix-icon anticon anticon-search"></i>
+                    <input type="text" id="searchChannel" class="form-control border-primary" placeholder="{{ __('Search Channel') }}">
                 </div>
             </div>
         </div>
