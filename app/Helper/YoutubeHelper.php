@@ -2,8 +2,8 @@
 
 namespace App\Helper;
 
-use Carbon\Carbon;
 use Google\Client;
+use Google\Service\Oauth2;
 use Google\Service\YouTube;
 use Google\Service\YouTubeAnalytics;
 
@@ -39,6 +39,12 @@ class YoutubeHelper
             $expire_at = $accessCode[$accountIndex]->created + $accessCode[$accountIndex]->expire_in;
             if (time() > $expire_at) {
                 $token = $this->clientInstance->fetchAccessTokenWithRefreshToken($accessCode[$accountIndex]->refresh_token);
+                if (isset($token['error'])) {
+                    $this->clientInstance->setPrompt('consent');
+                    $this->clientInstance->setApprovalPrompt('force');
+                    $auth_url = $this->clientInstance->createAuthUrl();
+                    return redirect()->away(filter_var($auth_url, FILTER_SANITIZE_URL));
+                }
                 $accessCode[$accountIndex]->access_token = $token['access_token'];
                 $accessCode[$accountIndex]->expire_in = $token['expires_in'];
                 $accessCode[$accountIndex]->created = $token['created'];
@@ -46,6 +52,7 @@ class YoutubeHelper
             } else {
                 $token = $accessCode[$accountIndex]->access_token;
             }
+
             $this->clientInstance->setAccessToken($token);
         }
     }
@@ -54,8 +61,6 @@ class YoutubeHelper
     {
         $client = new Client();
 
-        //dd(file_get_contents("../storage/client_secret_840868942685-1h6ul3vl2hspfh91smjag8ufhelbct8v.apps.googleusercontent.com.json"));
-
         $client->setApplicationName(config('app.name'));
         $client->setDeveloperKey(config('youtube.developerKey'));
         $client->setRedirectUri(route(config('youtube.redirectUrl')));
@@ -63,7 +68,7 @@ class YoutubeHelper
         $client->setAccessType('offline');
         $client->setScopes(config('youtube.scopes'));
         $client->setIncludeGrantedScopes(true);
-        $client->setPrompt('consent');
+        $client->setPrompt('none');
 
         return $client;
     }

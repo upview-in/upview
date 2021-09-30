@@ -1,48 +1,75 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex" style="background-image: url('{{ asset('images/others/login-3.png') }}')">
+        <div class="d-flex flex-column justify-content-between w-100">
+            <div class="container d-flex h-100">
+                <div class="row align-items-center w-100">
+                    <div class="col-md-7 col-lg-5 m-h-auto">
+                        <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between m-b-30">
+                                    <img class="img-fluid" alt="Logo" src="{{ asset('images/logo/named_logo.svg') }}" style="height: 100px;">
+                                    <h2 class="m-b-0">Confirm</h2>
+                                </div>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                                <form method="POST" action="{{ route('password.update') }}">
+                                    @csrf
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+                                    <!-- Password Reset Token -->
+                                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                                    <div class="form-group">
+                                        <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
+                                        <div class="input-affix">
+                                            <i class="prefix-icon anticon anticon-mail"></i>
+                                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
+                                        </div>
+                                        @error('email')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+                                    <div class="form-group">
+                                        <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
+                                        <div class="input-affix m-b-10">
+                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="new-password" placeholder="{{ __('Password') }}">
+                                        </div>
+                                        @error('password')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                                    <div class="form-group">
+                                        <label class="font-weight-semibold" for="password_confirmation">{{ __('Confirm Password') }}:</label>
+                                        <div class="input-affix m-b-10">
+                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <input type="password" class="form-control {{ $errors->has('password_confirmation')?'is-invalid':'is-valid' }}" id="password_confirmation" type="password" name="password_confirmation" required placeholder="{{ __('Confirm Password') }}">
+                                        </div>
+                                        @error('password_confirmation')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <button class="btn btn-primary">{{ __('Reset Password') }}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+            <div class="d-none d-md-flex p-h-40 justify-content-between">
+                <span class="">© {{ \Carbon\Carbon::now()->year . ' ' . config('app.name') }}</span>
             </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+        </div>
+    </div>
 </x-guest-layout>

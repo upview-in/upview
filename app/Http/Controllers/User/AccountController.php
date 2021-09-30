@@ -39,13 +39,13 @@ class AccountController extends Controller
             'ads_management',
             'business_management',
             'pages_read_engagement',
-           'user_birthday',
-           'user_hometown',
-           'user_location',
-           'user_likes',
-           'user_photos',
-           'user_videos',
-           'user_friends',
+            'user_birthday',
+            'user_hometown',
+            'user_location',
+            'user_likes',
+            'user_photos',
+            'user_videos',
+            'user_friends',
             'user_posts',
             'user_gender',
             'user_age_range',
@@ -99,7 +99,17 @@ class AccountController extends Controller
                     $linkedAccount->save();
                     $rr->with('linked', 'true');
                 } else {
-                    $rr->with('already_linked', 'true');
+                    $linkedAccount = $__->first();
+                    $linkedAccount->email = $auth_user_info['email'] ?? '';
+                    $linkedAccount->name = $auth_user_info['name'] ?? '';
+                    $linkedAccount->picture = $auth_user_info['picture'] ?? '';
+                    $linkedAccount->code = $request->code;
+                    $linkedAccount->access_token = $token['access_token'];
+                    $linkedAccount->refresh_token = $token['refresh_token'];
+                    $linkedAccount->expire_in = $token['expires_in'];
+                    $linkedAccount->created = $token['created'];
+                    $linkedAccount->update();
+                    $rr->with('re_linked', 'true');
                 }
             } else {
                 $rr->with('error', 'true');
@@ -227,7 +237,7 @@ class AccountController extends Controller
     public function unlinkAccount(Request $request, $id)
     {
         $acc = LinkedAccounts::find($id);
-     
+
         // dd($acc->platform);
         if (!is_null($acc) && $acc->user_id === Auth::id()) {
             $acc->delete();

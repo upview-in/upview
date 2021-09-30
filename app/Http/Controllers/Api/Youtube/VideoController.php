@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Api\Youtube;
 
+use App\Helper\Functions;
 use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Youtube\Video\GetVideoAnalytics;
 use App\Http\Requests\Api\Youtube\Video\GetVideoDetailsFromVideoID;
 use App\Http\Requests\Api\Youtube\Video\GetVideoListFromChannelID;
 use App\Http\Requests\Api\Youtube\Video\GetVideoListFromName;
+use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
@@ -91,7 +94,8 @@ class VideoController extends Controller
             'id,snippet,contentDetails,liveStreamingDetails,localizations,player,recordingDetails,statistics,status,topicDetails',
             [
                 'chart' => 'mostPopular',
-                'maxResults' => '10'
+                'maxResults' => '10',
+                'regionCode' => Functions::getUserCountryCode()
             ]
         );
         return response()->json($videoList, 200);
@@ -105,7 +109,7 @@ class VideoController extends Controller
             'ids' => 'channel==MINE',
             'startDate' => $request->startDate,
             'endDate' => $request->endDate,
-            'dimensions' => 'day',
+            'dimensions' => $request->dimensions ?? 'day',
             'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
             // 'sort' => 'day',
             'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? '')
