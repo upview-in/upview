@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\Instagram\GetPagesController;
 use App\Http\Controllers\Api\Instagram\GetPostsController;
 use App\Http\Controllers\Api\Instagram\PostContentController;
 use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\PagesController;
 
 use App\Http\Controllers\User\Analyze\Instagram\InstagramOverviewController;
 
@@ -69,6 +70,7 @@ Route::prefix('panel')->as('panel.')->middleware(['auth'])->group(function () {
             Route::get('/unlink/{id}', [AccountController::class, 'unlinkAccount'])->name('unlinkAccount');
             Route::get('/setDefault/{id}/{platform}', [AccountController::class, 'setDefaultAccount'])->name('setDefaultAccount');
             Route::get('/setDefault/session', [AccountController::class, 'setSessionDefaultAccount'])->name('setSessionDefaultAccount');
+            Route::get('/setDefault/page', [PagesController::class, 'setSessionDefaultPage'])->name('setSessionDefaultPage');
         });
 
         Route::prefix('measure')->as('measure.')->group(function () {

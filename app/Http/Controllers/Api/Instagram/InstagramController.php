@@ -24,15 +24,32 @@ class InstagramController extends Controller
         $ig_client = $ig->getInstagramClient();
 
         $MINEUserID = $ig_client->get('/me/accounts')->getGraphEdge();
-        $MINEUserID = $ig_client->get('/' . $MINEUserID[0]['id'] . '?fields=instagram_business_account')->getGraphUser();
+        $MINEUserID = $ig_client->get('/' . $MINEUserID[session('AccountIndex_IG', 0)]['id'] . '?fields=instagram_business_account')->getGraphUser();
         $MINE = $MINEUserID['instagram_business_account']['id'];
         $igUser = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=days_28')->getBody();        
-
         //dd(response()->json($igUser, 200));
         return response()->json(json_decode($igUser, true), 200);
     }
 
-    public function getMineAccountProfileViews()
+    public static  function getMineAccountInsightsEx()
+    {
+        $ig = new InstagramHelper();
+        $ig_client = $ig->getInstagramClient();
+
+        $dataArr = array();
+        $MINEUserID = $ig_client->get('/me/accounts')->getGraphEdge();
+        $MINEUserID = $ig_client->get('/' . $MINEUserID[session('PagesIndex_IG', 0)]['id'] . '?fields=instagram_business_account')->getGraphUser();
+        $MINE = $MINEUserID['instagram_business_account']['id'];
+        $dataArr['insights'] = $ig_client->get('/' . $MINE . '/insights?metric=impressions,reach&period=days_28')->getBody();       
+        $dataArr['profile_views'] = InstagramController::getMineAccountProfileViewsEx(); 
+        //dd(response()->json($igUser, 200));
+        return response()->json(json_encode($dataArr, true), 200);
+    } 
+
+
+
+
+    public static  function getMineAccountProfileViews($lastDays='-28 day')
     {
         $ig = new InstagramHelper();
         $ig_client = $ig->getInstagramClient();
@@ -42,7 +59,7 @@ class InstagramController extends Controller
         $MINE = $MINEUserID['instagram_business_account']['id'];
         $since = new DateTime();
         $until = new DateTime();
-        $since->modify("-28 day");
+        $since->modify($lastDays);
         $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();        
         $igUser = json_decode($igUser);
         
@@ -56,32 +73,45 @@ class InstagramController extends Controller
         return response()->json(($dataArr), 200);
     }
 
-    public function listMINEInstagramPages()
+    public static  function getMineAccountProfileViewsEx($lastDays='-28 day')
     {
+        $ig = new InstagramHelper();
+        $ig_client = $ig->getInstagramClient();
+
+        $MINEUserID = $ig_client->get('/me/accounts')->getGraphEdge();
+        $MINEUserID = $ig_client->get('/' . $MINEUserID[0]['id'] . '?fields=instagram_business_account')->getGraphUser();
+        $MINE = $MINEUserID['instagram_business_account']['id'];
+        $since = new DateTime();
+        $until = new DateTime();
+        $since->modify($lastDays);
+        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();        
+        $igUser = json_decode($igUser);
+        
+        $sum = 0;
+        foreach($igUser->data[0]->values as $value)
+        {
+            $sum = $sum + $value->value;
+        }
+        return $sum;
+    }
+
+    public static function listMINEInstagramPages()
+    {
+            $dataArr = array('pageData'=>null, 'profile_data'=>null);
             $ig = new InstagramHelper();
             $ig_client = $ig->getInstagramClient();
+            $igUser = $ig_client->get('/me/accounts')->getBody();
+            $igUser = json_decode($igUser, true);
+            $igPageID = $igUser['data'][0]['id'];
+            $igUser = $ig_client->get('/'.$igPageID.'?fields=access_token')->getGraphUser();
+            $ig_client->setDefaultAccessToken($igUser['access_token']);  
+            $igUser = $ig_client->get('/'.$igPageID. '/insights?metric=page_engaged_users&period=days_28')->getBody();  
+            
+            $igUser = json_decode($igUser);
+            dd($igUser);
+        
 
-            $pagesEndPoint = config('instagram.endPoint') . 'me/accounts';
-            $pagesParams = [
-                'access_token' => config('instagram.accessToken')
-            ];
-
-            $pagesEndPoint .= '?' . http_build_query($pagesParams);
-
-            //CURL Initialization
-            $cu = curl_init($pagesEndPoint);
-            curl_setopt($cu, CURLOPT_URL, $pagesEndPoint);
-            curl_setopt($cu, CURLOPT_SSL_VERIFYHOST, false);
-            curl_setopt($cu, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
-
-            //CURL CALL
-            $response = curl_exec($cu);
-            curl_close($cu);
-
-            $responseArr = json_decode($response, true);
-       
-             return view('get-pages', ['responseArr' => $responseArr['data'][0]]);
+            return $igUser;
     }
 
 

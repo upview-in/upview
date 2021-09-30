@@ -26,6 +26,6 @@ class TokenHelper
     public static function getAuthToken_IG()
     {
         $user_id = Auth::id();
-        return LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$INSTAGRAM])->get();
+        return ( LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$INSTAGRAM])->get());
     }
 }

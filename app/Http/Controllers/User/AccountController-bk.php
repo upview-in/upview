@@ -12,7 +12,7 @@ use Google\Service\Oauth2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AccountController extends Controller
+class AccountControllerBK extends Controller
 {
     public function getYoutubeAccess()
     {
