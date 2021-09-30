@@ -35,6 +35,7 @@
             var __startDate = moment().subtract(29, 'days'),
                 __endDate = moment();
             var accounts = JSON.parse('{!! App\Helper\TokenHelper::getAuthToken_IG()->toJson() !!}');
+            var pages = JSON.parse(('{!! App\Http\Controllers\Api\Instagram\InstagramController::listMINEInstagramPages() !!}'));          
             var GroupBy = "day";
             var country = "";
 
@@ -46,12 +47,6 @@
                 loadAnalytics();
             });
 
-
-            function drawChart(data) {
-            var data = new google.visualization.arrayToDataTable(data);
-            OverviewStatisticsChart = new Chart($('#OverviewStatisticsChart')[0], data, {}, [7, 8], "Column");
-            OverviewStatisticsChart.init();
-        }
 
             function cb(start, end) {
                 $('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -74,6 +69,38 @@
             }
 
             function formatSelectionData(state) {
+                var $state = $(
+                    '<div class="row align-items-center p-2">' +
+                    '   <div class="col-auto">' +
+                    '       <img class="rounded-circle" src="' + state.picture + '" width="70px"/>' +
+                    '   </div>' +
+                    '   <div class="col-auto">' +
+                    '       <span class="font-weight-bold">' + state.name + '</span>' +
+                    '       <br/>' +
+                    '       <span>' + state.email + '</span>' +
+                    '   </div>' +
+                    '</div>'
+                );
+                return $state;
+            }
+            
+            function formatPagesData(state) {
+                var $state = $(
+                    '<div class="row align-items-center">' +
+                    '   <div class="col-auto">' +
+                    '       <img class="rounded-circle" src="' + state.picture + '" width="70px"/>' +
+                    '   </div>' +
+                    '   <div class="col-auto">' +
+                    '       <span class="font-weight-bold">' + state.name + '</span>' +
+                    '       <br/>' +
+                    '       <span>' + state.email + '</span>' +
+                    '   </div>' +
+                    '</div>'
+                );
+                return $state;
+            }
+
+            function formatPagesSelectionData(state) {
                 var $state = $(
                     '<div class="row align-items-center p-2">' +
                     '   <div class="col-auto">' +
@@ -138,11 +165,45 @@
 
                     },
                     success: function() {
-                        loadData();
+                       loadPages();
                     }
                 });
             });
 
+            $('#select2Pages').select2({
+                id: function(item) {
+                    return item._id
+                },
+                text: function(item) {
+                    return item.name
+                },
+                allowClear: true,
+                data: {
+                    results: accounts //HERE
+                },
+                formatResult: formatPagesData,
+                formatSelection: formatPagesSelectionData,
+                minimumResultsForSearch: -1
+            });
+
+            $('#select2Pages').val(pages.data["{{ session('PagesIndex_IG', 0) }}"].id).trigger('change');
+
+            $('#select2Pages').on('change', function(e) {
+                var data = $(this).select2('data');
+                $.ajax({
+                    url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
+                    data: {
+                        id: data.id,
+                        platform: parseInt('{{ App\Helper\TokenHelper::$INSTAGRAM }}'),
+
+                    },
+                    success: function() {
+                       loadData();
+                    }
+                });
+            });
+
+           
             let listRanges = {
                 'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
@@ -185,9 +246,15 @@
                 loadAnalytics();
             });
 
+
+
+            function loadPages()
+            {
+                loadData();
+            }
+
             function loadData() {
                 __BS("ChannelMainDiv");
-
                 $.ajax({
                     data: {
                         part: 'accountDetails',
@@ -195,6 +262,7 @@
                     },
                     dataType: "json",
                     success: function(response) {
+
                         let data = response;
                         $("#igPage1ProfileImage").attr('data-src', data.profile_picture_url);
                         $("#igPagelProfileImage").attr('src',
@@ -228,17 +296,16 @@
                 $.ajax({
                     data: {
                         part: 'Analytics',
-                        fields: 'impressions,reach,profile_views',
+                        fields: 'impressions,reach',
                     },
                     dataType: "json",
                     success: function(response) {
                         data = response;
-                        day1 = parseInt(data.impressions.dayBeforeYest);
-                        impressions = day1 + parseInt(data.impressions.yest);
-                        day1 = parseInt(data.reach.dayBeforeYest);
-                        reach = day1 + parseInt(data.reach.yest);
-                        day1 = parseInt(data.profile_views.dayBeforeYest);
-                        views = day1 + parseInt(data.profile_views.yest);
+                        impressions = parseInt(data.impressions);
+                        reach = parseInt(data.reach);
+                        profile_views = parseInt(data.profile_views);
+                        // day1 = parseInt(data.profile_views.dayBeforeYest);
+                        // views = day1 + parseInt(data.profile_views.yest);
                         
                         
                         $("#igPage1Impressions").html(convertToInternationalCurrencySystem(
@@ -246,10 +313,10 @@
                         $("#igPage1Reach").html(convertToInternationalCurrencySystem(
                         reach));
                         $("#igPage1Views").html(convertToInternationalCurrencySystem(
-                        views));
-                        var chartData = [["This title lmfao","Impressions", "Reach", "Views"], ["Insights",impressions,reach,views]];
-                         drawChart(chartData);
-                        console.log(chartData);
+                        profile_views));
+                        console.log(data.chartData);
+                        console.log(pages);
+                        drawChart($('#OverviewStatisticsChart')[0], data.chartData, 'Area');
                         __AC("InstaInsights");
 
                     }
@@ -264,6 +331,9 @@
 <x-app-layout title="Overview">
     <div class="container-fluid">
         <div class="row mb-3 justify-content-end">
+            <div class="col-md-5 col-12">
+                <input class="shadow" id="select2Pages" />
+            </div>
             <div class="col-md-5 col-12">
                 <input class="shadow" id="select2Accounts" />
             </div>
@@ -313,7 +383,7 @@
         </div>
         <div class="card shadow" id="InstaInsights">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Insights <i class="fas fa-xs fa-question-circle " title="Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></i></label>
+                <label class="h3 m-0">Insights <i class="fas fa-xs fa-question-circle " title="(Data according to last 28 days) Subject to Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></i></label>
             </div>
             <div class="card-body">
                 <div class="row">

@@ -3,29 +3,19 @@
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+                <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
-                        <i class="anticon anticon-dashboard"></i>
+                        <i class="anticon anticon-home"></i>
                     </span>
                     <span class="title">{{ __('Dashboard') }}</span>
-                    <span class="arrow">
-                        <i class="arrow-icon"></i>
-                    </span>
                 </a>
-                <ul class="dropdown-menu">
-                    <li class="{{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
-                        <a href="{{ route('panel.dashboard') }}">
-                            <span class="title">{{ __('Main') }}</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <i class="anticon anticon-pie-chart"></i>
                     </span>
-                    <span class="title">{{ __('Analyze') }}</span>
+                    <span class="title">{{ __('Analytics') }}</span>
                     <span class="arrow">
                         <i class="arrow-icon"></i>
                     </span>
