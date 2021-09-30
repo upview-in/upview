@@ -39,6 +39,7 @@ class AccountController extends Controller
             'ads_management',
             'business_management',
             'pages_read_engagement',
+            'read_insights',    
             'user_birthday',
             'user_hometown',
             'user_location',
