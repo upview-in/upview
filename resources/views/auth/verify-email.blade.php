@@ -12,7 +12,7 @@
                                 </div>
 
                                 <div class="mb-4 text-sm text-dark">
-                                    {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                                    {{ __('Thanks for signing up! Before you get  started, You will be required to verify your identity. Dont worry, we\'ve just sent you an email that you provided during signup process with a link to verify your account. Just click on the link given there (Yea! Its that easy). If you didn\'t receive the email, we will gladly send you another.') }}
                                 </div>
 
                                 @if (session('status') == 'verification-link-sent')
