@@ -476,6 +476,10 @@
             });
             return ele;
         }
+ 
+        function nl2br(str){
+        return str.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        }
 
         function viewFullScreenDiv(__id) {
             if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {

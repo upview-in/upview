@@ -56,8 +56,8 @@ class FacebookOverviewController extends Controller
                             //$data['chartData'][0] = ["This title lmfao","Impressions", "Reach", "Views"];
 
                             $data['name'] = $response->name ??  "N/A";
-                            $data['picture'] = $response->picture ?? $data['picture']["data"]["url"] = "{{ asset('images/no-image.jpg') }}";
-                            $response->about  ? $data['about'] = $response->about : $data['about'] = "N/A";
+                            $data['picture'] = $response->picture ?? array('data'=>array('url'=>"{{ asset('images/no-image.jpg') }}"));
+                            $data['about'] =  $response->about ??  "N/A";
                             $data['bio'] = $response->bio   ??  "N/A";
                             $data['business'] =  $response->business ??  "N/A";
                             $data['country_pages_likes'] = $response->country_pages_likes ?? "N/A";
@@ -79,7 +79,7 @@ class FacebookOverviewController extends Controller
                             $data['videos'] = $response->videos ?? null;
                             $data['visitor_posts'] = $response->visitor_posts ?? null;
                             $data['tagged'] = $response->tagged ?? null;
-
+                            $data['status'] = 200;
 
                             return response()->json(collect($data), 200);
                         } else {
