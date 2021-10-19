@@ -295,9 +295,43 @@
                         console.log(data);
                         if(data.status == 200)
                         {
-                            $("#FBInsights").load("{{ view('user.analyze.facebook.page-themes') }}")
+                            $("#fbPageURL").attr('href', data.link);
+                            $("#fbPageProfileImage").attr('src',
+                                "{{ asset('images/others/loading.gif') }}");
+
+                            $("#fbPageProfileImage").attr('data-src', data.picture.data.url);
+                            
+                            loadImages(); //Remember to call after loading images for LazyLoader
+
+                            $("#fbPageName").html((data.name));
+                            $("#fbPageAbout").html(nl2br(data.about));
+                            $("#fbPageBio").html(nl2br(data.bio)); 
+                            $("#fbPageBusiness").html((data.business.name));
+                            $("#fbPageDescription").html(nl2br(data.description));
+                            $("#fbPageEngagement").html(convertToInternationalCurrencySystem(data.engagement.count));
+                            $("#fbPageEngagementSocial").html("("+nl2br(data.engagement.social_sentence)+")");
+                            $("#fbPageFollowers").html(convertToInternationalCurrencySystem(data.followers_count));
+                            $("#fbPageLocation").html((data.location));
+
+                            if(data.is_published) $("#fbPagePublished").html("Yes");
+                            else $("#fbPagePublished").html("No");
+
+                            $("#fbPageFans").html(convertToInternationalCurrencySystem(data.fan_count));
+                            $("#fbPageMediaCount").html(convertToInternationalCurrencySystem((data.feed.data).length));
+
+
+                            $("#fbPageVerifiedStatusIcon").attr('class', "fas fa-lg fa-check-circle");
+
+                            if(data.verification_status) $("#fbPageVerifiedStatusIcon").attr('style', "color:#3333ff;");
+                            else $("#fbPageVerifiedStatusIcon").attr('style', "color:#D5D4D4;");
+                            
+                            
+
+                            
+
                         } 
 
+                        __AC("FBInsights");
                         
                     }
                    
@@ -381,8 +415,6 @@
                             <div class="col-12">
                                 <label class="h1 font-weight-bold" id="fbPageName"> </label>
                                 <span id="fbPageVerifiedStatusIcon"></span>
-                                {{-- <span id="fbPagePublishedStatusIcon"></span>    
-                                <span id="fbPageCommunityStatusIcon"></span>     --}}
 
                             </div>
                         </div>   
@@ -413,6 +445,8 @@
                                 <span class="text-red"><i class="fas fa-sort-numeric-up"></i> Engagement</span>
                                 <br>
                                 <label id="fbPageEngagement" class="font-weight-bold"></label>
+                                <br>
+                                <label id="fbPageEngagementSocial" class="text-muted" style="font-size:12px"></label>
     
                             </div>
                             <div class="col-md-3 col-sm-4 mb-2">

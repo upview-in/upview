@@ -13,3 +13,6 @@ npm-debug.log
 yarn-error.log
 
 /vendor/*
+
+upview-start.sh
+storage

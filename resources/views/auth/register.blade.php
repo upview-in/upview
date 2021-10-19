@@ -38,6 +38,18 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label class="font-weight-semibold" for="mobile_number">{{ __('Contact Number') }}:</label>
+                                        <div class="input-affix">
+                                            <i class="prefix-icon fas fa-phone-alt"></i>
+                                            <input type="number" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" id="mobile_number" name="mobile_number" :value="old('mobile_number')" required autofocus placeholder="{{ __('Contact Number') }}">
+                                        </div>
+                                        @error('mobile_number')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon anticon anticon-lock"></i>
@@ -49,7 +61,7 @@
                                         </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group"> 
                                         <label class="font-weight-semibold" for="password_confirmation">{{ __('Confirm Password') }}:</label>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon anticon anticon-lock"></i>
