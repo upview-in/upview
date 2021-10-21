@@ -142,6 +142,10 @@
         border: none;
     }
 
+    .videoTag {
+        cursor: pointer;
+    }
+
     text {
         cursor: pointer;
     }
@@ -751,6 +755,11 @@
             if (getCookie('isFolded') != "" && getCookie('isFolded') == "true") {
                 $(".app").addClass("is-folded");
             }
+
+            $(document).on('click', ".videoTag", function() {
+                let tag = $(this).html();
+                window.location = "{{ route('panel.user.measure.market_research.video_intelligence.index') }}?tag=" + tag;
+            });
 
             var $div = $(".app");
             var observer = new MutationObserver(function(mutations) {
