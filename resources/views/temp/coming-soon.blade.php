@@ -13,7 +13,6 @@
 	<link rel="stylesheet" href=" {{ asset('css/styles.css') }}" />
 	<!-- Icons via Font Awesome -->
 	<link rel="stylesheet" href=" {{ asset('css/font-awesome.min.css') }}" />
-
 	<style>
 		.bg-img {
 			width: 100%;
