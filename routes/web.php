@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
@@ -20,8 +22,12 @@ use App\Http\Controllers\User\ProfileController;
 
 // Admin Routes
 Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], function () {
-    Route::as('admin.')->group(function () {
-        Route::view('/demo', 'admin.test');
+    Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
+        Route::middleware(['auth:admin'])->group(function () {
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::resource('users', UserController::class);
+        });
+        require __DIR__ . '/adminAuth.php';
     });
 });
 

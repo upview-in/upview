@@ -6,6 +6,14 @@ use Illuminate\View\Component;
 
 class AdminGuestLayout extends Component
 {
+    public $title, $bodyClasses;
+
+    public function __construct($title = null, $bodyClasses = null)
+    {
+        $this->title = $title;
+        $this->bodyClasses = $bodyClasses;
+    }
+
     /**
      * Get the view / contents that represents the component.
      *
