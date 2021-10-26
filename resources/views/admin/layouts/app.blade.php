@@ -8,7 +8,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!--favicon-->
-	<link rel="icon" href="{{ asset('admin/images/favicon-32x32.png') }}" type="image/png" />
+	<link rel="icon" href="{{ asset('admin/images/logo/favicon.svg') }}" type="image/png" />
 
 	<!--plugins-->
 	<link href="{{ asset('admin/plugins/notifications/css/lobibox.min.css') }}" rel="stylesheet" />
@@ -16,6 +16,8 @@
 	<link href="{{ asset('admin/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('admin/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+	<link href="{{ asset('admin/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
 
 	<!-- loader-->
 	<link href="{{ asset('admin/css/pace.min.css') }}" rel="stylesheet" />
@@ -32,15 +34,9 @@
 	<link rel="stylesheet" href="{{ asset('admin/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('admin/css/header-colors.css') }}" />
 
-	<title>{{ ($title ?? 'Dashboard') . ' - ' . config('app.name', 'Laravel') }}</title>
+	@yield('custom-styles')
 
-	@if ($pageHeader ?? true===true)
-	<style>
-		.page-content {
-			padding-top: 0rem;
-		}
-	</style>
-	@endif
+	<title>{{ ($title ?? 'Dashboard') . ' - ' . config('app.name', 'Laravel') . ' Admin' }}</title>
 </head>
 
 <body>
@@ -51,21 +47,24 @@
 
 		<!--start page wrapper -->
 		<div class="page-wrapper">
-			@if ($pageHeader ?? true === true)
-			<div class="page-header">
-				<div class="container-fluid">
-					<h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
-					<div class="header-sub-title">
-						<nav class="breadcrumb breadcrumb-dash">
-							<a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
-							@yield('path-navigation')
+			<div class="page-content">
+				@if ($pageHeader ?? true === true)
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">{{ $title ?? 'Dashboard' }}</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
+								</li>
+								@yield('path-navigation')
+							</ol>
 						</nav>
 					</div>
 				</div>
-			</div>
-			@endif
+				<!--end breadcrumb-->
+				@endif
 
-			<div class="page-content">
 				{{ $slot }}
 			</div>
 		</div>
@@ -79,7 +78,7 @@
 		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 		<!--End Back To Top Button-->
 
-		@include('admin.layouts.footer')
+		<!-- @include('admin.layouts.footer') -->
 	</div>
 	<!--end wrapper-->
 
@@ -104,11 +103,13 @@
 	<script src="{{ asset('admin/plugins/chartjs/js/Chart.min.js') }}"></script>
 	<script src="{{ asset('admin/plugins/chartjs/js/Chart.extension.js') }}"></script>
 	<script src="{{ asset('admin/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
+	<script src="{{ asset('admin/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('admin/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+	<script src="{{ asset('admin/plugins/datatable/js/buttons.server-side.js') }}"></script>
 
 	<!--notification js -->
 	<script src="{{ asset('admin/plugins/notifications/js/lobibox.min.js') }}"></script>
 	<script src="{{ asset('admin/plugins/notifications/js/notifications.min.js') }}"></script>
-	<script src="{{ asset('admin/js/index.js') }}"></script>
 
 	<!--app JS-->
 	<script src="{{ asset('admin/js/app.js') }}"></script>
@@ -286,6 +287,8 @@
 			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 		}
 	</script>
+
+	@yield('custom-scripts')
 </body>
 
 </html>
