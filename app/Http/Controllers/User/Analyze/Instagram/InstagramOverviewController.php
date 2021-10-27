@@ -13,7 +13,7 @@ class InstagramOverviewController extends Controller
 {
     public function overview(Request $request)
     {
-    
+
 
         if (!count(TokenHelper::getAuthToken_IG())) {
             return redirect()->route('panel.user.account.accounts_manager');
@@ -25,7 +25,7 @@ class InstagramOverviewController extends Controller
                     if ($request->has(['fields'])) {
                         $data = [];
                         $response = app(InstagramController::class)->getMineAccountInsights(new GetMineAccountDetails($request->all(['fields'])))->getData();
-                    
+
                         $data['chartData'][0] = ["This title lmfao","Impressions", "Reach", "Views"];
                         $data['impressions'] = $response->data[0]->values[0]->value;
                         $data['reach'] = $response->data[1]->values[0]->value;
@@ -36,7 +36,7 @@ class InstagramOverviewController extends Controller
                         $data['profile_views'] = $response->profile_views;
                         $data['chartData'][1] = ["Insights",0,0,0];
                         $data['chartData'][2] = ["Insights", $data['impressions'], $data['reach'], $data['profile_views']];
-                       
+                        $data['status'] = 200;
 
                        return response()->json(collect($data), 200);
                     } else {
@@ -60,6 +60,9 @@ class InstagramOverviewController extends Controller
                     $data["username"]= $response->username;
 
                     $data["is_verified"] = app(InstagramController::class)->getUserVerifiedStatus($response->username);
+
+                    $data['status'] = 200;
+
                     return response()->json(collect($data));
                 default:
                     return response()->json(['status' => 400, 'message' => 'Missing required fields']);
@@ -70,7 +73,7 @@ class InstagramOverviewController extends Controller
         return view('user.analyze.instagram.ig_overview');
     }
 
-    
+
 
 
 }

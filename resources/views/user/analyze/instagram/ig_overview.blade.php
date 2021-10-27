@@ -35,7 +35,6 @@
             var __startDate = moment().subtract(29, 'days'),
                 __endDate = moment();
             var accounts = JSON.parse('{!! App\Helper\TokenHelper::getAuthToken_IG()->toJson() !!}');
-            var pages = JSON.parse(('{!! App\Http\Controllers\Api\Instagram\InstagramController::listMINEInstagramPages() !!}'));          
             var GroupBy = "day";
             var country = "";
 
@@ -69,38 +68,6 @@
             }
 
             function formatSelectionData(state) {
-                var $state = $(
-                    '<div class="row align-items-center p-2">' +
-                    '   <div class="col-auto">' +
-                    '       <img class="rounded-circle" src="' + state.picture + '" width="70px"/>' +
-                    '   </div>' +
-                    '   <div class="col-auto">' +
-                    '       <span class="font-weight-bold">' + state.name + '</span>' +
-                    '       <br/>' +
-                    '       <span>' + state.email + '</span>' +
-                    '   </div>' +
-                    '</div>'
-                );
-                return $state;
-            }
-            
-            function formatPagesData(state) {
-                var $state = $(
-                    '<div class="row align-items-center">' +
-                    '   <div class="col-auto">' +
-                    '       <img class="rounded-circle" src="' + state.picture + '" width="70px"/>' +
-                    '   </div>' +
-                    '   <div class="col-auto">' +
-                    '       <span class="font-weight-bold">' + state.name + '</span>' +
-                    '       <br/>' +
-                    '       <span>' + state.email + '</span>' +
-                    '   </div>' +
-                    '</div>'
-                );
-                return $state;
-            }
-
-            function formatPagesSelectionData(state) {
                 var $state = $(
                     '<div class="row align-items-center p-2">' +
                     '   <div class="col-auto">' +
@@ -165,45 +132,11 @@
 
                     },
                     success: function() {
-                       loadPages();
-                    }
-                });
-            });
-
-            $('#select2Pages').select2({
-                id: function(item) {
-                    return item._id
-                },
-                text: function(item) {
-                    return item.name
-                },
-                allowClear: true,
-                data: {
-                    results: accounts //HERE
-                },
-                formatResult: formatPagesData,
-                formatSelection: formatPagesSelectionData,
-                minimumResultsForSearch: -1
-            });
-
-            $('#select2Pages').val(pages.data["{{ session('PagesIndex_IG', 0) }}"].id).trigger('change');
-
-            $('#select2Pages').on('change', function(e) {
-                var data = $(this).select2('data');
-                $.ajax({
-                    url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
-                    data: {
-                        id: data.id,
-                        platform: parseInt('{{ App\Helper\TokenHelper::$INSTAGRAM }}'),
-
-                    },
-                    success: function() {
                        loadData();
                     }
                 });
             });
 
-           
             let listRanges = {
                 'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
@@ -248,13 +181,12 @@
 
 
 
-            function loadPages()
-            {
-                loadData();
-            }
 
             function loadData() {
                 __BS("ChannelMainDiv");
+                __BS("ChannelHighlights");
+
+
                 $.ajax({
                     data: {
                         part: 'accountDetails',
@@ -264,34 +196,40 @@
                     success: function(response) {
 
                         let data = response;
-                        $("#igPage1ProfileImage").attr('data-src', data.profile_picture_url);
-                        $("#igPagelProfileImage").attr('src',
-                            "{{ asset('images/others/loading.gif') }}");
-                        loadImages(); //Remember to call after loading images for LazyLoader
-                        
-                        $("#igPage1Name").html((data.name));
-                        $("#igPage1UserName").html((data.username));
-                        $("#igPage1FollowersCount").html(convertToInternationalCurrencySystem(data
-                            .followers_count));
-                        $("#igPage1FollowingCount").html(convertToInternationalCurrencySystem(data
-                        .follows_count));
-                        $("#igPage1MediaCount").html(convertToInternationalCurrencySystem(data
-                        .media_count));
-
-                        if(data.is_verified == true)
+                        console.log(data);
+                        if(data.status == 200)
                         {
+                            $("#igPage1ProfileImage").attr('data-src', data.profile_picture_url);
+                            $("#igPagelProfileImage").attr('src',
+                                "{{ asset('images/others/loading.gif') }}");
+                            loadImages(); //Remember to call after loading images for LazyLoader
+
+                            $("#igPage1Name").html((data.name));
+                            $("#igPage1UserName").html((data.username));
+                            $("#igPage1FollowersCount").html(convertToInternationalCurrencySystem(data
+                                .followers_count));
+                            $("#igPage1FollowingCount").html(convertToInternationalCurrencySystem(data
+                            .follows_count));
+                            $("#igPage1MediaCount").html(convertToInternationalCurrencySystem(data
+                            .media_count));
+
                             $("#igPageVerifiedStatusIcon").attr('class', "fas fa-lg fa-check-circle");
-                            $("#igPageVerifiedStatusIcon").attr('style', "color:#3333ff;");
+
+                            if(data.is_verified == true) $("#igPageVerifiedStatusIcon").attr('style', "color:#3333ff;");
+                            else $("#igPageVerifiedStatusIcon").attr('style', "color:#D5D4D4;");
                         }
 
-                        
                         __AC("ChannelMainDiv");
+
+
+                        if(data.status != 200){
+                            $("#ChannelMainDiv").html(noData);
+                        }
                     }
                 });
             }
 
             function loadAnalytics() {
-                __BS("InstaInsights");
 
                 $.ajax({
                     data: {
@@ -300,24 +238,33 @@
                     },
                     dataType: "json",
                     success: function(response) {
-                        data = response;
-                        impressions = parseInt(data.impressions);
-                        reach = parseInt(data.reach);
-                        profile_views = parseInt(data.profile_views);
-                        // day1 = parseInt(data.profile_views.dayBeforeYest);
-                        // views = day1 + parseInt(data.profile_views.yest);
-                        
-                        
-                        $("#igPage1Impressions").html(convertToInternationalCurrencySystem(
-                        impressions));
-                        $("#igPage1Reach").html(convertToInternationalCurrencySystem(
-                        reach));
-                        $("#igPage1Views").html(convertToInternationalCurrencySystem(
-                        profile_views));
-                        console.log(data.chartData);
-                        console.log(pages);
-                        drawChart($('#OverviewStatisticsChart')[0], data.chartData, 'Area');
-                        __AC("InstaInsights");
+                       let data = response;
+
+                        if(data.status == 200)
+                        {
+                            impressions = parseInt(data.impressions);
+                            reach = parseInt(data.reach);
+                            profile_views = parseInt(data.profile_views);
+                            // day1 = parseInt(data.profile_views.dayBeforeYest);
+                            // views = day1 + parseInt(data.profile_views.yest);
+
+
+                            $("#igPage1Impressions").html(convertToInternationalCurrencySystem(
+                            impressions));
+                            $("#igPage1Reach").html(convertToInternationalCurrencySystem(
+                            reach));
+                            $("#igPage1Views").html(convertToInternationalCurrencySystem(
+                            profile_views));
+                            console.log(data.chartData);
+                            drawChart($('#OverviewStatisticsChart')[0], data.chartData, 'Area');
+                        }
+
+                        __AC("ChannelHighlights");
+
+                        if(data.status != 200){
+                            $("#ChannelHighlights").html(noData);
+                            $("#OverviewStatisticsChart").html(noData);
+                        }
 
                     }
                 });
@@ -325,15 +272,12 @@
 
         });
     </script>
-    
+
 @endsection
 
 <x-app-layout title="Overview">
     <div class="container-fluid">
         <div class="row mb-3 justify-content-end">
-            <div class="col-md-5 col-12">
-                <input class="shadow" id="select2Pages" />
-            </div>
             <div class="col-md-5 col-12">
                 <input class="shadow" id="select2Accounts" />
             </div>
@@ -352,7 +296,7 @@
                             <label class="h1 font-weight-bold" id="igPage1Name"></label>
                             <span id="igPageVerifiedStatusIcon"></span>
                         </div>
-                        
+
                     </div>
 
                     <div class="row mt-4">
@@ -360,7 +304,7 @@
                             <span class="text-red"><i class="far fa-id-card"></i> Username</span>
                             <br>
                             <label id="igPage1UserName" class="font-weight-bold"></label>
-                            
+
                         </div>
                         <div class="col">
                             <span class="text-red"><i class="fas fa-users"></i> Followers</span>
@@ -413,7 +357,7 @@
             <div class="card-header p-15 ml-3">
                 <label class="h3 m-0">Statistics Overview</label>
             </div>
-            <div class="card-body">     
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-10">
                         <div id="OverviewStatisticsChart" class="w-100 mt-3" style="height: 400px"></div>
