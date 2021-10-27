@@ -10,6 +10,7 @@
 	<!-- Open Sans from Google Webfonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<!-- Main styles file -->
+
 	<link rel="stylesheet" href=" {{ asset('css/styles.css') }}" />
 	<!-- Icons via Font Awesome -->
 	<link rel="stylesheet" href=" {{ asset('css/font-awesome.min.css') }}" />
@@ -73,7 +74,7 @@
 			});
 
 
-			// Activate notifyMe plugin on a '#notifyMe' element	
+			// Activate notifyMe plugin on a '#notifyMe' element
 			$("#notifyMe").notifyMe();
 
 
