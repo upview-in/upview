@@ -15,9 +15,9 @@
 
  
 
-sudo a2enmod rewrite
+		sudo a2enmod rewrite
 
-sudo a2enmod ssl
+		sudo a2enmod ssl
 
 - Add .htaccess permissions for directory inside vhost file:
 
