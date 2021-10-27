@@ -7,7 +7,7 @@
 - copy prevendor to vendor
 
 
-- Steps for Apache Config:
+# Steps for Apache Config:
 
 - Add Virtualhost for SSL
 - Set domains as app.upview.localhost pointing to Upview/public  & admin.upview.localhost pointing to Upview/public
