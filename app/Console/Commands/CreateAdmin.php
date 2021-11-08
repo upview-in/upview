@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Admin;
+use App\Models\AdminRole;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
@@ -48,11 +49,13 @@ class CreateAdmin extends Command
             return 1;
         }
 
-        Admin::create([
-            'name' => $name,
-            'username' => $username,
-            'password' => Hash::make($password)
-        ]);
+        $admin = new Admin();
+        $admin->name = $name;
+        $admin->username = $username;
+        $admin->password = Hash::make($password);
+        $admin->save();
+
+        $admin->roles()->attach(AdminRole::where('slug', 'super-admin')->first());
 
         $this->info('The admin user created successfully!');
         return 0;
