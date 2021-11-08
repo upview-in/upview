@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,10 +14,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UsersDataTable $usersDataTable)
+    public function index()
     {
-        // return view('admin.user.index');
-        return $usersDataTable->render('admin.user.index');
+        $user = Auth::user();
+        $users = User::paginate(10);
+        return view('admin.user.index', compact('users'));
     }
 
     /**
