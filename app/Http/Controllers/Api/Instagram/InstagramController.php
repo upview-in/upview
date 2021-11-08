@@ -17,7 +17,6 @@ class InstagramController extends Controller
 {
 
 
-    // @TODO: Change MINEUSERID[$INDEX]'s value dynamically later to switch between Instagram Pages. By default its only for Page at index 0 for free product.
     public function getMineAccountInsights(GetMineAccountDetails $request)
     {
         $ig = new InstagramHelper();
@@ -26,25 +25,25 @@ class InstagramController extends Controller
         $MINEUserID = $ig_client->get('/me/accounts')->getGraphEdge();
         $MINEUserID = $ig_client->get('/' . $MINEUserID[session('AccountIndex_IG', 0)]['id'] . '?fields=instagram_business_account')->getGraphUser();
         $MINE = $MINEUserID['instagram_business_account']['id'];
-        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=days_28')->getBody();        
+        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=days_28')->getBody();
         //dd(response()->json($igUser, 200));
         return response()->json(json_decode($igUser, true), 200);
     }
 
-    public static  function getMineAccountInsightsEx()
+    public static  function getMineAccountInsightsEx($period='days_28')
     {
         $ig = new InstagramHelper();
         $ig_client = $ig->getInstagramClient();
 
         $dataArr = array();
         $MINEUserID = $ig_client->get('/me/accounts')->getGraphEdge();
-        $MINEUserID = $ig_client->get('/' . $MINEUserID[session('PagesIndex_IG', 0)]['id'] . '?fields=instagram_business_account')->getGraphUser();
+        $MINEUserID = $ig_client->get('/' . $MINEUserID[session('AccountIndex_IG', 0)]['id'] . '?fields=instagram_business_account')->getGraphUser();
         $MINE = $MINEUserID['instagram_business_account']['id'];
-        $dataArr['insights'] = $ig_client->get('/' . $MINE . '/insights?metric=impressions,reach&period=days_28')->getBody();       
-        $dataArr['profile_views'] = InstagramController::getMineAccountProfileViewsEx(); 
+        $dataArr['insights'] = $ig_client->get('/' . $MINE . '/insights?metric=impressions,reach&period='. $period)->getBody();
+        $dataArr['profile_views'] = InstagramController::getMineAccountProfileViewsEx();
         //dd(response()->json($igUser, 200));
         return response()->json(json_encode($dataArr, true), 200);
-    } 
+    }
 
 
 
@@ -60,9 +59,9 @@ class InstagramController extends Controller
         $since = new DateTime();
         $until = new DateTime();
         $since->modify($lastDays);
-        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();        
+        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();
         $igUser = json_decode($igUser);
-        
+
         $sum = 0;
         foreach($igUser->data[0]->values as $value)
         {
@@ -84,9 +83,9 @@ class InstagramController extends Controller
         $since = new DateTime();
         $until = new DateTime();
         $since->modify($lastDays);
-        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();        
+        $igUser = $ig_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since='.$since->getTimestamp().'&until='.$until->getTimestamp())->getBody();
         $igUser = json_decode($igUser);
-        
+
         $sum = 0;
         foreach($igUser->data[0]->values as $value)
         {
@@ -94,26 +93,6 @@ class InstagramController extends Controller
         }
         return $sum;
     }
-
-    public static function listMINEInstagramPages()
-    {
-            $dataArr = array('pageData'=>null, 'profile_data'=>null);
-            $ig = new InstagramHelper();
-            $ig_client = $ig->getInstagramClient();
-            $igUser = $ig_client->get('/me/accounts')->getBody();
-            $igUser = json_decode($igUser, true);
-            $igPageID = $igUser['data'][0]['id'];
-            $igUser = $ig_client->get('/'.$igPageID.'?fields=access_token')->getGraphUser();
-            $ig_client->setDefaultAccessToken($igUser['access_token']);  
-            $igUser = $ig_client->get('/'.$igPageID. '/insights?metric=page_engaged_users&period=days_28')->getBody();  
-            
-            $igUser = json_decode($igUser);
-            dd($igUser);
-        
-
-            return $igUser;
-    }
-
 
     public function getMineAccountData(GetMineAccountDetails $request)
     {
@@ -127,12 +106,12 @@ class InstagramController extends Controller
         //dd(response()->json($igUser, 200));
         return response()->json(json_decode($igUser, true), 200);
     }
-    
+
         // @TODO Find some workaround to get Instagram Verified account status
 
     public function getUserVerifiedStatus($username)
     {
-       
+
         // try {
 
         //     $base_url = 'https://www.instagram.com/george_mcreary'. '' . '/' . '?__a=1';
