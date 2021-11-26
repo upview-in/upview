@@ -84,6 +84,7 @@ class FacebookOverviewController extends Controller
                             $data['tagged'] = $response->tagged ?? null;
                             $data['status'] = 200;
 
+
                             return response()->json(collect($data), 200);
                         } else {
                             return response()->json(['status' => 400, 'message' => 'Missing required fields']);
