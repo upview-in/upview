@@ -4,12 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Model;
 
+use App\Permissions\HasAdminPermissionsTrait;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasAdminPermissionsTrait;
 
     protected $guard = 'admins';
 

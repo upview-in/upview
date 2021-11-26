@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\ProfileController;
 
 /*
