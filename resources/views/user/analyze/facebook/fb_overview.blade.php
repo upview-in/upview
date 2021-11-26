@@ -248,14 +248,19 @@
                             loadImages(); //Remember to call after loading images for LazyLoader
 
                             $("#fbAccName").html((data.name));
+
                             $("#fbAccFollowersCount").html(convertToInternationalCurrencySystem(data
                                 .friends_count));
+
                             $("#fbAccMediaCount").html(convertToInternationalCurrencySystem(data
                                 .posts.data.length));
+
                             $("#fbAccBirthday").html((data
                                 .birthday));
+
                             $("#fbAccFollowersCount").html(convertToInternationalCurrencySystem(data
                                 .friends_count));
+
                             $("#fbAccGender").html((data
                                 .gender));
 
@@ -281,8 +286,8 @@
             }
 
             function loadAnalytics(pageID) {
-
                 $.ajax({
+
                     data: {
                         id: pageID,
                         part: 'PageAnalytics',
@@ -292,6 +297,7 @@
                     success: function(response) {
                         let data = response;
                         console.log(data);
+
                         if(data.status == 200)
                         {
                             $("#fbPageURL").attr('href', data.link);

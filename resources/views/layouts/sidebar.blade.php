@@ -63,7 +63,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     {{-- Facebook Here --}}
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
@@ -114,6 +114,59 @@
                         </ul>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item dropdown {{ request()->is('panel/user/post_scheduling/*') ? 'open' : '' }}">
+            <a class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="anticon anticon-fund"></i>
+                </span>
+                <span class="title">{{ __('Track') }}</span>
+                <span class="arrow">
+                    <i class="arrow-icon"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="nav-item dropdown open">
+                    <a href="javascript:void(0);">
+                        <span>{{ __('Social Listening') }}</span>
+                        <span class="arrow">
+                            <i class="arrow-icon"></i>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ route('panel.user.post_scheduling') }}">{{ __('Keyword Tracking') }}</a>
+                        </li>
+                        {{-- <li>
+                            <a href="#">{{ __('Series Tracking') }}</a>
+                        </li> --}}
+                    </ul>
+                </li>
+            </ul>
+            </li>
+            <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
+                    <span class="icon-holder">
+                        <i class="fas fa-book"></i>
+                    </span>
+                    <span class="title">{{ __('Reports') }}</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
+                    <span class="icon-holder">
+                        <i class="fas fa-headset"></i>
+                    </span>
+                    <span class="title">{{ __('Support') }}</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
+                    <span class="icon-holder">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="title">{{ __('Packages') }}</span>
+                </a>
             </li>
             {{-- <li class="nav-item dropdown {{ request()->is('panel/user/track/*') ? 'open' : '' }}">
             <a class="dropdown-toggle" href="javascript:void(0);">
