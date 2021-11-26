@@ -18,7 +18,7 @@
 
 @if(session()->has('error'))
 <script>
-	toast('Success', 'Error to add account!', 5000, 'close', 'danger');
+	toast('Error', 'Error to add account!', 5000, 'close', 'danger');
 </script>
 @endif
 
