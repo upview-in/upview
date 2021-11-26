@@ -79,11 +79,13 @@ class Functions
         $countryList = array_flip(json_decode(self::$countryListJson, true));
 
         $user = Auth::user();
-        $key = ucfirst(Country::find($user->country)->name);
+        if (!is_null($user->country)) {
+            $key = ucfirst(Country::find($user->country)->name);
 
-        if (Arr::exists($countryList, $key)) {
-            return $countryList[$key];
+            if (Arr::exists($countryList, $key)) {
+                return $countryList[$key];
+            }
         }
-        return;
+        return '';
     }
 }
