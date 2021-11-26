@@ -177,11 +177,15 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
 
-
+        // Mongodb services
         Jenssegers\Mongodb\MongodbServiceProvider::class,
 
+        // Helper methods
         App\Providers\HelperServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
+
+        // Permissions Providers
+        App\Providers\UserPermissionsServiceProvider::class,
+        App\Providers\AdminPermissionsServiceProvider::class,
     ],
 
     /*
@@ -236,7 +240,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Functions' => App\Helper\Functions::class,
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];
