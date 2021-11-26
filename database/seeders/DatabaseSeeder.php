@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Common
+        (new CountryStateCityTableSeeder())->run();
+
+        // Admin
+        (new PopulateAdminPermissions())->run();
+        (new PopulateAdminRoles())->run();
+
+        // User
+        (new PopulateUserPermissions())->run();
+        (new PopulateUsersRoles())->run();
+
+        // Seed example fake users
+        User::factory(100)->create();
     }
 }
