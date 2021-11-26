@@ -152,8 +152,8 @@
                     <span class="title">{{ __('Reports') }}</span>
                 </a>
             </li>
-            <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
-                <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
+            <li class="nav-item dropdown {{ request()->routeIs('panel.user.support') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="{{ route('panel.user.support') }}">
                     <span class="icon-holder">
                         <i class="fas fa-headset"></i>
                     </span>
