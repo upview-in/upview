@@ -3,17 +3,17 @@
 namespace App\View\Components;
 
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class AdminAppLayout extends Component
 {
-    public $title, $pageHeader;
+    public $title, $pageHeader, $back;
 
-    public function __construct($title = null, $pageHeader = null)
+    public function __construct($title = null, $pageHeader = null, $back = null)
     {
         $this->title = $title;
         $this->pageHeader = $pageHeader;
+        $this->back = $back;
     }
 
     /**
@@ -23,7 +23,7 @@ class AdminAppLayout extends Component
      */
     public function render()
     {
-        App::setLocale(Auth::user()->local_lang ?? 'en');
+        App::setLocale(adminUser()->local_lang ?? 'en');
         return view('admin.layouts.app');
     }
 }
