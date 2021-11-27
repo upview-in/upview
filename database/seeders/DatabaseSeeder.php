@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // Common
         (new CountryStateCityTableSeeder())->run();
+        (new SeedLanguages())->run();
 
         // Admin
         (new PopulateAdminPermissions())->run();

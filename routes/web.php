@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserPermissionsController;
+use App\Http\Controllers\Admin\UserRolesController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +28,16 @@ use App\Http\Controllers\User\ProfileController;
 // Admin Routes
 Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
-        Route::middleware(['auth:admin'])->group(function () {
+        Route::middleware(['admin'])->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
+            Route::resource('users/permissions', UserPermissionsController::class);
+            Route::resource('users/roles', UserRolesController::class);
         });
+
+        Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
+        Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
+
         require __DIR__ . '/adminAuth.php';
     });
 });
