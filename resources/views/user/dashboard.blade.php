@@ -21,7 +21,7 @@
                         <i class="fas fa-book text-cyan fs-20"></i>
                         <div class="m-l-15">
                             {{-- db --}}
-                            <h2 class="m-b-0">0</h2>
+                            <h2 class="m-b-0">{{ $totalReports  }}</h2>
                             <p class="m-b-0 text-muted">Reports Generated</p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         <i class="far fa-user-circle text-gold fs-20"></i>
                         <div class="m-l-15">
                             {{-- db --}}
-                            <h2 class="m-b-0">2</h2>
+                            <h2 class="m-b-0">{{ $linkedAccountsCount }}</h2>
                             <p class="m-b-0 text-muted">Accounts Linked</p>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         {{-- db --}}
                         <i class="far fa-gem  text-purple fs-20"></i>
                         <div class="m-l-15">
-                            <h2 class="m-b-0">Enterprise</h2>
+                            <h2 class="m-b-0">{{ $accountLevel }}</h2>
                             <p class="m-b-0 text-muted">Account Type</p>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 <hr style="border-top: 2px solid #bbb; opacity: 0.4;"/>
 <div class="row">
     <div class="col">
-        <h1 class="text-left">Welcome, George</h1>
+        <h1 class="text-left">Welcome, {{ Auth::user()->name }}</h1>
     </div>
 </div>
 

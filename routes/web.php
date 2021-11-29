@@ -11,6 +11,7 @@ use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
 use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\ProfileController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +51,8 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::redirect('/', '/panel/dashboard', 301);
 
-        Route::get('/dashboard', function () {
-            return view('user.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::])->name('dashboard');
+
 
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {
