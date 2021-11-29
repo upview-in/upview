@@ -12,7 +12,7 @@ class Admin extends Authenticatable
 {
     use HasFactory, HasAdminPermissionsTrait;
 
-    protected $guard = 'admins';
+    protected $guard = 'admin';
 
     /**
      * The attributes that are mass assignable.

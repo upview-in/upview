@@ -28,6 +28,22 @@
                 <div class="menu-title">Users</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.permissions.index') }}">
+                <div class="parent-icon">
+                    <i class='bx bx-fingerprint'></i>
+                </div>
+                <div class="menu-title">Permissions</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.roles.index') }}">
+                <div class="parent-icon">
+                    <i class='bx bx-diamond'></i>
+                </div>
+                <div class="menu-title">Plans</div>
+            </a>
+        </li>
     </ul>
     <!--end navigation-->
 </div>
