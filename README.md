@@ -54,11 +54,16 @@
 
 - Set local git config for username & email
 
+# Linking Storage:
+
+- Run command php artisan storage:link
+
 
 # List of PHP Extensions required:
 
 - php-gd
 - php-mongod
+
 
 
 
