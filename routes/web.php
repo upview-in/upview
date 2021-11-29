@@ -67,6 +67,8 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
             });
 
             Route::get('/support', [SupportController::class, 'index'])->name('support');
+            Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
+            
 
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
