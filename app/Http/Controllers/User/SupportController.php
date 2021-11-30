@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserQueryRequest;
+use App\Http\Requests\Support\UserQueryRequest;
+use App\Http\Requests\Support\CancelQuery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserSupport;
@@ -13,6 +14,12 @@ class SupportController extends Controller
     public function index()
     {
         return view('user.support_form');
+    }
+
+    public function history()
+    {
+        $SupportHistory = UserSupport::where(['user_id' => Auth::id()])->get();
+        return view('user.support_form_history', ['SupportHistory' => $SupportHistory,'user_id' => Auth::id()]);
     }
 
     public function uploadUserQuery(UserQueryRequest $request)
@@ -29,6 +36,11 @@ class SupportController extends Controller
         }
         $supportQuery->save();
         return redirect()->back()->with('message', 'Query Raised!');
+    }
+
+    public function cancelQueryByUser(CancelQuery $request){
+        // dd($request->id);
+
     }
 
 }

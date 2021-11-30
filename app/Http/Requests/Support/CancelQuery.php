@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Support;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserQueryRequest extends FormRequest
+class CancelQuery extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class UserQueryRequest extends FormRequest
     public function rules()
     {
         return [
-            'query_ss' => ['required', 'image', 'max:1024'],
-            'query_title' => ['required'],
-            'query_description' => ['required']
+            // 'id' => 'required',
         ];
     }
 }

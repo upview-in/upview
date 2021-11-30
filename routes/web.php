@@ -65,9 +65,13 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
                 
             });
-
-            Route::get('/support', [SupportController::class, 'index'])->name('support');
-            Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
+            Route::prefix('support')->as('support.')->group(function () {
+                Route::get('/submit', [SupportController::class, 'index'])->name('submit');
+                Route::get('/history', [SupportController::class, 'history'])->name('history');
+                Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
+                Route::get('/cancelQueryByUser', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
+            });
+            
             
 
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');

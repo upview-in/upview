@@ -116,34 +116,65 @@
                 </ul>
             </li>
             <li class="nav-item dropdown {{ request()->is('panel/user/post_scheduling/*') ? 'open' : '' }}">
-            <a class="dropdown-toggle" href="javascript:void(0);">
-                <span class="icon-holder">
-                    <i class="anticon anticon-fund"></i>
-                </span>
-                <span class="title">{{ __('Track') }}</span>
-                <span class="arrow">
-                    <i class="arrow-icon"></i>
-                </span>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="nav-item dropdown open">
-                    <a href="javascript:void(0);">
-                        <span>{{ __('Social Listening') }}</span>
-                        <span class="arrow">
-                            <i class="arrow-icon"></i>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="{{ route('panel.user.post_scheduling') }}">{{ __('Keyword Tracking') }}</a>
-                        </li>
-                        {{-- <li>
-                            <a href="#">{{ __('Series Tracking') }}</a>
-                        </li> --}}
-                    </ul>
-                </li>
-            </ul>
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-fund"></i>
+                    </span>
+                    <span class="title">{{ __('Track') }}</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown open">
+                        <a href="javascript:void(0);">
+                            <span>{{ __('Social Listening') }}</span>
+                            <span class="arrow">
+                                <i class="arrow-icon"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('panel.user.post_scheduling') }}">{{ __('Keyword Tracking') }}</a>
+                            </li>
+                            {{-- <li>
+                                <a href="#">{{ __('Series Tracking') }}</a>
+                            </li> --}}
+                        </ul>
+                    </li>
+                </ul>
             </li>
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="fas fa-headset"></i>
+                    </span>
+                    <span class="title">{{ __('Support') }}</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.support.submit') ? 'active' : '' }}">
+                        <a class="dropdown-toggle" href="{{ route('panel.user.support.submit') }}">
+                            <span class="icon-holder">
+                                <i class="fas fa-comments"></i>
+                            </span>
+                            <span class="title">{{ __('Submit Query') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.support.history') ? 'active' : '' }}">
+                        <a class="dropdown-toggle" href="{{ route('panel.user.support.history') }}">
+                            <span class="icon-holder">
+                                <i class="fas fa-history"></i>
+                            </span>
+                            <span class="title">{{ __('Support History') }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
@@ -152,14 +183,7 @@
                     <span class="title">{{ __('Reports') }}</span>
                 </a>
             </li>
-            <li class="nav-item dropdown {{ request()->routeIs('panel.user.support') ? 'active' : '' }}">
-                <a class="dropdown-toggle" href="{{ route('panel.user.support') }}">
-                    <span class="icon-holder">
-                        <i class="fas fa-headset"></i>
-                    </span>
-                    <span class="title">{{ __('Support') }}</span>
-                </a>
-            </li>
+            
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">

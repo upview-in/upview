@@ -7,7 +7,7 @@
             </div>
         
             <div class="card-body">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.uploadQuery') }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.support.uploadQuery') }}">
                    
                     @if(session()->get('message'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
