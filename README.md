@@ -5,7 +5,6 @@
 - composer install (Make sure composer is latest 2.x)
 - set .env
 - copy prevendor to vendor
-- Then fire "php artisan storage:link" in command line to link storage with the project
 
 
 # Steps for Apache Config:
