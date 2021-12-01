@@ -1,9 +1,40 @@
 @section('custom-scripts')
 
 <script type="text/javascript">
+
+
+function setQueryID(qurID) {
+    $('#query_id').val(qurID);
+    $('#closeRequest').modal('show');
+}
+
+
+
+function processCancelQueryRequest()
+{
+    var id = $('#query_id').val();
+    var url = '{{ route("panel.user.support.cancelQueryByUser", ":id") }}';
+    url = url.replace(':id', id);
+
+    //Call ajax
+    $.ajax({
+        type : "POST",
+        url : url,
+        data : {"_token": "{{ csrf_token() }}"},
+        success:function(response){
+            $('#closeRequest').modal('hide');
+        }
+    });
+}
+
 </script>
 
+
+
+
 @endsection
+
+
 
 <x-app-layout title="Support History">
     <div class="container-fluid">
@@ -46,7 +77,7 @@
                                     <td class="justify-center">{{ $history->remark ?? "-" }}</td>
                                     <td>
                                         @if($history->status != 2)
-                                            <a href="javascript:void(0)" class="btnQueryId" data-id="{{ $history->id }}" data-toggle="modal" data-target="#closeRequest">
+                                            <a href="javascript:void(0)" onclick="setQueryID('{{ $history->id  }}')"  id="btnQueryId" data-id="{{ $history->id }}" data-toggle="modal">
                                                 <i class="fas fa-times-circle text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Close Request" aria-hidden="false" ></i>
                                             </a>
                                         @endif
@@ -72,16 +103,22 @@
 				<div class="modal-body">
                     <div class="row">
                         <div class="col">
+                            @csrf
                             <h5 >Are you sure you want to close the request?</h5>
+                            <input type="hidden", name="query_id" id="query_id">
+
                         </div>
                     </div>
 				</div>
                 <div class="modal-footer">
                     <a href="javascript:void(0)" data-dismiss="modal" class="btn btn-md btn-primary w-25">No</a>
-                    <a href="{{ route('panel.user.support.cancelQueryByUser')}}" id="btnCancelQuery" class="btn btn-md btn-danger w-25">Yes</a>
+                    <button onclick="processCancelQueryRequest()" id="btnCancelQuery" class="btn btn-md btn-danger w-25 deleteQueryBtn">Yes</button>
+
                 </div>
 			</div>
 		</div>
 	</div>
 
 </x-app-layout>
+
+

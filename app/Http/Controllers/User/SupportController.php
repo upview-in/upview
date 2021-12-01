@@ -38,8 +38,8 @@ class SupportController extends Controller
         return redirect()->back()->with('message', 'Query Raised!');
     }
 
-    public function cancelQueryByUser(CancelQuery $request){
-        // dd($request->id);
+    public function cancelQueryByUser(CancelQuery $request, $query_id   ){
+         dd("FUCK YEA the QUERY ID IN CONTROLELR IS:".$query_id);
 
     }
 
