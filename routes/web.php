@@ -41,7 +41,7 @@ Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], functi
         Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
         Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
-        require __DIR__ . '/adminAuth.php';
+        require __DIR__. '/adminAuth.php';
     });
 });
 
@@ -73,11 +73,13 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
 
             });
+
             Route::prefix('support')->as('support.')->group(function () {
                 Route::get('/submit', [SupportController::class, 'index'])->name('submit');
                 Route::get('/history', [SupportController::class, 'history'])->name('history');
                 Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
                 Route::post('/cancelQueryByUser/{query_id}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
+                Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
 
 
