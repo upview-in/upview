@@ -5,6 +5,7 @@ namespace App\Helper;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,29 +57,37 @@ class Functions
         return $number;
     }
 
-    public static function getUserCountry()
+    public static function getUserCountry(User $user = null)
     {
-        $user = Auth::user();
+        if (is_null($user)) {
+            $user = Auth::user();
+        }
         return Country::find($user->country);
     }
 
-    public static function getUserState()
+    public static function getUserState(User $user = null)
     {
-        $user = Auth::user();
+        if (is_null($user)) {
+            $user = Auth::user();
+        }
         return State::find($user->state);
     }
 
-    public static function getUserCity()
+    public static function getUserCity(User $user = null)
     {
-        $user = Auth::user();
+        if (is_null($user)) {
+            $user = Auth::user();
+        }
         return City::find($user->city);
     }
 
-    public static function getUserCountryCode()
+    public static function getUserCountryCode(User $user = null)
     {
         $countryList = array_flip(json_decode(self::$countryListJson, true));
 
-        $user = Auth::user();
+        if (is_null($user)) {
+            $user = Auth::user();
+        }
         if (!is_null($user->country)) {
             $key = ucfirst(Country::find($user->country)->name);
 

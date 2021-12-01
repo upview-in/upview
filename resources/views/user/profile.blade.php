@@ -129,7 +129,7 @@
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label class="font-weight-semibold" for="userName">{{ __('User Name') }}:</label>
+                            <label class="font-weight-semibold" for="userName">{{ __('User Name') }}</label>
                             <input type="text" class="form-control" id="userName" name="name" placeholder="User Name" value="{{ old('name') ?? $user->name }}">
                             @error('name')
                             <span class="invalid-feedback d-block" role="alert">
@@ -138,7 +138,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
+                            <label class="font-weight-semibold" for="email">{{ __('Email') }}</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="email" value="{{ old('email') ?? $user->email }}">
                             @error('email')
                             <span class="invalid-feedback d-block" role="alert">
@@ -149,7 +149,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label class="font-weight-semibold" for="phoneNumber">{{ __('Phone Number') }}:</label>
+                            <label class="font-weight-semibold" for="phoneNumber">{{ __('Phone Number') }}</label>
                             <input type="text" class="form-control" id="phoneNumber" name="mobile_number" placeholder="Ex. +xx xxxxxxxxxx" value="{{ old('mobile_number') ?? $user->mobile_number }}">
                             @error('mobile_number')
                             <span class="invalid-feedback d-block" role="alert">
@@ -158,7 +158,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-4">
-                            <label class="font-weight-semibold" for="dob">{{ __('Date of Birth') }}:</label>
+                            <label class="font-weight-semibold" for="dob">{{ __('Date of Birth') }}</label>
                             <div class="input-affix m-b-10">
                                 <i class="prefix-icon anticon anticon-calendar"></i>
                                 <input type="text" class="form-control datepicker-input" id="dob" name="birth_date" placeholder="Date of Birth" value="{{ old('birth_date') ?? $user->birth_date }}">
@@ -202,7 +202,7 @@
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label class="font-weight-semibold" for="oldPassword">{{ __('Old Password') }}:</label>
+                            <label class="font-weight-semibold" for="oldPassword">{{ __('Old Password') }}</label>
                             <input type="password" class="form-control {{ $errors->has('current_password')?'is-invalid':'is-valid' }}"" id=" oldPassword" name="current_password" placeholder="Old Password">
                             @error('current_password')
                             <span class="invalid-feedback d-block" role="alert">
@@ -211,7 +211,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-3">
-                            <label class="font-weight-semibold" for="newPassword">{{ ('New Password') }}:</label>
+                            <label class="font-weight-semibold" for="newPassword">{{ ('New Password') }}</label>
                             <input type="password" class="form-control {{ $errors->has('new_password')?'is-invalid':'is-valid' }}"" id=" newPassword" name="new_password" placeholder="New Password">
                             @error('new_password')
                             <span class="invalid-feedback d-block" role="alert">
@@ -220,11 +220,11 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-3">
-                            <label class="font-weight-semibold" for="confirmPassword">{{ __('Confirm Password') }}:</label>
+                            <label class="font-weight-semibold" for="confirmPassword">{{ __('Confirm Password') }}</label>
                             <input type="password" class="form-control {{ $errors->has('new_password')?'is-invalid':'is-valid' }}" id="confirmPassword" name="confirm_new_password" placeholder="Confirm Password">
                         </div>
-                        <div class="form-group col-md-3">
-                            <button class="btn btn-primary position-absolute" style="bottom: 0;">{{ __('Change') }}</button>
+                        <div class="form-group col-md-3 align-self-end">
+                            <button class="btn btn-primary">{{ __('Change') }}</button>
                         </div>
                     </div>
                 </form>
@@ -249,7 +249,7 @@
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-6 col-12">
-                            <label class="font-weight-semibold" for="country">{{ __('Country') }}:</label>
+                            <label class="font-weight-semibold" for="country">{{ __('Country') }}</label>
                             @php
                             $selected_country = \Functions::getUserCountry();
                             @endphp
@@ -265,7 +265,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-6 col-12">
-                            <label class="font-weight-semibold" for="state">{{ __('State') }}:</label>
+                            <label class="font-weight-semibold" for="state">{{ __('State') }}</label>
                             <select class="select2" id="state" name="state" placeholder="Select State">
                                 @php
                                 $selected_state = \Functions::getUserState();
@@ -281,7 +281,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-6 col-12">
-                            <label class="font-weight-semibold" for="city">{{ __('City') }}:</label>
+                            <label class="font-weight-semibold" for="city">{{ __('City') }}</label>
                             <select class="select2" id="city" name="city" placeholder="Select city">
                                 @php
                                 $selected_city = \Functions::getUserCity();
@@ -297,7 +297,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-12">
-                            <label class="font-weight-semibold" for="fullAddress">{{ __('Address') }}:</label>
+                            <label class="font-weight-semibold" for="fullAddress">{{ __('Address') }}</label>
                             <input type="text" class="form-control" id="address" name="address" value="{{ old('address') ?? $user->address }}" placeholder="Address">
                             @error('address')
                             <span class="invalid-feedback d-block" role="alert">

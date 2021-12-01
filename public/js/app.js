@@ -186,8 +186,8 @@ function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
+    for (const _c of ca) {
+        let c = _c;
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
         }

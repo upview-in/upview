@@ -39,7 +39,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helper/Common.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -52,10 +55,7 @@
             "@php artisan package:discover --ansi",
             "@php -r \"shell_exec('cp -rf prevendor/* vendor/');\"",
             "@php artisan stub:publish",
-            "@php artisan migrate:fresh",
-            "@php artisan db:seed",
-            "@php artisan languages:seed",
-            "@php artisan db:seed --class=CountryStateCityTableSeeder"
+            "@php artisan db:seed"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
