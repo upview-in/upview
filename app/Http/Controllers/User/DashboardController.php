@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LinkedAccounts;
 use App\Models\Reports;
@@ -20,13 +21,19 @@ class DashboardController extends Controller
         $user = Auth::user();
         $lnkedAccountsCount = LinkedAccounts::where('user_id', $user->id)->count() ?? 0;
         $totalReports = Reports::where('user_id', $user->id)->count() ?? 0;
-        $accountLevel = "From web.php";
+        $accountLevel = "";
 
         $modulesActive = 0; /* get from dabatase later */
 
         switch($modulesActive)
         {
-            case 1:
+            case 1: $accountLevel = "Free";
+                    break;
+            case 2: $accountLevel = "Pro";
+                    break;
+            case 3: $accountLevel = "Enterprise";
+                    break;
+            default:  $accountLevel = "Jimmy";
         }
 
         $data = ["linkedAccountsCount"=>$lnkedAccountsCount, "totalReports"=>$totalReports, "accountLevel"=>$accountLevel];

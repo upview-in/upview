@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
@@ -14,6 +14,7 @@ use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
 use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\User\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
         Route::middleware(['admin'])->group(function () {
-            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
             Route::resource('users/permissions', UserPermissionsController::class);
             Route::resource('users/roles', UserRolesController::class);
@@ -59,7 +60,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::redirect('/', '/panel/dashboard', 301);
 
-        Route::get('/dashboard', [DashboardController::])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
         Route::prefix('user')->as('user.')->group(function () {
