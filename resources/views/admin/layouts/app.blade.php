@@ -16,8 +16,9 @@
 	<link href="{{ asset('admin/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('admin/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('admin/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+	<link href="{{ asset('admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+	<link href="{{ asset('admin/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
+	<link href="{{ asset('admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css') }}" rel="stylesheet">
 
 	<!-- loader-->
 	<link href="{{ asset('admin/css/pace.min.css') }}" rel="stylesheet" />
@@ -27,12 +28,30 @@
 	<link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('admin/css/icons.css') }}" rel="stylesheet">
 
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="{{ asset('admin/css/dark-theme.css') }}" />
 	<link rel="stylesheet" href="{{ asset('admin/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('admin/css/header-colors.css') }}" />
+
+	<!-- Icon Style CSS -->
+	<link href="{{ asset('admin/css/icons.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<style>
+		.hidden {
+			display: none;
+		}
+
+		.pointer {
+			cursor: pointer;
+		}
+
+		.required:after {
+			content: " *";
+			color: red;
+		}
+	</style>
 
 	@yield('custom-styles')
 
@@ -51,6 +70,9 @@
 				@if ($pageHeader ?? true === true)
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					@if ($back ?? false === true)
+					<a href="{{ url()->previous() }}"><em class="bx bx-arrow-back pe-2 fs-4"></em></a>
+					@endif
 					<div class="breadcrumb-title pe-3">{{ $title ?? 'Dashboard' }}</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
@@ -75,7 +97,7 @@
 		<!--end overlay-->
 
 		<!--Start Back To Top Button-->
-		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<a href="javaScript:;" class="back-to-top"><em class='bx bxs-up-arrow-alt'></em></a>
 		<!--End Back To Top Button-->
 
 		<!-- @include('admin.layouts.footer') -->
@@ -86,7 +108,7 @@
 
 	<!-- div loader -->
 	<div class="d-none div-loader justify-content-center align-items-center" id="divLoadingTemplate">
-		<img src="{{ asset('images/others/div-loader.gif') }}" height="60px" width="auto" />
+		<img src="{{ asset('images/others/div-loader.gif') }}" height="60px" width="auto" alt="" />
 	</div>
 	<!-- end div loader -->
 
@@ -103,9 +125,9 @@
 	<script src="{{ asset('admin/plugins/chartjs/js/Chart.min.js') }}"></script>
 	<script src="{{ asset('admin/plugins/chartjs/js/Chart.extension.js') }}"></script>
 	<script src="{{ asset('admin/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
-	<script src="{{ asset('admin/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('admin/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-	<script src="{{ asset('admin/plugins/datatable/js/buttons.server-side.js') }}"></script>
+	<script src="{{ asset('admin/plugins/select2/js/select2.min.js') }}"></script>
+	<script src="{{ asset('admin/plugins/bootstrap-material-datetimepicker/js/moment.min.js') }}"></script>
+	<script src="{{ asset('admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js') }}"></script>
 
 	<!--notification js -->
 	<script src="{{ asset('admin/plugins/notifications/js/lobibox.min.js') }}"></script>
@@ -116,26 +138,16 @@
 
 	<script>
 		function convertToInternationalCurrencySystem(labelValue) {
-			// Nine Zeroes for Billions
-			return Math.abs(Number(labelValue)) >= 1.0e+9
-
-				?
-				(Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B"
+			let ret =
+				// Nine Zeroes for Billions
+				Math.abs(Number(labelValue)) >= 1.0e+9 ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B" :
 				// Six Zeroes for Millions 
-				:
-				Math.abs(Number(labelValue)) >= 1.0e+6
-
-				?
-				(Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
+				Math.abs(Number(labelValue)) >= 1.0e+6 ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M" :
 				// Three Zeroes for Thousands
-				:
-				Math.abs(Number(labelValue)) >= 1.0e+3
-
-				?
-				(Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
-
-				:
+				Math.abs(Number(labelValue)) >= 1.0e+3 ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K" :
+				// Return as it is number
 				Math.abs(Number(labelValue));
+			return ret;
 		}
 
 		function formatTime(mins) {
@@ -286,6 +298,117 @@
 			let expires = "expires=" + d.toUTCString();
 			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 		}
+
+		// Function for show notification
+		function notify(variant, message, icon = 'info-circle', position = 'bottom right') {
+			Lobibox.notify(variant, {
+				pauseDelayOnHover: true,
+				continueDelayOnInactiveTab: false,
+				position: position,
+				icon: 'bx bx-' + icon,
+				msg: message
+			});
+		}
+
+		function validateForNotification(data) {
+			return data.length !== 0 ? ((typeof data.variant !== 'undefined') && (typeof data.message !== 'undefined') && (typeof data.icon !== 'undefined')) : false;
+		}
+
+		function showImagePreview(input, elem) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$(elem).attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+		$(document).on('submit', '.ajax-form', function(event) {
+			event.preventDefault();
+			let that = this;
+			if (typeof that._method !== 'undefined' && typeof that._method.value !== 'undefined' && that._method.value === "delete") {
+				if (!confirm('Are you sure?')) {
+					return;
+				}
+			}
+
+			$.ajax({
+				url: event.currentTarget.action,
+				type: event.currentTarget.method,
+				enctype: 'multipart/form-data',
+				dataType: 'json',
+				contentType: false,
+				processData: false,
+				async: true,
+				cache: false,
+				data: new FormData(this),
+				success: function(data) {
+					let reset = $(event.currentTarget).attr('reset');
+					if (typeof reset !== 'undefined' && reset === "true") {
+						that.reset();
+					}
+
+					if (typeof that._method !== 'undefined' && typeof that._method.value !== 'undefined' && that._method.value === "delete") {
+						$(that).closest('tr').remove();
+					}
+
+					if (validateForNotification(data)) {
+						notify(data.variant, data.message, data.icon);
+					} else {
+						notify('success', 'Form submitted successfully!', 'check');
+					}
+				},
+				error: function(data) {
+					let response = data.responseJSON;
+					let status = data.status;
+					if (status == 403) {
+						notify('warning', response.message, 'error');
+					} else if (status == 422) {
+						if (typeof response.errors !== 'undefined') {
+							Object.keys(response.errors).forEach(function(key) {
+								response.errors[key].forEach(function(error) {
+									notify('error', error, 'x-circle');
+								});
+							});
+						} else {
+							notify('error', response.message, 'x-circle');
+						}
+					} else {
+						notify('error', response.message, 'x-circle');
+					}
+				}
+			});
+		});
+
+		$(document).ready(function() {
+
+			// Select2 for dropdown options
+			$('.select2').select2({
+				theme: 'bootstrap4',
+				width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+				placeholder: $(this).data('placeholder'),
+				allowClear: Boolean($(this).data('allow-clear')),
+			});
+
+			// Bootstrap Material Date and Time Picker
+			$('.bs-date-time').bootstrapMaterialDatePicker({
+				format: 'YYYY-MM-DD HH:mm'
+			});
+
+			// Bootstrap Material Date Picker
+			$('.bs-date').bootstrapMaterialDatePicker({
+				time: false
+			});
+
+			// Bootstrap Material Time Picker
+			$('.bs-time').bootstrapMaterialDatePicker({
+				date: false,
+				format: 'HH:mm'
+			});
+		});
 	</script>
 
 	@yield('custom-scripts')

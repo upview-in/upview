@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\Auth\QueuedVerifyEmail;
 use App\Permissions\HasPermissionsTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +26,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'account_level',
         'password',
         'mobile_number',
         'birth_date',
@@ -61,5 +63,10 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         $this->addMediaConversion('thumb')
             ->width(400)
             ->height(400);
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new QueuedVerifyEmail);
     }
 }

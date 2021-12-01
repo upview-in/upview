@@ -12,11 +12,6 @@ class AuthenticatedSessionController extends Controller
 {
     protected $guard = 'admin';
 
-    public function __construct()
-    {
-        $this->middleware('guest:admin')->except('logout');
-    }
-
     /**
      * Display the login view.
      *
@@ -51,7 +46,7 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()->route('admin.login');
     }
 
     /**
