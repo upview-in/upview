@@ -13,6 +13,7 @@ use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
 use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\SupportController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\DashboardController;
 
@@ -70,11 +71,19 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
+                
             });
+            Route::prefix('support')->as('support.')->group(function () {
+                Route::get('/submit', [SupportController::class, 'index'])->name('submit');
+                Route::get('/history', [SupportController::class, 'history'])->name('history');
+                Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
+                Route::get('/cancelQueryByUser', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
+            });
+            
+            
 
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
-
 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
