@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
@@ -31,7 +32,7 @@ use Illuminate\Support\Facades\Auth;
 Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
         Route::middleware(['admin'])->group(function () {
-            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
             Route::resource('users/permissions', UserPermissionsController::class);
             Route::resource('users/roles', UserRolesController::class);
@@ -40,7 +41,7 @@ Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], functi
         Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
         Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
-        require __DIR__ . '/adminAuth.php';
+        require __DIR__. '/adminAuth.php';
     });
 });
 
@@ -60,7 +61,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::redirect('/', '/panel/dashboard', 301);
 
-        Route::get('/dashboard', [DashboardController::])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
         Route::prefix('user')->as('user.')->group(function () {
@@ -72,11 +73,13 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
                 
             });
+
             Route::prefix('support')->as('support.')->group(function () {
                 Route::get('/submit', [SupportController::class, 'index'])->name('submit');
                 Route::get('/history', [SupportController::class, 'history'])->name('history');
                 Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
                 Route::get('/cancelQueryByUser', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
+                Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
             
             
