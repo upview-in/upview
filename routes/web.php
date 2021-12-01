@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
-use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
@@ -16,6 +15,7 @@ use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\User\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,18 +71,18 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
-                
+
             });
 
             Route::prefix('support')->as('support.')->group(function () {
                 Route::get('/submit', [SupportController::class, 'index'])->name('submit');
                 Route::get('/history', [SupportController::class, 'history'])->name('history');
                 Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
-                Route::get('/cancelQueryByUser', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
+                Route::post('/cancelQueryByUser/{query_id}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
                 Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
-            
-            
+
+
 
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');

@@ -58,18 +58,25 @@
         </div>
     </div>
 <hr style="border-top: 2px solid #bbb; opacity: 0.4;"/>
-<div class="row">
-    <div class="col">
-        <h1 class="text-left">Welcome, {{ Auth::user()->name }}</h1>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">{{ __('Welcome, ').Auth::user()->name  }}</h1>
+        </div>
+
+        <div class="card-body">
+            <video controls width="900"  style="border: 1px solid #000;">
+
+                <source src="{{ asset('videos/upview.mp4')  }} "
+                        type="video/mp4">
+                Sorry, your browser doesn't support embedded videos.
+            </video>
+        </div>
     </div>
 </div>
 
 <div class="row">
-    <video controls width="900"  style="border: 1px solid #000;">
 
-        <source src="{{ asset('videos/upview.mp4')  }} "
-                type="video/mp4">
-        Sorry, your browser doesn't support embedded videos.
-    </video>
 </div>
 </x-app-layout>
