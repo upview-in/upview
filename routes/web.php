@@ -78,7 +78,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::get('/submit', [SupportController::class, 'index'])->name('submit');
                 Route::get('/history', [SupportController::class, 'history'])->name('history');
                 Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
-                Route::post('/cancelQueryByUser/{query_id}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
+                Route::get('/cancelQueryByUser/{userSupport}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
                 Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
 

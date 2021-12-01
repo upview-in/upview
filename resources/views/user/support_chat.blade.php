@@ -1,7 +1,7 @@
 <x-app-layout title="Support Chat">
     <div class="container-fluid">
         <div class="chat chat-app row">
-            <div class="chat-content">
+            <div class="chat-content"  style="width:100% !important">
                 <div class="conversation">
                     <div class="conversation-wrapper">
                         <div class="conversation-header justify-content-between">
@@ -47,17 +47,7 @@
                         </div> 
                         <div class="conversation-footer">
                             <input class="chat-input" type="text" placeholder="Type a message...">
-                            <ul class="list-inline d-flex align-items-center m-b-0">
-                                <li class="list-inline-item m-r-15">
-                                    <a class="text-gray font-size-20" href="javascript:void(0);" data-toggle="tooltip" title="Emoji">
-                                        <i class="anticon anticon-smile"></i>
-                                    </a>
-                                </li> 
-                                <li class="list-inline-item m-r-15">
-                                    <a class="text-gray font-size-20" href="javascript:void(0);" data-toggle="tooltip" title="Attachment">
-                                        <i class="anticon anticon-paper-clip"></i>
-                                    </a>
-                                </li>    
+                            <ul class="list-inline d-flex align-items-center m-b-0">    
                                 <li class="list-inline-item">
                                     <button class="d-none d-md-block btn btn-primary">
                                         <span class="m-r-10">Send</span>
