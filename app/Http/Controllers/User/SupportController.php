@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Support\UserQueryRequest;
+use App\Http\Requests\Support\SupportChatRequest;
 use App\Http\Requests\Support\CancelQuery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -41,6 +42,10 @@ class SupportController extends Controller
     public function cancelQueryByUser(CancelQuery $request, $query_id   ){
          dd("FUCK YEA the QUERY ID IN CONTROLELR IS:".$query_id);
 
+    }
+
+    public function supportChat(SupportChatRequest $request){
+        return view('user.support_chat');
     }
 
 }
