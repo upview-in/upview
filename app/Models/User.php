@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\Models\Searchable;
 use App\Notifications\Auth\QueuedVerifyEmail;
 use App\Permissions\HasPermissionsTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -16,7 +17,27 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
-    use HasApiTokens, HasPermissionsTrait, HasFactory, Notifiable, InteractsWithMedia;
+    use HasApiTokens, HasPermissionsTrait, HasFactory, Notifiable, InteractsWithMedia, Searchable;
+
+    /**
+     * Searchable attributes
+     *
+     * @return string[]
+     */
+    public $searchable = [
+        'name',
+        'email',
+        'password',
+        'mobile_number',
+        'birth_date',
+        'local_lang',
+        'address',
+        'city',
+        'state',
+        'country',
+        'pincode',
+        'currency'
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -55,6 +76,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'enabled' => 'boolean'
     ];
 
     public function registerMediaConversions(Media $media = null): void
