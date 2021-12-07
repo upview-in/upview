@@ -144,7 +144,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ request()->is('panel/user/post_scheduling/*') ? 'open' : '' }}">
+            <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <i class="fas fa-mail-bulk"></i>
@@ -155,7 +155,7 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu ">
-                    <li class="nav-item dropdown open">
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post_scheduling') ? 'active' : '' }}">
                         <a href="{{ route('panel.user.post_scheduling') }}">
                             <span class="icon-holder">
                                 <i class="fas fa-calendar-day"></i>
