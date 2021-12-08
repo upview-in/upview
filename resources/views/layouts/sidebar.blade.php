@@ -21,7 +21,7 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="nav-item dropdown">
+                    <i class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
                                 <i class="anticon anticon-youtube"></i>
@@ -42,7 +42,7 @@
                                 <a href="{{ route('panel.user.analyze.youtube.audience') }}">{{ __('Audience') }}</a>
                             </li>
                         </ul>
-                    </li>
+                    </i>
                     {{-- Instagram Here --}}
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
