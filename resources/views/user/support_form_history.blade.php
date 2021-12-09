@@ -15,16 +15,7 @@ function processCancelQueryRequest()
     var id = $('#query_id').val();
     var url = '{{ route("panel.user.support.cancelQueryByUser", ":id") }}';
     url = url.replace(':id', id);
-
-    //Call ajax
-    $.ajax({
-        type : "POST",
-        url : url,
-        data : {"_token": "{{ csrf_token() }}"},
-        success:function(response){
-            $('#closeRequest').modal('hide');
-        }
-    });
+    window.location= url;
 }
 
 </script>
@@ -44,6 +35,16 @@ function processCancelQueryRequest()
 			</div>
             <div class="card-body p-15 ml-3">
                 <div class="table-responsive">
+                    {{-- Success Message Div --}}
+                    @if(session()->get('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success:</strong> {{ session()->get('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    {{-- Success Message Div End --}}
                     <table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
                         <thead>
 							<tr>
@@ -75,7 +76,7 @@ function processCancelQueryRequest()
                                     <td class="justify-center">{{ $history->assigned_to ?? "N/A" }}</td>
                                     <td class="justify-center">{{ $history->assigned_on_date ?? "N/A" }}</td>
                                     <td class="justify-center">{{ $history->remark ?? "-" }}</td>
-                                    <td>
+                                    <td class="justify-center">
                                         @if($history->status == 1)
                                             <a href="{{ route('panel.user.support.supportChat') }}/?id={{ $history->id }}">
                                                 <i class="fas fa-comments text-info justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Start Support Chat" aria-hidden="false" ></i>
@@ -111,7 +112,6 @@ function processCancelQueryRequest()
                             @csrf
                             <h5 >Are you sure you want to close the request?</h5>
                             <input type="hidden", name="query_id" id="query_id">
-
                         </div>
                     </div>
 				</div>

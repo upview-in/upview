@@ -9,6 +9,7 @@ use App\Http\Requests\Support\CancelQuery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserSupport;
+// use Carbon\Carbon;
 
 class SupportController extends Controller
 {
@@ -39,8 +40,12 @@ class SupportController extends Controller
         return redirect()->back()->with('message', 'Query Raised!');
     }
 
-    public function cancelQueryByUser(CancelQuery $request, $query_id   ){
-         dd("FUCK YEA the QUERY ID IN CONTROLELR IS:".$query_id);
+    public function cancelQueryByUser(CancelQuery $request, UserSupport $userSupport ){
+        $userSupport->remark = "Closed by User";
+        $userSupport->status = 2;
+        // $userSupport->resolved_at = Carbon::now()->toDateTimeString();
+        $userSupport->update();
+        return redirect()->back()->with('message', 'Query Closed by User!');
 
     }
 
