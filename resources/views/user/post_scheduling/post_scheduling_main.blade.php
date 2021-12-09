@@ -23,32 +23,32 @@
                         <div class="checkbox row">
                             <div class="col-md-2">
                                 <input id="cbinstagram" name="cbinstagram" type="checkbox">
-                                <label for="instagram">Instagram</label>
+                                <label for="cbinstagram">Instagram</label>
                             </div>
                             
                             <div class="col-md-2">
                                 <input id="cbyoutube" name="cbyoutube" type="checkbox">
-                                <label for="youtube">Youtube</label>
+                                <label for="cbyoutube">Youtube</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cbfacebook" name="cbfacebook" type="checkbox">
-                                <label for="facebook">Facebook</label>
+                                <label for="cbfacebook">Facebook</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cbtwitter" name="cbtwitter" type="checkbox">
-                                <label for="twitter">Twitter</label>
+                                <label for="cbtwitter">Twitter</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cblinkdin" name="cblinkdin" type="checkbox">
-                                <label for="linkdin">linkdIn</label>
+                                <label for="cblinkdin">linkdIn</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cbpintrest" name="cbpintrest" type="checkbox">
-                                <label for="pintrest">Pintrest</label>
+                                <label for="cbpintrest">Pintrest</label>
                             </div>
 
                         </div>
