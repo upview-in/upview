@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
+use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,7 +64,8 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        
+        Route::get('/choosePackages', [AppModuleController::class, 'index'])->name('choosePackages');
+
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {
                 Route::get('/', [ProfileController::class, 'index'])->name('index');

@@ -5,7 +5,7 @@
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
-                        <i class="anticon anticon-home"></i>
+                        <em class="anticon anticon-home"></em>
                     </span>
                     <span class="title">{{ __('Dashboard') }}</span>
                 </a>
@@ -13,22 +13,22 @@
             <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <i class="anticon anticon-pie-chart"></i>
+                        <em class="anticon anticon-pie-chart"></em>
                     </span>
                     <span class="title">{{ __('Analytics') }}</span>
                     <span class="arrow">
-                        <i class="arrow-icon"></i>
+                        <em class="arrow-icon"></em>
                     </span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
-                                <i class="anticon anticon-youtube"></i>
+                                <em class="anticon anticon-youtube"></em>
                             </span>
                             <span class="title">{{ __('Youtube') }}</span>
                             <span class="arrow">
-                                <i class="arrow-icon"></i>
+                                <em class="arrow-icon"></em>
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -47,11 +47,11 @@
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
-                                <i class="anticon anticon-instagram"></i>
+                                <em class="anticon anticon-instagram"></em>
                             </span>
                             <span class="title">{{ __('Instagram') }}</span>
                             <span class="arrow">
-                                <i class="arrow-icon"></i>
+                                <em class="arrow-icon"></em>
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -68,11 +68,11 @@
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
-                                <i class="anticon anticon-facebook"></i>
+                                <em class="anticon anticon-facebook"></em>
                             </span>
                             <span class="title">{{ __('Facebook') }}</span>
                             <span class="arrow">
-                                <i class="arrow-icon"></i>
+                                <em class="arrow-icon"></em>
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -89,11 +89,11 @@
             <li class="nav-item dropdown {{ request()->is('panel/user/measure/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <i class="anticon anticon-radar-chart"></i>
+                        <em class="anticon anticon-radar-chart"></em>
                     </span>
                     <span class="title">{{ __('Measure') }}</span>
                     <span class="arrow">
-                        <i class="arrow-icon"></i>
+                        <em class="arrow-icon"></em>
                     </span>
                 </a>
                 <ul class="dropdown-menu">
@@ -101,7 +101,7 @@
                         <a href="javascript:void(0);">
                             <span>{{ __('Market Research') }}</span>
                             <span class="arrow">
-                                <i class="arrow-icon"></i>
+                                <em class="arrow-icon"></em>
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -118,11 +118,11 @@
             <li class="nav-item dropdown ">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <i class="anticon anticon-fund"></i>
+                        <em class="anticon anticon-fund"></em>
                     </span>
                     <span class="title">{{ __('Track') }}</span>
                     <span class="arrow">
-                        <i class="arrow-icon"></i>
+                        <em class="arrow-icon"></em>
                     </span>
                 </a>
                 <ul class="dropdown-menu">
@@ -130,7 +130,7 @@
                         <a href="javascript:void(0);">
                             <span>{{ __('Social Listening') }}</span>
                             <span class="arrow">
-                                <i class="arrow-icon"></i>
+                                <em class="arrow-icon"></em>
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -147,18 +147,18 @@
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <i class="fas fa-mail-bulk"></i>
+                        <em class="fas fa-mail-bulk"></em>
                     </span>
                     <span class="title">{{ __('Posts') }}</span>
                     <span class="arrow">
-                        <i class="arrow-icon"></i>
+                        <em class="arrow-icon"></em>
                     </span>
                 </a>
                 <ul class="dropdown-menu ">
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.post_scheduling') ? 'active' : '' }}">
                         <a href="{{ route('panel.user.post_scheduling') }}">
                             <span class="icon-holder">
-                                <i class="fas fa-calendar-day"></i>
+                                <em class="fas fa-calendar-day"></em>
                             </span>
                             <span class="title">{{ __('Post Scheduling') }}</span>
                         </a>
@@ -169,18 +169,18 @@
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <i class="fas fa-headset"></i>
+                        <em class="fas fa-headset"></em>
                     </span>
                     <span class="title">{{ __('Support') }}</span>
                     <span class="arrow">
-                        <i class="arrow-icon"></i>
+                        <em class="arrow-icon"></em>
                     </span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.support.submit') ? 'active' : '' }}">
                         <a class="dropdown-toggle" href="{{ route('panel.user.support.submit') }}">
                             <span class="icon-holder">
-                                <i class="fas fa-comments"></i>
+                                <em class="fas fa-comments"></em>
                             </span>
                             <span class="title">{{ __('Submit Query') }}</span>
                         </a>
@@ -188,7 +188,7 @@
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.support.history') ? 'active' : '' }}">
                         <a class="dropdown-toggle" href="{{ route('panel.user.support.history') }}">
                             <span class="icon-holder">
-                                <i class="fas fa-history"></i>
+                                <em class="fas fa-history"></em>
                             </span>
                             <span class="title">{{ __('Support History') }}</span>
                         </a>
@@ -199,16 +199,16 @@
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
-                        <i class="fas fa-book"></i>
+                        <em class="fas fa-book"></em>
                     </span>
                     <span class="title">{{ __('Reports') }}</span>
                 </a>
             </li>
 
-            <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
-                <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
+            <li class="nav-item dropdown {{ request()->routeIs('panel.choosePackages') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="{{ route('panel.choosePackages') }}">
                     <span class="icon-holder">
-                        <i class="fas fa-info-circle"></i>
+                        <em class="fas fa-info-circle"></em>
                     </span>
                     <span class="title">{{ __('Packages') }}</span>
                 </a>
@@ -216,11 +216,11 @@
             {{-- <li class="nav-item dropdown {{ request()->is('panel/user/track/*') ? 'open' : '' }}">
             <a class="dropdown-toggle" href="javascript:void(0);">
                 <span class="icon-holder">
-                    <i class="anticon anticon-fund"></i>
+                    <em class="anticon anticon-fund"></em>
                 </span>
                 <span class="title">{{ __('Track') }}</span>
                 <span class="arrow">
-                    <i class="arrow-icon"></i>
+                    <em class="arrow-icon"></em>
                 </span>
             </a>
             <ul class="dropdown-menu">
@@ -228,7 +228,7 @@
                     <a href="javascript:void(0);">
                         <span>{{ __('Comp. Analysis') }}</span>
                         <span class="arrow">
-                            <i class="arrow-icon"></i>
+                            <em class="arrow-icon"></em>
                         </span>
                     </a>
                     <ul class="dropdown-menu">
