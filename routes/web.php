@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
@@ -13,6 +13,9 @@ use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
 use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\SupportController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\User\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,7 @@ use App\Http\Controllers\User\ProfileController;
 Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
         Route::middleware(['admin'])->group(function () {
-            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
             Route::resource('userPermissions', UserPermissionsController::class);
             Route::resource('userRoles', UserRolesController::class);
@@ -38,7 +41,7 @@ Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], functi
         Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
         Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
-        require __DIR__ . '/adminAuth.php';
+        require __DIR__. '/adminAuth.php';
     });
 });
 
@@ -58,9 +61,8 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::redirect('/', '/panel/dashboard', 301);
 
-        Route::get('/dashboard', function () {
-            return view('user.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {
@@ -69,11 +71,21 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
+
             });
+
+            Route::prefix('support')->as('support.')->group(function () {
+                Route::get('/submit', [SupportController::class, 'index'])->name('submit');
+                Route::get('/history', [SupportController::class, 'history'])->name('history');
+                Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
+                Route::get('/cancelQueryByUser/{userSupport}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
+                Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
+            });
+
+
 
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
-
 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
