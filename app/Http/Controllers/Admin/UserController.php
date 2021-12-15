@@ -11,7 +11,7 @@ use App\Http\Requests\Admin\Users\IndexUserRequest;
 use App\Http\Requests\Admin\Users\StoreUserRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Http\Requests\Admin\Users\ViewUserRequest;
-use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -24,8 +24,8 @@ class UserController extends Controller
      */
     public function index(IndexUserRequest $request)
     {
-        $users = User::paginate(10);
-        return view('admin.user.index', compact('users'));
+        $users = User::search()->paginate(10);
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function create(CreateUserRequest $request)
     {
-        return view('admin.user.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -54,6 +54,7 @@ class UserController extends Controller
             $senitized['password'] = Hash::make($request->password);
         }
 
+        $senitized['email_verified_at'] = Carbon::now();
         $user = User::create($senitized);
 
         // Set user profile photo if uploaded
@@ -87,11 +88,12 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  EditUserRequest $request
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(EditUserRequest $request, User $user)
     {
-        return view('admin.user.edit', ['user' => $user]);
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     /**
@@ -117,6 +119,9 @@ class UserController extends Controller
         $user->state = $request->state ?? $user->state;
         $user->city = $request->city ?? $user->city;
         $user->address = $request->address ?? $user->address;
+
+        !$request->has('enabled') ?: ($user->enabled = filter_var($request->enabled, FILTER_VALIDATE_BOOLEAN));
+        !$request->has('verified') ?: ($user->email_verified_at = (filter_var($request->verified, FILTER_VALIDATE_BOOLEAN) ? Carbon::now() : null));
 
         if ($request->hasFile('avatar')) {
             if ($user->hasMedia('avatars')) {

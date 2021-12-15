@@ -20,17 +20,27 @@
                     <a href="{{ route('admin.users.create') }}" class="d-flex align-items-center"><em class="bx bx-plus-circle me-1 font-22 text-primary"></em> <strong>Create</strong></a>
                 </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-md-3 col-sm-6 col-12">
+                    <form method="GET">
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent"><em class="bx bx-search"></em></span>
+                            <input type="text" class="form-control border-start-0" name="search" value="{{ request()->search ?? '' }}" placeholder="Search...">
+                        </div>
+                    </form>
+                </div>
+            </div>
             <hr>
             <div class="table-responsive">
                 <table class="table mb-0">
                     <thead>
                         <tr>
-                            <th>Actions</th>
-                            <th scope="col">#UserID</th>
+                            <th scope="col">Actions</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Mobile</th>
-                            <!-- <th scope="col">Enabled</th> -->
+                            <th scope="col">Enabled</th>
+                            <th scope="col">Verified</th>
                             <th scope="col">Created At</th>
                         </tr>
                     </thead>
@@ -49,18 +59,36 @@
                                     </button>
                                 </form>
                             </th>
-                            <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->mobile_number }}</td>
-                            <!-- <td></td> -->
+                            <td>
+                                <form class="ajax-form" method="POST" action="{{ route('admin.users.update', $user->id) }}">
+                                    @method('patch')
+                                    @csrf
+                                    <div class="form-check form-switch">
+                                        <input type="hidden" name="enabled" value="false">
+                                        <input class="form-check-input" name="enabled" type="checkbox" value="true" onchange="$(this).closest('form').submit();" {{ ($user->enabled ?? true)?'checked':'' }}>
+                                    </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form class="ajax-form" method="POST" action="{{ route('admin.users.update', $user->id) }}">
+                                    @method('patch')
+                                    @csrf
+                                    <div class="form-check form-switch">
+                                        <input type="hidden" name="verified" value="false">
+                                        <input class="form-check-input" name="verified" type="checkbox" value="true" onchange="$(this).closest('form').submit();" {{ ((bool)$user->email_verified_at)?'checked':'' }}>
+                                    </div>
+                                </form>
+                            </td>
                             <td>{{ $user->created_at }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
                 <div class="mt-4">
-                    {{ $users->links() }}
+                    {{ $users->withQueryString()->links() }}
                 </div>
             </div>
         </div>
