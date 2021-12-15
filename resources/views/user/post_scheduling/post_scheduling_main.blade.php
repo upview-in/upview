@@ -6,7 +6,6 @@
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.uploading_post_media') }}">
-
                     @if(session()->get('message2'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success:</strong> {{ session()->get('message2') }}
@@ -59,16 +58,6 @@
                         <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter a caption here..">
                     </div>
                     @error('caption')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="location">{{ __('Location') }}:</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Enter location here.." >
-                    </div>
-                    @error('location')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -132,11 +121,8 @@
         </div>
     </div>
 </x-app-layout>
-
-
-
 <script>
     $(function () {
         $('#datetimepicker1').datetimepicker();
     });
- </script>
+</script>
