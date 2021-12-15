@@ -63,7 +63,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-
+        
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {
                 Route::get('/', [ProfileController::class, 'index'])->name('index');

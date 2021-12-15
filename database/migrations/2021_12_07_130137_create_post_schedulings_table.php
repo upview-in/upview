@@ -18,7 +18,6 @@ class CreatePostSchedulingsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('platforms');
             $table->string('caption')->nullable();
-            $table->string('location')->nullable();
             $table->string('mentions')->nullable();
             $table->string('tags')->nullable();
             $table->string('image_name');

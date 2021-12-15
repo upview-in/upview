@@ -14,7 +14,6 @@ class PostScheduling extends Model
         'user_id',
         'platforms',
         'caption',
-        'location',
         'mentions',
         'tags',
         'image_name'
