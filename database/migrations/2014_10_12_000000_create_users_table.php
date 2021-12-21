@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('currency')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('enabled')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

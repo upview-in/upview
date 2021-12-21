@@ -23,4 +23,14 @@ class UserSupport extends Model
         'closed_by',
         'remark'
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'resolved_at' => 'datetime',
+        'assigned_on_date' => 'datetime'
+    ];
 }

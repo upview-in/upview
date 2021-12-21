@@ -39,6 +39,8 @@ class UpdateUserRequest extends FormRequest
             'city' => ['nullable', 'exists:cities,_id'],
             'address' => ['nullable', 'min:10', 'max:512'],
             'avatar' => ['sometimes', 'image', 'max:6144'],
+            'enabled' => ['sometimes', 'in:true,false'],
+            'verified' => ['sometimes', 'in:true,false'],
         ];
     }
 }

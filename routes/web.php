@@ -3,11 +3,11 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
-use App\Http\Controllers\Admin\UserRolesController;
+use App\Http\Controllers\Admin\UserRolesController;  
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
+use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\AccountController;
@@ -35,8 +35,8 @@ Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], functi
         Route::middleware(['admin'])->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
-            Route::resource('users/permissions', UserPermissionsController::class);
-            Route::resource('users/roles', UserRolesController::class);
+            Route::resource('userPermissions', UserPermissionsController::class);
+            Route::resource('userRoles', UserRolesController::class);
         });
 
         Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
@@ -68,6 +68,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+        Route::get('/choosePackages', [AppModuleController::class, 'index'])->name('choosePackages');
 
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {

@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="media align-items-center">
-                        <i class="fas fa-puzzle-piece text-danger fs-20"></i>
+                        <em class="fas fa-puzzle-piece text-danger fs-20"></em>
                         <div class="m-l-15">
                             {{-- db --}}
                             <h2 class="m-b-0">1</h2>
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="media align-items-center">
-                        <i class="fas fa-book text-cyan fs-20"></i>
+                        <em class="fas fa-book text-cyan fs-20"></em>
                         <div class="m-l-15">
                             {{-- db --}}
                             <h2 class="m-b-0">{{ $totalReports  }}</h2>
@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="media align-items-center">
-                        <i class="far fa-user-circle text-gold fs-20"></i>
+                        <em class="far fa-user-circle text-gold fs-20"></em>
                         <div class="m-l-15">
                             {{-- db --}}
                             <h2 class="m-b-0">{{ $linkedAccountsCount }}</h2>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="media align-items-center">
                         {{-- db --}}
-                        <i class="far fa-gem  text-purple fs-20"></i>
+                        <em class="far fa-gem  text-purple fs-20"></em>
                         <div class="m-l-15">
                             <h2 class="m-b-0">{{ $accountLevel }}</h2>
                             <p class="m-b-0 text-muted">Account Type</p>
@@ -66,8 +66,7 @@
         </div>
 
         <div class="card-body">
-            <video controls width="900"  style="border: 1px solid #000;">
-
+            <video controls width="900" style="border: 1px solid #000;">
                 <source src="{{ asset('videos/upview.mp4')  }} "
                         type="video/mp4">
                 Sorry, your browser doesn't support embedded videos.

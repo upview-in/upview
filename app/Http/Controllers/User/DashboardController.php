@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LinkedAccounts;
-use App\Models\Reports;
+use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,13 +20,12 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $lnkedAccountsCount = LinkedAccounts::where('user_id', $user->id)->count() ?? 0;
-        $totalReports = Reports::where('user_id', $user->id)->count() ?? 0;
+        $totalReports = Report::where('user_id', $user->id)->count() ?? 0;
         $accountLevel = "";
 
         $modulesActive = 0; /* get from dabatase later */
 
-        switch($modulesActive)
-        {
+        switch ($modulesActive) {
             case 1: $accountLevel = "Free";
                     break;
             case 2: $accountLevel = "Pro";
@@ -35,8 +34,6 @@ class DashboardController extends Controller
                     break;
             default:  $accountLevel = "Jimmy";
         }
-
-        $data = ["linkedAccountsCount"=>$lnkedAccountsCount, "totalReports"=>$totalReports, "accountLevel"=>$accountLevel];
-        return $data;
+        return ["linkedAccountsCount"=>$lnkedAccountsCount, "totalReports"=>$totalReports, "accountLevel"=>$accountLevel];
     }
 }

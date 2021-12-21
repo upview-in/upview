@@ -37,12 +37,14 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::min(8)],
+            'mobile_number' => ['required', 'regex:/^\+(?:[0-9] ?){6,14}[0-9]$/'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'mobile_number' =>  $request->mobile_number,
         ]);
 
         event(new Registered($user));

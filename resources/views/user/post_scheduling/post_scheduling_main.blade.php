@@ -6,7 +6,6 @@
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.uploading_post_media') }}">
-
                     @if(session()->get('message2'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success:</strong> {{ session()->get('message2') }}
@@ -23,32 +22,32 @@
                         <div class="checkbox row">
                             <div class="col-md-2">
                                 <input id="cbinstagram" name="cbinstagram" type="checkbox">
-                                <label for="instagram">Instagram</label>
+                                <label for="cbinstagram">Instagram</label>
                             </div>
                             
                             <div class="col-md-2">
                                 <input id="cbyoutube" name="cbyoutube" type="checkbox">
-                                <label for="youtube">Youtube</label>
+                                <label for="cbyoutube">Youtube</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cbfacebook" name="cbfacebook" type="checkbox">
-                                <label for="facebook">Facebook</label>
+                                <label for="cbfacebook">Facebook</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cbtwitter" name="cbtwitter" type="checkbox">
-                                <label for="twitter">Twitter</label>
+                                <label for="cbtwitter">Twitter</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cblinkdin" name="cblinkdin" type="checkbox">
-                                <label for="linkdin">linkdIn</label>
+                                <label for="cblinkdin">linkdIn</label>
                             </div>
 
                             <div class="col-md-2">
                                 <input id="cbpintrest" name="cbpintrest" type="checkbox">
-                                <label for="pintrest">Pintrest</label>
+                                <label for="cbpintrest">Pintrest</label>
                             </div>
 
                         </div>
@@ -59,16 +58,6 @@
                         <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter a caption here..">
                     </div>
                     @error('caption')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="location">{{ __('Location') }}:</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Enter location here.." >
-                    </div>
-                    @error('location')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -132,11 +121,8 @@
         </div>
     </div>
 </x-app-layout>
-
-
-
 <script>
     $(function () {
         $('#datetimepicker1').datetimepicker();
     });
- </script>
+</script>

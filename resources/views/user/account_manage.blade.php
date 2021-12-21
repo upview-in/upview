@@ -86,7 +86,7 @@
 							@foreach($linkedAccounts as $key => $linkedAccount)
 							<tr>
 								<th scope="row">{{ $key + 1 }}</th>
-								<td><img class="rounded-circle mr-3" src="{{ $linkedAccount->picture }}" width="50px" /> {{ $linkedAccount->name ?? 'N/A' }}</td>
+								<td><img class="rounded-circle mr-3" alt="img" src="{{ $linkedAccount->picture }}" width="50px" /> {{ $linkedAccount->name ?? 'N/A' }}</td>
 								<td>{{ $linkedAccount->email ?? 'N/A' }}</td>
 								<td>{!! $platforms[$linkedAccount->platform] !!}</td>
 								<td>{{ $linkedAccount->created_at->diffForHumans() }}</td>
@@ -150,14 +150,29 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-12 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-50"><i class="anticon anticon-youtube"></i> Youtube</a>
+						<div class="col-6 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100"><em class="fab fa-youtube"></em> Youtube</a>
 						</div>
-						<div class="col-12 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-50"><i class="anticon anticon-facebook"></i> FaceBook</a>
+						<div class="col-6 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100"><em class="fab fa-facebook-square"></em> FaceBook</a>
 						</div>
-						<div class="col-12 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-50"><i class="anticon anticon-instagram"></i> Instagram</a>
+						<div class="col-6 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-100"><em class="fab fa-instagram"></em> Instagram</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100"><em class="fab fa-twitter-square"></em> Twitter</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-primary w-100"><em class="fab fa-linkedin"></em> LinkedIn</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-danger w-100"><em class="fab fa-pinterest"></em> Pinterest</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-warning w-100"><em class="fab fa-reddit-square"></em> Reddit</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100"><em class="fab fa-telegram"></em> Telegram</a>
 						</div>
 					</div>
 				</div>
