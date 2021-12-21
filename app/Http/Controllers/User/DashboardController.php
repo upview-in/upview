@@ -25,8 +25,7 @@ class DashboardController extends Controller
 
         $modulesActive = 0; /* get from dabatase later */
 
-        switch($modulesActive)
-        {
+        switch ($modulesActive) {
             case 1: $accountLevel = "Free";
                     break;
             case 2: $accountLevel = "Pro";
@@ -35,8 +34,6 @@ class DashboardController extends Controller
                     break;
             default:  $accountLevel = "Jimmy";
         }
-
-        $data = ["linkedAccountsCount"=>$lnkedAccountsCount, "totalReports"=>$totalReports, "accountLevel"=>$accountLevel];
-        return $data;
+        return ["linkedAccountsCount"=>$lnkedAccountsCount, "totalReports"=>$totalReports, "accountLevel"=>$accountLevel];
     }
 }
