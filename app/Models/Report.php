@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-class Reports extends Eloquent
+class Report extends Eloquent
 {
     use HasFactory, SoftDeletes;
 
