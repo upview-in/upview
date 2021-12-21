@@ -3,11 +3,11 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
-use App\Http\Controllers\Admin\UserRolesController;
+use App\Http\Controllers\Admin\UserRolesController;  
+use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\AccountController;
@@ -53,6 +53,10 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
     Route::get('/', function () {
         return view('welcome');
     });
+
+    Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
+    Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');
+
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
     Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
