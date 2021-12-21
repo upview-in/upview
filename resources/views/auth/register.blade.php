@@ -16,7 +16,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="name">{{ __('Name') }}:</label>
                                         <div class="input-affix">
-                                            <i class="prefix-icon anticon anticon-user"></i>
+                                            <em class="prefix-icon fas fa-user"></em>
                                             <input type="text" class="form-control {{ $errors->has('name')?'is-invalid':'is-valid' }}" id="name" name="name" :value="old('name')" required autofocus placeholder="{{ __('Name') }}">
                                         </div>
                                         @error('name')
@@ -28,7 +28,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
-                                            <i class="prefix-icon anticon anticon-mail"></i>
+                                            <em class="prefix-icon fas fa-envelope"></em>
                                             <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
                                         </div>
                                         @error('email')
@@ -38,9 +38,21 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label class="font-weight-semibold" for="mobile_number">{{ __('Phone') }}:</label>
+                                        <div class="input-affix">
+                                            <em class="prefix-icon fas fa-phone-alt"></em>
+                                            <input type="text" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" id="mobile_number" name="mobile_number" :value="old('mobile_number')" required autofocus placeholder="{{ __('Enter Number (+91XXXXXXXXXX)') }}">
+                                        </div>
+                                        @error('mobile_number')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
                                         <div class="input-affix m-b-10">
-                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <em class="prefix-icon fas fa-lock"></em>
                                             <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="new-password" placeholder="{{ __('Password') }}">
                                         </div>
                                         @error('password')
@@ -52,7 +64,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password_confirmation">{{ __('Confirm Password') }}:</label>
                                         <div class="input-affix m-b-10">
-                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <em class="prefix-icon fas fa-lock"></em>
                                             <input type="password" class="form-control {{ $errors->has('password_confirmation')?'is-invalid':'is-valid' }}" id="password_confirmation" type="password" name="password_confirmation" required placeholder="{{ __('Confirm Password') }}">
                                         </div>
                                         @error('password_confirmation')
