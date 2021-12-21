@@ -55,7 +55,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
     });
 
     Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
-    Route::post('/ayrCall', [AyrshareController::class, 'ayrshareAPICall'])->name('ayrshareAPICall');
+    Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');
 
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');

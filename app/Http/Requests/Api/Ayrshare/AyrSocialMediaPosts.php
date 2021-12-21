@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\Ayrshare;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AyrProfile extends FormRequest
+class AyrSocialMediaPosts extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
