@@ -17,6 +17,9 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\DashboardController;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +56,24 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
     Route::get('/', function () {
         return view('welcome');
     });
+
+    Route::get('image/{file}', function ($file) {
+        try {
+            $file = decrypt($file);
+        } catch (DecryptException $e) {
+            return abort(404);
+        }
+       
+        $file = storage_path('app/'.$file);
+       
+        if (!File::exists($file)) { return abort(404); }
+       
+        $type = File::mimeType($file);
+        $file = File::get($file);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
+    })->name('image.displayImage');
 
     Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
     Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');

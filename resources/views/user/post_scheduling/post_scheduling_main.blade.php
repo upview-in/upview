@@ -1,3 +1,22 @@
+@section('custom-scripts')
+<script>
+    $(document).ready( function() {
+        $(".tagsSelection").select2({
+            tags: true,
+            tokenSeparators: [',', ' ']
+        });
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
+@endsection
+
+@section('custom-styles')
+<style>
+    .tagsSelection {
+        flex: 1 1 auto;
+    }
+</style>
+@endsection
 <x-app-layout title="Post Scheduling">
     <div class="container-fluid">
         <div class="card">
@@ -21,36 +40,40 @@
                         <label class="font-weight-semibold" for="platfromSelection">{{ __('Select Social Media Platform(s)') }}:</label>
                         <div class="checkbox row">
                             <div class="col-md-2">
-                                <input id="cbinstagram" name="cbinstagram" type="checkbox">
+                                <input id="cbinstagram" name="platform[]"  value="{{ App\Helper\TokenHelper::$PLATFORMS['instagram'] }}" type="checkbox">
                                 <label for="cbinstagram">Instagram</label>
                             </div>
                             
                             <div class="col-md-2">
-                                <input id="cbyoutube" name="cbyoutube" type="checkbox">
+                                <input id="cbyoutube" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['youtube'] }}" type="checkbox">
                                 <label for="cbyoutube">Youtube</label>
                             </div>
 
                             <div class="col-md-2">
-                                <input id="cbfacebook" name="cbfacebook" type="checkbox">
+                                <input id="cbfacebook" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['facebook'] }}" type="checkbox">
                                 <label for="cbfacebook">Facebook</label>
                             </div>
 
                             <div class="col-md-2">
-                                <input id="cbtwitter" name="cbtwitter" type="checkbox">
+                                <input id="cbtwitter" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['twitter'] }}" type="checkbox">
                                 <label for="cbtwitter">Twitter</label>
                             </div>
 
                             <div class="col-md-2">
-                                <input id="cblinkdin" name="cblinkdin" type="checkbox">
-                                <label for="cblinkdin">linkdIn</label>
+                                <input id="cblinkdin" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['linkedin'] }}" type="checkbox">
+                                <label for="cblinkdin">linkedIn</label>
                             </div>
 
                             <div class="col-md-2">
-                                <input id="cbpintrest" name="cbpintrest" type="checkbox">
+                                <input id="cbpintrest" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['pintrest'] }}" type="checkbox">
                                 <label for="cbpintrest">Pintrest</label>
                             </div>
-
                         </div>
+                        @error('platform')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-8">
@@ -84,7 +107,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">#</span>
                             </div>
-                            <input type="text" class="form-control" id="tags" name="tags" placeholder="Enter Tags seperated by ',' comma" />
+                            <input type="text" class="tagsSelection" style="flex : 1 1 auto; border: 0px;" id="tags" name="tags" placeholder="Enter Tags seperated by ',' comma" />
                         </div>
                     </div>
                     @error('tags')
@@ -121,8 +144,4 @@
         </div>
     </div>
 </x-app-layout>
-<script>
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
-</script>
+

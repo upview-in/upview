@@ -7,25 +7,35 @@ use Illuminate\Support\Facades\Auth;
 
 class TokenHelper
 {
-    public static $YOUTUBE = 1;
-    public static $FACEBOOK = 2;
-    public static $INSTAGRAM = 3;
+    public static $PLATFORMS = [
+        'youtube' => 1,
+        'facebook' => 2,
+        'instagram' => 3,
+        'twitter' => 4,
+        'pintrest' => 5,
+        'linkedin' => 6
+    ];
+
+    public static function getFlippedPlatforms() : array
+    {
+        return array_flip(self::$PLATFORMS);
+    }
 
     public static function getAuthToken_YT()
     {
         $user_id = Auth::id();
-        return LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$YOUTUBE])->get();
+        return LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$PLATFORMS['youtube']])->get();
     }
 
     public static function getAuthToken_FB()
     {
         $user_id = Auth::id();
-        return LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$FACEBOOK])->get();
+        return LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$PLATFORMS['facebook']])->get();
     }
 
     public static function getAuthToken_IG()
     {
         $user_id = Auth::id();
-        return ( LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$INSTAGRAM])->get());
+        return LinkedAccounts::where(['user_id' => $user_id, 'platform' => self::$PLATFORMS['instagram']])->get();
     }
 }

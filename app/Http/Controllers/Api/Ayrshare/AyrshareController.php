@@ -56,7 +56,6 @@ class AyrshareController extends Controller
 
     public function ayrSocialMediaPosts(AyrSocialMediaPosts $request)
     {
-
         if ($request->has('post') && $request->has('platforms')) {
             return AyrshareController::ayrshareAPICall(
                 'GET',
