@@ -23,7 +23,6 @@ class VideosController extends Controller
                     if ($request->has(['video_id', 'startDate', 'endDate', 'dimensions', 'sort', 'filters'])) {
                         $data = [];
 
-
                         $VideoAnalyticsResponse = app(VideoController::class)->getVideoAnalytics(new GetVideoAnalytics($request->all(['video_id', 'startDate', 'endDate', 'dimensions', 'sort', 'filters'])))->getData();
 
                         $SubsciberGained = 0;
@@ -64,14 +63,12 @@ class VideosController extends Controller
                             $EstMinWatched += $value[$indexEstMinWatched];
                         }
 
-                        $data["OverviewStatistics"]["Likes"] = $Likes;
-                        $data["OverviewStatistics"]["DisLikes"] = $DisLikes;
-                        $data["OverviewStatistics"]["Shares"] = $Shares;
-                        $data["OverviewStatistics"]["Comments"] = $Comments;
-                        $data["OverviewStatistics"]["EstMinWatched"] = $EstMinWatched;
-                        $data["OverviewStatistics"]["ChartData"] = $OverviewStatisticsChartData;
-
-
+                        $data['OverviewStatistics']['Likes'] = $Likes;
+                        $data['OverviewStatistics']['DisLikes'] = $DisLikes;
+                        $data['OverviewStatistics']['Shares'] = $Shares;
+                        $data['OverviewStatistics']['Comments'] = $Comments;
+                        $data['OverviewStatistics']['EstMinWatched'] = $EstMinWatched;
+                        $data['OverviewStatistics']['ChartData'] = $OverviewStatisticsChartData;
 
                         $ChannelDemoGraphicsAnalyticsResponse = app(VideoController::class)->getVideoDemoGraphicsAnalytics($request)->getData();
 
@@ -91,7 +88,7 @@ class VideosController extends Controller
                             $tempArr[2] = 0;
 
                             foreach ($value as $___) {
-                                if ($___[$indexGender] == "male") {
+                                if ($___[$indexGender] == 'male') {
                                     $tempArr[1] = $___[$indexViewerPercentage];
                                 } else {
                                     $tempArr[2] = $___[$indexViewerPercentage];
@@ -101,9 +98,7 @@ class VideosController extends Controller
                             $DemoGraphicsChartData[] = $tempArr;
                         }
 
-                        $data["Demographics"]["ChartData"] = $DemoGraphicsChartData;
-
-
+                        $data['Demographics']['ChartData'] = $DemoGraphicsChartData;
 
                         $DeviceWiseAnalyticsResponse = app(VideoController::class)->getVideoDeviceWiseAnalytics($request)->getData();
 
@@ -113,20 +108,18 @@ class VideosController extends Controller
                         $DeviceWiseChartData = [];
                         $DeviceWiseChartData[] = ['Device Type', 'Views'];
                         $TopDevice = [];
-                        $TopDevice["Views"] = 0;
-                        $TopDevice["Device"] = "";
+                        $TopDevice['Views'] = 0;
+                        $TopDevice['Device'] = '';
 
                         foreach ($DeviceWiseAnalyticsResponse->rows as $key => $value) {
                             $DeviceWiseChartData[] = [Functions::ConvertToRegularString($value[$indexDeviceType]), $value[$indexDeviceWiseViews]];
-                            if ($value[$indexDeviceWiseViews] > $TopDevice["Views"]) {
-                                $TopDevice["Views"] = $value[$indexDeviceWiseViews];
-                                $TopDevice["Device"] = Functions::ConvertToRegularString($value[$indexDeviceType]);
+                            if ($value[$indexDeviceWiseViews] > $TopDevice['Views']) {
+                                $TopDevice['Views'] = $value[$indexDeviceWiseViews];
+                                $TopDevice['Device'] = Functions::ConvertToRegularString($value[$indexDeviceType]);
                             }
                         }
 
-                        $data["DeviceWise"]["ChartData"] = $DeviceWiseChartData;
-
-
+                        $data['DeviceWise']['ChartData'] = $DeviceWiseChartData;
 
                         $OsWiseAnalyticsResponse = app(VideoController::class)->getVideoOsWiseAnalytics($request)->getData();
 
@@ -136,20 +129,18 @@ class VideosController extends Controller
                         $OsWiseChartData = [];
                         $OsWiseChartData[] = ['OS', 'Views'];
                         $TopPlatform = [];
-                        $TopPlatform["Views"] = 0;
-                        $TopPlatform["Platform"] = "";
+                        $TopPlatform['Views'] = 0;
+                        $TopPlatform['Platform'] = '';
 
                         foreach ($OsWiseAnalyticsResponse->rows as $key => $value) {
                             $OsWiseChartData[] = [Functions::ConvertToRegularString($value[$indexOsType]), $value[$indexOsWiseViews]];
-                            if ($value[$indexOsWiseViews] > $TopPlatform["Views"]) {
-                                $TopPlatform["Views"] = $value[$indexOsWiseViews];
-                                $TopPlatform["Platform"] = Functions::ConvertToRegularString($value[$indexOsType]);
+                            if ($value[$indexOsWiseViews] > $TopPlatform['Views']) {
+                                $TopPlatform['Views'] = $value[$indexOsWiseViews];
+                                $TopPlatform['Platform'] = Functions::ConvertToRegularString($value[$indexOsType]);
                             }
                         }
 
-                        $data["OsWise"]["ChartData"] = $OsWiseChartData;
-
-
+                        $data['OsWise']['ChartData'] = $OsWiseChartData;
 
                         $TrafficSourceAnalyticsResponse = app(VideoController::class)->getVideoTrafficSourceAnalytics($request)->getData();
 
@@ -160,20 +151,18 @@ class VideosController extends Controller
                         $TrafficSourceChartData = [];
                         $TrafficSourceChartData[] = ['Traffic Source Type', 'Views', 'Est. Min. Watched'];
                         $TrafficSource = [];
-                        $TrafficSource["Views"] = 0;
-                        $TrafficSource["Source"] = "";
+                        $TrafficSource['Views'] = 0;
+                        $TrafficSource['Source'] = '';
 
                         foreach ($TrafficSourceAnalyticsResponse->rows as $key => $value) {
                             $TrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]), $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];
-                            if ($value[$indexTrafficSourceViews] > $TrafficSource["Views"]) {
-                                $TrafficSource["Views"] = $value[$indexTrafficSourceViews];
-                                $TrafficSource["Source"] = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
+                            if ($value[$indexTrafficSourceViews] > $TrafficSource['Views']) {
+                                $TrafficSource['Views'] = $value[$indexTrafficSourceViews];
+                                $TrafficSource['Source'] = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
                             }
                         }
 
-                        $data["TrafficSource"]["ChartData"] = $TrafficSourceChartData;
-
-
+                        $data['TrafficSource']['ChartData'] = $TrafficSourceChartData;
 
                         $SocialMediaTrafficSourceAnalyticsResponse = app(VideoController::class)->getVideoSocialMediaTrafficSourceAnalytics($request)->getData();
 
@@ -183,21 +172,19 @@ class VideosController extends Controller
                         $SocialMediaTrafficSourceChartData = [];
                         $SocialMediaTrafficSourceChartData[] = ['Source', 'Shares'];
                         $SocialMediaTrafficSource = [];
-                        $SocialMediaTrafficSource["Shares"] = 0;
-                        $SocialMediaTrafficSource["Source"] = "";
+                        $SocialMediaTrafficSource['Shares'] = 0;
+                        $SocialMediaTrafficSource['Source'] = '';
 
                         foreach ($SocialMediaTrafficSourceAnalyticsResponse->rows as $key => $value) {
                             $SocialMediaTrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]), $value[$indexSocialMediaTrafficSourceShares]];
 
-                            if ($value[$indexTrafficSourceViews] > $SocialMediaTrafficSource["Shares"]) {
-                                $SocialMediaTrafficSource["Shares"] = $value[$indexSocialMediaTrafficSourceShares];
-                                $SocialMediaTrafficSource["Source"] = Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]);
+                            if ($value[$indexTrafficSourceViews] > $SocialMediaTrafficSource['Shares']) {
+                                $SocialMediaTrafficSource['Shares'] = $value[$indexSocialMediaTrafficSourceShares];
+                                $SocialMediaTrafficSource['Source'] = Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]);
                             }
                         }
 
-                        $data["SocialMediaTrafficSource"]["ChartData"] = $SocialMediaTrafficSourceChartData;
-
-
+                        $data['SocialMediaTrafficSource']['ChartData'] = $SocialMediaTrafficSourceChartData;
 
                         $GeographicStatisticsAnalyticsResponse = app(VideoController::class)->getVideoGeographicStatisticsAnalytics($request)->getData();
 
@@ -211,30 +198,30 @@ class VideosController extends Controller
                         $GeographicStatisticsChartData = [];
                         // $GeographicStatisticsChartData[] = ["Country", "Views", "Est. Min. Watched", "Avg. View Duration", "Avg. View Percentage", "Subscribers Gained"];
                         $GeographicStatisticsChartData[] = [
-                            "Country",
-                            "Views",
+                            'Country',
+                            'Views',
                             [
-                                "role" => "tooltip",
-                                "type" => "string",
-                                "p" => [
-                                    "html" => true
-                                ]
-                            ]
+                                'role' => 'tooltip',
+                                'type' => 'string',
+                                'p' => [
+                                    'html' => true,
+                                ],
+                            ],
                         ];
                         $TopCountry = [];
-                        $TopCountry["Views"] = 0;
-                        $TopCountry["Country"] = "";
+                        $TopCountry['Views'] = 0;
+                        $TopCountry['Country'] = '';
 
                         foreach ($GeographicStatisticsAnalyticsResponse->rows as $key => $value) {
                             // $GeographicStatisticsChartData[] = [$value[$indexGeographicStatisticsCountry], $value[$indexGeographicStatisticsViews], $value[$indexGeographicStatisticsEstimatedMinutesWatched], $value[$indexGeographicStatisticsAverageViewDuration], $value[$indexGeographicStatisticsAverageViewPercentage], $value[$indexGeographicStatisticsSubscribersGained]];
-                            $GeographicStatisticsChartData[] = [$value[$indexGeographicStatisticsCountry], $value[$indexGeographicStatisticsViews], "<strong>Views:</strong> " . $value[$indexGeographicStatisticsViews] . "<br><strong>Est. Min. Watched:</strong> " . $value[$indexGeographicStatisticsEstimatedMinutesWatched] . "<br><strong>Avg. View Duration:</strong> " . $value[$indexGeographicStatisticsAverageViewDuration] . "<br><strong>Avg. View Percentage:</strong> " . $value[$indexGeographicStatisticsAverageViewPercentage] . "%<br><strong>Subscribers Gained:</strong> " . $value[$indexGeographicStatisticsSubscribersGained]];
-                            if ($value[$indexGeographicStatisticsViews] > $TopCountry["Views"]) {
-                                $TopCountry["Views"] = $value[$indexGeographicStatisticsViews];
-                                $TopCountry["Country"] = $value[$indexGeographicStatisticsCountry];
+                            $GeographicStatisticsChartData[] = [$value[$indexGeographicStatisticsCountry], $value[$indexGeographicStatisticsViews], '<strong>Views:</strong> ' . $value[$indexGeographicStatisticsViews] . '<br><strong>Est. Min. Watched:</strong> ' . $value[$indexGeographicStatisticsEstimatedMinutesWatched] . '<br><strong>Avg. View Duration:</strong> ' . $value[$indexGeographicStatisticsAverageViewDuration] . '<br><strong>Avg. View Percentage:</strong> ' . $value[$indexGeographicStatisticsAverageViewPercentage] . '%<br><strong>Subscribers Gained:</strong> ' . $value[$indexGeographicStatisticsSubscribersGained]];
+                            if ($value[$indexGeographicStatisticsViews] > $TopCountry['Views']) {
+                                $TopCountry['Views'] = $value[$indexGeographicStatisticsViews];
+                                $TopCountry['Country'] = $value[$indexGeographicStatisticsCountry];
                             }
                         }
 
-                        $data["GeographicStatistics"]["ChartData"] = $GeographicStatisticsChartData;
+                        $data['GeographicStatistics']['ChartData'] = $GeographicStatisticsChartData;
 
                         return response()->json(collect($data));
                     } else {

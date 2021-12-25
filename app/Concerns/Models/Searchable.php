@@ -2,13 +2,13 @@
 
 namespace App\Concerns\Models;
 
-use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 trait Searchable
 {
     /**
-     * Scope a query to search for a term in the attributes
+     * Scope a query to search for a term in the attributes.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
@@ -41,7 +41,7 @@ trait Searchable
     }
 
     /**
-     * Parse search scope arguments
+     * Parse search scope arguments.
      *
      * @param array $arguments
      * @return array
@@ -74,7 +74,7 @@ trait Searchable
     }
 
     /**
-     * Get searchable columns
+     * Get searchable columns.
      *
      * @return array
      */

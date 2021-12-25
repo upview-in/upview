@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 class UserSupport extends Model
 {
@@ -21,7 +21,7 @@ class UserSupport extends Model
         'status',
         'resolved_at',
         'closed_by',
-        'remark'
+        'remark',
     ];
 
     /**
@@ -32,6 +32,6 @@ class UserSupport extends Model
     protected $casts = [
         'resolved_at' => 'datetime',
         'status' => 'boolean',
-        'assigned_on_date' => 'datetime'
+        'assigned_on_date' => 'datetime',
     ];
 }

@@ -21,7 +21,7 @@
 										<input type="text" class="form-control" placeholder="Confirm password" />
 									</div>
 									<div class="d-grid gap-2">
-										<button type="button" class="btn btn-primary">Change Password</button> <a href="authentication-login.html" class="btn btn-light"><i class='bx bx-arrow-back mr-1'></i>Back to Login</a>
+										<button type="button" class="btn btn-primary">Change Password</button> <a href="authentication-login.html" class="btn btn-light"><i class='bi bi-arrow-back mr-1'></i>Back to Login</a>
 									</div>
 								</div>
 							</div>

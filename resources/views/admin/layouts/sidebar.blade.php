@@ -7,7 +7,7 @@
         <div>
             <span class="logo-text">{{ config('app.name') }}<mark class="ms-1 text-muted h6">Admin</mark></span>
         </div>
-        <div class="toggle-icon ms-auto"><em class='bx bx-arrow-to-left'></em>
+        <div class="toggle-icon ms-auto"><em class='bi bi-arrow-bar-left'></em>
         </div>
     </div>
     <!--navigation-->
@@ -15,34 +15,131 @@
         <li>
             <a href="{{ route('admin.dashboard') }}">
                 <div class="parent-icon">
-                    <em class='bx bx-home-circle'></em>
+                    <em class='bi bi-speedometer2'></em>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.users.index') }}">
-                <div class="parent-icon">
-                    <em class='bx bx-user-circle'></em>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><em class='bi bi-people'></em>
                 </div>
                 <div class="menu-title">Users</div>
             </a>
+            <ul>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <em class='bi bi-gear'></em> Manage
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.users.create') }}">
+                                <em class='bi bi-plus-lg'></em> Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.users.index') }}">
+                                <em class='bi bi-list'></em> List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <em class='bi bi-shield-shaded'></em> Permissions
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.userPermissions.create') }}">
+                                <em class='bi bi-plus-lg'></em> Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.userPermissions.index') }}">
+                                <em class='bi bi-list'></em> List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <em class='bi bi-tags'></em> Roles
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.userRoles.create') }}">
+                                <em class='bi bi-plus-lg'></em> Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.userRoles.index') }}">
+                                <em class='bi bi-list'></em> List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </li>
+        
         <li>
-            <a href="{{ route('admin.userPermissions.index') }}">
-                <div class="parent-icon">
-                    <em class='bx bx-fingerprint'></em>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><em class='bi bi-person-badge'></em>
                 </div>
-                <div class="menu-title">Permissions</div>
+                <div class="menu-title">Admins</div>
             </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.userRoles.index') }}">
-                <div class="parent-icon">
-                    <em class='bx bx-diamond'></em>
-                </div>
-                <div class="menu-title">Plans</div>
-            </a>
+            <ul>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <em class='bi bi-gear'></em> Manage
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.admins.create') }}">
+                                <em class='bi bi-plus-lg'></em> Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.admins.index') }}">
+                                <em class='bi bi-list'></em> List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <em class='bi bi-shield-shaded'></em> Permissions
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.adminPermissions.create') }}">
+                                <em class='bi bi-plus-lg'></em> Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.adminPermissions.index') }}">
+                                <em class='bi bi-list'></em> List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <em class='bi bi-tags'></em> Roles
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.adminRoles.create') }}">
+                                <em class='bi bi-plus-lg'></em> Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.adminRoles.index') }}">
+                                <em class='bi bi-list'></em> List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </li>
     </ul>
     <!--end navigation-->

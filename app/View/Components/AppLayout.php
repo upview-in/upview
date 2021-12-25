@@ -8,9 +8,11 @@ use Illuminate\View\Component;
 
 class AppLayout extends Component
 {
-    public $title, $pageHeader;
+    public $title;
+    public $pageHeader;
 
-    public function __construct($title = null, $pageHeader = null) {
+    public function __construct($title = null, $pageHeader = null)
+    {
         $this->title = $title;
         $this->pageHeader = $pageHeader;
     }
@@ -23,6 +25,7 @@ class AppLayout extends Component
     public function render()
     {
         App::setLocale(Auth::user()->local_lang ?? 'en');
+
         return view('layouts.app');
     }
 }

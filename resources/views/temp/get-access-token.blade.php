@@ -73,15 +73,12 @@ session_start();
 // Generate and redirect to login URL.
 
 use Facebook\Facebook;
-
-
 use Illuminate\Support\Facades\Config;
 
-$creds = array(
-  'app_id' => Config::get('instagram.clientId'),
-  'app_secret' => Config::get('instagram.clientSecret'),
-);
-
+$creds = [
+    'app_id' => Config::get('instagram.clientId'),
+    'app_secret' => Config::get('instagram.clientSecret'),
+];
 
 $facebook = new Facebook($creds);
 
@@ -89,54 +86,49 @@ $helper = $facebook->getRedirectLoginHelper();
 
 $oAuth = $facebook->getOAuth2Client();
 
-
 if (isset($_GET['code'])) {
+    try {
+        $token = $helper->getAccessToken();
+        //echo 'TOKEN GENERATED:  {{ '. $token.' }}';
 
-  try {
-    $token = $helper->getAccessToken();
-    //echo 'TOKEN GENERATED:  {{ '. $token.' }}';
-
-    if (!$token->isLongLived()) {
-      try {
-        $token = $oAuth->getLongLivedAccessToken($token);
-      } catch (\Facebook\Exceptions\FacebookSDKException $e) {
-
-        echo 'SDK Error: ' . $e->getMessage();
-      }
+        if (!$token->isLongLived()) {
+            try {
+                $token = $oAuth->getLongLivedAccessToken($token);
+            } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+                echo 'SDK Error: ' . $e->getMessage();
+            }
+        }
+        echo 'Long Lived Access Token: ' . $token;
+    } catch (\Facebook\Exceptions\FacebookResponseException $th) {
+        echo 'Graph Error: ' . $th->getMessage();
+    } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+        echo 'SDK ERROR: ' . $e->getMessage();
     }
-    echo 'Long Lived Access Token: ' . $token;
-  } catch (\Facebook\Exceptions\FacebookResponseException $th) {
-    echo "Graph Error: " . $th->getMessage();
-  } catch (\Facebook\Exceptions\FacebookSDKException $e) {
-    echo 'SDK ERROR: ' . $e->getMessage();
-  }
 } else {
-  $perms =
+    $perms =
 
     [
 
-      'public_profile',
-      'instagram_basic',
-      'pages_show_list',
-      'instagram_manage_comments',
-      'instagram_manage_insights',
-      'pages_manage_ads',
-      'pages_manage_metadata',
-      'pages_manage_engagement',
-      'pages_read_user_content',
-      'ads_management',
-      'business_management',
-      'instagram_content_publish',
-      'pages_read_engagement'
+        'public_profile',
+        'instagram_basic',
+        'pages_show_list',
+        'instagram_manage_comments',
+        'instagram_manage_insights',
+        'pages_manage_ads',
+        'pages_manage_metadata',
+        'pages_manage_engagement',
+        'pages_read_user_content',
+        'ads_management',
+        'business_management',
+        'instagram_content_publish',
+        'pages_read_engagement',
 
     ];
 
-  $loginUrl = $helper->getLoginUrl((string) Config::get('instagram.redirectUri'), $perms);
+    $loginUrl = $helper->getLoginUrl((string) Config::get('instagram.redirectUri'), $perms);
 
-
-  echo '
+    echo '
 <a href="' . $loginUrl . '"> Login With Instagram </a>';
 }
-
 
 ?>

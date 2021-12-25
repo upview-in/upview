@@ -4,7 +4,6 @@ namespace App\Http\Requests\Admin\Users;
 
 use App\Helper\Functions;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 

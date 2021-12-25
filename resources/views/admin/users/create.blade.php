@@ -96,7 +96,7 @@
 </style>
 @endsection
 
-<x-admin-app-layout title="Users" back=true>
+<x-admin-app-layout title="Users">
     <form class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.users.store') }}">
     @csrf
         <div class="row g-3 m-0 p-0">
@@ -105,11 +105,11 @@
                     <div class="card-body p-5">
                         <div class="card-title d-flex align-items-center">
                             <div class="d-flex align-items-center w-100">
-                                <em class="bx bx-user me-1 font-22 text-success"></em>
+                                <em class="bi bi-image me-2 font-22 text-success"></em>
                                 <h5 class="mb-0 text-success">{{ __('Profile Picture') }}</h5>
                             </div>
                             <div class="d-flex align-items-center flex-shrink-1 pointer" onclick="$(this).closest('form').submit();">
-                                <em class="bx bx-save me-1 font-22 text-success"></em>
+                                <em class="bi bi-save me-2 font-22 text-success"></em>
                                 <strong>Save</strong>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                     <div class="card-body p-5">
                         <div class="card-title d-flex align-items-center">
                             <div class="d-flex align-items-center w-100">
-                                <em class="bx bx-user me-1 font-22 text-primary"></em>
+                                <em class="bi bi-person me-2 font-22 text-primary"></em>
                                 <h5 class="mb-0 text-primary">{{ __('Basic') }}</h5>
                             </div>
                         </div>
@@ -221,7 +221,7 @@
                     <div class="card-body p-5">
                         <div class="card-title d-flex align-items-center">
                             <div class="d-flex align-items-center w-100">
-                                <em class="bx bx-user me-1 font-22 text-danger"></em>
+                                <em class="bi bi-key me-2 font-22 text-danger"></em>
                                 <h5 class="mb-0 text-danger">{{ __('Password') }}</h5>
                             </div>
                         </div>
@@ -250,7 +250,7 @@
                     <div class="card-body p-5">
                         <div class="card-title d-flex align-items-center">
                             <div class="d-flex align-items-center w-100">
-                                <em class="bx bx-user me-1 font-22 text-warning"></em>
+                                <em class="bi bi-geo-alt me-2 font-22 text-warning"></em>
                                 <h5 class="mb-0 text-warning">{{ __('Address') }}</h5>
                             </div>
                         </div>

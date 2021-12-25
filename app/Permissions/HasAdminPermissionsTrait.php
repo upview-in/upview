@@ -14,6 +14,7 @@ trait HasAdminPermissionsTrait
             return $this;
         }
         $this->permissions()->saveMany($permissions);
+
         return $this;
     }
 
@@ -21,12 +22,14 @@ trait HasAdminPermissionsTrait
     {
         $permissions = $this->getAllPermissions($permissions);
         $this->permissions()->detach($permissions);
+
         return $this;
     }
 
     public function refreshPermissions(...$permissions)
     {
         $this->permissions()->detach();
+
         return $this->givePermissionsTo($permissions);
     }
 
@@ -42,6 +45,7 @@ trait HasAdminPermissionsTrait
                 return true;
             }
         }
+
         return false;
     }
 
@@ -52,6 +56,7 @@ trait HasAdminPermissionsTrait
                 return true;
             }
         }
+
         return false;
     }
 

@@ -4,7 +4,6 @@ namespace App\Http\Requests\Admin\Users;
 
 use App\Helper\Functions;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
 class StoreUserRequest extends FormRequest
@@ -38,7 +37,7 @@ class StoreUserRequest extends FormRequest
             'city' => ['nullable', 'exists:cities,_id'],
             'address' => ['nullable', 'min:10', 'max:512'],
             'avatar' => ['nullable', 'image', 'max:6144'],
-            'roles' => ['array']
+            'roles' => ['array'],
         ];
     }
 }

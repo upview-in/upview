@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Facebook\Exceptions\FacebookSDKException;
 use App\Http\Controllers\Controller;
+use Facebook\Exceptions\FacebookSDKException;
 
 class GetAccountController extends Controller
 {
     public function index()
     {
         try {
-
             $pagesEndPoint = config('instagram.endPoint') . config('instagram.pageID');
 
-            $pagesParams = array(
+            $pagesParams = [
                 'fields' => 'instagram_business_account',
-                'access_token' => config('instagram.accessToken')
-            );
+                'access_token' => config('instagram.accessToken'),
+            ];
 
             $pagesEndPoint .= '?' . http_build_query($pagesParams);
 

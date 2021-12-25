@@ -8,19 +8,19 @@ use App\Permissions\HasPermissionsTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 //use Illuminate\Foundation\Auth\User as Authenticatable;
-use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Jenssegers\Mongodb\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
     use HasApiTokens, HasPermissionsTrait, HasFactory, Notifiable, InteractsWithMedia, Searchable;
 
     /**
-     * Searchable attributes
+     * Searchable attributes.
      *
      * @return string[]
      */
@@ -36,7 +36,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'state',
         'country',
         'pincode',
-        'currency'
+        'currency',
     ];
 
     /**
@@ -56,7 +56,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'state',
         'country',
         'pincode',
-        'currency'
+        'currency',
     ];
 
     /**
@@ -76,7 +76,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'enabled' => 'boolean'
+        'enabled' => 'boolean',
     ];
 
     public function registerMediaConversions(Media $media = null): void

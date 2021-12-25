@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;

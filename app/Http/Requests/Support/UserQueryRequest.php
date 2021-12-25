@@ -26,7 +26,7 @@ class UserQueryRequest extends FormRequest
         return [
             'query_ss' => ['required', 'image', 'max:1024'],
             'query_title' => ['required'],
-            'query_description' => ['required']
+            'query_description' => ['required'],
         ];
     }
 }

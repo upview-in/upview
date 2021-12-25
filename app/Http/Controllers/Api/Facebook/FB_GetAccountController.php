@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Facebook\Exceptions\FacebookSDKException;
 use App\Http\Controllers\Controller;
+use Facebook\Exceptions\FacebookSDKException;
 
 class FB_GetAccountController extends Controller
 {
     public function index()
     {
         try {
-
             $pagesEndPoint = config('instagram.endPoint') . config('instagram.pageID');
-            $pagesParams = array(
+            $pagesParams = [
                 'fields' => 'instagram_business_account',
-                'access_token' => config('instagram.accessToken')
-            );
+                'access_token' => config('instagram.accessToken'),
+            ];
 
             $pagesEndPoint .= '?' . http_build_query($pagesParams);
             echo $pagesEndPoint;
@@ -33,7 +32,7 @@ class FB_GetAccountController extends Controller
 
             $responseArr = json_decode($response, true);
         } catch (FacebookSDKException $e) {
-            echo $$e->message;
+            echo $e->message;
         }
 
         return view('get-insta-acc', ['responseArr' => $responseArr]);

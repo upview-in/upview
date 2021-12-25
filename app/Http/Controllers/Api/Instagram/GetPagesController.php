@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Facebook\Exceptions\FacebookSDKException;
 use App\Http\Controllers\Controller;
+use Facebook\Exceptions\FacebookSDKException;
 
 class GetPagesController extends Controller
 {
@@ -12,7 +12,7 @@ class GetPagesController extends Controller
         try {
             $pagesEndPoint = config('instagram.endPoint') . 'me/accounts';
             $pagesParams = [
-                'access_token' => 'EAAb0iTc4IMoBADQa4XrUTIlArQYIIZAlyOGcfkLJYg2oWlnIazauatj7gna5iIWaS6SPFXHoYaJ7zplrY70vphZCfxa7V3VbWs6shf4iqL3OESlQGHMkFh8xjCHmIMcCZCtuZAF9NLLFbrClDu2o7JUKQFp56JIGpI2XQGYFT8KX1OfRVKnR'
+                'access_token' => 'EAAb0iTc4IMoBADQa4XrUTIlArQYIIZAlyOGcfkLJYg2oWlnIazauatj7gna5iIWaS6SPFXHoYaJ7zplrY70vphZCfxa7V3VbWs6shf4iqL3OESlQGHMkFh8xjCHmIMcCZCtuZAF9NLLFbrClDu2o7JUKQFp56JIGpI2XQGYFT8KX1OfRVKnR',
             ];
 
             $pagesEndPoint .= '?' . http_build_query($pagesParams);

@@ -2,7 +2,6 @@
 
 namespace App\Helper;
 
-use App\Models\LinkedAccounts;
 use Facebook\Facebook;
 
 class InstagramHelper
@@ -14,9 +13,9 @@ class InstagramHelper
         if (is_null($this->clientInstance)) {
             $this->clientInstance = $this->getInstagramClient();
         }
+
         return $this->clientInstance;
     }
-
 
     public function getInstagramClient($withAuth = true): Facebook
     {

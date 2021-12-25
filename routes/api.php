@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\Youtube\ChannelController;
 use App\Http\Controllers\Api\Youtube\CommentController;
 use App\Http\Controllers\Api\Youtube\VideoController;
-use App\Http\Controllers\User\AccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,8 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/tokens/create', function (Request $request) {
     if ($request->has(['email', 'password']) && Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
         $token = Auth::user()->createToken($request->email . $request->password);
+
         return ['token' => $token->plainTextToken];
     }
+
     return abort(404);
 });
 

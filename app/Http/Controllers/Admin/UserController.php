@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\CreateUserRequest;
 use App\Http\Requests\Admin\Users\DeleteUserRequest;
@@ -11,6 +10,7 @@ use App\Http\Requests\Admin\Users\IndexUserRequest;
 use App\Http\Requests\Admin\Users\StoreUserRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Http\Requests\Admin\Users\ViewUserRequest;
+use App\Models\User;
 use App\Models\UserRole;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +26,7 @@ class UserController extends Controller
     public function index(IndexUserRequest $request)
     {
         $users = User::with('roles')->search()->paginate(10);
+
         return view('admin.users.index', ['users' => $users]);
     }
 
@@ -75,9 +76,10 @@ class UserController extends Controller
             return response()->json([
                 'variant' => 'success',
                 'message' => 'User (' . $user->email . ') created successfully!',
-                'icon' => 'check'
+                'icon' => 'check',
             ]);
         }
+
         return redirect()->back()->withInput()->with('message', 'User (' . $user->email . ') created successfully!');
     }
 
@@ -155,9 +157,10 @@ class UserController extends Controller
             return response()->json([
                 'variant' => 'success',
                 'message' => 'User (' . $user->email . ') updated successfully!',
-                'icon' => 'check'
+                'icon' => 'check',
             ]);
         }
+
         return redirect()->back()->withInput()->with('message', 'User (' . $user->email . ') updated successfully!');
     }
 
@@ -175,9 +178,10 @@ class UserController extends Controller
             return response()->json([
                 'variant' => 'success',
                 'message' => 'User (' . $user->email . ') deleted successfully!',
-                'icon' => 'check'
+                'icon' => 'check',
             ]);
         }
+
         return redirect()->back()->withInput()->with('message', 'User (' . $user->email . ') deleted successfully!');
     }
 }

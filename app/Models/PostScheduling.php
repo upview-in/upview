@@ -16,6 +16,6 @@ class PostScheduling extends Model
         'caption',
         'mentions',
         'tags',
-        'image_name'
+        'image_name',
     ];
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class FB_PostContentController extends Controller
 {
@@ -15,7 +15,7 @@ class FB_PostContentController extends Controller
     public function uploadFile(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:jpg,png,mp4|max:5000'
+            'file' => 'required|mimes:jpg,png,mp4|max:5000',
         ]);
 
         $fileName = time() . '.' . $request->file->extension();

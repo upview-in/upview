@@ -6,7 +6,8 @@ use Illuminate\View\Component;
 
 class AdminGuestLayout extends Component
 {
-    public $title, $bodyClasses;
+    public $title;
+    public $bodyClasses;
 
     public function __construct($title = null, $bodyClasses = null)
     {

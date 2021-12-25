@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Illuminate\Support\Facades\Config;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 
-define("ENDPOINT_BASE", Config::get('instagram.endPoint'));
+define('ENDPOINT_BASE', Config::get('instagram.endPoint'));
 
 class GetPostsController extends Controller
 {
     public function index()
     {
         $instagramAccountId = Config::get('instagram.instaAccID');
-        $accessToken = Config::get("instagram.accessToken");
+        $accessToken = Config::get('instagram.accessToken');
 
         // get instagram user metadata endpoint
         $endpointFormat = ENDPOINT_BASE . '{ig-user-id}?fields=business_discovery.username({ig-username}){username,website,name,ig_id,id,profile_picture_url,biography,follows_count,followers_count,media_count,media{caption,like_count,comments_count,media_url,permalink,media_type}}&access_token={access-token}';
@@ -22,10 +22,10 @@ class GetPostsController extends Controller
         $username = 'george_mcreary';
 
         // endpoint params
-        $igParams = array(
+        $igParams = [
             'fields' => 'business_discovery.username(' . $username . '){username,website,name,ig_id,id,profile_picture_url,biography,follows_count,followers_count,media_count,media{caption,like_count,comments_count,media_url,permalink,media_type}}',
-            'access_token' => $accessToken
-        );
+            'access_token' => $accessToken,
+        ];
 
         // add params to endpoint
         $endpoint .= '?' . http_build_query($igParams);

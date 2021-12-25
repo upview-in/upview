@@ -24,7 +24,7 @@ class SupportChatRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required'
+            'id' => 'required',
         ];
     }
 }

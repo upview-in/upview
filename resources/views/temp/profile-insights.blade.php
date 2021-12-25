@@ -1,81 +1,66 @@
 <?php
 
-function CallAPI( $endpoint, $type, $params ) {
+function CallAPI($endpoint, $type, $params)
+{
     $ch = curl_init();
 
-    if ( 'POST' == $type ) {
-        curl_setopt( $ch, CURLOPT_URL, $endpoint );
-        curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $params ) );
-        curl_setopt( $ch, CURLOPT_POST, 1 );
-    } elseif ( 'GET' == $type ) {
-        curl_setopt( $ch, CURLOPT_URL, $endpoint . '?' . http_build_query( $params ) );
+    if ('POST' == $type) {
+        curl_setopt($ch, CURLOPT_URL, $endpoint);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+        curl_setopt($ch, CURLOPT_POST, 1);
+    } elseif ('GET' == $type) {
+        curl_setopt($ch, CURLOPT_URL, $endpoint . '?' . http_build_query($params));
     }
 
-    curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false );
-    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    $response = curl_exec( $ch );
-    curl_close( $ch );
+    $response = curl_exec($ch);
+    curl_close($ch);
 
-    return json_decode( $response, true );
+    return json_decode($response, true);
 }
 
+$searchEndpoint = Config::get('instagram.endPoint')
+. Config::get('instagram.instaAccID');
 
-
-$searchEndpoint =  Config::get('instagram.endPoint')
-.Config::get('instagram.instaAccID');
-
-$searchParams = array(
-    'fields' => 'business_discovery.username('.$_POST['ig_user'].'){username,website,name,ig_id,id,profile_picture_url,biography,follows_count,followers_count,media_count,media{caption,like_count,comments_count,media_url,permalink,media_type}}',
+$searchParams = [
+    'fields' => 'business_discovery.username(' . $_POST['ig_user'] . '){username,website,name,ig_id,id,profile_picture_url,biography,follows_count,followers_count,media_count,media{caption,like_count,comments_count,media_url,permalink,media_type}}',
     'access_token' => Config::get('instagram.accessToken'),
-    'debug'=> 'all' 
+    'debug'=> 'all',
 
+];
 
-);
+$searchAccInsights = CallAPI($searchEndpoint, 'GET', $searchParams);
 
-$searchAccInsights = CallAPI($searchEndpoint, "GET", $searchParams);
-
-$getCurrentUserInfoParams = array(
+$getCurrentUserInfoParams = [
     'fields' => 'username',
-    'access_token' => Config::get('instagram.accessToken')
+    'access_token' => Config::get('instagram.accessToken'),
 
-);
-$currentUser = CallAPI($searchEndpoint, "GET", $getCurrentUserInfoParams);
+];
+$currentUser = CallAPI($searchEndpoint, 'GET', $getCurrentUserInfoParams);
 $currentUser = $currentUser['username'];
 
-
-$selfParams = array(
-    'fields' => 'business_discovery.username('.    
-    $currentUser.'){username,website,name,ig_id,id,profile_picture_url,biography,follows_count,followers_count,media_count,media{caption,like_count,comments_count,media_url,permalink,media_type}}',
+$selfParams = [
+    'fields' => 'business_discovery.username(' .
+    $currentUser . '){username,website,name,ig_id,id,profile_picture_url,biography,follows_count,followers_count,media_count,media{caption,like_count,comments_count,media_url,permalink,media_type}}',
     'access_token' => Config::get('instagram.accessToken'),
-    'debug'=> 'all'
+    'debug'=> 'all',
 
+];
 
-);
-
-
-$selfAccInsights = CallAPI($searchEndpoint, "GET", $selfParams);
+$selfAccInsights = CallAPI($searchEndpoint, 'GET', $selfParams);
 
 // $params = array(
 //     'metric' => 'follower_count,impressions,profile_views,reach',
-//     'period' => 'day', /* day,week,days_28,month,lifetime */ 
+//     'period' => 'day', /* day,week,days_28,month,lifetime */
 //     'access_token' => Config::get('instagram.accessToken')
-          
+
 // );
-
-
 
 // $userEndpoint = Config::get('instagram.endPoint')
 //                  .Config::get('instagram.instaAccID').'/insights';
-
-
-
-
-
-
-
-
 
 // echo '
 
@@ -86,7 +71,6 @@ $selfAccInsights = CallAPI($searchEndpoint, "GET", $selfParams);
 // 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 // 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 // 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 
 // 	</head>
 // <pre>
@@ -107,27 +91,24 @@ $selfAccInsights = CallAPI($searchEndpoint, "GET", $selfParams);
 
 //above insights are for the previous day change second index to 1 instead of 0 for today's
 
-
-
 //To see the total output
     // echo '<pre>';
     // print_r($selfAccInsights);
 
-
 /*
 Possible Metrics in Post Insights:
- impressions, reach, carousel_album_impressions, carousel_album_reach, 
+ impressions, reach, carousel_album_impressions, carousel_album_reach,
  carousel_album_engagement, carousel_album_saved, carousel_album_video_views,
  taps_forward, taps_back, exits, replies, engagement, saved, video_views
 
 
 */
 
+if ($selfAccInsights['business_discovery']['followers_count'] > $searchAccInsights['business_discovery']['followers_count']) {
+    echo 'Current User got more followers';
+} else {
+    echo 'Search User got more followers';
+}
 
-if($selfAccInsights['business_discovery']['followers_count'] > $searchAccInsights['business_discovery']['followers_count']) echo 'Current User got more followers';
-else echo 'Search User got more followers';
-
-echo "<pre>";
+echo '<pre>';
 print_r($searchAccInsights);
-
-?>

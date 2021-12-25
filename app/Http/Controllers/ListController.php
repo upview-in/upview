@@ -12,7 +12,7 @@ class ListController extends Controller
     public function getStateList(Request $request)
     {
         $request->validate([
-            '_id' => 'required'
+            '_id' => 'required',
         ]);
 
         $c = Country::find($request->_id);
@@ -26,7 +26,7 @@ class ListController extends Controller
     public function getCityList(Request $request)
     {
         $request->validate([
-            '_id' => 'required'
+            '_id' => 'required',
         ]);
 
         $c = State::find($request->_id);

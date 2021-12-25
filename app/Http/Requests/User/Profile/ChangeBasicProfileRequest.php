@@ -31,7 +31,7 @@ class ChangeBasicProfileRequest extends FormRequest
             'email' => ['sometimes', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Auth::user())],
             'mobile_number' => ['nullable', 'regex:/^\+(?:[0-9] ?){6,14}[0-9]$/'],
             'birth_date' => ['nullable', 'date_format:Y-m-d'],
-            'local_lang' => ['sometimes', 'in:' . implode(',', Functions::getAvailableLanguages())]
+            'local_lang' => ['sometimes', 'in:' . implode(',', Functions::getAvailableLanguages())],
         ];
     }
 }
