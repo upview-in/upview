@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Permissions\CreatePermissionRequest;
-use App\Http\Requests\Admin\Permissions\DeletePermissionRequest;
-use App\Http\Requests\Admin\Permissions\EditPermissionRequest;
-use App\Http\Requests\Admin\Permissions\IndexPermissionRequest;
-use App\Http\Requests\Admin\Permissions\StorePermissionRequest;
-use App\Http\Requests\Admin\Permissions\UpdatePermissionRequest;
-use App\Http\Requests\Admin\Permissions\ViewPermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\CreatePermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\DeletePermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\EditPermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\IndexPermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\StorePermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\UpdatePermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\ViewPermissionRequest;
 use App\Models\UserPermission;
 
 class UserPermissionsController extends Controller
@@ -23,7 +23,8 @@ class UserPermissionsController extends Controller
     public function index(IndexPermissionRequest $request)
     {
         $userPermissions = UserPermission::search()->paginate(10);
-        return view('admin.permissions.index', compact('userPermissions'));
+
+        return view('admin.user-permission.index', compact('userPermissions'));
     }
 
     /**
@@ -34,7 +35,7 @@ class UserPermissionsController extends Controller
      */
     public function create(CreatePermissionRequest $request)
     {
-        return view('admin.permissions.create');
+        return view('admin.user-permission.create');
     }
 
     /**
@@ -52,9 +53,10 @@ class UserPermissionsController extends Controller
             return response()->json([
                 'variant' => 'success',
                 'message' => 'Permission (' . $userPermission->name . ') created successfully!',
-                'icon' => 'check'
+                'icon' => 'check',
             ]);
         }
+
         return redirect()->back()->withInput()->with('message', 'Permission (' . $userPermission->name . ') created successfully!');
     }
 
@@ -79,7 +81,7 @@ class UserPermissionsController extends Controller
      */
     public function edit(EditPermissionRequest $request, UserPermission $userPermission)
     {
-        return view('admin.permissions.edit', ['userPermission' => $userPermission]);
+        return view('admin.user-permission.edit', ['userPermission' => $userPermission]);
     }
 
     /**
@@ -101,9 +103,10 @@ class UserPermissionsController extends Controller
             return response()->json([
                 'variant' => 'success',
                 'message' => 'Permission (' . $userPermission->name . ') updated successfully!',
-                'icon' => 'check'
+                'icon' => 'check',
             ]);
         }
+
         return redirect()->back()->withInput()->with('message', 'Permission (' . $userPermission->name . ') updated successfully!');
     }
 
@@ -121,9 +124,10 @@ class UserPermissionsController extends Controller
             return response()->json([
                 'variant' => 'success',
                 'message' => 'Permission (' . $userPermission->name . ') deleted successfully!',
-                'icon' => 'check'
+                'icon' => 'check',
             ]);
         }
+
         return redirect()->back()->withInput()->with('message', 'Permission (' . $userPermission->name . ') deleted successfully!');
     }
 }

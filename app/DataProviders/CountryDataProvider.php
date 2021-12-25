@@ -252,7 +252,7 @@ abstract class CountryDataProvider
             ['id' => '243', 'name' => 'yemen'],
             ['id' => '244', 'name' => 'yugoslavia'],
             ['id' => '245', 'name' => 'zambia'],
-            ['id' => '246', 'name' => 'zimbabwe']
+            ['id' => '246', 'name' => 'zimbabwe'],
         ];
     }
 }

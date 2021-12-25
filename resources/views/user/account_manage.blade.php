@@ -75,14 +75,14 @@
 						<tbody>
 							<?php
 
-							$platforms = [
-								null,
-								'<span class="text-danger"><i class="anticon anticon-youtube"></i> YouTube</span>',
-								'<span class="text-primary"><i class="anticon anticon-facebook"></i> Facebook</span>',
-								'<span class="text-warning"><i class="anticon anticon-instagram"></i> Instagram</span>',
-							];
+                            $platforms = [
+                                null,
+                                '<span class="text-danger"><i class="anticon anticon-youtube"></i> YouTube</span>',
+                                '<span class="text-primary"><i class="anticon anticon-facebook"></i> Facebook</span>',
+                                '<span class="text-warning"><i class="anticon anticon-instagram"></i> Instagram</span>',
+                            ];
 
-							?>
+                            ?>
 							@foreach($linkedAccounts as $key => $linkedAccount)
 							<tr>
 								<th scope="row">{{ $key + 1 }}</th>
@@ -93,34 +93,34 @@
 								<td>
 									<?php
 
-									if ($linkedAccount->platform == 1) {
-										$expireAt = \Carbon\Carbon::parse($linkedAccount->created + $linkedAccount->expire_in)->diffInMinutes(\Carbon\Carbon::now());
-										if (($linkedAccount->created + $linkedAccount->expire_in) < \Carbon\Carbon::now()->timestamp) {
-											echo  'Expired';
-										} else {
-											echo $expireAt . ' Minutes';
-										}
-									} else if ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
-										$expireAt = \Carbon\Carbon::parse($linkedAccount->expire_in)->diffInDays(\Carbon\Carbon::now());
-										if ($linkedAccount->expire_in < \Carbon\Carbon::now()->timestamp) {
-											echo  'Expired';
-										} else {
-											echo  $expireAt . ' Days';
-										}
-									}
+                                    if ($linkedAccount->platform == 1) {
+                                        $expireAt = \Carbon\Carbon::parse($linkedAccount->created + $linkedAccount->expire_in)->diffInMinutes(\Carbon\Carbon::now());
+                                        if (($linkedAccount->created + $linkedAccount->expire_in) < \Carbon\Carbon::now()->timestamp) {
+                                            echo  'Expired';
+                                        } else {
+                                            echo $expireAt . ' Minutes';
+                                        }
+                                    } elseif ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
+                                        $expireAt = \Carbon\Carbon::parse($linkedAccount->expire_in)->diffInDays(\Carbon\Carbon::now());
+                                        if ($linkedAccount->expire_in < \Carbon\Carbon::now()->timestamp) {
+                                            echo  'Expired';
+                                        } else {
+                                            echo  $expireAt . ' Days';
+                                        }
+                                    }
 
-									?>
+                                    ?>
 								</td>
 								<td>
 									<?php
 
-									if ($linkedAccount->platform == 1) {
-										echo "Auto";
-									} else if ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
-										echo "Manually";
-									}
+                                    if ($linkedAccount->platform == 1) {
+                                        echo 'Auto';
+                                    } elseif ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
+                                        echo 'Manually';
+                                    }
 
-									?>
+                                    ?>
 								</td>
 								<td>
 									<a href="{{ route('panel.user.account.setDefaultAccount', ['id' => $linkedAccount->id, 'platform' => $linkedAccount->platform]) }}">

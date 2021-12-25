@@ -13,6 +13,7 @@ class CommentController extends Controller
         $yt = new YoutubeHelper();
         $service = $yt->getYoutubeService();
         $commentThread = $service->commentThreads->listCommentThreads('id,replies,snippet', ['videoId' => $request->id, 'maxResults' => 30]);
+
         return response()->json($commentThread, 200);
     }
 }

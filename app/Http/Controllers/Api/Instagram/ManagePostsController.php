@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Illuminate\Support\Facades\Config;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 
-define("ENDPOINT_BASE", Config::get('instagram.endPoint'));
+define('ENDPOINT_BASE', Config::get('instagram.endPoint'));
 
 class ManagePostsController extends Controller
 {
-
     public function CallAPI($endpoint, $type, $params)
     {
         $ch = curl_init();
@@ -38,12 +37,14 @@ class ManagePostsController extends Controller
             $postCommentParams = [
                 'message' => $_POST['postComment'],
                 'access_token' => Config::get('instagram.accessToken'),
-                'debug' => 'all'
+                'debug' => 'all',
             ];
 
-            $commentResponse = CallAPI($postCommentEndpoint, "POST", $postCommentParams);
-            header("Refresh:1");
-        } else echo 'You have to enter a comment first. (Min Length 1)';
+            $commentResponse = CallAPI($postCommentEndpoint, 'POST', $postCommentParams);
+            header('Refresh:1');
+        } else {
+            echo 'You have to enter a comment first. (Min Length 1)';
+        }
     }
 
     public function PostReply($commentID)
@@ -53,14 +54,16 @@ class ManagePostsController extends Controller
             $postReplyParams = [
                 'message' => $_POST['postReply'],
                 'access_token' => Config::get('instagram.accessToken'),
-                'debug' => 'all'
+                'debug' => 'all',
             ];
 
-            $commentResponse = CallAPI($postReplyEndpoint, "POST", $postReplyParams);
+            $commentResponse = CallAPI($postReplyEndpoint, 'POST', $postReplyParams);
             //header("Refresh:1");
             echo $postReplyEndpoint;
             print_r($commentResponse);
-        } else echo 'You have to enter a comment first. (Min Length 1)';
+        } else {
+            echo 'You have to enter a comment first. (Min Length 1)';
+        }
     }
 
     public function index()
@@ -70,18 +73,18 @@ class ManagePostsController extends Controller
             'caption' => 'No Caption.. May be Ill change using Insta API... ',
             'media_url' => 'https://scontent.cdninstagram.com/v/t51.29350-15/196514904_583271352654898_8205473335035824940_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=8ae9d6&_nc_ohc=6KnMart6n7EAX-vi6-c&_nc_ht=scontent.cdninstagram.com&oh=909b2f3f0ad5f35c66de84eabf9f14b1&oe=60D6B727',
             'permalink' => 'https://www.instagram.com/p/CPpz7aoFBtZ/',
-            'media_type' => ' IMAGE'
+            'media_type' => ' IMAGE',
         ];
 
         $endpoint = ENDPOINT_BASE . $media_object['id'] . '/comments';
 
         $params = [
             'fields' => 'like_count,replies,username,text',
-            'access_token' => Config::get('instagram.accessToken')
+            'access_token' => Config::get('instagram.accessToken'),
         ];
 
         $postCommentEndpoint = ENDPOINT_BASE . $media_object['id'] . '/comments';
-        $response = callApi($postCommentEndpoint, "GET", $params);
+        $response = callApi($postCommentEndpoint, 'GET', $params);
         $response = json_decode($response, true);
 
         return view('manage-posts');

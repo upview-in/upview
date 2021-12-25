@@ -45,6 +45,7 @@ class ChannelController extends Controller
         $yt = new YoutubeHelper();
         $service = $yt->getYoutubeService();
         $result = $service->channels->listChannels('id,snippet,statistics,topicDetails,contentDetails', ['id' => $request->id]);
+
         return response()->json($result, 200);
     }
 
@@ -93,6 +94,7 @@ class ChannelController extends Controller
         $yt = new YoutubeHelper();
         $service = $yt->getYoutubeService(true);
         $channelList = $service->channels->listChannels('snippet,contentDetails,statistics', ['mine' => true]);
+
         return response()->json($channelList, 200);
     }
 
@@ -108,6 +110,7 @@ class ChannelController extends Controller
             'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
             'filters' => $request->filters ?? '',
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -122,8 +125,9 @@ class ChannelController extends Controller
             'dimensions' => 'ageGroup,gender',
             'sort' => 'gender,ageGroup',
             'metrics' => 'viewerPercentage',
-            'filters' => $request->filters ?? ''
+            'filters' => $request->filters ?? '',
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -137,8 +141,9 @@ class ChannelController extends Controller
             'endDate' => $request->endDate,
             'dimensions' => 'deviceType',
             'metrics' => 'views',
-            'filters' => $request->filters ?? ''
+            'filters' => $request->filters ?? '',
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -152,8 +157,9 @@ class ChannelController extends Controller
             'endDate' => $request->endDate,
             'dimensions' => 'operatingSystem',
             'metrics' => 'views',
-            'filters' => $request->filters ?? ''
+            'filters' => $request->filters ?? '',
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -167,8 +173,9 @@ class ChannelController extends Controller
             'endDate' => $request->endDate,
             'dimensions' => 'insightTrafficSourceType',
             'metrics' => 'views,estimatedMinutesWatched',
-            'filters' => $request->filters ?? ''
+            'filters' => $request->filters ?? '',
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -183,8 +190,9 @@ class ChannelController extends Controller
             'dimensions' => 'sharingService',
             'metrics' => 'shares',
             'sort' => '-shares',
-            'filters' => $request->filters ?? ''
+            'filters' => $request->filters ?? '',
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -200,6 +208,7 @@ class ChannelController extends Controller
             'metrics' => 'views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained',
             'sort' => '-estimatedMinutesWatched',
         ]);
+
         return response()->json($analytics, 200);
     }
 }

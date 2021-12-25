@@ -48320,7 +48320,7 @@ abstract class CityDataProvider
             ['id' => '48311', 'state_id' => '3976', 'name' => 'weston'],
             ['id' => '48312', 'state_id' => '3976', 'name' => 'lewisburg'],
             ['id' => '48313', 'state_id' => '3976', 'name' => 'ravenswood'],
-            ['id' => '48314', 'state_id' => '3976', 'name' => 'summersville']
+            ['id' => '48314', 'state_id' => '3976', 'name' => 'summersville'],
         ];
     }
 }

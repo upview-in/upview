@@ -46,6 +46,7 @@ class CreateAdmin extends Command
 
         if (Admin::where('username', $username)->count()) {
             $this->error($username . ' is alredy exists!');
+
             return 1;
         }
 
@@ -58,6 +59,7 @@ class CreateAdmin extends Command
         $admin->roles()->attach(AdminRole::where('slug', 'super-admin')->first());
 
         $this->info('The admin user created successfully!');
+
         return 0;
     }
 }

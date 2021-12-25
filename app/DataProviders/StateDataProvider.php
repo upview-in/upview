@@ -4126,7 +4126,7 @@ abstract class StateDataProvider
             ['id' => '4117', 'country_id' => '246', 'name' => 'masvingo'],
             ['id' => '4118', 'country_id' => '246', 'name' => 'matabeleland north'],
             ['id' => '4119', 'country_id' => '246', 'name' => 'matabeleland south'],
-            ['id' => '4120', 'country_id' => '246', 'name' => 'midlands']
+            ['id' => '4120', 'country_id' => '246', 'name' => 'midlands'],
         ];
     }
 }

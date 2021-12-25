@@ -3,13 +3,11 @@
 namespace App\Helper;
 
 use Google\Client;
-use Google\Service\Oauth2;
 use Google\Service\YouTube;
 use Google\Service\YouTubeAnalytics;
 
 class YoutubeHelper
 {
-
     public $clientInstance = null;
 
     public function __construct()
@@ -17,6 +15,7 @@ class YoutubeHelper
         if (is_null($this->clientInstance)) {
             $this->clientInstance = $this->getGoogleClient();
         }
+
         return $this->clientInstance;
     }
 
@@ -43,6 +42,7 @@ class YoutubeHelper
                     $this->clientInstance->setPrompt('consent');
                     $this->clientInstance->setApprovalPrompt('force');
                     $auth_url = $this->clientInstance->createAuthUrl();
+
                     return redirect()->away(filter_var($auth_url, FILTER_SANITIZE_URL));
                 }
                 $accessCode[$accountIndex]->access_token = $token['access_token'];
@@ -78,6 +78,7 @@ class YoutubeHelper
         if ($requiredAuth) {
             $this->withAuth();
         }
+
         return new YouTube($this->clientInstance);
     }
 
@@ -86,6 +87,7 @@ class YoutubeHelper
         if ($requiredAuth) {
             $this->withAuth();
         }
+
         return new YouTubeAnalytics($this->clientInstance);
     }
 }

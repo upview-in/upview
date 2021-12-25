@@ -20,6 +20,7 @@ class AccountController extends Controller
         $client = $yt->getGoogleClient();
         $client->setPrompt('select_account');
         $auth_url = $client->createAuthUrl();
+
         return redirect(filter_var($auth_url, FILTER_SANITIZE_URL));
     }
 
@@ -54,6 +55,7 @@ class AccountController extends Controller
 
         ];
         $loginUrl = $redirectHelper->getLoginUrl(route(config('facebook.redirectUrl')), $permissions);
+
         return redirect(filter_var($loginUrl, FILTER_SANITIZE_URL));
     }
 
@@ -70,6 +72,7 @@ class AccountController extends Controller
             'instagram_manage_insights',
         ];
         $loginUrl = $redirectHelper->getLoginUrl(route(config('instagram.redirectUrl')), $permissions);
+
         return redirect(filter_var($loginUrl, FILTER_SANITIZE_URL));
     }
 
@@ -175,6 +178,7 @@ class AccountController extends Controller
         } else {
             $rr->with('error', 'true');
         }
+
         return $rr;
     }
 
@@ -232,6 +236,7 @@ class AccountController extends Controller
         } else {
             $rr->with('error', 'true');
         }
+
         return $rr;
     }
 
@@ -245,16 +250,17 @@ class AccountController extends Controller
         }
 
         switch ($acc->platform) {
-            case (int)(TokenHelper::$YOUTUBE):
+            case (int) (TokenHelper::$YOUTUBE):
                 session()->forget('AccountIndex_YT');
                 break;
-            case (int)(TokenHelper::$INSTAGRAM):
+            case (int) (TokenHelper::$INSTAGRAM):
                 session()->forget('AccountIndex_IG');
                 break;
-            case (int)(TokenHelper::$FACEBOOK):
+            case (int) (TokenHelper::$FACEBOOK):
                 session()->forget('AccountIndex_FB');
                 break;
         }
+
         return redirect()->back()->with('unlink', 'true');
     }
 
@@ -262,10 +268,11 @@ class AccountController extends Controller
     {
         $acc = LinkedAccounts::find($id);
         if (!is_null($acc) && $acc->user_id === Auth::id()) {
-            LinkedAccounts::where(['platform' => (int)$platform, 'user_id' => Auth::id()])->update(['default' => false]);
+            LinkedAccounts::where(['platform' => (int) $platform, 'user_id' => Auth::id()])->update(['default' => false]);
             $acc->default = true;
             $acc->update();
         }
+
         return redirect()->back()->with('default', 'true');
     }
 
@@ -275,13 +282,13 @@ class AccountController extends Controller
             $acc = LinkedAccounts::find($request->id);
             if (!is_null($acc) && $acc->user_id === Auth::id()) {
                 if ($request->platform == TokenHelper::$YOUTUBE) {
-                    $sKey = "AccountIndex_YT";
+                    $sKey = 'AccountIndex_YT';
                     $accessCode = TokenHelper::getAuthToken_YT();
                 } elseif ($request->platform == TokenHelper::$FACEBOOK) {
-                    $sKey = "AccountIndex_FB";
+                    $sKey = 'AccountIndex_FB';
                     $accessCode = TokenHelper::getAuthToken_FB();
                 } elseif ($request->platform == TokenHelper::$INSTAGRAM) {
-                    $sKey = "AccountIndex_IG";
+                    $sKey = 'AccountIndex_IG';
                     $accessCode = TokenHelper::getAuthToken_IG();
                 }
 

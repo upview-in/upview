@@ -37,7 +37,7 @@
 										<div class="col-12">
 											<label for="inputChoosePassword" class="form-label">Enter Password</label>
 											<div class="input-group" id="show_hide_password">
-												<input type="password" class="form-control border-end-0" name="password" id="inputChoosePassword" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+												<input type="password" class="form-control border-end-0" name="password" id="inputChoosePassword" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bi bi-hide'></i></a>
 											</div>
 											@error('password')
 											<span class="invalid-feedback d-block" role="alert">
@@ -53,7 +53,7 @@
 										</div>
 										<div class="col-12">
 											<div class="d-grid">
-												<button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</button>
+												<button type="submit" class="btn btn-primary"><i class="bi bi-lock-open"></i>Sign in</button>
 											</div>
 										</div>
 									</form>

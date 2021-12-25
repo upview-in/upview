@@ -33,6 +33,7 @@ class UserPermissionsServiceProvider extends ServiceProvider
             });
         } catch (\Exception $e) {
             report($e);
+
             return false;
         }
     }

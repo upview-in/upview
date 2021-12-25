@@ -17,18 +17,18 @@
         <div class="card-body p-5">
             <div class="card-title d-flex align-items-center">
                 <div class="d-flex align-items-center w-100">
-                    <em class="bx bx-user me-1 font-22 text-primary"></em>
+                    <em class="bi bi-person me-2 font-22 text-primary"></em>
                     <h5 class="mb-0 text-primary">{{ __('Users') }}</h5>
                 </div>
                 <div class="flex-shrink-1 pointer">
-                    <a href="{{ route('admin.users.create') }}" class="d-flex align-items-center"><em class="bx bx-plus-circle me-1 font-22 text-primary"></em> <strong>Create</strong></a>
+                    <a href="{{ route('admin.users.create') }}" class="d-flex align-items-center"><em class="bi bi-plus-circle me-1 font-22 text-primary"></em> <strong>Create</strong></a>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-md-3 col-sm-6 col-12">
                     <form method="GET">
                         <div class="input-group">
-                            <span class="input-group-text bg-transparent"><em class="bx bx-search"></em></span>
+                            <span class="input-group-text bg-transparent"><em class="bi bi-search"></em></span>
                             <input type="text" class="form-control border-start-0" name="search" value="{{ request()->search ?? '' }}" placeholder="Search...">
                         </div>
                     </form>
@@ -56,10 +56,10 @@
                                     @method('delete')
                                     @csrf
                                     <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm p-1">
-                                        <em class="bx bx-edit text-primary fs-5"></em>
+                                        <em class="bi bi-pencil-square text-primary fs-5"></em>
                                     </a>
                                     <button type="submit" class="btn btn-sm p-1 remove-table-row">
-                                        <em class="bx bx-trash text-danger fs-5"></em>
+                                        <em class="bi bi-x-circle text-danger fs-5"></em>
                                     </button>
                                 </form>
                             </th>

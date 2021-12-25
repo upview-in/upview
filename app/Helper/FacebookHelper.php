@@ -13,6 +13,7 @@ class FacebookHelper
         if (is_null($this->clientInstance)) {
             $this->clientInstance = $this->getFacebookClient();
         }
+
         return $this->clientInstance;
     }
 
@@ -25,9 +26,7 @@ class FacebookHelper
             'persistent_data_handler' => new LaravelPersistentDataHandler(),
         ]);
 
-    
         if ($withAuth) {
-
             $accessCode = TokenHelper::getAuthToken_FB();
 
             $accountIndex = session('AccountIndex_FB', null);
@@ -38,12 +37,11 @@ class FacebookHelper
                     }
                 }
             }
-    
+
             $accountIndex = is_null($accountIndex) ? 0 : $accountIndex;
-    
-            if (count($accessCode) > 0 && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
+
+            if (!empty($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
                 $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
-    
             }
         }
 

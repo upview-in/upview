@@ -7,7 +7,9 @@ use Illuminate\View\Component;
 
 class AdminAppLayout extends Component
 {
-    public $title, $pageHeader, $back;
+    public $title;
+    public $pageHeader;
+    public $back;
 
     public function __construct($title = null, $pageHeader = null, $back = null)
     {
@@ -24,6 +26,7 @@ class AdminAppLayout extends Component
     public function render()
     {
         App::setLocale(adminUser()->local_lang ?? 'en');
+
         return view('admin.layouts.app');
     }
 }

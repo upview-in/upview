@@ -41,7 +41,7 @@
 										<div class="col-12">
 											<label for="inputChoosePassword" class="form-label">Password</label>
 											<div class="input-group" id="show_hide_password">
-												<input type="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+												<input type="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bi bi-hide'></i></a>
 											</div>
 										</div>
 										<div class="col-12">
@@ -61,7 +61,7 @@
 										</div>
 										<div class="col-12">
 											<div class="d-grid">
-												<button type="submit" class="btn btn-primary"><i class='bx bx-user'></i>Sign up</button>
+												<button type="submit" class="btn btn-primary"><i class='bi bi-person'></i>Sign up</button>
 											</div>
 										</div>
 									</form>

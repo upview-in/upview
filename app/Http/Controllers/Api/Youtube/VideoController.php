@@ -9,15 +9,13 @@ use App\Http\Requests\Api\Youtube\Video\GetVideoAnalytics;
 use App\Http\Requests\Api\Youtube\Video\GetVideoDetailsFromVideoID;
 use App\Http\Requests\Api\Youtube\Video\GetVideoListFromChannelID;
 use App\Http\Requests\Api\Youtube\Video\GetVideoListFromName;
-use App\Models\Country;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
     public function getVideoListFromChannelID(GetVideoListFromChannelID $request)
     {
-        if ($request->has(['pageToken', 'loadMore']) && empty($request->pageToken) && $request->loadMore == "true") {
+        if ($request->has(['pageToken', 'loadMore']) && empty($request->pageToken) && $request->loadMore == 'true') {
             return response()->json([], 200);
         }
 
@@ -83,6 +81,7 @@ class VideoController extends Controller
         $yt = new YoutubeHelper();
         $service = $yt->getYoutubeService();
         $videoDetails = $service->videos->listVideos('contentDetails,id,liveStreamingDetails,localizations,player,recordingDetails,snippet,statistics,status,topicDetails', ['id' => $request->id]);
+
         return response()->json($videoDetails, 200);
     }
 
@@ -95,9 +94,10 @@ class VideoController extends Controller
             [
                 'chart' => 'mostPopular',
                 'maxResults' => '10',
-                'regionCode' => Functions::getUserCountryCode()
+                'regionCode' => Functions::getUserCountryCode(),
             ]
         );
+
         return response()->json($videoList, 200);
     }
 
@@ -112,8 +112,9 @@ class VideoController extends Controller
             'dimensions' => $request->dimensions ?? 'day',
             'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
             // 'sort' => 'day',
-            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? '')
+            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? ''),
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -128,8 +129,9 @@ class VideoController extends Controller
             'dimensions' => 'ageGroup,gender',
             'sort' => 'gender,ageGroup',
             'metrics' => 'viewerPercentage',
-            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? '')
+            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? ''),
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -143,8 +145,9 @@ class VideoController extends Controller
             'endDate' => $request->endDate,
             'dimensions' => 'deviceType',
             'metrics' => 'views',
-            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? '')
+            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? ''),
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -158,8 +161,9 @@ class VideoController extends Controller
             'endDate' => $request->endDate,
             'dimensions' => 'operatingSystem',
             'metrics' => 'views',
-            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? '')
+            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? ''),
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -173,8 +177,9 @@ class VideoController extends Controller
             'endDate' => $request->endDate,
             'dimensions' => 'insightTrafficSourceType',
             'metrics' => 'views,estimatedMinutesWatched',
-            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? '')
+            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? ''),
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -189,8 +194,9 @@ class VideoController extends Controller
             'dimensions' => 'sharingService',
             'metrics' => 'shares',
             'sort' => '-shares',
-            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? '')
+            'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? ''),
         ]);
+
         return response()->json($analytics, 200);
     }
 
@@ -206,6 +212,7 @@ class VideoController extends Controller
             'metrics' => 'views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained',
             'sort' => '-estimatedMinutesWatched',
         ]);
+
         return response()->json($analytics, 200);
     }
 }

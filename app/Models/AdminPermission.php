@@ -2,23 +2,24 @@
 
 namespace App\Models;
 
+use App\Concerns\Models\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
+
 // use Illuminate\Database\Eloquent\Model;
 
 class AdminPermission extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     /**
-     * Searchable attributes
+     * Searchable attributes.
      *
      * @return string[]
      */
     public $searchable = [
-        'group',
         'name',
-        'slug'
+        'slug',
     ];
 
     /**
@@ -27,10 +28,9 @@ class AdminPermission extends Model
      * @var array
      */
     protected $fillable = [
-        'group',
         'name',
         'slug',
-        'enabled'
+        'enabled',
     ];
 
     /**
@@ -39,8 +39,17 @@ class AdminPermission extends Model
      * @var array
      */
     protected $casts = [
-        'enabled' => 'boolean'
+        'enabled' => 'boolean',
     ];
+
+    public function scopeEnabled($query, $value = true)
+    {
+        if ($value) {
+            return $query->whereNull('enabled')->orWhere('enabled', true);
+        } else {
+            return $query->where('enabled', false);
+        }
+    }
 
     public function roles()
     {

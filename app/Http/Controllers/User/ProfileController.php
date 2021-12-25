@@ -32,6 +32,7 @@ class ProfileController extends Controller
         $user->birth_date = $request->birth_date ?? $user->birth_date;
         $user->local_lang = $request->local_lang ?? $user->local_lang;
         $user->update();
+
         return redirect()->back()->withInput()->with('message', 'Profile updated!');
     }
 
@@ -41,6 +42,7 @@ class ProfileController extends Controller
         $user->password = Hash::make($request->new_password);
         $user->update();
         Auth::logout();
+
         return redirect()->route('login');
     }
 
@@ -52,6 +54,7 @@ class ProfileController extends Controller
         $user->city = $request->city ?? $user->city;
         $user->address = $request->address ?? $user->address;
         $user->update();
+
         return redirect()->back()->withInput()->with('message1', 'Address updated!');
     }
 
@@ -63,12 +66,14 @@ class ProfileController extends Controller
         }
         $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         $user->update();
+
         return redirect()->back()->with('message2', 'Avatar updated!');
     }
 
     public function accountsManager()
     {
         $linkedAccounts = LinkedAccounts::where(['user_id' => Auth::id()])->get();
+
         return view('user.account_manage', ['linkedAccounts' => $linkedAccounts]);
     }
 }

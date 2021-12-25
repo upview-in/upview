@@ -4,15 +4,31 @@ namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Model;
 
+use App\Concerns\Models\Searchable;
 use App\Permissions\HasAdminPermissionsTrait;
-use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Jenssegers\Mongodb\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements HasMedia
 {
-    use HasFactory, HasAdminPermissionsTrait;
+    use HasFactory, HasAdminPermissionsTrait, InteractsWithMedia, Searchable;
 
     protected $guard = 'admin';
+
+    /**
+     * Searchable attributes.
+     *
+     * @return string[]
+     */
+    public $searchable = [
+        'name',
+        'username',
+        'password',
+        'local_lang',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +38,6 @@ class Admin extends Authenticatable
     protected $fillable = [
         'name',
         'username',
-        'email',
         'password',
     ];
 
@@ -35,4 +50,11 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(400)
+            ->height(400);
+    }
 }

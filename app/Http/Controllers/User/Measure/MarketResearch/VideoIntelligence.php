@@ -13,6 +13,7 @@ class VideoIntelligence extends Controller
     public function index(VideoIntelligenceIndex $request)
     {
         $TrendingVideos = app(VideoController::class)->getTrendingVideos(new Request())->getData();
+
         return view('user.measure.market_research.video_intelligence', ['TrendingVideos' => $TrendingVideos]);
     }
 

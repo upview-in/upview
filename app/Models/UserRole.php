@@ -12,13 +12,13 @@ class UserRole extends Model
     use HasFactory, Searchable;
 
     /**
-     * Searchable attributes
+     * Searchable attributes.
      *
      * @return string[]
      */
     public $searchable = [
         'name',
-        'slug'
+        'slug',
     ];
 
     /**
@@ -29,7 +29,7 @@ class UserRole extends Model
     protected $fillable = [
         'name',
         'slug',
-        'enabled'
+        'enabled',
     ];
 
     /**
@@ -38,7 +38,7 @@ class UserRole extends Model
      * @var array
      */
     protected $casts = [
-        'enabled' => 'boolean'
+        'enabled' => 'boolean',
     ];
 
     public function scopeEnabled($query, $value = true)

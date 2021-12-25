@@ -1,22 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminPermissionsController;
+use App\Http\Controllers\Admin\AdminRolesController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
-use App\Http\Controllers\User\AccountController;
-use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
 use App\Http\Controllers\User\PagesController;
+use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\User\DashboardController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,26 +31,31 @@ use App\Http\Controllers\User\DashboardController;
 */
 
 // Admin Routes
-Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], function () {
+Route::group(['domain' => env('ADMIN_DOMAIN', 'admin.upview.localhost')], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
         Route::middleware(['admin'])->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+
+            // Manage users and their roles and permissions
             Route::resource('users', UserController::class);
             Route::resource('userPermissions', UserPermissionsController::class);
             Route::resource('userRoles', UserRolesController::class);
+
+            // Manage admins and their roles and permissions
+            Route::resource('admins', AdminController::class);
+            Route::resource('adminPermissions', AdminPermissionsController::class);
+            Route::resource('adminRoles', AdminRolesController::class);
         });
 
         Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
         Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
-        require __DIR__. '/adminAuth.php';
+        require __DIR__ . '/adminAuth.php';
     });
 });
 
-
 // Application Routes
-Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function () {
-
+Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -59,7 +65,6 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
     // Routes for user panel
     Route::prefix('panel')->as('panel.')->middleware(['auth', 'verified'])->group(function () {
-
         Route::redirect('/', '/panel/dashboard', 301);
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -73,7 +78,6 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
-
             });
 
             Route::prefix('support')->as('support.')->group(function () {
@@ -83,8 +87,6 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::get('/cancelQueryByUser/{userSupport}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
                 Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
-
-
 
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');

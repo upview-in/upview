@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Api\Instagram;
 
-use Facebook\Exceptions\FacebookSDKException;
 use App\Http\Controllers\Controller;
-
+use Facebook\Exceptions\FacebookSDKException;
 
 class FB_GetPagesController extends Controller
 {
     public function index()
     {
-
         try {
             $pagesEndPoint = config('instagram.endPoint') . 'me/accounts';
             $pagesParams = [
-                'access_token' => config('instagram.accessToken')
+                'access_token' => config('instagram.accessToken'),
             ];
 
             $pagesEndPoint .= '?' . http_build_query($pagesParams);
@@ -26,7 +24,6 @@ class FB_GetPagesController extends Controller
             curl_setopt($cu, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($cu, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
-
 
             //CURL CALL
             $response = curl_exec($cu);

@@ -7,7 +7,6 @@ use App\Models\UserRole;
 
 trait HasPermissionsTrait
 {
-
     public function givePermissionsTo(...$permissions)
     {
         $permissions = $this->getAllPermissions($permissions);
@@ -15,6 +14,7 @@ trait HasPermissionsTrait
             return $this;
         }
         $this->permissions()->saveMany($permissions);
+
         return $this;
     }
 
@@ -22,12 +22,14 @@ trait HasPermissionsTrait
     {
         $permissions = $this->getAllPermissions($permissions);
         $this->permissions()->detach($permissions);
+
         return $this;
     }
 
     public function refreshPermissions(...$permissions)
     {
         $this->permissions()->detach();
+
         return $this->givePermissionsTo($permissions);
     }
 
@@ -43,6 +45,7 @@ trait HasPermissionsTrait
                 return true;
             }
         }
+
         return false;
     }
 
@@ -53,6 +56,7 @@ trait HasPermissionsTrait
                 return true;
             }
         }
+
         return false;
     }
 

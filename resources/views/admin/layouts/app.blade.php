@@ -35,8 +35,9 @@
 	<link rel="stylesheet" href="{{ asset('admin/css/header-colors.css') }}" />
 
 	<!-- Icon Style CSS -->
-	<link href="{{ asset('admin/css/icons.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+	<!-- <link href="{{ asset('admin/css/icons.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 
 	<style>
 		.hidden {
@@ -51,6 +52,22 @@
 			content: " *";
 			color: red;
 		}
+
+		.sidebar-wrapper .metismenu ul a em {
+			margin-right: 10px;
+		}
+
+		.page-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+			font-family: bootstrap-icons !important;
+			font-style: normal;
+			font-weight: normal !important;
+			font-variant: normal;
+			text-transform: none;
+			color: #6c757d;
+			padding-right: .5rem;
+			content: "\f285";
+		}
+
 	</style>
 
 	@yield('custom-styles')
@@ -71,13 +88,13 @@
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 					@if ($back ?? false === true)
-					<a href="{{ url()->previous() }}"><em class="bx bx-arrow-back pe-2 fs-4"></em></a>
+					<a href="{{ url()->previous() }}"><em class="bi bi-arrow-left-short pe-2 fs-4"></em></a>
 					@endif
 					<div class="breadcrumb-title pe-3">{{ $title ?? 'Dashboard' }}</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
+								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><em class="bi bi-house-door"></em></a>
 								</li>
 								@yield('path-navigation')
 							</ol>
@@ -97,14 +114,14 @@
 		<!--end overlay-->
 
 		<!--Start Back To Top Button-->
-		<a href="javaScript:;" class="back-to-top"><em class='bx bxs-up-arrow-alt'></em></a>
+		<a href="javaScript:;" class="back-to-top"><em class='bi bi-arrow-up-short'></em></a>
 		<!--End Back To Top Button-->
 
 		<!-- @include('admin.layouts.footer') -->
 	</div>
 	<!--end wrapper-->
 
-	@include('admin.layouts.theme-config')
+	{{-- @include('admin.layouts.theme-config') --}}
 
 	<!-- div loader -->
 	<div class="d-none div-loader justify-content-center align-items-center" id="divLoadingTemplate">
@@ -305,7 +322,7 @@
 				pauseDelayOnHover: true,
 				continueDelayOnInactiveTab: false,
 				position: position,
-				icon: 'bx bx-' + icon,
+				icon: 'bi bi-' + icon,
 				msg: message
 			});
 		}
