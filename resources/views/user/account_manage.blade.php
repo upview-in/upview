@@ -53,7 +53,7 @@
 		<div class="card shadow" id="highlights">
 			<div class="card-header p-15 ml-3 w-500">
 				<label class="h3 m-0">Manage Accounts</label>
-				<button  class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" >
+				<button onclick="window.open('{{ route('panel.user.account.ayrshareForward') }}', '_blank')" class="btn btn-md btn-outline-primary float-right" type="button">
 					<em class="anticon anticon-user-add"></em> Add Account
 				</button>
 			</div>
