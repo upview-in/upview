@@ -17,6 +17,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
@@ -118,7 +119,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
                 Route::get('/ayrshareForward', function () {
-                    return Redirect::away('');
+                    return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8']))->url);
                 })->name('ayrshareForward');
 
                 Route::get('/add/youtube', [AccountController::class, 'addYoutubeAccount'])->name('addYoutubeAccount');
