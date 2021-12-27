@@ -16,7 +16,7 @@ class TokenHelper
         'linkedin' => 6
     ];
 
-    public static function getFlippedPlatforms() : array
+    public static function getFlippedPlatforms(): array
     {
         return array_flip(self::$PLATFORMS);
     }

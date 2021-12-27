@@ -10,13 +10,6 @@
 </script>
 @endsection
 
-@section('custom-styles')
-<style>
-    .tagsSelection {
-        flex: 1 1 auto;
-    }
-</style>
-@endsection
 <x-app-layout title="Post Scheduling">
     <div class="container-fluid">
         <div class="card">

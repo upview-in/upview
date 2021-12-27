@@ -53,8 +53,8 @@
 		<div class="card shadow" id="highlights">
 			<div class="card-header p-15 ml-3 w-500">
 				<label class="h3 m-0">Manage Accounts</label>
-				<button  class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" >
-					<em class="anticon anticon-user-add"></em> Add Account
+				<button class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" data-target="#addAccountModal">
+					<i class="anticon anticon-user-add"></i> Add Account
 				</button>
 			</div>
 			<div class="card-body p-15 ml-3">
@@ -124,10 +124,10 @@
 								</td>
 								<td>
 									<a href="{{ route('panel.user.account.setDefaultAccount', ['id' => $linkedAccount->id, 'platform' => $linkedAccount->platform]) }}">
-										<em class="{{ (!is_null($linkedAccount->default) && $linkedAccount->default)?'fa':'far' }} fa-star text-warning justify-center" data-toggle="tooltip" data-placement="bottom" title="Set as default account" aria-hidden="false"></em>
+										<i class="{{ (!is_null($linkedAccount->default) && $linkedAccount->default)?'fa':'far' }} fa-star text-warning justify-center" data-toggle="tooltip" data-placement="bottom" title="Set as default account" aria-hidden="false"></i>
 									</a>
 									<a href="{{ route('panel.user.account.unlinkAccount', $linkedAccount->id) }}">
-										<em class="fas fa-unlink text-danger justify-center" data-toggle="tooltip" data-placement="bottom" title="Unlink Account" aria-hidden="false"></em>
+										<i class="fas fa-unlink text-danger justify-center" data-toggle="tooltip" data-placement="bottom" title="Unlink Account" aria-hidden="false"></i>
 									</a>
 								</td>
 							</tr>
@@ -139,4 +139,44 @@
 		</div>
 	</div>
 
+	<div class="modal fade" id="addAccountModal" tabindex="-1" role="dialog" aria-labelledby="addAccountModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Choose Platform</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-6 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100"><em class="fab fa-youtube"></em> Youtube</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100"><em class="fab fa-facebook-square"></em> FaceBook</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-100"><em class="fab fa-instagram"></em> Instagram</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100"><em class="fab fa-twitter-square"></em> Twitter</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-primary w-100"><em class="fab fa-linkedin"></em> LinkedIn</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-danger w-100"><em class="fab fa-pinterest"></em> Pinterest</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-warning w-100"><em class="fab fa-reddit-square"></em> Reddit</a>
+						</div>
+						<div class="col-6 mt-3 text-center">
+							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100"><em class="fab fa-telegram"></em> Telegram</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </x-app-layout>
