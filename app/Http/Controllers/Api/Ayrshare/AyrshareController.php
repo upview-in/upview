@@ -93,7 +93,7 @@ class AyrshareController extends Controller
         }
     }
 
-    public function generateAyrJWTToken(AyrJWTTokenProfileKey $request)
+    public static  function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
     {
 
         try {

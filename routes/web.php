@@ -3,14 +3,9 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
-<<<<<<< HEAD
 use App\Http\Controllers\Admin\UserRolesController;  
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\AppModules\AppModuleController;
-=======
-use App\Http\Controllers\Admin\UserRolesController;
-use App\Http\Controllers\Api\Ayrshare\AyrshareController;
->>>>>>> jimmy-24122021-merge-issue
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
@@ -22,14 +17,11 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\DashboardController;
-<<<<<<< HEAD
 use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
-=======
->>>>>>> jimmy-24122021-merge-issue
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +59,6 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
         return view('welcome');
     });
 
-<<<<<<< HEAD
     Route::get('image/{file}', function ($file) {
         try {
             $file = decrypt($file);
@@ -86,8 +77,6 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
         return $response;
     })->name('image.displayImage');
 
-=======
->>>>>>> jimmy-24122021-merge-issue
     Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
     Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');
 
@@ -102,10 +91,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-<<<<<<< HEAD
         Route::get('/choosePackages', [AppModuleController::class, 'index'])->name('choosePackages');
-=======
->>>>>>> jimmy-24122021-merge-issue
 
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {
