@@ -93,7 +93,7 @@ class AyrshareController extends Controller
         }
     }
 
-    public function generateAyrJWTToken(AyrJWTTokenProfileKey $request)
+    public static  function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
     {
 
         try {
@@ -127,6 +127,6 @@ class AyrshareController extends Controller
         /**
          * Call the function you wanna test
          */
-        dd(((new AyrshareController())->generateAyrJWTToken(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8'])))->url);
+        // dd(((new AyrshareController())->generateAyrJWTToken(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8'])))->url);
     }
 }

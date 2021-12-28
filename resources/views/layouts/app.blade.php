@@ -17,13 +17,7 @@
 <!-- Core css -->
 <link href="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"> </script>
-
 {{-- <link href="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"> --}}
 <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
 <link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
@@ -132,8 +126,9 @@
     <script src="{{ asset('vendor/country-list/country-list.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('vendor/jsPDF/jspdf.umd.min.js') }}"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         var videoIntelligenceIndexRoute = "{{ route('panel.user.measure.market_research.video_intelligence.index') }}";
     </script>

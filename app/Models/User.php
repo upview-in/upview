@@ -56,7 +56,9 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'state',
         'country',
         'pincode',
-        'currency'
+        'currency',
+        'ayr_ref_id',
+        'ayr_profile_id',
     ];
 
     /**

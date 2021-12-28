@@ -3,11 +3,11 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
-use App\Http\Controllers\Admin\UserRolesController;
+use App\Http\Controllers\Admin\UserRolesController;  
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
+use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\AccountController;
@@ -17,6 +17,11 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +59,24 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
         return view('welcome');
     });
 
+    Route::get('image/{file}', function ($file) {
+        try {
+            $file = decrypt($file);
+        } catch (DecryptException $e) {
+            return abort(404);
+        }
+       
+        $file = storage_path('app/'.$file);
+       
+        if (!File::exists($file)) { return abort(404); }
+       
+        $type = File::mimeType($file);
+        $file = File::get($file);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
+    })->name('image.displayImage');
+
     Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
     Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');
 
@@ -68,6 +91,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+        Route::get('/choosePackages', [AppModuleController::class, 'index'])->name('choosePackages');
 
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {
@@ -94,6 +118,9 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
+                Route::get('/ayrshareForward', function () {
+                    return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8']))->url);
+                })->name('ayrshareForward');
 
                 Route::get('/add/youtube', [AccountController::class, 'addYoutubeAccount'])->name('addYoutubeAccount');
                 Route::get('/add/facebook', [AccountController::class, 'addFacebookAccount'])->name('addFacebookAccount');
