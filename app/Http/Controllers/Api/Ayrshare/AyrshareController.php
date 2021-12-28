@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Ayrshare;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Ayrshare\AyrAWTTokenProfileKey;
 use App\Http\Requests\Api\Ayrshare\AyrCreateProfile;
 use App\Http\Requests\Api\Ayrshare\AyrDeleteProfile;
 use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
@@ -59,38 +60,64 @@ class AyrshareController extends Controller
 
     public function ayrSocialMediaPosts(AyrSocialMediaPosts $request)
     {
+        /**
+         * instagramOptions": {
+         *       "autoResize": true/false
+         *       "locationId": FB Location's Page
+         *       "userTags": [
+         *           {
+         *               "username": "instauser"
+         *               "x":
+         *               "y": x & y for tag location
+         *           },
+         *           {
+         *               "username": "instauser2"
+         *               "x":
+         *               "y":
+         *          }
+         *       ]
+         *   }
+         */
+
         if ($request->has('post') && $request->has('platforms')) {
             return AyrshareController::ayrshareAPICall(
                 'GET',
                 config('ayrshare.AYR_MEDIA_POST_ENDPOINT'),
                 [
-                 'post' => $request->caption,
-                 'platforms' => $request->platforms,
-                 'mediaURLs' => $request->mediaURLs ?? [''],
-                 ]
+                    'post' => $request->caption,
+                    'platforms' => $request->platforms,
+                    'mediaURLs' => $request->mediaURLs ?? [''],
+                    'instagramOptions' => $request->instagramOptions ?? [''],
+                ]
             );
         }
-
     }
 
-    public static function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
+    public function generateAyrJWTToken(AyrJWTTokenProfileKey $request)
     {
-            try {
-                $file = File::get(storage_path('private.key'));
-            // dd($file,$request->profileKey);
 
-            } catch (FileNotFoundException $e) {
-                dd("[!]Exception: Private Key not found!");
-            }
-            return json_decode(AyrshareController::ayrshareAPICall(
-            'POST',
-            config('ayrshare.AYR_JWT_ENDPOINT'), 
-            [
-                    'domain' => 'upview',
-                    'privateKey' => $file, // required
-                    'profileKey' => $request->profileKey, // requires
-            ]
-        )->body());
+        try {
+            $file = File::get(storage_path('private.key'));
+           // dd($file,$request->profileKey);
+
+        } catch (FileNotFoundException $e) {
+            dd("[!][Exception]: Private Key not found!");
+        }
+        return json_decode(AyrshareController::ayrshareAPICall(
+         'POST',
+         config('ayrshare.AYR_JWT_ENDPOINT'), 
+         [
+                'domain' => 'upview',
+                'privateKey' => $file, // required
+                'profileKey' => $request->profileKey, // requires
+         ]
+    )->body());
+    }
+    public function showAccountLinkOptions()
+    {
+            /*
+                ok
+            */
     }
 
 
@@ -100,5 +127,6 @@ class AyrshareController extends Controller
         /**
          * Call the function you wanna test
          */
+        // dd(((new AyrshareController())->generateAyrJWTToken(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8'])))->url);
     }
 }

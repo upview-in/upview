@@ -10,7 +10,9 @@ use App\Http\Requests\Admin\Roles\IndexRoleRequest;
 use App\Http\Requests\Admin\Roles\StoreRoleRequest;
 use App\Http\Requests\Admin\Roles\UpdateRoleRequest;
 use App\Http\Requests\Admin\Roles\ViewRoleRequest;
+use App\Models\UserPermission;
 use App\Models\UserRole;
+use PermissionHelper;
 
 class UserRolesController extends Controller
 {
@@ -34,7 +36,7 @@ class UserRolesController extends Controller
      */
     public function create(CreateRoleRequest $request)
     {
-        return view('admin.roles.create');
+        return view('admin.roles.create', ['permissionHelper' => new PermissionHelper()]);
     }
 
     /**
@@ -45,8 +47,18 @@ class UserRolesController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
+        $permissionHelper = new PermissionHelper();
         $senitized = $request->validated();
         $userRole = UserRole::create($senitized);
+
+        $permission_ids = [];
+        foreach ($senitized['permissions'] as $slug) {
+            $permission = $permissionHelper->getPermissionFromSlug($slug);
+            if (!is_null($permission)) {
+                $permission_ids[] = $permission->id;
+            }
+        }
+        $userRole->permissions()->attach($permission_ids);
 
         if ($request->ajax()) {
             return response()->json([
@@ -79,7 +91,7 @@ class UserRolesController extends Controller
      */
     public function edit(EditRoleRequest $request, UserRole $userRole)
     {
-        return view('admin.roles.edit', ['userRole' => $userRole]);
+        return view('admin.roles.edit', ['userRole' => $userRole, 'permissionHelper' => new PermissionHelper(), 'havePermissions' => $userRole->permissions()->pluck('slug')]);
     }
 
     /**
@@ -91,9 +103,22 @@ class UserRolesController extends Controller
      */
     public function update(UpdateRoleRequest $request, UserRole $userRole)
     {
+        $permissionHelper = new PermissionHelper();
+
         $userRole->name = $request->name ?? $userRole->name;
         $userRole->slug = $request->slug ?? $userRole->slug;
         !$request->has('enabled') ?: ($userRole->enabled = filter_var($request->enabled, FILTER_VALIDATE_BOOLEAN));
+
+        if ($request->has('permissions')) {
+            $permission_ids = [];
+            foreach ($request->permissions as $slug) {
+                $permission = $permissionHelper->getPermissionFromSlug($slug);
+                if (!is_null($permission)) {
+                    $permission_ids[] = $permission->id;
+                }
+            }
+            $userRole->permissions()->sync($permission_ids);
+        }
 
         $userRole->update();
 

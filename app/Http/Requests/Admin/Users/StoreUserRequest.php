@@ -27,7 +27,7 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|min:2|max:50',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'same:confirm_password', Password::min(8)],
             'mobile_number' => ['nullable', 'regex:/^\+(?:[0-9] ?){6,14}[0-9]$/'],
@@ -38,6 +38,7 @@ class StoreUserRequest extends FormRequest
             'city' => ['nullable', 'exists:cities,_id'],
             'address' => ['nullable', 'min:10', 'max:512'],
             'avatar' => ['nullable', 'image', 'max:6144'],
+            'roles' => ['array']
         ];
     }
 }

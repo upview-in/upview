@@ -26,12 +26,12 @@
                     </div>
                     <div class="d-flex align-items-center flex-shrink-1 pointer" onclick="$(this).closest('form').submit();">
                         <em class="bx bx-plus-circle me-1 font-22 text-primary"></em>
-                        <strong>Save</strong>
+                        <strong>Create</strong>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4 col-sm-6 col-12">
                         <label class="form-label font-weight-semibold required" for="name">{{ __('Name') }}</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required>
                         @error('name')
@@ -40,7 +40,7 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4 col-sm-6 col-12">
                         <label class="form-label font-weight-semibold required" for="slug">{{ __('Slug') }}</label>
                         <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{ old('slug') }}" required>
                         @error('slug')

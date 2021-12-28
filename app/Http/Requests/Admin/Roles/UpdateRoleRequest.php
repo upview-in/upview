@@ -27,7 +27,8 @@ class UpdateRoleRequest extends FormRequest
         return [
             'name' => ['sometimes', 'string', 'min:2', 'max:60'],
             'slug' => ['sometimes', 'string', 'max:255', Rule::unique('user_roles')->ignore($this->userRole)],
-            'enabled' => ['sometimes', 'in:true,false']
+            'enabled' => ['sometimes', 'in:true,false'],
+            'permissions' => 'array'
         ];
     }
 }

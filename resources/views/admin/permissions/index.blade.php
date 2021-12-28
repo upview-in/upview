@@ -13,7 +13,7 @@
         <div class="card-body p-5">
             <div class="card-title d-flex align-items-center">
                 <div class="d-flex align-items-center w-100">
-                    <em class="bx bxs-user me-1 font-22 text-primary"></em>
+                    <em class="bx bx-fingerprint me-1 font-22 text-primary"></em>
                     <h5 class="mb-0 text-primary">{{ __('Permissions') }}</h5>
                 </div>
                 <div class="flex-shrink-1 pointer">
@@ -32,7 +32,7 @@
             </div>
             <hr>
             <div class="table-responsive">
-                <table class="table mb-0">
+                <table class="table mb-0 align-middle">
                     <thead>
                         <tr>
                             <th scope="col">Actions</th>
@@ -49,10 +49,10 @@
                                 <form class="ajax-form" method="POST" action="{{ route('admin.userPermissions.destroy', $userPermission->id) }}">
                                     @method('delete')
                                     @csrf
-                                    <a href="{{ route('admin.userPermissions.edit', $userPermission->id) }}" class="btn btn-sm p-0">
+                                    <a href="{{ route('admin.userPermissions.edit', $userPermission->id) }}" class="btn btn-sm p-1">
                                         <em class="bx bx-edit text-primary fs-5"></em>
                                     </a>
-                                    <button type="submit" class="btn btn-sm p-0 remove-table-row">
+                                    <button type="submit" class="btn btn-sm p-1 remove-table-row">
                                         <em class="bx bx-trash text-danger fs-5"></em>
                                     </button>
                                 </form>

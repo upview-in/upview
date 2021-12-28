@@ -24,7 +24,11 @@ class AyrJWTTokenProfileKey extends FormRequest
     public function rules()
     {
         return [
+<<<<<<< HEAD
             'profileKey' => 'required',
+=======
+            'profileKey' => 'required'
+>>>>>>> jimmy-24122021-merge-issue
         ];
     }
 }

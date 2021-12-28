@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\Users\IndexUserRequest;
 use App\Http\Requests\Admin\Users\StoreUserRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Http\Requests\Admin\Users\ViewUserRequest;
+use App\Models\UserRole;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,8 +25,8 @@ class UserController extends Controller
      */
     public function index(IndexUserRequest $request)
     {
-        $users = User::search()->paginate(10);
-        return view('admin.users.index', compact('users'));
+        $users = User::with('roles')->search()->paginate(10);
+        return view('admin.users.index', ['users' => $users]);
     }
 
     /**
@@ -36,7 +37,7 @@ class UserController extends Controller
      */
     public function create(CreateUserRequest $request)
     {
-        return view('admin.users.create');
+        return view('admin.users.create', ['roles' => UserRole::enabled()->get()]);
     }
 
     /**
@@ -61,6 +62,14 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         }
+
+        $roles_ids = [];
+        foreach ($senitized['roles'] as $role) {
+            if (!is_null(UserRole::find($role))) {
+                $roles_ids[] = $role;
+            }
+        }
+        $user->roles()->attach($roles_ids);
 
         if ($request->ajax()) {
             return response()->json([
@@ -93,7 +102,7 @@ class UserController extends Controller
      */
     public function edit(EditUserRequest $request, User $user)
     {
-        return view('admin.users.edit', ['user' => $user]);
+        return view('admin.users.edit', ['user' => $user, 'roles' => UserRole::enabled()->get(), 'assignedRoles' => $user->roles->pluck('id')->toArray()]);
     }
 
     /**
@@ -131,6 +140,16 @@ class UserController extends Controller
         }
 
         $user->update();
+
+        if ($request->has('roles')) {
+            $roles_ids = [];
+            foreach ($request->roles as $role) {
+                if (!is_null(UserRole::find($role))) {
+                    $roles_ids[] = $role;
+                }
+            }
+            $user->roles()->sync($roles_ids);
+        }
 
         if ($request->ajax()) {
             return response()->json([

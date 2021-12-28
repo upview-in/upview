@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['sometimes', 'string', 'min:2', 'max:20'],
+            'name' => ['sometimes', 'string', 'min:2', 'max:40'],
             'email' => ['sometimes', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user)],
             'mobile_number' => ['nullable', 'regex:/^\+(?:[0-9] ?){6,14}[0-9]$/'],
             'birth_date' => ['nullable', 'date_format:Y-m-d'],
