@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Api\Ayrshare;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Ayrshare\AyrAWTTokenProfileKey;
 use App\Http\Requests\Api\Ayrshare\AyrCreateProfile;
 use App\Http\Requests\Api\Ayrshare\AyrDeleteProfile;
+use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
 use App\Http\Requests\Api\Ayrshare\AyrPostAnalytics;
 use App\Http\Requests\Api\Ayrshare\AyrShortLinkAnalysis;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
 
@@ -89,11 +93,24 @@ class AyrshareController extends Controller
         }
     }
 
-    public function showAccountLinkOptions()
+    public function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
     {
-            /*
-                ok
-            */
+            try {
+                $file = File::get(storage_path('private.key'));
+            // dd($file,$request->profileKey);
+
+            } catch (FileNotFoundException $e) {
+                dd("[!]Exception: Private Key not found!");
+            }
+            return json_decode(AyrshareController::ayrshareAPICall(
+            'POST',
+            config('ayrshare.AYR_JWT_ENDPOINT'), 
+            [
+                    'domain' => 'upview',
+                    'privateKey' => $file, // required
+                    'profileKey' => $request->profileKey, // requires
+            ]
+        )->body());
     }
 
 
@@ -103,5 +120,6 @@ class AyrshareController extends Controller
         /**
          * Call the function you wanna test
          */
+        
     }
 }
