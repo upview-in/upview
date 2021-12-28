@@ -32,15 +32,15 @@ class SupportController extends Controller
         $supportQuery->query_description = $request->query_description;
         $supportQuery->user_id = $user->id;
         $supportQuery->status = 0;
-        if($request->hasFile('query_ss'))
-        {
+        if ($request->hasFile('query_ss')) {
             $supportQuery->query_ss_name = $request->file('query_ss')->store('Support');
         }
         $supportQuery->save();
         return redirect()->back()->with('message', 'Query Raised!');
     }
 
-    public function cancelQueryByUser(CancelQuery $request, UserSupport $userSupport ){
+    public function cancelQueryByUser(CancelQuery $request, UserSupport $userSupport)
+    {
         $userSupport->remark = "Closed by User";
         $userSupport->status = 2;
         // $userSupport->resolved_at = Carbon::now()->toDateTimeString();
@@ -49,7 +49,8 @@ class SupportController extends Controller
 
     }
 
-    public function supportChat(SupportChatRequest $request){
+    public function supportChat(SupportChatRequest $request)
+    {
         return view('user.support_chat');
     }
 

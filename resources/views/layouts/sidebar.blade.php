@@ -21,7 +21,7 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <i class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="icon-holder">
                                 <em class="anticon anticon-youtube"></em>
@@ -56,7 +56,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('panel.user.analyze.instagram.overview') }}">{{ __('Overview') }}</a> {{-- {{ route('panel.dashboard.insta') }} --}}
+                                <a href="{{ route('panel.user.analyze.instagram.overview') }}">{{ __('Overview') }}</a>
                             </li>
                             <li>
                                 <a href="#">{{ __('Media') }}</a>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\Ayrshare\AyrProfileController;
 use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
 use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\ProfileController;
@@ -100,6 +101,8 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
+                Route::post('/ayrshareForward{profileKey}', [AyrshareController::class, 'ayrshareForward'])->name('ayrshareForward');
+                Route::get('/manage', [AyrProfileController::class, 'index'])->name('index');
 
             });
 
