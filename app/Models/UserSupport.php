@@ -31,10 +31,6 @@ class UserSupport extends Model
      */
     protected $casts = [
         'resolved_at' => 'datetime',
-<<<<<<< HEAD
-=======
-        'status' => 'boolean',
->>>>>>> jimmy-24122021-merge-issue
         'assigned_on_date' => 'datetime'
     ];
 }

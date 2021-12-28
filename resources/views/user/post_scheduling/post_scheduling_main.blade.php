@@ -18,10 +18,6 @@
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.uploading_post_media') }}">
-<<<<<<< HEAD
-=======
-
->>>>>>> jimmy-24122021-merge-issue
                     @if(session()->get('message2'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success:</strong> {{ session()->get('message2') }}
@@ -37,7 +33,6 @@
                         <label class="font-weight-semibold" for="platfromSelection">{{ __('Select Social Media Platform(s)') }}:</label>
                         <div class="checkbox row">
                             <div class="col-md-2">
-<<<<<<< HEAD
                                 <input id="cbinstagram" name="platform[]"  value="{{ App\Helper\TokenHelper::$PLATFORMS['instagram'] }}" type="checkbox">
                                 <label for="cbinstagram">Instagram</label>
                             </div>
@@ -130,106 +125,6 @@
                             <button id="btnUploadPostMedia" class="btn btn-tone btn-primary">{{ __('Upload') }}</button>
                         </div>
                     </div>
-=======
-                                <input id="cbinstagram" name="cbinstagram" type="checkbox">
-                                <label for="instagram">Instagram</label>
-                            </div>
-                            
-                            <div class="col-md-2">
-                                <input id="cbyoutube" name="cbyoutube" type="checkbox">
-                                <label for="youtube">Youtube</label>
-                            </div>
-
-                            <div class="col-md-2">
-                                <input id="cbfacebook" name="cbfacebook" type="checkbox">
-                                <label for="facebook">Facebook</label>
-                            </div>
-
-                            <div class="col-md-2">
-                                <input id="cbtwitter" name="cbtwitter" type="checkbox">
-                                <label for="twitter">Twitter</label>
-                            </div>
-
-                            <div class="col-md-2">
-                                <input id="cblinkdin" name="cblinkdin" type="checkbox">
-                                <label for="linkdin">linkdIn</label>
-                            </div>
-
-                            <div class="col-md-2">
-                                <input id="cbpintrest" name="cbpintrest" type="checkbox">
-                                <label for="pintrest">Pintrest</label>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="caption">{{ __('Caption') }}:</label>
-                        <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter a caption here..">
-                    </div>
-                    @error('caption')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="location">{{ __('Location') }}:</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Enter location here.." >
-                    </div>
-                    @error('location')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="mention">{{ __('Mention Users') }}:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="text" class="form-control" id="mention" name="mention" placeholder="Enter Username to mention seperated by ',' comma " />
-                        </div>
-                    </div>
-                    @error('mention')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="tags">{{ __('Tags') }}:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">#</span>
-                            </div>
-                            <input type="text" class="form-control" id="tags" name="tags" placeholder="Enter Tags seperated by ',' comma" />
-                        </div>
-                    </div>
-                    @error('tags')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="form-group media align-items-center">
-
-                        <input id="post_media" name="post_media" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
-
-                        <div class="m-l-20 m-r-20">
-                            <h5 class="m-b-5 font-size-18">{{ __('Choose Post Image') }}</h5>
-                            <p class="opacity-07 font-size-13 m-b-0">
-                                {{ __('Recommended Resolution') }}: 1080 x 1350p<br>
-                                Our system will automatically manage resolutions for Facebook & Instagram.
-                                Max file size: 6MB
-                            </p>
-                        </div>
-                        <div>
-                            <button id="btnUploadPostMedia" class="btn btn-tone btn-primary">{{ __('Upload') }}</button>
-                        </div>
-                    </div>
->>>>>>> jimmy-24122021-merge-issue
                     @error('post_media')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{ $message }}</strong>
