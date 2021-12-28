@@ -41,9 +41,18 @@ class UserPermission extends Model
         'enabled' => 'boolean'
     ];
 
+    public function scopeEnabled($query, $value = true)
+    {
+        if ($value) {
+            return $query->whereNull('enabled')->orWhere('enabled', true);
+        } else {
+            return $query->where('enabled', false);
+        }
+    }
+
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(UserRole::class);
     }
 
     public function users()

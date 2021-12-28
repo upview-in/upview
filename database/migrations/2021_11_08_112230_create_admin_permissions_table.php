@@ -15,6 +15,7 @@ class CreateAdminPermissionsTable extends Migration
     {
         Schema::create('admin_permissions', function (Blueprint $table) {
             $table->id();
+            $table->string('group');
             $table->string('name');
             $table->string('slug');
             $table->boolean('enabled')->default(true);

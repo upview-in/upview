@@ -7,7 +7,7 @@
         <div>
             <span class="logo-text">{{ config('app.name') }}<mark class="ms-1 text-muted h6">Admin</mark></span>
         </div>
-        <div class="toggle-icon ms-auto"><em class='bx bx-arrow-to-left'></em>
+        <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
     </div>
     <!--navigation-->
@@ -15,7 +15,7 @@
         <li>
             <a href="{{ route('admin.dashboard') }}">
                 <div class="parent-icon">
-                    <em class='bx bx-home-circle'></em>
+                    <i class='bx bx-home-circle'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
@@ -23,23 +23,23 @@
         <li>
             <a href="{{ route('admin.users.index') }}">
                 <div class="parent-icon">
-                    <em class='bx bx-user-circle'></em>
+                    <i class='bx bx-user-circle'></i>
                 </div>
                 <div class="menu-title">Users</div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.userPermissions.index') }}">
+            <a href="{{ route('admin.permissions.index') }}">
                 <div class="parent-icon">
-                    <em class='bx bx-fingerprint'></em>
+                    <i class='bx bx-fingerprint'></i>
                 </div>
                 <div class="menu-title">Permissions</div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.userRoles.index') }}">
+            <a href="{{ route('admin.roles.index') }}">
                 <div class="parent-icon">
-                    <em class='bx bx-diamond'></em>
+                    <i class='bx bx-diamond'></i>
                 </div>
                 <div class="menu-title">Plans</div>
             </a>

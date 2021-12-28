@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Admin\Roles;
 
-use App\Helper\Functions;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
 class StoreRoleRequest extends FormRequest
 {
@@ -27,7 +25,8 @@ class StoreRoleRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:60',
-            'slug' => 'required|string|max:255|unique:user_roles'
+            'slug' => 'required|string|max:255|unique:user_roles',
+            'permissions' => 'array'
         ];
     }
 }

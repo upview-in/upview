@@ -16,19 +16,23 @@
 
 <x-admin-app-layout title="Permissions" back=true>
     <div class="card border-top border-0 border-4 border-primary">
-        <div class="card-body p-5">
-            <div class="card-title d-flex align-items-center">
-                <div>
-                    <em class="bx bxs-user me-1 font-22 text-primary"></em>
+        <form class="ajax-form" method="POST" action="{{ route('admin.userPermissions.update', $userPermission->id) }}">
+            @method('patch')
+            @csrf
+            <div class="card-body p-5">
+                <div class="card-title d-flex align-items-center">
+                    <div class="d-flex align-items-center w-100">
+                        <em class="bx bx-user me-1 font-22 text-primary"></em>
+                        <h5 class="mb-0 text-primary">{{ __('Basic') }}</h5>
+                    </div>
+                    <div class="d-flex align-items-center flex-shrink-1 pointer" onclick="$(this).closest('form').submit();">
+                        <em class="bx bx-save me-1 font-22 text-primary"></em>
+                        <strong>Save</strong>
+                    </div>
                 </div>
-                <h5 class="mb-0 text-primary">{{ __('Basic') }}</h5>
-            </div>
-            <hr>
-            <form class="ajax-form" method="POST" action="{{ route('admin.userPermissions.update', $userPermission->id) }}">
-                @method('patch')
-                @csrf
+                <hr>
                 <div class="row g-3">
-                    <div class="col-md-6">
+                    <div class="col-sm-6 col-12">
                         <label class="form-label font-weight-semibold required" for="name">{{ __('Name') }}</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ old('name') ?? $userPermission->name }}" required>
                         @error('name')
@@ -37,7 +41,7 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6 col-12">
                         <label class="form-label font-weight-semibold required" for="slug">{{ __('Slug') }}</label>
                         <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{ old('slug') ?? $userPermission->slug }}" required>
                         @error('slug')
@@ -46,11 +50,8 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="col-md-3">
-                        <button class="btn btn-success">{{ __('Update') }}</button>
-                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </x-admin-app-layout>

@@ -41,8 +41,8 @@ Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], functi
         Route::middleware(['admin'])->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
-            Route::resource('userPermissions', UserPermissionsController::class);
-            Route::resource('userRoles', UserRolesController::class);
+            Route::resource('users/permissions', UserPermissionsController::class);
+            Route::resource('users/roles', UserRolesController::class);
         });
 
         Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
