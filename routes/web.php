@@ -101,8 +101,10 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
-                Route::post('/ayrshareForward{profileKey}', [AyrshareController::class, 'ayrshareForward'])->name('ayrshareForward');
+                Route::get('/ayrshareForward/{profileKey}', [AyrshareController::class, 'ayrForward'])->name('ayrshareForward');
                 Route::get('/manage', [AyrProfileController::class, 'index'])->name('index');
+                Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
+                Route::get('/deleteProfile/{profileKey}', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
 
             });
 

@@ -59,6 +59,11 @@
 			</div>
 			<div class="card-body p-15 ml-3">
 				<div class="table-responsive">
+					@if($errors->has('message') && $errors->get('message'))
+						<div class="alert alert-danger">
+							{{ $errors->get('message')[0] }}
+						</div>
+					@endif
 					<table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
 						<thead>
 							<tr>
@@ -69,7 +74,22 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+							@foreach($userProfiles as $key => $profiles)
+								<tr>
+									<th scope="row">{{ $key+1 }}</th>
+									<td class="justify-center">{{ $profiles['title'] ?? '' }}</td>
+									<td class="justify-center">{{ $profiles['authorized_on'] ?? '' }}</td>
+									<td class="justify-center">
+										<a href="{{ route('panel.user.profile.ayrshareForward', $profiles['profileKey']) }}" target="_blank">
+											<em class="fas fa-link text-info justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Link Social Media Accounts" aria-hidden="false" ></em>
+										</a>
+										&nbsp;&nbsp;&nbsp;
+										<a href="{{ route('panel.user.profile.deleteProfile', $profiles['profileKey']) }}">
+											<em class="fas fa-unlink text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Delete Profile" aria-hidden="false" ></em>
+										</a>
+									</td>
+								</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>
@@ -89,17 +109,12 @@
 				<div class="modal-body">
 					<div class="card">
 						<div class="card-body">
-							<form method="POST" action="">
+							<form method="POST" action="{{ route('panel.user.profile.createAyrProfile') }}">
 								@csrf
 								<div class="form-group">
-									<label class="font-weight-semibold" for="profileName">{{ __('Profile Name') }}:</label>
-									<input type="text" class="form-control" id="profileName" name="profileName" placeholder="Enter Full Name" />
+									<label class="font-weight-semibold" for="profile_name">{{ __('Profile Name') }}:</label>
+									<input type="text" class="form-control" id="profile_name" name="profile_name" placeholder="Enter Full Name" />
 								</div>
-								@error('profileName')
-								<span class="invalid-feedback d-block" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-								@enderror
 
 								<div class="form-group">
 									<button class="btn btn-success">{{ __('Create') }}</button>

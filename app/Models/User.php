@@ -57,8 +57,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'country',
         'pincode',
         'currency',
-        'ayr_ref_id',
-        'ayr_profile_id',
+        'profiles',
     ];
 
     /**
@@ -78,7 +77,8 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'enabled' => 'boolean'
+        'enabled' => 'boolean',
+        'profiles' => 'array',
     ];
 
     public function registerMediaConversions(Media $media = null): void
