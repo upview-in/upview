@@ -93,24 +93,31 @@ class AyrshareController extends Controller
         }
     }
 
-    public function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
+    public function generateAyrJWTToken(AyrJWTTokenProfileKey $request)
     {
-            try {
-                $file = File::get(storage_path('private.key'));
-            // dd($file,$request->profileKey);
 
-            } catch (FileNotFoundException $e) {
-                dd("[!]Exception: Private Key not found!");
-            }
-            return json_decode(AyrshareController::ayrshareAPICall(
-            'POST',
-            config('ayrshare.AYR_JWT_ENDPOINT'), 
-            [
-                    'domain' => 'upview',
-                    'privateKey' => $file, // required
-                    'profileKey' => $request->profileKey, // requires
-            ]
-        )->body());
+        try {
+            $file = File::get(storage_path('private.key'));
+           // dd($file,$request->profileKey);
+
+        } catch (FileNotFoundException $e) {
+            dd("[!][Exception]: Private Key not found!");
+        }
+        return json_decode(AyrshareController::ayrshareAPICall(
+         'POST',
+         config('ayrshare.AYR_JWT_ENDPOINT'), 
+         [
+                'domain' => 'upview',
+                'privateKey' => $file, // required
+                'profileKey' => $request->profileKey, // requires
+         ]
+    )->body());
+    }
+    public function showAccountLinkOptions()
+    {
+            /*
+                ok
+            */
     }
 
 
@@ -120,6 +127,6 @@ class AyrshareController extends Controller
         /**
          * Call the function you wanna test
          */
-        
+        dd(((new AyrshareController())->generateAyrJWTToken(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8'])))->url);
     }
 }
