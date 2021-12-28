@@ -118,9 +118,12 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
-                Route::get('/ayrshareForward', function () {
-                    return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8']))->url);
-                })->name('ayrshareForward');
+                
+                // Route::get('/ayrshareForward{profileKey}', function () {
+                //     return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8']))->url);
+                // })->name('ayrshareForward');
+                
+                Route::post('/ayrshareForward/{profileKey}', [AyrshareController::class, 'ayrshareForward'])->name('ayrshareForward');
 
                 Route::get('/add/youtube', [AccountController::class, 'addYoutubeAccount'])->name('addYoutubeAccount');
                 Route::get('/add/facebook', [AccountController::class, 'addFacebookAccount'])->name('addFacebookAccount');

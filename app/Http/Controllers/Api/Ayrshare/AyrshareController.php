@@ -11,9 +11,10 @@ use App\Http\Requests\Api\Ayrshare\AyrPostAnalytics;
 use App\Http\Requests\Api\Ayrshare\AyrShortLinkAnalysis;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Redirect;
 
 class AyrshareController extends Controller
 {
@@ -33,7 +34,7 @@ class AyrshareController extends Controller
 
     public function createAyrProfile(AyrCreateProfile $request)
     {
-        return AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_CREATE_PROFILE_ENDPOINT'), ['title' => $request->email]);
+        return AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_CREATE_PROFILE_ENDPOINT'), ['title' => $request->profile_name]);
     }
 
 
@@ -97,29 +98,26 @@ class AyrshareController extends Controller
     {
 
         try {
-            $file = File::get(storage_path('private.key'));
-           // dd($file,$request->profileKey);
+                $file = File::get(storage_path('private.key'));
+            // dd($file,$request->profileKey);
 
-        } catch (FileNotFoundException $e) {
-            dd("[!][Exception]: Private Key not found!");
-        }
-        return json_decode(AyrshareController::ayrshareAPICall(
-         'POST',
-         config('ayrshare.AYR_JWT_ENDPOINT'), 
-         [
-                'domain' => 'upview',
-                'privateKey' => $file, // required
-                'profileKey' => $request->profileKey, // requires
-         ]
-    )->body());
+            } catch (FileNotFoundException $e) {
+                dd("[!][Exception]: Private Key not found!");
+            }
+            return json_decode(AyrshareController::ayrshareAPICall(
+            'POST',
+            config('ayrshare.AYR_JWT_ENDPOINT'), 
+            [
+                    'domain' => 'upview',
+                    'privateKey' => $file, // required
+                    'profileKey' => $request->profileKey, // requires
+            ]
+        )->body());
     }
-    public function showAccountLinkOptions()
+    public function ayrForward(Request $request, $profileKey)
     {
-            /*
-                ok
-            */
+        return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => $profileKey]))->url);
     }
-
 
 
     public function index()
@@ -127,6 +125,6 @@ class AyrshareController extends Controller
         /**
          * Call the function you wanna test
          */
-        // dd(((new AyrshareController())->generateAyrJWTToken(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8'])))->url);
+        
     }
 }
