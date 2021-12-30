@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Api\Ayrshare;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Ayrshare\AyrAWTTokenProfileKey;
 use App\Http\Requests\Api\Ayrshare\AyrCreateProfile;
 use App\Http\Requests\Api\Ayrshare\AyrDeleteProfile;
 use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
 use App\Http\Requests\Api\Ayrshare\AyrPostAnalytics;
 use App\Http\Requests\Api\Ayrshare\AyrShortLinkAnalysis;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
+use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
@@ -24,23 +25,58 @@ class AyrshareController extends Controller
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
             ])->withOptions(['verify' => true])->get($endpoint, $body);
-        } else {
+        } elseif (!strcmp($method, "POST")) {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
-            ])->withOptions(['verify' => true])->post($endpoint, $body);
+            ])->withOptions(['verify' => true])->post($endpoint, $body);        
+        } elseif (!strcmp($method, "DELETE")) {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
+        ])->withOptions(['verify' => true])->delete($endpoint, $body);
         }
         return $response;
     }
 
     public function createAyrProfile(AyrCreateProfile $request)
     {
-        return AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_CREATE_PROFILE_ENDPOINT'), ['title' => $request->profile_name]);
+        $response = json_decode(AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_CREATE_PROFILE_ENDPOINT'), ['title' => $request->profile_name])->body());
+        if ($response->status == "success") {
+            $user = Auth::user();
+            $profiles = $user->profiles;
+            if (is_null($profiles)) {
+                $profiles = [];
+            }
+            $profiles[] = [
+                'title' => $response->title,
+                'ref_id' => $response->refId,
+                'profileKey' => $response->profileKey,
+                'authorized_on' => Carbon::now()->toDayDateTimeString(),
+            ];
+            $user->profiles = $profiles;
+            $user->save();
+        }
+        return back()->withErrors($response);
     }
 
 
-    public function deleteAyrProfile(AyrDeleteProfile $request)
+    public function deleteAyrProfile($profile_key)
     {
-        return AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => $request->profile_key]);
+        $response = json_decode(AyrshareController::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => $profile_key]));
+        if ($response->status == "success") {
+            $user = Auth::user();
+            $profiles = $user->profiles;
+            $newProfiles = [];
+            foreach ($profiles as $profile) {
+                if ($profile['profileKey'] == $profile_key) {
+                    continue;
+                }
+                $newProfiles[] = $profile;
+            }
+            $user->profiles = $newProfiles;
+            $user->save();
+        }
+        return back()->withErrors($response);
+    
     }
 
     public function ayrShortLinkAnalytics(AyrShortLinkAnalysis  $request)
@@ -94,19 +130,17 @@ class AyrshareController extends Controller
         }
     }
 
-    public static  function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
+    public static function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
     {
-
         try {
-                $file = File::get(storage_path('private.key'));
+            $file = File::get(storage_path('private.key'));
             // dd($file,$request->profileKey);
-
-            } catch (FileNotFoundException $e) {
-                dd("[!][Exception]: Private Key not found!");
-            }
-            return json_decode(AyrshareController::ayrshareAPICall(
+        } catch (FileNotFoundException $e) {
+            dd("[!][Exception]: Private Key not found!");
+        }
+        return json_decode(AyrshareController::ayrshareAPICall(
             'POST',
-            config('ayrshare.AYR_JWT_ENDPOINT'), 
+            config('ayrshare.AYR_JWT_ENDPOINT'),
             [
                     'domain' => 'upview',
                     'privateKey' => $file, // required
@@ -125,6 +159,6 @@ class AyrshareController extends Controller
         /**
          * Call the function you wanna test
          */
-        
+        // dd(config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), "https://app.ayrshare.com/api/profiles/delete-profile");
     }
 }
