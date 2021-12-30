@@ -6,6 +6,14 @@
             tokenSeparators: [',', ' ']
         });
         $('#datetimepicker1').datetimepicker();
+
+        $('.js-example-basic-single').select2();
+
+        $('#profile-select').change(function(){
+            var selected_profile = $('#profile-select').find(':selected').val(); 
+            console.log( selected_profile );
+        });
+
     });
 </script>
 @endsection
@@ -16,6 +24,7 @@
             <div class="card-header">
                 <h4 class="card-title font-size-20">{{ __('Post Details') }}</h4>
             </div>
+            {{ dd($profile); }}
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.uploading_post_media') }}">
                     @if(session()->get('message2'))
@@ -28,7 +37,15 @@
                     @endif
 
                     @csrf
-
+                    
+                    <div class="form-group">
+                        <select id="profile-select" class="form-control col-md-8 js-example-disabled-results">
+                            <option selected disabled="disabled"> Please Select Profile To Post </option>
+                            @foreach($userProfiles as $key => $profiles)
+                                <option value="{{ $profiles['profileKey'] }}">{{ $profiles['title'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group col-md-8">
                         <label class="font-weight-semibold" for="platfromSelection">{{ __('Select Social Media Platform(s)') }}:</label>
                         <div class="checkbox row">

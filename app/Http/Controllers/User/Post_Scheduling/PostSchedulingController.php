@@ -7,12 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
 use App\Http\Requests\User\Post_Scheduling\UploadPostMediaRequest;
 use App\Helper\TokenHelper;
+use Illuminate\Support\Facades\Auth;
 
 class PostSchedulingController extends Controller
 {
     function index()
     {
-        return view('user.post_scheduling.post_scheduling_main');
+        $userProfiles = Auth::user()->profiles ?? [];
+        return view('user.post_scheduling.post_scheduling_main', ['userProfiles'=>$userProfiles]);
     }
 
     public function uploadPostMedia(UploadPostMediaRequest $request)
