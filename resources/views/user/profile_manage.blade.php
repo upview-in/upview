@@ -85,7 +85,7 @@
 										</a>
 										&nbsp;&nbsp;&nbsp;
 										<a href="{{ route('panel.user.profile.deleteProfile', $profiles['profileKey']) }}">
-											<em class="fas fa-unlink text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Delete Profile" aria-hidden="false" ></em>
+											<em class="fas fa-trash text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Delete Profile" aria-hidden="false" ></em>
 										</a>
 									</td>
 								</tr>

@@ -102,7 +102,7 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
                 Route::get('/ayrshareForward/{profileKey}', [AyrshareController::class, 'ayrForward'])->name('ayrshareForward');
-                Route::get('/manage', [AyrProfileController::class, 'index'])->name('index');
+                Route::get('/manage', [AyrProfileController::class, 'index'])->name('manage');
                 Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
                 Route::get('/deleteProfile/{profileKey}', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
 
@@ -123,23 +123,13 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
-                
-                // Route::get('/ayrshareForward{profileKey}', function () {
-                //     return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => '9Z9MTN2-9QM4CQK-QT68KX4-7AXB4J8']))->url);
-                // })->name('ayrshareForward');
-                
-                Route::post('/ayrshareForward/{profileKey}', [AyrshareController::class, 'ayrshareForward'])->name('ayrshareForward');
-
                 Route::get('/add/youtube', [AccountController::class, 'addYoutubeAccount'])->name('addYoutubeAccount');
                 Route::get('/add/facebook', [AccountController::class, 'addFacebookAccount'])->name('addFacebookAccount');
                 Route::get('/add/instagram', [AccountController::class, 'addInstagramAccount'])->name('addInstagramAccount');
-
                 Route::get('/connect/youtube', [AccountController::class, 'getYoutubeAccess'])->name('getYoutubeAccess');
                 Route::get('/connect/facebook', [AccountController::class, 'getFacebookAccess'])->name('getFacebookAccess');
                 Route::get('/connect/instagram', [AccountController::class, 'getInstagramAccess'])->name('getInstagramAccess');
-
                 Route::get('/unlink/{id}', [AccountController::class, 'unlinkAccount'])->name('unlinkAccount');
-
                 Route::get('/setDefault/{id}/{platform}', [AccountController::class, 'setDefaultAccount'])->name('setDefaultAccount');
                 Route::get('/setDefault/session', [AccountController::class, 'setSessionDefaultAccount'])->name('setSessionDefaultAccount');
                 Route::get('/setDefault/page', [PagesController::class, 'setSessionDefaultPage'])->name('setSessionDefaultPage');

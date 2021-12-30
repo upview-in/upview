@@ -25,10 +25,14 @@ class AyrshareController extends Controller
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
             ])->withOptions(['verify' => true])->get($endpoint, $body);
-        } else {
+        } elseif (!strcmp($method, "POST")) {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
-            ])->withOptions(['verify' => true])->post($endpoint, $body);
+            ])->withOptions(['verify' => true])->post($endpoint, $body);        
+        } elseif (!strcmp($method, "DELETE")) {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
+        ])->withOptions(['verify' => true])->delete($endpoint, $body);
         }
         return $response;
     }
@@ -57,7 +61,22 @@ class AyrshareController extends Controller
 
     public function deleteAyrProfile($profile_key)
     {
-        return dd((AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => $profile_key])));
+        $response = json_decode(AyrshareController::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => $profile_key]));
+        if ($response->status == "success") {
+            $user = Auth::user();
+            $profiles = $user->profiles;
+            $newProfiles = [];
+            foreach ($profiles as $profile) {
+                if ($profile['profileKey'] == $profile_key) {
+                    continue;
+                }
+                $newProfiles[] = $profile;
+            }
+            $user->profiles = $newProfiles;
+            $user->save();
+        }
+        return back()->withErrors($response);
+    
     }
 
     public function ayrShortLinkAnalytics(AyrShortLinkAnalysis  $request)
@@ -140,6 +159,6 @@ class AyrshareController extends Controller
         /**
          * Call the function you wanna test
          */
-        AyrshareController::deleteAyrProfile('WZ8DGHE-YGKM6CV-K4S5YR2-JT2B4GK');
+        // dd(config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), "https://app.ayrshare.com/api/profiles/delete-profile");
     }
 }
