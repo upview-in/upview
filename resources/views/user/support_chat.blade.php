@@ -7,7 +7,7 @@
                         <div class="conversation-header justify-content-between">
                             <div class="media align-items-center">
                                 <a href="javascript:void(0);" class="chat-close m-r-20 d-md-none d-block text-dark font-size-18 m-t-5" >
-                                    <i class="anticon anticon-left-circle"></i>
+                                    <em class="anticon anticon-left-circle"></em>
                                 </a>
                                 <div class="avatar avatar-image">
                                     <img src="{{ asset('images/others/loading.gif') }}" alt="">
@@ -51,10 +51,10 @@
                                 <li class="list-inline-item">
                                     <button class="d-none d-md-block btn btn-primary">
                                         <span class="m-r-10">Send</span>
-                                        <i class="far fa-paper-plane"></i>
+                                        <em class="far fa-paper-plane"></em>
                                     </button>
                                     <a href="javascript:void(0);" class="text-gray font-size-20 d-md-none d-block">
-                                        <i class="far fa-paper-plane"></i>
+                                        <em class="far fa-paper-plane"></em>
                                     </a>
                                 </li>
                             </ul>

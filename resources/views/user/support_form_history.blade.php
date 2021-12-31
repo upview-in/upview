@@ -2,13 +2,10 @@
 
 <script type="text/javascript">
 
-
 function setQueryID(qurID) {
     $('#query_id').val(qurID);
     $('#closeRequest').modal('show');
 }
-
-
 
 function processCancelQueryRequest()
 {
@@ -19,13 +16,7 @@ function processCancelQueryRequest()
 }
 
 </script>
-
-
-
-
 @endsection
-
-
 
 <x-app-layout title="Support History">
     <div class="container-fluid">
@@ -79,12 +70,12 @@ function processCancelQueryRequest()
                                     <td class="justify-center">
                                         @if($history->status == 1)
                                             <a href="{{ route('panel.user.support.supportChat') }}/?id={{ $history->id }}">
-                                                <i class="fas fa-comments text-info justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Start Support Chat" aria-hidden="false" ></i>
+                                                <em class="fas fa-comments text-info justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Start Support Chat" aria-hidden="false" ></em>
                                             </a>
                                         @endif
                                         @if($history->status != 2)
                                             <a href="javascript:void(0)" onclick="setQueryID('{{ $history->id  }}')"  id="btnQueryId" data-id="{{ $history->id }}" data-toggle="modal">
-                                                <i class="fas fa-times-circle text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Close Request" aria-hidden="false" ></i>
+                                                <em class="fas fa-times-circle text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Close Request" aria-hidden="false" ></em>
                                             </a>
                                         @endif
                                     </td>

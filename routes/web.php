@@ -10,13 +10,17 @@ use App\Http\Controllers\Admin\UserRolesController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\Ayrshare\AyrProfileController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\PagesController;
-use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
+use App\Http\Controllers\User\PostScheduling\PostSchedulingController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,6 +63,27 @@ Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function (
     Route::get('/', function () {
         return view('welcome');
     });
+    
+    Route::get('image/{file}', function ($file) {
+        try {
+            $file = decrypt($file);
+        } catch (DecryptException $e) {
+            return abort(404);
+        }
+       
+        $file = storage_path('app/'.$file);
+       
+        if (!File::exists($file)) { return abort(404); }
+       
+        $type = File::mimeType($file);
+        $file = File::get($file);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
+    })->name('image.displayImage');
+
+    Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
+    Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
     Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
@@ -78,6 +103,10 @@ Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function (
                 Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
                 Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
                 Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
+                Route::get('/ayrshareForward/{profileKey}', [AyrshareController::class, 'ayrForward'])->name('ayrshareForward');
+                Route::get('/manage', [AyrProfileController::class, 'index'])->name('manage');
+                Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
+                Route::get('/deleteProfile/{profileKey}', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
             });
 
             Route::prefix('support')->as('support.')->group(function () {
