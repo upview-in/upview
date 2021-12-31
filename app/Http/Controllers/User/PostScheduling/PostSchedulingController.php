@@ -19,6 +19,8 @@ class PostSchedulingController extends Controller
 
     public function uploadPostMedia(UploadPostMediaRequest $request)
     {
+        // dd($request->all(), explode(',', $request->tags));
+        $tags = implode(",", preg_filter('/^/', '#', explode(',', $request->tags)));
         $platforms = TokenHelper::getFlippedPlatforms();
         
         if ($request->hasFile('post_media')) {
@@ -29,8 +31,12 @@ class PostSchedulingController extends Controller
             foreach ($request->platform as $platform) {
                 $enabledPlatforms[] = ucfirst($platforms[$platform]);
             }
+            $userTags = [];
+            foreach (explode(',', $request->mention) as $mentions ) {
+                array_push($userTags, ['username' => $mentions, 'x' => 1.0, 'y' => 1.0]);
+            }
 
-            $data = ['post'=>$request->caption,'platforms'=>[$enabledPlatforms],'mediaURLs'=>[route('image.displayImage', $mediaURL)]];
+            $data = ['post'=>$request->caption." \n\n\n".$tags,'platforms'=>[$enabledPlatforms],'mediaURLs'=>[route('image.displayImage', $mediaURL)],'profile-key'=>$request->profile_select, 'instagramOptions'=>['userTags'=>$userTags] ];
             return (new AyrshareController())->ayrSocialMediaPosts(new AyrSocialMediaPosts($data));
             // dd($response);
         }

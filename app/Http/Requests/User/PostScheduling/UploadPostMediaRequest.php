@@ -26,7 +26,8 @@ class UploadPostMediaRequest extends FormRequest
         return [
             'post_media' => ['required', 'image', 'max:6144'],
             'caption' => ['required'],
-            'platform' => ['required', 'array', 'min:1']
+            'platform' => ['required', 'array', 'min:1'],
+            'profile_select' => ['required']
         ];
     }
 }

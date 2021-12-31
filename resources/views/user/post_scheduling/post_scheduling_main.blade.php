@@ -9,8 +9,8 @@
 
         $('.js-example-basic-single').select2();
 
-        $('#profile-select').change(function(){
-            var selected_profile = $('#profile-select').find(':selected').val(); 
+        $('#profile_select').change(function(){
+            var selected_profile = $('#profile_select').find(':selected').val(); 
             console.log( selected_profile );
             $('#cbinstagram').removeAttr('disabled');
         });
@@ -39,7 +39,7 @@
                     @csrf
                     
                     <div class="form-group">
-                        <select id="profile-select" class="form-control col-md-8 js-example-disabled-results">
+                        <select id="profile_select" name="profile_select" class="form-control col-md-8 js-example-disabled-results">
                             <option selected disabled="disabled"> Please Select Profile To Post </option>
                             @foreach($userProfiles as $key => $profiles)
                                 <option value="{{ $profiles['profileKey'] }}">{{ $profiles['title'] }}</option>
