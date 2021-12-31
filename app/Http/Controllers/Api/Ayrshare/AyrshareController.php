@@ -59,15 +59,15 @@ class AyrshareController extends Controller
     }
 
 
-    public function deleteAyrProfile($profile_key)
+    public function deleteAyrProfile(AyrDeleteProfile $request)
     {
-        $response = json_decode(AyrshareController::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => $profile_key]));
+        $response = json_decode(AyrshareController::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => $request->profile_key]));
         if ($response->status == "success") {
             $user = Auth::user();
             $profiles = $user->profiles;
             $newProfiles = [];
             foreach ($profiles as $profile) {
-                if ($profile['profileKey'] == $profile_key) {
+                if ($profile['profileKey'] == $request->profile_key) {
                     continue;
                 }
                 $newProfiles[] = $profile;
@@ -153,12 +153,18 @@ class AyrshareController extends Controller
         return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => $profileKey]))->url);
     }
 
+    public static function getAyrActiveSocialAccounts($profile_key)
+    {
+        return json_decode(Http::withHeaders([
+            'Authorization' => 'Bearer '.$profile_key,
+        ])->withOptions(['verify' => true])->get(config('ayrshare.AYR_PROFILE_ENDPOINT'), []))->activeSocialAccounts;
+    }
 
     public function index()
     {
         /**
          * Call the function you wanna test
          */
-        // dd(config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), "https://app.ayrshare.com/api/profiles/delete-profile");
+        
     }
 }
