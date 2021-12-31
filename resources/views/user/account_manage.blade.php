@@ -60,6 +60,7 @@
 			<div class="card-body p-15 ml-3">
 				<div class="table-responsive">
 					<table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
+						<caption></caption>
 						<thead>
 							<tr>
 								<th scope="col" data-sortable="true">#</th>
