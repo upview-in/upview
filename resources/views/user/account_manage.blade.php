@@ -54,7 +54,7 @@
 			<div class="card-header p-15 ml-3 w-500">
 				<label class="h3 m-0">Manage Accounts</label>
 				<button class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" data-target="#addAccountModal">
-					<i class="anticon anticon-user-add"></i> Add Account
+					<em class="anticon anticon-user-add"></em> Add Account
 				</button>
 			</div>
 			<div class="card-body p-15 ml-3">
@@ -124,10 +124,10 @@
 								</td>
 								<td>
 									<a href="{{ route('panel.user.account.setDefaultAccount', ['id' => $linkedAccount->id, 'platform' => $linkedAccount->platform]) }}">
-										<i class="{{ (!is_null($linkedAccount->default) && $linkedAccount->default)?'fa':'far' }} fa-star text-warning justify-center" data-toggle="tooltip" data-placement="bottom" title="Set as default account" aria-hidden="false"></i>
+										<em class="{{ (!is_null($linkedAccount->default) && $linkedAccount->default)?'fa':'far' }} fa-star text-warning justify-center" data-toggle="tooltip" data-placement="bottom" title="Set as default account" aria-hidden="false"></em>
 									</a>
 									<a href="{{ route('panel.user.account.unlinkAccount', $linkedAccount->id) }}">
-										<i class="fas fa-unlink text-danger justify-center" data-toggle="tooltip" data-placement="bottom" title="Unlink Account" aria-hidden="false"></i>
+										<em class="fas fa-unlink text-danger justify-center" data-toggle="tooltip" data-placement="bottom" title="Unlink Account" aria-hidden="false"></em>
 									</a>
 								</td>
 							</tr>

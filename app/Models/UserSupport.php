@@ -21,7 +21,7 @@ class UserSupport extends Model
         'status',
         'resolved_at',
         'closed_by',
-        'remark',
+        'remark'
     ];
 
     /**
@@ -31,7 +31,6 @@ class UserSupport extends Model
      */
     protected $casts = [
         'resolved_at' => 'datetime',
-        'status' => 'boolean',
-        'assigned_on_date' => 'datetime',
+        'assigned_on_date' => 'datetime'
     ];
 }
