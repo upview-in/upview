@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\Post_Scheduling;
+namespace App\Http\Requests\Api\Ayrshare;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UploadPostMediaRequest extends FormRequest
+class AyrJWTTokenProfileKey extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UploadPostMediaRequest extends FormRequest
     public function rules()
     {
         return [
-            'post_media' => ['required', 'image', 'max:6144'],
+            'profileKey' => 'required',
         ];
     }
 }

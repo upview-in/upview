@@ -15,29 +15,29 @@
         <ul class="nav-left">
             <li class="desktop-toggle">
                 <a href="javascript:void(0);">
-                    <i class="anticon"></i>
+                    <em class="anticon"></em>
                 </a>
             </li>
             <li class="mobile-toggle">
                 <a href="javascript:void(0);">
-                    <i class="anticon"></i>
+                    <em class="anticon"></em>
                 </a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="modal" data-target="#search-drawer">
-                    <i class="anticon anticon-search"></i>
+                    <em class="anticon anticon-search"></em>
                 </a>
             </li>
         </ul>
         <ul class="nav-right">
-            <li class="dropdown dropdown-animated scale-left">
+            {{-- <li class="dropdown dropdown-animated scale-left">
                 <a href="javascript:void(0);" data-toggle="dropdown">
-                    <i class="anticon anticon-bell notification-badge"></i>
+                    <em class="anticon anticon-bell notification-badge"></em>
                 </a>
                 <div class="dropdown-menu pop-notification">
                     <div class="p-v-15 p-h-25 border-bottom d-flex justify-content-between align-items-center">
                         <p class="text-dark font-weight-semibold m-b-0">
-                            <i class="anticon anticon-bell"></i>
+                            <em class="anticon anticon-bell"></em>
                             <span class="m-l-10">Notification</span>
                         </p>
                         <a class="btn-sm btn-default btn" href="javascript:void(0);">
@@ -49,7 +49,7 @@
                             <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
                                 <div class="d-flex">
                                     <div class="avatar avatar-blue avatar-icon">
-                                        <i class="anticon anticon-mail"></i>
+                                        <em class="anticon anticon-mail"></em>
                                     </div>
                                     <div class="m-l-15">
                                         <p class="m-b-0 text-dark">You received a new message</p>
@@ -60,7 +60,7 @@
                             <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
                                 <div class="d-flex">
                                     <div class="avatar avatar-cyan avatar-icon">
-                                        <i class="anticon anticon-user-add"></i>
+                                        <em class="anticon anticon-user-add"></em>
                                     </div>
                                     <div class="m-l-15">
                                         <p class="m-b-0 text-dark">New user registered</p>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li> --}}
             <li class="dropdown dropdown-animated scale-left">
                 <div class="pointer" data-toggle="dropdown">
                     <div class="avatar avatar-image  m-h-10 m-r-15">
@@ -86,41 +86,40 @@
                             </div>
                             <div class="m-l-10">
                                 <p class="m-b-0 text-dark font-weight-semibold">{{ Auth::user()->name }}</p>
-                                <p class="m-b-0 opacity-07">Admin</p>
                             </div>
                         </div>
                     </div>
                     <a href="{{ route('panel.user.profile.index') }}" class="dropdown-item d-block p-h-15 p-v-10">
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
-                                <i class="anticon opacity-04 font-size-16 anticon-user"></i>
+                                <em class="anticon opacity-04 font-size-16 anticon-user"></em>
                                 <span class="m-l-10">Edit Profile</span>
                             </div>
-                            <i class="anticon font-size-10 anticon-right"></i>
+                            <em class="anticon font-size-10 anticon-right"></em>
                         </div>
                     </a>
                     <a href="{{ route('panel.user.account.accounts_manager') }}" class="dropdown-item d-block p-h-15 p-v-10">
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
-                                <i class="anticon opacity-04 font-size-16 anticon-lock"></i>
+                                <em class="anticon opacity-04 font-size-16 anticon-lock"></em>
                                 <span class="m-l-10">Accounts Management</span>
                             </div>
-                            <i class="anticon font-size-10 anticon-right"></i>
+                            <em class="anticon font-size-10 anticon-right"></em>
                         </div>
                     </a>
-                    <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
+                    <a href="{{ route('panel.user.profile.manage') }}" class="dropdown-item d-block p-h-15 p-v-10">
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
-                                <i class="anticon opacity-04 font-size-16 anticon-project"></i>
-                                <span class="m-l-10">Projects</span>
+                                <em class="anticon opacity-04 font-size-16 anticon-project"></em>
+                                <span class="m-l-10">Profile Management</span>
                             </div>
-                            <i class="anticon font-size-10 anticon-right"></i>
+                            <em class="anticon font-size-10 anticon-right"></em>
                         </div>
                     </a>
                     <a href="{{ route('logout') }}" class="dropdown-item d-block p-h-15 p-v-10">
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
-                                <i class="anticon opacity-04 font-size-16 anticon-logout"></i>
+                                <em class="anticon opacity-04 font-size-16 anticon-logout"></em>
                                 <span class="m-l-10">
                                     {{ __('Log out') }}
                                 </span>

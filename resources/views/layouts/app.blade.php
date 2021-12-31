@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 
@@ -17,13 +17,7 @@
 <!-- Core css -->
 <link href="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"> </script>
-
 {{-- <link href="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"> --}}
 <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
 <link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
@@ -52,7 +46,7 @@
                         <h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><em class="anticon anticon-home m-r-5"></em>Home</a>
                                 @yield('path-navigation')
                             </nav>
                         </div>
@@ -77,12 +71,12 @@
                         <div class="modal-header justify-content-between align-items-center">
                             <h5 class="modal-title">Search</h5>
                             <button type="button" class="close" data-dismiss="modal">
-                                <i class="anticon anticon-close"></i>
+                                <em class="anticon anticon-close"></em>
                             </button>
                         </div>
                         <div class="modal-body scrollable">
                             <div class="input-affix">
-                                <i class="prefix-icon anticon anticon-search"></i>
+                                <em class="prefix-icon anticon anticon-search"></em>
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>
                             <!-- Content goes Here -->
@@ -114,7 +108,7 @@
 
     <!-- Div Loader -->
     <div class="d-none div-loader justify-content-center align-items-center" id="divLoadingTemplate">
-        <img src="{{ asset('images/others/div-loader.gif') }}" height="60px" width="auto" />
+        <img src="{{ asset('images/others/div-loader.gif') }}" height="60px" width="auto" alt="" />
     </div>
 
     <!-- Core Vendors JS -->
@@ -132,8 +126,9 @@
     <script src="{{ asset('vendor/country-list/country-list.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('vendor/jsPDF/jspdf.umd.min.js') }}"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         var videoIntelligenceIndexRoute = "{{ route('panel.user.measure.market_research.video_intelligence.index') }}";
     </script>
