@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\User\Post_Scheduling;
+namespace App\Http\Requests\User\PostScheduling;
 
 use Illuminate\Foundation\Http\FormRequest;
 

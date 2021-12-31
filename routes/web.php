@@ -1,28 +1,27 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminPermissionsController;
+use App\Http\Controllers\Admin\AdminRolesController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
-use App\Http\Controllers\Admin\UserRolesController;  
-use App\Http\Controllers\Api\Ayrshare\AyrshareController;
+use App\Http\Controllers\Admin\UserRolesController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
-use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Ayrshare\AyrProfileController;
-use App\Http\Controllers\User\Post_Scheduling\PostSchedulingController;
+use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
+use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\PagesController;
+use App\Http\Controllers\User\PostScheduling\PostSchedulingController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\User\DashboardController;
-use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,30 +35,35 @@ use Illuminate\Support\Facades\Response;
 */
 
 // Admin Routes
-Route::group(["domain" => env("ADMIN_DOMAIN", "admin.upview.localhost")], function () {
+Route::group(['domain' => env('ADMIN_DOMAIN', 'admin.upview.localhost')], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
         Route::middleware(['admin'])->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+
+            // Manage users and their roles and permissions
             Route::resource('users', UserController::class);
-            Route::resource('users/permissions', UserPermissionsController::class);
-            Route::resource('users/roles', UserRolesController::class);
+            Route::resource('userPermissions', UserPermissionsController::class);
+            Route::resource('userRoles', UserRolesController::class);
+
+            // Manage admins and their roles and permissions
+            Route::resource('admins', AdminController::class);
+            Route::resource('adminPermissions', AdminPermissionsController::class);
+            Route::resource('adminRoles', AdminRolesController::class);
         });
 
         Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
         Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
-        require __DIR__. '/adminAuth.php';
+        require __DIR__ . '/adminAuth.php';
     });
 });
 
-
 // Application Routes
-Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function () {
-
+Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-
+    
     Route::get('image/{file}', function ($file) {
         try {
             $file = decrypt($file);
@@ -81,13 +85,11 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
     Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
     Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');
 
-
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
     Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
     // Routes for user panel
     Route::prefix('panel')->as('panel.')->middleware(['auth', 'verified'])->group(function () {
-
         Route::redirect('/', '/panel/dashboard', 301);
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -105,7 +107,6 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::get('/manage', [AyrProfileController::class, 'index'])->name('manage');
                 Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
                 Route::get('/deleteProfile/{profileKey}', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
-
             });
 
             Route::prefix('support')->as('support.')->group(function () {
@@ -116,20 +117,22 @@ Route::group(["domain" => env("APP_DOMAIN", "app.upview.localhost")], function (
                 Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
 
-
-
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
+
                 Route::get('/add/youtube', [AccountController::class, 'addYoutubeAccount'])->name('addYoutubeAccount');
                 Route::get('/add/facebook', [AccountController::class, 'addFacebookAccount'])->name('addFacebookAccount');
                 Route::get('/add/instagram', [AccountController::class, 'addInstagramAccount'])->name('addInstagramAccount');
+
                 Route::get('/connect/youtube', [AccountController::class, 'getYoutubeAccess'])->name('getYoutubeAccess');
                 Route::get('/connect/facebook', [AccountController::class, 'getFacebookAccess'])->name('getFacebookAccess');
                 Route::get('/connect/instagram', [AccountController::class, 'getInstagramAccess'])->name('getInstagramAccess');
+
                 Route::get('/unlink/{id}', [AccountController::class, 'unlinkAccount'])->name('unlinkAccount');
+
                 Route::get('/setDefault/{id}/{platform}', [AccountController::class, 'setDefaultAccount'])->name('setDefaultAccount');
                 Route::get('/setDefault/session', [AccountController::class, 'setSessionDefaultAccount'])->name('setSessionDefaultAccount');
                 Route::get('/setDefault/page', [PagesController::class, 'setSessionDefaultPage'])->name('setSessionDefaultPage');

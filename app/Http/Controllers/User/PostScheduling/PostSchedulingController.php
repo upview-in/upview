@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\User\Post_Scheduling;
+namespace App\Http\Controllers\User\PostScheduling;
 
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
-use App\Http\Requests\User\Post_Scheduling\UploadPostMediaRequest;
+use App\Http\Requests\User\PostScheduling\UploadPostMediaRequest;
 use App\Helper\TokenHelper;
 use Illuminate\Support\Facades\Auth;
 
