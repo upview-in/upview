@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Ayrshare;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Ayrshare\AyrActiveSocialAccount;
 use App\Http\Requests\Api\Ayrshare\AyrCreateProfile;
 use App\Http\Requests\Api\Ayrshare\AyrDeleteProfile;
 use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class AyrshareController extends Controller
 {
-    public static function ayrshareAPICall($method, $endpoint, $body)
+    public static function ayrshareAPICall($method, $endpoint, $body, $api_key='')
     {
         if (!strcmp($method, "GET")) {
             $response = Http::withHeaders([
@@ -28,6 +29,10 @@ class AyrshareController extends Controller
         } elseif (!strcmp($method, "POST")) {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
+            ])->withOptions(['verify' => true])->post($endpoint, $body);        
+        } elseif (!strcmp($method, "MEDIA_POST")) {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer '.$api_key,
             ])->withOptions(['verify' => true])->post($endpoint, $body);        
         } elseif (!strcmp($method, "DELETE")) {
         $response = Http::withHeaders([
@@ -115,18 +120,16 @@ class AyrshareController extends Controller
          *       ]
          *   }
          */
-
+        $profile_key = $request->profile_key;
+        unset($request->profile_key);
         if ($request->has('post') && $request->has('platforms')) {
-            return AyrshareController::ayrshareAPICall(
-                'GET',
+            $response = AyrshareController::ayrshareAPICall(
+                'MEDIA_POST',
                 config('ayrshare.AYR_MEDIA_POST_ENDPOINT'),
-                [
-                    'post' => $request->caption,
-                    'platforms' => $request->platforms,
-                    'mediaURLs' => $request->mediaURLs ?? [''],
-                    'instagramOptions' => $request->instagramOptions ?? [''],
-                ]
+                $request->all(),
+                $profile_key
             );
+            return dd($response->body());
         }
     }
 
@@ -153,11 +156,20 @@ class AyrshareController extends Controller
         return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => $profileKey]))->url);
     }
 
-    public static function getAyrActiveSocialAccounts($profile_key)
+    public static function getAyrActiveSocialAccounts(AyrActiveSocialAccount $request)
     {
-        return json_decode(Http::withHeaders([
-            'Authorization' => 'Bearer '.$profile_key,
-        ])->withOptions(['verify' => true])->get(config('ayrshare.AYR_PROFILE_ENDPOINT'), []))->activeSocialAccounts;
+        $response = json_decode(Http::withHeaders([
+            'Authorization' => 'Bearer '.$request->profile_key,
+        ])->withOptions(['verify' => true])->get(config('ayrshare.AYR_PROFILE_ENDPOINT'), []));
+
+        if (property_exists($response, 'activeSocialAccounts')) {
+            return $response->activeSocialAccounts;
+        }else {
+            return [];
+        }
+        
+        
+        
     }
 
     public function index()

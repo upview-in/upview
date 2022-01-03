@@ -11,8 +11,47 @@
 
         $('#profile_select').change(function(){
             var selected_profile = $('#profile_select').find(':selected').val(); 
-            console.log( selected_profile );
-            $('#cbinstagram').removeAttr('disabled');
+            $.ajax({
+                data: {
+                    profile_key : selected_profile,
+                }, 
+                dataType : 'json',
+                success: function(response){
+                    let data = response;
+                    
+                    if (data.length > 0) {
+
+                        if(data.includes('instagram')){
+                            $('#cbinstagram').removeAttr('disabled');
+                        }
+                        if(data.includes('facebook')){
+                            $('#cbfacebook').removeAttr('disabled');
+                        }
+                        if(data.includes('linkedin')){
+                            $('#cblinkdin').removeAttr('disabled');
+                        }
+                        if(data.includes('twitter')){
+                            $('#cbtwitter').removeAttr('disabled');
+                        }
+                        if(data.includes('youtube')){
+                            $('#cbyoutube').removeAttr('disabled');
+                        }
+                        if(data.includes('pintrest')){
+                            $('#cbpintrest').removeAttr('disabled');
+                        }    
+
+                    }
+                    if(data.length == 0) {
+                        $('#cbinstagram').attr('disabled', true);
+                        $('#cbfacebook').attr('disabled', true);
+                        $('#cblinkdin').attr('disabled', true);
+                        $('#cbtwitter').attr('disabled', true);
+                        $('#cbyoutube').attr('disabled', true);
+                        $('#cbpintrest').attr('disabled', true);
+                    }
+                }
+            });
+            
         });
 
     });
@@ -42,7 +81,7 @@
                         <select id="profile_select" name="profile_select" class="form-control col-md-8 js-example-disabled-results">
                             <option selected disabled="disabled"> Please Select Profile To Post </option>
                             @foreach($userProfiles as $key => $profiles)
-                                <option value="{{ $profiles['profileKey'] }}">{{ $profiles['title'] }}</option>
+                                <option value="{{ encrypt($profiles['profileKey']) }}">{{ $profiles['title'] }}</option>
                             @endforeach
                         </select>
                     </div>

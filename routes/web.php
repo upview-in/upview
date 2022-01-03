@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
+use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\User\AccountController;
