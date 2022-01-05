@@ -11,8 +11,47 @@
 
         $('#profile_select').change(function(){
             var selected_profile = $('#profile_select').find(':selected').val(); 
-            console.log( selected_profile );
-            $('#cbinstagram').removeAttr('disabled');
+            $.ajax({
+                data: {
+                    profile_key : selected_profile,
+                }, 
+                dataType : 'json',
+                success: function(response){
+                    let data = response;
+                    
+                    if (data.length > 0) {
+
+                        if(data.includes('instagram')){
+                            $('#cbinstagram').removeAttr('disabled');
+                        }
+                        if(data.includes('facebook')){
+                            $('#cbfacebook').removeAttr('disabled');
+                        }
+                        if(data.includes('linkedin')){
+                            $('#cblinkdin').removeAttr('disabled');
+                        }
+                        if(data.includes('twitter')){
+                            $('#cbtwitter').removeAttr('disabled');
+                        }
+                        if(data.includes('youtube')){
+                            $('#cbyoutube').removeAttr('disabled');
+                        }
+                        if(data.includes('pinterest')){
+                            $('#cbpintrest').removeAttr('disabled');
+                        }    
+
+                    }
+                    if(data.length == 0) {
+                        $('#cbinstagram').attr('disabled', true);
+                        $('#cbfacebook').attr('disabled', true);
+                        $('#cblinkdin').attr('disabled', true);
+                        $('#cbtwitter').attr('disabled', true);
+                        $('#cbyoutube').attr('disabled', true);
+                        $('#cbpintrest').attr('disabled', true);
+                    }
+                }
+            });
+            
         });
 
     });
@@ -42,12 +81,12 @@
                         <select id="profile_select" name="profile_select" class="form-control col-md-8 js-example-disabled-results">
                             <option selected disabled="disabled"> Please Select Profile To Post </option>
                             @foreach($userProfiles as $key => $profiles)
-                                <option value="{{ $profiles['profileKey'] }}">{{ $profiles['title'] }}</option>
+                                <option value="{{ encrypt($profiles['profile_key']) }}">{{ $profiles['title'] }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="platfromSelection">{{ __('Select Social Media Platform(s)') }}:</label>
+                        <label class="font-weight-semibold" for="platfromSelection">{{ __('Select Social Media Platform(s)') }}:<sup>*</sup></label>
                         <div class="checkbox row">
                             <div class="col-md-2">
                                 <input id="cbinstagram" name="platform[]"  value="{{ App\Helper\TokenHelper::$PLATFORMS['instagram'] }}" disabled type="checkbox">
@@ -87,7 +126,7 @@
                     </div>
 
                     <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="caption">{{ __('Caption') }}:</label>
+                        <label class="font-weight-semibold" for="caption">{{ __('Caption') }}:<sup>*</sup></label>
                         <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter a caption here..">
                     </div>
                     @error('caption')
@@ -121,6 +160,16 @@
                         </div>
                     </div>
                     @error('tags')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+
+                    <div class="form-group col-md-8">
+                        <label class="font-weight-semibold" for="postedBy">{{ __('Posted By') }}:<sup>*</sup></label>
+                        <input type="text" class="form-control" id="postedBy" name="postedBy" placeholder="Enter Your Full Name">
+                    </div>
+                    @error('postedBy')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

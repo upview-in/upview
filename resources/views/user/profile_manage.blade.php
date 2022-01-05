@@ -81,13 +81,15 @@
 									<td class="justify-center">{{ $profiles['title'] ?? '' }}</td>
 									<td class="justify-center">{{ $profiles['authorized_on'] ?? '' }}</td>
 									<td class="justify-center">
-										<a href="{{ route('panel.user.profile.ayrshareForward', $profiles['profileKey']) }}" target="_blank">
-											<em class="fas fa-link text-info justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Link Social Media Accounts" aria-hidden="false" ></em>
-										</a>
-										&nbsp;&nbsp;&nbsp;
-										<a href="{{ route('panel.user.profile.deleteProfile', $profiles['profileKey']) }}">
-											<em class="fas fa-trash text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Delete Profile" aria-hidden="false" ></em>
-										</a>
+										<form method="POST" action="{{ route('panel.user.profile.deleteProfile') }}">
+											@method('DELETE')
+											@csrf
+											<a href="{{ route('panel.user.profile.ayrshareForward', encrypt($profiles['profile_key'])) }}" target="_blank">
+												<em class="fas fa-link text-info justify-center btn font-size-20" data-toggle="tooltip" data-placement="bottom" title="Link Social Media Accounts" aria-hidden="false" ></em>
+											</a>
+											<input type="hidden" name="profileKey"  value="{{ encrypt($profiles['profile_key']) }}"/>
+											<button class="btn"><em class="fas fa-trash text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Delete Profile" aria-hidden="false" ></em></button>
+										</form>
 									</td>
 								</tr>
 							@endforeach

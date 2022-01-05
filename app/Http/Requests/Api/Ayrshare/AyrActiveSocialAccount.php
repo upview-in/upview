@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\Ayrshare;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AyrDeleteProfile extends FormRequest
+class AyrActiveSocialAccount extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class AyrDeleteProfile extends FormRequest
     public function rules()
     {
         return [
-            'profileKey' => 'required',
+            //
         ];
     }
 }
