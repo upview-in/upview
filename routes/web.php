@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
+use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\User\AccountController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\PagesController;
+use App\Http\Controllers\User\PostScheduling\PostHistoryController;
 use App\Http\Controllers\User\PostScheduling\PostSchedulingController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
@@ -106,7 +108,7 @@ Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function (
                 Route::get('/ayrshareForward/{profileKey}', [AyrshareController::class, 'ayrForward'])->name('ayrshareForward');
                 Route::get('/manage', [AyrProfileController::class, 'index'])->name('manage');
                 Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
-                Route::get('/deleteProfile/{profileKey}', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
+                Route::delete('/deleteProfile', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
             });
 
             Route::prefix('support')->as('support.')->group(function () {
@@ -119,6 +121,7 @@ Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function (
 
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
+            Route::get('/post_history', [PostHistoryController::class, 'index'])->name('post_history');
 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');

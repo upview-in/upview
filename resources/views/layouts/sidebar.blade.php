@@ -164,6 +164,16 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="dropdown-menu ">
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post_history') ? 'active' : '' }}">
+                        <a href="{{ route('panel.user.post_history') }}">
+                            <span class="icon-holder">
+                                <em class="fas fa-history"></em>
+                            </span>
+                            <span class="title">{{ __('Post History') }}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item dropdown">
