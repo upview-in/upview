@@ -8,6 +8,8 @@ use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
 use App\Http\Requests\User\PostScheduling\UploadPostMediaRequest;
 use App\Helper\TokenHelper;
 use App\Http\Requests\Api\Ayrshare\AyrActiveSocialAccount;
+use App\Models\AyrUserProfile;
+use App\Models\PostHistory;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,7 @@ class PostSchedulingController extends Controller
 {
     function index(Request $request)
     {
-        $userProfiles = Auth::user()->profiles ?? [];
+        $userProfiles = AyrUserProfile::where(['user_id' => Auth::id()])->get();
         if ($request->ajax() && $request->has('profile_key')) {
             try {
                 $response = (new AyrshareController())->getAyrActiveSocialAccounts(new AyrActiveSocialAccount(['profile_key'=>decrypt($request->profile_key)]));
@@ -34,8 +36,11 @@ class PostSchedulingController extends Controller
 
     public function uploadPostMedia(UploadPostMediaRequest $request)
     {
-        // dd($request->all(), explode(',', $request->tags));
-        $tags = implode(",", preg_filter('/^/', '#', explode(',', $request->tags)));
+        if ($request->tags != "") {
+            $tags = implode(" ", preg_filter('/^/', '#', explode(',', $request->tags)));
+        }else {
+            $tags="";
+        }
         $platforms = TokenHelper::getFlippedPlatforms();
         
         if ($request->hasFile('post_media')) {
@@ -50,11 +55,30 @@ class PostSchedulingController extends Controller
             foreach (explode(',', $request->mention) as $mentions) {
                 array_push($userTags, ['username' => $mentions, 'x' => 1.0, 'y' => 1.0]);
             }
+            
+            $data = ['post'=>$request->caption." ".$tags, 'platforms'=>$enabledPlatforms,'mediaUrls'=>[route('image.displayImage', $mediaURL)],'profile_key'=>decrypt($request->profile_select)];
+            $response = (new AyrshareController())->ayrSocialMediaPosts(new AyrSocialMediaPosts($data));
+            $user = Auth::user();
+            $postData = new PostHistory();
+            $postData->user_id = $user->id;
+            $postData->profile_key = decrypt($request->profile_select);
+            $post_info = $postData->post_info;
+            if (is_null($post_info)) {
+                $post_info = [];
+            }
+            foreach ($response['postIds'] as $post) {
+                $post_info[] = $post;
+            }
+            $postData->post_info = $post_info;
+            $postData->caption = $request->caption." ".$tags;
+            $postData->media_url = [route('image.displayImage', $mediaURL)];
+            $postData->type = 1;
+            $postData->ayrId = $response['id'];
+            $postData->ayrRefId = $response['refId'];
+            $postData->postedBy = $request->postedBy;
+            $postData->save();
 
-            $data = ['post'=>$request->caption, 'platforms'=>$enabledPlatforms,'mediaURLs'=>[route('image.displayImage', $mediaURL)],'profile_key'=>decrypt($request->profile_select)];
-            return (new AyrshareController())->ayrSocialMediaPosts(new AyrSocialMediaPosts($data));
-            // dd($response);
         }
-        return redirect()->back()->with('message2', 'Post Updated!');
+        return redirect()->back()->with('message2', 'Sucsessfully Posted!');
     }
 }

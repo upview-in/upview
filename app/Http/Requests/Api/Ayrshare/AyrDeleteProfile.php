@@ -24,7 +24,7 @@ class AyrDeleteProfile extends FormRequest
     public function rules()
     {
         return [
-            'profilekey' => 'required',
+            'profileKey' => 'required',
         ];
     }
 }

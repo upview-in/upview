@@ -10,6 +10,7 @@ use App\Http\Requests\Api\Ayrshare\AyrJWTTokenProfileKey;
 use App\Http\Requests\Api\Ayrshare\AyrPostAnalytics;
 use App\Http\Requests\Api\Ayrshare\AyrShortLinkAnalysis;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
+use App\Models\AyrUserProfile;
 use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
@@ -47,18 +48,13 @@ class AyrshareController extends Controller
         $response = json_decode(AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_CREATE_PROFILE_ENDPOINT'), ['title' => $request->profile_name])->body());
         if ($response->status == "success") {
             $user = Auth::user();
-            $profiles = $user->profiles;
-            if (is_null($profiles)) {
-                $profiles = [];
-            }
-            $profiles[] = [
-                'title' => $response->title,
-                'ref_id' => $response->refId,
-                'profileKey' => $response->profileKey,
-                'authorized_on' => Carbon::now()->toDayDateTimeString(),
-            ];
-            $user->profiles = $profiles;
-            $user->save();
+            $profile = new AyrUserProfile();
+            $profile->user_id = $user->id;
+            $profile->title = $response->title;
+            $profile->ref_id = $response->refId;
+            $profile->profile_key = $response->profileKey;
+            $profile->authorized_on = Carbon::now()->toDateTimeString();
+            $profile->save();
         }
         return back()->withErrors($response);
     }
@@ -66,19 +62,9 @@ class AyrshareController extends Controller
 
     public function deleteAyrProfile(AyrDeleteProfile $request)
     {
-        $response = json_decode(AyrshareController::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => $request->profile_key]));
+        $response = json_decode(AyrshareController::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => decrypt($request->profileKey)]));
         if ($response->status == "success") {
-            $user = Auth::user();
-            $profiles = $user->profiles;
-            $newProfiles = [];
-            foreach ($profiles as $profile) {
-                if ($profile['profileKey'] == $request->profile_key) {
-                    continue;
-                }
-                $newProfiles[] = $profile;
-            }
-            $user->profiles = $newProfiles;
-            $user->save();
+            AyrUserProfile::where(['user_id' => Auth::id(),'profile_key' => decrypt($request->profileKey)])->delete();
         }
         return back()->withErrors($response);
     
@@ -123,14 +109,14 @@ class AyrshareController extends Controller
         $profile_key = $request->profile_key;
         unset($request->profile_key);
         if ($request->has('post') && $request->has('platforms')) {
-            $response = AyrshareController::ayrshareAPICall(
+            return AyrshareController::ayrshareAPICall(
                 'MEDIA_POST',
                 config('ayrshare.AYR_MEDIA_POST_ENDPOINT'),
                 $request->all(),
                 $profile_key
             );
-            return dd($response->body());
         }
+
     }
 
     public static function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
@@ -153,7 +139,7 @@ class AyrshareController extends Controller
     }
     public function ayrForward(Request $request, $profileKey)
     {
-        return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => $profileKey]))->url);
+        return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => decrypt($profileKey)]))->url);
     }
 
     public static function getAyrActiveSocialAccounts(AyrActiveSocialAccount $request)
@@ -164,14 +150,10 @@ class AyrshareController extends Controller
 
         if (property_exists($response, 'activeSocialAccounts')) {
             return $response->activeSocialAccounts;
-        }else {
+        } else {
             return [];
         }
-        
-        
-        
     }
-
     public function index()
     {
         /**
