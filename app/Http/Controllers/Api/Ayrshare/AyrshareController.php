@@ -21,32 +21,41 @@ use Illuminate\Support\Facades\Redirect;
 
 class AyrshareController extends Controller
 {
-    public static function ayrshareAPICall($method, $endpoint, $body, $api_key='')
+    public static function ayrshareAPICall($method, $endpoint, $body, $api_key = '')
     {
-        if (!strcmp($method, "GET")) {
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
-            ])->withOptions(['verify' => true])->get($endpoint, $body);
-        } elseif (!strcmp($method, "POST")) {
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
-            ])->withOptions(['verify' => true])->post($endpoint, $body);        
-        } elseif (!strcmp($method, "MEDIA_POST")) {
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer '.$api_key,
-            ])->withOptions(['verify' => true])->post($endpoint, $body);        
-        } elseif (!strcmp($method, "DELETE")) {
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer '.config('ayrshare.AYR_API_KEY'),
-        ])->withOptions(['verify' => true])->delete($endpoint, $body);
+        switch ($method) {
+            case 'POST':
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . config('ayrshare.AYR_API_KEY'),
+                ])->withOptions(['verify' => true])->post($endpoint, $body);
+                break;
+
+            case 'MEDIA_POST':
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $api_key,
+                ])->withOptions(['verify' => true])->post($endpoint, $body);
+                break;
+
+            case 'DELETE':
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . config('ayrshare.AYR_API_KEY'),
+                ])->withOptions(['verify' => true])->delete($endpoint, $body);
+                break;
+            
+            default:
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . config('ayrshare.AYR_API_KEY'),
+                ])->withOptions(['verify' => true])->get($endpoint, $body);
+                break;
         }
+
         return $response;
     }
 
     public function createAyrProfile(AyrCreateProfile $request)
     {
-        $response = json_decode(AyrshareController::ayrshareAPICall('POST', config('ayrshare.AYR_CREATE_PROFILE_ENDPOINT'), ['title' => $request->profile_name])->body());
-        if ($response->status == "success") {
+        $response = json_decode(self::ayrshareAPICall('POST', config('ayrshare.AYR_CREATE_PROFILE_ENDPOINT'), ['title' => $request->profile_name])->body());
+        if ($response->status == 'success') {
             $user = Auth::user();
             $profile = new AyrUserProfile();
             $profile->user_id = $user->id;
@@ -56,39 +65,40 @@ class AyrshareController extends Controller
             $profile->authorized_on = Carbon::now();
             $profile->save();
         }
+
         return back()->withErrors($response);
     }
-
 
     public function deleteAyrProfile(AyrDeleteProfile $request)
     {
-        $response = json_decode(AyrshareController::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => decrypt($request->profileKey)]));
-        if ($response->status == "success") {
-            AyrUserProfile::where(['user_id' => Auth::id(),'profile_key' => decrypt($request->profileKey)])->delete();
+        $response = json_decode(self::ayrshareAPICall('DELETE', config('ayrshare.AYR_DELETE_PROFILE_ENDPOINT'), ['profileKey' => decrypt($request->profileKey)]));
+        if ($response->status == 'success') {
+            AyrUserProfile::where(['user_id' => Auth::id(), 'profile_key' => decrypt($request->profileKey)])->delete();
         }
+
         return back()->withErrors($response);
-    
     }
 
-    public function ayrShortLinkAnalytics(AyrShortLinkAnalysis  $request)
+    public function ayrShortLinkAnalytics(AyrShortLinkAnalysis $request)
     {
-        return AyrshareController::ayrshareAPICall('GET', config('ayrshare.AYR_SHORT_LINK_ANALYTICS_ENDPOINT'), ['lastDays' => $request->lastDays]);
+        return self::ayrshareAPICall('GET', config('ayrshare.AYR_SHORT_LINK_ANALYTICS_ENDPOINT'), ['lastDays' => $request->lastDays]);
     }
-
 
     public function ayrPostAnalytics(AyrPostAnalytics $request)
     {
-        return AyrshareController::ayrshareAPICall('GET', config('ayrshare.AYR_SHORT_LINK_ANALYTICS_ENDPOINT'), ['id' => $request->post_id, 'platforms' => $request->platforms]);
+        return self::ayrshareAPICall('GET', config('ayrshare.AYR_SHORT_LINK_ANALYTICS_ENDPOINT'), ['id' => $request->post_id, 'platforms' => $request->platforms]);
     }
 
     public function ayrSocialMediaPlatformAnalytics(AyrPostAnalytics $request)
     {
-        return AyrshareController::ayrshareAPICall('GET', config('ayrshare.AYR_SOCIAL_MEDIA_PLATFORM_ANALYTICS_ENDPOINT'), ['platforms' => $request->platforms]);
+        return self::ayrshareAPICall('GET', config('ayrshare.AYR_SOCIAL_MEDIA_PLATFORM_ANALYTICS_ENDPOINT'), ['platforms' => $request->platforms]);
     }
 
     public function ayrSocialMediaPosts(AyrSocialMediaPosts $request)
     {
         /**
+         *  Data format for instagram
+         * 
          * instagramOptions": {
          *       "autoResize": true/false
          *       "locationId": FB Location's Page
@@ -104,48 +114,49 @@ class AyrshareController extends Controller
          *               "y":
          *          }
          *       ]
-         *   }
+         *   }.
          */
         $profile_key = $request->profile_key;
         unset($request->profile_key);
         if ($request->has('post') && $request->has('platforms')) {
-            return AyrshareController::ayrshareAPICall(
+            return self::ayrshareAPICall(
                 'MEDIA_POST',
                 config('ayrshare.AYR_MEDIA_POST_ENDPOINT'),
                 $request->all(),
                 $profile_key
             );
         }
-
     }
 
     public static function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
     {
         try {
             $file = File::get(storage_path('private.key'));
-            // dd($file,$request->profileKey);
         } catch (FileNotFoundException $e) {
-            dd("[!][Exception]: Private Key not found!");
+            // Private Key not found!
+            return abort(404);
         }
-        return json_decode(AyrshareController::ayrshareAPICall(
+
+        return json_decode(self::ayrshareAPICall(
             'POST',
             config('ayrshare.AYR_JWT_ENDPOINT'),
             [
-                    'domain' => 'upview',
-                    'privateKey' => $file, // required
-                    'profileKey' => $request->profileKey, // requires
+                'domain' => 'upview',
+                'privateKey' => $file, // required
+                'profileKey' => $request->profileKey, // requires
             ]
         )->body());
     }
+
     public function ayrForward(Request $request, $profileKey)
     {
-        return Redirect::away(AyrshareController::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => decrypt($profileKey)]))->url);
+        return Redirect::away(self::generateAyrJWTTokenURL(new AyrJWTTokenProfileKey(['profileKey' => decrypt($profileKey)]))->url);
     }
 
     public static function getAyrActiveSocialAccounts(AyrActiveSocialAccount $request)
     {
         $response = json_decode(Http::withHeaders([
-            'Authorization' => 'Bearer '.$request->profile_key,
+            'Authorization' => 'Bearer ' . $request->profile_key,
         ])->withOptions(['verify' => true])->get(config('ayrshare.AYR_PROFILE_ENDPOINT'), []));
 
         if (property_exists($response, 'activeSocialAccounts')) {
@@ -153,12 +164,5 @@ class AyrshareController extends Controller
         } else {
             return [];
         }
-    }
-    public function index()
-    {
-        /**
-         * Call the function you wanna test
-         */
-        
     }
 }

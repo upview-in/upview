@@ -13,7 +13,7 @@ class TokenHelper
         'instagram' => 3,
         'twitter' => 4,
         'pintrest' => 5,
-        'linkedin' => 6
+        'linkedin' => 6,
     ];
 
     public static function getFlippedPlatforms(): array
