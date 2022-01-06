@@ -60,12 +60,21 @@ Route::group(['domain' => env('ADMIN_DOMAIN', 'admin.upview.localhost')], functi
     });
 });
 
-// Application Routes
-Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function () {
+//website Route
+Route::group(['domain' => env('MAIN_DOMAIN', 'upview.localhost')], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    
+});
+
+
+// Application Routes
+Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function () {
+
+    Route::get('/', function () {
+        return redirect()->route('login');
+    });
+
     Route::get('image/{file}', function ($file) {
         try {
             $file = decrypt($file);

@@ -28,7 +28,7 @@
 
 				<!-- Countdown -->
 				<div class="countdown large" style="margin-top: 30px;">
-					<a href="{{ route('login') }}"><img src="{{ asset('images/logo/named_logo_white.png') }}" width="40%" height="auto"/> </a>
+					<a href="{{ route('login') }}"><img src="{{ asset('images/logo/named_logo_white.png') }}" alt="Upview India" width="40%" height="auto"/> </a>
 				</div>
 				<!-- Countdown end -->
 			</div>
