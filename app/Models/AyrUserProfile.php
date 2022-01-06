@@ -20,4 +20,14 @@ class AyrUserProfile extends Model
         'authorized_on',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    
+    protected $dates = [
+        'authorized_on',
+    ];
+
 }

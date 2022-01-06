@@ -53,7 +53,7 @@ class AyrshareController extends Controller
             $profile->title = $response->title;
             $profile->ref_id = $response->refId;
             $profile->profile_key = $response->profileKey;
-            $profile->authorized_on = Carbon::now()->toDateTimeString();
+            $profile->authorized_on = Carbon::now();
             $profile->save();
         }
         return back()->withErrors($response);

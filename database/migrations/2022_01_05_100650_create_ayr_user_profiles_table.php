@@ -18,8 +18,8 @@ class CreateAyrUserProfilesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('ref_id');
-            $table->string('profile_key');
-            $table->string('authorized_on');
+            $table->string('profile_key')->unique();
+            $table->datetime('authorized_on');
             $table->timestamps();
             $table->softDeletes();
         });
