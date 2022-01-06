@@ -8,11 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AyrProfileController extends Controller
 {
-    function index()
+    public function index()
     {
         $userProfiles = AyrUserProfile::where(['user_id' => Auth::id()])->get();
+
         return view('user.profile_manage', ['userProfiles'=>$userProfiles]);
     }
-
-
 }

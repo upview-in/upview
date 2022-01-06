@@ -24,7 +24,7 @@ class AyrCreateProfile extends FormRequest
     public function rules()
     {
         return [
-            "profile_name" => "required",
+            'profile_name' => 'required',
         ];
     }
 }

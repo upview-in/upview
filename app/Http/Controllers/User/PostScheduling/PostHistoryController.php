@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class PostHistoryController extends Controller
 {
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         $postHistory = PostHistory::with('profile')->where(['user_id' => Auth::id()])->get();
-        
+
         return view('user.post_scheduling.post_history', ['postHistory'=>$postHistory]);
     }
 }
