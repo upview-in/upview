@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PostSchedulingController extends Controller
 {
-    function index(Request $request)
+    public function index(Request $request)
     {
         $userProfiles = AyrUserProfile::where(['user_id' => Auth::id()])->get();
         if ($request->ajax() && $request->has('profile_key')) {
@@ -36,11 +36,11 @@ class PostSchedulingController extends Controller
 
     public function uploadPostMedia(UploadPostMediaRequest $request)
     {
+        $tags = "";
         if ($request->tags != "") {
             $tags = implode(" ", preg_filter('/^/', '#', explode(',', $request->tags)));
-        }else {
-            $tags="";
         }
+        
         $platforms = TokenHelper::getFlippedPlatforms();
         
         if ($request->hasFile('post_media')) {
