@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserRolesController;
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Ayrshare\AyrProfileController;
 use App\Http\Controllers\User\DashboardController;
@@ -62,9 +63,8 @@ Route::group(['domain' => env('ADMIN_DOMAIN', 'admin.upview.localhost')], functi
 
 //website Route
 Route::group(['domain' => env('MAIN_DOMAIN', 'upview.localhost')], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', [MainSiteController::class, 'index'])->name('index-main');
+    Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy-policy');
 });
 
 

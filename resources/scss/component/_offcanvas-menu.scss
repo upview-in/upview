@@ -1,0 +1,215 @@
+
+/*------------------------------------- 
+ # offcanvas-form
+ -------------------------------------*/
+
+.offcanvas-form {
+  max-width: 970px;
+  margin: 0 auto;
+  .form-control {
+    height: 55px;
+    border: 1px solid $border-color;
+    padding-left: 15px;
+    padding-right: 95px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: $dark;
+    &::placeholder {
+      color: $dark;
+    }
+  }
+  .btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    &.btn-warning {
+      padding: 15px 20px;
+      font-size: 15px;
+    }
+  }
+}
+
+/*------------------------------------- 
+ # Offcanvas Menu
+ -------------------------------------*/
+.offcanvas-toggler {
+  text-align: center;
+  display: inline-block;
+  @include min-screen(992) {
+    display: none;
+  }
+  padding: 0px !important;
+  width: 50px;
+  height: 50px;
+  z-index: 3;
+  margin-left: 30px;
+  border-radius: 50%;
+  .line {
+    position: relative;
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s;
+    & + .line {
+      margin-top: 4px;
+    }
+  }
+  &:hover {
+    .line {
+      &:nth-child(1) {
+        transform: rotate(45deg);
+        top: 7px;
+      }
+      &:nth-child(2) {
+        opacity: 0;
+        visibility: hidden;
+      }
+      &:nth-child(3) {
+        transform: rotate(-46deg);
+        bottom: 5px;
+      }
+    }
+  }
+}
+
+.offcanvas-modal.modal.fade .modal-dialog {
+  transform: translateX(-100%);
+}
+.offcanvas-modal.modal.show .modal-dialog {
+  transform: translateX(0%);
+}
+.offcanvas-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include min-screen(576) {
+    width: 400px;
+  }
+  width: 300px;
+  height: 100%;
+  margin: 0;
+
+  .modal-content {
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+  }
+}
+
+// offcanvas-header
+.offcanvas-header {
+  border-bottom: 1px solid $border-color;
+}
+
+.offcanvas-menu {
+  position: relative;
+  z-index: 1;
+  overflow-y: scroll;
+}
+.offcanvas-menu::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  background-color: $white;
+}
+
+.offcanvas-menu ul ul {
+  display: none;
+}
+
+.offcanvas-menu > ul > li > ul li {
+  border-bottom: 0px;
+  & a {
+    padding-left: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    // color: $body-color;
+  }
+}
+
+.offcanvas-menu li.active > ul {
+  display: block;
+}
+
+.offcanvas-menu li a {
+  font-weight: 700;
+  display: block;
+  text-transform: capitalize;
+  color: $primary;
+  padding: 10px 0px;
+  position: relative;
+  font-size: 15px;
+  &:hover {
+    color: $warning;
+  }
+}
+
+.offcanvas-menu a:not(:only-child):after {
+  font-family: IcoFont;
+  content: "\efc2";
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.offcanvas-menu .active > a:not(:only-child):after {
+  content: "\ef9a";
+}
+
+/******************************** 
+# Offcanvas Menu Style End
+********************************/
+
+.offcanvas-social {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  & li {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    line-height: 40px;
+    padding: 0;
+    & a {
+      display: inline-block;
+      color: #fff;
+      background: $primary;
+      font-size: 15px;
+      line-height: 45px;
+      width: 45px;
+      height: 45px;
+      text-align: center;
+      padding: 0px;
+      transition: none;
+      border-radius: 100%;
+      &:hover {
+        background-image: linear-gradient(
+          to right,
+          #fc7318,
+          #fe8415,
+          #fe9515,
+          #fea51a,
+          #feb423
+        );
+        color: #fff;
+      }
+    }
+  }
+}
+
+.offcanvas-modal {
+  .modal-content {
+    @include min-screen(576) {
+      padding: 0px 30px;
+    }
+    padding: 0px 15px;
+  }
+  .offcanvas-form {
+    margin: 20px 0px;
+  }
+}

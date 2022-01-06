@@ -1,0 +1,395 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ruda:wght@400;500;600;700;800;900&display=swap");
+
+/*------------------------ 
+/* Common Style
+ ------------------------*/
+
+/*-----------------------
+# selection colors
+-------------------------*/
+
+*::-moz-selection {
+  background: $warning;
+  color: $white;
+  text-shadow: none;
+}
+
+::selection {
+  background: $warning;
+  color: $white;
+  text-shadow: none;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $dark;
+  &:focus {
+    text-decoration: none;
+    outline: 0;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $warning;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+:focus {
+  outline: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  font-family: $fontFamilyRoboto;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Button styles
+button {
+  outline: dotted 0px !important;
+  &:focus {
+    box-shadow: none;
+  }
+}
+.btn {
+  position: relative;
+  z-index: 2;
+  &:focus {
+    box-shadow: none;
+  }
+
+  @include max-screen(991) {
+    padding: 18px 18px;
+  }
+  @include max-screen(767) {
+    padding: 14px 18px;
+  }
+}
+
+@each $name, $value in $theme-colors {
+  .btn-#{$name} {
+    border-color: $value;
+    background-color: $value;
+
+    @if $name == warning {
+      background-image: $btn-warning;
+      border: 0px;
+      color: $white;
+      &:hover {
+        background: $btn-warning-hover;
+        border-color: $warning;
+        color: $white;
+      }
+    } @else {
+      color: $white;
+    }
+  }
+}
+
+.btn-lg {
+  @include max-screen(992, 1500) {
+    font-size: 14px;
+    padding: 20px 25px;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// section-padding
+
+.section-py {
+  padding: 40px 0px;
+  @include min-screen(1200) {
+    padding: 50px 0px;
+  }
+}
+
+.section-pt-100 {
+  padding-top: 100px;
+}
+.section-pt {
+  padding-top: 40px;
+  @include min-screen(1200) {
+    padding-top: 50px;
+  }
+}
+.section-pb {
+  padding-bottom: 40px;
+  @include min-screen(1200) {
+    padding-bottom: 50px;
+  }
+}
+
+.section-pt-150 {
+  padding-top: 150px;
+}
+
+@include max-screen(1199) {
+  .section-pt-150 {
+    padding-top: 100px;
+  }
+}
+
+.section-pb-150 {
+  padding-bottom: 150px;
+}
+
+@include max-screen(1199) {
+  .section-pb-150 {
+    padding-bottom: 100px;
+  }
+}
+
+@include min-screen(1200) {
+  .section-padding-y-200 {
+    padding: 200px 0px;
+  }
+}
+
+@include max-screen(1199) {
+  .section-padding-y-200 {
+    padding: 150px 0px;
+  }
+}
+
+// section-margin
+
+.section-mt {
+  margin-top: 40px;
+  @include min-screen(1200) {
+    margin-top: 50px;
+  }
+}
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
+.pb-90 {
+  padding-bottom: 90px;
+}
+.pb-60 {
+  padding-bottom: 60px;
+}
+// title section css
+
+.section-title {
+  @include max-screen(1199) {
+    padding-bottom: 50px;
+  }
+  .icon {
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  .sub-title {
+    font-weight: 700;
+    line-height: 1.292;
+    text-transform: uppercase;
+    font-size: 20px;
+    background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    &::after {
+      content: "";
+      border-radius: 50%;
+      background-color: rgb(238, 243, 255);
+      position: absolute;
+      left: 0px;
+      @include min-screen(1200) {
+        left: -20px;
+      }
+      top: -20px;
+      width: 64px;
+      height: 64px;
+      z-index: -1;
+    }
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 55px;
+    line-height: 1.545;
+    margin-bottom: 5px;
+
+    @include max-screen(768, 1199) {
+      font-size: 45px;
+    }
+    @include max-screen(767) {
+      font-size: 30px;
+    }
+  }
+  &.primary {
+    .icon {
+      background: $white;
+      box-shadow: 0px 0px 55px 0px rgba(2, 18, 106, 0.1);
+    }
+    .title {
+      color: $primary;
+    }
+  }
+
+  &.process {
+    .icon {
+      background: #2843b2;
+      box-shadow: 0px 0px 55px 0px rgba(2, 18, 106, 0.1);
+    }
+    .title {
+      color: $white;
+    }
+  }
+
+  .hr-secodary {
+    position: relative;
+    background-image: -moz-linear-gradient(
+      0deg,
+      rgb(252, 115, 24) 0%,
+      rgb(254, 180, 35) 100%
+    );
+    background-image: -webkit-linear-gradient(
+      0deg,
+      rgb(252, 115, 24) 0%,
+      rgb(254, 180, 35) 100%
+    );
+    background-image: -ms-linear-gradient(
+      0deg,
+      rgb(252, 115, 24) 0%,
+      rgb(254, 180, 35) 100%
+    );
+
+    width: 30px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 5px;
+    &::before,
+    &::after {
+      width: 15px;
+      height: 100%;
+      content: "";
+      position: absolute;
+      top: 0;
+      background: #e6e9f5;
+      border-radius: 5px;
+    }
+    &::before {
+      left: -30px;
+    }
+
+    &::after {
+      right: -30px;
+    }
+  }
+  .hr-primary {
+    position: relative;
+    margin-left: 25px;
+    background-image: -moz-linear-gradient(
+      0deg,
+      rgb(252, 115, 24) 0%,
+      rgb(254, 180, 35) 100%
+    );
+    background-image: -webkit-linear-gradient(
+      0deg,
+      rgb(252, 115, 24) 0%,
+      rgb(254, 180, 35) 100%
+    );
+    background-image: -ms-linear-gradient(
+      0deg,
+      rgb(252, 115, 24) 0%,
+      rgb(254, 180, 35) 100%
+    );
+
+    width: 30px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 5px;
+    &::before,
+    &::after {
+      width: 15px;
+      height: 100%;
+      content: "";
+      position: absolute;
+      top: 0;
+      background: $primary;
+      border-radius: 5px;
+    }
+    &::before {
+      left: -25px;
+    }
+
+    &::after {
+      right: -25px;
+    }
+  }
+}
+
+#scrollUp {
+  @include min-screen(768) {
+    right: 50px;
+  }
+  right: 30px;
+  bottom: 40px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  font-size: 25px;
+  background-image: linear-gradient(
+    to right,
+    #fc7318,
+    #fe8415,
+    #fe9515,
+    #fea51a,
+    #feb423
+  );
+  &:hover {
+    background: linear-gradient(
+      to left,
+      #fc7318,
+      #fe8415,
+      #fe9515,
+      #fea51a,
+      #feb423
+    );
+  }
+  text-align: center;
+  border-radius: 50%;
+}
+
+.btn {
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active,
+  &:focus {
+    color: $white;
+  }
+}

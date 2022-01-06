@@ -1,0 +1,197 @@
+@import "mixin";
+
+// Developer Variable
+
+//===============================
+// Bootstrap Variables Overright
+//===============================
+
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Gray
+$gray-100: #f0f0f0;
+$gray-600: #fbfbfb;
+$gray-800: #f8f8f8;
+
+// Other Colors
+$blue: #02126a;
+$red: #dc3545;
+$yellow: #fc7418;
+$green: #32b618;
+$cyan: #0dcaf0;
+$lime-100: #e0fae7;
+$lime-600: #f0fff4;
+$lime-800: #d3f6dd;
+$dark: #32383e;
+// Theme Color
+$primary: $blue;
+$secondary: $yellow;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-800;
+
+$btn-warning: linear-gradient(to right, #fc7318, #fe8415, #fe9515, #fea51a, #feb423);
+$btn-warning-hover: linear-gradient(to left, #fc7318, #fe8415, #fe9515, #fea51a, #feb423);
+
+// border color 
+$border-color:#273581;
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+// scss-docs-end theme-colors-map
+
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-negative-margins: true;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.3125,
+  2: $spacer * 0.625,
+  3: $spacer * 0.9375,
+  4: $spacer * 1.25,
+  5: $spacer * 1.625,
+  6: $spacer * 1.875,
+  7: $spacer * 2.1875,
+  8: $spacer * 2.5,
+  9: $spacer * 2.8125,
+  10: $spacer * 3.125,
+);
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+// scss-docs-end grid-breakpoints
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+// scss-docs-start container-max-widths
+$container-max-widths: (
+  sm: 100%,
+  md: 100%,
+  lg: 100%,
+  xl: 1170px
+);
+// scss-docs-end container-max-widths
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-gutter-width: 1.875rem;
+//
+$gutters: $spacers;
+
+// Transition
+$transition-base: all 0.3s ease 0s;
+
+// Typography
+$body-color: #767988;
+
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-enable value-keyword-case
+$font-family-base: "Ruda", sans-serif;
+$fontFamilyRoboto: "Roboto", sans-serif;
+
+// $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
+// $font-size-base effects the font size of the body text
+$font-size-base: 0.9375rem;
+
+$line-height-base: 1.8;
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+$headings-font-weight: 700;
+
+// Button
+$btn-active-box-shadow:none;
+
+$btn-padding-y: 18px;
+$btn-padding-x: 35px;
+$btn-font-size: 15px;
+$btn-line-height: 1;
+
+// Small
+$btn-padding-y-sm: 0.9375rem;
+$btn-padding-x-sm: 1.75rem;
+$btn-font-size-sm: 15px;
+
+// Large
+$btn-padding-y-lg: 24px;
+$btn-padding-x-lg: 25px;
+$btn-font-size-lg: 16px;
+
+
+// Others
+$btn-font-weight: 700;
+$btn-border-radius: 8px;
+$btn-border-radius-sm: 8px;
+$btn-border-radius-lg: 8px;
+
+// card
+
+$border-radius: 4px;
+$input-placeholder-color: #a6a6a6;
+$input-btn-focus-width: 0;
+
+
+
+
+// Accordion
+$accordion-padding-y:                     19px;
+$accordion-padding-x:                     40px;
+$accordion-color:                         $primary;
+$accordion-bg:                           #f7faff;
+$accordion-border-width:                  0px;
+$accordion-border-radius:                 15px;
+
+$accordion-body-padding-y:                $accordion-padding-y;
+$accordion-body-padding-x:                $accordion-padding-x;
+
+$accordion-button-padding-y:              $accordion-padding-y;
+$accordion-button-padding-x:              $accordion-padding-x;
+$accordion-button-color:                  $accordion-color;
+$accordion-button-bg:                     $accordion-bg;
+$accordion-button-active-bg:              #f7faff;
+
+
+
+
+
+
+
+

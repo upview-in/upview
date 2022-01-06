@@ -1,0 +1,115 @@
+.contact-form-card {
+  background-color: rgb(247, 250, 255);
+  padding: 30px;
+  @include min-screen(1200) {
+    padding: 80px;
+  }
+  border-radius: 15px;
+  .title {
+    color: $primary;
+    line-height: 1.857;
+    font-size: 35px;
+
+    @include max-screen(767) {
+      font-size: 30px;
+    }
+  }
+}
+
+.contact-media {
+  display: flex;
+  align-items: center;
+  @include max-screen(575) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    width: 65px;
+    height: 65px;
+
+    @include min-screen(1200) {
+      width: 74px;
+      height: 74px;
+    }
+
+    @include max-screen(575) {
+      margin-bottom: 20px;
+    }
+    border: 1px solid #eef0f8;
+    border-radius: 50%;
+    background-color: rgb(247, 250, 255);
+    span {
+      font-size: 30px;
+      background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+      background-clip: border-box;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  .content {
+    flex: 1 0 0;
+    .text {
+      line-height: 1;
+      display: block;
+      margin-bottom: 15px;
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 15px;
+      background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+      background-clip: border-box;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .number {
+      line-height: 1;
+      font-weight: 700;
+      color: $primary;
+      font-size: 20px;
+      @include min-screen(1200) {
+        font-size: 22px;
+      }
+    }
+    & a.number {
+      &:hover {
+        background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+        background-clip: border-box;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
+.contact-media-list {
+  background-color: rgb(255, 255, 255);
+  padding: 25px 30px;
+  @include min-screen(1200) {
+    padding: 25px 40px;
+  }
+  border-radius: 15px;
+  & + .contact-media-list {
+    margin-top: 20px;
+  }
+}
+
+.google-map {
+  width: 100%;
+  height: 350px;
+  @include min-screen(992) {
+    height: 500px;
+    margin-top: 70px;
+  }
+  margin-top: 50px;
+}
+
+.success {
+  margin-top: 15px;
+  color: green;
+}
+.error {
+  margin-top: 15px;
+  color: red;
+}
