@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-
 class PostHistory extends Model
 {
     use HasFactory,SoftDeletes;
@@ -19,7 +18,7 @@ class PostHistory extends Model
         'mentions',
         'media_url',
         'post_info',
-        'type'
+        'type',
     ];
 
     /**
@@ -29,13 +28,11 @@ class PostHistory extends Model
      */
     protected $casts = [
         'media_url' => 'array',
-        'post_info' => 'array'
+        'post_info' => 'array',
     ];
 
-    public function profile() 
+    public function profile()
     {
         return $this->hasOne(AyrUserProfile::class, 'profile_key', 'profile_key');
     }
-
-
 }

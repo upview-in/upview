@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\AppModules\AppModuleController;
+use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\User\AccountController;
@@ -21,9 +22,6 @@ use App\Http\Controllers\User\PostScheduling\PostHistoryController;
 use App\Http\Controllers\User\PostScheduling\PostSchedulingController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Admin Routes
-Route::group(['domain' => env('ADMIN_DOMAIN', 'admin.upview.localhost')], function () {
+Route::group(['domain' => config('app.domains.admin')], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
         Route::middleware(['admin'])->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
@@ -61,50 +59,36 @@ Route::group(['domain' => env('ADMIN_DOMAIN', 'admin.upview.localhost')], functi
     });
 });
 
+
 //website Route
-Route::group(['domain' => env('MAIN_DOMAIN', 'upview.localhost')], function () {
-    Route::get('/', [MainSiteController::class, 'index'])->name('index-main');
-    Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy-policy');
+Route::group(['domain' => config('app.domains.main')], function () {
+    Route::group(['as' => 'main.'], function () {
+        Route::get('/', function () {
+            return view('welcome');
+        });
+    });
 });
 
 
 // Application Routes
-Route::group(['domain' => env('APP_DOMAIN', 'app.upview.localhost')], function () {
+Route::group(['domain' => config('app.domains.app')], function () {
 
     Route::get('/', function () {
         return redirect()->route('login');
     });
 
-    Route::get('image/{file}', function ($file) {
-        try {
-            $file = decrypt($file);
-        } catch (DecryptException $e) {
-            return abort(404);
-        }
-       
-        $file = storage_path('app/'.$file);
-       
-        if (!File::exists($file)) { return abort(404); }
-       
-        $type = File::mimeType($file);
-        $file = File::get($file);
-        $response = Response::make($file, 200);
-        $response->header("Content-Type", $type);
-        return $response;
-    })->name('image.displayImage');
-
-    Route::get('/api-test', [AyrshareController::class, 'index'])->name('api-test');
-    Route::post('/ayrCall', [AyrshareController::class, 'index'])->name('ayrshareAPICall');
+    Route::get('image/{file}', [CommonController::class, 'displayImage'])->name('image.displayImage');
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
     Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
 
     // Routes for user panel
     Route::prefix('panel')->as('panel.')->middleware(['auth', 'verified'])->group(function () {
-        Route::redirect('/', '/panel/dashboard', 301);
+        Route::any('/', function () {
+            return redirect()->route('panel.dashboard');
+        });
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
         Route::get('/choosePackages', [AppModuleController::class, 'index'])->name('choosePackages');
 
         Route::prefix('user')->as('user.')->group(function () {

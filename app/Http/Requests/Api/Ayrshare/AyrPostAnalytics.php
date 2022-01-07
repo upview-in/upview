@@ -26,7 +26,7 @@ class AyrPostAnalytics extends FormRequest
         return [
             'id'=> 'required',
             'platforms'=> 'required',
-            'profileKey' => ''
+            'profileKey' => '',
         ];
     }
 }

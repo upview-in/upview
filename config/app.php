@@ -2,6 +2,14 @@
 
 return [
 
+    'domains' => [
+        'main' => env('MAIN_DOMAIN', 'upview.localhost'),
+        'app' => env('APP_DOMAIN', 'app.upview.localhost'),
+        'admin' => env('ADMIN_DOMAIN', 'admin.upview.localhost')
+    ],
+
+    'telescopeProdEnabled' => env('TELESCOPE_PROD_ENABLED', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
