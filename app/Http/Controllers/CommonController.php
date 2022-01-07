@@ -30,4 +30,9 @@ class CommonController extends Controller
 
         return $response;
     }
+
+    public function privacyPolicy(Request $request)
+    {
+        return view('main.privacy-policy');
+    }
 }

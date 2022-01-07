@@ -1,0 +1,155 @@
+.case-studies-section {
+  padding-bottom: 60px;
+  .container {
+    @include min-screen(1800) {
+      max-width: 1620px;
+    }
+  }
+}
+.case-carousel {
+  .swiper-slide-active {
+    .case-card {
+      .case-shape1 {
+        opacity: 0;
+      }
+      .case-shape2 {
+        opacity: 1;
+      }
+
+      .case-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+.case-card {
+  .thumb {
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    background-color: rgb(247, 250, 255);
+    margin-bottom: 40px;
+    .case-shape1 {
+      transition: all 0.3s;
+    }
+    .case-shape2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+    .case-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    a {
+      display: block;
+      img {
+        z-index: 2;
+      }
+    }
+  }
+
+  // &:hover {
+  //   .case-shape1 {
+  //     opacity: 0;
+  //   }
+  //   .case-shape2 {
+  //     opacity: 1;
+  //   }
+  //   .case-content {
+  //     opacity: 1;
+  //     visibility: visible;
+  //   }
+  // }
+}
+.case-content {
+  transition: all 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+  .title {
+    font-weight: 700;
+    color: $primary;
+    line-height: 1.25;
+    text-transform: capitalize;
+    font-size: 25px;
+    margin-bottom: 15px;
+    a {
+      color: inherit;
+      &:hover{
+        color: $warning;
+      }
+    }
+  }
+  p {
+    color: #fc7418;
+  }
+}
+
+.container.case-carousel-navigation {
+  @include min-screen(1200) {
+    max-width: 1140px;
+  }
+  position: relative;
+  top: -122px;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 55px;
+    height: 55px;
+    color: $white;
+    font-size: 20px;
+    border-radius: 50%;
+  }
+
+  .swiper-button-prev {
+    background: $btn-warning;
+    border: solid 2px transparent;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      ),
+      linear-gradient(101deg, #fc7318 0%, #feb423 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #f7faff inset;
+    color: $warning;
+    &:hover {
+      box-shadow: none;
+      color: $white;
+      border-color: transparent;
+    }
+  }
+  .swiper-button-next {
+    background: $btn-warning;
+    border: solid 2px transparent;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      ),
+      linear-gradient(101deg, #fc7318 0%, #feb423 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #f7faff inset;
+    color: $warning;
+    &:hover {
+      box-shadow: none;
+      color: $white;
+      border-color: transparent;
+    }
+  }
+
+  .swiper-button-prev::after,
+  .swiper-container-rtl .swiper-button-next::after {
+    display: none;
+  }
+  .swiper-button-next::after,
+  .swiper-container-rtl .swiper-button-next::after {
+    display: none;
+  }
+}
