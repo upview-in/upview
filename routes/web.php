@@ -63,9 +63,8 @@ Route::group(['domain' => config('app.domains.admin')], function () {
 //website Route
 Route::group(['domain' => config('app.domains.main')], function () {
     Route::group(['as' => 'main.'], function () {
-        Route::get('/', function () {
-            return view('welcome');
-        });
+        Route::get('/', [MainSiteController::class, 'index'])->name('main_site_index');
+        Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy_policy');
     });
 });
 

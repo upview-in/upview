@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upview</title>
     <!-- Favicon -->
-    <!-- link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/favicon.svg') }}" />
 
     <!-- <link rel="stylesheet" href="css/vendor/icofont.min.css" />
     <link rel="stylesheet" href="css/plugins/animate.min.css" />
@@ -21,11 +21,11 @@
 
     <!--  # vendor min css,plugins min css,style min css -->
 
-    <link rel="stylesheet" href={{ asset("css/vendor/vendor.min.css") }} />
-    <link rel="stylesheet" href={{ asset("css/plugins/plugins.min.css") }} />
-    <link rel="stylesheet" href={{ asset("css/plugins/aos.css") }} />
-    <link rel="stylesheet" href={{ asset("css/plugins/selectric.css") }} />
-    <link rel="stylesheet" href={{ asset("css/style.min.css") }} />
+    <link rel="stylesheet" href="{{ asset("css/vendor/vendor.min.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/plugins/plugins.min.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/plugins/aos.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/plugins/selectric.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/style.min.css") }}" />
 
 </head>
 
@@ -41,11 +41,11 @@
                 <nav id="offcanvas-menu" class="offcanvas-menu">
                     <ul>
                         <li>
-                            <a href={{ route("index-main") }}>Home</a>
+                            <a href="{{ route("main.main_site_index") }}">Home</a>
                             <!-- add your sub menu here -->
                         </li>
                         <li>
-                            <a href={{ route('privacy-policy') }}}}>Services</a>
+                            <a href="{{ route('main.privacy_policy') }}"}}">Services</a>
                         </li>
                         <li>
                             <a href="case-details.html">Case Studies</a>
@@ -93,8 +93,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col">
-                        <a href="index.html" class="brand-logo">
-                            <img src={{ asset("images/logo/upview.png") }} alt="brand logo" />
+                        <a href="{{ route('main.main_site_index') }}" class="brand-logo">
+                            <img src="{{ asset("images/logo/upview.png") }}" alt="brand logo" />
                         </a>
                     </div>
                     <div class="col-auto">
@@ -112,7 +112,7 @@
                                     <a class="main-menu-link" href="index.html">Home</a>
                                 </li>
                                 <li class="main-menu-item">
-                                    <a class="main-menu-link" href={{ route('privacy-policy') }}}}>Services</a>
+                                    <a class="main-menu-link" href="{{ route('main.privacy_policy') }}"}}">Services</a>
                                 </li>
                                 <li class="main-menu-item">
                                     <a class="main-menu-link" href="case-details.html">
@@ -165,10 +165,10 @@
     </header>
 
     <section class="hero-section">
-        <img class="shape shape1" src={{ asset("images/hero/shape1.png") }} alt="img_not_found" />
-        <img class="shape shape2" src={{ asset("images/hero/shape2.png") }} alt="img_not_found" />
-        <img class="shape particle1" src={{ asset("images/hero/particle1.png") }} alt="img_not_found" />
-        <img class="shape particle2" src={{ asset("images/hero/particle2.png") }} alt="img_not_found" />
+        <img class="shape shape1" src="{{ asset("images/hero/shape1.png") }}" alt="img_not_found" />
+        <img class="shape shape2" src="{{ asset("images/hero/shape2.png") }}" alt="img_not_found" />
+        <img class="shape particle1" src="{{ asset("images/hero/particle1.png") }}" alt="img_not_found" />
+        <img class="shape particle2" src="{{ asset("images/hero/particle2.png") }}" alt="img_not_found" />
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-xl-6">
@@ -181,23 +181,23 @@
                             <input class="form-control" type="text" placeholder="https://yourwebsite.com" />
                             <button class="btn btn-warning">Free Audit Now</button>
                         </form> -->
-                        <img class="particle3" src={{ asset("images/hero/particle3.png") }} alt="particle2" />
+                        <img class="particle3" src="{{ asset("images/hero/particle3.png") }}" alt="particle2" />
                     </div>
                 </div>
                 <div class="col-lg-7 col-xl-6">
                     <div class="hero-img">
-                        <img class="animate-one" src={{ asset("images/hero/1.png") }} alt="img_not_found" data-aos="zoom-in" data-aos-delay="100" />
+                        <img class="animate-one" src="{{ asset('images/hero/1.png') }}" alt="img_not_found" data-aos="zoom-in" data-aos-delay="100" />
                         <div class="position-absolute animate-two">
-                            <img data-aos="fade-up" data-aos-delay="600" src={{ asset("images/hero/2.png") }} alt="img_not_found" />
+                            <img data-aos="fade-up" data-aos-delay="600" src="{{ asset("images/hero/2.png") }}" alt="img_not_found" />
                         </div>
 
                         <div class="position-absolute animate-three">
-                            <img data-aos="fade-down" data-aos-delay="400" src={{ asset("images/hero/3.png") }} alt="img_not_found" />
+                            <img data-aos="fade-down" data-aos-delay="400" src="{{ asset("images/hero/3.png") }}" alt="img_not_found" />
                         </div>
                     </div>
 
                     <div class="hero-img-mobile">
-                        <img src={{ asset("images/hero/mobile.png") }} alt="images-not_found" />
+                        <img src="{{ asset("images/hero/mobile.png") }}" alt="images-not_found" />
                     </div>
                 </div>
             </div>
@@ -217,32 +217,32 @@
                             <div class="swiper-wrapper">
                                 <!-- single slide start -->
                                 <div class="swiper-slide">
-                                    <a class="brand-before" href="#"><img src={{ asset("images/brand-logo/1.png") }} alt="images-not_found" /></a>
-                                    <a class="brand-after" href="#"><img src={{ asset("images/brand-logo/1.1.png") }} alt="images-not_found" /></a>
+                                    <a class="brand-before" href="#"><img src="{{ asset("images/brand-logo/1.png") }}" alt="images-not_found" /></a>
+                                    <a class="brand-after" href="#"><img src="{{ asset("images/brand-logo/1.1.png") }}" alt="images-not_found" /></a>
                                 </div>
                                 <!-- single slide end -->
                                 <!-- single slide start -->
                                 <div class="swiper-slide">
-                                    <a class="brand-before" href="#"><img src={{ asset("images/brand-logo/2.png") }} alt="images-not_found" /></a>
-                                    <a class="brand-after" href="#"><img src={{ asset("images/brand-logo/2.1.png") }} alt="images-not_found" /></a>
+                                    <a class="brand-before" href="#"><img src="{{ asset("images/brand-logo/2.png") }}" alt="images-not_found" /></a>
+                                    <a class="brand-after" href="#"><img src="{{ asset("images/brand-logo/2.1.png") }}" alt="images-not_found" /></a>
                                 </div>
                                 <!-- single slide end -->
                                 <!-- single slide start -->
                                 <div class="swiper-slide">
-                                    <a class="brand-before" href="#"><img src={{ asset("images/brand-logo/3.png") }} alt="images-not_found" /></a>
-                                    <a class="brand-after" href="#"><img src={{ asset("images/brand-logo/3.1.png") }} alt="images-not_found" /></a>
+                                    <a class="brand-before" href="#"><img src="{{ asset("images/brand-logo/3.png") }}" alt="images-not_found" /></a>
+                                    <a class="brand-after" href="#"><img src="{{ asset("images/brand-logo/3.1.png") }}" alt="images-not_found" /></a>
                                 </div>
                                 <!-- single slide end -->
                                 <!-- single slide start -->
                                 <div class="swiper-slide">
-                                    <a class="brand-before" href="#"><img src={{ asset("images/brand-logo/4.png") }} alt="images-not_found" /></a>
-                                    <a class="brand-after" href="#"><img src={{ asset("images/brand-logo/4.1.png") }}}} alt="images-not_found" /></a>
+                                    <a class="brand-before" href="#"><img src="{{ asset("images/brand-logo/4.png") }}" alt="images-not_found" /></a>
+                                    <a class="brand-after" href="#"><img src="{{ asset("images/brand-logo/4.1.png") }}"}}" alt="images-not_found" /></a>
                                 </div>
                                 <!-- single slide end -->
                                 <!-- single slide start -->
                                 <div class="swiper-slide">
-                                    <a class="brand-before" href="#"><img src={{ asset("images/brand-logo/5.png") }} alt="images-not_found" /></a>
-                                    <a class="brand-after" href="#"><img src={{ asset("images/brand-logo/5.1.png") }} alt="images-not_found" /></a>
+                                    <a class="brand-before" href="#"><img src="{{ asset("images/brand-logo/5.png") }}" alt="images-not_found" /></a>
+                                    <a class="brand-after" href="#"><img src="{{ asset("images/brand-logo/5.1.png") }}" alt="images-not_found" /></a>
                                 </div>
                                 <!-- single slide end -->
                             </div>
@@ -261,7 +261,7 @@
                 <div class="col-12" data-aos="fade-up" data-aos-delay="200">
                     <div class="section-title primary text-center pb-100">
                         <div class="icon">
-                            <img src={{ asset("images/icon/sharing.png") }} alt="Icon_not_found" />
+                            <img src="{{ asset("images/icon/sharing.png") }}" alt="Icon_not_found" />
                         </div>
                         <h3 class="title">What We Offer</h3>
                         <span class="hr-secodary"></span>
@@ -272,12 +272,12 @@
                 <!-- service-card satrt -->
                 <div class="col-md-6 mb-7" data-aos="fade-up" data-aos-delay="500">
                     <div class="service-card">
-                        <img class="line" src={{ asset("images/service/line-one.png") }} alt="images_not_found" />
+                        <img class="line" src="{{ asset("images/service/line-one.png") }}" alt="images_not_found" />
                         <div class="service-icon">
                             <div class="roted-around dagnger">
                                 <span></span>
                             </div>
-                            <img src={{ asset("images/icon/marketing.png") }} alt="" />
+                            <img src="{{ asset("images/icon/marketing.png") }}" alt="" />
                         </div>
                         <div class="service-content">
                             <h4 class="title">Marketing Automation</h4>
@@ -292,12 +292,12 @@
                 <!-- service-card satrt -->
                 <div class="col-md-6 mb-7" data-aos="fade-up" data-aos-delay="1000">
                     <div class="service-card">
-                        <img class="line" src={{ asset("images/service/line-two.png") }} alt="images_not_found" />
+                        <img class="line" src="{{ asset("images/service/line-two.png") }}" alt="images_not_found" />
                         <div class="service-icon">
                             <div class="roted-around warning">
                                 <span></span>
                             </div>
-                            <img src={{ asset("images/icon/analytics.png") }}}} alt="" />
+                            <img src="{{ asset("images/icon/analytics.png") }}"}}" alt="" />
                         </div>
                         <div class="service-content">
                             <h4 class="title">SEO Consultancy</h4>
@@ -312,12 +312,12 @@
                 <!-- service-card satrt -->
                 <div class="col-md-6 mb-7" data-aos="fade-up" data-aos-delay="1500">
                     <div class="service-card">
-                        <img class="line" src={{ asset("images/service/line-three.png") }} alt="images_not_found" />
+                        <img class="line" src="{{ asset("images/service/line-three.png") }}" alt="images_not_found" />
                         <div class="service-icon">
                             <div class="roted-around primary">
                                 <span></span>
                             </div>
-                            <img src={{ asset("images/icon/connect.png") }} alt="" />
+                            <img src="{{ asset("images/icon/connect.png") }}" alt="" />
                         </div>
                         <div class="service-content">
                             <h4 class="title">Pay Per Click Advertising</h4>
@@ -332,12 +332,12 @@
                 <!-- service-card satrt -->
                 <div class="col-md-6 mb-7" data-aos="fade-up" data-aos-delay="2000">
                     <div class="service-card">
-                        <img class="line" src={{ asset("images/service/line-foure.png") }}}} alt="images_not_found" />
+                        <img class="line" src="{{ asset("images/service/line-foure.png") }}"}}" alt="images_not_found" />
                         <div class="service-icon">
                             <div class="roted-around secondary">
                                 <span></span>
                             </div>
-                            <img src={{ asset("images/icon/document.png") }}}} alt="" />
+                            <img src="{{ asset("images/icon/document.png") }}"}}" alt="" />
                         </div>
                         <div class="service-content">
                             <h4 class="title">Marketing Automation</h4>
@@ -366,7 +366,7 @@
                 <div class="col-12" data-aos="fade-up" data-aos-delay="300">
                     <div class="section-title process text-center pb-100">
                         <div class="icon">
-                            <img src={{ asset("images/icon/pencile.png") }}}} alt="Icon_not_found" />
+                            <img src="{{ asset("images/icon/pencile.png") }}"}}" alt="Icon_not_found" />
                         </div>
                         <h3 class="title">Working Process</h3>
                         <span class="hr-secodary"></span>
@@ -377,27 +377,27 @@
             <div class="row working-process mb-n4">
                 <!-- working-process-list start -->
                 <div class="col-lg-3 col-sm-6 working-process-list mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <img class="arrow-shape" src={{ asset("images/working/arrow-shape1.png") }} alt="images_not_found" />
+                    <img class="arrow-shape" src="{{ asset("images/working/arrow-shape1.png") }}" alt="images_not_found" />
                     <div class="icon">
-                        <img src={{ asset("images/working/1.png") }}}} alt="images_not_found" />
+                        <img src="{{ asset("images/working/1.png") }}"}}" alt="images_not_found" />
                     </div>
                     <h4 class="title">Idea Generation</h4>
                 </div>
                 <!-- working-process-list end -->
                 <!-- working-process-list start -->
                 <div class="col-lg-3 col-sm-6 working-process-list mb-4" data-aos="fade-up" data-aos-delay="500">
-                    <img class="arrow-shape" src={{ asset("images/working/arrow-shape2.png") }}}} alt="images_not_found" />
+                    <img class="arrow-shape" src="{{ asset("images/working/arrow-shape2.png") }}"}}" alt="images_not_found" />
                     <div class="icon">
-                        <img src={{ asset("images/working/2.png") }}}} alt="images_not_found" />
+                        <img src="{{ asset("images/working/2.png") }}"}}" alt="images_not_found" />
                     </div>
                     <h4 class="title">Working Plan</h4>
                 </div>
                 <!-- working-process-list end -->
                 <!-- working-process-list start -->
                 <div class="col-lg-3 col-sm-6 working-process-list mb-4" data-aos="fade-up" data-aos-delay="600">
-                    <img class="arrow-shape" src={{ asset("images/working/arrow-shape1.png") }}}} alt="images_not_found" />
+                    <img class="arrow-shape" src="{{ asset("images/working/arrow-shape1.png") }}"}}" alt="images_not_found" />
                     <div class="icon">
-                        <img src={{ asset("images/working/3.png") }} alt="images_not_found" />
+                        <img src="{{ asset("images/working/3.png") }}" alt="images_not_found" />
                     </div>
                     <h4 class="title">SEO Research</h4>
                 </div>
@@ -405,7 +405,7 @@
                 <!-- working-process-list start -->
                 <div class="col-lg-3 col-sm-6 working-process-list mb-4" data-aos="fade-up" data-aos-delay="700">
                     <div class="icon">
-                        <img src={{ asset("images/working/4.png") }} alt="images_not_found" />
+                        <img src="{{ asset("images/working/4.png") }}" alt="images_not_found" />
                     </div>
                     <h4 class="title">Launch Project</h4>
                 </div>
@@ -417,12 +417,12 @@
 
     <!-- about section start -->
     <section class="about-section">
-        <img src={{ asset("images/about/bg.png") }}}} alt="images-not_found" class="about-bg" />
+        <img src="{{ asset("images/about/bg.png") }}"}}" alt="images-not_found" class="about-bg" />
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about-img-content" data-aos="zoom-in" data-aos-delay="100">
-                        <img src={{ asset("images/about/1.png") }} alt="images-not_found" />
+                        <img src="{{ asset("images/about/1.png") }}" alt="images-not_found" />
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -438,7 +438,7 @@
                         <div class="about-object">
                             <div class="about-object-list">
                                 <div class="icon">
-                                    <img src={{ asset("images/icon/1.png") }}}} alt="images-not_found" />
+                                    <img src="{{ asset("images/icon/1.png") }}"}}" alt="images-not_found" />
                                 </div>
                                 <div class="about-object-content">
                                     <h4 class="title">High Customer Retention Rate</h4>
@@ -450,7 +450,7 @@
                             <!-- about-object-list end -->
                             <div class="about-object-list">
                                 <div class="icon">
-                                    <img src={{ asset("images/icon/2.png") }}}} alt="images-not_found" />
+                                    <img src="{{ asset("images/icon/2.png") }}"}}" alt="images-not_found" />
                                 </div>
                                 <div class="about-object-content">
                                     <h4 class="title">Dedicated Customer Support</h4>
@@ -462,7 +462,7 @@
                             <!-- about-object-list end -->
                             <div class="about-object-list">
                                 <div class="icon">
-                                    <img src={{ asset("images/icon/3.png") }} alt="images-not_found" />
+                                    <img src="{{ asset("images/icon/3.png") }}" alt="images-not_found" />
                                 </div>
                                 <div class="about-object-content">
                                     <h4 class="title">Professional Team Member</h4>
@@ -487,7 +487,7 @@
                 <div class="col-12" data-aos="fade-up" data-aos-delay="100">
                     <div class="section-title primary text-center pb-100">
                         <div class="icon">
-                            <img src={{ asset("images/icon/webpack.png") }}}} alt="Icon_not_found" />
+                            <img src="{{ asset("images/icon/webpack.png") }}"}}" alt="Icon_not_found" />
                         </div>
                         <h3 class="title">Some Case Studies</h3>
                         <span class="hr-secodary"></span>
@@ -504,10 +504,10 @@
                                     <div class="case-card">
                                         <div class="thumb">
                                             <a href="#">
-                                                <img class="case-shap case-shape1" src={{ asset("images/case/shape1.png") }}}} alt="images_not_found" />
-                                                <img class="case-shape case-shape2" src={{ asset("images/case/shape2.png") }}}} alt="images_not_found" />
+                                                <img class="case-shap case-shape1" src="{{ asset("images/case/shape1.png") }}"}}" alt="images_not_found" />
+                                                <img class="case-shape case-shape2" src="{{ asset("images/case/shape2.png") }}"}}" alt="images_not_found" />
 
-                                                <img class="case-image" src={{ asset("images/case/1.png") }} alt="images_not_found" /></a>
+                                                <img class="case-image" src="{{ asset("images/case/1.png") }}" alt="images_not_found" /></a>
                                         </div>
                                         <div class="case-content">
                                             <h3 class="title">
@@ -523,10 +523,10 @@
                                     <div class="case-card">
                                         <div class="thumb">
                                             <a href="#">
-                                                <img class="case-shap case-shape1" src={{ asset("images/case/shape1.png") }}}} alt="images_not_found" />
-                                                <img class="case-shape case-shape2" src={{ asset("images/case/shape2.png") }}}} alt="images_not_found" />
+                                                <img class="case-shap case-shape1" src="{{ asset("images/case/shape1.png") }}"}}" alt="images_not_found" />
+                                                <img class="case-shape case-shape2" src="{{ asset("images/case/shape2.png") }}"}}" alt="images_not_found" />
 
-                                                <img class="case-image" src={{ asset("images/case/2.png") }} alt="images_not_found" /></a>
+                                                <img class="case-image" src="{{ asset("images/case/2.png") }}" alt="images_not_found" /></a>
                                         </div>
                                         <div class="case-content">
                                             <h3 class="title">
@@ -542,10 +542,10 @@
                                     <div class="case-card">
                                         <div class="thumb">
                                             <a href="#">
-                                                <img class="case-shap case-shape1" src={{ asset("images/case/shape1.png") }}}} alt="images_not_found" />
-                                                <img class="case-shape case-shape2" src={{ asset("images/case/shape2.png") }} alt="images_not_found" />
+                                                <img class="case-shap case-shape1" src="{{ asset("images/case/shape1.png") }}"}}" alt="images_not_found" />
+                                                <img class="case-shape case-shape2" src="{{ asset("images/case/shape2.png") }}" alt="images_not_found" />
 
-                                                <img class="case-image" src={{ asset("images/case/3.png") }}}} alt="images_not_found" /></a>
+                                                <img class="case-image" src="{{ asset("images/case/3.png") }}"}}" alt="images_not_found" /></a>
                                         </div>
                                         <div class="case-content">
                                             <h3 class="title">
@@ -576,13 +576,13 @@
 
     <!-- team section start -->
     <section class="team-section position-relative">
-        <img class="pattern" src={{ asset("images/team/pattern.png") }} alt="images-not_found" />
+        <img class="pattern" src="{{ asset("images/team/pattern.png") }}" alt="images-not_found" />
         <div class="container">
             <div class="row">
                 <div class="col-12" data-aos="fade-up" data-aos-delay="100">
                     <div class="section-title process text-center pb-90">
                         <div class="icon">
-                            <img src={{ asset("images/icon/team.png") }} alt="Icon_not_found" />
+                            <img src="{{ asset("images/icon/team.png") }}" alt="Icon_not_found" />
                         </div>
                         <h3 class="title">Amazing Team Members</h3>
                         <span class="hr-secodary"></span>
@@ -594,8 +594,8 @@
                 <div class="col-lg-3 col-sm-6 mb-7" data-aos="fade-up" data-aos-delay="300">
                     <div class="team-card">
                         <div class="thumb">
-                            <img src={{ asset("images/team/1.png") }}}} alt="images_not_found" />
-                            <img class="social-hover" src={{ asset("images/team/team-hover.png") }} alt="images_not_found" />
+                            <img src="{{ asset("images/team/1.png") }}"}}" alt="images_not_found" />
+                            <img class="social-hover" src="{{ asset("images/team/team-hover.png") }}" alt="images_not_found" />
                             <ul class="team-social">
                                 <li class="team-social-item">
                                     <a class="team-social-link" href="#"><i class="icofont-facebook"></i></a>
@@ -617,8 +617,8 @@
                 <div class="col-lg-3 col-sm-6 mb-7" data-aos="fade-up" data-aos-delay="600">
                     <div class="team-card">
                         <div class="thumb">
-                            <img src={{ asset("images/team/2.png") }} alt="images_not_found" />
-                            <img class="social-hover" src={{ asset("images/team/team-hover.png") }}}} alt="images_not_found" />
+                            <img src="{{ asset("images/team/2.png") }}" alt="images_not_found" />
+                            <img class="social-hover" src="{{ asset("images/team/team-hover.png") }}"}}" alt="images_not_found" />
                             <ul class="team-social">
                                 <li class="team-social-item">
                                     <a class="team-social-link" href="#"><i class="icofont-facebook"></i></a>
@@ -640,8 +640,8 @@
                 <div class="col-lg-3 col-sm-6 mb-7" data-aos="fade-up" data-aos-delay="900">
                     <div class="team-card">
                         <div class="thumb">
-                            <img src={{ asset("images/team/3.png") }} alt="images_not_found" />
-                            <img class="social-hover" src={{ asset("images/team/team-hover.png") }} alt="images_not_found" />
+                            <img src="{{ asset("images/team/3.png") }}" alt="images_not_found" />
+                            <img class="social-hover" src="{{ asset("images/team/team-hover.png") }}" alt="images_not_found" />
                             <ul class="team-social">
                                 <li class="team-social-item">
                                     <a class="team-social-link" href="#"><i class="icofont-facebook"></i></a>
@@ -663,8 +663,8 @@
                 <div class="col-lg-3 col-sm-6 mb-7" data-aos="fade-up" data-aos-delay="1200">
                     <div class="team-card">
                         <div class="thumb">
-                            <img src={{ asset("images/team/4.png") }}}} alt="images_not_found" />
-                            <img class="social-hover" src={{ asset("images/team/team-hover.png") }}}} alt="images_not_found" />
+                            <img src="{{ asset("images/team/4.png") }}"}}" alt="images_not_found" />
+                            <img class="social-hover" src="{{ asset("images/team/team-hover.png") }}"}}" alt="images_not_found" />
                             <ul class="team-social">
                                 <li class="team-social-item">
                                     <a class="team-social-link" href="#"><i class="icofont-facebook"></i></a>
@@ -690,12 +690,12 @@
 
     <!-- faq section start -->
     <section class="faq-section">
-        <img src={{ asset("images/faq/bg.png") }} alt="images-not_found" class="faq-bg" />
+        <img src="{{ asset("images/faq/bg.png") }}" alt="images-not_found" class="faq-bg" />
         <div class="container">
             <div class="row mb-n7">
                 <div class="col-xl-6 mb-7">
                     <div class="faq-image" data-aos="zoom-in" data-aos-delay="100">
-                        <img src={{ asset("images/faq/1.png") }} alt="images_not_found" />
+                        <img src="{{ asset("images/faq/1.png") }}" alt="images_not_found" />
                     </div>
                 </div>
                 <div class="col-xl-6 mb-7">
@@ -778,7 +778,7 @@
                 <div class="col-12" data-aos="fade-up" data-aos-delay="100">
                     <div class="section-title primary text-center pb-100">
                         <div class="icon">
-                            <img src={{ asset("images/icon/testimonial.png") }} alt="Icon_not_found" />
+                            <img src="{{ asset("images/icon/testimonial.png") }}" alt="Icon_not_found" />
                         </div>
                         <h3 class="title">From Happy Customer</h3>
                         <span class="hr-secodary"></span>
@@ -787,23 +787,23 @@
             </div>
             <div class="row position-relative">
                 <div class="clients">
-                    <img src={{ asset("images/testimonial/2.png") }} alt="images-not_found" class="client" />
-                    <img src={{ asset("images/testimonial/3.png") }} alt="images-not_found" class="client" />
-                    <img src={{ asset("images/testimonial/4.png") }} alt="images-not_found" class="client" />
-                    <img src={{ asset("images/testimonial/5.png") }} alt="images-not_found" class="client" />
-                    <img src={{ asset("images/testimonial/6.png") }} alt="images-not_found" class="client" />
-                    <img src={{ asset("images/testimonial/7.png") }} alt="images-not_found" class="client" />
+                    <img src="{{ asset("images/testimonial/2.png") }}" alt="images-not_found" class="client" />
+                    <img src="{{ asset("images/testimonial/3.png") }}" alt="images-not_found" class="client" />
+                    <img src="{{ asset("images/testimonial/4.png") }}" alt="images-not_found" class="client" />
+                    <img src="{{ asset("images/testimonial/5.png") }}" alt="images-not_found" class="client" />
+                    <img src="{{ asset("images/testimonial/6.png") }}" alt="images-not_found" class="client" />
+                    <img src="{{ asset("images/testimonial/7.png") }}" alt="images-not_found" class="client" />
                 </div>
                 <div class="col-12 mx-auto">
                     <div class="testimonial-content position-relative">
-                        <img class="shape" src={{ asset("images/testimonial/shape.png") }} alt="images-not_found" />
+                        <img class="shape" src="{{ asset("images/testimonial/shape.png") }}" alt="images-not_found" />
                         <div class="testimonial-carousel">
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
                                     <!-- swiper-slide start -->
                                     <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
                                         <div class="profile-wrap">
-                                            <img class="testimonial-profile" src={{ asset("images/testimonial/1.png") }} alt="images-not_found" />
+                                            <img class="testimonial-profile" src="{{ asset("images/testimonial/1.png") }}" alt="images-not_found" />
                                             <span class="quote">“</span>
                                         </div>
 
@@ -817,7 +817,7 @@
                                     <!-- swiper-slide start -->
                                     <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
                                         <div class="profile-wrap">
-                                            <img class="testimonial-profile" src={{ asset("images/testimonial/lg-2.png") }} alt="images-not_found" />
+                                            <img class="testimonial-profile" src="{{ asset("images/testimonial/lg-2.png") }}" alt="images-not_found" />
                                             <span class="quote">“</span>
                                         </div>
 
@@ -831,7 +831,7 @@
                                     <!-- swiper-slide start -->
                                     <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
                                         <div class="profile-wrap">
-                                            <img class="testimonial-profile" src={{ asset("images/testimonial/lg-3.png") }}}} alt="images-not_found" />
+                                            <img class="testimonial-profile" src="{{ asset("images/testimonial/lg-3.png") }}"}}" alt="images-not_found" />
                                             <span class="quote">“</span>
                                         </div>
 
@@ -845,7 +845,7 @@
                                     <!-- swiper-slide start -->
                                     <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
                                         <div class="profile-wrap">
-                                            <img class="testimonial-profile" src={{ asset("images/testimonial/lg-4.png") }} alt="images-not_found" />
+                                            <img class="testimonial-profile" src="{{ asset("images/testimonial/lg-4.png") }}" alt="images-not_found" />
                                             <span class="quote">“</span>
                                         </div>
 
@@ -859,7 +859,7 @@
                                     <!-- swiper-slide start -->
                                     <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
                                         <div class="profile-wrap">
-                                            <img class="testimonial-profile" src={{ asset("images/testimonial/lg-5.png") }} alt="images-not_found" />
+                                            <img class="testimonial-profile" src="{{ asset("images/testimonial/lg-5.png") }}" alt="images-not_found" />
                                             <span class="quote">“</span>
                                         </div>
 
@@ -873,7 +873,7 @@
                                     <!-- swiper-slide start -->
                                     <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
                                         <div class="profile-wrap">
-                                            <img class="testimonial-profile" src={{ asset("images/testimonial/lg-6.png") }} alt="images-not_found" />
+                                            <img class="testimonial-profile" src="{{ asset("images/testimonial/lg-6.png") }}" alt="images-not_found" />
                                             <span class="quote">“</span>
                                         </div>
 
@@ -906,7 +906,7 @@
 
                     <div class="blog-card" data-aos="fade-up" data-aos-delay="600">
                         <div class="thumb">
-                            <a href="#"><img src={{ asset("images/blog/1.png") }}}} alt="images-not_found" /></a>
+                            <a href="#"><img src="{{ asset("images/blog/1.png") }}"}}" alt="images-not_found" /></a>
                         </div>
                         <div class="content">
                             <p>
@@ -924,7 +924,7 @@
                         <!-- blog-meta-card  -->
                         <div class="blog-meta-card" data-aos="fade-up" data-aos-delay="300">
                             <div class="thumb">
-                                <img src={{ asset("images/blog/2.png") }} alt="images-not_found" />
+                                <img src="{{ asset("images/blog/2.png") }}" alt="images-not_found" />
                             </div>
                             <div class="content">
                                 <p>
@@ -942,7 +942,7 @@
                         <!-- blog-meta-card  -->
                         <div class="blog-meta-card" data-aos="fade-up" data-aos-delay="1200">
                             <div class="thumb">
-                                <img src={{ asset("images/blog/3.png") }} alt="images-not_found" />
+                                <img src="{{ asset("images/blog/3.png") }}" alt="images-not_found" />
                             </div>
                             <div class="content">
                                 <p>
@@ -960,7 +960,7 @@
                         <!-- blog-meta-card  -->
                         <div class="blog-meta-card" data-aos="fade-up" data-aos-delay="1500">
                             <div class="thumb">
-                                <img src={{ asset("images/blog/4.png") }} alt="images-not_found" />
+                                <img src="{{ asset("images/blog/4.png") }}" alt="images-not_found" />
                             </div>
                             <div class="content">
                                 <p>
@@ -983,8 +983,8 @@
     <!-- blog section end -->
 
     <footer class="footer-section position-relative">
-        <img class="footer-bg-shape" src={{ asset("images/footer/shape.png") }} alt="images_notFound" />
-        <img class="path-shape" src={{ asset("images/footer/path-shape.png") }} alt="images_notFound" />
+        <img class="footer-bg-shape" src="{{ asset("images/footer/shape.png") }}" alt="images_notFound" />
+        <img class="path-shape" src="{{ asset("images/footer/path-shape.png") }}" alt="images_notFound" />
 
         <svg class="path-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 126.82 303.68">
             <defs>
@@ -1037,7 +1037,7 @@
                     <div class="col-12" data-aos="fade-up" data-aos-delay="100">
                         <div class="section-title process text-center pb-100">
                             <div class="icon">
-                                <img src={{ asset("images/icon/launcher.png") }} alt="Icon_not_found" />
+                                <img src="{{ asset("images/icon/launcher.png") }}" alt="Icon_not_found" />
                             </div>
                             <h3 class="title">Subscribe To Our Newsletter</h3>
                             <span class="hr-secodary"></span>
@@ -1064,7 +1064,7 @@
                                 <div class="footer-col">
                                     <div class="footer-widget">
                                         <a class="footer-logo" href="index.html">
-                                            <img src={{ asset("images/logo/upview.png") }} alt="logo_not_found" />
+                                            <img src="{{ asset("images/logo/upview.png") }}" alt="logo_not_found" />
                                         </a>
 
                                         <ul class="adress">
@@ -1208,13 +1208,13 @@
 
     <!-- vendor,plugins and main js -->
 
-    <script src={{ asset("js/vendor/vendor.min.js") }}></script>
-    <script src={{ asset("js/plugins/plugins.min.js") }}}}></script>
-    <script src={{ asset("js/ajax-contact.js") }}></script>
-    <script src={{ asset("js/plugins/aos.js") }}></script>
-    <script src={{ asset("js/plugins/waypoints.js") }}></script>
-    <script src={{ asset("js/plugins/jquery.selectric.min.js") }}></script>
-    <script src={{ asset("js/main.min.js") }}></script>
+    <script src="{{ asset("js/vendor/vendor.min.js") }}"></script>
+    <script src="{{ asset("js/plugins/plugins.min.js") }}"}}"></script>
+    <script src="{{ asset("js/ajax-contact.js") }}"></script>
+    <script src="{{ asset("js/plugins/aos.js") }}"></script>
+    <script src="{{ asset("js/plugins/waypoints.js") }}"></script>
+    <script src="{{ asset("js/plugins/jquery.selectric.min.js") }}"></script>
+    <script src="{{ asset("js/main.min.js") }}"></script>
 
 </body>
 
