@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Ayrshare\AyrProfileController;
 use App\Http\Controllers\User\DashboardController;
@@ -62,9 +63,8 @@ Route::group(['domain' => config('app.domains.admin')], function () {
 //website Route
 Route::group(['domain' => config('app.domains.main')], function () {
     Route::group(['as' => 'main.'], function () {
-        Route::get('/', function () {
-            return view('welcome');
-        });
+        Route::get('/', [MainSiteController::class, 'index'])->name('main_site_index');
+        Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy_policy');
     });
 });
 
