@@ -22,7 +22,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         $this->hideSensitiveRequestDetails();
 
         Telescope::filter(function (IncomingEntry $entry) {
-            if ($this->app->environment('local') || config('app.telescopeProdEnabled', false)) {
+            if ($this->app->environment('local') || config('telescope.telescopeProdEnabled', false)) {
                 return true;
             }
 
@@ -42,7 +42,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     protected function hideSensitiveRequestDetails()
     {
-        if ($this->app->environment('local')) {
+        if ($this->app->environment('local') || config('telescope.telescopeProdEnabled', false)) {
             return;
         }
 
@@ -65,9 +65,20 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewTelescope', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
+            return in_array($user->email, $this->getAuthorizedEmails());
         });
+    }
+
+    protected function getAuthorizedEmails(): array
+    {
+        $authorizedEmails = [];
+
+        foreach (explode(',', config('telescope.telescopeEmails', '')) as $email) {
+            if (!empty($email)) {
+                $authorizedEmails[] = trim($email);
+            }
+        }
+
+        return $authorizedEmails;
     }
 }
