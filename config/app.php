@@ -8,8 +8,6 @@ return [
         'admin' => env('ADMIN_DOMAIN', 'admin.upview.localhost')
     ],
 
-    'telescopeProdEnabled' => env('TELESCOPE_PROD_ENABLED', false),
-
     /*
     |--------------------------------------------------------------------------
     | Application Name

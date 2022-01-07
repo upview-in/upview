@@ -103,6 +103,11 @@ return [
         //
     ],
 
+
+    'telescopeProdEnabled' => env('TELESCOPE_PROD_ENABLED', false),
+    'telescopeEmails' => env('TELESCOPE_EMAILS', ''),
+
+
     /*
     |--------------------------------------------------------------------------
     | Telescope Watchers
