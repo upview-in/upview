@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Providers\TelescopeServiceProvider as ProvidersTelescopeServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Telescope\TelescopeServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if ($this->app->environment('local') || config('telescope.telescopeProdEnabled', false)) {
+            $this->app->register(TelescopeServiceProvider::class);
+            $this->app->register(ProvidersTelescopeServiceProvider::class);
+        }
     }
 
     /**
