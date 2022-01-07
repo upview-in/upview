@@ -24,7 +24,7 @@ class AyrSocialMediaPlatformAnalytics extends FormRequest
     public function rules()
     {
         return [
-            'profileKey' => ''
+            'profileKey' => '',
         ];
     }
 }

@@ -24,7 +24,7 @@ class AyrShortLinkAnalysis extends FormRequest
     public function rules()
     {
         return [
-            'lastDays' => ''
+            'lastDays' => '',
         ];
     }
 }

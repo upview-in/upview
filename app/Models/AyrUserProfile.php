@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Eloquent\Model;
-
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 class AyrUserProfile extends Model
 {
@@ -25,9 +24,7 @@ class AyrUserProfile extends Model
      *
      * @var array
      */
-    
     protected $dates = [
         'authorized_on',
     ];
-
 }
