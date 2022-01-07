@@ -7,7 +7,7 @@
     <title>Privacy Policy</title>
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/favicon.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('main/images/logo/favicon.svg') }}" />
 
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
@@ -16,11 +16,11 @@
 
     <!--  # vendor min css,plugins min css,style min css -->
 
-    <link rel="stylesheet" href="{{ asset('css/vendor/vendor.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/plugins/plugins.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/plugins/aos.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/plugins/selectric.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/css/vendor/vendor.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/css/plugins/plugins.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/css/plugins/aos.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/css/plugins/selectric.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/css/style.min.css') }}" />
 </head>
 
 
@@ -50,7 +50,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <a href="{{ route('main.main_site_index') }}" class="brand-logo">
-                            <img src="{{ asset('images/logo/upview.png') }}" alt="brand logo" />
+                            <img src="{{ asset('main/images/logo/upview.png') }}" alt="brand logo" />
                         </a>
                     </div>
 
@@ -63,8 +63,8 @@
     <!-- bread crumb section start -->
 
     <section class="bread-crumb-section">
-        <img class="shape shape1" src="{{ asset('images/bread/1.png') }}" alt="images_not_found">
-        <img class="shape shape2" src="{{ asset('images/bread/2.png') }}" alt="images_not_found">
+        <img class="shape shape1" src="{{ asset('main/images/bread/1.png') }}" alt="images_not_found">
+        <img class="shape shape2" src="{{ asset('main/images/bread/2.png') }}" alt="images_not_found">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -416,8 +416,8 @@
     <!-- service details end -->
 
     <footer class="footer-section position-relative">
-        <img class="footer-bg-shape" src="{{ asset('images/footer/shape.png') }}" alt="images_notFound" />
-        <img class="path-shape" src="{{ asset('images/footer/path-shape.png') }}" alt="images_notFound" />
+        <img class="footer-bg-shape" src="{{ asset('main/images/footer/shape.png') }}" alt="images_notFound" />
+        <img class="path-shape" src="{{ asset('main/images/footer/path-shape.png') }}" alt="images_notFound" />
 
         <svg class="path-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 126.82 303.68">
             <defs>
@@ -470,7 +470,7 @@
                     <div class="col-12" data-aos="fade-up" data-aos-delay="100">
                         <div class="section-title process text-center pb-100">
                             <div class="icon">
-                                <img src="{{ asset('images/icon/launcher.png') }}" alt="Icon_not_found" />
+                                <img src="{{ asset('main/images/icon/launcher.png') }}" alt="Icon_not_found" />
                             </div>
                             <h3 class="title">Subscribe To Our Newsletter</h3>
                             <span class="hr-secodary"></span>
@@ -512,13 +512,13 @@
 
     <!-- Scripts -->
 
-    <script src="{{ asset('js/vendor/vendor.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/plugins.min.js') }}"></script>
-    <script src="{{ asset('js/ajax-contact.js') }}"></script>
-    <script src="{{ asset('js/plugins/aos.js') }}"></script>
-    <script src="{{ asset('js/plugins/waypoints.js') }}"></script>
-    <script src="{{ asset('js/plugins/jquery.selectric.min.js') }}"></script>
-    <script src="{{ asset('js/main.min.js') }}"></script>
+    <script src="{{ asset('main/js/vendor/vendor.min.js') }}"></script>
+    <script src="{{ asset('main/js/plugins/plugins.min.js') }}"></script>
+    <script src="{{ asset('main/js/ajax-contact.js') }}"></script>
+    <script src="{{ asset('main/js/plugins/aos.js') }}"></script>
+    <script src="{{ asset('main/js/plugins/waypoints.js') }}"></script>
+    <script src="{{ asset('main/js/plugins/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('main/js/main.min.js') }}"></script>
 
 </body>
 
