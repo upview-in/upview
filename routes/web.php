@@ -65,6 +65,7 @@ Route::group(['domain' => config('app.domains.main')], function () {
         Route::get('/', function () {
             return view('welcome');
         });
+        Route::get('/privacy-policy', [CommonController::class, 'privacyPolicy'])->name('privacy_policy');
     });
 });
 

@@ -1,0 +1,72 @@
+.page-not-found-section {
+  background-image: url("../images/page-not-found/shape-bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.page-not-found {
+  margin: -15px;
+  text-align: center;
+  &-item {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+  }
+  img {
+    @include max-screen(768, 991) {
+      max-width: 200px;
+    }
+    @include max-screen(576, 767) {
+      max-width: 150px;
+    }
+    @include max-screen(575) {
+      max-width: 150px;
+    }
+  }
+  .number {
+    font-weight: 900;
+    position: absolute;
+    line-height: 1.545;
+    color: $white;
+    font-size: 198px;
+    @include max-screen(768, 991) {
+      font-size: 130px;
+    }
+    @include max-screen(576, 991) {
+      font-size: 80px;
+    }
+    @include max-screen(575) {
+      font-size: 80px;
+    }
+    display: block;
+    margin: auto;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.page-not-found-content {
+  margin-top: 60px;
+  text-align: center;
+  .title {
+    font-weight: 700;
+    line-height: 1.25;
+    color: $primary;
+    font-size: 68px;
+    @include max-screen(768, 991) {
+      font-size: 45px;
+    }
+    @include max-screen(575) {
+      font-size: 45px;
+    }
+    small {
+      font-size: 30px;
+    }
+  }
+  p {
+    margin-bottom: 40px;
+  }
+}
