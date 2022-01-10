@@ -105,7 +105,7 @@
                 url: '{{ route("panel.user.account.setSessionDefaultAccount") }}',
                 data: {
                     id: data._id,
-                    platform: parseInt('{{ App\Helper\TokenHelper::$YOUTUBE }}'),
+                    platform: parseInt('{{ App\Helper\TokenHelper::$PLATFORMS["youtube"] }}'),
                 },
                 success: function() {
                     $("#btnVideoDetailBack").click();
