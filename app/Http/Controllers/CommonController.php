@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 class CommonController extends Controller
 {
