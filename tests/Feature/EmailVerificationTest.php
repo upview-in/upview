@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Traits\RefreshDatabaseTransactionLess;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -12,7 +13,9 @@ use Tests\TestCase;
 
 class EmailVerificationTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, RefreshDatabaseTransactionLess {
+        RefreshDatabaseTransactionless::refreshTestDatabase insteadof RefreshDatabase;
+    }
 
     public function test_email_verification_screen_can_be_rendered()
     {
