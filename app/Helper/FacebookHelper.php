@@ -40,7 +40,7 @@ class FacebookHelper
 
             $accountIndex = is_null($accountIndex) ? 0 : $accountIndex;
 
-            if (!empty($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
+            if (is_array($accessCode) && !empty($accessCode) && ($accessCode[$accountIndex]->expire_in == -1 || time() < $accessCode[$accountIndex]->expire_in)) {
                 $client->setDefaultAccessToken($accessCode[$accountIndex]->access_token);
             }
         }
