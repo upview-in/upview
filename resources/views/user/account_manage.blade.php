@@ -155,7 +155,7 @@
 							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100"><em class="fab fa-youtube"></em> Youtube</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100"><em class="fab fa-facebook-square"></em> FaceBook</a>
+							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100"><em class="fab fa-facebook-square"></em> Facebook</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
 							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-100"><em class="fab fa-instagram"></em> Instagram</a>
