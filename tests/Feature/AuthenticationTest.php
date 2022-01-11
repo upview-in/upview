@@ -4,12 +4,15 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Traits\RefreshDatabaseTransactionLess;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, RefreshDatabaseTransactionLess {
+        RefreshDatabaseTransactionless::refreshTestDatabase insteadof RefreshDatabase;
+    }
 
     public function test_login_screen_can_be_rendered()
     {

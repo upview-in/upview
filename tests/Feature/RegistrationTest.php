@@ -3,12 +3,15 @@
 namespace Tests\Feature;
 
 use App\Providers\RouteServiceProvider;
+use App\Traits\RefreshDatabaseTransactionLess;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, RefreshDatabaseTransactionLess {
+        RefreshDatabaseTransactionLess::refreshTestDatabase insteadof RefreshDatabase;
+    }
 
     public function test_registration_screen_can_be_rendered()
     {
