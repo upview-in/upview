@@ -1,6 +1,6 @@
 @section('path-navigation')
     <a class="breadcrumb-item" href="#">Analayze</a>
-    <a class="breadcrumb-item" href="#">Instagram</a>
+    <a class="breadcrumb-item" href="#">Facebook</a>
     <span class="breadcrumb-item active">Overview</span>
 @endsection
 
@@ -129,7 +129,7 @@
                     url: '{{ route('panel.user.account.setSessionDefaultAccount') }}',
                     data: {
                         id: data._id,
-                        platform: parseInt('{{ App\Helper\TokenHelper::$FACEBOOK }}'),
+                        platform: parseInt('{{ App\Helper\TokenHelper::$PLATFORMS["facebook"] }}'),
 
                     },
                     success: function() {
