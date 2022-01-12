@@ -17,6 +17,7 @@
                     @endif
                     {{-- Success Message Div End --}}
                     <table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
+                        <caption></caption>
                         <thead>
 							<tr>
 								<th scope="col" data-sortable="true">#</th>
