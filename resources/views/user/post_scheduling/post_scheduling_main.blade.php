@@ -175,7 +175,7 @@
                     </span>
                     @enderror
 
-                    <div class="form-group media align-items-center">
+                    <div class="form-group media align-items-center col-md-8">
 
                         <input id="post_media" name="post_media" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
 
@@ -187,9 +187,9 @@
                                 Max file size: 6MB
                             </p>
                         </div>
-                        <div>
-                            <button id="btnUploadPostMedia" class="btn btn-tone btn-primary">{{ __('Upload') }}</button>
-                        </div>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <button id="btnUploadPostMedia" class="btn btn-tone btn-lg btn-primary btn-block">{{ __('Upload') }}</button>
                     </div>
                     @error('post_media')
                     <span class="invalid-feedback d-block" role="alert">
