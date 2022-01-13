@@ -70,6 +70,7 @@
 							<tr>
 								<th scope="col" data-sortable="true">#</th>
 								<th scope="col" data-sortable="true" data-field="name">Name</th>
+								<th scope="col" data-sortable="true" data-field="socialAccount">Social Accounts Linked</th>
 								<th scope="col" data-sortable="true" data-field="authorized_since">Authorized Since</th>
 								<th scope="col">Actions</th>
 							</tr>
@@ -79,6 +80,31 @@
 								<tr>
 									<th scope="row">{{ $key+1 }}</th>
 									<td class="justify-center">{{ $profiles['title'] ?? '' }}</td>
+									<td class="justify-center"> 
+										@foreach($linked_platforms[$key] as $platforms)
+											@if($platforms == 'facebook')
+												<em class='fab fa-facebook-f p-1 font-size-20'></em>
+											@endif
+											@if($platforms == 'instagram')
+												<em class='fab fa-instagram p-1 font-size-20'> </em>
+											@endif
+											@if($platforms == 'linkedin')
+												<em class='fab fa-linkedin-in p-1 font-size-20'> </em>
+											@endif
+											@if($platforms == 'reddit')
+												<em class='fab fa-reddit-alien p-1 font-size-20'> </em>
+											@endif
+											@if($platforms == 'twitter')
+												<em class='fab fa-twitter p-1 font-size-20'> </em>
+											@endif
+											@if($platforms == 'pinterest')
+												<em class='fab fa-pinterest-p p-1 font-size-20'> </em>
+											@endif
+											@if($platforms == 'tiktok')
+												<em class='fab fa-tiktok p-1 font-size-20'> </em>
+											@endif
+										@endforeach
+									</td>
 									<td class="justify-center">{{ $profiles['authorized_on'] ?? '' }}</td>
 									<td class="justify-center">
 										<form method="POST" action="{{ route('panel.user.profile.deleteProfile') }}">
