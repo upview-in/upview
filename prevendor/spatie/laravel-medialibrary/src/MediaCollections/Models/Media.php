@@ -7,11 +7,11 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\Eloquent\Builder;
 //use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\Conversions\ConversionCollection;
 use Spatie\MediaLibrary\Conversions\ImageGenerators\ImageGeneratorFactory;
@@ -35,9 +35,9 @@ class Media extends Model implements Responsable, Htmlable
     use CustomMediaProperties;
     use HasUuid;
 
-    protected $table = 'media';
+    public const TYPE_OTHER = 'other';
 
-    const TYPE_OTHER = 'other';
+    protected $table = 'media';
 
     protected $guarded = [];
 
@@ -47,6 +47,11 @@ class Media extends Model implements Responsable, Htmlable
         'generated_conversions' => 'array',
         'responsive_images' => 'array',
     ];
+
+    public function __invoke(...$arguments): HtmlableMedia
+    {
+        return $this->img(...$arguments);
+    }
 
     public function newCollection(array $models = [])
     {
@@ -193,7 +198,6 @@ class Media extends Model implements Responsable, Htmlable
         return collect($this->generated_conversions ?? []);
     }
 
-
     public function markAsConversionGenerated(string $conversionName): self
     {
         $generatedConversions = $this->generated_conversions;
@@ -226,7 +230,6 @@ class Media extends Model implements Responsable, Htmlable
 
         return $generatedConversions[$conversionName] ?? false;
     }
-
 
     public function toResponse($request)
     {
@@ -325,11 +328,6 @@ class Media extends Model implements Responsable, Htmlable
         return (new HtmlableMedia($this))
             ->conversion($conversionName)
             ->attributes($extraAttributes);
-    }
-
-    public function __invoke(...$arguments): HtmlableMedia
-    {
-        return $this->img(...$arguments);
     }
 
     public function temporaryUpload(): BelongsTo

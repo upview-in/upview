@@ -5,7 +5,7 @@ return [
     'domains' => [
         'main' => env('MAIN_DOMAIN', 'upview.localhost'),
         'app' => env('APP_DOMAIN', 'app.upview.localhost'),
-        'admin' => env('ADMIN_DOMAIN', 'admin.upview.localhost')
+        'admin' => env('ADMIN_DOMAIN', 'admin.upview.localhost'),
     ],
 
     /*
@@ -20,7 +20,6 @@ return [
     */
 
     'name' => env('APP_NAME', 'Upview India'),
-
 
     /*
     |--------------------------------------------------------------------------
@@ -170,7 +169,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers... 
+         * Package Service Providers...
          */
 
         /*

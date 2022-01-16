@@ -160,7 +160,7 @@
                         <div class="form-group col-md-4">
                             <label class="font-weight-semibold" for="dob">{{ __('Date of Birth') }}</label>
                             <div class="input-affix m-b-10">
-                                <i class="prefix-icon anticon anticon-calendar"></i>
+                                <em class="prefix-icon anticon anticon-calendar"></em>
                                 <input type="text" class="form-control datepicker-input" id="dob" name="birth_date" placeholder="Date of Birth" value="{{ old('birth_date') ?? $user->birth_date }}">
                             </div>
                             @error('birth_date')

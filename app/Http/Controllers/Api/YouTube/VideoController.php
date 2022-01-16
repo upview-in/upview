@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\Youtube;
+namespace App\Http\Controllers\Api\YouTube;
 
 use App\Helper\Functions;
 use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Youtube\Video\GetVideoAnalytics;
-use App\Http\Requests\Api\Youtube\Video\GetVideoDetailsFromVideoID;
-use App\Http\Requests\Api\Youtube\Video\GetVideoListFromChannelID;
-use App\Http\Requests\Api\Youtube\Video\GetVideoListFromName;
+use App\Http\Requests\Api\YouTube\Video\GetVideoAnalytics;
+use App\Http\Requests\Api\YouTube\Video\GetVideoDetailsFromVideoID;
+use App\Http\Requests\Api\YouTube\Video\GetVideoListFromChannelID;
+use App\Http\Requests\Api\YouTube\Video\GetVideoListFromName;
 use Illuminate\Http\Request;
 
 class VideoController extends Controller
@@ -110,7 +110,7 @@ class VideoController extends Controller
             'startDate' => $request->startDate,
             'endDate' => $request->endDate,
             'dimensions' => $request->dimensions ?? 'day',
-            'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
+            'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,likes,comments,shares,subscribersGained,subscribersLost',
             // 'sort' => 'day',
             'filters' => 'video==' . $request->video_id . ';' . ($request->filters ?? ''),
         ]);

@@ -26,7 +26,7 @@
 namespace Facebook\Http;
 
 /**
- * Class GraphRawResponse
+ * Class GraphRawResponse.
  *
  * @package Facebook
  */
@@ -50,14 +50,14 @@ class GraphRawResponse
     /**
      * Creates a new GraphRawResponse entity.
      *
-     * @param string|array $headers        The headers as a raw string or array.
+     * @param array|string $headers        The headers as a raw string or array.
      * @param string       $body           The raw response body.
      * @param int          $httpStatusCode The HTTP response code (if sending headers as parsed array).
      */
     public function __construct($headers, $body, $httpStatusCode = null)
     {
         if (is_numeric($httpStatusCode)) {
-            $this->httpResponseCode = (int)$httpStatusCode;
+            $this->httpResponseCode = (int) $httpStatusCode;
         }
 
         if (is_array($headers)) {
@@ -108,7 +108,7 @@ class GraphRawResponse
     {
         //preg_match('|HTTP/\d\.\d\s+(\d+)\s+.*|', $rawResponseHeader, $match);
         preg_match('/HTTP\/\d(?:\.\d)?\s+(\d+)\s+/', $rawResponseHeader, $match);
-        $this->httpResponseCode = (int)$match[1];
+        $this->httpResponseCode = (int) $match[1];
     }
 
     /**

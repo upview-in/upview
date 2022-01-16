@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube\Comment;
+namespace App\Http\Requests\Api\YouTube\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
 

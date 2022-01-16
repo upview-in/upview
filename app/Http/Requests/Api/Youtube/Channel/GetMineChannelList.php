@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube\Channel;
+namespace App\Http\Requests\Api\YouTube\Channel;
 
 use Illuminate\Foundation\Http\FormRequest;
 

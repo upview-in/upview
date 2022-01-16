@@ -97,7 +97,7 @@
             $("#countryList").select2({
                 allowClear: true,
                 data: _countryList,
-                placeholder: 'Country Wise',
+                placeholder: 'Country',
             });
 
             $('#countryList').on('change', function(e) {
@@ -187,19 +187,19 @@
                 'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
                 'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ],
-                'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ],
-                'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ],
-                'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
-                'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf(
-                    'year')],
-                'Overall': [moment(), moment()],
+                // 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
+                //     .endOf('month')
+                // ],
+                // 'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month')
+                //     .endOf('month')
+                // ],
+                // 'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month')
+                //     .endOf('month')
+                // ],
+                // 'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+                // 'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf(
+                //     'year')],
+                // 'Overall': [moment(), moment()],
             };
 
             $('#daterange').daterangepicker({
@@ -459,23 +459,23 @@
 
                     <div class="row mt-4">
                         <div class="col">
-                            <span class="text-red"><i class="far fa-id-card"></i> Birthday</span>
+                            <span class="text-red"><em class="far fa-id-card"></em> Birthday</span>
                             <br>
                             <label id="fbAccBirthday" class="font-weight-bold"></label>
 
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="fas fa-users"></i> Friends</span>
+                            <span class="text-red"><em class="fas fa-users"></em> Friends</span>
                             <br>
                             <label id="fbAccFollowersCount" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="fas fa-photo-video"></i> Total Posts</span>
+                            <span class="text-red"><em class="fas fa-photo-video"></em> Total Posts</span>
                             <br>
                             <label id="fbAccMediaCount" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="far fa-id-card"></i> Gender</span>
+                            <span class="text-red"><em class="far fa-id-card"></em> Gender</span>
                             <br>
                             <label id="fbAccGender" class="font-weight-bold"></label>
 
@@ -505,29 +505,29 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-6 mb-2">
-                                <span class="text-red"><i class="far fa-id-card"></i> About</span>
+                                <span class="text-red"><em class="far fa-id-card"></em> About</span>
                                 <br>
                                 <label id="fbPageAbout" class="font-weight-bold"></label>
 
                             </div>
                             <div class="col-6 mb-2">
-                                <span class="text-red"><i class="fas fa-list-alt"></i> Description</span>
+                                <span class="text-red"><em class="fas fa-list-alt"></em> Description</span>
                                 <br>
                                 <label id="fbPageDescription" class="font-weight-bold"></label>
                             </div>
                             <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red"><i class="fas fa-receipt"></i> Bio</span>
+                                <span class="text-red"><em class="fas fa-receipt"></em> Bio</span>
                                 <br>
                                 <label id="fbPageBio" class="font-weight-bold"></label>
 
                             </div>
                             <div class="col-md-3 col-sm-4 col-6 mb-2 mb-2">
-                                <span class="text-red"><i class="fas fa-pencil-alt"></i> Business Name</span>
+                                <span class="text-red"><em class="fas fa-pencil-alt"></em> Business Name</span>
                                 <br>
                                 <label id="fbPageBusiness" class="font-weight-bold"></label>
                             </div>
                             <div class="col-md-3 col-sm-4 mb-2">
-                                <span class="text-red"><i class="fas fa-sort-numeric-up"></i> Engagement</span>
+                                <span class="text-red"><em class="fas fa-sort-numeric-up"></em> Engagement</span>
                                 <br>
                                 <label id="fbPageEngagement" class="font-weight-bold"></label>
                                 <br>
@@ -535,33 +535,33 @@
 
                             </div>
                             <div class="col-md-3 col-sm-4 mb-2">
-                                <span class="text-red"><i class="fas fa-users"></i> Followers Count</span>
+                                <span class="text-red"><em class="fas fa-users"></em> Followers Count</span>
                                 <br>
                                 <label id="fbPageFollowers" class="font-weight-bold"></label>
 
                             </div>
                             <div class="col-md-3 col-sm-4 mb-2">
-                                <span class="text-red md-5"><i class="fas fa-check-double"></i> Is Published?</span>
+                                <span class="text-red md-5"><em class="fas fa-check-double"></em> Is Published?</span>
                                 <br>
                                 <label  id="fbPagePublished"   class="font-weight-bold"></label>
                                 <br>
                             </div>
                             <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red"><i class="fas fa-globe-asia"></i> Location</span>
+                                <span class="text-red"><em class="fas fa-globe-asia"></em> Location</span>
                                 <br>
                                 <label id="fbPageLocation" class="font-weight-bold"></label>
 
                             </div>
 
                             <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red"><i class="fas fa-users"></i> Fan Count</span>
+                                <span class="text-red"><em class="fas fa-users"></em> Fan Count</span>
                                 <br>
                                 <label id="fbPageFans" class="font-weight-bold"></label>
 
                             </div>
 
                             <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red"><i class="fas fa-photo-video"></i> Media Count</span>
+                                <span class="text-red"><em class="fas fa-photo-video"></em> Media Count</span>
                                 <br>
                                 <label id="fbPageMediaCount" class="font-weight-bold"></label>
 

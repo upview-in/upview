@@ -16,7 +16,7 @@ class AyrProfileController extends Controller
 
         $temp = [];
         foreach ($userProfiles as $profiles) {
-            $platforms[] = array_merge($temp, (new AyrshareController())->getAyrActiveSocialAccounts(new AyrActiveSocialAccount(["profile_key"=>$profiles['profile_key']])));
+            $platforms[] = array_merge($temp, (new AyrshareController())->getAyrActiveSocialAccounts(new AyrActiveSocialAccount(['profile_key'=>$profiles['profile_key']])));
         }
 
         return view('user.profile_manage', ['userProfiles'=>$userProfiles, 'linked_platforms'=>$platforms]);

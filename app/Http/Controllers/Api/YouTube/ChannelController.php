@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\Youtube;
+namespace App\Http\Controllers\Api\YouTube;
 
 use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Youtube\Channel\GetChannelDetailsFromID;
-use App\Http\Requests\Api\Youtube\Channel\GetChannelListFromName;
-use App\Http\Requests\Api\Youtube\Channel\GetMineChannelAnalytics;
-use App\Http\Requests\Api\Youtube\Channel\GetMineChannelList;
-use App\Http\Requests\Api\Youtube\Channel\GetTopChannelsList;
+use App\Http\Requests\Api\YouTube\Channel\GetChannelDetailsFromID;
+use App\Http\Requests\Api\YouTube\Channel\GetChannelListFromName;
+use App\Http\Requests\Api\YouTube\Channel\GetMineChannelAnalytics;
+use App\Http\Requests\Api\YouTube\Channel\GetMineChannelList;
+use App\Http\Requests\Api\YouTube\Channel\GetTopChannelsList;
 use Illuminate\Http\Request;
 
 class ChannelController extends Controller
@@ -107,7 +107,7 @@ class ChannelController extends Controller
             'startDate' => $request->startDate,
             'endDate' => $request->endDate,
             'dimensions' => $request->dimensions ?? 'day',
-            'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,dislikes,likes,comments,shares,subscribersGained,subscribersLost',
+            'metrics' => 'estimatedMinutesWatched,views,averageViewDuration,likes,comments,shares,subscribersGained,subscribersLost',
             'filters' => $request->filters ?? '',
         ]);
 

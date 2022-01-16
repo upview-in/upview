@@ -19,7 +19,7 @@
 											<img class="me-2" src="assets/images/icons/search.svg" width="16" alt="Image Description">
 											<span>Sign Up with Google</span>
 										</span>
-									</a> <a href="javascript:;" class="btn btn-facebook"><i class="bx bxl-facebook"></i>Sign Up with Facebook</a>
+									</a> <a href="javascript:;" class="btn btn-facebook"><em class="bx bxl-facebook"></em>Sign Up with Facebook</a>
 								</div>
 								<div class="login-separater text-center mb-4"> <span>OR SIGN UP WITH EMAIL</span>
 									<hr />

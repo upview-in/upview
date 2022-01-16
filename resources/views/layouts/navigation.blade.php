@@ -124,14 +124,14 @@
                                     {{ __('Log out') }}
                                 </span>
                             </div>
-                            <i class="anticon font-size-10 anticon-right"></i>
+                            <em class="anticon font-size-10 anticon-right"></em>
                         </div>
                     </a>
                 </div>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="modal" data-target="#quick-view">
-                    <i class="anticon anticon-appstore"></i>
+                    <em class="anticon anticon-appstore"></em>
                 </a>
             </li>
         </ul>

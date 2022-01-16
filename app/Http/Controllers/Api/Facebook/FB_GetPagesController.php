@@ -31,7 +31,7 @@ class FB_GetPagesController extends Controller
 
             $responseArr = json_decode($response, true);
         } catch (FacebookSDKException $e) {
-            dd($$e->message);
+            dd(${$e}->message);
         }
 
         return view('get-pages', ['responseArr' => $responseArr['data'][0]]);
