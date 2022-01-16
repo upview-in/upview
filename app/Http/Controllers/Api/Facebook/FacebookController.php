@@ -88,9 +88,9 @@ class FacebookController extends Controller
     {
         $fb = new FacebookHelper();
         $fb_client = $fb->getFacebookClient();
-        $fbUser = $fb_client->get('/me/accounts')->getBody();
+
+        return $fb_client->get('/me/accounts')->getBody();
         //  $fbUser = json_encode($fbUser, true);
-        return $fbUser;
     }
 
     public static function getFacebookPageData()
@@ -132,9 +132,7 @@ class FacebookController extends Controller
         // dd('/'.$fbPageID. '/insights?metric=page_post_engagements&period=days_28');
         $fbUser = $fb_client->get($fbPageID . '/insights?metric=page_post_engagements,page_impressions&period=days_28')->getBody();
 
-        $fbUser = json_encode($fbUser);
-
-        return $fbUser;
+        return json_encode($fbUser);
     }
 
     public static function getFacebookPagesInsightsEx(GetMineAccountDetails $request)

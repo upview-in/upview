@@ -96,7 +96,7 @@
             $("#countryList").select2({
                 allowClear: true,
                 data: _countryList,
-                placeholder: 'Country Wise',
+                placeholder: 'Country',
             });
 
             $('#countryList').on('change', function(e) {
@@ -141,19 +141,19 @@
                 'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
                 'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ],
-                'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ],
-                'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ],
-                'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
-                'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf(
-                    'year')],
-                'Overall': [moment(), moment()],
+                // 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
+                //     .endOf('month')
+                // ],
+                // 'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month')
+                //     .endOf('month')
+                // ],
+                // 'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month')
+                //     .endOf('month')
+                // ],
+                // 'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+                // 'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf(
+                //     'year')],
+                // 'Overall': [moment(), moment()],
             };
 
             $('#daterange').daterangepicker({
@@ -301,23 +301,23 @@
 
                     <div class="row mt-4">
                         <div class="col">
-                            <span class="text-red"><i class="far fa-id-card"></i> Username</span>
+                            <span class="text-red"><em class="far fa-id-card"></em> Username</span>
                             <br>
                             <label id="igPage1UserName" class="font-weight-bold"></label>
 
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="fas fa-users"></i> Followers</span>
+                            <span class="text-red"><em class="fas fa-users"></em> Followers</span>
                             <br>
                             <label id="igPage1FollowersCount" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="fas fa-user-friends"></i> Following</span>
+                            <span class="text-red"><em class="fas fa-user-friends"></em> Following</span>
                             <br>
                             <label id="igPage1FollowingCount" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="fas fa-photo-video"></i> Total Posts</span>
+                            <span class="text-red"><em class="fas fa-photo-video"></em> Total Posts</span>
                             <br>
                             <label id="igPage1MediaCount" class="font-weight-bold"></label>
                         </div>
@@ -327,24 +327,24 @@
         </div>
         <div class="card shadow" id="InstaInsights">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Insights <i class="fas fa-xs fa-question-circle " title="(Data according to last 28 days) Subject to Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></i></label>
+                <label class="h3 m-0">Insights <em class="fas fa-xs fa-question-circle " title="(Data according to last 28 days) Subject to Instagram Limitations - This metric is limited by the Instagram, based on the account linked. To know more, Check out Instagram's limitations."></em></label>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-30 border-right">
                         <div class="row mb-3">
                             <div class="col">
-                                <span class="text-red"><i class="far fa-heart"></i> Impressions</span>
+                                <span class="text-red"><em class="far fa-heart"></em> Impressions</span>
                                 <br>
                                 <label id="igPage1Impressions" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-instagram"></i> Profile Reach</span>
+                                <span class="text-red"><em class="anticon anticon-instagram"></em> Profile Reach</span>
                                 <br>
                                 <label id="igPage1Reach" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="far fa-check-circle"></i> Profile Views</span>
+                                <span class="text-red"><em class="far fa-check-circle"></em> Profile Views</span>
                                 <br>
                                 <label id="igPage1Views" class="font-weight-bold"></label>
                             </div>

@@ -26,7 +26,7 @@
                             <span class="icon-holder">
                                 <em class="anticon anticon-youtube"></em>
                             </span>
-                            <span class="title">{{ __('Youtube') }}</span>
+                            <span class="title">{{ __('YouTube') }}</span>
                             <span class="arrow">
                                 <em class="arrow-icon"></em>
                             </span>

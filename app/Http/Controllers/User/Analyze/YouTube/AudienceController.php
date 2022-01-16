@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Analyze\Youtube;
+namespace App\Http\Controllers\User\Analyze\YouTube;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

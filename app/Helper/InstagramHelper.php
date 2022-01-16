@@ -6,7 +6,7 @@ use Facebook\Facebook;
 
 class InstagramHelper
 {
-    public $clientInstance = null;
+    public $clientInstance;
 
     public function __construct()
     {

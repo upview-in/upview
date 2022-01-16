@@ -26,7 +26,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
-                                            <i class="prefix-icon anticon anticon-mail"></i>
+                                            <em class="prefix-icon anticon anticon-mail"></em>
                                             <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
                                         </div>
                                         @error('email')

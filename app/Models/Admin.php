@@ -16,8 +16,6 @@ class Admin extends Authenticatable implements HasMedia
 {
     use HasFactory, HasAdminPermissionsTrait, InteractsWithMedia, Searchable;
 
-    protected $guard = 'admin';
-
     /**
      * Searchable attributes.
      *
@@ -29,6 +27,8 @@ class Admin extends Authenticatable implements HasMedia
         'password',
         'local_lang',
     ];
+
+    protected $guard = 'admin';
 
     /**
      * The attributes that are mass assignable.

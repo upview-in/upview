@@ -1,6 +1,6 @@
 @section('path-navigation')
 <a class="breadcrumb-item" href="#">Analayze</a>
-<a class="breadcrumb-item" href="#">Youtube</a>
+<a class="breadcrumb-item" href="#">YouTube</a>
 <span class="breadcrumb-item active">Overview</span>
 @endsection
 
@@ -71,7 +71,7 @@
         $("#countryList").select2({
             allowClear: true,
             data: _countryList,
-            placeholder: 'Country Wise',
+            placeholder: 'Country',
         });
 
         $('#countryList').on('change', function(e) {
@@ -116,12 +116,12 @@
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
-            'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
-            'Overall': [moment(), moment()],
+            // 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            // 'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            // 'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            // 'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+            // 'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
+            // 'Overall': [moment(), moment()],
         };
 
         $('#daterange').daterangepicker({
@@ -133,10 +133,10 @@
         $('#daterange').on('apply.daterangepicker', function(ev, picker) {
             __startDate = picker.startDate;
             __endDate = picker.endDate;
-            if (__endDate.diff(__startDate, 'days') > 62) {
-                $("#GroupBy").prop('selectedIndex', 1);
-                GroupBy = $("#GroupBy").val();
-            }
+            // if (__endDate.diff(__startDate, 'days') > 62) {
+            //     $("#GroupBy").prop('selectedIndex', 1);
+            //     GroupBy = $("#GroupBy").val();
+            // }
             loadAnalytics();
         });
 
@@ -158,7 +158,7 @@
                 success: function(response) {
                     let data = response.ChannelDetails;
 
-                    $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(data.publishedAt), moment()];
+                    // $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(data.publishedAt), moment()];
 
                     $("#c1ChannelProfileImage").attr('data-src', data.profileURL);
                     $("#c1ChannelProfileImage").attr('src', "{{ asset('images/others/loading.gif') }}");
@@ -216,7 +216,6 @@
                     // $("#HighlightsSubsVsNonSubs").html();
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
-                    $("#OverviewStatisticsDislikes").html(convertToInternationalCurrencySystem(OverviewStatistics.DisLikes));
                     $("#OverviewStatisticsShares").html(convertToInternationalCurrencySystem(OverviewStatistics.Shares));
                     $("#OverviewStatisticsComments").html(convertToInternationalCurrencySystem(OverviewStatistics.Comments));
                     $("#OverviewStatisticsEstMinWatched").html(formatTime(OverviewStatistics.EstMinWatched));
@@ -317,34 +316,34 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Views</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Views</span>
                             <br>
                             <label id="c1ChannelViews" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Subscriber</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Subscriber</span>
                             <br>
                             <label id="c1ChannelSubscriber" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Videos</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Videos</span>
                             <br>
                             <label id="c1ChannelVideos" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Joining Date</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Joining Date</span>
                             <br>
                             <label id="c1ChannelJoiningDate" class="font-weight-bold"></label>
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-unordered-list"></i> Category</span>
+                            <span class="text-red"><em class="anticon anticon-unordered-list"></em> Category</span>
                             <br>
                             <label id="c1ChannelCategory" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-flag"></i> Country</span>
+                            <span class="text-red"><em class="anticon anticon-flag"></em> Country</span>
                             <br>
                             <label id="c1ChannelCountry" class="font-weight-bold"></label>
                         </div>
@@ -357,19 +356,19 @@
             <div class="col-md-2 col-12">
                 <input class="form-control shadow" id="countryList" />
             </div>
-            <div class="col-md-auto col-12">
+            <!-- <div class="col-md-auto col-12">
                 <div class="form-group">
                     <select class="form-control shadow" id="GroupBy">
-                        <option value="day" selected>Day Wise</option>
-                        <option value="month">Month Wise</option>
+                        <option value="day" selected>Day</option>
+                        <option value="month">Month</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-auto col-12">
                 <div class="form-group">
                     <div class="form-control shadow" id="daterange">
-                        <i class="fa fa-calendar"></i>&nbsp;
-                        <span></span> <i class="fa fa-caret-down"></i>
+                        <em class="fa fa-calendar"></em>&nbsp;
+                        <span></span> <em class="fa fa-caret-down"></em>
                     </div>
                 </div>
             </div>
@@ -384,7 +383,7 @@
                     <div class="col-12 col-md-2 border-right">
                         <div class="row mb-3">
                             <div class="col">
-                                <span class="text-red">Subscribers Growth</span>
+                                <span class="text-red">Subscribers</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsSubscribersGrowth"></label>
                             </div>
@@ -409,27 +408,27 @@
                     <div class="col-12 col-md-10">
                         <div class="row">
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Country</span>
+                                <span class="text-red">Top geographies</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopCountry"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Device</span>
+                                <span class="text-red">Top Device type</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopDevice"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Platform</span>
+                                <span class="text-red">Top Operating system</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopPlatform"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Traffic Source</span>
+                                <span class="text-red">Top Traffic source types</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTrafficSource"></label>
                             </div>
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Social Media</span>
+                                <span class="text-red">Top Sharing service</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopSocialMedia"></label>
                             </div>
@@ -461,11 +460,6 @@
                                 <label class="font-weight-bolder" id="OverviewStatisticsLikes"></label>
                             </div>
                             <div class="mt-2 mb-2">
-                                <span class="text-red">Dislikes</span>
-                                <br />
-                                <label class="font-weight-bolder" id="OverviewStatisticsDislikes"></label>
-                            </div>
-                            <div class="mt-2 mb-2">
                                 <span class="text-red">Shares</span>
                                 <br />
                                 <label class="font-weight-bolder" id="OverviewStatisticsShares"></label>
@@ -476,7 +470,7 @@
                                 <label class="font-weight-bolder" id="OverviewStatisticsComments"></label>
                             </div>
                             <div class="mt-2">
-                                <span class="text-red">Est. Minutes Watched</span>
+                                <span class="text-red">Watch time (hours)</span>
                                 <br />
                                 <label class="font-weight-bolder" id="OverviewStatisticsEstMinWatched"></label>
                             </div>
@@ -490,7 +484,7 @@
             <div class="col-md-6 col-12">
                 <div class="card shadow" id="DeviceWise">
                     <div class="card-header p-15 ml-3">
-                        <label class="h3 m-0">Device Wise</label>
+                        <label class="h3 m-0">Device type</label>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -505,7 +499,7 @@
             <div class="col-md-6 col-12">
                 <div class="card shadow" id="OsWise">
                     <div class="card-header p-15 ml-3">
-                        <label class="h3 m-0">Platform Wise</label>
+                        <label class="h3 m-0">Operating system</label>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -520,7 +514,7 @@
             <div class="col-12">
                 <div class="card shadow" id="TrafficSource">
                     <div class="card-header p-15 ml-3">
-                        <label class="h3 m-0">Traffic Source</label>
+                        <label class="h3 m-0">Traffic source types</label>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -550,7 +544,7 @@
             <div class="col-md-6 col-12">
                 <div class="card shadow" id="SocialMediaTrafficSource">
                     <div class="card-header p-15 ml-3">
-                        <label class="h3 m-0">Social Media Traffic Source</label>
+                        <label class="h3 m-0">Sharing service</label>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -565,7 +559,7 @@
             <div class="col-12">
                 <div class="card shadow" id="GeographicStatistics">
                     <div class="card-header p-15 ml-3">
-                        <label class="h3 m-0">Geographic Statistics</label>
+                        <label class="h3 m-0">Geography</label>
                     </div>
                     <div class="card-body">
                         <div class="row">

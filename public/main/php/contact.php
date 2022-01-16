@@ -1,46 +1,41 @@
 <?php
 
-    header("Access-Control-Allow-Origin: *");
-
-
+    header('Access-Control-Allow-Origin: *');
 
     // Only process POST reqeusts.
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Get the form fields and remove whitespace.
 
-        $name = strip_tags(trim($_POST["name"]));
+        $name = strip_tags(trim($_POST['name']));
 
-        $name = str_replace(array("\r","\n"),array(" "," "),$name);
+        $name = str_replace(["\r", "\n"], [' ', ' '], $name);
 
-        $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+        $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 
         // $subject = trim($_POST["subject"]);
 
         // $phone = trim($_POST["number"]);
 
-        $message = trim($_POST["message"]);
-
+        $message = trim($_POST['message']);
 
         // Check that data was sent to the mailer.
 
-        if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (empty($name) or empty($message) or !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
             // Set a 400 (bad request) response code and exit.
 
             http_response_code(400);
 
-            echo "Please complete the form and try again.";
+            echo 'Please complete the form and try again.';
 
             exit;
-
         }
-
 
         // Set the recipient email address.
 
-        $recipient = "mailcheck@demo.com";
+        $recipient = 'mailcheck@demo.com';
 
         // Set the email subject.
 
@@ -48,7 +43,7 @@
 
         // Build the email content.
 
-        $email_content = 
+        $email_content =
 
         '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -386,7 +381,7 @@
 
                                                         <hr>
 
-                                                        <h2>' . $name. '</h2>
+                                                        <h2>' . $name . '</h2>
 
                                                     </td>
 
@@ -418,7 +413,7 @@
 
                                                         <hr>
 
-                                                        <h2 class="email-txt">'. $email .'</h2>
+                                                        <h2 class="email-txt">' . $email . '</h2>
 
                                                     </td>
 
@@ -450,7 +445,7 @@
 
                                                 //         <hr>
 
-                                                //         <h2>'. $phone .'</h2>
+                                                //         <h2>' . $phone . '</h2>
 
                                                 //     </td>
 
@@ -482,7 +477,7 @@
 
                                                 // //         <hr>
 
-                                                // //         <h2>'. $subject .'</h2>
+                                                // //         <h2>' . $subject . '</h2>
 
                                                 // //     </td>
 
@@ -514,7 +509,7 @@
 
                                                         <hr>
 
-                                                        <p class="message-content">'. $message .'</p>
+                                                        <p class="message-content">' . $message . '</p>
 
                                                     </td>
 
@@ -582,19 +577,15 @@
 
         </html>';
 
-
-
         // Build the email headers.
 
-        $email_headers = "MIME-Version: 1.0" . "\r\n";
+        $email_headers = 'MIME-Version: 1.0' . "\r\n";
 
-        $email_headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $email_headers .= 'Content-type:text/html;charset=UTF-8' . "\r\n";
 
         $email_headers .= 'From:' . $name . ' ' . 'noreply@yourdomain.com' . "\r\n";
 
         $email_headers .= 'Reply-To:' . $email . "\r\n";
-
-
 
         // Send the email.
 
@@ -604,8 +595,7 @@
 
             http_response_code(200);
 
-            echo "Thank You! Your message has been sent.";
-
+            echo 'Thank You! Your message has been sent.';
         } else {
 
             // Set a 500 (internal server error) response code.
@@ -613,21 +603,12 @@
             http_response_code(500);
 
             echo "Oops! Something went wrong and we couldn't send your message.";
-
         }
-
-
-
     } else {
 
         // Not a POST request, set a 403 (forbidden) response code.
 
         http_response_code(403);
 
-        echo "There was a problem with your submission, please try again.";
-
+        echo 'There was a problem with your submission, please try again.';
     }
-
-
-
-?>

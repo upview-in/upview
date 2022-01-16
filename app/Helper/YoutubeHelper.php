@@ -8,7 +8,7 @@ use Google\Service\YouTubeAnalytics;
 
 class YoutubeHelper
 {
-    public $clientInstance = null;
+    public $clientInstance;
 
     public function __construct()
     {

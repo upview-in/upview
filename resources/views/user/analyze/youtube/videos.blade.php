@@ -1,6 +1,6 @@
 @section('path-navigation')
 <a class="breadcrumb-item" href="#">Analayze</a>
-<a class="breadcrumb-item" href="#">Youtube</a>
+<a class="breadcrumb-item" href="#">YouTube</a>
 <span class="breadcrumb-item active">Videos</span>
 @endsection
 
@@ -73,7 +73,7 @@
         $("#countryList").select2({
             allowClear: true,
             data: _countryList,
-            placeholder: 'Country Wise',
+            placeholder: 'Country',
         });
 
         $('#countryList').on('change', function(e) {
@@ -118,12 +118,12 @@
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
-            'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
-            'Overall': [moment(), moment()],
+            // 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            // 'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            // 'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            // 'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+            // 'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
+            // 'Overall': [moment(), moment()],
         };
 
         $('#daterange').daterangepicker({
@@ -210,29 +210,24 @@
                         '    </div>' +
                         '    <label class="h5 font-weight-bold overflow-dot openVideoDetails pointer" title="' + item.snippet.title + '" data-id="' + item.id + '">' + item.snippet.title + '</label>' +
                         '    <br />' +
-                        '    <span class="font-weight-light"><i class="anticon anticon-calendar"></i> Published: ' + $.datepicker.formatDate('M dd, yy', new Date(item.snippet.publishedAt)) + '</span>' +
+                        '    <span class="font-weight-light"><em class="anticon anticon-calendar"></em> Published: ' + $.datepicker.formatDate('M dd, yy', new Date(item.snippet.publishedAt)) + '</span>' +
                         '    <div class="row mt-3">' +
                         '        <div class="col-6">' +
-                        '            <label class="text-red"><i class="anticon anticon-eye"></i> Views</label>' +
+                        '            <label class="text-red"><em class="anticon anticon-eye"></em> Views</label>' +
                         '            <br />' +
                         '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.viewCount) + '</span>' +
                         '        </div>' +
                         '        <div class="col-6">' +
-                        '            <label class="text-red"><i class="anticon anticon-message"></i> Comments</label>' +
+                        '            <label class="text-red"><em class="anticon anticon-message"></em> Comments</label>' +
                         '            <br />' +
                         '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.commentCount) + '</span>' +
                         '        </div>' +
                         '    </div>' +
                         '    <div class="row mt-2">' +
-                        '        <div class="col-6">' +
-                        '            <label class="text-red"><i class="anticon anticon-like"></i> Likes</label>' +
+                        '        <div class="col-12">' +
+                        '            <label class="text-red"><em class="anticon anticon-like"></em> Likes</label>' +
                         '            <br />' +
                         '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.likeCount) + '</span>' +
-                        '        </div>' +
-                        '        <div class="col-6">' +
-                        '            <label class="text-red"><i class="anticon anticon-dislike"></i> Dislikes</label>' +
-                        '            <br />' +
-                        '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.dislikeCount) + '</span>' +
                         '        </div>' +
                         '    </div>' +
                         '</div>';
@@ -282,11 +277,10 @@
                         $("#v1VideoName").html(snippet.title);
                         $("#v1VideoViews").html(convertToInternationalCurrencySystem(statistics.viewCount));
                         $("#v1VideoLikes").html(convertToInternationalCurrencySystem(statistics.likeCount));
-                        $("#v1VideoDisLikes").html(convertToInternationalCurrencySystem(statistics.dislikeCount));
                         $("#v1VideoComments").html(convertToInternationalCurrencySystem(statistics.commentCount));
                         $("#v1VideoPublishedDate").html($.datepicker.formatDate('M dd, yy', new Date(snippet.publishedAt)));
 
-                        $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(snippet.publishedAt), moment()];
+                        // $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(snippet.publishedAt), moment()];
 
                         var tags = '';
                         var WordTreeTags = [];
@@ -407,7 +401,6 @@
                     let GeographicStatistics = data.GeographicStatistics;
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
-                    $("#OverviewStatisticsDislikes").html(convertToInternationalCurrencySystem(OverviewStatistics.DisLikes));
                     $("#OverviewStatisticsShares").html(convertToInternationalCurrencySystem(OverviewStatistics.Shares));
                     $("#OverviewStatisticsComments").html(convertToInternationalCurrencySystem(OverviewStatistics.Comments));
                     $("#OverviewStatisticsEstMinWatched").html(formatTime(OverviewStatistics.EstMinWatched));
@@ -517,7 +510,7 @@
         <Group id="VideoDetails">
             <div class="card shadow" id="Details">
                 <div class="card-header p-15 ml-3">
-                    <label class="h3 m-0"><i class="anticon anticon-arrow-left text-primary pointer" id="btnVideoDetailBack"></i>
+                    <label class="h3 m-0"><em class="anticon anticon-arrow-left text-primary pointer" id="btnVideoDetailBack"></em>
                         Video Details</label>
                 </div>
                 <div class="card-body" id="VideoDetailsChild">
@@ -525,7 +518,6 @@
                         <div class="col-auto" id="embedPlayer">
                             {{-- <iframe id="v1VideoPlayer" width="512px" height="288px"
                             data-src="https://www.youtube-nocookie.com/embed/" title="YouTube video player"
-                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe> --}}
                         </div>
@@ -537,34 +529,29 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col">
-                                    <span class="text-red"><i class="anticon anticon-eye"></i> Views</span>
+                                    <span class="text-red"><em class="anticon anticon-eye"></em> Views</span>
                                     <br>
                                     <label id="v1VideoViews" class="font-weight-bold"></label>
                                 </div>
                                 <div class="col">
-                                    <span class="text-red"><i class="anticon anticon-like"></i> Likes</span>
+                                    <span class="text-red"><em class="anticon anticon-like"></em> Likes</span>
                                     <br>
                                     <label id="v1VideoLikes" class="font-weight-bold"></label>
                                 </div>
                                 <div class="col">
-                                    <span class="text-red"><i class="anticon anticon-dislike"></i> DisLikes</span>
-                                    <br>
-                                    <label id="v1VideoDisLikes" class="font-weight-bold"></label>
-                                </div>
-                                <div class="col">
-                                    <span class="text-red"><i class="anticon anticon-message"></i> Comments</span>
+                                    <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
                                     <br>
                                     <label id="v1VideoComments" class="font-weight-bold"></label>
                                 </div>
                                 <div class="col">
-                                    <span class="text-red"><i class="anticon anticon-calendar"></i> Published Date</span>
+                                    <span class="text-red"><em class="anticon anticon-calendar"></em> Published Date</span>
                                     <br>
                                     <label id="v1VideoPublishedDate" class="font-weight-bold"></label>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col">
-                                    <span class="text-red"><i class="anticon anticon-tag"></i> Tags <sup class="text-gray pointer" id="btnCopyTags">(<i class="anticon anticon-copy"></i>
+                                    <span class="text-red"><em class="anticon anticon-tag"></em> Tags <sup class="text-gray pointer" id="btnCopyTags">(<em class="anticon anticon-copy"></em>
                                             Copy Tags)</sup></span>
                                     <div id="v1VideoTags" class="font-weight-bold mt-1">
                                     </div>
@@ -575,7 +562,7 @@
 
                     <div class="row p-20">
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-message"></i> YouTube comments</span>
+                            <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
                             <div id="v1VideoCommentsList" class="font-weight-bold mt-1 mb-3">
                             </div>
                         </div>
@@ -587,19 +574,19 @@
                 <div class="col-md-2 col-12">
                     <input class="form-control shadow" id="countryList" />
                 </div>
-                <div class="col-md-auto col-12">
+                <!-- <div class="col-md-auto col-12">
                     <div class="form-group">
                         <select class="form-control shadow" id="GroupBy">
-                            <option value="day" selected>Day Wise</option>
-                            <option value="month">Month Wise</option>
+                            <option value="day" selected>Day</option>
+                            <option value="month">Month</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-auto col-12">
                     <div class="form-group">
                         <div class="form-control shadow" id="daterange">
-                            <i class="fa fa-calendar"></i>&nbsp;
-                            <span></span> <i class="fa fa-caret-down"></i>
+                            <em class="fa fa-calendar"></em>&nbsp;
+                            <span></span> <em class="fa fa-caret-down"></em>
                         </div>
                     </div>
                 </div>
@@ -622,11 +609,6 @@
                                     <label class="font-weight-bolder" id="OverviewStatisticsLikes"></label>
                                 </div>
                                 <div class="mt-2 mb-2">
-                                    <span class="text-red">Dislikes</span>
-                                    <br />
-                                    <label class="font-weight-bolder" id="OverviewStatisticsDislikes"></label>
-                                </div>
-                                <div class="mt-2 mb-2">
                                     <span class="text-red">Shares</span>
                                     <br />
                                     <label class="font-weight-bolder" id="OverviewStatisticsShares"></label>
@@ -637,7 +619,7 @@
                                     <label class="font-weight-bolder" id="OverviewStatisticsComments"></label>
                                 </div>
                                 <div class="mt-2">
-                                    <span class="text-red">Est. Minutes Watched</span>
+                                    <span class="text-red">Watch time (hours)</span>
                                     <br />
                                     <label class="font-weight-bolder" id="OverviewStatisticsEstMinWatched"></label>
                                 </div>
@@ -651,7 +633,7 @@
                 <div class="col-md-6 col-12">
                     <div class="card shadow" id="DeviceWise">
                         <div class="card-header p-15 ml-3">
-                            <label class="h3 m-0">Device Wise</label>
+                            <label class="h3 m-0">Device type</label>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -666,7 +648,7 @@
                 <div class="col-md-6 col-12">
                     <div class="card shadow" id="OsWise">
                         <div class="card-header p-15 ml-3">
-                            <label class="h3 m-0">Platform Wise</label>
+                            <label class="h3 m-0">Operating system</label>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -681,7 +663,7 @@
                 <div class="col-12">
                     <div class="card shadow" id="TrafficSource">
                         <div class="card-header p-15 ml-3">
-                            <label class="h3 m-0">Traffic Source</label>
+                            <label class="h3 m-0">Traffic source types</label>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -711,7 +693,7 @@
                 <div class="col-md-6 col-12">
                     <div class="card shadow" id="SocialMediaTrafficSource">
                         <div class="card-header p-15 ml-3">
-                            <label class="h3 m-0">Social Media Traffic Source</label>
+                            <label class="h3 m-0">Sharing service</label>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -726,7 +708,7 @@
                 <div class="col-12">
                     <div class="card shadow" id="GeographicStatistics">
                         <div class="card-header p-15 ml-3">
-                            <label class="h3 m-0">Geographic Statistics</label>
+                            <label class="h3 m-0">Geography</label>
                         </div>
                         <div class="card-body">
                             <div class="row">

@@ -26,6 +26,6 @@ class WithoutHeaderLayout extends Component
     {
         App::setLocale(Auth::user()->local_lang ?? 'en');
 
-        return view('main.layouts.privacy'); 
+        return view('main.layouts.privacy');
     }
 }

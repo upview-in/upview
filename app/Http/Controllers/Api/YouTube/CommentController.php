@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api\Youtube;
+namespace App\Http\Controllers\Api\YouTube;
 
 use App\Helper\YoutubeHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Youtube\Comment\GetCommentThreadFromVideoID;
+use App\Http\Requests\Api\YouTube\Comment\GetCommentThreadFromVideoID;
 
 class CommentController extends Controller
 {

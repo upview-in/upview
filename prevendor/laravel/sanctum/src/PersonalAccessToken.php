@@ -3,8 +3,8 @@
 namespace Laravel\Sanctum;
 
 //use Illuminate\Database\Eloquent\Model;
-use Laravel\Sanctum\Contracts\HasAbilities;
 use Jenssegers\Mongodb\Eloquent\Model;
+use Laravel\Sanctum\Contracts\HasAbilities;
 
 class PersonalAccessToken extends Model implements HasAbilities
 {
@@ -52,7 +52,7 @@ class PersonalAccessToken extends Model implements HasAbilities
      * Find the token instance matching the given token.
      *
      * @param  string  $token
-     * @return static|null
+     * @return null|static
      */
     public static function findToken($token)
     {
@@ -87,6 +87,6 @@ class PersonalAccessToken extends Model implements HasAbilities
      */
     public function cant($ability)
     {
-        return ! $this->can($ability);
+        return !$this->can($ability);
     }
 }

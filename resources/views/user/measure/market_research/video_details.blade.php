@@ -22,9 +22,7 @@
                 },
                 dataType: "json",
                 success: function(response) {
-
-                    if (typeof response.items !== 'undefined' && response.items.length >
-                        0) {
+                    if (typeof response.items !== 'undefined' && response.items.length > 0) {
                         var item = response.items[0];
                         var snippet = item.snippet;
                         var statistics = item.statistics;
@@ -36,7 +34,6 @@
                         $("#v1VideoName").html(snippet.title);
                         $("#v1VideoViews").html(convertToInternationalCurrencySystem(statistics.viewCount));
                         $("#v1VideoLikes").html(convertToInternationalCurrencySystem(statistics.likeCount));
-                        $("#v1VideoDisLikes").html(convertToInternationalCurrencySystem(statistics.dislikeCount));
                         $("#v1VideoComments").html(convertToInternationalCurrencySystem(statistics.commentCount));
                         $("#v1VideoPublishedDate").html($.datepicker.formatDate('M dd, yy', new Date(snippet.publishedAt)));
 
@@ -146,7 +143,6 @@
                     <div class="col-auto" id="embedPlayer">
                         {{-- <iframe id="v1VideoPlayer" width="512px" height="288px"
                             data-src="https://www.youtube-nocookie.com/embed/" title="YouTube video player"
-                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe> --}}
                     </div>
@@ -158,35 +154,29 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-eye"></i> Views</span>
+                                <span class="text-red"><em class="anticon anticon-eye"></em> Views</span>
                                 <br>
                                 <label id="v1VideoViews" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-like"></i> Likes</span>
+                                <span class="text-red"><em class="anticon anticon-like"></em> Likes</span>
                                 <br>
                                 <label id="v1VideoLikes" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-dislike"></i> DisLikes</span>
-                                <br>
-                                <label id="v1VideoDisLikes" class="font-weight-bold"></label>
-                            </div>
-                            <div class="col">
-                                <span class="text-red"><i class="anticon anticon-message"></i> Comments</span>
+                                <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
                                 <br>
                                 <label id="v1VideoComments" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-calendar"></i> Published Date</span>
+                                <span class="text-red"><em class="anticon anticon-calendar"></em> Published Date</span>
                                 <br>
                                 <label id="v1VideoPublishedDate" class="font-weight-bold"></label>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-tag"></i> Tags <sup class="text-gray pointer" id="btnCopyTags">(<i class="anticon anticon-copy"></i>
-                                        Copy Tags)</sup></span>
+                                <span class="text-red"><em class="anticon anticon-tag"></em> Tags <sup class="text-gray pointer" id="btnCopyTags">(<em class="anticon anticon-copy"></em>Copy Tags)</sup></span>
                                 <div id="v1VideoTags" class="font-weight-bold mt-1">
                                 </div>
                             </div>
@@ -196,7 +186,7 @@
 
                 <div class="row p-20">
                     <div class="col">
-                        <span class="text-red"><i class="anticon anticon-message"></i> YouTube comments</span>
+                        <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
                         <div id="v1VideoCommentsList" class="font-weight-bold mt-1 mb-3">
                         </div>
                     </div>
