@@ -11,8 +11,8 @@ class PopulateUsersRoles extends Seeder
     protected $userRoles = [
         [
             'name' => 'Gold',
-            'slug' => 'gold'
-        ]
+            'slug' => 'gold',
+        ],
     ];
 
     /**

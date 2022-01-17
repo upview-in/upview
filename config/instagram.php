@@ -1,12 +1,11 @@
 <?php
 
-
 return [
 
     /*
     |--------------------------------------------------------------------------
-	| Application identity
-	|--------------------------------------------------------------------------
+    | Application identity
+    |--------------------------------------------------------------------------
     |
     | Client ID and Secret used to associate
     | your server, script, or program with
@@ -31,7 +30,6 @@ return [
 
     'redirectUrl' => 'panel.user.account.addInstagramAccount',
 
-
     /*
     |--------------------------------------------------------------------------
     | Permission scope.
@@ -53,8 +51,8 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-	| Secure Requests
-	|--------------------------------------------------------------------------
+    | Secure Requests
+    |--------------------------------------------------------------------------
     |
     | You can secure your API calls and mitigate impersonation attempts by making server-side
     | calls and passing a per-request signature using your Client Secret. Edit your
@@ -65,7 +63,6 @@ return [
     */
 
     'enforceSignedRequests' => env('FB_INSTA_ENFORCE_SIGNED_REQUESTS', ''),
-
 
     // Temp keys
     'accessToken' => 'EAAb0iTc4IMoBAPvelZCZA9rANeNv3oetwZC9ZAm8NoKjKHdV0Bh4I1y8ZCZBixugwVcgfwlSzK66fZBy7TEmQ17YbQMrA3vEOcLUOJxaZBoTJk054CdY2AgdZAitYkAFIu2wIfG1JZBcfqCniN5e49BNfjfjUsjsLF1qEwapTE8TSZCyhzcXUOzK3r5HnowPuYowzQZD',

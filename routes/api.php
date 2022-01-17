@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\Youtube\ChannelController;
-use App\Http\Controllers\Api\Youtube\CommentController;
-use App\Http\Controllers\Api\Youtube\VideoController;
+use App\Http\Controllers\Api\YouTube\ChannelController;
+use App\Http\Controllers\Api\YouTube\CommentController;
+use App\Http\Controllers\Api\YouTube\VideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +29,7 @@ Route::post('/tokens/create', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Youtube api routes
+    // YouTube api routes
     Route::prefix('youtube')->as('youtube.')->group(function () {
         Route::prefix('channel')->as('channel.')->group(function () {
             Route::post('/search', [ChannelController::class, 'getChannelListFromName'])->name('getChannelListFromName');

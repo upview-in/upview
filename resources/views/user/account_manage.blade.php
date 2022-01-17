@@ -78,9 +78,9 @@
 
                             $platforms = [
                                 null,
-                                '<span class="text-danger"><i class="anticon anticon-youtube"></i> YouTube</span>',
-                                '<span class="text-primary"><i class="anticon anticon-facebook"></i> Facebook</span>',
-                                '<span class="text-warning"><i class="anticon anticon-instagram"></i> Instagram</span>',
+                                '<span class="text-danger"><em class="anticon anticon-youtube"></em> YouTube</span>',
+                                '<span class="text-primary"><em class="anticon anticon-facebook"></em> Facebook</span>',
+                                '<span class="text-warning"><em class="anticon anticon-instagram"></em> Instagram</span>',
                             ];
 
                             ?>
@@ -152,7 +152,7 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100"><em class="fab fa-youtube"></em> Youtube</a>
+							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100"><em class="fab fa-youtube"></em> YouTube</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
 							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100"><em class="fab fa-facebook-square"></em> Facebook</a>

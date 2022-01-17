@@ -20,7 +20,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
-                                            <i class="prefix-icon anticon anticon-mail"></i>
+                                            <em class="prefix-icon anticon anticon-mail"></em>
                                             <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
                                         </div>
                                         @error('email')
@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
                                         <div class="input-affix m-b-10">
-                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <em class="prefix-icon anticon anticon-lock"></em>
                                             <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="new-password" placeholder="{{ __('Password') }}">
                                         </div>
                                         @error('password')
@@ -46,7 +46,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password_confirmation">{{ __('Confirm Password') }}:</label>
                                         <div class="input-affix m-b-10">
-                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <em class="prefix-icon anticon anticon-lock"></em>
                                             <input type="password" class="form-control {{ $errors->has('password_confirmation')?'is-invalid':'is-valid' }}" id="password_confirmation" type="password" name="password_confirmation" required placeholder="{{ __('Confirm Password') }}">
                                         </div>
                                         @error('password_confirmation')

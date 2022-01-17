@@ -89,29 +89,24 @@
                                 '    </div>' +
                                 '    <label class="h5 font-weight-bold overflow-dot openVideoDetails pointer" title="' + item.snippet.title + '" data-id="' + item.id + '">' + item.snippet.title + '</label>' +
                                 '    <br />' +
-                                '    <span class="font-weight-light"><i class="anticon anticon-calendar"></i> Published: ' + $.datepicker.formatDate('M dd, yy', new Date(item.snippet.publishedAt)) + '</span>' +
+                                '    <span class="font-weight-light"><em class="anticon anticon-calendar"></em> Published: ' + $.datepicker.formatDate('M dd, yy', new Date(item.snippet.publishedAt)) + '</span>' +
                                 '    <div class="row mt-3">' +
                                 '        <div class="col-6">' +
-                                '            <label class="text-red"><i class="anticon anticon-eye"></i> Views</label>' +
+                                '            <label class="text-red"><em class="anticon anticon-eye"></em> Views</label>' +
                                 '            <br />' +
                                 '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.viewCount) + '</span>' +
                                 '        </div>' +
                                 '        <div class="col-6">' +
-                                '            <label class="text-red"><i class="anticon anticon-message"></i> Comments</label>' +
+                                '            <label class="text-red"><em class="anticon anticon-message"></em> Comments</label>' +
                                 '            <br />' +
                                 '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.commentCount) + '</span>' +
                                 '        </div>' +
                                 '    </div>' +
                                 '    <div class="row mt-2">' +
-                                '        <div class="col-6">' +
-                                '            <label class="text-red"><i class="anticon anticon-like"></i> Likes</label>' +
+                                '        <div class="col-12">' +
+                                '            <label class="text-red"><em class="anticon anticon-like"></em> Likes</label>' +
                                 '            <br />' +
                                 '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.likeCount) + '</span>' +
-                                '        </div>' +
-                                '        <div class="col-6">' +
-                                '            <label class="text-red"><i class="anticon anticon-dislike"></i> Dislikes</label>' +
-                                '            <br />' +
-                                '            <span class="font-weight-bold">' + convertToInternationalCurrencySystem(statistics.dislikeCount) + '</span>' +
                                 '        </div>' +
                                 '    </div>' +
                                 '</div>';
@@ -160,7 +155,6 @@
                             $("#v1VideoName").html(snippet.title);
                             $("#v1VideoViews").html(convertToInternationalCurrencySystem(statistics.viewCount));
                             $("#v1VideoLikes").html(convertToInternationalCurrencySystem(statistics.likeCount));
-                            $("#v1VideoDisLikes").html(convertToInternationalCurrencySystem(statistics.dislikeCount));
                             $("#v1VideoComments").html(convertToInternationalCurrencySystem(statistics.commentCount));
                             $("#v1VideoPublishedDate").html($.datepicker.formatDate('M dd, yy', new Date(snippet.publishedAt)));
 
@@ -271,7 +265,7 @@
         <div class="card shadow" id="ChannelMainDiv">
             <div class="row p-50">
                 <div class="col-md-2 col-12">
-                    <img class="rounded-circle lazyload" id="c1ChannelProfileImage" width="100%" height="auto" />
+                    <img class="rounded-circle lazyload" id="c1ChannelProfileImage" width="100%" height="auto" alt="Channel Profile"/>
                 </div>
                 <div class="col-md-10 col-12 pl-5">
                     <div class="row mt-4">
@@ -281,34 +275,34 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Views</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Views</span>
                             <br>
                             <label id="c1ChannelViews" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Subscriber</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Subscriber</span>
                             <br>
                             <label id="c1ChannelSubscriber" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Videos</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Videos</span>
                             <br>
                             <label id="c1ChannelVideos" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-youtube"></i> Joining Date</span>
+                            <span class="text-red"><em class="anticon anticon-youtube"></em> Joining Date</span>
                             <br>
                             <label id="c1ChannelJoiningDate" class="font-weight-bold"></label>
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-unordered-list"></i> Category</span>
+                            <span class="text-red"><em class="anticon anticon-unordered-list"></em> Category</span>
                             <br>
                             <label id="c1ChannelCategory" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><i class="anticon anticon-flag"></i> Country</span>
+                            <span class="text-red"><em class="anticon anticon-flag"></em> Country</span>
                             <br>
                             <label id="c1ChannelCountry" class="font-weight-bold"></label>
                         </div>
@@ -329,7 +323,7 @@
 
         <div class="card shadow" id="VideoDetails">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0"><i class="anticon anticon-arrow-left text-primary pointer" id="btnVideoDetailBack"></i>
+                <label class="h3 m-0"><em class="anticon anticon-arrow-left text-primary pointer" id="btnVideoDetailBack"></em>
                     Video Details</label>
             </div>
             <div class="card-body" id="VideoDetailsChild">
@@ -337,7 +331,6 @@
                     <div class="col-auto" id="embedPlayer">
                         {{-- <iframe id="v1VideoPlayer" width="512px" height="288px"
                             data-src="https://www.youtube-nocookie.com/embed/" title="YouTube video player"
-                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe> --}}
                     </div>
@@ -349,34 +342,29 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-eye"></i> Views</span>
+                                <span class="text-red"><em class="anticon anticon-eye"></em> Views</span>
                                 <br>
                                 <label id="v1VideoViews" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-like"></i> Likes</span>
+                                <span class="text-red"><em class="anticon anticon-like"></em> Likes</span>
                                 <br>
                                 <label id="v1VideoLikes" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-dislike"></i> DisLikes</span>
-                                <br>
-                                <label id="v1VideoDisLikes" class="font-weight-bold"></label>
-                            </div>
-                            <div class="col">
-                                <span class="text-red"><i class="anticon anticon-message"></i> Comments</span>
+                                <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
                                 <br>
                                 <label id="v1VideoComments" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-calendar"></i> Published Date</span>
+                                <span class="text-red"><em class="anticon anticon-calendar"></em> Published Date</span>
                                 <br>
                                 <label id="v1VideoPublishedDate" class="font-weight-bold"></label>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-tag"></i> Tags <sup class="text-gray pointer" id="btnCopyTags">(<i class="anticon anticon-copy"></i>
+                                <span class="text-red"><em class="anticon anticon-tag"></em> Tags <sup class="text-gray pointer" id="btnCopyTags">(<em class="anticon anticon-copy"></em>
                                         Copy Tags)</sup></span>
                                 <div id="v1VideoTags" class="font-weight-bold mt-1">
                                 </div>
@@ -387,7 +375,7 @@
 
                 <div class="row p-20">
                     <div class="col">
-                        <span class="text-red"><i class="anticon anticon-message"></i> YouTube comments</span>
+                        <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
                         <div id="v1VideoCommentsList" class="font-weight-bold mt-1 mb-3">
                         </div>
                     </div>
