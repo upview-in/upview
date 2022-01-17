@@ -52,45 +52,57 @@ class PostSchedulingController extends Controller
                     {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.facebook.image.supported_types')) && $isImage)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.facebook.image.max_size')) {
-                                return true;
+                                return ['status'=>true, 'validation_msg'=>'Validated Successfully'];
                                 
+                            }else {
+                                return ['status'=>false, 'validation_msg'=>'Media Size not according to Facebook\'s requirements. Please check again.'];
                             }
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.facebook.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.facebook.video.max_size')) {
-                                return true;
+                                return ['status'=>true, 'validation_msg'=>'Validated Successfully'];
+                            }else {
+                                return ['status'=>false, 'validation_msg'=>'Media Size not according to Facebook\'s requirements. Please check again.'];
                             }
-                        } else {return false;}
-                        break;
+                        } else {
+                            return ['status'=>false, 'validation_msg'=>'Media type not recognised by facebook. Please check again.'];
+                        }
                     }
                     
                 case 'instagram':
                     {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.instagram.image.supported_types')) && $isImage)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.instagram.image.max_size')) {
-                                // HERE
-                                
-                                return true;
+                                return ['status'=>true, 'validation_msg'=>'Validated Successfully'];
+                            }else {
+                                return ['status'=>false, 'validation_msg'=>'Media Size not according to Instagram\'s requirements. Please check again.'];
                             }
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.instagram.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.instagram.video.max_size')) {
-                                return (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.instagram.video.max_duration')) &&  ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.instagram.video.min_duration')));
+                                if (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.instagram.video.max_duration')) &&  ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.instagram.video.min_duration'))) {
+                                    return ['status'=>true, 'validation_msg'=>'Validated Successfully'];
+                                }else {
+                                    return ['status'=>false, 'validation_msg'=>'Video\'s length is not according to Instagram requirements. Please check again.'];
+                                }
+                            }else {
+                                return ['status'=>false, 'validation_msg'=>'Media Size not according to Facebook\'s requirements. Please check again.'];
                             }
-                        } else {return false;}
-                        break;
+                             
+                        } return ['status'=>false, 'validation_msg'=>'Media type not recognised by Instagram. Please check again.'];
+                        
                     }
                     
                 case 'youtube':
                     {
                         if ($isImage) {
-                            return false;
+                            return ['status'=>false, 'validation_msg'=>'Image posting not allowed on Youtube. Please Select a video file or de-select youtube from platforms.'];
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.youtube.video.supported_types')) && $isVideo)) {
-                            if ($fileInfo->getSize() < config('social_media_restrictions.facebook.video.max_size')) {
+                            if ($fileInfo->getSize() < config('social_media_restrictions.youtube.video.max_size')) {
                                 return true;
                             }
-                        } else {return false;}
-                        break;
-                    }
-                    
+                        } else {
+                            return ['status'=>false, 'validation_msg'=>'Media type not recognised by Youtube. Please check again.'];
+                        }
+                    } 
                 case 'twitter':
                     {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.twitter.image.supported_types')) && $isImage)) {
@@ -99,22 +111,33 @@ class PostSchedulingController extends Controller
                             }
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.twitter.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.twitter.video.max_size')) {
-                                return (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.twitter.video.max_duration')) &&  ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.twitter.video.min_duration')));
+                                if (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.twitter.video.max_duration')) &&  ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.twitter.video.min_duration'))) {
+                                    return ['status'=>true, 'validation_msg'=>'Validated Successfully'];
+                                }else {
+                                    return ['status'=>false, 'validation_msg'=>'Video\'s length is not according to Twitter requirements. Please check again.'];
+                                }
                             }
-                        } else {return false;}
-                        break;
+                        } else {
+                            return ['status'=>false, 'validation_msg'=>'Media type not recognised by Twitter. Please check again.'];
+                        }
                     }
                 case 'linkedin':
                     {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.linkedin.image.supported_types')) && $isImage)) {
-                            if ($fileInfo->getSize() < config('social_media_restrictions.twitter.image.max_size')) {
+                            if ($fileInfo->getSize() < config('social_media_restrictions.linkedin.image.max_size')) {
                                 return true;
                             }
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.linkedin.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.linkedin.video.max_size')) {
-                                return (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.linkedin.video.max_duration')) &&  ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.linkedin.video.min_duration')));
+                                if (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.linkedin.video.max_duration')) &&  ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.linkedin.video.min_duration'))){
+                                    return ['status'=>true, 'validation_msg'=>'Validated Successfully'];
+                                }else {
+                                    return ['status'=>false, 'validation_msg'=>'Video\'s length is not according to Linkedin requirements. Please check again.'];
+                                }
                             }
-                        } else {return false;}
+                        } else {
+                            return ['status'=>false, 'validation_msg'=>'Media type not recognised by Linkedin. Please check again.'];
+                        }
                         break;
                     }    
 
@@ -141,7 +164,10 @@ class PostSchedulingController extends Controller
             }
 
             $fileMain = $request->file('post_media');
-            (self::validateUploadMedia($fileMain, $enabledPlatforms));
+            $validation = (self::validateUploadMedia($fileMain, $enabledPlatforms));
+            if (!$validation['status']) {
+                return redirect()->back()->with('message2', $validation['validation_msg']);
+            }
             $fileInfo = $request->file('post_media')->store('User');
             $mediaURL = encrypt($fileInfo);
             
