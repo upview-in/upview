@@ -44,10 +44,8 @@ class PostSchedulingController extends Controller
 
         $getID3 = new GetId3($fileInfo);
         // dd();
-        foreach ($platforms as $platform)
-        {
-            switch ($platform)
-            {
+        foreach ($platforms as $platform) {
+            switch (strtolower($platform)) {
                 case 'facebook':
                     {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.facebook.image.supported_types')) && $isImage)) {
@@ -141,10 +139,9 @@ class PostSchedulingController extends Controller
                         break;
                     }    
 
-                default: return false;
+                default: return ['status'=>false, 'validation_msg'=>'Something went wrong. Please check again.'];;
             }
         }        
-        return true;
     }
 
     public function uploadPostMedia(UploadPostMediaRequest $request)
@@ -166,7 +163,7 @@ class PostSchedulingController extends Controller
             $fileMain = $request->file('post_media');
             $validation = (self::validateUploadMedia($fileMain, $enabledPlatforms));
             if (!$validation['status']) {
-                return redirect()->back()->with('message2', $validation['validation_msg']);
+                return redirect()->back()->with('validation_error', $validation['validation_msg']);
             }
             $fileInfo = $request->file('post_media')->store('User');
             $mediaURL = encrypt($fileInfo);
