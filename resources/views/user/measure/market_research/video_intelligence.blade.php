@@ -146,7 +146,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <span class="text-red"><em class="anticon anticon-eye"></em> Views</span>
+                                <span class="text-red">Views</span>
                                 <br>
                                 <label id="v1VideoViews" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->viewCount) }}</label>
                             </div>
@@ -156,7 +156,7 @@
                                 <label id="v1VideoLikes" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->likeCount) }}</label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
+                                <span class="text-red">Comments</span>
                                 <br>
                                 <label id="v1VideoComments" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->commentCount) }}</label>
                             </div>

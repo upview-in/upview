@@ -154,7 +154,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <span class="text-red"><em class="anticon anticon-eye"></em> Views</span>
+                                <span class="text-red">Views</span>
                                 <br>
                                 <label id="v1VideoViews" class="font-weight-bold"></label>
                             </div>
@@ -164,7 +164,7 @@
                                 <label id="v1VideoLikes" class="font-weight-bold"></label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
+                                <span class="text-red">Comments</span>
                                 <br>
                                 <label id="v1VideoComments" class="font-weight-bold"></label>
                             </div>
@@ -186,7 +186,7 @@
 
                 <div class="row p-20">
                     <div class="col">
-                        <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
+                        <span class="text-red">Comments</span>
                         <div id="v1VideoCommentsList" class="font-weight-bold mt-1 mb-3">
                         </div>
                     </div>
