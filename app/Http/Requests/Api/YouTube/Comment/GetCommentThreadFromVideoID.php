@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube\Channel;
+namespace App\Http\Requests\Api\YouTube\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetMineChannelList extends FormRequest
+class GetCommentThreadFromVideoID extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class GetMineChannelList extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => ['required'],
         ];
     }
 }

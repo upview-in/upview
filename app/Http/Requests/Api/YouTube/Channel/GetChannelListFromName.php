@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube\Channel;
+namespace App\Http\Requests\Api\YouTube\Channel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetTopChannelsList extends FormRequest
+class GetChannelListFromName extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class GetTopChannelsList extends FormRequest
     public function rules()
     {
         return [
-            'maxResults' => ['sometimes', 'numeric', 'min:3'],
-            'order' => ['sometimes', 'string'],
+            'channelName' => ['required', 'string', 'min:1', 'max:255'],
+            'maxResults' => ['sometimes', 'numeric', 'min:2', 'max:100'],
         ];
     }
 }

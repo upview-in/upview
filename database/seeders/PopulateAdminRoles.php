@@ -7,16 +7,15 @@ use Illuminate\Database\Seeder;
 
 class PopulateAdminRoles extends Seeder
 {
-
     // Define list of roles here
     protected $adminRoles = [
         [
             'name' => 'Super admin',
-            'slug' => 'super-admin'
+            'slug' => 'super-admin',
         ],
         [
             'name' => 'Admin',
-            'slug' => 'admin'
+            'slug' => 'admin',
         ],
     ];
 

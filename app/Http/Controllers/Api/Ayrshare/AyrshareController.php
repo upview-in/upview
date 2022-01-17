@@ -41,7 +41,7 @@ class AyrshareController extends Controller
                     'Authorization' => 'Bearer ' . config('ayrshare.AYR_API_KEY'),
                 ])->withOptions(['verify' => true])->delete($endpoint, $body);
                 break;
-            
+
             default:
                 $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . config('ayrshare.AYR_API_KEY'),
@@ -97,8 +97,8 @@ class AyrshareController extends Controller
     public function ayrSocialMediaPosts(AyrSocialMediaPosts $request)
     {
         /**
-         *  Data format for instagram
-         * 
+         *  Data format for instagram.
+         *
          * instagramOptions": {
          *       "autoResize": true/false
          *       "locationId": FB Location's Page
@@ -117,7 +117,7 @@ class AyrshareController extends Controller
          *   }.
          */
         $profile_key = $request->profile_key;
-        unset($request->profile_key);
+        $request->profile_key = null;
         if ($request->has('post') && $request->has('platforms')) {
             return self::ayrshareAPICall(
                 'MEDIA_POST',
@@ -161,8 +161,8 @@ class AyrshareController extends Controller
 
         if (property_exists($response, 'activeSocialAccounts')) {
             return $response->activeSocialAccounts;
-        } else {
-            return [];
         }
+
+        return [];
     }
 }

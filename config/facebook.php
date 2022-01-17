@@ -1,12 +1,11 @@
 <?php
 
-
 return [
 
     /*
     |--------------------------------------------------------------------------
-	| Application identity
-	|--------------------------------------------------------------------------
+    | Application identity
+    |--------------------------------------------------------------------------
     |
     | Client ID and Secret used to associate
     | your server, script, or program with
@@ -52,8 +51,8 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-	| Secure Requests
-	|--------------------------------------------------------------------------
+    | Secure Requests
+    |--------------------------------------------------------------------------
     |
     | You can secure your API calls and mitigate impersonation attempts by making server-side
     | calls and passing a per-request signature using your Client Secret. Edit your
@@ -64,6 +63,5 @@ return [
     */
 
     'enforceSignedRequests' => env('FB_INSTA_ENFORCE_SIGNED_REQUESTS', ''),
-
 
 ];

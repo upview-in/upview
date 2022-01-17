@@ -35,7 +35,7 @@ class GetAccountController extends Controller
 
             $responseArr = json_decode($response, true);
         } catch (FacebookSDKException $e) {
-            echo $$e->message;
+            echo ${$e}->message;
         }
 
         return view('get-insta-acc', ['responseArr' => $responseArr]);

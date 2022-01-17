@@ -92,6 +92,7 @@ $rules = [
     ],
     'no_unreachable_default_argument_value' => true,
     'no_useless_return' => true,
+    'no_useless_else' => true,
     'no_whitespace_before_comma_in_array' => true,
     'no_whitespace_in_blank_line' => true,
     'normalize_index_brace' => true,
@@ -102,7 +103,6 @@ $rules = [
     ],
     'phpdoc_indent' => true,
     'phpdoc_no_access' => true,
-    // 'phpdoc_no_package' => true,
     'phpdoc_no_useless_inheritdoc' => true,
     'phpdoc_scalar' => true,
     'phpdoc_single_line_var_spacing' => true,
@@ -131,16 +131,35 @@ $rules = [
     ],
     'constant_case' => ['case' => 'lower'],
     'trailing_comma_in_multiline' => ['elements' => ['arrays']],
+    'no_unset_on_property' => true,
+    'single_line_throw' => true,
+    'return_assignment' => true,
+    'ordered_class_elements' => true,
+    'phpdoc_add_missing_param_annotation' => true,
+    'phpdoc_order' => true,
+    'phpdoc_order_by_value' => true,
+    'phpdoc_types_order' => true,
+    'phpdoc_var_annotation_correct_order' => true,
+    'method_chaining_indentation' => true,
+    'explicit_string_variable' => true,
+    'no_null_property_initialization' => true,
+    'explicit_indirect_variable' => true,
+    'multiline_comment_opening_closing' => true,
+    'combine_consecutive_issets' => true,
+    'clean_namespace' => true,
 ];
 
 $finder = Finder::create()
     ->in([
-        __DIR__ . '/app',
-        __DIR__ . '/config',
-        __DIR__ . '/database',
-        __DIR__ . '/resources',
-        __DIR__ . '/routes',
-        __DIR__ . '/tests',
+        __DIR__ . '/app/',
+        __DIR__ . '/config/',
+        __DIR__ . '/database/',
+        __DIR__ . '/resources/',
+        __DIR__ . '/routes/',
+        __DIR__ . '/tests/',
+    ])
+    ->exclude([
+        __DIR__ . '/storage/'
     ])
     ->name('*.php')
     ->notName('*.blade.php')

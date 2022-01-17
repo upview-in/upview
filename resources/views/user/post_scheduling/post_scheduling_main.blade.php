@@ -95,7 +95,7 @@
                             
                             <div class="col-md-2">
                                 <input id="cbyoutube" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['youtube'] }}" disabled type="checkbox">
-                                <label for="cbyoutube">Youtube</label>
+                                <label for="cbyoutube">YouTube</label>
                             </div>
 
                             <div class="col-md-2">

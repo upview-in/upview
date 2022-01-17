@@ -46,9 +46,9 @@ class AdminPermission extends Model
     {
         if ($value) {
             return $query->whereNull('enabled')->orWhere('enabled', true);
-        } else {
-            return $query->where('enabled', false);
         }
+
+        return $query->where('enabled', false);
     }
 
     public function roles()

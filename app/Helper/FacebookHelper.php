@@ -6,7 +6,7 @@ use Facebook\Facebook;
 
 class FacebookHelper
 {
-    public $clientInstance = null;
+    public $clientInstance;
 
     public function __construct()
     {

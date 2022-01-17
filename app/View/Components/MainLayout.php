@@ -26,6 +26,6 @@ class MainLayout extends Component
     {
         App::setLocale(Auth::user()->local_lang ?? 'en');
 
-        return view('main.layouts.app'); 
+        return view('main.layouts.app');
     }
 }

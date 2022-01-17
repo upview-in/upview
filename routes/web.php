@@ -59,7 +59,6 @@ Route::group(['domain' => config('app.domains.admin')], function () {
     });
 });
 
-
 //website Route
 Route::group(['domain' => config('app.domains.main')], function () {
     Route::group(['as' => 'main.'], function () {
@@ -68,10 +67,8 @@ Route::group(['domain' => config('app.domains.main')], function () {
     });
 });
 
-
 // Application Routes
 Route::group(['domain' => config('app.domains.app')], function () {
-
     Route::get('/', function () {
         return redirect()->route('login');
     });
@@ -148,9 +145,9 @@ Route::group(['domain' => config('app.domains.app')], function () {
 
             Route::prefix('analyze')->as('analyze.')->group(function () {
                 Route::prefix('youtube')->as('youtube.')->middleware('yt.token.validate')->group(function () {
-                    Route::get('/overview', [App\Http\Controllers\User\Analyze\Youtube\OverviewController::class, 'overview'])->name('overview');
-                    Route::get('/videos', [App\Http\Controllers\User\Analyze\Youtube\VideosController::class, 'videos'])->name('videos');
-                    Route::get('/audience', [App\Http\Controllers\User\Analyze\Youtube\AudienceController::class, 'audience'])->name('audience');
+                    Route::get('/overview', [App\Http\Controllers\User\Analyze\YouTube\OverviewController::class, 'overview'])->name('overview');
+                    Route::get('/videos', [App\Http\Controllers\User\Analyze\YouTube\VideosController::class, 'videos'])->name('videos');
+                    Route::get('/audience', [App\Http\Controllers\User\Analyze\YouTube\AudienceController::class, 'audience'])->name('audience');
                 });
 
                 Route::prefix('facebook')->as('facebook.')->group(function () {

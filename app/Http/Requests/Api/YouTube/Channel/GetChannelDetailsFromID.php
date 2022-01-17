@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube\Channel;
+namespace App\Http\Requests\Api\YouTube\Channel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetMineChannelAnalytics extends FormRequest
+class GetChannelDetailsFromID extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class GetMineChannelAnalytics extends FormRequest
     public function rules()
     {
         return [
-            'startDate' => 'required|date_format:Y-m-d|before:endDate',
-            'endDate' => 'required|date_format:Y-m-d|after:startDate',
-            'dimensions' => 'sometimes|in:day,month',
-            'sort' => 'sometimes|in:day,month',
+            'id' => ['required'],
         ];
     }
 }

@@ -110,7 +110,7 @@
         <div class="row justify-content-end mt-3 mr-1">
             <div class="col-md-6 col-sm-9 col-12">
                 <div class="input-affix m-b-10">
-                    <i class="prefix-icon anticon anticon-search"></i>
+                    <em class="prefix-icon anticon anticon-search"></em>
                     <input type="text" id="searchVideo" class="form-control" placeholder="{{ __('Search Video') }}">
                 </div>
             </div>
@@ -128,13 +128,13 @@
 
         <div class="card shadow" id="YoutubeTrendingVideos">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Youtube Trending Videos</label>
+                <label class="h3 m-0">Trending Videos</label>
             </div>
             <div class="card-body">
                 @foreach($TrendingVideos->items as $TrendingVideo)
                 <div class="row mb-5">
                     <div class="col-md-3 col-12">
-                        <iframe src="//www.youtube.com/embed/{{ $TrendingVideo->id }}" width="100%" height="200px"></iframe>
+                        <iframe src="//www.youtube.com/embed/{{ $TrendingVideo->id }}" width="100%" height="200px" title="YouTube Player"></iframe>
                     </div>
                     <div class="col-md-9 col-12">
                         <div class="row">
@@ -146,35 +146,30 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-eye"></i> Views</span>
+                                <span class="text-red"><em class="anticon anticon-eye"></em> Views</span>
                                 <br>
                                 <label id="v1VideoViews" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->viewCount) }}</label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-like"></i> Likes</span>
+                                <span class="text-red"><em class="anticon anticon-like"></em> Likes</span>
                                 <br>
                                 <label id="v1VideoLikes" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->likeCount) }}</label>
                             </div>
                             <div class="col">
-                                <span class="text-red"><i class="anticon anticon-dislike"></i> DisLikes</span>
-                                <br>
-                                <label id="v1VideoDisLikes" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->dislikeCount) }}</label>
-                            </div>
-                            <div class="col">
-                                <span class="text-red"><i class="anticon anticon-message"></i> Comments</span>
+                                <span class="text-red"><em class="anticon anticon-message"></em> Comments</span>
                                 <br>
                                 <label id="v1VideoComments" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->commentCount) }}</label>
                             </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-3 col-12 mt-2">
-                                <span class="text-red"><i class="anticon anticon-calendar"></i> Published Date</span>
+                            <div class="col">
+                                <span class="text-red"><em class="anticon anticon-calendar"></em> Published Date</span>
                                 <br>
                                 <label id="v1VideoPublishedDate" class="font-weight-bold">{{ \Carbon\Carbon::parse($TrendingVideo->snippet->publishedAt)->diffForHumans() }}</label>
                             </div>
-                            <div class="col-md-9 col-12">
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
                                 <span class="text-red">
-                                    <i class="anticon anticon-tag"></i> Tags <sup class="text-gray pointer" id="btnCopyTags">(<i class="anticon anticon-copy"></i>Copy Tags)</sup>
+                                    <em class="anticon anticon-tag"></em> Tags <sup class="text-gray pointer" id="btnCopyTags">(<em class="anticon anticon-copy"></em>Copy Tags)</sup>
                                 </span>
                                 <div id="v1VideoTags" class="font-weight-bold mt-1 d-flex flex-row overflow-auto">
                                     @if(!is_null($TrendingVideo->snippet->tags))

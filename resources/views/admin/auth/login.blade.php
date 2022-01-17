@@ -53,7 +53,7 @@
 										</div>
 										<div class="col-12">
 											<div class="d-grid">
-												<button type="submit" class="btn btn-primary"><i class="bi bi-lock-open"></i>Sign in</button>
+												<button type="submit" class="btn btn-primary"><em class="bi bi-lock-open"></em>Sign in</button>
 											</div>
 										</div>
 									</form>
