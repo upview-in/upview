@@ -297,9 +297,7 @@
 
                             <h4 class="title">Right to Know and Delete. </h4>
                             <p>
-                                Consumers who are California residents (and not representatives of businesses, whether those businesses are our customers or others) have the right to request that we delete the personal information we have collected from you (subject to certain exemptions)
-                                and the right to know certain information about our data practices in the preceding 12 months. In particular, you have the right to request the following from us: The categories of personal information we have collected
-                                about you; The categories of sources from which the personal information was collected; The categories of personal information about you we disclosed for a business purpose or sold; The categories of third parties to whom
+                                Consumers who are California residents (and not representatives of businesses, whether those businesses are our customers or others) have the right to request that we delete the personal information we have collected from you (subject to certain exemptions) and the right to know certain information about our data practices in the preceding 12 months. In particular, you have the right to request the following from us: The categories of personal information we have collected about you; The categories of sources from which the personal information was collected; The categories of personal information about you we disclosed for a business purpose or sold; The categories of third parties to whom
                                 the personal information was disclosed for a business purpose or sold; The business or commercial purpose for collecting or selling the personal information; and The specific pieces of personal information we have collected
                                 about you. To exercise any of these rights, please email us at developers@upview.in, submit a request through our online form available on our Help Centre. In the request, please specify which right you are seeking to exercise
                                 and the scope of the request. We will confirm receipt of your request within 10 days. We may require additional information from you to help us verify your identity and process your request. The verification steps may vary
@@ -313,10 +311,14 @@
 
                             </p>
 
+                            <h4 class="title">YouTube API Client Terms of Use & Privacy Policy </h4>
+                            <p>
+                                We Use YouTube APIs to fetch the data linked with your authorized account. Users who authorize access are bound by the YouTube Terms Of Service.Please refer <a href="https://www.youtube.com/t/terms">YouTube ToS </a> for more information.
+                            </p>
+
                             <h4 class="title">Right to Opt-Out. </h4>
                             <p>
-                                To the extent Upview.in sells your personal information as the term “sell” is defined under the California Consumer Privacy Act, you have the right to opt-out of the sale of your personal information by us to third parties at any time. You may submit
-                                a request to opt-out by clicking Do Not Sell My Personal Information. You may also submit a request to opt-out by emailing us at developers@upview.in.
+                                To the extent Upview.in sells your personal information as the term “sell” is defined under the California Consumer Privacy Act, you have the right to opt-out of the sale of your personal information by us to third parties at any time. You may submit a request to opt-out by clicking Do Not Sell My Personal Information. You may also submit a request to opt-out by emailing us at developers@upview.in.
                             </p>
 
 
