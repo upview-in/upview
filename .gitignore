@@ -9,7 +9,7 @@
 .env
 .env.backup
 .editorconfig
-.lock
+/composer.lock
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json
