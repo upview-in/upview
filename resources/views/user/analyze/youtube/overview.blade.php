@@ -316,22 +316,22 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <span class="text-red"><em class="anticon anticon-youtube"></em> Views</span>
+                            <span class="text-red">Total Views</span>
                             <br>
                             <label id="c1ChannelViews" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><em class="anticon anticon-youtube"></em> Subscriber</span>
+                            <span class="text-red">Subscriber</span>
                             <br>
                             <label id="c1ChannelSubscriber" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><em class="anticon anticon-youtube"></em> Videos</span>
+                            <span class="text-red">Total Videos</span>
                             <br>
                             <label id="c1ChannelVideos" class="font-weight-bold"></label>
                         </div>
                         <div class="col">
-                            <span class="text-red"><em class="anticon anticon-youtube"></em> Joining Date</span>
+                            <span class="text-red">Joining Date</span>
                             <br>
                             <label id="c1ChannelJoiningDate" class="font-weight-bold"></label>
                         </div>

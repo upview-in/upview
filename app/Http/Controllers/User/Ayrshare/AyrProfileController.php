@@ -13,8 +13,9 @@ class AyrProfileController extends Controller
     public function index()
     {
         $userProfiles = AyrUserProfile::where(['user_id' => Auth::id()])->get();
-
+        
         $temp = [];
+        $platforms = [];
         foreach ($userProfiles as $profiles) {
             $platforms[] = array_merge($temp, (new AyrshareController())->getAyrActiveSocialAccounts(new AyrActiveSocialAccount(['profile_key'=>$profiles['profile_key']])));
         }
