@@ -7,25 +7,24 @@ use Illuminate\Database\Seeder;
 
 class PopulateAdminPermissions extends Seeder
 {
-
     // Define list of permissions here
     protected $adminPermissions = [
         [
             'name' => 'Create User',
-            'slug' => 'user.create'
+            'slug' => 'user.create',
         ],
         [
             'name' => 'View Users',
-            'slug' => 'user.view'
+            'slug' => 'user.view',
         ],
         [
             'name' => 'Update User',
-            'slug' => 'user.update'
+            'slug' => 'user.update',
         ],
         [
             'name' => 'Delete User',
-            'slug' => 'user.delete'
-        ]
+            'slug' => 'user.delete',
+        ],
     ];
 
     /**

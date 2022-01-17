@@ -68,7 +68,7 @@
                             <div class="header-notifications-list">
                                 <a class="dropdown-item" href="javascript:;">
                                     <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-primary text-primary"><i class="bi bi-group"></i>
+                                        <div class="notify bg-light-primary text-primary"><em class="bi bi-group"></em>
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec

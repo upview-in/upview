@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Youtube\Video;
+namespace App\Http\Requests\Api\YouTube\Video;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetVideoAnalytics extends FormRequest
+class GetVideoListFromChannelID extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class GetVideoAnalytics extends FormRequest
     public function rules()
     {
         return [
-            'video_id' => 'required|string',
-            'startDate' => 'required|date_format:Y-m-d|before:endDate',
-            'endDate' => 'required|date_format:Y-m-d|after:startDate',
-            'dimensions' => 'sometimes|in:day,month',
-            'sort' => 'sometimes|in:day,month',
+            'id' => 'required',
         ];
     }
 }

@@ -12,18 +12,25 @@ class EntryModel extends Model
     use HasFactory;
 
     /**
+     * The name of the "updated at" column.
+     *
+     * @var string
+     */
+    public const UPDATED_AT = null;
+
+    /**
+     * Prevent Eloquent from overriding uuid with `lastInsertId`.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'telescope_entries';
-
-    /**
-     * The name of the "updated at" column.
-     *
-     * @var string
-     */
-    const UPDATED_AT = null;
 
     /**
      * The attributes that should be cast to native types.
@@ -49,13 +56,6 @@ class EntryModel extends Model
     protected $keyType = 'string';
 
     /**
-     * Prevent Eloquent from overriding uuid with `lastInsertId`.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
      * Scope the query for the given query options.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -66,13 +66,33 @@ class EntryModel extends Model
     public function scopeWithTelescopeOptions($query, $type, EntryQueryOptions $options)
     {
         $this->whereType($query, $type)
-                ->whereBatchId($query, $options)
-                ->whereTag($query, $options)
-                ->whereFamilyHash($query, $options)
-                ->whereBeforeSequence($query, $options);
-                //->filter($query, $options);
+            ->whereBatchId($query, $options)
+            ->whereTag($query, $options)
+            ->whereFamilyHash($query, $options)
+            ->whereBeforeSequence($query, $options);
+        //->filter($query, $options);
 
         return $query;
+    }
+
+    /**
+     * Get the current connection name for the model.
+     *
+     * @return string
+     */
+    public function getConnectionName()
+    {
+        return config('telescope.storage.database.connection');
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public static function newFactory()
+    {
+        return EntryModelFactory::new();
     }
 
     /**
@@ -173,25 +193,5 @@ class EntryModel extends Model
         $query->where('should_display_on_index', false);
 
         return $this;
-    }
-
-    /**
-     * Get the current connection name for the model.
-     *
-     * @return string
-     */
-    public function getConnectionName()
-    {
-        return config('telescope.storage.database.connection');
-    }
-
-    /**
-     * Create a new factory instance for the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public static function newFactory()
-    {
-        return EntryModelFactory::new();
     }
 }

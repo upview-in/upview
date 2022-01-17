@@ -40,9 +40,10 @@ class FacebookOverviewController extends Controller
                         $data['status'] = 200;
 
                         return response()->json(collect($data), 200);
-                    } else {
-                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
                     }
+
+                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+
                     break;
 
                     case 'PageAnalytics':
@@ -80,9 +81,10 @@ class FacebookOverviewController extends Controller
                             $data['status'] = 200;
 
                             return response()->json(collect($data), 200);
-                        } else {
-                            return response()->json(['status' => 400, 'message' => 'Missing required fields']);
                         }
+
+                            return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+
                         break;
 
                 case 'accountDetails':

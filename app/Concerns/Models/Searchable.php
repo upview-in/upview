@@ -8,6 +8,20 @@ use Illuminate\Support\Arr;
 trait Searchable
 {
     /**
+     * Get searchable columns.
+     *
+     * @return array
+     */
+    public function searchableAttributes()
+    {
+        if (method_exists($this, 'searchable')) {
+            return $this->searchable();
+        }
+
+        return property_exists($this, 'searchable') ? $this->searchable : [];
+    }
+
+    /**
      * Scope a query to search for a term in the attributes.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -71,19 +85,5 @@ trait Searchable
                 return [null, []];
                 break;
         }
-    }
-
-    /**
-     * Get searchable columns.
-     *
-     * @return array
-     */
-    public function searchableAttributes()
-    {
-        if (method_exists($this, 'searchable')) {
-            return $this->searchable();
-        }
-
-        return property_exists($this, 'searchable') ? $this->searchable : [];
     }
 }

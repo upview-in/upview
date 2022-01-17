@@ -37,9 +37,9 @@ class LoginRequest extends FormRequest
     /**
      * Attempt to authenticate the request's credentials.
      *
+     * @throws \Illuminate\Validation\ValidationException
      * @return void
      *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function authenticate()
     {
@@ -48,9 +48,7 @@ class LoginRequest extends FormRequest
         if (!Auth::guard('admin')->attempt($this->only('username', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
-            throw ValidationException::withMessages([
-                'username' => __('auth.failed'),
-            ]);
+            throw ValidationException::withMessages(['username' => __('auth.failed')]);
         }
 
         RateLimiter::clear($this->throttleKey());
@@ -59,9 +57,9 @@ class LoginRequest extends FormRequest
     /**
      * Ensure the login request is not rate limited.
      *
+     * @throws \Illuminate\Validation\ValidationException
      * @return void
      *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function ensureIsNotRateLimited()
     {
@@ -73,12 +71,7 @@ class LoginRequest extends FormRequest
 
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
-        throw ValidationException::withMessages([
-            'username' => trans('auth.throttle', [
-                'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
-            ]),
-        ]);
+        throw ValidationException::withMessages(['username' => trans('auth.throttle', ['seconds' => $seconds, 'minutes' => ceil($seconds / 60)])]);
     }
 
     /**
