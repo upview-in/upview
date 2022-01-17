@@ -24,7 +24,7 @@ class UploadPostMediaRequest extends FormRequest
     public function rules()
     {
         return [
-            'post_media' => ['required', 'image', 'max:6144'],
+            'post_media' => ['required'],
             'caption' => ['required'],
             'platform' => ['required', 'array', 'min:1'],
             'profile_select' => ['required'],
