@@ -52,7 +52,7 @@
 	<div class="container-fluid">
 		<div class="card shadow" id="highlights">
 			<div class="card-header p-15 ml-3 w-500">
-				<label class="h3 m-0">Manage Accounts</label>
+				<label class="h3 m-0">Manage Accounts <sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="To revoke user access click delete"></em></sup></label>
 				<button class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" data-target="#addAccountModal">
 					<em class="anticon anticon-user-add"></em> Add Account
 				</button>
@@ -175,6 +175,9 @@
 						<div class="col-6 mt-3 text-center">
 							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100"><em class="fab fa-telegram"></em> Telegram</a>
 						</div>
+					</div>
+					<div class="col mt-2">
+						<span>By clicking, you agree the Upview <a href="https://upview.in/privacy-policy" target="_blank">Privacy Policy</a> and to authorize your social media platform`s data to <a href="https://upview.in" target="_blank">Upview.in</a>.</span>
 					</div>
 				</div>
 			</div>
