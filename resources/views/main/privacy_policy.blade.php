@@ -313,7 +313,7 @@
 
                             <h4 class="title">YouTube API Client Terms of Use & Privacy Policy </h4>
                             <p>
-                                We Use YouTube APIs to fetch the data linked with your authorized account. Users who authorize access are bound by the YouTube Terms Of Service.Please refer <a href="https://www.youtube.com/t/terms">YouTube ToS </a> for more information.
+                                We Use YouTube APIs to fetch the data linked with your auth-orized account. Users who authorize access are bound by the YouTube Terms Of Service.Please refer <a href="https://www.youtube.com/t/terms">YouTube ToS </a> for more information.
                             </p>
 
                             <h4 class="title">Right to Opt-Out. </h4>

@@ -306,7 +306,7 @@
         <div class="card shadow" id="ChannelMainDiv">
             <div class="row p-50">
                 <div class="col-md-2 col-12">
-                    <img class="rounded-circle lazyload" id="c1ChannelProfileImage" width="100%" height="auto" />
+                    <img class="rounded-circle lazyload" id="c1ChannelProfileImage" width="100%" height="auto" alt="" />
                 </div>
                 <div class="col-md-10 col-12 pl-5">
                     <div class="row mt-4">
@@ -408,7 +408,7 @@
                     <div class="col-12 col-md-10">
                         <div class="row">
                             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top geographies</span>
+                                <span class="text-red">Top Geographies</span>
                                 <br />
                                 <label class="font-weight-bolder" id="HighlightsTopCountry"></label>
                             </div>
