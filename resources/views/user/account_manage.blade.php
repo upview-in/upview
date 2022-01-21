@@ -52,7 +52,7 @@
 	<div class="container-fluid">
 		<div class="card shadow" id="highlights">
 			<div class="card-header p-15 ml-3 w-500">
-				<label class="h3 m-0">Manage Accounts <sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="To revoke user access click delete in the action tab"></em></sup></label>
+				<label class="h3 m-0">Manage Accounts <sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="To deauthorize your social accounts, Click delete in the action tab."></em></sup></label>
 				<button class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" data-target="#addAccountModal">
 					<em class="anticon anticon-user-add"></em> Add Account
 				</button>
