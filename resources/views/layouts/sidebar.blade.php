@@ -23,9 +23,6 @@
                 <ul class="dropdown-menu">
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
-                            <span class="icon-holder">
-                                <em class="anticon anticon-youtube"></em>
-                            </span>
                             <span class="title">{{ __('YouTube') }}</span>
                             <span class="arrow">
                                 <em class="arrow-icon"></em>
@@ -46,9 +43,6 @@
                     {{-- Instagram Here --}}
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
-                            <span class="icon-holder">
-                                <em class="anticon anticon-instagram"></em>
-                            </span>
                             <span class="title">{{ __('Instagram') }}</span>
                             <span class="arrow">
                                 <em class="arrow-icon"></em>
@@ -67,9 +61,6 @@
                     {{-- Facebook Here --}}
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
-                            <span class="icon-holder">
-                                <em class="anticon anticon-facebook"></em>
-                            </span>
                             <span class="title">{{ __('Facebook') }}</span>
                             <span class="arrow">
                                 <em class="arrow-icon"></em>

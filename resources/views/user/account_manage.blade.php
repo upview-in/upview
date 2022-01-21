@@ -52,7 +52,7 @@
 	<div class="container-fluid">
 		<div class="card shadow" id="highlights">
 			<div class="card-header p-15 ml-3 w-500">
-				<label class="h3 m-0">Manage Accounts <sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="To revoke user access click delete"></em></sup></label>
+				<label class="h3 m-0">Manage Accounts <sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="To deauthorize your social accounts, Click delete in the action tab."></em></sup></label>
 				<button class="btn btn-md btn-outline-primary float-right" type="button" data-toggle="modal" data-target="#addAccountModal">
 					<em class="anticon anticon-user-add"></em> Add Account
 				</button>
@@ -152,28 +152,28 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100"><em class="fab fa-youtube"></em> YouTube</a>
+							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100">YouTube</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100"><em class="fab fa-facebook-square"></em> Facebook</a>
+							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100">Facebook</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-100"><em class="fab fa-instagram"></em> Instagram</a>
+							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-100">Instagram</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100"><em class="fab fa-twitter-square"></em> Twitter</a>
+							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100">Twitter</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="javascript:void(0);" class="btn btn-lg btn-primary w-100"><em class="fab fa-linkedin"></em> LinkedIn</a>
+							<a href="javascript:void(0);" class="btn btn-lg btn-primary w-100">LinkedIn</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="javascript:void(0);" class="btn btn-lg btn-danger w-100"><em class="fab fa-pinterest"></em> Pinterest</a>
+							<a href="javascript:void(0);" class="btn btn-lg btn-danger w-100">Pinterest</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="javascript:void(0);" class="btn btn-lg btn-warning w-100"><em class="fab fa-reddit-square"></em> Reddit</a>
+							<a href="javascript:void(0);" class="btn btn-lg btn-warning w-100">Reddit</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
-							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100"><em class="fab fa-telegram"></em> Telegram</a>
+							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100">Telegram</a>
 						</div>
 					</div>
 					<div class="col mt-2">
