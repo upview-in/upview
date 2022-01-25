@@ -8,9 +8,9 @@
             <div class="row">
                 <div class="col-lg-5 col-xl-6">
                     <div class="hero-content">
-                        <h2 class="title">Top Ranking Your Brand New Website.</h2>
+                        <h2 class="title">A Powerful tool for social media management.</h2>
                         <p>
-                            <span class="hr d-none d-xl-block"></span> Top rankings is important for online business.
+                            <span class="hr d-none d-xl-block"></span>Easy way to manage socail media and get powerful analytices.
                         </p>
                         <img class="particle3" src="{{ asset('main/images/hero/particle3.png') }}" alt="particle2" />
                     </div>
