@@ -10,7 +10,6 @@ class AppModuleController extends Controller
     public function index()
     {
         $packages = (new UserPermissionHelper)->getGroups();
-        dd($packages);
         return view('user.site_packages');
     }
 }
