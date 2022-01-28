@@ -144,6 +144,7 @@ class AyrshareController extends Controller
                 'domain' => 'upview',
                 'privateKey' => $file, // required
                 'profileKey' => $request->profileKey, // requires
+                'logout' => true,
             ]
         )->body());
     }

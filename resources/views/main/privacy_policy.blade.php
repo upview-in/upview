@@ -276,7 +276,7 @@
 
 
 
-                            <h4 class="title">Notice of Collection. </h4>
+                            <h4 class="title">24. Notice of Collection. </h4>
                             <p>
                                 In the 12 months prior to the last update of this Privacy Policy, we have collected the following categories of personal information enumerated in the CCPA: Identifiers, including name, email address, phone number account name, IP address, and an ID or
                                 number assigned to your account. Customer records, billing and shipping address, and credit or debit card information. Commercial information, including purchases and engagement with the Service. Internet activity, including
@@ -295,7 +295,7 @@
 
 
 
-                            <h4 class="title">Right to Know and Delete. </h4>
+                            <h4 class="title">25. Right to Know and Delete. </h4>
                             <p>
                                 Consumers who are California residents (and not representatives of businesses, whether those businesses are our customers or others) have the right to request that we delete the personal information we have collected from you (subject to certain exemptions) and the right to know certain information about our data practices in the preceding 12 months. In particular, you have the right to request the following from us: The categories of personal information we have collected about you; The categories of sources from which the personal information was collected; The categories of personal information about you we disclosed for a business purpose or sold; The categories of third parties to whom
                                 the personal information was disclosed for a business purpose or sold; The business or commercial purpose for collecting or selling the personal information; and The specific pieces of personal information we have collected
@@ -311,30 +311,30 @@
 
                             </p>
 
-                            <h4 class="title">YouTube API Client Terms of Use & Privacy Policy </h4>
+                            <h4 class="title">26. YouTube API Client Terms of Use & Privacy Policy </h4>
                             <p>
                                 We Use YouTube APIs to fetch the data linked with your authorized account. Users who authorize access are bound by the YouTube Terms Of Service.Please refer <a href="https://www.youtube.com/t/terms">YouTube ToS </a> for more information.
                             </p>
 
-                            <h4 class="title">Right to Opt-Out. </h4>
+                            <h4 class="title">27. Right to Opt-Out. </h4>
                             <p>
                                 To the extent Upview.in sells your personal information as the term “sell” is defined under the California Consumer Privacy Act, you have the right to opt-out of the sale of your personal information by us to third parties at any time. You may submit a request to opt-out by clicking Do Not Sell My Personal Information. You may also submit a request to opt-out by emailing us at developers@upview.in.
                             </p>
 
 
-                            <h4 class="title">Authorized Agent. </h4>
+                            <h4 class="title">28. Authorized Agent. </h4>
                             <p>
                                 You can designate an authorized agent to submit requests on your behalf. However, we will require written proof of the agent’s permission to do so and verify your identity directly.
                             </p>
 
 
-                            <h4 class="title">Right to Non-Discrimination. </h4>
+                            <h4 class="title">29. Right to Non-Discrimination. </h4>
                             <p>
                                 You have the right not to receive discriminatory treatment by us for the exercise of any of your rights.
                             </p>
 
 
-                            <h4 class="title">Shine the Light. </h4>
+                            <h4 class="title">30.Shine the Light. </h4>
                             <p>
                                 Pursuant to Section 1798.83 of the California Civil Code, residents of California can obtain certain information about the types of personal information that companies with whom they have an established business relationship have shared with third parties
                                 for direct marketing purposes during the preceding calendar year. In particular, the law provides that companies must inform consumers about the categories of personal information that have been shared with third parties,
