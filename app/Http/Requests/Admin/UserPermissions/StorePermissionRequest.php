@@ -24,8 +24,8 @@ class StorePermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:60',
-            'slug' => 'required|string|max:255|unique:user_permissions',
+            'name' => ['required', 'string', 'min:2', 'max:60'],
+            'slug' => ['required', 'string', 'max:255', Functions::getSlugValidation(), Rule::unique('user_permissions')],
             'enabled' => ['sometimes', 'in:true,false'],
         ];
     }

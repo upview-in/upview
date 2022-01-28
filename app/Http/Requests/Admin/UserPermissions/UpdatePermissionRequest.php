@@ -26,7 +26,7 @@ class UpdatePermissionRequest extends FormRequest
     {
         return [
             'name' => ['sometimes', 'string', 'min:2', 'max:60'],
-            'slug' => ['sometimes', 'string', 'max:255', Rule::unique('user_permissions')->ignore($this->userPermission)],
+            'slug' => ['sometimes', 'string', 'max:255', Functions::getSlugValidation(), Rule::unique('user_permissions')->ignore($this->userPermission)],
             'enabled' => ['sometimes', 'in:true,false'],
         ];
     }
