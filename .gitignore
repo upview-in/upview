@@ -6,7 +6,6 @@
 /public/videos
 
 /vendor
-/stubs
 /storage/*
 
 .env
