@@ -27,13 +27,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
-                                        @if (Route::has('password.request'))
-                                        <a class="float-right font-size-13 text-muted" href="{{ route('password.request') }}">{{ __('Forgot password?') }}</a>
-                                        @endif
                                         <div class="input-affix m-b-10">
                                             <em class="prefix-icon anticon anticon-lock"></em>
                                             <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
                                         </div>
+                                        @if (Route::has('password.request'))
+                                        <a class="float-right font-size-13 text-muted" href="{{ route('password.request') }}">{{ __('Forgot password?') }}</a>
+                                        @endif
                                         @error('password')
                                         <span class="invalid-feedback d-block" role="alert">
                                             <strong>{{ $message }}</strong>

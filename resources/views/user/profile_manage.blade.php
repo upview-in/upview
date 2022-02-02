@@ -103,6 +103,9 @@
 											@if($platforms == 'tiktok')
 												<em class='fab fa-tiktok p-1 font-size-20'> </em>
 											@endif
+											@if($platforms == 'youtube')
+												<em class='fab fa-youtube p-1 font-size-20'> </em>
+											@endif
 										@endforeach
 									</td>
 									<td class="justify-center">{{ $profiles['authorized_on'] ?? '' }}</td>
