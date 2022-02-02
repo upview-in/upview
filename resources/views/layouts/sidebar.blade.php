@@ -35,9 +35,9 @@
                             <li class="{{ request()->routeIs('panel.user.analyze.youtube.videos') ? 'active' : '' }}">
                                 <a href="{{ route('panel.user.analyze.youtube.videos') }}">{{ __('Videos') }}</a>
                             </li>
-                            <li class="{{ request()->routeIs('panel.user.analyze.youtube.audience') ? 'active' : '' }}">
+                            {{-- <li class="{{ request()->routeIs('panel.user.analyze.youtube.audience') ? 'active' : '' }}">
                                 <a href="{{ route('panel.user.analyze.youtube.audience') }}">{{ __('Audience') }}</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     {{-- Instagram Here --}}
@@ -106,7 +106,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown ">
+            {{-- <li class="nav-item dropdown ">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <em class="anticon anticon-fund"></em>
@@ -128,13 +128,10 @@
                             <li>
                                 <a href="javascript:void(0)">{{ __('Keyword Tracking') }}</a>
                             </li>
-                            {{-- <li>
-                                <a href="#">{{ __('Series Tracking') }}</a>
-                            </li> --}}
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -151,7 +148,7 @@
                             <span class="icon-holder">
                                 <em class="fas fa-calendar-day"></em>
                             </span>
-                            <span class="title">{{ __('Post Scheduling') }}</span>
+                            <span class="title">{{ __('Post Management') }}</span>
                         </a>
                     </li>
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.post_history') ? 'active' : '' }}">

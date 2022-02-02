@@ -244,20 +244,19 @@ class AccountController extends Controller
     {
         $acc = LinkedAccounts::find($id);
 
-        // dd($acc->platform);
         if (!is_null($acc) && $acc->user_id === Auth::id()) {
             $acc->delete();
         }
 
         switch ($acc->platform) {
-            case (int) (TokenHelper::$YOUTUBE):
+            case (int) (TokenHelper::$PLATFORMS['youtube']):
                 session()->forget('AccountIndex_YT');
                 break;
-            case (int) (TokenHelper::$INSTAGRAM):
-                session()->forget('AccountIndex_IG');
-                break;
-            case (int) (TokenHelper::$FACEBOOK):
+            case (int) (TokenHelper::$PLATFORMS['facebook']):
                 session()->forget('AccountIndex_FB');
+                break;
+            case (int) (TokenHelper::$PLATFORMS['instagram']):
+                session()->forget('AccountIndex_IG');
                 break;
         }
 

@@ -1,3 +1,7 @@
+@section('path-navigation')
+<a class="breadcrumb-item" href="#">Posts</a>
+<span class="breadcrumb-item active">Post History</span>
+@endsection
 <x-app-layout title="Post History">
     <div class="container-fluid">
         <div class="card shadow" id="highlights">
@@ -33,7 +37,7 @@
                             @foreach($postHistory as $key => $history)
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
-                                <td class="justify-center">{{ $history->profile->title }}</td>
+                                <td class="justify-center">{{ $history->profile->title ?? 'N/A' }}</td>
                                 <td class="justify-center"> 
                                     @foreach($history->post_info as $postInfo)
                                         @if($postInfo['platform'] == 'facebook')

@@ -1,3 +1,8 @@
+@section('path-navigation')
+<a class="breadcrumb-item" href="#">Posts</a>
+<span class="breadcrumb-item active">Post Management</span>
+@endsection
+
 @section('custom-scripts')
 <script>
     $(document).ready( function() {

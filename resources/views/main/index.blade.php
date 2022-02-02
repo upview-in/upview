@@ -151,7 +151,7 @@
                             <img src="{{ asset('main/images/icon/connect.png') }}" alt="" />
                         </div>
                         <div class="service-content">
-                            <h4 class="title">Pay Per Click Advertising</h4>
+                            <h4 class="title">Social Media Management</h4>
                             <p>
                                 Lorem Ipsum is simply dummy text of the ipsum has been the industry standard ever printer specimen book.
                             </p>
@@ -171,7 +171,7 @@
                             <img src="{{ asset('main/images/icon/document.png') }}" alt="" />
                         </div>
                         <div class="service-content">
-                            <h4 class="title">Marketing Automation</h4>
+                            <h4 class="title">Social Listening</h4>
                             <p>
                                 Lorem Ipsum is simply dummy text of the ipsum has been the industry standard ever printer specimen book.
                             </p>

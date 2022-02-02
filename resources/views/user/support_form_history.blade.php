@@ -1,5 +1,8 @@
+@section('path-navigation')
+<a class="breadcrumb-item" href="#">Support</a>
+<span class="breadcrumb-item active">Support History</span>
+@endsection
 @section('custom-scripts')
-
 <script type="text/javascript">
 
 function setQueryID(qurID) {
