@@ -172,7 +172,7 @@
                     url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
                     data: {
                         id: data.id,
-                        platform: parseInt('{{ App\Helper\TokenHelper::$FACEBOOK }}'),
+                        platform: parseInt('{{  App\Helper\TokenHelper::$PLATFORMS["facebook"] }}'),
 
                     },
                     success: function() {
