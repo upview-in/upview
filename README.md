@@ -63,6 +63,7 @@
 
 - php-gd
 - php-mongod
+- php-curl
 
 
 
