@@ -280,13 +280,13 @@ class AccountController extends Controller
         if ($request->has(['id', 'platform'])) {
             $acc = LinkedAccounts::find($request->id);
             if (!is_null($acc) && $acc->user_id === Auth::id()) {
-                if ($request->platform == TokenHelper::$YOUTUBE) {
+                if ($request->platform == TokenHelper::$PLATFORMS['youtube']) {
                     $sKey = 'AccountIndex_YT';
                     $accessCode = TokenHelper::getAuthToken_YT();
-                } elseif ($request->platform == TokenHelper::$FACEBOOK) {
+                } elseif ($request->platform == TokenHelper::$PLATFORMS['facebook']) {
                     $sKey = 'AccountIndex_FB';
                     $accessCode = TokenHelper::getAuthToken_FB();
-                } elseif ($request->platform == TokenHelper::$INSTAGRAM) {
+                } elseif ($request->platform == TokenHelper::$PLATFORMS['instagram']) {
                     $sKey = 'AccountIndex_IG';
                     $accessCode = TokenHelper::getAuthToken_IG();
                 }
