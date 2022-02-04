@@ -96,7 +96,7 @@
             $("#countryList").select2({
                 allowClear: true,
                 data: _countryList,
-                placeholder: 'Country',
+                placeholder: 'Country Wise',
             });
 
             $('#countryList').on('change', function(e) {

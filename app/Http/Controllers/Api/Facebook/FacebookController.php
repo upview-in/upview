@@ -122,34 +122,24 @@ class FacebookController extends Controller
         $fb_client = $fb->getFacebookClient();
         $fbUser = $fb_client->get('/me/accounts')->getBody();
         $fbUser = json_decode($fbUser, true);
-        // dd($fbUser);
         $fbPageID = $fbUser['data'][session('PagesIndex_FB', 1)]['id'];
-        //dd($fbPageID);
-
         $fbUser = $fb_client->get('/' . $fbPageID . '?fields=access_token,name')->getGraphUser();
-
         $fb_client->setDefaultAccessToken($fbUser['access_token']);
-        // dd('/'.$fbPageID. '/insights?metric=page_post_engagements&period=days_28');
         $fbUser = $fb_client->get($fbPageID . '/insights?metric=page_post_engagements,page_impressions&period=days_28')->getBody();
-
         return json_encode($fbUser);
     }
 
     public static function getFacebookPagesInsightsEx(GetMineAccountDetails $request)
     {
-        $dataArr = [];
         $fb = new FacebookHelper();
         $fb_client = $fb->getFacebookClient();
         $fbUser = $fb_client->get('/me/accounts')->getBody();
         $fbUser = json_decode($fbUser, true);
-        // dd($fbUser);
         $fbPageID = $request->id;
         $fbUser = $fb_client->get('/' . $fbPageID . '?fields=access_token')->getGraphUser();
         $fb_client->setDefaultAccessToken($fbUser['access_token']);
         $fbUser = $fb_client->get($fbPageID . '?fields=' . $request->fields)->getBody();
         $fbUser = json_decode($fbUser);
-        //dd('Session Default is: '.session('PagesIndex_FB', 5));
-        // $dataArr['PageInfo'] = $fbUser;
         return response()->json(($fbUser), 200);
     }
 

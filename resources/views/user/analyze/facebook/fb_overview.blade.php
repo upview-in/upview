@@ -44,7 +44,7 @@
             google.charts.load('current', {
                 'packages': ['corechart', 'controls']
             }).then(() => {
-                loadAnalytics();
+                // loadAnalytics();
             });
 
 
@@ -102,7 +102,7 @@
 
             $('#countryList').on('change', function(e) {
                 country = $(this).val();
-                loadAnalytics();
+                // loadAnalytics();
             });
 
             $('#select2Accounts').select2({
@@ -168,6 +168,7 @@
 
             $('#select2Pages').on('change', function(e) {
                 var data = $('#select2Pages').select2('data');
+                console.log();
                 $.ajax({
                     url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
                     data: {
@@ -215,14 +216,14 @@
                     $("#GroupBy").prop('selectedIndex', 1);
                     GroupBy = $("#GroupBy").val();
                 }
-                loadAnalytics();
+                // loadAnalytics();
             });
 
             $("#GroupBy").prop('selectedIndex', 0);
 
             $("#GroupBy").change(function() {
                 GroupBy = $(this).val();
-                loadAnalytics();
+                // loadAnalytics();
             });
 
             function loadData() {
@@ -272,9 +273,6 @@
 
 
                         }
-
-
-
                         __AC("ChannelMainDiv");
 
                         if(data.status != 200){
@@ -286,8 +284,10 @@
             }
 
             function loadAnalytics(pageID) {
-                $.ajax({
-
+                
+                if(pageID != null)
+                {
+                    $.ajax({
                     data: {
                         id: pageID,
                         part: 'PageAnalytics',
@@ -296,8 +296,6 @@
                     dataType: "json",
                     success: function(response) {
                         let data = response;
-                        console.log(data);
-
                         if(data.status == 200)
                         {
                             $("#fbPageURL").attr('href', data.link);
@@ -349,17 +347,15 @@
 
                         }
 
-                        __AC("FBInsights");
-
-
                         if(data.status != 200){
                             $("#FBInsights").html(noData);
                         }
-
+                        __AC("FBInsights");
 
                     }
-
                 });
+                }
+                else console.log("ID is null");
             }
 
             function loadPageInsights(pageID) {
@@ -373,7 +369,6 @@
                     dataType: "json",
                     success: function(response) {
                         let data = response;
-                        console.log(data);
                         if(data.status == 200)
                         {
                             $("#fbPageURL").attr('href', data.link);
