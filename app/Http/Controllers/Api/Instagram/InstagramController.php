@@ -19,7 +19,6 @@ class InstagramController extends Controller
         $MINEUserID = $ig_client->get('/' . $MINEUserID[session('AccountIndex_IG', 0)]['id'] . '?fields=instagram_business_account')->getGraphUser();
         $MINE = $MINEUserID['instagram_business_account']['id'];
         $igUser = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=days_28')->getBody();
-        //dd(response()->json($igUser, 200));
         return response()->json(json_decode($igUser, true), 200);
     }
 
@@ -34,7 +33,6 @@ class InstagramController extends Controller
         $MINE = $MINEUserID['instagram_business_account']['id'];
         $dataArr['insights'] = $ig_client->get('/' . $MINE . '/insights?metric=impressions,reach&period=' . $period)->getBody();
         $dataArr['profile_views'] = self::getMineAccountProfileViewsEx();
-        //dd(response()->json($igUser, 200));
         return response()->json(json_encode($dataArr, true), 200);
     }
 
@@ -57,7 +55,6 @@ class InstagramController extends Controller
             $sum = $sum + $value->value;
         }
         $dataArr['profile_views'] = $sum;
-        //dd(response()->json($igUser, 200));
         return response()->json(($dataArr), 200);
     }
 
@@ -92,7 +89,6 @@ class InstagramController extends Controller
         $MINEUserID = $ig_client->get('/' . $MINEUserID[0]['id'] . '?fields=instagram_business_account')->getGraphUser();
         $MINE = $MINEUserID['instagram_business_account']['id'];
         $igUser = $ig_client->get('/' . $MINE . '?fields=' . $request->fields)->getBody();
-        //dd(response()->json($igUser, 200));
         return response()->json(json_decode($igUser, true), 200);
     }
 
