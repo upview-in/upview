@@ -55,8 +55,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
             "@php -r \"shell_exec('cp -rf prevendor/* vendor/');\"",
-            "@php artisan stub:publish",
-            "@php artisan db:seed"
+            "@php artisan stub:publish"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
