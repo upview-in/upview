@@ -1,14 +1,13 @@
 <?php
-
 namespace Database\Seeders;
 
-use App\DataProviders\CityDataProvider;
-use App\DataProviders\CountryDataProvider;
-use App\DataProviders\StateDataProvider;
-use App\Models\City;
+use Illuminate\Database\Seeder;
 use App\Models\Country;
 use App\Models\State;
-use Illuminate\Database\Seeder;
+use App\Models\City;
+use App\DataProviders\CountryDataProvider;
+use App\DataProviders\StateDataProvider;
+use App\DataProviders\CityDataProvider;
 
 class CountryStateCityTableSeeder extends Seeder
 {
