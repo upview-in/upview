@@ -109,8 +109,8 @@ function copyToClipboard(text) {
 
 function GetParameterValues(param) {
     var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for (var i = 0; i < url.length; i++) {
-        var urlparam = url[i].split('=');
+    for (const i of url) {
+        var urlparam = i.split('=');
         if (urlparam[0] == param) {
             return urlparam[1];
         }
@@ -134,16 +134,15 @@ function redirectTo(link) {
 
 // Before ajax request send
 function __BS(queryIDS) {
+    var loaderTemplate = $("#divLoadingTemplate").clone();
     if (typeof queryIDS === "object") {
         queryIDS.forEach(queryID => {
-            var loaderTemplate = $("#divLoadingTemplate").clone();
             loaderTemplate.attr('id', queryID + "_DivLoader");
             loaderTemplate.removeClass("d-none");
             loaderTemplate.addClass("d-flex");
             $("#" + queryID).append(loaderTemplate);
         });
     } else {
-        var loaderTemplate = $("#divLoadingTemplate").clone();
         loaderTemplate.attr('id', queryIDS + "_DivLoader");
         loaderTemplate.removeClass("d-none");
         loaderTemplate.addClass("d-flex");
@@ -319,15 +318,13 @@ class Chart {
         $("#" + this.id.id + "ContextMenu").remove();
 
         // Override default options
-        let options_keys = Object.keys(options);
-        for (let i = 0; i < options_keys.length; i++) {
-            this.options[options_keys[i]] = options[options_keys[i]];
+        for (const options_key of Object.keys(options)) {
+            this.options[options_key] = options[options_key];
         }
 
         // Remove options
-        let remove_options_keys = Object.keys(removeOptions);
-        for (let i = 0; i < remove_options_keys.length; i++) {
-            delete this.options[remove_options_keys[i]];
+        for (const element of Object.keys(removeOptions)) {
+            delete this.options[element];
         }
 
         this.defaultHideSeries = defaultHide;
@@ -406,7 +403,7 @@ class Chart {
     }
 
     init() {
-        this.buildContextMenu();
+        // this.buildContextMenu();
 
         switch ((this.chartType).toLocaleLowerCase()) {
             //Keep this, so even in case we by mistake give the chart name in wrong case.

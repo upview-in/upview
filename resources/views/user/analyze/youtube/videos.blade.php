@@ -135,10 +135,23 @@
         $('#daterange').on('apply.daterangepicker', function(ev, picker) {
             __startDate = picker.startDate;
             __endDate = picker.endDate;
-            if (__endDate.diff(__startDate, 'days') > 62) {
-                $("#GroupBy").prop('selectedIndex', 1);
-                GroupBy = $("#GroupBy").val();
+
+            var timestamp = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
+
+            if (__startDate < timestamp) {
+                alert("You can't select morethen 30 days");
+                return;
             }
+
+            if (__endDate . diff(__startDate, 'days') < 1) {
+                alert("Invalid range selected");
+                return;
+            }
+
+            // if (__endDate.diff(__startDate, 'days') > 62) {
+            //     $("#GroupBy").prop('selectedIndex', 1);
+            //     GroupBy = $("#GroupBy").val();
+            // }
             loadAnalytics(videoID);
         });
 
