@@ -198,15 +198,17 @@ class OverviewController extends Controller
             $TrafficSource['Source'] = '';
 
             foreach ($TrafficSourceAnalyticsResponse->rows as $key => $value) {
-                $TrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]), $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];
+                $SourceInsightTrafficSourceType = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
+                $splittedTrafficSource = explode(" ", $SourceInsightTrafficSourceType);
+                if (!empty($splittedTrafficSource) && $splittedTrafficSource[0] == 'Yt') {
+                    $splittedTrafficSource[0] = 'YouTube';
+                    $SourceInsightTrafficSourceType = implode(" ", $splittedTrafficSource);
+                }
+
+                $TrafficSourceChartData[] = [$SourceInsightTrafficSourceType, $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];
                 if ($value[$indexTrafficSourceViews] > $TrafficSource['Views']) {
                     $TrafficSource['Views'] = $value[$indexTrafficSourceViews];
-                    $TrafficSource['Source'] = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
-                    $splittedTrafficSource = explode(' ', $TrafficSource['Source']);
-                    if (!empty($splittedTrafficSource) && $splittedTrafficSource[0] == 'Yt') {
-                        $splittedTrafficSource[0] = 'YouTube';
-                        $TrafficSource['Source'] = implode(' ', $splittedTrafficSource);
-                    }
+                    $TrafficSource['Source'] = $SourceInsightTrafficSourceType;
                 }
             }
 
