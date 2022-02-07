@@ -202,6 +202,11 @@ class OverviewController extends Controller
                 if ($value[$indexTrafficSourceViews] > $TrafficSource['Views']) {
                     $TrafficSource['Views'] = $value[$indexTrafficSourceViews];
                     $TrafficSource['Source'] = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
+                    $splittedTrafficSource = explode(' ', $TrafficSource['Source']);
+                    if (!empty($splittedTrafficSource) && $splittedTrafficSource[0] == 'Yt') {
+                        $splittedTrafficSource[0] = 'YouTube';
+                        $TrafficSource['Source'] = implode(' ', $splittedTrafficSource);
+                    }
                 }
             }
 
