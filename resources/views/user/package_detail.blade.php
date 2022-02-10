@@ -1,6 +1,6 @@
 @section('path-navigation')
 <a class="breadcrumb-item" href="#">Packages</a>
-<span class="breadcrumb-item active">Package Details</span>
+<span class="breadcrumb-item active">{{ decrypt($packageName) }}</span>
 @endsection
 
 @section('custom-css')

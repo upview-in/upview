@@ -14,8 +14,11 @@ class AppModuleController extends Controller
         return view('user.site_packages', ['packages'=>$pack]);
     }
 
-    public function packageDetails(PackageDetail $request)
+    public function packageDetails(PackageDetail $request, $packageName)
     {
-        return view('user.package_detail');
+        if ((new UserPermissionHelper)->isGroupExist(decrypt($packageName))) { 
+            return view('user.package_detail', ['packageName'=> $packageName]);
+        }
+        return abort(404);
     }
 }

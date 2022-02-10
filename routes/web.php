@@ -86,7 +86,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/choosePackages', [AppModuleController::class, 'index'])->name('choosePackages');
-        Route::get('/packageDetails', [AppModuleController::class, 'packageDetails'])->name('packageDetails');
+        Route::get('/packageDetails/{packageName}', [AppModuleController::class, 'packageDetails'])->name('packageDetails');
 
         Route::prefix('user')->as('user.')->group(function () {
             Route::prefix('profile')->as('profile.')->group(function () {
