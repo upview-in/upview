@@ -25,6 +25,17 @@ class UserPermissionHelper
         return array_unique($groups);
     }
 
+    public function isGroupExist(string $group): bool {
+        $slugs = $this->userPermissions->pluck('slug');
+        foreach ($slugs as $slug) {
+            $slugSplitted = explode('.', $slug);
+            if (!empty($slugSplitted) && $this->toHigh(ucfirst($slugSplitted[0])) === $group) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function getModulesFromGroup(string $group): array
     {
         $modules = [];
