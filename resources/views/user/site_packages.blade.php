@@ -5,7 +5,7 @@
     <div class="row">
         @foreach ($packages as $package)
             <div class="col-md-6 col-lg-3">
-                <a href="{{ route('panel.packageDetails') }}">
+                <a href="{{ route('panel.packageDetails', encrypt($package)) }}">
                     <div class="card">
                         <div class="card-body">
                             <div class="media align-items-center">

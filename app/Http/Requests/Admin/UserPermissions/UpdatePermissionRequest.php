@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\UserPermissions;
 
+use App\Helper\Functions;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
