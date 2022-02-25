@@ -30,7 +30,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="{{ request()->routeIs('panel.user.analyze.youtube.overview') ? 'active' : '' }}">
-                                <a href="{{ route('panel.user.analyze.youtube.overview') }}">{{ __('Overview') }}</a>
+                                <a id="YtOverviewConfirm" class="pointer" data-url="{{ route('panel.user.analyze.youtube.overview') }}">{{ __('Overview') }}</a>
                             </li>
                             <li class="{{ request()->routeIs('panel.user.analyze.youtube.videos') ? 'active' : '' }}">
                                 <a href="{{ route('panel.user.analyze.youtube.videos') }}">{{ __('Videos') }}</a>
