@@ -100,7 +100,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
                 Route::delete('/deleteProfile', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
             });
-
+            //Routes For Support Chat System
             Route::prefix('support')->as('support.')->group(function () {
                 Route::get('/submit', [SupportController::class, 'index'])->name('submit');
                 Route::get('/history', [SupportController::class, 'history'])->name('history');
@@ -108,11 +108,12 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::get('/cancelQueryByUser/{userSupport}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
                 Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
-
+            //Routes For Post Management
             Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
             Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
             Route::get('/post_history', [PostHistoryController::class, 'index'])->name('post_history');
 
+            //Routes For Account Management for social Media 
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
 
@@ -131,6 +132,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::get('/setDefault/page', [PagesController::class, 'setSessionDefaultPage'])->name('setSessionDefaultPage');
             });
 
+            //Routes For Measure engagement 
             Route::prefix('measure')->as('measure.')->group(function () {
                 Route::prefix('market-research')->as('market_research.')->group(function () {
                     Route::prefix('channel-intelligence')->as('channel_intelligence.')->group(function () {
@@ -144,6 +146,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 });
             });
 
+            //Routes For Platforms overall Analytics 
             Route::prefix('analyze')->as('analyze.')->group(function () {
                 Route::prefix('youtube')->as('youtube.')->middleware('yt.token.validate')->group(function () {
                     Route::get('/overview', [App\Http\Controllers\User\Analyze\YouTube\OverviewController::class, 'overview'])->name('overview');

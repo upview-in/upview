@@ -28,7 +28,7 @@ function toast(title, message, delay, icon = 'info', color = 'info') {
 
     $('#notification-toast').append(toastHTML);
     $('#notification-toast .toast').toast('show');
-    setTimeout(function () {
+    setTimeout(function() {
         $('#notification-toast .toast:first-child').remove();
     }, delay);
 }
@@ -43,17 +43,17 @@ function convertToInternationalCurrencySystem(labelValue) {
         :
         Math.abs(Number(labelValue)) >= 1.0e+6
 
-            ?
-            (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
-            // Three Zeroes for Thousands
-            :
-            Math.abs(Number(labelValue)) >= 1.0e+3
+        ?
+        (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
+        // Three Zeroes for Thousands
+        :
+        Math.abs(Number(labelValue)) >= 1.0e+3
 
-                ?
-                (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
+        ?
+        (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
 
-                :
-                Math.abs(Number(labelValue));
+    :
+    Math.abs(Number(labelValue));
 }
 
 function formatTime(mins) {
@@ -333,7 +333,7 @@ class Chart {
                 this.columns.push({
                     label: this.data.getColumnLabel(i),
                     type: this.data.getColumnType(i),
-                    calc: function () {
+                    calc: function() {
                         return null;
                     }
                 });
@@ -389,15 +389,15 @@ class Chart {
         let menu = '<div id="' + this.id.id + 'ContextMenu" class="dropdown dropdown-animated scale-right float-right mr-5 pointer"><i class="anticon anticon-menu" data-toggle="dropdown"></i><div class="dropdown-menu"><button id="DownloadPdf' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PDF</button><button id="DownloadPng' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PNG</button><button id="Fullscreen' + this.id.id + 'Chart" class="dropdown-item" type="button">Fullscreen</button></div></div>';
         this.id.parentNode.insertAdjacentHTML("afterbegin", menu);
 
-        $("#Fullscreen" + this.id.id + "Chart").click(function () {
+        $("#Fullscreen" + this.id.id + "Chart").click(function() {
             viewFullScreenDiv(_this.id);
         });
 
-        $("#DownloadPdf" + this.id.id + "Chart").click(function () {
+        $("#DownloadPdf" + this.id.id + "Chart").click(function() {
             _this.downloadChartPDF();
         });
 
-        $("#DownloadPng" + this.id.id + "Chart").click(function () {
+        $("#DownloadPng" + this.id.id + "Chart").click(function() {
             _this.downloadChartPNG();
         });
     }
@@ -449,7 +449,7 @@ class Chart {
 
         var _this = this;
 
-        google.visualization.events.addListener(this.chart, 'select', function () {
+        google.visualization.events.addListener(this.chart, 'select', function() {
             var sel = _this.chart.getSelection();
             if (sel.length > 0) {
                 if (sel[0].row === null) {
@@ -458,7 +458,7 @@ class Chart {
                         _this.columns[col] = {
                             label: _this.data.getColumnLabel(col),
                             type: _this.data.getColumnType(col),
-                            calc: function () {
+                            calc: function() {
                                 return null;
                             }
                         };
@@ -477,14 +477,14 @@ class Chart {
         });
 
         document.addEventListener('fullscreenchange', (event) => {
-            setTimeout(function () {
+            setTimeout(function() {
                 _this.reDrawChart();
             }, 100);
         });
     }
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     $('.select2').select2({
         allowClear: true,
     });
@@ -497,14 +497,14 @@ $(document).ready(function () {
         $(".app").addClass("is-folded");
     }
 
-    $(document).on('click', ".videoTag", function () {
+    $(document).on('click', ".videoTag", function() {
         let tag = $(this).html();
         window.location = videoIntelligenceIndexRoute + "?tag=" + tag;
     });
 
     var $div = $(".app");
-    var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
             if (mutation.attributeName === "class") {
                 var isFolded = getCookie('isFolded') == "true" ? true : false;
                 setCookie('isFolded', !isFolded, 365);
@@ -514,4 +514,28 @@ $(document).ready(function () {
     observer.observe($div[0], {
         attributes: true
     });
+
+
+    $("#YtOverviewConfirm").confirm({
+        title: "Authorize Upview",
+        content: "Authorize Upview to access your YouTube Analytics",
+        buttons: {
+            confirm: {
+                text: "Authorize",
+                btnClass: "btn-success",
+                isHidden: false,
+                isDisabled: false,
+                action: function(event) {
+                    window.location = $("#YtOverviewConfirm").data("url");
+                }
+            },
+            cancel: {
+                text: "Cancle",
+                btnClass: "btn-danger",
+                isHidden: false,
+                isDisabled: false,
+            }
+        }
+    });
+
 });

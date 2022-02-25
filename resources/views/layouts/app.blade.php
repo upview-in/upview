@@ -22,6 +22,7 @@
 <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
 <link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
 <link href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+<link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
@@ -119,6 +120,7 @@
 
     <!-- Core JS -->
     <script src="{{ asset('js/theme-app.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
     <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>

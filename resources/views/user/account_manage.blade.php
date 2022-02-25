@@ -78,9 +78,9 @@
 
                             $platforms = [
                                 null,
-                                '<span class="text-danger"><em class="anticon anticon-youtube"></em> YouTube</span>',
-                                '<span class="text-primary"><em class="anticon anticon-facebook"></em> Facebook</span>',
-                                '<span class="text-warning"><em class="anticon anticon-instagram"></em> Instagram</span>',
+                                '<span class="text-danger">YouTube</span>',
+                                '<span class="text-primary">Facebook</span>',
+                                '<span class="text-warning">Instagram</span>',
                             ];
 
                             ?>
@@ -151,16 +151,16 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-100">YouTube</a>
+						<div class="col-12 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getYoutubeAccess') }}" class="btn btn-lg btn-danger w-60">YouTube</a>
 						</div>
-						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-100">Facebook</a>
+						<div class="col-12 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getFacebookAccess') }}" class="btn btn-lg btn-primary w-60">Facebook</a>
 						</div>
-						<div class="col-6 mt-3 text-center">
-							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-100">Instagram</a>
+						<div class="col-12 mt-3 text-center">
+							<a href="{{ route('panel.user.account.getInstagramAccess') }}" class="btn btn-lg btn-warning w-60">Instagram</a>
 						</div>
-						<div class="col-6 mt-3 text-center">
+						{{-- <div class="col-6 mt-3 text-center">
 							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100">Twitter</a>
 						</div>
 						<div class="col-6 mt-3 text-center">
@@ -174,7 +174,7 @@
 						</div>
 						<div class="col-6 mt-3 text-center">
 							<a href="javascript:void(0);" class="btn btn-lg btn-info w-100">Telegram</a>
-						</div>
+						</div> --}}
 					</div>
 					<div class="col mt-2">
 						<span>By clicking, you agree the Upview <a href="https://upview.in/privacy-policy" target="_blank">Privacy Policy</a> and to authorize your social media platform`s data to <a href="https://upview.in" target="_blank">Upview.in</a>.</span>
