@@ -28,55 +28,19 @@
             </a>
             <ul>
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{ route('admin.users.index') }}">
                         <em class='bi bi-gear'></em> Manage
                     </a>
-                    <ul>
-                        <li>
-                            <a href="{{ route('admin.users.create') }}">
-                                <em class='bi bi-plus-lg'></em> Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.users.index') }}">
-                                <em class='bi bi-list'></em> List
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{ route('admin.userPermissions.index') }}">
                         <em class='bi bi-shield-shaded'></em> Permissions
                     </a>
-                    <ul>
-                        <li>
-                            <a href="{{ route('admin.userPermissions.create') }}">
-                                <em class='bi bi-plus-lg'></em> Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.userPermissions.index') }}">
-                                <em class='bi bi-list'></em> List
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{ route('admin.userRoles.index') }}">
                         <em class='bi bi-tags'></em> Roles
                     </a>
-                    <ul>
-                        <li>
-                            <a href="{{ route('admin.userRoles.create') }}">
-                                <em class='bi bi-plus-lg'></em> Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.userRoles.index') }}">
-                                <em class='bi bi-list'></em> List
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </li>
@@ -89,55 +53,19 @@
             </a>
             <ul>
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{ route('admin.admins.index') }}">
                         <em class='bi bi-gear'></em> Manage
                     </a>
-                    <ul>
-                        <li>
-                            <a href="{{ route('admin.admins.create') }}">
-                                <em class='bi bi-plus-lg'></em> Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.admins.index') }}">
-                                <em class='bi bi-list'></em> List
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{ route('admin.adminPermissions.index') }}">
                         <em class='bi bi-shield-shaded'></em> Permissions
                     </a>
-                    <ul>
-                        <li>
-                            <a href="{{ route('admin.adminPermissions.create') }}">
-                                <em class='bi bi-plus-lg'></em> Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.adminPermissions.index') }}">
-                                <em class='bi bi-list'></em> List
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{ route('admin.adminRoles.index') }}">
                         <em class='bi bi-tags'></em> Roles
                     </a>
-                    <ul>
-                        <li>
-                            <a href="{{ route('admin.adminRoles.create') }}">
-                                <em class='bi bi-plus-lg'></em> Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.adminRoles.index') }}">
-                                <em class='bi bi-list'></em> List
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </li>
