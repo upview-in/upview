@@ -22,6 +22,21 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon">
+                    <em class='bi-chat-left-text'></em>
+                </div>
+                <div class="menu-title">Support</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.supportRequest') }}">
+                        <em class='bi bi-list'></em> List
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><em class='bi bi-people'></em>
                 </div>
                 <div class="menu-title">Users</div>

@@ -40,11 +40,12 @@ function processCancelQueryRequest()
                     @endif
                     {{-- Success Message Div End --}}
                     <table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
+                        <caption></caption>
                         <thead>
 							<tr>
 								<th scope="col" data-sortable="true">#</th>
-								<th scope="col" data-sortable="true" data-field="name">Query Title</th>
-								<th scope="col" data-sortable="true" data-field="email">Query Description</th>
+								<th scope="col" data-sortable="true" data-field="name">Title</th>
+								<th scope="col" data-sortable="true" data-field="email">Description</th>
 								<th scope="col" data-sortable="true" data-field="linked_account">Status</th>
 								<th scope="col" data-sortable="true" data-field="authorized_since">Assigned Executive</th>
 								<th scope="col" data-sortable="true" data-field="status">Assigned On</th>

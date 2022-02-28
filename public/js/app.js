@@ -518,7 +518,7 @@ $(document).ready(function() {
 
     $("#YtOverviewConfirm").confirm({
         title: "Authorize Upview",
-        content: "Authorize Upview to access your YouTube Analytics",
+        content: "<ol><li>View Your Youtube Account.</li><li>View your YouTube Analytics & private information of your YouTube channel.</li><li> Upview use's YouTube Analytics API to generate graphical representaion of data.</li> </ol>",
         buttons: {
             confirm: {
                 text: "Authorize",
