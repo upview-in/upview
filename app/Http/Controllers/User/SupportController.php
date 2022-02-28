@@ -7,9 +7,8 @@ use App\Http\Requests\Support\CancelQuery;
 use App\Http\Requests\Support\SupportChatRequest;
 use App\Http\Requests\Support\UserQueryRequest;
 use App\Models\UserSupport;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-
-// use Carbon\Carbon;
 
 class SupportController extends Controller
 {
@@ -45,7 +44,7 @@ class SupportController extends Controller
     {
         $userSupport->remark = 'Closed by User';
         $userSupport->status = 2;
-        // $userSupport->resolved_at = Carbon::now()->toDateTimeString();
+        $userSupport->resolved_at = Carbon::now();
         $userSupport->update();
 
         return redirect()->back()->with('message', 'Query Closed by User!');

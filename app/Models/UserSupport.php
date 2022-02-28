@@ -30,7 +30,7 @@ class UserSupport extends Model
      * @var array
      */
     protected $casts = [
-        'resolved_at' => 'datetime',
+        'resolved_at' => 'timestamp',
         'assigned_on_date' => 'datetime',
     ];
 }
