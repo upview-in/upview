@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPermissionsController;
 use App\Http\Controllers\Admin\AdminRolesController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\SupportChatController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
@@ -40,6 +41,8 @@ Route::group(['domain' => config('app.domains.admin')], function () {
     Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
         Route::middleware(['admin'])->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+
+            Route::get('/supportRequest', [SupportChatController::class, 'index'])->name('supportRequest');
 
             // Manage users and their roles and permissions
             Route::resource('users', UserController::class);
