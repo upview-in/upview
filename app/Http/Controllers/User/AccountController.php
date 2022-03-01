@@ -121,7 +121,7 @@ class AccountController extends Controller
         } else {
             $rr->with('error', 'true');
         }
-        dd($rr);
+
         return $rr;
     }
 
