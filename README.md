@@ -66,6 +66,17 @@
 - php-curl
 
 
+# Configure Crontab for Laravel Schedule Service:
+
+- sudo crontab -e
+	- Add this at last "* * * * * cd /var/lib/jenkins/workspace/upview-prod && sudo php artisan schedule:run >> /dev/null 2>&1"
+- sudo service cron restart
 
 
+# Configure Supervisor for jobs:
 
+- Install supervisor package
+- sudo cp -f "./laravel-supervisord.conf" "/etc/supervisor/conf.d/"
+- sudo supervisorctl reread
+- sudo supervisorctl update
+- sudo supervisorctl restart laravel-supervisord:*

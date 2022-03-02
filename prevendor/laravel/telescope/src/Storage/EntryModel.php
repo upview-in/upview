@@ -69,8 +69,8 @@ class EntryModel extends Model
             ->whereBatchId($query, $options)
             ->whereTag($query, $options)
             ->whereFamilyHash($query, $options)
-            ->whereBeforeSequence($query, $options);
-        //->filter($query, $options);
+            ->whereBeforeSequence($query, $options)
+            ->filter($query, $options);
 
         return $query;
     }
@@ -190,7 +190,7 @@ class EntryModel extends Model
             return $this;
         }
 
-        $query->where('should_display_on_index', false);
+        $query->where('should_display_on_index', '!=', false);
 
         return $this;
     }

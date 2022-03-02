@@ -83,40 +83,36 @@ class AccountController extends Controller
             $yt = new YoutubeHelper();
             $client = $yt->getGoogleClient();
             $token = $client->fetchAccessTokenWithAuthCode($request->code);
-            if (isset($token['refresh_token'])) {
-                $oauth = new Oauth2($client);
-                $auth_user_info = $oauth->userinfo->get();
+            $oauth = new Oauth2($client);
+            $auth_user_info = $oauth->userinfo->get();
 
-                $__ = LinkedAccounts::where(['user_id' => Auth::id(), 'platform' => 1, 'email' => $auth_user_info['email']]);
-                if ($__->count() !== 1) {
-                    $linkedAccount = new LinkedAccounts();
-                    $linkedAccount->user_id = Auth::id();
-                    $linkedAccount->email = $auth_user_info['email'] ?? '';
-                    $linkedAccount->name = $auth_user_info['name'] ?? '';
-                    $linkedAccount->picture = $auth_user_info['picture'] ?? '';
-                    $linkedAccount->code = $request->code;
-                    $linkedAccount->access_token = $token['access_token'];
-                    $linkedAccount->refresh_token = $token['refresh_token'];
-                    $linkedAccount->expire_in = $token['expires_in'];
-                    $linkedAccount->created = $token['created'];
-                    $linkedAccount->platform = 1;
-                    $linkedAccount->save();
-                    $rr->with('linked', 'true');
-                } else {
-                    $linkedAccount = $__->first();
-                    $linkedAccount->email = $auth_user_info['email'] ?? '';
-                    $linkedAccount->name = $auth_user_info['name'] ?? '';
-                    $linkedAccount->picture = $auth_user_info['picture'] ?? '';
-                    $linkedAccount->code = $request->code;
-                    $linkedAccount->access_token = $token['access_token'];
-                    $linkedAccount->refresh_token = $token['refresh_token'];
-                    $linkedAccount->expire_in = $token['expires_in'];
-                    $linkedAccount->created = $token['created'];
-                    $linkedAccount->update();
-                    $rr->with('re_linked', 'true');
-                }
+            $__ = LinkedAccounts::where(['user_id' => Auth::id(), 'platform' => 1, 'email' => $auth_user_info['email']]);
+            if ($__->count() !== 1) {
+                $linkedAccount = new LinkedAccounts();
+                $linkedAccount->user_id = Auth::id();
+                $linkedAccount->email = $auth_user_info['email'] ?? '';
+                $linkedAccount->name = $auth_user_info['name'] ?? '';
+                $linkedAccount->picture = $auth_user_info['picture'] ?? '';
+                $linkedAccount->code = $request->code;
+                $linkedAccount->access_token = $token['access_token'];
+                $linkedAccount->refresh_token = $token['refresh_token'] ?? '';
+                $linkedAccount->expire_in = $token['expires_in'];
+                $linkedAccount->created = $token['created'];
+                $linkedAccount->platform = 1;
+                $linkedAccount->save();
+                $rr->with('linked', 'true');
             } else {
-                $rr->with('error', 'true');
+                $linkedAccount = $__->first();
+                $linkedAccount->email = $auth_user_info['email'] ?? '';
+                $linkedAccount->name = $auth_user_info['name'] ?? '';
+                $linkedAccount->picture = $auth_user_info['picture'] ?? '';
+                $linkedAccount->code = $request->code;
+                $linkedAccount->access_token = $token['access_token'];
+                $linkedAccount->refresh_token = $token['refresh_token'] ?? '';
+                $linkedAccount->expire_in = $token['expires_in'];
+                $linkedAccount->created = $token['created'];
+                $linkedAccount->update();
+                $rr->with('re_linked', 'true');
             }
         } else {
             $rr->with('error', 'true');
@@ -258,6 +254,8 @@ class AccountController extends Controller
             case (int) (TokenHelper::$PLATFORMS['instagram']):
                 session()->forget('AccountIndex_IG');
                 break;
+            default:
+                break;
         }
 
         return redirect()->back()->with('unlink', 'true');
@@ -289,6 +287,8 @@ class AccountController extends Controller
                 } elseif ($request->platform == TokenHelper::$PLATFORMS['instagram']) {
                     $sKey = 'AccountIndex_IG';
                     $accessCode = TokenHelper::getAuthToken_IG();
+                } else {
+                    //
                 }
 
                 foreach ($accessCode as $index => $_) {
