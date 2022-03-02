@@ -69,7 +69,6 @@
 								<th scope="col" data-sortable="true" data-field="linked_account">Linked Account</th>
 								<th scope="col" data-sortable="true" data-field="authorized_since">Authorized Since</th>
 								<th scope="col" data-sortable="true" data-field="status">Expire In</th>
-								<th scope="col" data-sortable="true" data-field="renew">Renew</th>
 								<th scope="col">Actions</th>
 							</tr>
 						</thead>
@@ -108,17 +107,6 @@
                                         } else {
                                             echo  $expireAt . ' Days';
                                         }
-                                    }
-
-                                    ?>
-								</td>
-								<td>
-									<?php
-
-                                    if ($linkedAccount->platform == 1) {
-                                        echo 'Auto';
-                                    } elseif ($linkedAccount->platform == 2 || $linkedAccount->platform == 3) {
-                                        echo 'Manually';
                                     }
 
                                     ?>
