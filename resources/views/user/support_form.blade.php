@@ -6,13 +6,11 @@
     <div class="container-fluid">
         <div class="card">
 
-            <div class="card-header">
-                <h4 class="card-title font-size-20">{{ __('Report Query') }}</h4>
+            <div class="card-header p-15 ml-3 w-500">
+                <h4 class="h3 m-0">{{ __('Report Query') }}</h4>
             </div>
-        
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.support.uploadQuery') }}">
-                   
                     @if(session()->get('message'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success:</strong> {{ session()->get('message') }}
@@ -24,7 +22,7 @@
 
                     @csrf
                     <div class="form-group">
-                        <label class="font-weight-semibold" for="query">{{ __('Query Title') }}:</label>
+                        <label class="font-weight-semibold" for="query">{{ __('Query Title') }}<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="query" name="query_title" placeholder="Enter Your Query" />
                     </div>
                     @error('query')
@@ -34,7 +32,7 @@
                     @enderror
 
                     <div class="form-group">
-                        <label class="font-weight-semibold" for="description">{{ __('Describe Your Query') }}:</label>
+                        <label class="font-weight-semibold" for="description">{{ __('Describe Your Query') }}<span class="text-danger">*</span></label>
                         <textarea class="form-control" id="queryDesc" name="query_description" rows="5" name="query" placeholder="Describe Your Query"></textarea>
                     </div>
                     @error('query_description')
@@ -45,10 +43,10 @@
 
 
                     <div class="form-group">
-                        <h5 class="m-b-5 font-size-16">{{ __('Upload Query Screenshot') }}</h5>
+                        <h5 class="m-b-5 font-size-16">{{ __('Upload Query Screenshot') }}<span class="text-danger">*</span></h5>
                         <input id="queryss" name="query_ss" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
                             <p class="opacity-07 font-size-13 m-b-0">
-                                Max file size: 1MB
+                                Max file size: 1MB [Any Image Uploaded Must be clear and visible]
                             </p>
                     </div>
                     @error('query_ss')

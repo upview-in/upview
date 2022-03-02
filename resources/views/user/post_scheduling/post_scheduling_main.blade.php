@@ -15,15 +15,14 @@
         $('.js-example-basic-single').select2();
 
         $('#profile_select').change(function(){
-            var selected_profile = $('#profile_select').find(':selected').val(); 
+            var selected_profile = $('#profile_select').find(':selected').val();
             $.ajax({
                 data: {
                     profile_key : selected_profile,
-                }, 
+                },
                 dataType : 'json',
                 success: function(response){
                     let data = response;
-                    
                     if (data.length > 0) {
 
                         if(data.includes('instagram')){
@@ -43,7 +42,7 @@
                         }
                         if(data.includes('pinterest')){
                             $('#cbpintrest').removeAttr('disabled');
-                        }    
+                        }
 
                     }
                     if(data.length == 0) {
@@ -56,7 +55,6 @@
                     }
                 }
             });
-            
         });
 
     });
@@ -66,8 +64,8 @@
 <x-app-layout title="Post Scheduling">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title font-size-20">{{ __('Post Details') }}</h4>
+            <div class="card-header p-15 ml-3 w-500">
+                <h4 class="h3 m-0">{{ __('Post Details') }}</h4>
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.uploading_post_media') }}">
@@ -81,7 +79,6 @@
                     @endif
 
                     @csrf
-                    
                     <div class="form-group">
                         <select id="profile_select" name="profile_select" class="form-control col-md-8 js-example-disabled-results">
                             <option selected disabled="disabled"> Please Select Profile To Post </option>
@@ -97,7 +94,6 @@
                                 <input id="cbinstagram" name="platform[]"  value="{{ App\Helper\TokenHelper::$PLATFORMS['instagram'] }}" disabled type="checkbox">
                                 <label for="cbinstagram">Instagram</label>
                             </div>
-                            
                             <div class="col-md-2">
                                 <input id="cbyoutube" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['youtube'] }}" disabled type="checkbox">
                                 <label for="cbyoutube">YouTube</label>

@@ -21,9 +21,9 @@
                             <li class="main-menu-item">
                                 <a class="main-menu-link" href="{{ route('main.index') }}">Home</a>
                             </li>
-                            {{-- <li class="main-menu-item">
-                                <a class="main-menu-link" href="{{ route('main.privacy_policy') }}" target="_blank">Privacy Policy</a>
-                            </li> --}}
+                            <li class="main-menu-item">
+                                <a class="main-menu-link" href="https://{{ env('APP_DOMAIN') }}">Get Started</a>
+                            </li>
                             {{-- <li class="main-menu-item">
                                 <a class="main-menu-link" href="case-details.html">
                                     Case Studies
