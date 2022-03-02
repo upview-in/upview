@@ -10,7 +10,7 @@
                     <div class="hero-content">
                         <h2 class="title">A Powerful tool for social media management.</h2>
                         <p>
-                            <span class="hr d-none d-xl-block"></span>Easy way to manage socail media and get powerful analytices.
+                            <span class="hr d-none d-xl-block"></span>Easy way to manage socail media and get powerful Analytics.
                         </p>
                         <img class="particle3" src="{{ asset('main/images/hero/particle3.png') }}" alt="particle2" />
                     </div>

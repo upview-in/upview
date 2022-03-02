@@ -50,6 +50,7 @@ function processCancelQueryRequest()
 								<th scope="col" data-sortable="true" data-field="authorized_since">Assigned Executive</th>
 								<th scope="col" data-sortable="true" data-field="status">Assigned On</th>
 								<th scope="col" data-sortable="true" data-field="renew">Remarks</th>
+								<th scope="col" data-sortable="true" data-field="resolved_on">Resolved On</th>
 								<th scope="col">Actions</th>
 							</tr>
 						</thead>
@@ -71,6 +72,7 @@ function processCancelQueryRequest()
                                     <td class="justify-center">{{ $history->assigned_to ?? "N/A" }}</td>
                                     <td class="justify-center">{{ $history->assigned_on_date ?? "N/A" }}</td>
                                     <td class="justify-center">{{ $history->remark ?? "-" }}</td>
+                                    <td class="justify-center">{{ $history->resolved_at ?? "N/A" }}</td>
                                     <td class="justify-center">
                                         @if($history->status == 1)
                                             <a href="{{ route('panel.user.support.supportChat') }}/?id={{ $history->id }}">

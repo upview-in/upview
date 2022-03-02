@@ -530,7 +530,7 @@ $(document).ready(function() {
                 }
             },
             cancel: {
-                text: "Cancle",
+                text: "Cancel",
                 btnClass: "btn-danger",
                 isHidden: false,
                 isDisabled: false,
