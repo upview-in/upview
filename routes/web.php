@@ -112,8 +112,8 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
             //Routes For Post Management
-            Route::get('/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
-            Route::post('/post_scheduling', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
+            Route::match(['get','post'], '/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
+            Route::post('/post', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
             Route::get('/post_history', [PostHistoryController::class, 'index'])->name('post_history');
 
             //Routes For Account Management for social Media 
