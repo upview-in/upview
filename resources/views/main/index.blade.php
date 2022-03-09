@@ -111,9 +111,9 @@
                             <img src="{{ asset('main/images/icon/marketing.png') }}" alt="" />
                         </div>
                         <div class="service-content">
-                            <h4 class="title">Marketing Automation</h4>
+                            <h4 class="title">Social Media Analytics</h4>
                             <p>
-                                Lorem Ipsum is simply dummy text of the ipsum has been the industry standard ever printer specimen book.
+                                Social media analytics is the ability to gather and find meaning in data gathered from social channels to support business decisions — and measure the performance of actions based on those decisions through social media
                             </p>
                             <a href="case-details.html" class="btn btn-outline-danger">Details +</a>
                         </div>
@@ -131,9 +131,9 @@
                             <img src="{{ asset('main/images/icon/analytics.png') }}" alt="" />
                         </div>
                         <div class="service-content">
-                            <h4 class="title">SEO Consultancy</h4>
+                            <h4 class="title">Social Media Automation</h4>
                             <p>
-                                Lorem Ipsum is simply dummy text of the ipsum has been the industry standard ever printer specimen book.
+                                Automating social media activities to optimize the results derived from social media channels, that helps marketers save time and effort spent on managing social platforms, engaging with prospects and enhancing brand awareness.
                             </p>
                             <a href="case-details.html" class="btn btn-outline-warning">Details +</a>
                         </div>
@@ -151,9 +151,9 @@
                             <img src="{{ asset('main/images/icon/connect.png') }}" alt="" />
                         </div>
                         <div class="service-content">
-                            <h4 class="title">Social Media Management</h4>
+                            <h4 class="title">SEO Consultancy</h4>
                             <p>
-                                Lorem Ipsum is simply dummy text of the ipsum has been the industry standard ever printer specimen book.
+                                Upview Provides insights that are responsible for planning, implementing and managing company client’s overall SEO strategy. 
                             </p>
                             <a href="case-details.html" class="btn btn-outline-primary">Details +</a>
                         </div>
@@ -173,7 +173,7 @@
                         <div class="service-content">
                             <h4 class="title">Social Listening</h4>
                             <p>
-                                Lorem Ipsum is simply dummy text of the ipsum has been the industry standard ever printer specimen book.
+                                Social listening is the process of identifying and assessing what is being said about a company, individual, product or brand on the internet.
                             </p>
                             <a href="case-details.html" class="btn btn-outline-secondary">Details +</a>
                         </div>
