@@ -17,7 +17,9 @@
         $('#profile_select').change(function(){
             var selected_profile = $('#profile_select').find(':selected').val();
             $.ajax({
+                type: 'post',
                 data: {
+                    _token : '{{ csrf_token() }}',
                     profile_key : selected_profile,
                 },
                 dataType : 'json',
