@@ -48,7 +48,7 @@
 
 @endsection
 
-<x-app-layout title="Profile Management">
+<x-app.app-layout title="Profile Management">
 	<div class="container-fluid">
 		<div class="card shadow" id="highlights">
 			<div class="card-header p-15 ml-3 w-500">
@@ -159,4 +159,4 @@
 		</div>
 	</div>
 
-</x-app-layout>
+</x-app.app-layout>

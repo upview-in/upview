@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Facebook\Account\GetMineAccountDetails;
 use Illuminate\Http\Request;
 
-class FacebookOverviewController extends Controller
+class OverviewController extends Controller
 {
     public function overview(Request $request)
     {

@@ -1,5 +1,6 @@
 <?php
 
+// Admin namespace
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPermissionsController;
 use App\Http\Controllers\Admin\AdminRolesController;
@@ -8,21 +9,49 @@ use App\Http\Controllers\Admin\SupportChatController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
+
+
+// API Ayrshare namespace
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
+
+
+// Common namespace
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\MainSiteController;
+
+
+// Support chat panel namespace
+use App\Http\Controllers\Support\ChatController;
+
+
+// User namespace
 use App\Http\Controllers\User\AccountController;
+
+use App\Http\Controllers\User\Analyze\Facebook\OverviewController as FbOverviewController;
+
+use App\Http\Controllers\User\Analyze\Instagram\OverviewController as IgOverviewController;
+
+use App\Http\Controllers\User\Analyze\YouTube\AudienceController as YtAudienceController;
+use App\Http\Controllers\User\Analyze\YouTube\OverviewController as YtOverviewController;
+use App\Http\Controllers\User\Analyze\YouTube\VideosController as YtVideosController;
+
 use App\Http\Controllers\User\Ayrshare\AyrProfileController;
+
 use App\Http\Controllers\User\DashboardController;
-use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
-use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\PagesController;
-use App\Http\Controllers\User\PostScheduling\PostHistoryController;
-use App\Http\Controllers\User\PostScheduling\PostSchedulingController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
+
+use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
+use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
+
+use App\Http\Controllers\User\PostScheduler\HistoryController;
+use App\Http\Controllers\User\PostScheduler\SchedulerController;
+
+
+// Packages namespace
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,38 +65,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Admin Routes
-Route::group(['domain' => config('app.domains.admin')], function () {
-    Route::group(['guard' => 'admin', 'as' => 'admin.'], function () {
-        Route::middleware(['admin'])->group(function () {
-            Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
-
-            Route::get('/supportRequest', [SupportChatController::class, 'index'])->name('supportRequest');
-
-            // Manage users and their roles and permissions
-            Route::resource('users', UserController::class);
-            Route::resource('userPermissions', UserPermissionsController::class);
-            Route::resource('userRoles', UserRolesController::class);
-
-            // Manage admins and their roles and permissions
-            Route::resource('admins', AdminController::class);
-            Route::resource('adminPermissions', AdminPermissionsController::class);
-            Route::resource('adminRoles', AdminRolesController::class);
-        });
-
-        Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
-        Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
-
-        require __DIR__ . '/adminAuth.php';
-    });
-});
-
 //website Route
-Route::group(['domain' => config('app.domains.main')], function () {
-    Route::group(['as' => 'main.'], function () {
-        Route::get('/', [MainSiteController::class, 'index'])->name('index');
-        Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy_policy');
-    });
+Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function () {
+    Route::get('/', [MainSiteController::class, 'index'])->name('index');
+    Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy_policy');
 });
 
 // Application Routes
@@ -103,6 +104,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
                 Route::delete('/deleteProfile', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
             });
+
             //Routes For Support Chat System
             Route::prefix('support')->as('support.')->group(function () {
                 Route::get('/submit', [SupportController::class, 'index'])->name('submit');
@@ -111,10 +113,13 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::get('/cancelQueryByUser/{userSupport}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
                 Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
             });
+
             //Routes For Post Management
-            Route::match(['get','post'], '/post_scheduling', [PostSchedulingController::class, 'index'])->name('post_scheduling');
-            Route::post('/post', [PostSchedulingController::class, 'uploadPostMedia'])->name('uploading_post_media');
-            Route::get('/post_history', [PostHistoryController::class, 'index'])->name('post_history');
+            Route::prefix('post')->as('post.')->group(function () {
+                Route::get('/scheduler', [SchedulerController::class, 'index'])->name('scheduler');
+                Route::post('/scheduler', [SchedulerController::class, 'uploadPostMedia'])->name('upload_media');
+                Route::get('/history', [HistoryController::class, 'index'])->name('history');
+            });
 
             //Routes For Account Management for social Media 
             Route::prefix('account')->as('account.')->group(function () {
@@ -149,25 +154,60 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 });
             });
 
-            //Routes For Platforms overall Analytics 
+            //Routes For Platforms overall Analytics
             Route::prefix('analyze')->as('analyze.')->group(function () {
                 Route::prefix('youtube')->as('youtube.')->middleware('yt.token.validate')->group(function () {
-                    Route::get('/overview', [App\Http\Controllers\User\Analyze\YouTube\OverviewController::class, 'overview'])->name('overview');
-                    Route::get('/videos', [App\Http\Controllers\User\Analyze\YouTube\VideosController::class, 'videos'])->name('videos');
-                    Route::get('/audience', [App\Http\Controllers\User\Analyze\YouTube\AudienceController::class, 'audience'])->name('audience');
+                    Route::get('/overview', [YtOverviewController::class, 'overview'])->name('overview');
+                    Route::get('/videos', [YtVideosController::class, 'videos'])->name('videos');
+                    Route::get('/audience', [YtAudienceController::class, 'audience'])->name('audience');
                 });
 
                 Route::prefix('facebook')->as('facebook.')->group(function () {
-                    Route::get('/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
-                    Route::get('/media', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('media');
+                    Route::get('/overview', [FbOverviewController::class, 'overview'])->name('overview');
+                    Route::get('/media', [FbOverviewController::class, 'overview'])->name('media');
                 });
 
                 Route::prefix('instagram')->as('instagram.')->group(function () {
-                    Route::get('/overview', [App\Http\Controllers\User\Analyze\Instagram\InstagramOverviewController::class, 'overview'])->name('overview');
+                    Route::get('/overview', [IgOverviewController::class, 'overview'])->name('overview');
                 });
             });
         });
     });
 
     require __DIR__ . '/auth.php';
+});
+
+// Admin Routes
+Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' => 'admin.'], function () {
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+
+        Route::get('/supportRequest', [SupportChatController::class, 'index'])->name('supportRequest');
+
+        // Manage users and their roles and permissions
+        Route::resource('users', UserController::class);
+        Route::resource('userPermissions', UserPermissionsController::class);
+        Route::resource('userRoles', UserRolesController::class);
+
+        // Manage admins and their roles and permissions
+        Route::resource('admins', AdminController::class);
+        Route::resource('adminPermissions', AdminPermissionsController::class);
+        Route::resource('adminRoles', AdminRolesController::class);
+    });
+
+    Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
+    Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
+
+    require __DIR__ . '/adminAuth.php';
+});
+
+// SupportChat Routes
+Route::group(['domain' => config('app.domains.support'), 'guard' => 'support', 'as' => 'support.'], function () {
+    Route::controller(ChatController::class)->prefix('chat')->as('chat.')->group(function () {
+        Route::get('/', 'index')->name('chat');
+        Route::post('/users', 'users')->name('users');
+        Route::post('/messages', 'messages')->name('messages');
+        Route::post('/send', 'sendMessage')->name('sendMessage');
+        Route::post('/seen-status', 'seenStatus')->name('seenStatus');
+    });
 });

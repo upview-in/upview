@@ -1,11 +1,11 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\View\Component;
 
-class AdminAppLayout extends Component
+class AppLayout extends Component
 {
     public $title;
     public $pageHeader;

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User\PostScheduling;
+namespace App\Http\Controllers\User\PostScheduler;
 
 use App\Helper\TokenHelper;
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Ayrshare\AyrActiveSocialAccount;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
-use App\Http\Requests\User\PostScheduling\UploadPostMediaRequest;
+use App\Http\Requests\User\PostScheduler\UploadMediaRequest;
 use App\Models\AyrUserProfile;
 use App\Models\PostHistory;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Owenoj\LaravelGetId3\GetId3;
 
-class PostSchedulingController extends Controller
+class SchedulerController extends Controller
 {
     public function index(Request $request)
     {
@@ -33,7 +33,7 @@ class PostSchedulingController extends Controller
         return view('user.post_scheduling.post_scheduling_main', ['userProfiles' => $userProfiles]);
     }
 
-    public function uploadPostMedia(UploadPostMediaRequest $request)
+    public function uploadPostMedia(UploadMediaRequest $request)
     {
         $tags = '';
         if ($request->tags != '') {

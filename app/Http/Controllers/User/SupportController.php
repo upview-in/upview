@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Support\CancelQuery;
 use App\Http\Requests\Support\SupportChatRequest;
 use App\Http\Requests\Support\UserQueryRequest;
-use App\Models\UserSupport;
+use App\Models\UserSupportQuery;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +19,7 @@ class SupportController extends Controller
 
     public function history()
     {
-        $SupportHistory = UserSupport::where(['user_id' => Auth::id()])->get();
+        $SupportHistory = UserSupportQuery::where(['user_id' => Auth::id()])->get();
 
         return view('user.support_form_history', ['SupportHistory' => $SupportHistory, 'user_id' => Auth::id()]);
     }
@@ -27,7 +27,7 @@ class SupportController extends Controller
     public function uploadUserQuery(UserQueryRequest $request)
     {
         $user = Auth::user();
-        $supportQuery = new UserSupport();
+        $supportQuery = new UserSupportQuery();
         $supportQuery->query_title = $request->query_title;
         $supportQuery->query_description = $request->query_description;
         $supportQuery->user_id = $user->id;
@@ -40,7 +40,7 @@ class SupportController extends Controller
         return redirect()->back()->with('message', 'Query Raised!');
     }
 
-    public function cancelQueryByUser(CancelQuery $request, UserSupport $userSupport)
+    public function cancelQueryByUser(CancelQuery $request, UserSupportQuery $userSupport)
     {
         $userSupport->remark = 'Closed by User';
         $userSupport->status = 2;

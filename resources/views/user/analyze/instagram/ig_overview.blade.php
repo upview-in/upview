@@ -275,7 +275,7 @@
 
 @endsection
 
-<x-app-layout title="Overview">
+<x-app.app-layout title="Overview">
     <div class="container-fluid">
         <div class="row mb-3 justify-content-end">
             <div class="col-md-5 col-12">
@@ -366,4 +366,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>

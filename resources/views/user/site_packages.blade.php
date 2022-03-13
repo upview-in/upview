@@ -1,7 +1,7 @@
 @section('path-navigation')
 <a class="breadcrumb-item active">Packages</a>
 @endsection
-<x-app-layout title="Choose Packages">
+<x-app.app-layout title="Choose Packages">
     <div class="row">
         @foreach ($packages as $package)
             <div class="col-md-6 col-lg-3">
@@ -21,4 +21,4 @@
             </div>
         @endforeach
     </div>
-</x-app-layout>
+</x-app.app-layout>

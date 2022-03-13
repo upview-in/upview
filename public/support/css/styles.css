@@ -1,0 +1,191 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.chat-visitors-list {
+    max-height: 640px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.chat-visitors-list::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-head {
+    /* background: #04CB28; */
+    background: #070a1f;
+    border-radius: .25rem;
+}
+
+.chat {
+    border: none;
+    background: #E2FFE8;
+    border-radius: 20px
+}
+
+.bg-white {
+    border: 1px solid #E7E7E9;
+    border-radius: 20px
+}
+
+.dot {
+    font-weight: bold
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.pointer > div > label {
+    cursor: pointer;
+}
+
+.vertical-center {
+    position: relative;
+    top: 50%;
+}
+
+.horizontal-center {
+    position: relative;
+    left: 50%;
+}
+
+.chat-body {
+    flex: 1 1 auto;
+    height: 500px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.chat-body::-webkit-scrollbar {
+    display: none;
+}
+
+.dot-flashing {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: lightgray;
+    animation: dotFlashing 1s infinite linear alternate;
+    animation-delay: .5s;
+}
+
+.dot-flashing::before,
+.dot-flashing::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+
+.dot-flashing::before {
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: lightgray;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 0s;
+}
+
+.dot-flashing::after {
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: lightgray;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 1s;
+}
+
+@keyframes dotFlashing {
+    0% {
+        background-color: lightgray;
+    }
+
+    50%,
+    100% {
+        background-color: #ebe6ff;
+    }
+}
+
+.strike {
+    width: 100%;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.strike>span {
+    position: relative;
+    display: inline-block;
+}
+
+.strike>span:before,
+.strike>span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: lightgray;
+}
+
+.strike>span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.strike>span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+#btnSendMessage {
+    width: 50px;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    margin-left: 8px;
+    margin-top: 4px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: #070a1f;
+    border-color: #070a1f;
+}
+
+#btnSendMessage:hover {
+    color: #fff;
+    background-color: #393a42;
+    border-color: #393a42;
+}
+
+#btnSendMessage > svg {
+    font-size: 1.3rem;
+    vertical-align: middle !important;
+}

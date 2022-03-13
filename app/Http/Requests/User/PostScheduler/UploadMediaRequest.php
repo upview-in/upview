@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\PostScheduling;
+namespace App\Http\Requests\User\PostScheduler;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UploadPostMediaRequest extends FormRequest
+class UploadMediaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

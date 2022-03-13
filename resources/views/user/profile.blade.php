@@ -72,7 +72,7 @@
 </style>
 @endsection
 
-<x-app-layout title="Edit Profile">
+<x-app.app-layout title="Edit Profile">
 
     <div class="container-fluid">
         <div class="card">
@@ -313,4 +313,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>

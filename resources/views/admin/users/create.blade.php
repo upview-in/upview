@@ -96,7 +96,7 @@
 </style>
 @endsection
 
-<x-admin-app-layout title="Users">
+<x-admin.app-layout title="Users">
     <form class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.users.store') }}">
     @csrf
         <div class="row g-3 m-0 p-0">
@@ -302,4 +302,4 @@
             </div>
         </div>
     </form>
-</x-admin-app-layout>
+</x-admin.app-layout>

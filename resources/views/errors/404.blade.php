@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-main.app-layout>
 
     <!-- bread crumb section start -->
 
@@ -61,4 +61,4 @@
     </section>
     <!-- page not found section start -->
 
-</x-main-layout>
+</x-main.app-layout>

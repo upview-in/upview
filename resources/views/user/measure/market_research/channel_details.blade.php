@@ -260,7 +260,7 @@
 </script>
 @endsection
 
-<x-app-layout title="Channel Details">
+<x-app.app-layout title="Channel Details">
     <div class="container-fluid">
         <div class="card shadow" id="ChannelMainDiv">
             <div class="row p-50">
@@ -383,4 +383,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>

@@ -63,14 +63,14 @@
 </script>
 @endsection
 
-<x-app-layout title="Post Scheduling">
+<x-app.app-layout title="Post Scheduler">
     <div class="container-fluid">
         <div class="card">
             <div class="card-header p-15 ml-3 w-500">
                 <h4 class="h3 m-0">{{ __('Post Details') }}</h4>
             </div>
             <div class="card-body">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.uploading_post_media') }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.post.upload_media') }}">
                     @if(session()->get('message2'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success:</strong> {{ session()->get('message2') }}
@@ -205,4 +205,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>

@@ -2,7 +2,7 @@
 <a class="breadcrumb-item" href="#">Support</a>
 <span class="breadcrumb-item active">Submit Query</span>
 @endsection
-<x-app-layout title="Ask For Support ">
+<x-app.app-layout title="Ask For Support ">
     <div class="container-fluid">
         <div class="card">
 
@@ -63,4 +63,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>

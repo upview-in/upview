@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class AdminGuestLayout extends Component
+class GuestLayout extends Component
 {
     public $title;
     public $bodyClasses;

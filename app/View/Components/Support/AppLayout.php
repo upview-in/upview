@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Support;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +26,6 @@ class AppLayout extends Component
     {
         App::setLocale(Auth::user()->local_lang ?? 'en');
 
-        return view('layouts.app');
+        return view('support.layouts.app');
     }
 }

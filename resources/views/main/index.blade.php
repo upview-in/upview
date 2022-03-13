@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-main.app-layout>
     <section class="hero-section">
         <img class="shape shape1" src="{{ asset('main/images/hero/shape1.png') }}" alt="img_not_found" />
         <img class="shape shape2" src="{{ asset('main/images/hero/shape2.png') }}" alt="img_not_found" />
@@ -698,4 +698,4 @@
     </section>
     <!-- blog section end -->
 
-</x-main-layout>
+</x-main.app-layout>

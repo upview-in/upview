@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app.guest-layout>
     <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex" style="background-image: url('{{ asset('images/others/login-3.png') }}')">
         <div class="d-flex flex-column justify-content-between w-100">
             <div class="container d-flex h-100">
@@ -66,4 +66,4 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+</x-app.guest-layout>
