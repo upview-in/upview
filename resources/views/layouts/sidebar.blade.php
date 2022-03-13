@@ -143,16 +143,16 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu ">
-                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post_scheduling') ? 'active' : '' }}">
-                        <a href="{{ route('panel.user.post_scheduling') }}">
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.scheduler') ? 'active' : '' }}">
+                        <a href="{{ route('panel.user.post.scheduler') }}">
                             <span class="icon-holder">
                                 <em class="fas fa-calendar-day"></em>
                             </span>
                             <span class="title">{{ __('Post Management') }}</span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post_history') ? 'active' : '' }}">
-                        <a href="{{ route('panel.user.post_history') }}">
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.history') ? 'active' : '' }}">
+                        <a href="{{ route('panel.user.post.history') }}">
                             <span class="icon-holder">
                                 <em class="fas fa-history"></em>
                             </span>

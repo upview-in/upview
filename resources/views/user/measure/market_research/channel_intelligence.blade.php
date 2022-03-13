@@ -58,7 +58,7 @@
 </script>
 @endsection
 
-<x-app-layout title="Channel Intelligence">
+<x-app.app-layout title="Channel Intelligence">
     <div class="container-fluid">
         <div class="row justify-content-end mt-3 mr-1">
             <div class="col-md-6 col-sm-9 col-12">
@@ -69,4 +69,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>

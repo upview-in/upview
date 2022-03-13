@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserSupportModelsTable extends Migration
+class CreateUserSupportQueriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserSupportModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_support', function (Blueprint $table) {
+        Schema::create('user_support_queries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('query_title', 255);
@@ -37,6 +37,6 @@ class CreateUserSupportModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_support');
+        Schema::dropIfExists('user_support_queries');
     }
 }

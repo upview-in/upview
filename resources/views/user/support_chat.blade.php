@@ -1,4 +1,4 @@
-<x-app-layout title="Support Chat">
+<x-app.app-layout title="Support Chat">
     <div class="container-fluid">
         <div class="chat chat-app row">
             <div class="chat-content"  style="width:100% !important">
@@ -64,4 +64,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>

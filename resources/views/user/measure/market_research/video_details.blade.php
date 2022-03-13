@@ -132,7 +132,7 @@
 </script>
 @endsection
 
-<x-app-layout title="Video Details">
+<x-app.app-layout title="Video Details">
     <div class="container-fluid">
         <div class="card shadow" id="VideoDetails">
             <div class="card-header p-15 ml-3">
@@ -196,4 +196,4 @@
     </div>
 
     <div class="notification-toast bottom-right" id="notification-toast"></div>
-</x-app-layout>
+</x-app.app-layout>

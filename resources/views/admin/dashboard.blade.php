@@ -2,7 +2,7 @@
 <script src="{{ asset('admin/js/index.js') }}"></script>
 @endsection
 
-<x-admin-app-layout pageHeader=0>
+<x-admin.app-layout pageHeader=0>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-2 row-cols-xxl-4">
         <div class="col">
             <div class="card radius-10 bg-gradient-cosmic">
@@ -434,4 +434,4 @@
         </div>
     </div>
     <!--end row-->
-</x-admin-app-layout>
+</x-admin.app-layout>

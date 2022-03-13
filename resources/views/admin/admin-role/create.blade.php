@@ -105,7 +105,7 @@
 </style>
 @endsection
 
-<x-admin-app-layout title="Roles">
+<x-admin.app-layout title="Roles">
     <form class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.adminRoles.store') }}" reset=true>
         @csrf
         <div class="card border-top border-0 border-4 border-primary">
@@ -213,4 +213,4 @@
             </div>
         </div>
     </form>
-</x-admin-app-layout>
+</x-admin.app-layout>

@@ -14,7 +14,7 @@
 @section('custom-styles')
 @endsection
 
-<x-admin-app-layout title="Permissions">
+<x-admin.app-layout title="Permissions">
     <form class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.adminPermissions.store') }}" reset=true>
         @csrf
         <div class="card border-top border-0 border-4 border-primary">
@@ -53,4 +53,4 @@
             </div>
         </div>
     </form>
-</x-admin-app-layout>
+</x-admin.app-layout>

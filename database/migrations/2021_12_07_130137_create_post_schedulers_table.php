@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostSchedulingsTable extends Migration
+class CreatePostSchedulersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePostSchedulingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_schedulings', function (Blueprint $table) {
+        Schema::create('post_schedulers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('platforms');

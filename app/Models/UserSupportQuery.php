@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class UserSupport extends Model
+class UserSupportQuery extends Model
 {
     use HasFactory, SoftDeletes;
 

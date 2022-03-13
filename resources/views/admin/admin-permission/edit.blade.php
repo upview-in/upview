@@ -14,7 +14,7 @@
 @section('custom-styles')
 @endsection
 
-<x-admin-app-layout title="Permissions" back=true>
+<x-admin.app-layout title="Permissions" back=true>
     <div class="card border-top border-0 border-4 border-primary">
         <form class="ajax-form" method="POST" action="{{ route('admin.adminPermissions.update', $adminPermission->id) }}">
             @method('patch')
@@ -54,4 +54,4 @@
             </div>
         </form>
     </div>
-</x-admin-app-layout>
+</x-admin.app-layout>

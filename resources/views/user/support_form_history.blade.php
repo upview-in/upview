@@ -21,7 +21,7 @@ function processCancelQueryRequest()
 </script>
 @endsection
 
-<x-app-layout title="Support History">
+<x-app.app-layout title="Support History">
     <div class="container-fluid">
         <div class="card shadow" id="highlights">
             <div class="card-header p-15 ml-3 w-500">
@@ -121,6 +121,6 @@ function processCancelQueryRequest()
 		</div>
 	</div>
 
-</x-app-layout>
+</x-app.app-layout>
 
 

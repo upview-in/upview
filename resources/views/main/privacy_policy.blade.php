@@ -1,4 +1,4 @@
-<x-without-header-layout>
+<x-main.without-header-app-layout>
     <!-- bread crumb section start -->
     <section class="bread-crumb-section">
         <img class="shape shape1" src="{{ asset('main/images/bread/1.png') }}" alt="images_not_found">
@@ -349,4 +349,4 @@
         </div>
     </section>
     <!-- service details end -->
-</x-without-header-layout>
+</x-main.without-header-app-layout>

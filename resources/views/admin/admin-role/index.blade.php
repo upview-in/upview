@@ -8,7 +8,7 @@
 @section('custom-scripts')
 @endsection
 
-<x-admin-app-layout title="Roles">
+<x-admin.app-layout title="Roles">
     <div class="card border-top border-0 border-4 border-primary">
         <div class="card-body p-5">
             <div class="card-title d-flex align-items-center">
@@ -80,4 +80,4 @@
             </div>
         </div>
     </div>
-</x-admin-app-layout>
+</x-admin.app-layout>

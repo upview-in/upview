@@ -4,7 +4,7 @@
 <span class="breadcrumb-item active">Audience</span>
 @endsection
 
-<x-app-layout title="Audience">
+<x-app.app-layout title="Audience">
     <div class="container-fluid">
     </div>
-</x-app-layout>
+</x-app.app-layout>

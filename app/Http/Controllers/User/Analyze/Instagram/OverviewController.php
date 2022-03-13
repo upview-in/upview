@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Instagram\Account\GetMineAccountDetails;
 use Illuminate\Http\Request;
 
-class InstagramOverviewController extends Controller
+class OverviewController extends Controller
 {
     public function overview(Request $request)
     {

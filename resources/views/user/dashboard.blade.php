@@ -1,4 +1,4 @@
-<x-app-layout pageHeader=0>
+<x-app.app-layout pageHeader=0>
     <div class="row">
         <div class="col-md-6 col-lg-3">
             <div class="card">
@@ -78,4 +78,4 @@
 <div class="row">
 
 </div>
-</x-app-layout>
+</x-app.app-layout>

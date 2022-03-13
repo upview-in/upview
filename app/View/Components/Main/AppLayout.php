@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Main;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class WithoutHeaderLayout extends Component
+class AppLayout extends Component
 {
     public $title;
     public $pageHeader;
@@ -26,6 +26,6 @@ class WithoutHeaderLayout extends Component
     {
         App::setLocale(Auth::user()->local_lang ?? 'en');
 
-        return view('main.layouts.privacy');
+        return view('main.layouts.app');
     }
 }

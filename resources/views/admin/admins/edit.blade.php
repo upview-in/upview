@@ -51,7 +51,7 @@
 </style>
 @endsection
 
-<x-admin-app-layout title="Admins" back=true>
+<x-admin.app-layout title="Admins" back=true>
     <div class="row g-3 m-0 p-0">
         <div class="col-md-12">
             <div class="card border-top border-0 border-4 border-success">
@@ -197,4 +197,4 @@
             </div>
         </div>
     </div>
-</x-admin-app-layout>
+</x-admin.app-layout>

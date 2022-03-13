@@ -124,7 +124,7 @@
 </style>
 @endsection
 
-<x-app-layout title="Package Details">
+<x-app.app-layout title="Package Details">
     <div class="row">
         <div class="col-sm-4">
             <div class="card text-center">
@@ -189,4 +189,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app.app-layout>
