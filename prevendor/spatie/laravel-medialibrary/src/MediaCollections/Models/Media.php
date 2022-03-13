@@ -6,12 +6,11 @@ use DateTimeInterface;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\Eloquent\Builder;
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\Conversions\ConversionCollection;
 use Spatie\MediaLibrary\Conversions\ImageGenerators\ImageGeneratorFactory;
@@ -28,18 +27,28 @@ use Spatie\MediaLibrary\Support\MediaLibraryPro;
 use Spatie\MediaLibrary\Support\TemporaryDirectory;
 use Spatie\MediaLibrary\Support\UrlGenerator\UrlGeneratorFactory;
 use Spatie\MediaLibraryPro\Models\TemporaryUpload;
+use Jenssegers\Mongodb\Eloquent\Model;
 
+/**
+ * @property-read string $type
+ * @property-read string $extension
+ * @property-read string $humanReadableSize
+ * @property-read string $previewUrl
+ * @property-read string $originalUrl
+ */
 class Media extends Model implements Responsable, Htmlable
 {
     use IsSorted;
     use CustomMediaProperties;
     use HasUuid;
 
-    public const TYPE_OTHER = 'other';
-
     protected $table = 'media';
 
+    public const TYPE_OTHER = 'other';
+
     protected $guarded = [];
+
+    protected $appends = ['original_url', 'preview_url'];
 
     protected $casts = [
         'manipulations' => 'array',
@@ -47,11 +56,6 @@ class Media extends Model implements Responsable, Htmlable
         'generated_conversions' => 'array',
         'responsive_images' => 'array',
     ];
-
-    public function __invoke(...$arguments): HtmlableMedia
-    {
-        return $this->img(...$arguments);
-    }
 
     public function newCollection(array $models = [])
     {
@@ -89,15 +93,19 @@ class Media extends Model implements Responsable, Htmlable
         return $urlGenerator->getPath();
     }
 
-    public function getTypeAttribute(): string
+    protected function type(): Attribute
     {
-        $type = $this->getTypeFromExtension();
+        return Attribute::get(
+            function () {
+                $type = $this->getTypeFromExtension();
 
-        if ($type !== self::TYPE_OTHER) {
-            return $type;
-        }
+                if ($type !== self::TYPE_OTHER) {
+                    return $type;
+                }
 
-        return $this->getTypeFromMime();
+                return $this->getTypeFromMime();
+            }
+        );
     }
 
     public function getTypeFromExtension(): string
@@ -118,14 +126,14 @@ class Media extends Model implements Responsable, Htmlable
             : static::TYPE_OTHER;
     }
 
-    public function getExtensionAttribute(): string
+    protected function extension(): Attribute
     {
-        return pathinfo($this->file_name, PATHINFO_EXTENSION);
+        return Attribute::get(fn () => pathinfo($this->file_name, PATHINFO_EXTENSION));
     }
 
-    public function getHumanReadableSizeAttribute(): string
+    protected function humanReadableSize(): Attribute
     {
-        return File::getHumanReadableSize($this->size);
+        return Attribute::get(fn () => File::getHumanReadableSize($this->size));
     }
 
     public function getDiskDriverName(): string
@@ -153,15 +161,13 @@ class Media extends Model implements Responsable, Htmlable
      *
      * @return mixed
      */
-    public function getCustomProperty(string $propertyName, $default = null)
+    public function getCustomProperty(string $propertyName, $default = null): mixed
     {
         return Arr::get($this->custom_properties, $propertyName, $default);
     }
 
     /**
-     * @param string $name
      * @param mixed $value
-     *
      * @return $this
      */
     public function setCustomProperty(string $name, $value): self
@@ -198,6 +204,7 @@ class Media extends Model implements Responsable, Htmlable
         return collect($this->generated_conversions ?? []);
     }
 
+
     public function markAsConversionGenerated(string $conversionName): self
     {
         $generatedConversions = $this->generated_conversions;
@@ -233,11 +240,21 @@ class Media extends Model implements Responsable, Htmlable
 
     public function toResponse($request)
     {
+        return $this->buildResponse($request, 'attachment');
+    }
+
+    public function toInlineResponse($request)
+    {
+        return $this->buildResponse($request, 'inline');
+    }
+
+    private function buildResponse($request, string $contentDispositionType)
+    {
         $downloadHeaders = [
             'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
             'Content-Type' => $this->mime_type,
             'Content-Length' => $this->size,
-            'Content-Disposition' => 'attachment; filename="' . $this->file_name . '"',
+            'Content-Disposition' => $contentDispositionType . '; filename="' . $this->file_name . '"',
             'Pragma' => 'public',
         ];
 
@@ -267,11 +284,23 @@ class Media extends Model implements Responsable, Htmlable
         return $this->responsiveImages($conversionName)->getSrcset();
     }
 
+    protected function previewUrl(): Attribute
+    {
+        return Attribute::get(
+            fn () => $this->hasGeneratedConversion('preview') ? $this->getUrl('preview') : '',
+        );
+    }
+
+    protected function originalUrl(): Attribute
+    {
+        return Attribute::get(fn () => $this->getUrl());
+    }
+
     public function move(HasMedia $model, $collectionName = 'default', string $diskName = '', string $fileName = ''): self
     {
         $newMedia = $this->copy($model, $collectionName, $diskName, $fileName);
 
-        $this->delete();
+        $this->forceDelete();
 
         return $newMedia;
     }
@@ -292,11 +321,9 @@ class Media extends Model implements Responsable, Htmlable
             ->usingName($this->name)
             ->setOrder($this->order_column)
             ->withCustomProperties($this->custom_properties);
-
         if ($fileName !== '') {
             $fileAdder->usingFileName($fileName);
         }
-
         $newMedia = $fileAdder
             ->toMediaCollection($collectionName, $diskName);
 
@@ -330,6 +357,11 @@ class Media extends Model implements Responsable, Htmlable
             ->attributes($extraAttributes);
     }
 
+    public function __invoke(...$arguments): HtmlableMedia
+    {
+        return $this->img(...$arguments);
+    }
+
     public function temporaryUpload(): BelongsTo
     {
         MediaLibraryPro::ensureInstalled();
@@ -351,3 +383,4 @@ class Media extends Model implements Responsable, Htmlable
             ->get();
     }
 }
+
