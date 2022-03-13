@@ -1,4 +1,4 @@
-<x-admin-guest-layout bodyClasses="bg-forget">
+<x-admin.guest-layout bodyClasses="bg-forget">
 	<div class="authentication-forgot d-flex align-items-center justify-content-center">
 		<div class="card forgot-box">
 			<div class="card-body">
@@ -19,4 +19,4 @@
 			</div>
 		</div>
 	</div>
-</x-admin-guest-layout>
+</x-admin.guest-layout>
