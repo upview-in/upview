@@ -1,4 +1,4 @@
-<x-admin-guest-layout>
+<x-admin.guest-layout>
 	<div class="authentication-reset-password d-flex align-items-center justify-content-center">
 		<div class="row">
 			<div class="col-12 col-lg-10 mx-auto">
@@ -34,4 +34,4 @@
 			</div>
 		</div>
 	</div>
-</x-admin-guest-layout>
+</x-admin.guest-layout>

@@ -1,4 +1,4 @@
-<x-admin-guest-layout bodyClasses="bg-login">
+<x-admin.guest-layout bodyClasses="bg-login">
 	<div class="d-flex align-items-center justify-content-center my-5 my-lg-0">
 		<div class="container">
 			<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2">
@@ -74,4 +74,4 @@
 			<!--end row-->
 		</div>
 	</div>
-</x-admin-guest-layout>
+</x-admin.guest-layout>
