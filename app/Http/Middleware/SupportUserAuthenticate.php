@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Support\Facades\Auth;
+
+class SupportUserAuthenticate
+{
+    public function handle($request, Closure $next)
+    {
+        if (!Auth::guard('support')->check()) {
+            return redirect()->route('support.login');
+        }
+
+        return $next($request);
+    }
+
+    /**
+     * Get the path the user should be redirected to when they are not authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return null|string
+     */
+    protected function redirectTo($request)
+    {
+        if (!$request->expectsJson()) {
+            return route('support.login');
+        }
+    }
+}

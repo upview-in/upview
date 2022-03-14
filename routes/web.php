@@ -210,4 +210,6 @@ Route::group(['domain' => config('app.domains.support'), 'guard' => 'support', '
         Route::post('/send', 'sendMessage')->name('sendMessage');
         Route::post('/seen-status', 'seenStatus')->name('seenStatus');
     });
+
+    require __DIR__ . '/supportAuth.php';
 });
