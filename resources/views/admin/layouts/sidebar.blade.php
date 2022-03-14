@@ -29,8 +29,13 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.supportRequest') }}">
-                        <em class='bi bi-list'></em> List
+                    <a href="{{ route('admin.support.users.index') }}">
+                        <em class='bi bi-people'></em> Users
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.support.queries') }}">
+                        <em class='bi bi-question-circle'></em> Queries
                     </a>
                 </li>
             </ul>
@@ -59,7 +64,6 @@
                 </li>
             </ul>
         </li>
-        
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><em class='bi bi-person-badge'></em>
