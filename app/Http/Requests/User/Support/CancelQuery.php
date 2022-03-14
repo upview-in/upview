@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Support;
+namespace App\Http\Requests\User\Support;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SupportChatRequest extends FormRequest
+class CancelQuery extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class SupportChatRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
+            // 'id' => 'required',
         ];
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Support\CancelQuery;
-use App\Http\Requests\Support\SupportChatRequest;
-use App\Http\Requests\Support\UserQueryRequest;
+use App\Http\Requests\User\Support\CancelQuery;
+use App\Http\Requests\User\Support\SupportChatRequest;
+use App\Http\Requests\User\Support\UserQueryRequest;
 use App\Models\UserSupportQuery;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
