@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Support\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Auth\LoginRequest;
+use App\Http\Requests\Support\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        return redirect()->intended(RouteServiceProvider::SUPPORT_HOME);
     }
 
     /**
