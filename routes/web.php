@@ -163,8 +163,8 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 });
 
                 Route::prefix('facebook')->as('facebook.')->group(function () {
-                    Route::get('/overview', [FbOverviewController::class, 'overview'])->name('overview');
-                    Route::get('/media', [FbOverviewController::class, 'overview'])->name('media');
+                    Route::match(['get','post'],'/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
+                    Route::get('/media', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('media');
                 });
 
                 Route::prefix('instagram')->as('instagram.')->group(function () {

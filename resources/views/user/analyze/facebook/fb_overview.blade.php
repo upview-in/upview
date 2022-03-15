@@ -125,6 +125,11 @@
 
             $('#select2Accounts').on('change', function(e) {
                 var data = $(this).select2('data');
+                
+                __BS("ChannelMainDiv");
+                __BS("FBPageDetails");
+                __BS("FBPageInsights");
+
                 $.ajax({
                     url: '{{ route('panel.user.account.setSessionDefaultAccount') }}',
                     data: {
@@ -228,7 +233,8 @@
 
             function loadData() {
                 __BS("ChannelMainDiv");
-                __BS("FBInsights");
+                __BS("FBPageDetails");
+                __BS("FBPageInsights");
 
 
                 $.ajax({
@@ -364,42 +370,83 @@
                     data: {
                         id: pageID,
                         part: 'PageInsights',
-                        fields: 'access_token,picture,name,about,bio,business,category,category_list,country_page_likes,description,engagement,followers_count,general_info,is_published,link,location,members,cover,fan_count,phone,preferred_audience,is_community_page,new_like_count,overall_star_rating,page_token,verification_status,feed,published_posts,videos,visitor_posts,tagged,posts',
                     },
                     dataType: "json",
                     success: function(response) {
                         let data = response;
                         if(data.status == 200)
-                        {
-                            $("#fbPageURL").attr('href', data.link);
-                            $("#fbPageProfileImage").attr('src',
-                                "{{ asset('images/others/loading.gif') }}");
+                        {    
+                            $("#fbPageTotalActions").html(convertToInternationalCurrencySystem(data.page_total_actions.data));
+                            $("#fbPageActionsTooltip").attr('title', nl2br(data.page_total_actions.desc));
 
-                            $("#fbPageProfileImage").attr('data-src', data.picture.data.url);
+                            $("#fbPageUserEngagement").html(convertToInternationalCurrencySystem(data.page_engaged_users.data));
+                            $("#fbPageEngagedUsersTooltip").attr('title', nl2br(data.page_engaged_users.desc));
 
-                            loadImages(); //Remember to call after loading images for LazyLoader
+                            $("#fbPagePostsEngagement").html(convertToInternationalCurrencySystem(data.page_post_engagements.data));
+                            $("#fbPagePostEngagedTooltip").attr('title', nl2br(data.page_post_engagements.desc));
 
-                            $("#fbPageName").html((data.name));
-                            $("#fbPageAbout").html(nl2br(data.about));
-                            $("#fbPageBio").html(nl2br(data.bio));
-                            $("#fbPageBusiness").html((data.business.name));
-                            $("#fbPageDescription").html(nl2br(data.description));
-                            $("#fbPageEngagement").html(convertToInternationalCurrencySystem(data.engagement.count));
-                            $("#fbPageEngagementSocial").html("("+nl2br(data.engagement.social_sentence)+")");
-                            $("#fbPageFollowers").html(convertToInternationalCurrencySystem(data.followers_count));
-                            $("#fbPageLocation").html((data.location));
+                            $("#fbPageConsumptions").html(convertToInternationalCurrencySystem(data.page_consumptions.data));
+                            $("#fbPageConsumptionsTooltip").attr('title', nl2br(data.page_consumptions.desc));
+                            
+                            $("#fbPageCheckin").html(convertToInternationalCurrencySystem(data.page_places_checkin_total.data));
+                            $("#fbPageCheckinTooltip").attr('title', nl2br(data.page_places_checkin_total.desc));
 
-                            if(data.is_published) $("#fbPagePublished").html("Yes");
-                            else $("#fbPagePublished").html("No");
+                            $("#fbPageCheckinMobile").html(convertToInternationalCurrencySystem(data.page_places_checkin_mobile.data));
+                            $("#fbPageCheckinMobileTooltip").attr('title', nl2br(data.page_places_checkin_mobile.desc));
 
-                            $("#fbPageFans").html(convertToInternationalCurrencySystem(data.fan_count));
-                            $("#fbPageMediaCount").html(convertToInternationalCurrencySystem((data.feed.data).length));
+                            $("#fbPageNegetiveFeedbacks").html(convertToInternationalCurrencySystem(data.page_negative_feedback.data));
+                            $("#fbPageNegetiveFeedbacksTooltip").attr('title', nl2br(data.page_negative_feedback.desc));
+
+                            $("#fbPageImpressions").html(convertToInternationalCurrencySystem(data.page_impressions.data));
+                            $("#fbPageImpressionsTooltip").attr('title', nl2br(data.page_impressions.desc));
+
+                            $("#fbPageImpressionsViral").html(convertToInternationalCurrencySystem(data.page_impressions_viral.data));
+                            $("#fbPageImpressionsViralTooltip").attr('title', nl2br(data.page_impressions_viral.desc));
+
+                            $("#fbPageImpressionsNonViral").html(convertToInternationalCurrencySystem(data.page_impressions_nonviral.data));
+                            $("#fbPageImpressionsNonViralTooltip").attr('title', nl2br(data.page_impressions_nonviral.desc));
+
+                            $("#fbPagePostsImpressions").html(convertToInternationalCurrencySystem(data.page_posts_impressions.data));
+                            $("#fbPagePostsImpressionsTooltip").attr('title', nl2br(data.page_posts_impressions.desc));
+
+                            $("#fbPagePostsImpressionsViral").html(convertToInternationalCurrencySystem(data.page_posts_impressions_viral.data));
+                            $("#fbPagePostImpressionsViralTooltip").attr('title', nl2br(data.page_posts_impressions_viral.desc));
+
+                            $("#fbPagePostsImpressionsNonViral").html(convertToInternationalCurrencySystem(data.page_posts_impressions_nonviral.data));
+                            $("#fbPagePostImpressionsNonViralTooltip").attr('title', nl2br(data.page_posts_impressions_nonviral.desc));
+        
+
+                            var fanCountNet = (data.page_fan_adds.data) - (data.page_fan_removes.data);
+                            if(fanCountNet <= 0) {
+                                $("#fbPageFansInsights").attr('class', 'font-weight-bold text-danger');
+                                $("#fansGrwothIcon").attr('class', 'fas fa-long-arrow-alt-down text-danger');
 
 
-                            $("#fbPageVerifiedStatusIcon").attr('class', "fas fa-lg fa-check-circle");
+                            }
+                            else
+                            {
+                                $("#fbPageFansInsights").attr('class', 'font-weight-bold text-success');
+                                $("#fansGrwothIcon").attr('class', 'fas fa-long-arrow-alt-up text-danger');
 
-                            if(data.verification_status) $("#fbPageVerifiedStatusIcon").attr('style', "color:#3333ff;");
-                            else $("#fbPageVerifiedStatusIcon").attr('style', "color:#D5D4D4;");
+                            }
+
+                            $("#fbPageFansInsights").html(convertToInternationalCurrencySystem(fanCountNet));
+                            $("#fbPageFansTooltip").attr('title', nl2br("Net Fans: Number of fans added - Number of fans removed."));
+
+                            $("#fbPageVideoViews").html(convertToInternationalCurrencySystem((data.page_video_views.data)));
+                            $("#fbPageVideoViewsTooltip").attr('title', nl2br(data.page_video_views.desc));
+
+                            $("#fbTotalPageViews").html(convertToInternationalCurrencySystem((data.page_views_total.data)));
+                            $("#fbTotalPageViewsTooltip").attr('title', nl2br(data.page_views_total.desc));
+
+                            $("#fbPageCompleteVideoViews30sec").html(convertToInternationalCurrencySystem((data.page_video_complete_views_30s.data)));
+                            $("#fbPageCompleteVideoViews30secTooltip").attr('title', nl2br(data.page_video_complete_views_30s.desc));
+
+                            $("#fbPageVideoViews10sec").html(convertToInternationalCurrencySystem((data.page_video_views_10s.data)));
+                            $("#fbPageVideoViews10secTooltip").attr('title', nl2br(data.page_video_views_10s.desc));
+
+                            $("#fbPageContentActivity").html(convertToInternationalCurrencySystem((data.page_content_activity.data)));
+                            $("#fbPageContentActivityTooltip").attr('title', nl2br(data.page_content_activity.desc));
 
                         }
 
@@ -561,6 +608,147 @@
                                 <label id="fbPageMediaCount" class="font-weight-bold"></label>
 
                             </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow" id="FBPageInsights">
+            <div class="card-header p-15 ml-3">
+                <label class="h3 m-0">Page Insights</label>
+            </div>
+             <div class="card-body">
+                <div class="row p-20">
+                    <div class="col-md-10 col-12 pl-5">
+                        <div class="row mt-4">
+                            <div class="col-6 mb-2">
+                                <span class="text-red"><em class="far fa-id-card"></em> Total Page Actions</span><sup>
+                                <em id="fbPageActionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label id="fbPageTotalActions" class="font-weight-bold"></label>
+
+                            </div>
+                            <div class="col-6 mb-2">
+                                <span class="text-red"><em class="fas fa-handshake"></em> Page User Engagements</span><sup>
+                                <em id="fbPageEngagedUsersTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label id="fbPageUserEngagement" class="font-weight-bold"></label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red"><em class="fas fa-film"></em> Page Posts Engagements</span><sup>
+                                <em id="fbPagePostEngagedTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label id="fbPagePostsEngagement" class="font-weight-bold"></label>
+
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-6 mb-2 mb-2">
+                                <span class="text-red"><em class="fas fa-chalkboard-teacher"></em> Page Consumptions</span><sup>
+                                <em id="fbPageConsumptionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label id="fbPageConsumptions" class="font-weight-bold"></label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 mb-2">
+                                <span class="text-red"><em class="fas fa-map-marker-alt"></em> Total Page Location Checkins</span><sup>
+                                <em id="fbPageCheckinTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <label id="fbPageCheckin" class="font-weight-bold"></label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 mb-2">
+                                <span class="text-red"><em class="fas fa-map-pin"></em> Total Page Location Checkins (Mobile)</span><sup>
+                                <em id="fbPageCheckinMobileTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <label id="fbPageCheckinMobile" class="font-weight-bold"></label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-user-minus"></em> Total Negative Page Feedbacks</span><sup>
+                                <em id="fbPageNegetiveFeedbacksTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageNegetiveFeedbacks"   class="font-weight-bold"></label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-shoe-prints"></em> Total Page Impressions</span><sup>
+                                <em id="fbPageImpressionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageImpressions"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-share-alt"></em> Page Impressions by going viral</span><sup>
+                                <em id="fbPageImpressionsViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageImpressionsViral"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-thumbs-up"></em> Page Impressions without going viral</span><sup>
+                                <em id="fbPageImpressionsNonViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageImpressionsNonViral"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="far fa-file-image"></em> Page Post Impressions</span><sup>
+                                <em id="fbPagePostsImpressionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPagePostsImpressions"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-share-alt"></em> Page Posts Impressions by going viral</span><sup>
+                                <em id="fbPagePostImpressionsViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPagePostsImpressionsViral"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-8"><em class="fas fa-thumbs-up"></em> Page Posts Impressions without going viral</span><sup>
+                                <em id="fbPagePostImpressionsNonViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPagePostsImpressionsNonViral"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-users"></em> Page Fants Net</span><sup>
+                                <em id="fbPageFansTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageFansInsights"   class="font-weight-bold"></label><em id="fansGrowthIcon" class=""></em>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-video"></em> Page Video Views</span><sup>
+                                <em id="fbPageVideoViewsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageVideoViews"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-file-video"></em> Page Complete 30 Sec Video Views</span><sup>
+                                <em id="fbPageCompleteVideoViews30secTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageCompleteVideoViews30sec"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-file-video"></em> Page Complete 10 Sec Video Views</span><sup>
+                                <em id="fbPageVideoViews10secTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageVideoViews10sec"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-user-plus"></em> Total Page Views</span><sup>
+                                <em id="fbTotalPageViewsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbTotalPageViews"   class="font-weight-bold"></label>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
+                                <span class="text-red md-5"><em class="fas fa-columns"></em> Page Content Activity</span><sup>
+                                <em id="fbPageContentActivityTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
+                                <label  id="fbPageContentActivity"   class="font-weight-bold"></label>
+                            </div>
+
+                            
 
                         </div>
                     </div>
