@@ -28,8 +28,8 @@ class OverviewController extends Controller
                         $response = app(FacebookController::class)->getMINEAccountInsightsEx(new GetMineAccountDetails($request->all(['fields'])))->getData();
 
                         $data['chartData'][0] = ['This title lmfao', 'Impressions', 'Reach', 'Views'];
-                        $data['impressions'] = $response->data[0]->values[0]->value;
-                        $data['reach'] = $response->data[1]->values[0]->value;
+                        $data['impressions'] = $response->data[0]->values[0]->value ?? 0;
+                        $data['reach'] = $response->data[1]->values[0]->value ?? 0;
                         // $data['profile_views']['dayBeforeYest'] = $response->data[2]->values[0]->value;
                         // $data['profile_views']['yest'] = $response->data[2]->values[1]->value;
 
@@ -86,6 +86,27 @@ class OverviewController extends Controller
                             return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
                         break;
+
+                case 'PageInsights':
+                    if ($request->has(['id'])) {
+                        $data = [];
+                        $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
+                        
+                        foreach($response as $fbData)
+                        {
+                            foreach($fbData->data as $fb)
+                            {
+                                $data[$fb->name]['data'] = $fb->values[0]->value ?? 0;
+                                $data[$fb->name]['desc'] = $fb->description ?? '';
+                            }    
+                        }       
+                        $data['status'] = 200;                                
+                        return response()->json(collect($data), 200);
+                    }
+
+                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+
+                    break;        
 
                 case 'accountDetails':
                     $data = [];

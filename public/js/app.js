@@ -33,27 +33,19 @@ function toast(title, message, delay, icon = 'info', color = 'info') {
     }, delay);
 }
 
-function convertToInternationalCurrencySystem(labelValue) {
-    // Nine Zeroes for Billions
-    return Math.abs(Number(labelValue)) >= 1.0e+9
+function convertToInternationalCurrencySystem(num, fixed=1) {
+    if (num === null) { return null; } // terminate early
+    if (num === 0) { return '0'; } // terminate early
+    
+    fixed = (!fixed || fixed < 0) ? 0 : fixed; // number of decimal places to show
+    
+    var b = (num).toPrecision(2).split("e"), // get power
+      k = b.length === 1 ? 0 : Math.floor(Math.min(b[1].slice(1), 14) / 3), // floor at decimals, ceiling at trillions
+      c = k < 1 ? num.toFixed(0 + fixed) : (num / Math.pow(10, k * 3) ).toFixed(1 + fixed), // divide by power
+      d = c < 0 ? c : Math.abs(c), // enforce -0 is 0
+      e = d + ['', 'K', 'M', 'B', 'T'][k]; // append power
+      return e;
 
-        ?
-        (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B"
-        // Six Zeroes for Millions 
-        :
-        Math.abs(Number(labelValue)) >= 1.0e+6
-
-            ?
-            (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
-            // Three Zeroes for Thousands
-            :
-            Math.abs(Number(labelValue)) >= 1.0e+3
-
-                ?
-                (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
-
-                :
-                Math.abs(Number(labelValue));
 }
 
 function formatTime(mins) {
