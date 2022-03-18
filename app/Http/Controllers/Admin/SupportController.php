@@ -84,7 +84,6 @@ class SupportController extends Controller
      */
     public function show(ViewUserRequest $request, SupportUser $supportUser)
     {
-
     }
 
     /**

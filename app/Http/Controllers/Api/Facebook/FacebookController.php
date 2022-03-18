@@ -136,14 +136,14 @@ class FacebookController extends Controller
         $metrics[6] = 'post_video_complete_views_organic_unique, post_video_complete_views_paid, post_video_complete_views_paid_unique, post_video_retention_graph, post_video_retention_graph_clicked_to_play, post_video_retention_graph_autoplayed, post_video_views_organic, post_video_views_organic_unique, post_video_views_paid, post_video_views_paid_unique, post_video_length, post_video_views, post_video_views_unique, post_video_views_autoplayed, post_video_views_clicked_to_play';
 
         $responseData = [];
-        $responseData[0] = json_decode($fb_client->get($request->id . '/insights?metric='.$metrics[0].'&period=days_28')->getBody());        
-        $responseData[1] = json_decode($fb_client->get($request->id . '/insights?metric='.$metrics[1].'&period=days_28')->getBody());
-        $responseData[2] = json_decode($fb_client->get($request->id . '/insights?metric='.$metrics[2].'&period=days_28')->getBody());
-        $responseData[3] = json_decode($fb_client->get($request->id . '/insights?metric='.$metrics[3].'&period=days_28')->getBody());
-        $responseData[4] = json_decode($fb_client->get($request->id . '/insights?metric='.$metrics[4].'&period=days_28')->getBody());
-        $responseData[5] = json_decode($fb_client->get($request->id . '/insights?metric='.$metrics[5].'&period=days_28')->getBody());        
-        $responseData[6] = json_decode($fb_client->get($request->id . '/insights?metric='.$metrics[6].'&period=days_28')->getBody());        
-        
+        $responseData[0] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics[0] . '&period=days_28')->getBody());
+        $responseData[1] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics[1] . '&period=days_28')->getBody());
+        $responseData[2] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics[2] . '&period=days_28')->getBody());
+        $responseData[3] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics[3] . '&period=days_28')->getBody());
+        $responseData[4] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics[4] . '&period=days_28')->getBody());
+        $responseData[5] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics[5] . '&period=days_28')->getBody());
+        $responseData[6] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics[6] . '&period=days_28')->getBody());
+
         return response()->json(($responseData), 200);
     }
 
@@ -158,6 +158,7 @@ class FacebookController extends Controller
         $fb_client->setDefaultAccessToken($fbUser['access_token']);
         $fbUser = $fb_client->get($fbPageID . '?fields=' . $request->fields)->getBody();
         $fbUser = json_decode($fbUser);
+
         return response()->json(($fbUser), 200);
     }
 

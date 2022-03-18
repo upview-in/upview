@@ -9,48 +9,30 @@ use App\Http\Controllers\Admin\SupportController as AdminSupportController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
-
-
 // API Ayrshare namespace
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
-
-
 // Common namespace
 use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\MainSiteController;
-
-
 // Support chat panel namespace
 use App\Http\Controllers\Support\ChatController;
-
-
 // User namespace
 use App\Http\Controllers\User\AccountController;
-
-use App\Http\Controllers\User\Analyze\Facebook\OverviewController as FbOverviewController;
-
 use App\Http\Controllers\User\Analyze\Instagram\OverviewController as IgOverviewController;
-
 use App\Http\Controllers\User\Analyze\YouTube\AudienceController as YtAudienceController;
 use App\Http\Controllers\User\Analyze\YouTube\OverviewController as YtOverviewController;
 use App\Http\Controllers\User\Analyze\YouTube\VideosController as YtVideosController;
-
 use App\Http\Controllers\User\Ayrshare\AyrProfileController;
-
 use App\Http\Controllers\User\DashboardController;
-use App\Http\Controllers\User\PagesController;
-use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\SupportController;
-
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
-
+use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\PostScheduler\HistoryController;
 use App\Http\Controllers\User\PostScheduler\SchedulerController;
-
-
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\SupportController;
 // Packages namespace
 use Illuminate\Support\Facades\Route;
 
@@ -121,7 +103,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::get('/history', [HistoryController::class, 'index'])->name('history');
             });
 
-            //Routes For Account Management for social Media 
+            //Routes For Account Management for social Media
             Route::prefix('account')->as('account.')->group(function () {
                 Route::get('/list', [ProfileController::class, 'accountsManager'])->name('accounts_manager');
 
@@ -140,7 +122,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::get('/setDefault/page', [PagesController::class, 'setSessionDefaultPage'])->name('setSessionDefaultPage');
             });
 
-            //Routes For Measure engagement 
+            //Routes For Measure engagement
             Route::prefix('measure')->as('measure.')->group(function () {
                 Route::prefix('market-research')->as('market_research.')->group(function () {
                     Route::prefix('channel-intelligence')->as('channel_intelligence.')->group(function () {
@@ -163,7 +145,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 });
 
                 Route::prefix('facebook')->as('facebook.')->group(function () {
-                    Route::match(['get','post'],'/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
+                    Route::match(['get', 'post'], '/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
                     Route::get('/media', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('media');
                 });
 

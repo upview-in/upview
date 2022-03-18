@@ -28,11 +28,11 @@ class ChatController extends Controller
 
         $arr = $usersList->toArray();
         usort($arr, function ($a, $b) {
-            if (!empty($a["support_chat_unseen"])) {
-                return ($a["support_chat_unseen"][0]["created_at"] >= $b["support_chat_unseen"][0]["created_at"]) ? -1 : 1;
-            } else {
-                return 1;
+            if (!empty($a['support_chat_unseen'])) {
+                return ($a['support_chat_unseen'][0]['created_at'] >= $b['support_chat_unseen'][0]['created_at']) ? -1 : 1;
             }
+
+            return 1;
         });
 
         $data = $arr;
@@ -40,7 +40,8 @@ class ChatController extends Controller
         if (isset($_POST['hash']) && !empty($_POST['hash']) && $_POST['hash'] == $hash) {
             $data = [];
         }
-        return response()->json(["hash" => $hash, "data" => $data]);
+
+        return response()->json(['hash' => $hash, 'data' => $data]);
     }
 
     public function messages(Request $request)
@@ -54,6 +55,7 @@ class ChatController extends Controller
         if (!is_null($request->last_message_id)) {
             $messages->where('_id', '>', $request->last_message_id);
         }
+
         return response()->json($messages->get());
     }
 
@@ -87,6 +89,7 @@ class ChatController extends Controller
         }
 
         $res = UserSupportChat::where('user_id', $request->userID)->whereIn('id', $filtered_ids)->get();
+
         return response()->json($res);
     }
 }
