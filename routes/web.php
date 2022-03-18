@@ -204,12 +204,18 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
 
 // SupportChat Routes
 Route::group(['domain' => config('app.domains.support'), 'guard' => 'support', 'as' => 'support.'], function () {
-    Route::controller(ChatController::class)->prefix('chat')->as('chat.')->group(function () {
-        Route::get('/', 'index')->name('chat');
-        Route::post('/users', 'users')->name('users');
-        Route::post('/messages', 'messages')->name('messages');
-        Route::post('/send', 'sendMessage')->name('sendMessage');
-        Route::post('/seen-status', 'seenStatus')->name('seenStatus');
+    Route::middleware(['support'])->group(function () {
+        Route::get('/dashboard', function () {
+            return redirect()->route('support.chat.index');
+        });
+
+        Route::controller(ChatController::class)->prefix('chat')->as('chat.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/users', 'users')->name('users');
+            Route::post('/messages', 'messages')->name('messages');
+            Route::post('/send', 'sendMessage')->name('sendMessage');
+            Route::post('/seen-status', 'seenStatus')->name('seenStatus');
+        });
     });
 
     require __DIR__ . '/supportAuth.php';
