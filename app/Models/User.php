@@ -6,10 +6,12 @@ use App\Concerns\Models\Searchable;
 use App\Notifications\Auth\QueuedVerifyEmail;
 use App\Permissions\HasPermissionsTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 //use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
+use Jenssegers\Mongodb\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -89,5 +91,20 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify((new QueuedVerifyEmail)->onQueue('email-verification'));
+    }
+
+    public function getUserSupportChatCountAttribute()
+    {
+        return $this->hasMany(UserSupportChat::class, 'user_id', 'id')->count();
+    }
+
+    public function userSupportChat(): HasMany
+    {
+        return $this->hasMany(UserSupportChat::class, 'user_id', 'id');
+    }
+
+    public function userSupportChatUnseen()
+    {
+        return $this->userSupportChat()->whereNull('seen_by_system')->orderBy('created_at', 'desc');
     }
 }

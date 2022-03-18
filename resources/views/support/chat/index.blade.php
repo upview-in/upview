@@ -3,23 +3,6 @@
 @endsection
 
 @section('custom-scripts')
-    <script type="template">
-        <div class="row p-3 pointer userListItem" id="userListItemTemplate" data-id="$(id)" data-name="$(name)" data-email="$(email)" data-profile="$(profile)">
-            <div class="col-auto d-flex align-content-center">
-                <img class="rounded-circle" src="$(profile)" alt="Profile" width="60px" height="auto">
-            </div>
-            <div class="col-auto d-flex flex-column align-content-start pl-0">
-                <label>$(name)</label>
-                <span class="text-muted" style="font-size: 14px;">$(email)</span>
-            </div>
-            <div class="col d-flex flex-row justify-content-end">
-                <div class="align-self-center">
-                    <span class="badge badge-success rounded-circle">${unseenCounter}</span>
-                </div>
-            </div>
-        </div>
-    </script>
-
     <script>
         $(document).ready(function() {
 
@@ -64,7 +47,7 @@
             $("#messageInputBox").keypress(function() {
                 if ($("#supportChatTypingUser").length < 1) {
                     let typingHtml = '<div class="d-flex flex-row p-3 justify-content-end" id="supportChatTypingUser">' +
-                        '    <div class="mr-2 p-3 pr-4">' +
+                        '    <div class="me-2 p-3 pe-4">' +
                         '        <span class="text-muted">' +
                         '            <div class="dot-flashing"></div>' +
                         '        </span>' +
@@ -86,10 +69,12 @@
             $(document).on('click', ".userListItem", function() {
                 $(".support-chat").css('visibility', 'visible');
                 $(".chat-body").html(`<div class="spinner-border text-success vertical-center horizontal-center" role="status" id="chatLoading"><span class="sr-only">Loading...</span></div>`);
+
                 activeChatUserID = $(this).data('id');
                 activeChatUserName = $(this).data('name');
                 activeChatUserEmail = $(this).data('email');
                 activeChatUserProfile = $(this).data('profile');
+
                 $("#activeChatUserName").html(activeChatUserName);
                 $("#activeChatUserEmail").html(activeChatUserEmail);
                 $("#activeChatUserProfile").attr('src', activeChatUserProfile);
@@ -117,21 +102,23 @@
                         if (data.length > 0) {
                             $(".chat-users-list").empty();
                             data.forEach(user => {
-                                var itemTemplate = $("#userListItemTemplate").prop('outerHTML');
-                                itemTemplate = itemTemplate.replace('id="userListItemTemplate" ', '');
-                                itemTemplate = itemTemplate.replaceAll('$(id)', user.id);
-                                itemTemplate = itemTemplate.replaceAll('$(name)', user.first_name + ' ' + user.last_name);
+                                var itemTemplate = $("#userListItemTemplate").html();
+                                itemTemplate = itemTemplate.replaceAll('$(id)', user._id);
+                                itemTemplate = itemTemplate.replaceAll('$(name)', user.name);
                                 itemTemplate = itemTemplate.replaceAll('$(email)', user.email);
+
                                 if (user.profile != null) {
                                     itemTemplate = itemTemplate.replaceAll('$(profile)', user.profile.conversion_urls.md);
                                 } else {
                                     itemTemplate = itemTemplate.replaceAll('$(profile)', maleProfile);
                                 }
+
                                 if (user.support_chat_unseen_count > 0) {
                                     itemTemplate = itemTemplate.replaceAll('${unseenCounter}', user.support_chat_unseen_count);
                                 } else {
                                     itemTemplate = itemTemplate.replace('<div class="col d-flex flex-row justify-content-end"><div class="align-self-center"><span class="badge badge-success rounded-circle">${unseenCounter}</span></div></div>', '');
                                 }
+
                                 $(".chat-users-list").append(itemTemplate);
                             });
                         }
@@ -151,7 +138,7 @@
                     dataType: 'json',
                     success: function(data) {
                         if (data.length > 0) {
-                            last_message_id = data[data.length - 1].id;
+                            last_message_id = data[data.length - 1]._id;
                             data.forEach(message => {
                                 if (message.created_at != null) {
                                     let date = new Date(message.created_at).toLocaleDateString("en-US", dateOptions);
@@ -164,11 +151,13 @@
                                         }
                                     }
                                 }
-                                if (message.system_id != null) {
-                                    pushSystemMessage(message);
-                                } else {
+
+                                if (message.is_sended_by_user != null && message.is_sended_by_user) {
                                     pushUserMessage(message);
+                                } else {
+                                    pushSystemMessage(message);
                                 }
+
                                 $(".chat-body").scrollTop($(".chat-body")[0].scrollHeight);
                             });
                         }
@@ -180,6 +169,7 @@
             if ($("#searchUser").val().length < 1) {
                 loadUsers();
             }
+
             setInterval(() => {
                 if ($("#searchUser").val().length < 1) {
                     loadUsers();
@@ -195,14 +185,14 @@
                 if (message.seen_by_user != null) {
                     isSeen = '<img src="' + doubleTicks + '" width="16" height="16">';
                 }
-                let userMessage = '<div class="d-flex flex-row p-3 justify-content-end supportChatUserMessage" data-message-id="' + message.id + '" data-message-seen-status=' + ((isSeen != "") ? true : false) + '>' +
+                let userMessage = '<div class="d-flex flex-row p-3 justify-content-end supportChatUserMessage" data-message-id="' + message._id + '" data-message-seen-status=' + ((isSeen != "") ? true : false) + '>' +
                     '   <div class="d-flex flex-column">' +
-                    '       <div class="bg-white p-2 pl-3 pr-3">' +
+                    '       <div class="bg-white p-2 ps-3 pe-3">' +
                     '           <span class="text-muted">' +
                     '           ' + encodeMessage(message.message) +
                     '           </span>' +
                     '       </div>' +
-                    '       <div class="pr-2 text-right">' +
+                    '       <div class="pe-2 text-end">' +
                     '           <span class="text-muted text-opacity-25" style="font-size: 12px;">' + new Date(message.created_at).toLocaleTimeString('en-US', timeOptions) + '</span>' +
                     '           <span class="seenStatus ms-1">' + isSeen + '</span>' +
                     '       </div>' +
@@ -214,13 +204,13 @@
             }
 
             function pushUserMessage(message) {
-                let sysMessage = '<div class="d-flex flex-row p-3 supportChatSysMessage" data-message-id="' + message.id + '">' +
+                let sysMessage = '<div class="d-flex flex-row p-3 supportChatSysMessage" data-message-id="' + message._id + '">' +
                     '   <img src="' + maleProfile + '" width="40" height="40">' +
                     '   <div class="d-flex flex-column">' +
-                    '       <div class="chat p-2 pl-3 pr-3">' +
+                    '       <div class="chat p-2 ps-3 pe-3">' +
                     '       ' + encodeMessage(message.message) +
                     '       </div>' +
-                    '       <div class="pl-2 text-start">' +
+                    '       <div class="ps-2 text-start">' +
                     '           <span class="text-muted text-opacity-25" style="font-size: 12px;">' + new Date(message.created_at).toLocaleTimeString('en-US', timeOptions) + '</span>' +
                     '       </div>' +
                     '   </div>' +
@@ -245,24 +235,26 @@
                     _ids.push($(element).data('message-id'));
                 });
 
-                $.ajax({
-                    url: '{{ route("support.chat.seenStatus") }}',
-                    type: 'post',
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        ids: _ids,
-                        userID: activeChatUserID
-                    },
-                    dataType: 'json',
-                    success: function(data) {
-                        data.forEach(message => {
-                            if (message.seen_by_user != null) {
-                                let ele = $(".chat-body").find('[data-message-id="' + message.id + '"]')[0];
-                                $(ele).find('.seenStatus').html('<img src="' + doubleTicks + '" width="16" height="16">');
-                            }
-                        });
-                    }
-                });
+                if (_ids.length > 0) {
+                    $.ajax({
+                        url: '{{ route("support.chat.seenStatus") }}',
+                        type: 'post',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            ids: _ids,
+                            userID: activeChatUserID
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            data.forEach(message => {
+                                if (message.seen_by_user != null) {
+                                    let ele = $(".chat-body").find('[data-message-id="' + message._id + '"]')[0];
+                                    $(ele).find('.seenStatus').html('<img src="' + doubleTicks + '" width="16" height="16">');
+                                }
+                            });
+                        }
+                    });
+                }
             }
 
             function encodeMessage(message) {
@@ -277,7 +269,7 @@
 <x-support.app-layout>
     <div class="h-100" id="mainChat">
         <div class="row h-100">
-            <div class="col-3 border-light border-right pr-0">
+            <div class="col-3 border-light border-end pe-0">
                 <div class="row p-3">
                     <div class="col">
                         <input type="text" class="form-control" id="searchUser" placeholder="Search users" />
@@ -285,11 +277,11 @@
                 </div>
                 <div class="chat-users-list"></div>
             </div>
-            <div class="col-9 pl-0 h-100">
+            <div class="col-9 ps-0 h-100">
                 <div class="d-flex flex-column support-chat h-100">
                     <div class="d-flex flex-row p-3 text-white chat-head">
                         <img src="{{ asset('support/images/circled-user-male-skin-type.png') }}" class="rounded-circle" alt="" id="activeChatUserProfile" width="50px" height="auto">
-                        <div class="d-flex flex-column ml-3">
+                        <div class="d-flex flex-column ms-3">
                             <label id="activeChatUserName"></label>
                             <span style="font-size: 12px;" id="activeChatUserEmail"></span>
                         </div>
@@ -306,4 +298,21 @@
             </div>
         </div>
     </div>
+
+    <template id="userListItemTemplate">
+        <div class="row p-3 pointer userListItem" data-id="$(id)" data-name="$(name)" data-email="$(email)" data-profile="$(profile)">
+            <div class="col-auto d-flex align-content-center">
+                <img class="rounded-circle" src="$(profile)" alt="Profile" width="60px" height="auto">
+            </div>
+            <div class="col-auto d-flex flex-column justify-content-center ps-0">
+                <label>$(name)</label>
+                <span class="text-muted" style="font-size: 14px;">$(email)</span>
+            </div>
+            <div class="col d-flex flex-row justify-content-end">
+                <div class="align-self-center">
+                    <span class="badge badge-success rounded-circle">${unseenCounter}</span>
+                </div>
+            </div>
+        </div>
+    </template>
 </x-support.app-layout>

@@ -20,6 +20,7 @@ class CreateUserSupportChatsTable extends Migration
             $table->text('message');
             $table->timestamp('seen_by_user')->nullable();
             $table->timestamp('seen_by_support_user')->nullable();
+            $table->boolean('is_sended_by_user');
             $table->timestamps();
             $table->foreign('user_id')->on('users')->references('id');
             $table->foreign('support_user_id')->on('support_users')->references('id');

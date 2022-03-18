@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Support;
 
 use App\Http\Controllers\Controller;
-use App\Models\SupportUser;
+use App\Models\User;
 use App\Models\UserSupportChat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -17,13 +18,12 @@ class ChatController extends Controller
     public function users(Request $request)
     {
         if ($request->has('q') && !is_null($request->q) && !empty($request->q)) {
-            $usersList = SupportUser::select('id', 'first_name', 'last_name', 'email')->withCount(['supportChat', 'supportChatUnseen'])->having('support_chat_count', '>', 0)->with('supportChatUnseen')->where(function ($query) use ($request) {
+            $usersList = User::select('id', 'name', 'email')->with('userSupportChatUnseen', 'userSupportChat')->where(function ($query) use ($request) {
+                $query->orWhere('name', 'like', '%' . $request->q . '%');
                 $query->orWhere('email', 'like', '%' . $request->q . '%');
-                $query->orWhere(DB::raw("CONCAT(first_name,' ',last_name)"), 'like', '%' . $request->q . '%');
-                $query->orWhere(DB::raw("CONCAT(last_name,' ',first_name)"), 'like', '%' . $request->q . '%');
-            })->get();
+            })->get()->each->append('userSupportChatCount')->where('userSupportChatCount', '>', 0);
         } else {
-            $usersList = SupportUser::select('id', 'first_name', 'last_name', 'email')->withCount(['supportChat', 'supportChatUnseen'])->having('support_chat_count', '>', 0)->with('supportChatUnseen')->get();
+            $usersList = User::select('id', 'name', 'email')->with('userSupportChatUnseen', 'userSupportChat')->get()->each->append('userSupportChatCount')->where('userSupportChatCount', '>', 0);
         }
 
         $arr = $usersList->toArray();
@@ -45,14 +45,14 @@ class ChatController extends Controller
 
     public function messages(Request $request)
     {
-        if (!$request->has(['last_message_id', 'visitorID'])) {
+        if (!$request->has(['last_message_id', 'userID'])) {
             return abort(400);
         }
-        UserSupportChat::where('user_id', $request->visitorID)->whereNull('seen_by_system')->update(['seen_by_system' => Carbon::now()]);
-        $messages = UserSupportChat::where('user_id', $request->visitorID);
+        UserSupportChat::where('user_id', $request->userID)->whereNull('seen_by_support_user')->update(['seen_by_support_user' => Carbon::now()]);
+        $messages = UserSupportChat::where('user_id', $request->userID);
 
         if (!is_null($request->last_message_id)) {
-            $messages->where('id', '>', $request->last_message_id);
+            $messages->where('_id', '>', $request->last_message_id);
         }
         return response()->json($messages->get());
     }
@@ -65,8 +65,9 @@ class ChatController extends Controller
 
         $message = new UserSupportChat();
         $message->user_id = $request->sendTo;
-        $message->support_user_id = 0;
+        $message->support_user_id = supportUser()->id;
         $message->message = $request->message;
+        $message->is_sended_by_user = false;
         $message->save();
 
         return response()->json(['status' => 200, 'message' => 'Sended']);
@@ -74,7 +75,7 @@ class ChatController extends Controller
 
     public function seenStatus(Request $request)
     {
-        if (!$request->has(['ids', 'visitorID']) || !is_numeric($request->visitorID)) {
+        if (!$request->has(['ids', 'userID'])) {
             return abort(400);
         }
 
@@ -85,7 +86,7 @@ class ChatController extends Controller
             }
         }
 
-        $res = UserSupportChat::where('user_id', $request->visitorID)->whereIn('id', $filtered_ids)->get();
+        $res = UserSupportChat::where('user_id', $request->userID)->whereIn('id', $filtered_ids)->get();
         return response()->json($res);
     }
 }
