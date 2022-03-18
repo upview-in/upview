@@ -27,6 +27,7 @@ class VideosController extends Controller
                     $ret = response()->json(['status' => 400, 'message' => 'Missing required fields']);
                     break;
             }
+
             return $ret;
         }
 

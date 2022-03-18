@@ -199,10 +199,10 @@ class OverviewController extends Controller
 
             foreach ($TrafficSourceAnalyticsResponse->rows as $key => $value) {
                 $SourceInsightTrafficSourceType = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
-                $splittedTrafficSource = explode(" ", $SourceInsightTrafficSourceType);
+                $splittedTrafficSource = explode(' ', $SourceInsightTrafficSourceType);
                 if (!empty($splittedTrafficSource) && $splittedTrafficSource[0] == 'Yt') {
                     $splittedTrafficSource[0] = 'YouTube';
-                    $SourceInsightTrafficSourceType = implode(" ", $splittedTrafficSource);
+                    $SourceInsightTrafficSourceType = implode(' ', $splittedTrafficSource);
                 }
 
                 $TrafficSourceChartData[] = [$SourceInsightTrafficSourceType, $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];

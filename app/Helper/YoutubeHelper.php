@@ -43,6 +43,7 @@ class YoutubeHelper
                         $this->clientInstance->setPrompt('consent');
                         $this->clientInstance->setApprovalPrompt('force');
                         $auth_url = $this->clientInstance->createAuthUrl();
+
                         return redirect()->away(filter_var($auth_url, FILTER_SANITIZE_URL));
                     }
                     $accessCode[$accountIndex]->access_token = $token['access_token'];
@@ -53,6 +54,7 @@ class YoutubeHelper
                     $this->clientInstance->setPrompt('consent');
                     $this->clientInstance->setApprovalPrompt('force');
                     $auth_url = $this->clientInstance->createAuthUrl();
+
                     return redirect()->away(filter_var($auth_url, FILTER_SANITIZE_URL));
                 }
             } else {

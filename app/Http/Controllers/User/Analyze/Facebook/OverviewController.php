@@ -91,22 +91,21 @@ class OverviewController extends Controller
                     if ($request->has(['id'])) {
                         $data = [];
                         $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
-                        
-                        foreach($response as $fbData)
-                        {
-                            foreach($fbData->data as $fb)
-                            {
+
+                        foreach ($response as $fbData) {
+                            foreach ($fbData->data as $fb) {
                                 $data[$fb->name]['data'] = $fb->values[0]->value ?? 0;
                                 $data[$fb->name]['desc'] = $fb->description ?? '';
-                            }    
-                        }       
-                        $data['status'] = 200;                                
+                            }
+                        }
+                        $data['status'] = 200;
+
                         return response()->json(collect($data), 200);
                     }
 
                         return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
-                    break;        
+                    break;
 
                 case 'accountDetails':
                     $data = [];

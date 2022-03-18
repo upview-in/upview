@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\Conversions\ConversionCollection;
 use Spatie\MediaLibrary\Conversions\ImageGenerators\ImageGeneratorFactory;
@@ -27,7 +28,6 @@ use Spatie\MediaLibrary\Support\MediaLibraryPro;
 use Spatie\MediaLibrary\Support\TemporaryDirectory;
 use Spatie\MediaLibrary\Support\UrlGenerator\UrlGeneratorFactory;
 use Spatie\MediaLibraryPro\Models\TemporaryUpload;
-use Jenssegers\Mongodb\Eloquent\Model;
 
 /**
  * @property-read string $type
@@ -42,9 +42,9 @@ class Media extends Model implements Responsable, Htmlable
     use CustomMediaProperties;
     use HasUuid;
 
-    protected $table = 'media';
-
     public const TYPE_OTHER = 'other';
+
+    protected $table = 'media';
 
     protected $guarded = [];
 
@@ -56,6 +56,11 @@ class Media extends Model implements Responsable, Htmlable
         'generated_conversions' => 'array',
         'responsive_images' => 'array',
     ];
+
+    public function __invoke(...$arguments): HtmlableMedia
+    {
+        return $this->img(...$arguments);
+    }
 
     public function newCollection(array $models = [])
     {
@@ -93,21 +98,6 @@ class Media extends Model implements Responsable, Htmlable
         return $urlGenerator->getPath();
     }
 
-    protected function type(): Attribute
-    {
-        return Attribute::get(
-            function () {
-                $type = $this->getTypeFromExtension();
-
-                if ($type !== self::TYPE_OTHER) {
-                    return $type;
-                }
-
-                return $this->getTypeFromMime();
-            }
-        );
-    }
-
     public function getTypeFromExtension(): string
     {
         $imageGenerator = ImageGeneratorFactory::forExtension($this->extension);
@@ -124,16 +114,6 @@ class Media extends Model implements Responsable, Htmlable
         return $imageGenerator
             ? $imageGenerator->getType()
             : static::TYPE_OTHER;
-    }
-
-    protected function extension(): Attribute
-    {
-        return Attribute::get(fn () => pathinfo($this->file_name, PATHINFO_EXTENSION));
-    }
-
-    protected function humanReadableSize(): Attribute
-    {
-        return Attribute::get(fn () => File::getHumanReadableSize($this->size));
     }
 
     public function getDiskDriverName(): string
@@ -204,7 +184,6 @@ class Media extends Model implements Responsable, Htmlable
         return collect($this->generated_conversions ?? []);
     }
 
-
     public function markAsConversionGenerated(string $conversionName): self
     {
         $generatedConversions = $this->generated_conversions;
@@ -248,27 +227,6 @@ class Media extends Model implements Responsable, Htmlable
         return $this->buildResponse($request, 'inline');
     }
 
-    private function buildResponse($request, string $contentDispositionType)
-    {
-        $downloadHeaders = [
-            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
-            'Content-Type' => $this->mime_type,
-            'Content-Length' => $this->size,
-            'Content-Disposition' => $contentDispositionType . '; filename="' . $this->file_name . '"',
-            'Pragma' => 'public',
-        ];
-
-        return response()->stream(function () {
-            $stream = $this->stream();
-
-            fpassthru($stream);
-
-            if (is_resource($stream)) {
-                fclose($stream);
-            }
-        }, 200, $downloadHeaders);
-    }
-
     public function getResponsiveImageUrls(string $conversionName = ''): array
     {
         return $this->responsiveImages($conversionName)->getUrls();
@@ -282,18 +240,6 @@ class Media extends Model implements Responsable, Htmlable
     public function getSrcset(string $conversionName = ''): string
     {
         return $this->responsiveImages($conversionName)->getSrcset();
-    }
-
-    protected function previewUrl(): Attribute
-    {
-        return Attribute::get(
-            fn () => $this->hasGeneratedConversion('preview') ? $this->getUrl('preview') : '',
-        );
-    }
-
-    protected function originalUrl(): Attribute
-    {
-        return Attribute::get(fn () => $this->getUrl());
     }
 
     public function move(HasMedia $model, $collectionName = 'default', string $diskName = '', string $fileName = ''): self
@@ -357,11 +303,6 @@ class Media extends Model implements Responsable, Htmlable
             ->attributes($extraAttributes);
     }
 
-    public function __invoke(...$arguments): HtmlableMedia
-    {
-        return $this->img(...$arguments);
-    }
-
     public function temporaryUpload(): BelongsTo
     {
         MediaLibraryPro::ensureInstalled();
@@ -382,5 +323,62 @@ class Media extends Model implements Responsable, Htmlable
             )
             ->get();
     }
-}
 
+    protected function type(): Attribute
+    {
+        return Attribute::get(
+            function () {
+                $type = $this->getTypeFromExtension();
+
+                if ($type !== self::TYPE_OTHER) {
+                    return $type;
+                }
+
+                return $this->getTypeFromMime();
+            }
+        );
+    }
+
+    protected function extension(): Attribute
+    {
+        return Attribute::get(fn () => pathinfo($this->file_name, PATHINFO_EXTENSION));
+    }
+
+    protected function humanReadableSize(): Attribute
+    {
+        return Attribute::get(fn () => File::getHumanReadableSize($this->size));
+    }
+
+    protected function previewUrl(): Attribute
+    {
+        return Attribute::get(
+            fn () => $this->hasGeneratedConversion('preview') ? $this->getUrl('preview') : '',
+        );
+    }
+
+    protected function originalUrl(): Attribute
+    {
+        return Attribute::get(fn () => $this->getUrl());
+    }
+
+    private function buildResponse($request, string $contentDispositionType)
+    {
+        $downloadHeaders = [
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-Type' => $this->mime_type,
+            'Content-Length' => $this->size,
+            'Content-Disposition' => $contentDispositionType . '; filename="' . $this->file_name . '"',
+            'Pragma' => 'public',
+        ];
+
+        return response()->stream(function () {
+            $stream = $this->stream();
+
+            fpassthru($stream);
+
+            if (is_resource($stream)) {
+                fclose($stream);
+            }
+        }, 200, $downloadHeaders);
+    }
+}
