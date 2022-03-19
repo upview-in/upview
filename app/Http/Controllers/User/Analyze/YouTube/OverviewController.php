@@ -71,7 +71,7 @@ class OverviewController extends Controller
         $data['ChannelDetails']['viewCount'] = $ChannelViews;
         $data['ChannelDetails']['subscriberCount'] = $ChannelSubscriber;
         $data['ChannelDetails']['videoCount'] = $ChannelVideos;
-        $data['ChannelDetails']['channelCategory'] = !empty($ChannelCategory) ? $ChannelCategory : 'N/A';
+        $data['ChannelDetails']['channelCategory'] = !empty($ChannelCategory) ? $ChannelCategory : '-';
 
         return response()->json(collect($data));
     }

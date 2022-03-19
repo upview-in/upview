@@ -48,11 +48,11 @@ class UserRolesController extends Controller
     public function store(StoreRoleRequest $request)
     {
         $userPermissionHelper = new UserPermissionHelper();
-        $senitized = $request->validated();
-        $userRole = UserRole::create($senitized);
+        $sanitized = $request->validated();
+        $userRole = UserRole::create($sanitized);
 
         $permission_ids = [];
-        foreach ($senitized['permissions'] as $slug) {
+        foreach ($sanitized['permissions'] as $slug) {
             $permission = $userPermissionHelper->getPermissionFromSlug($slug);
             if (!is_null($permission)) {
                 $permission_ids[] = $permission->id;

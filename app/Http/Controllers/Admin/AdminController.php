@@ -49,15 +49,15 @@ class AdminController extends Controller
      */
     public function store(StoreAdminRequest $request)
     {
-        $senitized = $request->validated();
+        $sanitized = $request->validated();
 
         // Convert password to hash
         if ($request->has('password') && !empty($request->password)) {
-            $senitized['password'] = Hash::make($request->password);
+            $sanitized['password'] = Hash::make($request->password);
         }
 
-        $senitized['email_verified_at'] = Carbon::now();
-        $admin = Admin::create($senitized);
+        $sanitized['email_verified_at'] = Carbon::now();
+        $admin = Admin::create($sanitized);
 
         // Set admin profile photo if uploaded
         if ($request->hasFile('avatar')) {
@@ -65,7 +65,7 @@ class AdminController extends Controller
         }
 
         $roles_ids = [];
-        foreach ($senitized['roles'] as $role) {
+        foreach ($sanitized['roles'] as $role) {
             if (!is_null(AdminRole::find($role))) {
                 $roles_ids[] = $role;
             }

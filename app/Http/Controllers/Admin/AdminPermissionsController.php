@@ -46,8 +46,8 @@ class AdminPermissionsController extends Controller
      */
     public function store(StorePermissionRequest $request)
     {
-        $senitized = $request->validated();
-        $adminPermission = AdminPermission::create($senitized);
+        $sanitized = $request->validated();
+        $adminPermission = AdminPermission::create($sanitized);
 
         if ($request->ajax()) {
             return response()->json([

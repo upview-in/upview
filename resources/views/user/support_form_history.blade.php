@@ -28,18 +28,29 @@ function processCancelQueryRequest()
 				<label class="h3 m-0">Support History</label>
 			</div>
             <div class="card-body p-15 ml-3">
-                <div class="table-responsive">
-                    {{-- Success Message Div --}}
-                    @if(session()->get('message'))
+                <div class="row mt-3">
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <form method="GET">
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-right-0"><em class="fa fa-search"></em></span>
+                                <input type="text" class="form-control border-left-0" name="search" value="{{ request()->search ?? '' }}" placeholder="Search...">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+
+                @if(session()->get('message'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success:</strong> {{ session()->get('message') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    @endif
-                    {{-- Success Message Div End --}}
-                    <table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
+                @endif
+
+                <div class="table-responsive">
+                    <table class="table table-borderless" data-toggle="table">
                         <caption></caption>
                         <thead>
 							<tr>
@@ -59,7 +70,7 @@ function processCancelQueryRequest()
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td class="justify-center">{{ $history->query_title }}</td>
-                                    <td class="justify-center">{{ $history->query_description }}</td>
+                                    <td class="justify-center">{{ mb_strimwidth($history->query_description, 0, 27, '...') }}</td>
                                     <td class="justify-center">
                                         @if( $history->status == 0 )
                                             <span class="justify-center text-warning">Pending</span>
@@ -69,19 +80,23 @@ function processCancelQueryRequest()
                                             <span class="justify-center text-success">Closed</span>
                                         @endif
                                     </td>
-                                    <td class="justify-center">{{ $history->assigned_to ?? "N/A" }}</td>
-                                    <td class="justify-center">{{ $history->assigned_on_date ?? "N/A" }}</td>
+                                    <td class="justify-center">{{ $history->supportUser->name ?? "-" }}</td>
+                                    <td class="justify-center">{{ $history->assigned_on_date ?? "-" }}</td>
                                     <td class="justify-center">{{ $history->remark ?? "-" }}</td>
-                                    <td class="justify-center">{{ $history->resolved_at ?? "N/A" }}</td>
+                                    <td class="justify-center">{{ $history->resolved_at ?? "-" }}</td>
                                     <td class="justify-center">
                                         @if($history->status == 1)
                                             <a href="{{ route('panel.user.support.supportChat') }}/?id={{ $history->id }}">
-                                                <em class="fas fa-comments text-info justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Start Support Chat" aria-hidden="false" ></em>
+                                                <em class="fa fa-comment-dots text-primary justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Start Support Chat" aria-hidden="false" ></em>
+                                            </a>
+                                        @else
+                                            <a href="#">
+                                                <em class="fa fa-comment-dots text-primary justify-center font-size-20 invisible"></em>
                                             </a>
                                         @endif
                                         @if($history->status != 2)
-                                            <a href="javascript:void(0)" onclick="setQueryID('{{ $history->id  }}')"  id="btnQueryId" data-id="{{ $history->id }}" data-toggle="modal">
-                                                <em class="fas fa-times-circle text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Close Request" aria-hidden="false" ></em>
+                                            <a href="javascript:void(0)" class="ml-2" onclick="setQueryID('{{ $history->id  }}')"  id="btnQueryId" data-id="{{ $history->id }}" data-toggle="modal">
+                                                <em class="fa fa-times-circle text-danger justify-center font-size-20" data-toggle="tooltip" data-placement="bottom" title="Close Request" aria-hidden="false" ></em>
                                             </a>
                                         @endif
                                     </td>
@@ -89,6 +104,9 @@ function processCancelQueryRequest()
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                        {{ $SupportHistory->withQueryString()->links() }}
+                    </div>
                 </div>
             </div>
         </div>
