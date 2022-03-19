@@ -11,7 +11,7 @@
                             <div class="media align-items-center">
                                 <em class="fas fa-puzzle-piece text-danger fs-20"></em>
                                 <div class="m-l-15">
-                                    <h2 class="m-b-0">{{ $package ?? 'N/A' }}</h2>
+                                    <h2 class="m-b-0">{{ $package ?? '-' }}</h2>
                                     <p class="m-b-0 text-muted">Click to expand</p>
                                 </div>
                             </div>

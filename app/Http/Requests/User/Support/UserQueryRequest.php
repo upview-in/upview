@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User\Support;
 
+use App\Models\UserSupportQuery;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserQueryRequest extends FormRequest
@@ -24,9 +25,10 @@ class UserQueryRequest extends FormRequest
     public function rules()
     {
         return [
-            'query_ss' => ['required', 'image', 'max:1024'],
             'query_title' => ['required'],
             'query_description' => ['required'],
+            'attachments' => ['sometimes', 'array', 'max:' . UserSupportQuery::$attachmentsMaxFiles],
+            'attachments.*' => ['sometimes', 'file', 'mimetypes:' . implode(',', UserSupportQuery::$attachmentsAcceptMimes), 'max:' . (1024 * UserSupportQuery::$attachmentsMaxFileSize)],
         ];
     }
 }

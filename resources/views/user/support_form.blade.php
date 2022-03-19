@@ -24,36 +24,44 @@
                     <div class="form-group">
                         <label class="font-weight-semibold" for="query">{{ __('Query Title') }}<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="query" name="query_title" placeholder="Enter Your Query" />
+                        @error('query')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    @error('query')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
                     <div class="form-group">
                         <label class="font-weight-semibold" for="description">{{ __('Describe Your Query') }}<span class="text-danger">*</span></label>
                         <textarea class="form-control" id="queryDesc" name="query_description" rows="5" name="query" placeholder="Describe Your Query"></textarea>
+                        @error('query_description')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    @error('query_description')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
 
                     <div class="form-group">
-                        <h5 class="m-b-5 font-size-16">{{ __('Upload Query Screenshot') }}<span class="text-danger">*</span></h5>
-                        <input id="queryss" name="query_ss" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
-                            <p class="opacity-07 font-size-13 m-b-0">
-                                Max file size: 1MB [Any Image Uploaded Must be clear and visible]
-                            </p>
+                        <h5 class="m-b-5 font-size-16">{{ __('Attachments') }}</h5>
+                        <input id="attachments" name="attachments[]" type="file" class="hidden" accept="{{ implode(', ', \App\Models\UserSupportQuery::$attachmentsAcceptMimes) }}" multiple="true">
+                        <p class="opacity-07 font-size-13 m-b-0">
+                            Upload upto {{ \App\Models\UserSupportQuery::$attachmentsMaxFiles }} files
+                        </p>
+                        <p class="opacity-07 font-size-13 m-b-0">
+                            Max file size of 1 file: {{ \App\Models\UserSupportQuery::$attachmentsMaxFileSize }}MB
+                        </p>
+                        @error('attachments')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        @error('attachments.*')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    @error('query_ss')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
                     <div class="form-group">
                         <button class="btn btn-success">{{ __('Submit Query') }}</button>

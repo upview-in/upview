@@ -46,8 +46,8 @@ class UserPermissionsController extends Controller
      */
     public function store(StorePermissionRequest $request)
     {
-        $senitized = $request->validated();
-        $userPermission = UserPermission::create($senitized);
+        $sanitized = $request->validated();
+        $userPermission = UserPermission::create($sanitized);
 
         if ($request->ajax()) {
             return response()->json([

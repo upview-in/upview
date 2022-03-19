@@ -48,12 +48,12 @@ class AdminRolesController extends Controller
     public function store(StoreRoleRequest $request)
     {
         $adminPermissionHelper = new AdminPermissionHelper();
-        $senitized = $request->validated();
-        $adminRole = AdminRole::create($senitized);
+        $sanitized = $request->validated();
+        $adminRole = AdminRole::create($sanitized);
 
         if ($request->has('permissions')) {
             $permission_ids = [];
-            foreach ($senitized['permissions'] as $slug) {
+            foreach ($sanitized['permissions'] as $slug) {
                 $permission = $adminPermissionHelper->getPermissionFromSlug($slug);
                 if (!is_null($permission)) {
                     $permission_ids[] = $permission->id;

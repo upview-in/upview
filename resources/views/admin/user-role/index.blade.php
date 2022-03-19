@@ -43,6 +43,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (!$userRoles->total())
+                            <tr>
+                                <td colspan="100" class="text-center pt-5 pb-5">Oops! No data found.</td>
+                            </tr>
+                        @endif
+
                         @foreach($userRoles as $userRole)
                         <tr>
                             <th scope="row">

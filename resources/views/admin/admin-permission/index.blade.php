@@ -43,6 +43,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (!$adminPermissions->total())
+                            <tr>
+                                <td colspan="100" class="text-center pt-5 pb-5">Oops! No data found.</td>
+                            </tr>
+                        @endif
+
                         @foreach($adminPermissions as $userPermission)
                         <tr>
                             <th scope="row">

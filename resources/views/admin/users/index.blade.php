@@ -49,6 +49,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (!$users->total())
+                            <tr>
+                                <td colspan="100" class="text-center pt-5 pb-5">Oops! No data found.</td>
+                            </tr>
+                        @endif
+
                         @foreach($users as $user)
                         <tr>
                             <th scope="row">

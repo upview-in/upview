@@ -185,10 +185,10 @@
                     if (data.country != null) {
                         $("#c1ChannelCountry").html('<img class="mr-2 align-middle" src="{{ asset("/images/country-icons") }}/' + data.country.toLowerCase() + '.svg" height="18px" width="auto" /> ' + data.country + ' (' + getCountryName(data.country) + ')');
                     } else {
-                        $("#c1ChannelCountry").html("N/A");
+                        $("#c1ChannelCountry").html("-");
                     }
 
-                    $("#c1ChannelCategory").html(data.channelCategory ?? 'N/A');
+                    $("#c1ChannelCategory").html(data.channelCategory ?? '-');
 
                     __AC("ChannelMainDiv");
                 }
