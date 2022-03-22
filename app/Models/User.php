@@ -38,6 +38,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'country',
         'pincode',
         'currency',
+        'awario_profile_hash',
     ];
 
     /**
@@ -58,6 +59,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'country',
         'pincode',
         'currency',
+        'awario_profile_hash',
     ];
 
     /**

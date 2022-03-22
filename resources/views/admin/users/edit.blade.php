@@ -344,5 +344,38 @@
                 </form>
             </div>
         </div>
+
+        <div class="col-md-12">
+            <div class="card border-top border-0 border-4 border-info">
+                <form class="ajax-form" method="POST" action="{{ route('admin.users.update', $user->id) }}">
+                    @method('patch')
+                    @csrf
+                    <div class="card-body p-5">
+                        <div class="card-title d-flex align-items-center">
+                            <div class="d-flex align-items-center w-100">
+                                <em class="bi bi-geo-alt me-2 font-22 text-info"></em>
+                                <h5 class="mb-0 text-info">{{ __('Awario Profile') }}</h5>
+                            </div>
+                            <div class="d-flex align-items-center flex-shrink-1 pointer" onclick="$(this).closest('form').submit();">
+                                <em class="bi bi-save me-2 font-22 text-info"></em>
+                                <strong>Save</strong>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label font-weight-semibold" for="awario_profile_hash">{{ __('Profile Hash') }}</label>
+                                <input type="text" class="form-control" id="awario_profile_hash" name="awario_profile_hash" value="{{ old('awario_profile_hash') ?? $user->awario_profile_hash }}" placeholder="Enter Profile Hash">
+                                @error('awario_profile_hash')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </x-admin.app-layout>

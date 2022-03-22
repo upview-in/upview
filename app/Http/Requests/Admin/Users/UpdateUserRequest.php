@@ -40,6 +40,7 @@ class UpdateUserRequest extends FormRequest
             'avatar' => ['sometimes', 'image', 'max:6144'],
             'enabled' => ['sometimes', 'in:true,false'],
             'verified' => ['sometimes', 'in:true,false'],
+            'awario_profile_hash' => ['nullable', 'string'],
         ];
     }
 }
