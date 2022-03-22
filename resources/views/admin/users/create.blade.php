@@ -288,9 +288,34 @@
                                 @enderror
                             </div>
                             <div class="col-md-12">
-                                <label class="form-label font-weight-semibold" for="fullAddress">{{ __('Address') }}</label>
+                                <label class="form-label font-weight-semibold" for="address">{{ __('Address') }}</label>
                                 <input type="text" class="form-control" id="address" name="address" placeholder="Address">
                                 @error('address')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card border-top border-0 border-4 border-info">
+                    <div class="card-body p-5">
+                        <div class="card-title d-flex align-items-center">
+                            <div class="d-flex align-items-center w-100">
+                                <em class="bi bi-geo-alt me-2 font-22 text-info"></em>
+                                <h5 class="mb-0 text-info">{{ __('Awario Profile') }}</h5>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label font-weight-semibold" for="awario_profile_hash">{{ __('Profile Hash') }}</label>
+                                <input type="text" class="form-control" id="awario_profile_hash" name="awario_profile_hash" placeholder="Enter Profile Hash">
+                                @error('awario_profile_hash')
                                 <span class="invalid-feedback d-block" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

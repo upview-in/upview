@@ -141,6 +141,8 @@ class UserController extends Controller
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         }
 
+        $user->awario_profile_hash = $request->awario_profile_hash ?? $user->awario_profile_hash;
+
         $user->update();
 
         if ($request->has('roles')) {
