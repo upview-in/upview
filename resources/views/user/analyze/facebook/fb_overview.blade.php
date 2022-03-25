@@ -192,6 +192,7 @@
                     success: function() {
                         var data = $('#select2Pages').select2('data');
                         loadAnalytics(data.id);
+                        loadPageInsights(data.id);
                     }
                 });
             });
