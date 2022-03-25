@@ -287,9 +287,8 @@ class AccountController extends Controller
                 } elseif ($request->platform == TokenHelper::$PLATFORMS['instagram']) {
                     $sKey = 'AccountIndex_IG';
                     $accessCode = TokenHelper::getAuthToken_IG();
-                } else {
-                    //
                 }
+                //
 
                 foreach ($accessCode as $index => $_) {
                     if ($_->id == $request->id) {

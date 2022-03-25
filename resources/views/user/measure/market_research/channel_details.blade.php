@@ -47,7 +47,7 @@
                         if (snippet.country != null) {
                             $("#c1ChannelCountry").html('<img class="mr-2 align-middle" src="{{ asset("/images/country-icons") }}/' + snippet.country.toLowerCase() + '.svg" height="18px" width="auto"/> ' + snippet.country + ' (' + getCountryName(snippet.country) + ')');
                         } else {
-                            $("#c1ChannelCountry").html("N/A");
+                            $("#c1ChannelCountry").html("-");
                         }
 
                         if (topicDetails != null) {
@@ -57,7 +57,7 @@
                             });
                         }
 
-                        $("#c1ChannelCategory").html(channelCategory ?? 'N/A');
+                        $("#c1ChannelCategory").html(channelCategory ?? '-');
 
                     } else {
                         $("#ChannelMainDiv").html(noData);

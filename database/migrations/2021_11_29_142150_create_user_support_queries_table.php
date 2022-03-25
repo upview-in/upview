@@ -18,7 +18,6 @@ class CreateUserSupportQueriesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('query_title', 255);
             $table->text('query_description');
-            $table->string('query_ss_name', 100);
             $table->unsignedBigInteger('assigned_to')->nullable();
             $table->timestamp('assigned_on_date')->nullable();
             $table->tinyInteger('status')->default(0);

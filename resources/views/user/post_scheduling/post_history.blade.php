@@ -37,7 +37,7 @@
                             @foreach($postHistory as $key => $history)
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
-                                <td class="justify-center">{{ $history->profile->title ?? 'N/A' }}</td>
+                                <td class="justify-center">{{ $history->profile->title ?? '-' }}</td>
                                 <td class="justify-center"> 
                                     @foreach($history->post_info as $postInfo)
                                         @if($postInfo['platform'] == 'facebook')
@@ -64,7 +64,7 @@
                                     @endforeach
                                 
                                 </td>
-                                <td class="justify-center">{{ $history->caption ?? 'N/A' }}</td>
+                                <td class="justify-center">{{ $history->caption ?? '-' }}</td>
                                 <td class="justify-center">
                                     @if( $history->status == 0 )
                                         <span class="justify-center text-success">Posted</span>
@@ -72,8 +72,8 @@
                                         <span class="justify-center text-warning">Scheduled</span>
                                     @endif
                                 </td>
-                                <td class="justify-center">{{ $history->postedBy ?? 'N/A' }}</td>
-                                <td class="justify-center">{{ $history->created_at ?? 'N/A' }}</td>
+                                <td class="justify-center">{{ $history->postedBy ?? '-' }}</td>
+                                <td class="justify-center">{{ $history->created_at ?? '-' }}</td>
                             </tr>
                             @endforeach
                         </tbody>

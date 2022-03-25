@@ -19,7 +19,7 @@ class SupportController extends Controller
 
     public function history()
     {
-        $SupportHistory = UserSupportQuery::where(['user_id' => Auth::id()])->get();
+        $SupportHistory = UserSupportQuery::search()->with('supportUser')->where(['user_id' => Auth::id()])->paginate(10);
 
         return view('user.support_form_history', ['SupportHistory' => $SupportHistory, 'user_id' => Auth::id()]);
     }
@@ -31,13 +31,16 @@ class SupportController extends Controller
         $supportQuery->query_title = $request->query_title;
         $supportQuery->query_description = $request->query_description;
         $supportQuery->user_id = $user->id;
-        $supportQuery->status = 0;
-        if ($request->hasFile('query_ss')) {
-            $supportQuery->query_ss_name = $request->file('query_ss')->store('Support');
-        }
+        $assignee = $supportQuery->setAssignee();
         $supportQuery->save();
 
-        return redirect()->back()->with('message', 'Query Raised!');
+        if ($request->hasFile('attachments')) {
+            foreach ($request->attachments as $attachment) {
+                $supportQuery->addMedia($attachment)->toMediaCollection('query-attachments');
+            }
+        }
+
+        return redirect()->back()->with('message', $assignee ? 'Query Raised! Check history to view your query.' : 'No agent found or some technical issue to assign our executive!');
     }
 
     public function cancelQueryByUser(CancelQuery $request, UserSupportQuery $userSupport)

@@ -86,8 +86,8 @@
 							@foreach($linkedAccounts as $key => $linkedAccount)
 							<tr>
 								<th scope="row">{{ $key + 1 }}</th>
-								<td><img class="rounded-circle mr-3" alt="img" src="{{ $linkedAccount->picture }}" width="50px" /> {{ $linkedAccount->name ?? 'N/A' }}</td>
-								<td>{{ $linkedAccount->email ?? 'N/A' }}</td>
+								<td><img class="rounded-circle mr-3" alt="img" src="{{ $linkedAccount->picture }}" width="50px" /> {{ $linkedAccount->name ?? '-' }}</td>
+								<td>{{ $linkedAccount->email ?? '-' }}</td>
 								<td>{!! $platforms[$linkedAccount->platform] !!}</td>
 								<td>{{ $linkedAccount->created_at->diffForHumans() }}</td>
 								<td>

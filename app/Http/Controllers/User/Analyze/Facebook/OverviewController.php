@@ -6,6 +6,7 @@ use App\Helper\TokenHelper;
 use App\Http\Controllers\Api\Facebook\FacebookController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Facebook\Account\GetMineAccountDetails;
+use App\Http\Requests\Api\Facebook\GetFBPageInsights;
 use Illuminate\Http\Request;
 
 class OverviewController extends Controller
@@ -52,16 +53,16 @@ class OverviewController extends Controller
                             $response = app(FacebookController::class)->getFacebookPagesInsightsEx(new GetMineAccountDetails($request->all(['id', 'fields'])))->getData();
                             //$data['chartData'][0] = ["This title lmfao","Impressions", "Reach", "Views"];
 
-                            $data['name'] = $response->name ?? 'N/A';
+                            $data['name'] = $response->name ?? '-';
                             $data['picture'] = $response->picture ?? ['data'=>['url'=>"{{ asset('images/no-image.jpg') }}"]];
-                            $data['about'] = $response->about ?? 'N/A';
-                            $data['bio'] = $response->bio ?? 'N/A';
-                            $data['business'] = $response->business ?? 'N/A';
-                            $data['country_pages_likes'] = $response->country_pages_likes ?? 'N/A';
+                            $data['about'] = $response->about ?? '-';
+                            $data['bio'] = $response->bio ?? '-';
+                            $data['business'] = $response->business ?? '-';
+                            $data['country_pages_likes'] = $response->country_pages_likes ?? '-';
 
-                            $data['description'] = $response->description ?? 'N/A';
-                            $data['engagement'] = $response->engagement ?? 'N/A';
-                            $data['followers_count'] = $response->followers_count ?? 'N/A';
+                            $data['description'] = $response->description ?? '-';
+                            $data['engagement'] = $response->engagement ?? '-';
+                            $data['followers_count'] = $response->followers_count ?? '-';
                             $data['is_published'] = $response->is_published ?? false;
                             $response->link ? $data['link'] = $response->link : $data['link'] = '#';
 
@@ -69,9 +70,9 @@ class OverviewController extends Controller
                             $data['location']['country'] = $response->location->city ?? '';
                             $data['location']['zip'] = $response->location->city ?? '';                            //City, Country, ZIP
                             $data['page_cover'] = $response->page_cover ?? "{{ asset('images/no-image.jpg') }}";
-                            $data['fan_count'] = $response->fan_count ?? 'N/A';
+                            $data['fan_count'] = $response->fan_count ?? '-';
                             $data['is_community_page'] = $response->is_community_page ?? false;
-                            $data['new_like_count'] = $response->new_like_count ?? 'N/A';
+                            $data['new_like_count'] = $response->new_like_count ?? '-';
                             strcmp($response->verification_status, 'not_verified') ? $data['verification_status'] = true : $data['verification_status'] = false;
                             $data['feed'] = $response->feed ?? null; //Posts[Created Time, Message, id]
                             $data['published_posts'] = $response->published_posts ?? null;
@@ -106,7 +107,7 @@ class OverviewController extends Controller
 
                         return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
-                    break;        
+                    break;
 
                 case 'accountDetails':
                     $data = [];

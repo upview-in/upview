@@ -49,15 +49,15 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $senitized = $request->validated();
+        $sanitized = $request->validated();
 
         // Convert password to hash
         if ($request->has('password') && !empty($request->password)) {
-            $senitized['password'] = Hash::make($request->password);
+            $sanitized['password'] = Hash::make($request->password);
         }
 
-        $senitized['email_verified_at'] = Carbon::now();
-        $user = User::create($senitized);
+        $sanitized['email_verified_at'] = Carbon::now();
+        $user = User::create($sanitized);
 
         // Set user profile photo if uploaded
         if ($request->hasFile('avatar')) {
@@ -65,7 +65,7 @@ class UserController extends Controller
         }
 
         $roles_ids = [];
-        foreach ($senitized['roles'] as $role) {
+        foreach ($sanitized['roles'] as $role) {
             if (!is_null(UserRole::find($role))) {
                 $roles_ids[] = $role;
             }
@@ -140,6 +140,8 @@ class UserController extends Controller
             }
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         }
+
+        $user->awario_profile_hash = $request->awario_profile_hash ?? $user->awario_profile_hash;
 
         $user->update();
 

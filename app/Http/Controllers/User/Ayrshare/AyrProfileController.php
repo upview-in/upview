@@ -13,7 +13,7 @@ class AyrProfileController extends Controller
     public function index()
     {
         $userProfiles = AyrUserProfile::where(['user_id' => Auth::id()])->get();
-        
+
         $temp = [];
         $platforms = [];
         foreach ($userProfiles as $profiles) {

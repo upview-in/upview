@@ -71,7 +71,7 @@ class OverviewController extends Controller
         $data['ChannelDetails']['viewCount'] = $ChannelViews;
         $data['ChannelDetails']['subscriberCount'] = $ChannelSubscriber;
         $data['ChannelDetails']['videoCount'] = $ChannelVideos;
-        $data['ChannelDetails']['channelCategory'] = !empty($ChannelCategory) ? $ChannelCategory : 'N/A';
+        $data['ChannelDetails']['channelCategory'] = !empty($ChannelCategory) ? $ChannelCategory : '-';
 
         return response()->json(collect($data));
     }
@@ -199,10 +199,10 @@ class OverviewController extends Controller
 
             foreach ($TrafficSourceAnalyticsResponse->rows as $key => $value) {
                 $SourceInsightTrafficSourceType = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
-                $splittedTrafficSource = explode(" ", $SourceInsightTrafficSourceType);
+                $splittedTrafficSource = explode(' ', $SourceInsightTrafficSourceType);
                 if (!empty($splittedTrafficSource) && $splittedTrafficSource[0] == 'Yt') {
                     $splittedTrafficSource[0] = 'YouTube';
-                    $SourceInsightTrafficSourceType = implode(" ", $splittedTrafficSource);
+                    $SourceInsightTrafficSourceType = implode(' ', $splittedTrafficSource);
                 }
 
                 $TrafficSourceChartData[] = [$SourceInsightTrafficSourceType, $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];

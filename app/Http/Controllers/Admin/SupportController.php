@@ -49,15 +49,15 @@ class SupportController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $senitized = $request->validated();
+        $sanitized = $request->validated();
 
         // Convert password to hash
         if ($request->has('password') && !empty($request->password)) {
-            $senitized['password'] = Hash::make($request->password);
+            $sanitized['password'] = Hash::make($request->password);
         }
 
-        $senitized['email_verified_at'] = Carbon::now();
-        $admin = SupportUser::create($senitized);
+        $sanitized['email_verified_at'] = Carbon::now();
+        $admin = SupportUser::create($sanitized);
 
         // Set admin profile photo if uploaded
         if ($request->hasFile('avatar')) {
@@ -84,7 +84,6 @@ class SupportController extends Controller
      */
     public function show(ViewUserRequest $request, SupportUser $supportUser)
     {
-
     }
 
     /**
@@ -163,7 +162,7 @@ class SupportController extends Controller
 
     public function queries()
     {
-        $queries = UserSupportQuery::search()->paginate(10);
+        $queries = UserSupportQuery::search()->with('supportUser')->paginate(10);
 
         return view('admin.user-support.queries', compact('queries'));
     }

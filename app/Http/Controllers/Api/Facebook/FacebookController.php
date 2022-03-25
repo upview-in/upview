@@ -158,6 +158,7 @@ class FacebookController extends Controller
         $fb_client->setDefaultAccessToken($fbUser['access_token']);
         $fbUser = $fb_client->get($fbPageID . '?fields=' . $request->fields)->getBody();
         $fbUser = json_decode($fbUser);
+
         return response()->json(($fbUser), 200);
     }
 

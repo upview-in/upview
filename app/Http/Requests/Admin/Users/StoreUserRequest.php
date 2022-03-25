@@ -38,6 +38,7 @@ class StoreUserRequest extends FormRequest
             'address' => ['nullable', 'min:10', 'max:512'],
             'avatar' => ['nullable', 'image', 'max:6144'],
             'roles' => ['array'],
+            'awario_profile_hash' => ['string'],
         ];
     }
 }

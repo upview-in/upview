@@ -320,7 +320,7 @@
                             $("#fbPageEngagement").html(convertToInternationalCurrencySystem(data.engagement.count));
                             $("#fbPageEngagementSocial").html("("+nl2br(data.engagement.social_sentence)+")");
                             $("#fbPageFollowers").html(convertToInternationalCurrencySystem(data.followers_count));
-                            var location = {"city":"N/A","country":"N/A","zip":"N/A"};
+                            var location = {"city":"-","country":"-","zip":"-"};
 
 
                             if(data.location.city.length < 1) location['city'] = '';
