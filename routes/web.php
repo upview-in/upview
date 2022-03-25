@@ -20,6 +20,7 @@ use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\Support\ChatController;
 // User namespace
 use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\Analyze\Facebook\OverviewController as FbOverviewController;
 use App\Http\Controllers\User\Analyze\Instagram\OverviewController as IgOverviewController;
 use App\Http\Controllers\User\Analyze\YouTube\AudienceController as YtAudienceController;
 use App\Http\Controllers\User\Analyze\YouTube\OverviewController as YtOverviewController;
@@ -145,8 +146,8 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 });
 
                 Route::prefix('facebook')->as('facebook.')->group(function () {
-                    Route::match(['get', 'post'], '/overview', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('overview');
-                    Route::get('/media', [App\Http\Controllers\User\Analyze\Facebook\FacebookOverviewController::class, 'overview'])->name('media');
+                    Route::get('/overview', [FbOverviewController::class, 'overview'])->name('overview');
+                    Route::get('/media', [FbOverviewController::class, 'overview'])->name('media');
                 });
 
                 Route::prefix('instagram')->as('instagram.')->group(function () {
