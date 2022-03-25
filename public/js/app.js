@@ -34,7 +34,7 @@ function toast(title, message, delay, icon = 'info', color = 'info') {
 }
 
 function convertToInternationalCurrencySystem(num, fixed=1) {
-    if (typeof num == undefined) { return '0'; }
+    if (typeof num === undefined) { return '0'; }
     if (num === null) { return '0'; } // terminate early
     if (num === 0) { return '0'; } // terminate early
     
