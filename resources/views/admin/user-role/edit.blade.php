@@ -99,6 +99,15 @@
                         </span>
                         @enderror
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label font-weight-semibold required" for="price">{{ __('Price') }}</label>
+                        <input type="text" class="form-control" id="price" name="price" placeholder="price" value="{{ old('price') ?? $userRole->price }}" required>
+                        @error('price')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
             </div>
         </form>

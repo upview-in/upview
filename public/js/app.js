@@ -33,19 +33,19 @@ function toast(title, message, delay, icon = 'info', color = 'info') {
     }, delay);
 }
 
-function convertToInternationalCurrencySystem(num, fixed=1) {
+function convertToInternationalCurrencySystem(num, fixed = 1) {
     if (typeof num === undefined) { return '0'; }
     if (num === null) { return '0'; } // terminate early
     if (num === 0) { return '0'; } // terminate early
-    
+
     fixed = (!fixed || fixed < 0) ? 0 : fixed; // number of decimal places to show
-    
+
     var b = (num).toPrecision(2).split("e"), // get power
-      k = b.length === 1 ? 0 : Math.floor(Math.min(b[1].slice(1), 14) / 3), // floor at decimals, ceiling at trillions
-      c = k < 1 ? num.toFixed(0 + fixed) : (num / Math.pow(10, k * 3) ).toFixed(1 + fixed), // divide by power
-      d = c < 0 ? c : Math.abs(c), // enforce -0 is 0
-      e = d + ['', 'K', 'M', 'B', 'T'][k]; // append power
-      return e;
+        k = b.length === 1 ? 0 : Math.floor(Math.min(b[1].slice(1), 14) / 3), // floor at decimals, ceiling at trillions
+        c = k < 1 ? num.toFixed(0 + fixed) : (num / Math.pow(10, k * 3)).toFixed(1 + fixed), // divide by power
+        d = c < 0 ? c : Math.abs(c), // enforce -0 is 0
+        e = d + ['', 'K', 'M', 'B', 'T'][k]; // append power
+    return e;
 
 }
 
@@ -530,5 +530,30 @@ $(document).ready(function () {
             }
         }
     });
+
+    if ($("#phoneNumber").length) {
+        var telInputErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+        $("#phoneNumber").intlTelInput({
+            placeholderNumberType: "MOBILE",
+            initialCountry: "auto",
+        });
+
+        $('form').submit(function (e) {
+            if ($(this).find("#phoneNumber").length) {
+                if ($("#phoneNumber").intlTelInput("isValidNumber") !== true) {
+                    let error_msg = $("#phoneNumber").intlTelInput("getValidationError");
+                    if (error_msg < 0) {
+                        toast('Error', 'Phone Number is invalid', 3000, 'danger', 'danger');
+                    } else {
+                        toast('Error', telInputErrorMap[error_msg], 3000, 'danger', 'danger');
+                    }
+                    e.preventDefault();
+                } else {
+                    var phone_number = $("#phoneNumber").intlTelInput("getNumber");
+                    $("#phoneNumber").val(phone_number);
+                }
+            }
+        });
+    }
 
 });

@@ -19,6 +19,7 @@ class UserRole extends Model
     public $searchable = [
         'name',
         'slug',
+        'price',
     ];
 
     /**
@@ -29,6 +30,7 @@ class UserRole extends Model
     protected $fillable = [
         'name',
         'slug',
+        'price',
         'enabled',
     ];
 

@@ -12,13 +12,13 @@ use App\Http\Controllers\Admin\UserRolesController;
 // API Ayrshare namespace
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 // Common namespace
-use App\Http\Controllers\AppModules\AppModuleController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\MainSiteController;
 // Support chat panel namespace
 use App\Http\Controllers\Support\ChatController;
 // User namespace
+use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Analyze\Facebook\OverviewController as FbOverviewController;
 use App\Http\Controllers\User\Analyze\Instagram\OverviewController as IgOverviewController;
@@ -72,29 +72,37 @@ Route::group(['domain' => config('app.domains.app')], function () {
         });
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/choosePackages', [AppModuleController::class, 'index'])->name('choosePackages');
-        Route::get('/packageDetails/{packageName}', [AppModuleController::class, 'packageDetails'])->name('packageDetails');
 
         Route::prefix('user')->as('user.')->group(function () {
+            Route::controller(PlansController::class)->prefix('plans')->as('plans.')->group(function () {
+                Route::get('/list', 'list')->name('list');
+                Route::get('/details/{plan}', 'details')->name('details');
+            });
+
             Route::prefix('profile')->as('profile.')->group(function () {
-                Route::get('/', [ProfileController::class, 'index'])->name('index');
-                Route::post('/changePassword', [ProfileController::class, 'changePassword'])->name('change_password');
-                Route::post('/changeBasicProfile', [ProfileController::class, 'changeBasicProfile'])->name('change_basic_profile');
-                Route::post('/changeAddress', [ProfileController::class, 'changeAddress'])->name('change_address');
-                Route::post('/changeAvatar', [ProfileController::class, 'changeAvatar'])->name('change_avatar');
-                Route::get('/ayrshareForward/{profileKey}', [AyrshareController::class, 'ayrForward'])->name('ayrshareForward');
-                Route::get('/manage', [AyrProfileController::class, 'index'])->name('manage');
-                Route::post('/create', [AyrshareController::class, 'createAyrProfile'])->name('createAyrProfile');
-                Route::delete('/deleteProfile', [AyrshareController::class, 'deleteAyrProfile'])->name('deleteProfile');
+                Route::controller(ProfileController::class)->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::post('/changePassword', 'changePassword')->name('change_password');
+                    Route::post('/changeBasicProfile', 'changeBasicProfile')->name('change_basic_profile');
+                    Route::post('/changeAddress', 'changeAddress')->name('change_address');
+                    Route::post('/changeAvatar', 'changeAvatar')->name('change_avatar');
+                });
+
+                Route::controller(AyrProfileController::class)->group(function () {
+                    Route::get('/manage', 'index')->name('manage');
+                    Route::post('/create', 'createAyrProfile')->name('createAyrProfile');
+                    Route::delete('/deleteProfile', 'deleteAyrProfile')->name('deleteProfile');
+                    Route::get('/ayrshareForward/{profileKey}', 'ayrForward')->name('ayrshareForward');
+                });
             });
 
             //Routes For Support Chat System
-            Route::prefix('support')->as('support.')->group(function () {
-                Route::get('/submit', [SupportController::class, 'index'])->name('submit');
-                Route::get('/history', [SupportController::class, 'history'])->name('history');
-                Route::post('/uploadQuery', [SupportController::class, 'uploadUserQuery'])->name('uploadQuery');
-                Route::get('/cancelQueryByUser/{userSupport}', [SupportController::class, 'cancelQueryByUser'])->name('cancelQueryByUser');
-                Route::get('/SupportChat', [SupportController::class, 'supportChat'])->name('supportChat');
+            Route::controller(SupportController::class)->prefix('support')->as('support.')->group(function () {
+                Route::get('/submit', 'index')->name('submit');
+                Route::get('/history', 'history')->name('history');
+                Route::post('/uploadQuery', 'uploadUserQuery')->name('uploadQuery');
+                Route::get('/cancelQueryByUser/{userSupport}', 'cancelQueryByUser')->name('cancelQueryByUser');
+                Route::get('/SupportChat', 'supportChat')->name('supportChat');
             });
 
             //Routes For Post Management
