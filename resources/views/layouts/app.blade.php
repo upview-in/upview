@@ -2,33 +2,41 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta charset=" utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<meta charset=" utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ ($title ?? 'Dashboard') . ' - ' . config('app.name', 'Laravel') }}</title>
 
-<title>{{ ($title ?? 'Dashboard') . ' - ' . config('app.name', 'Laravel') }}</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('images/logo/favicon.svg') }}">
 
-<!-- Favicon -->
-<link rel="shortcut icon" href="{{ asset('images/logo/favicon.svg') }}">
+    <!-- page css -->
 
-<!-- page css -->
+    <!-- Core css -->
+    <link href="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/phone-number/css/intlTelInput.min.css') }}" rel="stylesheet">
 
-<!-- Core css -->
-<link href="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
-<link href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css" rel="stylesheet">
-{{-- <link href="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"> --}}
-<link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
-<link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
-<link href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet">
-<link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <style>
+        .icon-holder em {
+            margin-right: 14px;
+            font-size: 18px;
+            font-weight: bolder;
+        }
+        .iti {
+            display: block;
+        }
+    </style>
 
-
-@yield('custom-css')
-
+    @yield('custom-css')
 </head>
 
 <body>
@@ -121,16 +129,18 @@
     <!-- Core JS -->
     <script src="{{ asset('js/theme-app.min.js') }}"></script>
     <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
     <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
     <script src="{{ asset('vendor/country-list/country-list.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('vendor/jsPDF/jspdf.umd.min.js') }}"></script>
+    <script src="{{ asset('vendor/phone-number/js/utils.js') }}"></script>
+    <script src="{{ asset('vendor/phone-number/js/data.min.js') }}"></script>
+    <script src="{{ asset('vendor/phone-number/js/intlTelInput-jquery.min.js') }}"></script>
+
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"> </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         var videoIntelligenceIndexRoute = "{{ route('panel.user.measure.market_research.video_intelligence.index') }}";
     </script>

@@ -11,6 +11,7 @@
         "php": "^8.0.2",
         "ext-mongodb": "*",
         "barryvdh/laravel-snappy": "^1.0.0",
+        "cartalyst/stripe-laravel": "^14.0",
         "dipeshsukhia/laravel-country-state-city-data": "^2.0",
         "facebook/graph-sdk": "^5.1",
         "fruitcake/laravel-cors": "^2.0",
@@ -24,7 +25,9 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
         "owen-oj/laravel-getid3": "^2.0",
-        "spatie/laravel-medialibrary": "^10.0"
+        "propaganistas/laravel-phone": "^4.3",
+        "spatie/laravel-medialibrary": "^10.0",
+        "stripe/stripe-php": "^7.119"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

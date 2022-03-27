@@ -38,11 +38,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label class="font-weight-semibold" for="mobile_number">{{ __('Phone') }}:</label>
-                                        <div class="input-affix">
-                                            <em class="prefix-icon fas fa-phone-alt"></em>
-                                            <input type="text" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" id="mobile_number" name="mobile_number" :value="old('mobile_number')" required autofocus placeholder="{{ __('Enter Number (+91XXXXXXXXXX)') }}">
-                                        </div>
+                                        <label class="font-weight-semibold" for="phoneNumber">{{ __('Phone') }}:</label>
+                                        <input type="text" id="phoneNumber" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" id="mobile_number" name="mobile_number" :value="old('mobile_number')" required autofocus>
                                         @error('mobile_number')
                                         <span class="invalid-feedback d-block" role="alert">
                                             <strong>{{ $message }}</strong>

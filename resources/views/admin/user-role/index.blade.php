@@ -38,6 +38,7 @@
                             <th scope="col">Actions</th>
                             <th scope="col">Name</th>
                             <th scope="col">Slug</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Enabled</th>
                             <th scope="col">Created At</th>
                         </tr>
@@ -65,6 +66,7 @@
                             </th>
                             <td>{{ $userRole->name }}</td>
                             <td>{{ $userRole->slug }}</td>
+                            <td>{{ $userRole->price }}</td>
                             <td>
                                 <form class="ajax-form" method="POST" action="{{ route('admin.userRoles.update', $userRole->id) }}">
                                     @method('patch')

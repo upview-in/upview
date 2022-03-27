@@ -26,6 +26,7 @@ class StoreRoleRequest extends FormRequest
         return [
             'name' => 'required|string|max:60',
             'slug' => 'required|string|max:255|unique:user_roles',
+            'price' => 'required|integer',
             'permissions' => 'array',
         ];
     }

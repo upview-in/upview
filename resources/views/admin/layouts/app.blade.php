@@ -68,6 +68,10 @@
 			content: "\f285";
 		}
 
+		.hide {
+			display: none;
+		}
+
 	</style>
 
 	@yield('custom-styles')

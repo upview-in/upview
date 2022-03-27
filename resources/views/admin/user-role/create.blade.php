@@ -4,6 +4,9 @@
 @endsection
 
 @section('custom-scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.module-switch').change(function () {
@@ -50,6 +53,42 @@
                 }
             });
         });
+
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['clean']                                         // remove formatting button
+        ];
+
+        var shortDescriptionEditor = new Quill('#shortDescriptionEditor', {
+            modules: {
+                syntax: true, // Include syntax module
+                toolbar: toolbarOptions
+            },
+            theme: 'snow',
+        });
+
+        var longDescriptionEditor = new Quill('#longDescriptionEditor', {
+            modules: {
+                syntax: true, // Include syntax module
+                toolbar: toolbarOptions
+            },
+            theme: 'snow',
+        });
     });
 </script>
 
@@ -61,6 +100,9 @@
 @endsection
 
 @section('custom-styles')
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
 <style>
     .permissions-group > .module-group {
         white-space: nowrap;
@@ -139,6 +181,29 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label font-weight-semibold required" for="price">{{ __('Price') }}</label>
+                        <input type="text" class="form-control" id="price" name="price" placeholder="price" value="{{ old('price') }}" required>
+                        @error('price')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label font-weight-semibold required" for="shortDescriptionEditor">{{ __('Short plan description') }}</label>
+                        <textarea id="shortDescriptionTextArea" name="shortDescription" class="form-control hide"></textarea>
+                        <div class="w-100">
+                            <div id="shortDescriptionEditor"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label font-weight-semibold required" for="longDescriptionEditor">{{ __('Long plan description') }}</label>
+                        <textarea id="longDescriptionEditorTextArea" name="longDescription" class="form-control hide"></textarea>
+                        <div class="w-100">
+                            <div id="longDescriptionEditor"></div>
+                        </div>
                     </div>
                 </div>
             </div>
