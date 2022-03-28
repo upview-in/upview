@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\Ayrshare\AyrshareController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\MainSiteController;
+use App\Http\Controllers\PaymentsController;
 // Support chat panel namespace
 use App\Http\Controllers\Support\ChatController;
 // User namespace
@@ -74,9 +75,16 @@ Route::group(['domain' => config('app.domains.app')], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::prefix('user')->as('user.')->group(function () {
+
+            Route::controller(PaymentsController::class)->prefix('payment')->as('payment.')->group(function () {
+                Route::get('/success/{order}', 'onSuccess')->name('success');
+                Route::get('/cancel/{order}', 'onCancel')->name('cancel');
+            });
+
             Route::controller(PlansController::class)->prefix('plans')->as('plans.')->group(function () {
                 Route::get('/list', 'list')->name('list');
                 Route::get('/details/{plan}', 'details')->name('details');
+                Route::get('/{plan}/buy', 'buy')->name('buy');
             });
 
             Route::prefix('profile')->as('profile.')->group(function () {

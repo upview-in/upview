@@ -4,6 +4,9 @@
 @endsection
 
 @section('custom-scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.module-switch').change(function () {
@@ -50,6 +53,38 @@
                 }
             });
         });
+
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['clean']                                         // remove formatting button
+        ];
+
+        var longDescriptionEditor = new Quill('#longDescriptionEditor', {
+            modules: {
+                syntax: true, // Include syntax module
+                toolbar: toolbarOptions
+            },
+            theme: 'snow',
+        });
+
+        $("#user-roles-form").submit(function () {
+            $("#longDescriptionTextArea").html(longDescriptionEditor.root.innerHTML);
+        });
     });
 </script>
 
@@ -61,11 +96,56 @@
 @endsection
 
 @section('custom-styles')
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+<style>
+    .permissions-group > .module-group {
+        white-space: nowrap;
+        flex-wrap: nowrap;
+    }
+
+    .permissions-group > .module-group > .permission-item {
+        display: inline-block;
+        float: none;
+    }
+
+    .module-group {
+        display: table !important;
+    }
+
+    .permission-item {
+        display: table-cell !important;
+        min-width: 200px;
+        max-width: max-content;
+        width: 200px;
+    }
+
+    .permission-item > div > label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 100px;
+        max-width: 100px;
+        width: 100px;
+    }
+
+    .nav-tabs {
+        height: 50px;
+        display: block;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .nav-tabs > .nav-item {
+        display: table-cell;
+    }
+</style>
 @endsection
 
 <x-admin.app-layout title="Plans" back=true>
     <div class="card border-top border-0 border-4 border-primary">
-        <form class="ajax-form" method="POST" action="{{ route('admin.userRoles.update', $userRole->id) }}">
+        <form id="user-roles-form" class="ajax-form" method="POST" action="{{ route('admin.userRoles.update', $userRole->id) }}">
             @method('patch')
             @csrf
             <div class="card-body p-5">
@@ -107,6 +187,21 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label font-weight-semibold required" for="shortDescriptionEditor">{{ __('Short plan description') }}</label>
+                        <textarea id="shortDescriptionTextArea" name="shortDescription" class="form-control">
+                            {!! old('shortDescription') ?? $userRole->shortDescription !!}
+                        </textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label font-weight-semibold required" for="longDescriptionEditor">{{ __('Long plan description') }}</label>
+                        <textarea id="longDescriptionTextArea" name="longDescription" class="form-control hide">
+                            {!! old('longDescription') ?? $userRole->longDescription !!}
+                        </textarea>
+                        <div class="w-100">
+                            <div id="longDescriptionEditor"></div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -148,7 +148,7 @@
 @endsection
 
 <x-admin.app-layout title="Plans">
-    <form class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.userRoles.store') }}" reset=true>
+    <form id="user-roles-form" class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.userRoles.store') }}" reset=true>
         @csrf
         <div class="card border-top border-0 border-4 border-primary">
             <div class="card-body p-5">
