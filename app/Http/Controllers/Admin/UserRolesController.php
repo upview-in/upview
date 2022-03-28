@@ -111,6 +111,8 @@ class UserRolesController extends Controller
         $userRole->name = $request->name ?? $userRole->name;
         $userRole->slug = $request->slug ?? $userRole->slug;
         $userRole->price = $request->price ?? $userRole->price;
+        $userRole->shortDescription = $request->shortDescription ?? $userRole->shortDescription;
+        $userRole->longDescription = $request->longDescription ?? $userRole->longDescription;
         !$request->has('enabled') ?: ($userRole->enabled = filter_var($request->enabled, FILTER_VALIDATE_BOOLEAN));
 
         if ($request->has('permissions')) {

@@ -81,8 +81,7 @@
         z-index: 2;
     }
 
-    .price,
-    .option {
+    .price {
         position: relative;
         z-index: 2;
     }
@@ -94,16 +93,11 @@
         font-size: 60px;
     }
 
-    .option ul {
-        margin: 0;
-        padding: 0;
-    }
-
-    .option ul li {
+    .option {
         margin: 0 0 10px;
         padding: 0;
         list-style: none;
-        color: #fff;
+        color: #ffffff;
         font-size: 16px;
     }
 
@@ -151,7 +145,7 @@
 
         @foreach ($plans as $plan)
             <div class="col-4 price-card mb-5">
-                <div class="card text-center">
+                <div class="card text-center h-100">
                     <div class="title">
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
                         <h2>{{ $plan->name ?? '-' }}</h2>

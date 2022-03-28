@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateUserOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_roles', function (Blueprint $table) {
+        Schema::create('user_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->mediumText('shortDescription');
-            $table->longText('longDescription');
-            $table->boolean('enabled')->default(true);
+            $table->string('user_id');
+            $table->string('plan_id');
+            $table->tinyInteger('payment_status')->nullable();
+            $table->json('payment_details')->nullable();
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('user_orders');
     }
 }

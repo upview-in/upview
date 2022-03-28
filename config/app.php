@@ -192,9 +192,6 @@ return [
         // Permissions Providers
         App\Providers\UserPermissionsServiceProvider::class,
         App\Providers\AdminPermissionsServiceProvider::class,
-
-        // Payment gateway provider
-        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
     ],
 
     /*
@@ -249,7 +246,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Functions' => App\Helper\Functions::class,
-        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ],
 
 ];

@@ -24,7 +24,7 @@ class InitPaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'plan_id' => ['required'],
         ];
     }
 }

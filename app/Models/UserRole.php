@@ -32,6 +32,8 @@ class UserRole extends Model
         'slug',
         'price',
         'enabled',
+        'shortDescription',
+        'longDescription',
     ];
 
     /**
@@ -40,6 +42,7 @@ class UserRole extends Model
      * @var array
      */
     protected $casts = [
+        'price' => 'integer',
         'enabled' => 'boolean',
     ];
 
