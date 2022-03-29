@@ -15,6 +15,7 @@ class CreateUserOrdersTable extends Migration
     {
         Schema::create('user_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('payment_id');
             $table->string('user_id');
             $table->string('plan_id');
             $table->tinyInteger('payment_status')->nullable();
