@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Auth;
+use Carbon\Carbon;
 use Stripe\PaymentIntent;
 
 class PaymentsController extends Controller
@@ -69,18 +70,20 @@ class PaymentsController extends Controller
             $plan_details = UserRole::find($order->plan_id);
 
             if ($order->status !== 1) {
-                if (!is_null($plan_details) && $payment_details['status'] === 'succeeded' && $payment_details['amount_received'] === $this->getAmount($plan_details->price)) {
+                if (!is_null($plan_details) && $payment_details['status'] === 'succeeded' && $this->getSysAmount($payment_details['amount_received']) === $plan_details->price) {
                     $order->status = 1;
+                    $order->purchased_at = Carbon::now();
+                    $order->expired_at = Carbon::now()->addDays($plan_details->plan_validity);
 
                     $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
                     if (!in_array($plan_details->id, $roles_ids)) {
                         $roles_ids[] = $plan_details->id;
                         Auth::user()->roles()->sync($roles_ids);
 
-                        $response['message'] = 'Plan ' . $plan_details->name . ' successfully purchased. Total $' . $payment_details['amount_received'] . ' amount paid.';
+                        $response['message'] = 'Plan ' . $plan_details->name . ' successfully purchased. Total $' . $this->getSysAmount($payment_details['amount_received']) . ' amount paid.';
                         $response['code'] = 'success';
                     } else {
-                        $response['message'] = 'You\'ve already purchased plan ' . $plan_details->name . '. Total $' . $payment_details['amount_received'] . ' amount paid. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query to support chat for refund.';
+                        $response['message'] = 'You\'ve already purchased plan ' . $plan_details->name . '. Total $' . $this->getSysAmount($payment_details['amount_received']) . ' amount paid. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query to support chat for refund.';
                         $response['code'] = 'info';
                     }
                 } else {
@@ -114,8 +117,14 @@ class PaymentsController extends Controller
         return redirect()->route('panel.user.plans.list');
     }
 
-    public function getAmount(int $price): int
+    public static function getAmount(int $price): int
     {
         return round($price * 100);
+    }
+
+    public static function getSysAmount(int $price): int
+    {
+        if ($price === 0) { return 0; }
+        return round($price / 100);
     }
 }

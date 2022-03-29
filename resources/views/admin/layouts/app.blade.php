@@ -350,6 +350,12 @@
 		$(document).on('submit', '.ajax-form', function(event) {
 			event.preventDefault();
 			let that = this;
+			let formData = new FormData(this);
+
+			if ($(this).find('#plans').length && !$(this).find('#plans').val().length) {
+				formData.append('roles', []);
+			}
+
 			if (typeof that._method !== 'undefined' && typeof that._method.value !== 'undefined' && that._method.value === "delete") {
 				if (!confirm('Are you sure?')) {
 					return;
@@ -365,7 +371,7 @@
 				processData: false,
 				async: true,
 				cache: false,
-				data: new FormData(this),
+				data: formData,
 				success: function(data) {
 					let reset = $(event.currentTarget).attr('reset');
 					if (typeof reset !== 'undefined' && reset === "true") {

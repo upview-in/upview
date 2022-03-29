@@ -9,6 +9,8 @@
 
 <script>
     $(document).ready(function () {
+        $('#longDescriptionEditor').html($('#longDescriptionTextArea').text());
+
         $('.module-switch').change(function () {
             let changeTo = $(this).prop('checked');
             let moduleName = $(this).data('module-name');
@@ -82,8 +84,8 @@
             theme: 'snow',
         });
 
-        $("#user-roles-form").submit(function () {
-            $("#longDescriptionTextArea").html(longDescriptionEditor.root.innerHTML);
+        $('#user-roles-form').submit(function () {
+            $('#longDescriptionTextArea').html(longDescriptionEditor.root.innerHTML);
         });
     });
 </script>
@@ -188,17 +190,22 @@
                         </span>
                         @enderror
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label font-weight-semibold required" for="plan_validity">{{ __('Plan Validity') }}</label>
+                        <input type="text" class="form-control" id="plan_validity" name="plan_validity" placeholder="Plan Validity (In days)" value="{{ old('plan_validity') ?? $userRole->plan_validity }}" required>
+                        @error('plan_validity')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                     <div class="col-md-12">
                         <label class="form-label font-weight-semibold required" for="shortDescriptionEditor">{{ __('Short plan description') }}</label>
-                        <textarea id="shortDescriptionTextArea" name="shortDescription" class="form-control">
-                            {!! old('shortDescription') ?? $userRole->shortDescription !!}
-                        </textarea>
+                        <textarea id="shortDescriptionTextArea" name="shortDescription" class="form-control">{!! old('shortDescription') ?? $userRole->shortDescription !!}</textarea>
                     </div>
                     <div class="col-md-12">
                         <label class="form-label font-weight-semibold required" for="longDescriptionEditor">{{ __('Long plan description') }}</label>
-                        <textarea id="longDescriptionTextArea" name="longDescription" class="form-control hide">
-                            {!! old('longDescription') ?? $userRole->longDescription !!}
-                        </textarea>
+                        <textarea id="longDescriptionTextArea" name="longDescription" class="form-control hide">{!! old('longDescription') ?? $userRole->longDescription !!}</textarea>
                         <div class="w-100">
                             <div id="longDescriptionEditor"></div>
                         </div>

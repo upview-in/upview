@@ -17,6 +17,8 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->integer('price');
+            $table->integer('plan_validity');
             $table->mediumText('shortDescription');
             $table->longText('longDescription');
             $table->boolean('enabled')->default(true);

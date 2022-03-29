@@ -159,7 +159,7 @@
 
 <x-app.app-layout title="Plans">
     @if (session()->has('data'))
-        <div class="alert alert-{{ session()->get('data')['code'] ?? 'danger' }}">
+        <div class="mb-4 alert alert-{{ session()->get('data')['code'] ?? 'danger' }}">
             {!! session()->get('data')['message'] ?? 'Something goes wrong!' !!}
         </div>
     @endif
@@ -206,24 +206,31 @@
                         <th scope="col">Order Id</th>
                         <th scope="col">Plan</th>
                         <th scope="col">Amount Paid</th>
+                        <th scope="col">Purchased Date</th>
+                        <th scope="col">Expired At</th>
                         <th scope="col">Status</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
 
-                    @if (empty($orders_history))
+                    @if (!$orders_history->count())
                         <tr>
-                            <td colspan="100">
+                            <td colspan="100" class="text-center">
                                 No any order purchased yet.
                             </td>
                         </tr>
                     @endif
 
                     @foreach ($orders_history as $key => $order)
+                        @php
+                            $paid_amount = $order->payment_details['amount_received'] ?? 0;
+                        @endphp
                         <tr>
                             <td>{{ $key }}</td>
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->plan->name ?? '' }}</td>
-                            <td>${{ $order->payment_details['amount_received'] ?? 0 }}</td>
+                            <td>${{ $paid_amount != 0 ? round($paid_amount / 100) : 0 }}</td>
+                            <td>{{ \Carbon\Carbon::parse($order->purchased_at)->toDateString() }}</td>
+                            <td>{{ \Carbon\Carbon::parse($order->expired_at)->toDateString() }}</td>
                             <td class="font-weight-bolder text-{{ \App\Models\UserOrder::$status_color[$order->status ?? 0] }}">{{ \App\Models\UserOrder::$status[$order->status ?? 0] }}</td>
                             <td class="text-center">
                                 <a href="{{ $order->payment_details['charges']['data'][0]['receipt_url'] ?? '#' }}" title="Download receipt" target="_blank"><em class="fa fa-download"></em></a>

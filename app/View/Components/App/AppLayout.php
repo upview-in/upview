@@ -2,6 +2,7 @@
 
 namespace App\View\Components\App;
 
+use App\Http\Controllers\User\PlansController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
@@ -25,6 +26,7 @@ class AppLayout extends Component
     public function render()
     {
         App::setLocale(Auth::user()->local_lang ?? 'en');
+        PlansController::validatePlan();
 
         return view('layouts.app');
     }

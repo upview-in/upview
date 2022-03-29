@@ -21,6 +21,8 @@ class CreateUserOrdersTable extends Migration
             $table->tinyInteger('payment_status')->nullable();
             $table->json('payment_details')->nullable();
             $table->tinyInteger('status');
+            $table->dateTime('purchased_at')->nullable();
+            $table->dateTime('expired_at')->nullable();
             $table->timestamps();
         });
     }

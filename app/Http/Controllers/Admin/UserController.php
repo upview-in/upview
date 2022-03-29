@@ -64,13 +64,15 @@ class UserController extends Controller
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         }
 
-        $roles_ids = [];
-        foreach ($sanitized['roles'] as $role) {
-            if (!is_null(UserRole::find($role))) {
-                $roles_ids[] = $role;
+        if (!empty($sanitized['roles'])) {
+            $roles_ids = [];
+            foreach ($sanitized['roles'] as $role) {
+                if (!is_null(UserRole::find($role))) {
+                    $roles_ids[] = $role;
+                }
             }
+            $user->roles()->attach($roles_ids);
         }
-        $user->roles()->attach($roles_ids);
 
         if ($request->ajax()) {
             return response()->json([
@@ -147,9 +149,11 @@ class UserController extends Controller
 
         if ($request->has('roles')) {
             $roles_ids = [];
-            foreach ($request->roles as $role) {
-                if (!is_null(UserRole::find($role))) {
-                    $roles_ids[] = $role;
+            if (!is_null($request->roles)) {
+                foreach ($request->roles as $role) {
+                    if (!is_null(UserRole::find($role))) {
+                        $roles_ids[] = $role;
+                    }
                 }
             }
             $user->roles()->sync($roles_ids);
