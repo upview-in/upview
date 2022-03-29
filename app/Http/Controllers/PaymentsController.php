@@ -68,7 +68,7 @@ class PaymentsController extends Controller
             $payment_details = PaymentIntent::retrieve($order->payment_id)->jsonSerialize();
             $plan_details = UserRole::find($order->plan_id);
 
-            if (!is_null($plan_details) && $payment_details['status'] === 'succeeded' && $payment_details['amount_received'] === $this->getAmount($plan_details->price) && ) {
+            if (!is_null($plan_details) && $payment_details['status'] === 'succeeded' && $payment_details['amount_received'] === $this->getAmount($plan_details->price) && $order->status !== 1) {
                 $order->status = 1;
 
                 $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
