@@ -128,10 +128,38 @@
     .price-card .card a:hover {
         text-decoration: none;
     }
+
+    .alert {
+        color: white;
+        font-weight: bold;
+        padding: 16px;
+    }
+
+    .alert-danger {
+        background-color: rgb(255, 84, 0);
+    }
+
+    .alert-info {
+        background-color: rgb(0, 167, 232);
+    }
+
+    .alert-success {
+        background-color: rgb(99, 198, 0);
+    }
+
+    .alert-warning {
+        background-color: rgb(255, 192, 4);
+    }
 </style>
 @endsection
 
 <x-app.app-layout title="Plans">
+    @if (session()->has('data'))
+        <div class="alert alert-{{ session()->get('data')['code'] ?? 'danger' }}">
+            {{ session()->get('data')['message'] ?? 'Something goes wrong!' }}
+        </div>
+    @endif
+
     <div class="row">
         @if (empty($plans))
             <div class="col-12">
@@ -160,5 +188,46 @@
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div class="card">
+        <div class="card-header p-15 ml-3 w-500">
+            <label class="h3 m-0">Orders History</label>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Amount Paid</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+
+                    @if (empty($orders_history))
+                        <tr>
+                            <td colspan="100">
+                                No any order purchased yet.
+                            </td>
+                        </tr>
+                    @endif
+
+                    @foreach ($orders_history as $key => $order)
+                        <tr>
+                            <td>{{ $key }}</td>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->plan->name ?? '' }}</td>
+                            <td>${{ $order->payment_details['amount_received'] ?? 0 }}</td>
+                            <td class="font-weight-bolder text-{{ \App\Models\UserOrder::$status_color[$order->status ?? 0] }}">{{ \App\Models\UserOrder::$status[$order->status ?? 0] }}</td>
+                            <td class="text-center">
+                                <a href="{{ $order->payment_details['charges']['data'][0]['receipt_url'] ?? '#' }}" title="Download receipt" target="_blank"><em class="fa fa-download"></em></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
     </div>
 </x-app.app-layout>

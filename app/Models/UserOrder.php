@@ -10,12 +10,27 @@ class UserOrder extends Model
 {
     use HasFactory;
 
+    public static $status = [
+        'Pending',
+        'Success',
+        'Canceled',
+        'Failed',
+    ];
+
+    public static $status_color = [
+        'primary',
+        'success',
+        'dark',
+        'danger',
+    ];
+
     /**
      * Searchable attributes.
      *
      * @return string[]
      */
     public $searchable = [
+        'payment_id',
         'user_id',
         'plan_id',
         'payment_status',
@@ -28,6 +43,7 @@ class UserOrder extends Model
      * @var array
      */
     protected $fillable = [
+        'payment_id',
         'user_id',
         'plan_id',
         'payment_details',
@@ -43,4 +59,9 @@ class UserOrder extends Model
     protected $casts = [
         'payment_details' => 'array',
     ];
+
+    public function plan()
+    {
+        return $this->hasOne(UserRole::class, '_id', 'plan_id');
+    }
 }
