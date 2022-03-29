@@ -191,6 +191,15 @@
                         </span>
                         @enderror
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label font-weight-semibold required" for="plan_validity">{{ __('Plan Validity') }}</label>
+                        <input type="text" class="form-control" id="plan_validity" name="plan_validity" placeholder="Plan validity (In days)" value="{{ old('plan_validity') }}" required>
+                        @error('plan_validity')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                     <div class="col-md-12">
                         <label class="form-label font-weight-semibold required" for="shortDescriptionEditor">{{ __('Short plan description') }}</label>
                         <textarea id="shortDescriptionTextArea" name="shortDescription" class="form-control hide"></textarea>

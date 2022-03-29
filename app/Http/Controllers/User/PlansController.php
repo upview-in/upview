@@ -10,6 +10,7 @@ use App\Models\UserOrder;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Auth;
+use Carbon\Carbon;
 
 class PlansController extends Controller
 {
@@ -40,6 +41,29 @@ class PlansController extends Controller
             $paymentsController->initPayment($paymentRequest);
         } else {
             return abort(404);
+        }
+    }
+
+    public static function validatePlan()
+    {
+        $flag = false;
+        $filtered_roles_ids = [];
+        $active_orders = UserOrder::with('plan')->where(['user_id' => Auth::id(), 'status' => 1])->get();
+        $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
+
+        foreach ($active_orders as $order) {
+            if (Carbon::now()->gte($order->expired_at ?? Carbon::now()->subDay(1))) {
+                $flag = true;
+
+                $order->status = 4;
+                $order->save();
+            } else {
+                $filtered_roles_ids[] = $order->plan->id;
+            }
+        }
+
+        if ($flag) {
+            Auth::user()->roles()->sync($roles_ids);
         }
     }
 }

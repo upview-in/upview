@@ -20,6 +20,7 @@ class UserRole extends Model
         'name',
         'slug',
         'price',
+        'plan_validity',
     ];
 
     /**
@@ -31,9 +32,10 @@ class UserRole extends Model
         'name',
         'slug',
         'price',
-        'enabled',
+        'plan_validity',
         'shortDescription',
         'longDescription',
+        'enabled',
     ];
 
     /**

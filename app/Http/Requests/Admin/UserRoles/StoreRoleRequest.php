@@ -27,6 +27,7 @@ class StoreRoleRequest extends FormRequest
             'name' => ['required', 'string', 'max:60'],
             'slug' => ['required', 'string', 'max:255', 'unique:user_roles'],
             'price' => ['required', 'integer'],
+            'plan_validity' => ['required', 'integer'],
             'shortDescription' => ['required', 'string', 'max:180'],
             'longDescription' => ['required', 'string', 'max:' . (1024 * 12)],
             'permissions' => ['array'],

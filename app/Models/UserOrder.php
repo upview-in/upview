@@ -12,9 +12,10 @@ class UserOrder extends Model
 
     public static $status = [
         'Pending',
-        'Success',
+        'Active',
         'Cancelled',
         'Failed',
+        'Expired'
     ];
 
     public static $status_color = [
@@ -22,6 +23,7 @@ class UserOrder extends Model
         'success',
         'dark',
         'danger',
+        'warning',
     ];
 
     /**
@@ -35,6 +37,8 @@ class UserOrder extends Model
         'plan_id',
         'payment_status',
         'status',
+        'purchased_at',
+        'expired_at',
     ];
 
     /**
@@ -49,6 +53,8 @@ class UserOrder extends Model
         'payment_details',
         'payment_status',
         'status',
+        'purchased_at',
+        'expired_at',
     ];
 
     /**
@@ -58,6 +64,8 @@ class UserOrder extends Model
      */
     protected $casts = [
         'payment_details' => 'array',
+        'purchased_at' => 'datetime',
+        'expired_at' => 'datetime',
     ];
 
     public function plan()
