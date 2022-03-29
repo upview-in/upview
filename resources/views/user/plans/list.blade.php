@@ -150,13 +150,17 @@
     .alert-warning {
         background-color: rgb(255, 192, 4);
     }
+
+    td a {
+        color: black;
+    }
 </style>
 @endsection
 
 <x-app.app-layout title="Plans">
     @if (session()->has('data'))
         <div class="alert alert-{{ session()->get('data')['code'] ?? 'danger' }}">
-            {{ session()->get('data')['message'] ?? 'Something goes wrong!' }}
+            {!! session()->get('data')['message'] ?? 'Something goes wrong!' !!}
         </div>
     @endif
 
