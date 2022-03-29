@@ -151,7 +151,7 @@
         background-color: rgb(255, 192, 4);
     }
 
-    td a {
+    .alert a {
         color: black;
     }
 </style>
