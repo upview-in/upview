@@ -13,7 +13,7 @@ class UserOrder extends Model
     public static $status = [
         'Pending',
         'Success',
-        'Canceled',
+        'Cancelled',
         'Failed',
     ];
 

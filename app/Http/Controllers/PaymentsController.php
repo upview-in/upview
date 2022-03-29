@@ -29,7 +29,7 @@ class PaymentsController extends Controller
                 $checkout_session = Session::create([
                     'line_items' => [[
                         'price_data' => [
-                            'currency' => 'inr',
+                            'currency' => 'usd',
                             'product_data' => [
                                 'name' => $plan->name,
                                 'metadata' => [
@@ -68,30 +68,35 @@ class PaymentsController extends Controller
             $payment_details = PaymentIntent::retrieve($order->payment_id)->jsonSerialize();
             $plan_details = UserRole::find($order->plan_id);
 
-            if (!is_null($plan_details) && $payment_details['status'] === 'succeeded' && $payment_details['amount_received'] === $this->getAmount($plan_details->price) && $order->status !== 1) {
-                $order->status = 1;
+            if ($order->status !== 1) {
+                if (!is_null($plan_details) && $payment_details['status'] === 'succeeded' && $payment_details['amount_received'] === $this->getAmount($plan_details->price)) {
+                    $order->status = 1;
 
-                $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
-                if (!in_array($plan_details->id, $roles_ids)) {
-                    $roles_ids[] = $plan_details->id;
-                    Auth::user()->roles()->sync($roles_ids);
+                    $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
+                    if (!in_array($plan_details->id, $roles_ids)) {
+                        $roles_ids[] = $plan_details->id;
+                        Auth::user()->roles()->sync($roles_ids);
 
-                    $response['message'] = 'Plan ' . $plan_details->name . ' successfully purchased. Total $' . $payment_details['amount_received'] . ' amount paid.';
-                    $response['code'] = 'success';
+                        $response['message'] = 'Plan ' . $plan_details->name . ' successfully purchased. Total $' . $payment_details['amount_received'] . ' amount paid.';
+                        $response['code'] = 'success';
+                    } else {
+                        $response['message'] = 'You\'ve already purchased plan ' . $plan_details->name . '. Total $' . $payment_details['amount_received'] . ' amount paid. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query to support chat for refund.';
+                        $response['code'] = 'info';
+                    }
                 } else {
-                    $response['message'] = 'You\'ve already purchased plan ' . $plan_details->name . '. Total $' . $payment_details['amount_received'] . ' amount paid. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query to support chat for refund.';
-                    $response['code'] = 'info';
+                    $order->status = 3;
+
+                    $response['message'] = 'Failed to purchase plan ' . $plan_details->name . '. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query if you have trouble to buy.';
+                    $response['code'] = 'danger';
                 }
+
+                $order->payment_details = $payment_details;
+                $order->payment_status = $payment_details['status'];
+                $order->update();
             } else {
-                $order->status = 3;
-
                 $response['message'] = 'Failed to purchase plan ' . $plan_details->name . '. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query if you have trouble to buy.';
-                $response['code'] = 'info';
+                $response['code'] = 'danger';
             }
-
-            $order->payment_details = $payment_details;
-            $order->payment_status = $payment_details['status'];
-            $order->update();
         } else {
             $response['message'] = "Order is invalid";
             $response['code'] = 'warning';
