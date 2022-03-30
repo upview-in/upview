@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers\User;
+
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PaymentsController;
+use App\Http\Requests\Payment\InitPaymentRequest;
+use App\Http\Requests\User\Plans\DetailRequest;
+use App\Models\UserOrder;
+use App\Models\UserRole;
+use Illuminate\Http\Request;
+use Auth;
+use Carbon\Carbon;
+
+class PlansController extends Controller
+{
+    public function list()
+    {
+        $plans = UserRole::enabled()->get();
+        $orders_history = UserOrder::with('plan')->where('user_id', Auth::id())->get();
+
+        return view('user.plans.list', ['plans' => $plans, 'orders_history' => $orders_history]);
+    }
+
+    public function details(DetailRequest $request, UserRole $plan)
+    {
+        return view('user.plans.details', ['plan' => $plan]);
+    }
+
+    public function buy(Request $request, UserRole $plan)
+    {
+        $plan->enabled = $plan->enabled ?? true;
+
+        if ($plan->enabled) {
+            $paymentRequest = new InitPaymentRequest();
+            $paymentRequest->replace([
+                'plan_id' => $plan->id
+            ]);
+
+            $paymentsController = new PaymentsController();
+            $paymentsController->initPayment($paymentRequest);
+        } else {
+            return abort(404);
+        }
+    }
+
+    public static function validatePlan()
+    {
+        $flag = false;
+        $filtered_roles_ids = [];
+        $active_orders = UserOrder::with('plan')->where(['user_id' => Auth::id(), 'status' => 1])->get();
+        $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
+
+        foreach ($active_orders as $order) {
+            if (Carbon::now()->gte($order->expired_at ?? Carbon::now()->subDay(1))) {
+                $flag = true;
+
+                $order->status = 4;
+                $order->save();
+            } else {
+                $filtered_roles_ids[] = $order->plan->id;
+            }
+        }
+
+        if ($flag) {
+            Auth::user()->roles()->sync($roles_ids);
+        }
+    }
+}

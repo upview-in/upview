@@ -24,7 +24,9 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
         "owen-oj/laravel-getid3": "^2.0",
-        "spatie/laravel-medialibrary": "^10.0"
+        "propaganistas/laravel-phone": "^4.3",
+        "spatie/laravel-medialibrary": "^10.0",
+        "stripe/stripe-php": "^7.119"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

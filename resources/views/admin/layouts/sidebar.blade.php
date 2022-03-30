@@ -59,7 +59,7 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.userRoles.index') }}">
-                        <em class='bi bi-tags'></em> Roles
+                        <em class='bi bi-tags'></em> Pricing Plans
                     </a>
                 </li>
             </ul>
