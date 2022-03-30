@@ -1,0 +1,152 @@
+/*
+* ----------------------------------------------------------------------------------------
+Author        : Rama Hardian Sidik
+Template Name : Rush - multipurpose personal portfolio bootstrap 5 landing page template
+Version       : 1.1
+Filename      : responsive.css
+* ----------------------------------------------------------------------------------------
+*/
+
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {}
+
+@media only screen and (device-width: 812px) and (device-height: 375px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {}
+
+@media screen and (max-width: 2560px) {}
+
+@media screen and (max-width: 1440px) {}
+
+@media screen and (max-width: 1366px) {}
+
+@media screen and (max-width: 1128px) {}
+
+@media screen and (max-width: 1024px) {}
+
+@media (max-width: 999px) {
+    .o-line:nth-child(1) {
+        opacity: 0;
+    }
+    .o-line:nth-child(3) {
+        opacity: 0;
+    }
+    .img-load {
+        width: 50%;
+        font-size: 20px;
+    }
+    #about-section {
+        height: unset;
+    }
+    #wrap-about-section {
+        height: auto;
+    }
+    .section2 {
+        padding: 100px 0 200px 0;
+    }
+    .wrap-imgpic {
+        margin: 0 auto 50px;
+    }
+    .who-i {
+        text-align: center;
+    }
+    .porto-wrap {
+        column-count: 2;
+    }
+    .wrap-comment {
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+    .detail-user {
+        width: 100%;
+        float: unset;
+    }
+    .detail-user img {
+        width: 130px !important;
+        margin: 0 auto;
+        position: relative;
+        top: 20px;
+        border-radius: 50%;
+    }
+    .wrap-comment i {
+        left: 0;
+    }
+}
+
+@media (max-width: 799px) {
+    .wrap-heroifo {
+        padding-right: 80px;
+    }
+    .wrap-heroifo p {
+        font-size: 18px;
+    }
+    .wrap-heroifo h1 {
+        font-size: 50px;
+    }
+    .wrap-heroifo>p.deskrip-info {
+        font-size: 13px;
+    }
+    .bars {
+        left: 20px;
+    }
+    .navigation-nav li {
+        width: 5px;
+        height: 5px;
+    }
+    .navigation-nav li a:before {
+        width: 20px;
+        height: 20px;
+        top: -10px;
+        left: -10px;
+    }
+    .wrap-imgpic {
+        width: 250px;
+        height: 250px;
+    }
+    .wrap-imgpic img {
+        width: 250px;
+        height: 250px;
+    }
+    .big-text {
+        top: -10%;
+    }
+    .porto-wrap {
+        column-count: 1;
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    .big-text {
+        font-size: 80px;
+    }
+}
+
+@media only screen and (max-width: 580px) {}
+
+@media (max-width: 480px) {
+    .wrap-heroifo {
+        padding-right: 90px;
+    }
+    .wrap-heroifo p {
+        font-size: 18px;
+    }
+    .wrap-heroifo h1 {
+        font-size: 30px;
+    }
+    .big-text {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 360px) {}
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media(hover: hover) and (pointer: fine) {}
