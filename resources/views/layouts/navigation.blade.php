@@ -23,14 +23,14 @@
                     <em class="anticon"></em>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="javascript:void(0);" data-toggle="modal" data-target="#search-drawer">
                     <em class="anticon anticon-search"></em>
                 </a>
-            </li>
+            </li> -->
         </ul>
         <ul class="nav-right">
-            {{-- <li class="dropdown dropdown-animated scale-left">
+            <!-- {{-- <li class="dropdown dropdown-animated scale-left">
                 <a href="javascript:void(0);" data-toggle="dropdown">
                     <em class="anticon anticon-bell notification-badge"></em>
                 </a>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-            </li> --}}
+            </li> --}} -->
             <li class="dropdown dropdown-animated scale-left">
                 <div class="pointer" data-toggle="dropdown">
                     <div class="avatar avatar-image  m-h-10 m-r-15">

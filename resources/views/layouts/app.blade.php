@@ -21,7 +21,7 @@
     <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/phone-number/css/intlTelInput.min.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/driver.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -141,7 +141,7 @@
     <script src="{{ asset('vendor/phone-number/js/utils.js') }}"></script>
     <script src="{{ asset('vendor/phone-number/js/data.min.js') }}"></script>
     <script src="{{ asset('vendor/phone-number/js/intlTelInput-jquery.min.js') }}"></script>
-
+    <script src="{{ asset('js/driver.min.js') }}"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         var videoIntelligenceIndexRoute = "{{ route('panel.user.measure.market_research.video_intelligence.index') }}";

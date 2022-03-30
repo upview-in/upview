@@ -55,6 +55,14 @@ class SupportController extends Controller
 
     public function supportChat(SupportChatRequest $request)
     {
-        return view('user.support_chat');
+        $supportQueryId = UserSupportQuery::where(['_id' => $request->id])->exists();
+        if ($supportQueryId) {
+            return view('user.support_chat');
+        } else {
+            return abort(404);
+        }
+
     }
+
+    
 }
