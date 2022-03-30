@@ -459,11 +459,11 @@
 
                         }
 
-                        __AC("FBInsights");
+                        __AC("FBPageInsights");
 
 
                         if(data.status != 200){
-                            $("#FBInsights").html(noData);
+                            $("#FBPageInsights").html(noData);
                         }
 
 
