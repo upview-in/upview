@@ -1,0 +1,46 @@
+.sub-menu {
+  position: absolute;
+  z-index: 9999;
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+  width: 230px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding: 18px 0;
+  opacity: 0;
+  border-bottom: 4px solid $primary;
+  background-color: #fff;
+  box-shadow: 0 2px 29px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease 0.2s;
+
+  li {
+    & + li {
+      margin-left: 0px;
+    }
+  }
+  .sub-menu-link {
+    text-transform: capitalize;
+    color: $primary;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.375;
+    display: block;
+    padding: 8px 30px;
+    &:hover {
+      color: $warning;
+    }
+  }
+}
+
+.main-menu {
+  li {
+    &:hover {
+      .sub-menu {
+        visibility: visible;
+        margin-top: 15px;
+        opacity: 1;
+      }
+    }
+  }
+}

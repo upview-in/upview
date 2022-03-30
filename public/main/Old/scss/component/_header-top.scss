@@ -1,0 +1,156 @@
+.header {
+  .container {
+    @include min-screen(1920) {
+      max-width: 1370px;
+    }
+  }
+}
+
+.header-top {
+  p {
+    font-family: $font-family-base;
+    font-weight: 400;
+    color: $white;
+  }
+  li {
+    color: $white;
+    a {
+      color: $white;
+    }
+  }
+}
+
+.header-social-links {
+  .social-link-item {
+    border-right: 1px solid $border-color;
+    &:first-child {
+      border-left: 1px solid $border-color;
+    }
+    .social-link {
+      display: block;
+      padding: 22px 20px;
+      line-height: 1;
+      &:hover {
+        background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
+.hr-border {
+  background-image: -moz-linear-gradient(
+    0deg,
+    rgb(252, 115, 24) 0%,
+    rgb(254, 180, 35) 100%
+  );
+  background-image: -webkit-linear-gradient(
+    0deg,
+    rgb(252, 115, 24) 0%,
+    rgb(254, 180, 35) 100%
+  );
+  background-image: -ms-linear-gradient(
+    0deg,
+    rgb(252, 115, 24) 0%,
+    rgb(254, 180, 35) 100%
+  );
+  display: inline-block;
+  width: 90px;
+  height: 1px;
+  margin-right: 30px;
+}
+
+.select-box {
+  .select-item {
+    &:first-child {
+      padding: 22px 20px;
+      border-left: 1px solid $border-color;
+    }
+    line-height: 1;
+    position: relative;
+
+    a {
+      &:hover {
+        background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    .selectric {
+      border: 0px;
+      background: transparent;
+      .label {
+        color: #fff;
+        font-size: 15px;
+      }
+      .button {
+        background: transparent;
+
+        &::after {
+          top: 4px;
+          width: 15px;
+          height: 15px;
+          content: " ";
+          background-image: url("../images/icon/arrow-down-white.png");
+          background-repeat: no-repeat;
+          border: 0px solid transparent;
+        }
+      }
+    }
+  }
+
+
+  .selectric-items {
+    background: #fff;
+    border: 0px;
+    box-shadow: 0px 22px 35px 0px rgba(2, 18, 106, 0.08);
+  }
+
+  .selectric-items li.highlighted {
+    background-image: linear-gradient(
+      to right,
+      #fc7318,
+      #fe8415,
+      #fe9515,
+      #fea51a,
+      #feb423
+    );
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .selectric-items ul,
+  .selectric-items li {
+    font-size: 14px;
+    color: $primary;
+  }
+
+  .selectric-items li:hover {
+    background: $primary;
+    color: $white;
+  }
+
+  .form-select {
+    &:focus {
+      box-shadow: none !important;
+    }
+    padding: 22px 45px 20px 22px;
+    color: $white;
+    border: 0px;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    background: transparent;
+    line-height: 1.1;
+    border-radius: 0px;
+    cursor: pointer;
+    &:hover {
+      background: linear-gradient(to right, #fc7318 0%, #feb423 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &:focus-visible {
+      text-shadow: none;
+    }
+  }
+}

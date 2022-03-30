@@ -1,0 +1,17 @@
+/*
+* ----------------------------------------------------------------------------------------
+Author        : Rama Hardian Sidik
+Template Name : Rush - multipurpose personal portfolio bootstrap 5 landing page template
+Version       : 1.1
+Filename      : color.css
+* ----------------------------------------------------------------------------------------
+*/
+
+:root {
+    --colorgradientone: #ff5a00;
+    --baseone: #fff;
+    --basetwo: #FF1C3B;
+    --basetree: #141C18;
+    --transone: rgba(255, 255, 255, .5);
+    --body: #0a0e0c;
+}
