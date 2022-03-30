@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upview</title>
     <!-- favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('main/asset/favicon-32x32.png') }} " >
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('main/asset/favicon-16x16.png') }} " >
-    <link rel="shortcut icon" href="{{ asset('main/asset/favicon.ico') }} " >
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo/favicon.svg') }} ">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo/favicon.svg') }} ">
+    <link rel="shortcut icon" href="{{ asset('images/logo/favicon.svg') }} ">
     <!-- metatag -->
     <meta name="author" content="Rama Hardian" />
     <meta property="og:title" content="Rush - multipurpose personal portfolio bootstrap 5 landing page template" />
@@ -30,7 +30,7 @@
     <!-- loadder wrap -->
     <div class="loading">
         <div class="box">
-            <div class="img-load">Upview..</div>
+            <div class="img-load">Upview</div>
             <div class="progress">
                 <div class="line"></div>
             </div>
@@ -67,7 +67,7 @@
                     <div class="wrap-logo">
                         <a class="navbar-brand" href="#header">
                             <span class="d-inline">
-                           Upview.
+                                <img src="{{ asset('images/logo/named_logo_white.png') }}" height="100" width="auto" alt="Upview">
                             </span>
                         </a>
                         <div class="wrap-menunavigation">
@@ -98,10 +98,10 @@
                 <div class="row">
                     <div class="col-lg-7 align-items-center justify-content-left d-flex vh-100">
                         <div class="wrap-heroifo gl pb-4 pt-5">
-                            <p data-aos="fade-up" data-aos-delay="100" data-aos-offset="0">UI/UX Designer</p>
-                            <h1 data-aos="fade-up" data-aos-delay="200" data-aos-offset="0"><span class="boldi">Elena</span> Rush</h1>
-                            <p class="deskrip-info" data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">Doordachte strategie, kick-ass design en superstrakke techniek. Structuur, vormgeving en interactie: alles in balans. Dat is de ultieme digitale merkervaring volgens Stimmt.</p>
-                            <a href="#" class="btn button mt-3">MORE INFO</a>
+                            <p data-aos="fade-up" data-aos-delay="100" data-aos-offset="0" style="font-size: xxx-large;"><span class="boldi">Upview</span></p>
+                            <h3 data-aos="fade-up" data-aos-delay="200" data-aos-offset="0"><span class="boldi">A Powerful tool for social media management</span></h3>
+                            <p class="deskrip-info" data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">Easy way to manage socail media and get powerful Analytics.</p>
+                            <a href="https://{{ env('APP_DOMAIN') }}" class="btn button mt-3">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -116,11 +116,14 @@
         <section id="about-section" class="sect section2" data-section-name="about-section">
 
             <div id="wrap-about-section" class="container align-items-center justify-content-left d-flex wrap-container">
-                <span class="big-text">STORY</span>
+                <span class="big-text">FEATURES</span>
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="wrap-imgpic " data-aos="fade-up" data-aos-delay="500" data-aos-offset="0">
-                            <img class="gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25" src="./asset/hero/3.jpg" alt="poto-hero" />
+                            <!-- <video height="540" width="auto" loop="true" autoplay="autoplay" id="analyticsVid">
+                                <source src="{{ asset('main/asset/videos/upview_analytics.mp4') }}" type="video/mp4">
+                            </video> -->
+                            <img class="gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25" src="{{ asset('main/asset/videos/upview-analytics-unscreen.gif') }}" alt="poto-hero" />
                         </div>
                     </div>
                     <div class="col-lg-7 pr-lg-5">
@@ -139,7 +142,7 @@
         <section id="portfolio-section" class="sect section3" data-section-name="portfolio-section">
 
             <div class="container wrap-container text-center">
-                <span class="big-text">PORTFOLIO</span>
+                <span class="big-text">SERVICES</span>
                 <div class="row justify-content-center pb-5 mb-5">
                     <div class="col-lg-8">
                         <div class="who-i text-center">
@@ -154,8 +157,8 @@
                         <div class="porto-wrap text-left" data-aos="fade-up" data-aos-delay="600" data-aos-offset="0">
                             <!-- portfolio item -->
                             <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="100" data-tilt-max="10">
-                                <a class="gallery-link glightbox" data-glightbox="type: image" href="./asset/portfolio/1.jpg">
-                                    <img src="./asset/portfolio/1.jpg" alt="porto-poto" />
+                                <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/1.jpg') }}">
+                                    <img src="{{ asset('main/asset/portfolio/1.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
                                         <div class="overlay-holder">
                                             <h3>Pump the kid</h3>
@@ -166,8 +169,8 @@
                             </div>
                             <!-- portfolio item -->
                             <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
-                                <a class="gallery-link glightbox" data-glightbox="type: image" href="./asset/portfolio/2.jpg">
-                                    <img src="./asset/portfolio/2.jpg" alt="porto-poto" />
+                                <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/2.jpg') }}">
+                                    <img src="{{ asset('main/asset/portfolio/2.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
                                         <div class="overlay-holder">
                                             <h3>Pump the kid</h3>
@@ -178,8 +181,8 @@
                             </div>
                             <!-- portfolio item -->
                             <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
-                                <a class="gallery-link glightbox" data-glightbox="type: image" href="./asset/portfolio/3.jpg">
-                                    <img src="./asset/portfolio/3.jpg" alt="porto-poto" />
+                                <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/3.jpg') }}">
+                                    <img src="{{ asset('main/asset/portfolio/3.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
                                         <div class="overlay-holder">
                                             <h3>Pump the kid</h3>
@@ -190,8 +193,8 @@
                             </div>
                             <!-- portfolio item -->
                             <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
-                                <a class="gallery-link glightbox" data-glightbox="type: image" href="./asset/portfolio/4.jpg">
-                                    <img src="./asset/portfolio/4.jpg" alt="porto-poto" />
+                                <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/4.jpg') }}">
+                                    <img src="{{ asset('main/asset/portfolio/4.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
                                         <div class="overlay-holder">
                                             <h3>Pump the kid</h3>
@@ -202,8 +205,8 @@
                             </div>
                             <!-- portfolio item -->
                             <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
-                                <a class="gallery-link glightbox" data-glightbox="type: image" href="./asset/portfolio/5.jpg">
-                                    <img src="./asset/portfolio/5.jpg" alt="porto-poto" />
+                                <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/5.jpg') }}">
+                                    <img src="{{ asset('main/asset/portfolio/5.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
                                         <div class="overlay-holder">
                                             <h3>Pump the kid</h3>
@@ -214,8 +217,8 @@
                             </div>
                             <!-- portfolio item -->
                             <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
-                                <a class="gallery-link glightbox" data-glightbox="type: image" href="./asset/portfolio/6.jpg">
-                                    <img src="./asset/portfolio/6.jpg" alt="porto-poto" />
+                                <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/6.jpg') }}">
+                                    <img src="{{ asset('main/asset/portfolio/6.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
                                         <div class="overlay-holder">
                                             <h3>Pump the kid</h3>
@@ -249,37 +252,41 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="col-lg-6 col-md-4 mt-4 pt-2">
                         <div class="wrap-box">
-                            <div class="icon mb-3">
-                                <i class="bi bi-lightning-charge-fill"></i>
-                            </div>
-                            <h3>Web Development</h3>
+                            <em><img src="{{ asset('main/asset/images/statistics.png') }}" height="100px" alt="poto-hero"></em>
+                            <h3>Social Media Analytics</h3>
                             <p class="mt-3">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis nesciunt qui magnam laudantium quidem? Deleniti perferendis aperiam necessitatibus consequatur sapiente natus.
+                                Social media analytics is the ability to gather and find meaning in data gathered from social channels to support business decisions — and measure the performance of actions based on those decisions through social media
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="col-lg-6 col-md-4 mt-4 pt-2">
                         <div class="wrap-box">
-                            <div class="icon mb-3">
-                                <i class="bi bi-bounding-box-circles"></i>
-                            </div>
-                            <h3>Creative Designs
-                            </h3>
+                            <em><img src="{{ asset('main/asset/images/automation.png') }}" height="100px" alt="poto-hero"></em>
+                            <h3>Social Media Automation</h3>
                             <p class="mt-3">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis nesciunt qui magnam laudantium quidem? Deleniti perferendis aperiam necessitatibus consequatur sapiente natus.
+                                Automating social media activities to optimize the results derived from social media channels, that helps marketers save time and effort spent on managing social platforms, engaging with prospects and enhancing brand awareness.
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 mt-4 pt-2">
                         <div class="wrap-box">
-                            <div class="icon mb-3">
-                                <i class="bi bi-person-lines-fill"></i>
-                            </div>
-                            <h3>Digital Marketing</h3>
+                            <em><img src="{{ asset('main/asset/images/seo.png') }}" height="100px" alt="poto-hero"></em>
+                            <h3>SEO Consultancy</h3>
                             <p class="mt-3">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis nesciunt qui magnam laudantium quidem? Deleniti perferendis aperiam necessitatibus consequatur sapiente natus.
+                                Upview Provides insights that are responsible for planning, implementing and managing company client’s overall SEO strategy.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4 mt-4 pt-2">
+                        <div class="wrap-box">
+                            <em><img src="{{ asset('main/asset/images/analytics.png') }}" height="100px" alt="poto-hero"></em>
+                            <h3>Social Listening</h3>
+                            <p class="mt-3">
+                                Social listening is the process of identifying and assessing what is being said about a company, individual, product or brand on the internet.
                             </p>
                         </div>
                     </div>
@@ -435,6 +442,11 @@
     <script src=" {{ asset('main/javascript/vendor/aos.js') }}"></script>
     <!-- main js -->
     <script src=" {{ asset('main/javascript/main.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            document.getElementById('analyticsVid').play();
+        });
+    </script>
 </body>
 
 </html>
