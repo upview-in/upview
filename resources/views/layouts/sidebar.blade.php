@@ -5,15 +5,16 @@
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
-                        <em class="anticon anticon-home"></em>
+                        <em class="fas fa-home text-primary"></em>
                     </span>
                     <span class="title">{{ __('Dashboard') }}</span>
                 </a>
             </li>
+
             <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <em class="anticon anticon-pie-chart"></em>
+                        <em class="fas fa-chart-pie text-info"></em>
                     </span>
                     <span class="title">{{ __('Analytics') }}</span>
                     <span class="arrow">
@@ -77,10 +78,11 @@
                     </li>
                 </ul>
             </li>
+
             <li class="nav-item dropdown {{ request()->is('panel/user/measure/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <em class="anticon anticon-radar-chart"></em>
+                        <em class="fas fa-chart-line text-danger"></em>
                     </span>
                     <span class="title">{{ __('Measure') }}</span>
                     <span class="arrow">
@@ -106,6 +108,7 @@
                     </li>
                 </ul>
             </li>
+
             {{-- <li class="nav-item dropdown ">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -132,10 +135,11 @@
                     </li>
                 </ul>
             </li> --}}
+
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <em class="fas fa-mail-bulk"></em>
+                        <em class="fas fa-mail-bulk text-warning"></em>
                     </span>
                     <span class="title">{{ __('Posts') }}</span>
                     <span class="arrow">
@@ -146,7 +150,7 @@
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.scheduler') ? 'active' : '' }}">
                         <a href="{{ route('panel.user.post.scheduler') }}">
                             <span class="icon-holder">
-                                <em class="fas fa-calendar-day"></em>
+                                <em class="fas fa-calendar-day text-warning"></em>
                             </span>
                             <span class="title">{{ __('Post Management') }}</span>
                         </a>
@@ -154,7 +158,7 @@
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.history') ? 'active' : '' }}">
                         <a href="{{ route('panel.user.post.history') }}">
                             <span class="icon-holder">
-                                <em class="fas fa-history"></em>
+                                <em class="fas fa-history text-warning"></em>
                             </span>
                             <span class="title">{{ __('Post History') }}</span>
                         </a>
@@ -165,7 +169,7 @@
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <em class="fas fa-headset"></em>
+                        <em class="fas fa-headset text-success"></em>
                     </span>
                     <span class="title">{{ __('Support') }}</span>
                     <span class="arrow">
@@ -176,7 +180,7 @@
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.support.submit') ? 'active' : '' }}">
                         <a class="dropdown-toggle" href="{{ route('panel.user.support.submit') }}">
                             <span class="icon-holder">
-                                <em class="fas fa-comments"></em>
+                                <em class="fas fa-comments text-success"></em>
                             </span>
                             <span class="title">{{ __('Submit Query') }}</span>
                         </a>
@@ -184,7 +188,7 @@
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.support.history') ? 'active' : '' }}">
                         <a class="dropdown-toggle" href="{{ route('panel.user.support.history') }}">
                             <span class="icon-holder">
-                                <em class="fas fa-history"></em>
+                                <em class="fas fa-history text-success"></em>
                             </span>
                             <span class="title">{{ __('Support History') }}</span>
                         </a>
@@ -195,20 +199,21 @@
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
-                        <em class="fas fa-book"></em>
+                        <em class="fas fa-book text-secondary"></em>
                     </span>
                     <span class="title">{{ __('Reports') }}</span>
                 </a>
             </li>
 
-            <li class="nav-item dropdown {{ request()->routeIs('panel.choosePackages') ? 'active' : '' }}">
-                <a class="dropdown-toggle" href="{{ route('panel.choosePackages') }}">
+            <li class="nav-item dropdown {{ request()->routeIs('panel.user.plans.list') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="{{ route('panel.user.plans.list') }}">
                     <span class="icon-holder">
-                        <em class="fas fa-info-circle"></em>
+                        <em class="fas fa-info-circle text-danger"></em>
                     </span>
-                    <span class="title">{{ __('Packages') }}</span>
+                    <span class="title">{{ __('Plans') }}</span>
                 </a>
             </li>
+
             {{-- <li class="nav-item dropdown {{ request()->is('panel/user/track/*') ? 'open' : '' }}">
             <a class="dropdown-toggle" href="javascript:void(0);">
                 <span class="icon-holder">

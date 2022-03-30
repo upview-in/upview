@@ -19,6 +19,8 @@ class UserRole extends Model
     public $searchable = [
         'name',
         'slug',
+        'price',
+        'plan_validity',
     ];
 
     /**
@@ -29,6 +31,10 @@ class UserRole extends Model
     protected $fillable = [
         'name',
         'slug',
+        'price',
+        'plan_validity',
+        'shortDescription',
+        'longDescription',
         'enabled',
     ];
 
@@ -38,6 +44,7 @@ class UserRole extends Model
      * @var array
      */
     protected $casts = [
+        'price' => 'integer',
         'enabled' => 'boolean',
     ];
 

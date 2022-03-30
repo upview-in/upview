@@ -51,14 +51,16 @@ class UserRolesController extends Controller
         $sanitized = $request->validated();
         $userRole = UserRole::create($sanitized);
 
-        $permission_ids = [];
-        foreach ($sanitized['permissions'] as $slug) {
-            $permission = $userPermissionHelper->getPermissionFromSlug($slug);
-            if (!is_null($permission)) {
-                $permission_ids[] = $permission->id;
+        if ($request->has('permissions')) {
+            $permission_ids = [];
+            foreach ($sanitized['permissions'] as $slug) {
+                $permission = $userPermissionHelper->getPermissionFromSlug($slug);
+                if (!is_null($permission)) {
+                    $permission_ids[] = $permission->id;
+                }
             }
+            $userRole->permissions()->attach($permission_ids);
         }
-        $userRole->permissions()->attach($permission_ids);
 
         if ($request->ajax()) {
             return response()->json([
@@ -108,6 +110,10 @@ class UserRolesController extends Controller
 
         $userRole->name = $request->name ?? $userRole->name;
         $userRole->slug = $request->slug ?? $userRole->slug;
+        $userRole->price = $request->price ?? $userRole->price;
+        $userRole->plan_validity = $request->plan_validity ?? $userRole->plan_validity;
+        $userRole->shortDescription = $request->shortDescription ?? $userRole->shortDescription;
+        $userRole->longDescription = $request->longDescription ?? $userRole->longDescription;
         !$request->has('enabled') ?: ($userRole->enabled = filter_var($request->enabled, FILTER_VALIDATE_BOOLEAN));
 
         if ($request->has('permissions')) {

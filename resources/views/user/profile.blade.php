@@ -150,7 +150,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label class="font-weight-semibold" for="phoneNumber">{{ __('Phone Number') }}</label>
-                            <input type="text" class="form-control" id="phoneNumber" name="mobile_number" placeholder="Ex. +xx xxxxxxxxxx" value="{{ old('mobile_number') ?? $user->mobile_number }}">
+                            <input type="text" class="form-control" id="phoneNumber" name="mobile_number" value="{{ old('mobile_number') ?? $user->mobile_number }}">
                             @error('mobile_number')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -187,7 +187,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-3">
-                            <button class="btn btn-success">{{ __('Update') }}</button>
+                            <button id="btnProfileFormSubmit" class="btn btn-success">{{ __('Update') }}</button>
                         </div>
                     </div>
                 </form>
