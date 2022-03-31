@@ -19,7 +19,7 @@ class MainSiteController extends Controller
         $contact->email = $request->txtemail;
         $contact->message = $request->txtmessage;
         $contact->save();
-        return view('main.home');
+        return redirect(route('main.index'));
     }
 
     public function showPrivacyPolicy()
