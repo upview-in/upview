@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\SalesController;
 use App\Http\Controllers\Admin\SupportController as AdminSupportController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserOrdersController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
 // API Ayrshare namespace
@@ -198,6 +199,9 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
         Route::resource('admins', AdminController::class);
         Route::resource('adminPermissions', AdminPermissionsController::class);
         Route::resource('adminRoles', AdminRolesController::class);
+
+        // Manage payments
+        Route::resource('userOrders', UserOrdersController::class);
     });
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');

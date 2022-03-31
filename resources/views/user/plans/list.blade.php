@@ -238,6 +238,9 @@
                         </tr>
                     @endforeach
                 </table>
+                <div class="mt-4">
+                    {{ $orders_history->withQueryString()->links() }}
+                </div>
             </div>
         </div>
     </div>
