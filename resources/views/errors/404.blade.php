@@ -1,64 +1,88 @@
-<x-main.app-layout>
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- bread crumb section start -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upview</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo/favicon.svg') }} ">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo/favicon.svg') }} ">
+    <link rel="shortcut icon" href="{{ asset('images/logo/favicon.svg') }} ">
+    <!-- metatag -->
+    <meta name="author" content="Upview" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('main/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('main/css/responsive.css') }}">
+</head>
 
-    <section class="bread-crumb-section">
-        <img class="shape shape1" src="{{ asset('main/images/bread/1.png') }}" alt="images_not_found">
-        <img class="shape shape2" src="{{ asset('main/images/bread/2.png') }}" alt="images_not_found">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="title text-center">Page Not Found</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-    
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- bread crumb section end -->
-
-    <!-- page not found section end -->
-    <section class="page-not-found-section section-padding-y-200">
-        <div class="container">
-            <div class="row mb-n7">
-                <div class="col-12 mb-7">
-                    <ul class="page-not-found">
-                        <li class="page-not-found-item">
-                            <img src="{{ asset('main/images/page-not-found/1.png') }}" alt="images_not_found" />
-                            <span class="number">4</span>
-                        </li>
-                        <li class="page-not-found-item">
-                            <img src="{{ asset('main/images/page-not-found/2.png') }}" alt="images_not_found" />
-                            <span class="number">0</span>
-                        </li>
-                        <li class="page-not-found-item">
-                            <img src="{{ asset('main/images/page-not-found/3.png') }}" alt="images_not_found" />
-                            <span class="number">4</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-8 col-xl-6 mx-auto mb-7">
-                    <div class="page-not-found-content">
-                        <h3 class="title">
-                            Sorry! <small>This Page is Not Found.</small>
-                        </h3>
-                        <p>
-                            Lorem Ipsum is simply dummy text of others the printing and
-                            typesetting industry printer took a galley of type and scrambled
-                            make
-                        </p>
-                        <a href="index.html" class="btn btn-warning">
-                            <em class="icofont-rounded-double-left"></em> Back To Home</a>
+<body>
+    <!-- floating navigation -->
+    <!-- header -->
+    <header id="wrap-header" class="pt-3">
+        <div class="container pl-lg-0">
+            <div class="row position-relative">
+                <div class="col-lg-12">
+                    <div class="wrap-logo">
+                        <a class="navbar-brand" href="#header">
+                            <span class="d-inline">
+                                <img src="{{ asset('images/logo/named_logo_white.png') }}" height="100" width="auto" alt="Upview">
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- page not found section start -->
+    </header>
+    <!-- main wrap page -->
+    <main>
+        <div class="o-line"></div>
+        <div class="o-line"></div>
+        <div class="o-line"></div>
+        <div class="scene"></div>
+        <!-- hero -->
+        <section id="home" class="sect section1" data-section-name="home">
 
-</x-main.app-layout>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 align-items-center justify-content-left d-flex vh-100">
+                        <div class="wrap-heroifo gl pb-4 pt-5">
+                            <h1 class="text-danger" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 2in">404</h1>
+                            <h2 style="font-family:Georgia, 'Times New Roman', Times, serif;">&nbsp;&nbsp;&nbsp;PAGE NOT FOUND</h2>
+                            <a href="https://{{ env('MAIN_DOMAIN') }}" class="btn button mt-2" style="padding: 15px 140px;">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end hero -->
+    </main>
+    <!-- end main wrap page -->
+    <!-- footer -->
+    <footer id="footer-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center pb-3">
+                    <p>Upview India</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="glasseffect"></div>
+    <!-- bootstrap js -->
+    <script src="{{ asset('main/javascript/vendor/bootstrap.js') }}"></script>
+    <!-- three js module -->
+    <script type="module" src="{{ asset('main/javascript/vendor/auora.js') }}"></script>
+    <!-- titlt js -->
+    <script src=" {{ asset('main/javascript/vendor/titlt.js') }}"></script>
+    <!-- glightbox js -->
+    <script src=" {{ asset('main/javascript/vendor/glightbox.js') }}"></script>
+    <!-- owl  js -->
+    <script src=" {{ asset('main/javascript/vendor/keen-slider.js') }}"></script>
+    <!-- aos js -->
+    <script src=" {{ asset('main/javascript/vendor/aos.js') }}"></script>
+    <!-- main js -->
+    <script src=" {{ asset('main/javascript/main.js') }}"></script>
+</body>
+
+</html>

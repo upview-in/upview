@@ -42,6 +42,21 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon">
+                    <em class='bi bi-bell'></em>
+                </div>
+                <div class="menu-title">Sales</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.sales.queries') }}">
+                        <em class='bi bi-chat-right-quote'></em> Queries
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><em class='bi bi-people'></em>
                 </div>
                 <div class="menu-title">Users</div>
