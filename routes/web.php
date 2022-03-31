@@ -186,7 +186,7 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
         Route::get('/support/queries', [AdminSupportController::class, 'queries'])->name('support.queries');
         Route::resource('support/users', AdminSupportController::class, ['as' => 'support']);
 
-        //Manage Sales inquery from the main Main Site
+        //Manage Sales inquery from the Main Site
         Route::get('/sales/queries', [SalesController::class, 'queries'])->name('sales.queries');
 
         // Manage users and their roles and permissions
