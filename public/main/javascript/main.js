@@ -20,8 +20,6 @@ const rushinit = (function() {
     var mobilelink = document.querySelectorAll('.navigation-listmobile li a');
     var testimonials = document.getElementById("wrap-testimonial");
     var buttonsubmit = document.getElementById('submitbutton');
-    var formcontact = document.getElementById('formcontact');
-    var allinputs = formcontact.querySelectorAll('.input-control');
     var information = document.querySelector('.contactform__loader');
     var inputelement = document.querySelector('.inputtext');
     var textareaelement = document.querySelector('.comentarea');
@@ -95,94 +93,7 @@ const rushinit = (function() {
         el.classList.add('hide');
         el.classList.remove('show');
     };
-    // form post submit  
-    const posttheform = function(e) {
-        formcontact.onsubmit = async(e) => {
-            e.preventDefault();
-            var valid = [];
-            allinputs.forEach(function(i, j) {
-                if (i.getAttribute('data-name')) {
-                    var checkAttr = i.getAttribute('data-name');
-                } else {
-                    var checkAttr = i.tagName;
-                }
-                var thisvalue = i.value;
-                // check input valid
-                switch (checkAttr) {
-                    case 'name':
-                        if (thisvalue == '') {
-                            i.classList.add("error");
-                            valid.push('<li>Please check your input name</li>');
-                        } else if (thisvalue.length < 3) {
-                            valid.push('<li>Sorry your name char is to short</li>');
-                        } else {
-                            i.classList.remove("error");
-                        }
 
-                        break;
-                    case 'email':
-                        var regEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                        if (i.value == '' || !regEmail.test(i.value)) {
-                            i.classList.add("error");
-                            valid.push('<li>Please check your mail address input</li>');
-                        } else {
-                            i.classList.remove("error");
-                        }
-                        break;
-                    case 'comment':
-                        if (thisvalue == '') {
-                            i.classList.add("error");
-                            valid.push('<li>Please write something</li>');
-                        } else {
-                            i.classList.remove("error");
-                        }
-
-                        break;
-                    default:
-                        if (i.value == '') {
-                            valid.push('<li>Something was wrong</li>');
-                            i.classList.add("error");
-                        } else {
-                            i.classList.remove("error");
-                        }
-                        break;
-                };
-            });
-            if (valid.length) {
-                information.innerHTML = `<div class="alert alert-danger" role="alert"><h4 class="alert-heading">There is something wrong !</h4> <hr><p class="mb-0"><ul class="errorlist">` + valid.join('') + `</ul></p></div>`;
-            } else {
-                information.innerHTML = `<div class="d-flex align-items-center"><strong class="font-weight-normal">Please wait...</strong><div class="spinner-border spinner-border-sm ml-auto" role="status" aria-hidden="true"></div></div>`;
-                inputelement.setAttribute("readonly", "true");
-                textareaelement.setAttribute("readonly", "true");
-                buttonsubmit.setAttribute("disable", "true");
-                // change the fetch address based on the mail.php file you put in your server's file directory ---------------------------
-                let response = await fetch('mail.php', {
-                        method: 'POST',
-                        body: new FormData(formcontact)
-                    })
-                    .then((response) => response.text())
-                    //Then with the data from the response in JSON...
-                    .then((data) => {
-                        if (data === 'your message send') {
-                            formcontact.reset();
-                            inputelement.removeAttribute("readonly");
-                            textareaelement.removeAttribute("readonly");
-                            buttonsubmit.removeAttribute("disable");
-                            information.innerHTML = `<div class="alert alert-success  " role="alert"><h4 class="alert-heading">Message send successful !</h4> <hr><p class="mb-0">I will reply to your message soon thank you</p></div>`;
-                        }
-                    })
-                    //Then with the error genereted...
-                    .catch((error) => {
-                        formcontact.reset();
-                        inputelement.removeAttribute("readonly");
-                        textareaelement.removeAttribute("readonly");
-                        buttonsubmit.removeAttribute("disable");
-                        information.innerHTML = `<div class="alert alert-danger " role="alert"><h4 class="alert-heading">There is something wrong !</h4> <hr><p class="mb-0">Sorry, your message failed to be sent due to an unknown error</p></div>`;
-                    });
-            }
-            return false;
-        };
-    };
     // click button menu burger
     const buttonclick = function(e) {
         // menu mobile toggle
@@ -253,8 +164,6 @@ const rushinit = (function() {
                 },
                 once: false
             });
-            // post contact 
-            posttheform();
         });
         window.addEventListener("scroll", (e) => {
             if (window.pageYOffset > 10) {
