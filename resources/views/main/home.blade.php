@@ -345,7 +345,7 @@
                         <div class="who-i text-center">
                             <h3 data-aos="fade-up" data-aos-delay="200" data-aos-offset="0">Start <span class="boldi ml-2">Convertation</span></h3>
                             <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">
-                                let's discuss your great project idea so that it can become a reality
+                                Take your first step towards building a Social Empire.
                             </p>
 
                         </div>
@@ -354,7 +354,7 @@
                 <div class="row">
                     <div class="col-lg-5 mb-5">
                         <div class="wrap-detailcontact">
-                            <p class="mb-5">Let's make something different and more meaningful, make more conceptual</p>
+                            <p class="mb-5">Tell us what you need, we will deliver what you thought.</p>
                             <div class="detail-inner">
                                 <i class="bi bi-telephone-forward-fill"></i>
                                 <p>Phone Call Number</p>
