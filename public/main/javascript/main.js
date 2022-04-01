@@ -20,8 +20,11 @@ const rushinit = (function() {
     var mobilelink = document.querySelectorAll('.navigation-listmobile li a');
     var testimonials = document.getElementById("wrap-testimonial");
     var buttonsubmit = document.getElementById('submitbutton');
+<<<<<<< HEAD
     var formcontact = document.getElementById('formcontact');
     var allinputs = formcontact.querySelectorAll('.input-control');
+=======
+>>>>>>> aee88862b97184cee34a4241e14aa03af7979864
     var information = document.querySelector('.contactform__loader');
     var inputelement = document.querySelector('.inputtext');
     var textareaelement = document.querySelector('.comentarea');
@@ -95,6 +98,7 @@ const rushinit = (function() {
         el.classList.add('hide');
         el.classList.remove('show');
     };
+<<<<<<< HEAD
     // form post submit  
     const posttheform = function(e) {
         formcontact.onsubmit = async(e) => {
@@ -183,6 +187,9 @@ const rushinit = (function() {
             return false;
         };
     };
+=======
+
+>>>>>>> aee88862b97184cee34a4241e14aa03af7979864
     // click button menu burger
     const buttonclick = function(e) {
         // menu mobile toggle
@@ -253,8 +260,11 @@ const rushinit = (function() {
                 },
                 once: false
             });
+<<<<<<< HEAD
             // post contact 
             posttheform();
+=======
+>>>>>>> aee88862b97184cee34a4241e14aa03af7979864
         });
         window.addEventListener("scroll", (e) => {
             if (window.pageYOffset > 10) {

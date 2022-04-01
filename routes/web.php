@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPermissionsController;
 use App\Http\Controllers\Admin\AdminRolesController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\SalesController;
 use App\Http\Controllers\Admin\SupportController as AdminSupportController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserOrdersController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
 // API Ayrshare namespace
@@ -53,6 +55,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function () {
     Route::get('/', [MainSiteController::class, 'index'])->name('index');
     Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy_policy');
+    Route::post('/contact-us', [MainSiteController::class, 'contactUs'])->name('contact_us');
 });
 
 // Application Routes
@@ -184,6 +187,9 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
         Route::get('/support/queries', [AdminSupportController::class, 'queries'])->name('support.queries');
         Route::resource('support/users', AdminSupportController::class, ['as' => 'support']);
 
+        //Manage Sales inquery from the Main Site
+        Route::get('/sales/queries', [SalesController::class, 'queries'])->name('sales.queries');
+
         // Manage users and their roles and permissions
         Route::resource('users', UserController::class);
         Route::resource('userPermissions', UserPermissionsController::class);
@@ -193,6 +199,9 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
         Route::resource('admins', AdminController::class);
         Route::resource('adminPermissions', AdminPermissionsController::class);
         Route::resource('adminRoles', AdminRolesController::class);
+
+        // Manage payments
+        Route::resource('userOrders', UserOrdersController::class);
     });
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');

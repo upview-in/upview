@@ -14,14 +14,14 @@ class SupportController extends Controller
 {
     public function index()
     {
-        return view('user.support_form');
+        return view('user.support.form');
     }
 
     public function history()
     {
         $SupportHistory = UserSupportQuery::search()->with('supportUser')->where(['user_id' => Auth::id()])->paginate(10);
 
-        return view('user.support_form_history', ['SupportHistory' => $SupportHistory, 'user_id' => Auth::id()]);
+        return view('user.support.history', ['SupportHistory' => $SupportHistory, 'user_id' => Auth::id()]);
     }
 
     public function uploadUserQuery(UserQueryRequest $request)
@@ -57,7 +57,7 @@ class SupportController extends Controller
     {
         $supportQueryId = UserSupportQuery::where(['_id' => $request->id])->exists();
         if ($supportQueryId) {
-            return view('user.support_chat');
+            return view('user.support.chat');
         } else {
             return abort(404);
         }
