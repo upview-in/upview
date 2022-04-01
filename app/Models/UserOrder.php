@@ -3,12 +3,14 @@
 namespace App\Models;
 
 //use Illuminate\Database\Eloquent\Model;
+
+use App\Concerns\Models\Searchable;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UserOrder extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     public static $status = [
         'Pending',
