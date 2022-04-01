@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -90,9 +90,9 @@
                 <div class="row">
                     <div class="col-lg-7 align-items-center justify-content-left d-flex vh-100">
                         <div class="wrap-heroifo gl pb-4 pt-5">
-                            <p data-aos="fade-up" data-aos-delay="100" data-aos-offset="0" style="font-size: xxx-large;"><span class="boldi">Upview</span></p>
+                            <p data-aos="fade-up" data-aos-delay="100" data-aos-offset="0" style="font-size: 1in"><span class="boldi">Upview</span></p>
                             <h3 data-aos="fade-up" data-aos-delay="200" data-aos-offset="0"><span class="boldi">A Powerful tool for social media management</span></h3>
-                            <p class="deskrip-info" data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">Easy way to manage socail media and get powerful Analytics.</p>
+                            <p class="deskrip-info" data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">Easy way to manage social media and get powerful Analytics.</p>
                             <a href="https://{{ env('APP_DOMAIN') }}" class="btn button mt-3">Get Started</a>
                         </div>
                     </div>
@@ -144,8 +144,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="porto-wrap text-left" data-aos="fade-up" data-aos-delay="600" data-aos-offset="0"> -->
-                            <!-- portfolio item -->
-                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="100" data-tilt-max="10">
+        <!-- portfolio item -->
+        <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="100" data-tilt-max="10">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/1.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/1.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -156,8 +156,8 @@
                                     </div>
                                 </a>
                             </div> -->
-                            <!-- portfolio item -->
-                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+        <!-- portfolio item -->
+        <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/2.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/2.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -168,8 +168,8 @@
                                     </div>
                                 </a>
                             </div> -->
-                            <!-- portfolio item -->
-                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+        <!-- portfolio item -->
+        <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/3.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/3.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -180,8 +180,8 @@
                                     </div>
                                 </a>
                             </div> -->
-                            <!-- portfolio item -->
-                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+        <!-- portfolio item -->
+        <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/4.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/4.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -192,8 +192,8 @@
                                     </div>
                                 </a>
                             </div> -->
-                            <!-- portfolio item -->
-                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+        <!-- portfolio item -->
+        <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/5.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/5.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -204,8 +204,8 @@
                                     </div>
                                 </a>
                             </div> -->
-                            <!-- portfolio item -->
-                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+        <!-- portfolio item -->
+        <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/6.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/6.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -226,7 +226,6 @@
         <!-- end portfolio -->
         <!-- service section  -->
         <section id="service-section" class="sect section4" data-section-name="service-section">
-
             <div class="container wrap-container">
                 <span class="big-text">SERVICES</span>
                 <div class="row justify-content-center pb-5 mb-5">
@@ -284,7 +283,7 @@
         </section>
         <!-- end service section -->
         <!-- testimonials -->
-        <!-- <section id="testimonial-wrap">
+        <section id="testimonial-wrap">
             <div class="container wrap-container">
                 <span class="big-text">PEOPLE SAY</span>
                 <div class="row justify-content-center">
@@ -300,9 +299,9 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-11 pt-5">
-                        <div id="wrap-testimonial" class="keen-slider"> -->
-        <!-- testimoni item -->
-        <!-- <div class="item-testi keen-slider__slide">
+                        <div id="wrap-testimonial" class="keen-slider">
+                            <!-- testimoni item -->
+                            <div class="item-testi keen-slider__slide">
                                 <div class="wrap-comment">
                                     <blockquote>
                                         <i class="fa fa-quote-left left-o" aria-hidden="true"></i>
@@ -315,9 +314,9 @@
                                 <div class="detail-user text-center text-sm-start">
                                     <img src="{{ asset('main/asset/user/1.jpg') }}" class="img-fluid" alt="user" />
                                 </div>
-                            </div> -->
-        <!-- testimoni item -->
-        <!-- <div class="item-testi keen-slider__slide">
+                            </div>
+                            <!-- testimoni item -->
+                            <div class="item-testi keen-slider__slide">
                                 <div class="wrap-comment">
                                     <blockquote>
                                         <i class="fa fa-quote-left left-o" aria-hidden="true"></i>
@@ -328,13 +327,13 @@
                                 <div class="detail-user text-center text-sm-start">
                                     <img src="{{ asset('main/asset/user/2.jpg') }}" class="img-fluid" alt="user" />
                                 </div>
-                            </div> -->
-        <!-- </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
-        </section> -->
+        </section>
         <!-- end testimonials -->
         <!-- how to register -->
         <section id="how-to" class="sect section2" data-section-name="how-to">
@@ -349,12 +348,14 @@
                     <div class="col-lg-7 pr-lg-5">
                         <div class="who-i">
                             <h3 class="pb-3" data-aos="fade-up" data-aos-delay="200" data-aos-offset="0"><span class="boldi mr-2">How To</span> Register ?</h3>
-                            <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0"><ul>
+                            <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">
+                            <ul>
                                 <li class="boldi" style="font-size: larger;">Step 1: Click On Get Started on the landing Page.</li>
                                 <li class="boldi" style="font-size: larger;">Step 2: Click on the <a href="https://{{ env('APP_DOMAIN') }}">signup</a> link.</li>
                                 <li class="boldi" style="font-size: larger;">Step 3: Enter the details asked.</li>
                                 <li class="boldi" style="font-size: larger;">Step 4: Activate your account by clicking the link sent in mail.</li>
-                            </ul></p>
+                            </ul>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -368,7 +369,7 @@
                 <div class="row justify-content-center pb-5 mb-5">
                     <div class="col-lg-8">
                         <div class="who-i text-center">
-                            <h3 data-aos="fade-up" data-aos-delay="200" data-aos-offset="0">Start <span class="boldi ml-2">Convertation</span></h3>
+                            <h3 data-aos="fade-up" data-aos-delay="200" data-aos-offset="0">Start <span class="boldi ml-2">Conversation</span></h3>
                             <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">
                                 Take your first step towards building a Social Empire.
                             </p>
@@ -456,6 +457,7 @@
     <script src=" {{ asset('main/javascript/vendor/aos.js') }}"></script>
     <!-- main js -->
     <script src=" {{ asset('main/javascript/main.js') }}"></script>
+
 </body>
 
 </html>

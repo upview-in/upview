@@ -49,7 +49,7 @@
                         <div class="wrap-heroifo gl pb-4 pt-5">
                             <h1 class="text-danger" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 2in">404</h1>
                             <h2 style="font-family:Georgia, 'Times New Roman', Times, serif;">&nbsp;&nbsp;&nbsp;PAGE NOT FOUND</h2>
-                            <a href="https://{{ env('MAIN_DOMAIN') }}" class="btn button mt-2" style="padding: 15px 140px;">Go Back</a>
+                            <a onclick="history.back();" class="btn button mt-2" style="padding: 15px 140px;">Go Back</a>
                         </div>
                     </div>
                 </div>
