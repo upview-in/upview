@@ -17,14 +17,16 @@ class PlansController extends Controller
     public function list()
     {
         $plans = UserRole::enabled()->get();
-        $orders_history = UserOrder::with('plan')->where('user_id', Auth::id())->get();
+        $orders_history = UserOrder::with('plan')->search()->where('user_id', Auth::id())->orderBy('id', 'desc')->paginate(5);
 
         return view('user.plans.list', ['plans' => $plans, 'orders_history' => $orders_history]);
     }
 
     public function details(DetailRequest $request, UserRole $plan)
     {
-        return view('user.plans.details', ['plan' => $plan]);
+        $purchased_plans = Auth::user()->roles()->pluck('_id')->toArray();
+
+        return view('user.plans.details', ['plan' => $plan, 'purchased_plans' => $purchased_plans]);
     }
 
     public function buy(Request $request, UserRole $plan)
@@ -32,13 +34,19 @@ class PlansController extends Controller
         $plan->enabled = $plan->enabled ?? true;
 
         if ($plan->enabled) {
-            $paymentRequest = new InitPaymentRequest();
-            $paymentRequest->replace([
-                'plan_id' => $plan->id
-            ]);
+            $purchased_plans = Auth::user()->roles()->pluck('_id')->toArray();
 
-            $paymentsController = new PaymentsController();
-            $paymentsController->initPayment($paymentRequest);
+            if (!in_array($plan->id, $purchased_plans)) {
+                $paymentRequest = new InitPaymentRequest();
+                $paymentRequest->replace([
+                    'plan_id' => $plan->id
+                ]);
+
+                $paymentsController = new PaymentsController();
+                $paymentsController->initPayment($paymentRequest);
+            } else {
+                return abort(404);
+            }
         } else {
             return abort(404);
         }
