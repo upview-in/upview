@@ -30,7 +30,7 @@ class DashboardController extends Controller
                     break;
             case 3: $accountLevel = 'Enterprise';
                     break;
-            default:  $accountLevel = 'Jimmy';
+            default:  $accountLevel = 'Free';
         }
 
         return ['linkedAccountsCount'=>$lnkedAccountsCount, 'totalReports'=>$totalReports, 'accountLevel'=>$accountLevel];
