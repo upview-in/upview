@@ -32,8 +32,9 @@
         <ul class="menlist">
             <li><a class="nav-link active" href="#home">Home</a></li>
             <li><a class="nav-link" href="#features-section">Features</a></li>
-            <li><a class="nav-link" href="#blog-section">Blogs</a></li>
+            <!-- <li><a class="nav-link" href="#blog-section">Blogs</a></li> -->
             <li><a class="nav-link" href="#service-section">Service</a></li>
+            <li><a class="nav-link" href="#how-to">How to Register</a></li>
             <li><a class="nav-link" href="#contact-section">Contact</a></li>
         </ul>
     </nav>
@@ -43,8 +44,9 @@
             <ul class="navigation-listmobile">
                 <li><a class="nav-link active" href="#home">Home</a></li>
                 <li><a class="nav-link" href="#features-section">Features</a></li>
-                <li><a class="nav-link" href="#blog-section">Blogs</a></li>
+                <!-- <li><a class="nav-link" href="#blog-section">Blogs</a></li> -->
                 <li><a class="nav-link" href="#service-section">Service</a></li>
+                <li><a class="nav-link" href="#how-to">How to Register</a></li>
                 <li><a class="nav-link" href="#contact-section">Contact</a></li>
             </ul>
         </nav>
@@ -77,9 +79,9 @@
     </header>
     <!-- main wrap page -->
     <main>
+        <!-- <div class="o-line"></div>
         <div class="o-line"></div>
-        <div class="o-line"></div>
-        <div class="o-line"></div>
+        <div class="o-line"></div> -->
         <div class="scene"></div>
         <!-- hero -->
         <section id="home" class="sect section1" data-section-name="home">
@@ -115,8 +117,7 @@
                     <div class="col-lg-7 pr-lg-5">
                         <div class="who-i">
                             <h3 class="pb-3" data-aos="fade-up" data-aos-delay="200" data-aos-offset="0"><span class="boldi mr-2">Social-Media</span> Analytics</h3>
-                            <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">Gather meaningful data accumulated from multiple social media channels to revamp, support, and evaluate the performance of actions in factors of your convenience. Create strategies that attract the right set of audiences.</p>
-                            <p data-aos="fade-up" data-aos-delay="400" data-aos-offset="0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur suscipit quaerat impedit enim error beatae quibusdam eaque perspiciatis cum cumque voluptatum minima nulla unde expedita, atque, possimus autem minus laboriosam.</p>
+                            <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0" style="font-size: larger;">Gather meaningful data accumulated from multiple social media channels to revamp, support, and evaluate the performance of actions in factors of your convenience. Create strategies that attract the right set of audiences.</p>
                         </div>
                     </div>
                 </div>
@@ -124,8 +125,7 @@
                     <div class="col-lg-7 pr-lg-5">
                         <div class="who-i">
                             <h3 class="pb-3" data-aos="fade-up" data-aos-delay="200" data-aos-offset="0"><span class="boldi mr-2">Social-Media</span> Listening</h3>
-                            <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">Gather meaningful data accumulated from multiple social media channels to revamp, support, and evaluate the performance of actions in factors of your convenience. Create strategies that attract the right set of audiences.</p>
-                            <p data-aos="fade-up" data-aos-delay="400" data-aos-offset="0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur suscipit quaerat impedit enim error beatae quibusdam eaque perspiciatis cum cumque voluptatum minima nulla unde expedita, atque, possimus autem minus laboriosam.</p>
+                            <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0" style="font-size: larger;">Identify & assess how your brand is perceived on different social media fronts and the scope of your marketing strategies. Understand your audience in-depth and gauge them by delivering the right content.</p>
                         </div>
                     </div>
                     <div class="col-lg-5">
@@ -138,14 +138,14 @@
         </section>
         <!-- about -->
         <!-- portfolio -->
-        <section id="blog-section" class="sect section3" data-section-name="blog-section">
+        <!-- <section id="blog-section" class="sect section3" data-section-name="blog-section">
             <div class="container wrap-container text-center">
                 <span class="big-text" style="top : 0; left: 0; position: relative; transform: none;">BLOGS</span>
                 <div class="row">
                     <div class="col">
-                        <div class="porto-wrap text-left" data-aos="fade-up" data-aos-delay="600" data-aos-offset="0">
+                        <div class="porto-wrap text-left" data-aos="fade-up" data-aos-delay="600" data-aos-offset="0"> -->
                             <!-- portfolio item -->
-                            <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="100" data-tilt-max="10">
+                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="100" data-tilt-max="10">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/1.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/1.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -155,9 +155,9 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
                             <!-- portfolio item -->
-                            <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/2.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/2.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -167,9 +167,9 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
                             <!-- portfolio item -->
-                            <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/3.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/3.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -179,9 +179,9 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
                             <!-- portfolio item -->
-                            <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/4.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/4.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -191,9 +191,9 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
                             <!-- portfolio item -->
-                            <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/5.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/5.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -203,9 +203,9 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
                             <!-- portfolio item -->
-                            <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
+                            <!-- <div class="item-porto gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25">
                                 <a class="gallery-link glightbox" data-glightbox="type: image" href="{{ asset('main/asset/portfolio/6.jpg') }}">
                                     <img src="{{ asset('main/asset/portfolio/6.jpg') }}" alt="porto-poto" />
                                     <div class="porto-description">
@@ -222,7 +222,7 @@
                 </div>
             </div>
             </div>
-        </section>
+        </section> -->
         <!-- end portfolio -->
         <!-- service section  -->
         <section id="service-section" class="sect section4" data-section-name="service-section">
@@ -336,6 +336,31 @@
             </div>
         </section> -->
         <!-- end testimonials -->
+        <!-- how to register -->
+        <section id="how-to" class="sect section2" data-section-name="how-to">
+            <div id="wrap-about-section" class="container align-items-center justify-content-left d-flex flex-column wrap-container">
+                <span class="big-text" style="top : 0; left: 0; position: relative; transform: none;">REGISTER</span>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="wrap-imgpic " data-aos="fade-up" data-aos-delay="500" data-aos-offset="0">
+                            <img class="gl" data-tilt-perspective="300" data-tilt-speed="400" data-tilt-max="25" src="{{ asset('main/asset/videos/upview-analytics-unscreen.gif') }}" alt="poto-hero" />
+                        </div>
+                    </div>
+                    <div class="col-lg-7 pr-lg-5">
+                        <div class="who-i">
+                            <h3 class="pb-3" data-aos="fade-up" data-aos-delay="200" data-aos-offset="0"><span class="boldi mr-2">How To</span> Register ?</h3>
+                            <p data-aos="fade-up" data-aos-delay="300" data-aos-offset="0"><ul>
+                                <li class="boldi" style="font-size: larger;">Step 1: Click On Get Started on the landing Page.</li>
+                                <li class="boldi" style="font-size: larger;">Step 2: Click on the <a href="https://{{ env('APP_DOMAIN') }}">signup</a> link.</li>
+                                <li class="boldi" style="font-size: larger;">Step 3: Enter the details asked.</li>
+                                <li class="boldi" style="font-size: larger;">Step 4: Activate your account by clicking the link sent in mail.</li>
+                            </ul></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end how to register -->
         <!-- contact section  -->
         <section id="contact-section" class="sect section6" data-section-name="contact-section">
             <div class="container wrap-container">
