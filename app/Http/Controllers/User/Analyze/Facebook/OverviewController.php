@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Facebook\Account\GetMineAccountDetails;
 use App\Http\Requests\Api\Facebook\GetFBPageInsights;
 use Illuminate\Http\Request;
+use Locale;
 
 class OverviewController extends Controller
 {
@@ -102,7 +103,22 @@ class OverviewController extends Controller
                             }    
                         }       
                         $data['status'] = 200;   
-                        dd($data);                             
+
+                        // $data['chartData']['page_impressions_by_country_unique'] = ["page_impressions_by_country_unique", 0,0];
+
+                        $tempData = [];
+                        $tempData[] = ['Country','Impressions'];
+                        foreach($data['page_impressions_by_country_unique']['data'] as $country=>$value)
+                        {
+                            $_temp = [];
+                            $_temp[0] = Locale::getDisplayRegion('-'.$country, 'en');
+                            // $_temp[0] =  $country;
+                            $_temp[1] = $value; 
+                            // $_temp[1] = $country;
+
+                            $tempData[] = $_temp;
+                        }
+                        $data['chartData']['page_impressions_by_country_unique'] = $tempData;
                         return response()->json(collect($data), 200);
                     }
 
