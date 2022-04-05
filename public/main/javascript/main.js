@@ -93,7 +93,6 @@ const rushinit = (function() {
         el.classList.add('hide');
         el.classList.remove('show');
     };
-
     // click button menu burger
     const buttonclick = function(e) {
         // menu mobile toggle

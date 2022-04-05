@@ -42,7 +42,7 @@
             loadPagesList();
             loadData();
             google.charts.load('current', {
-                'packages': ['corechart', 'controls']
+                'packages': ['corechart', 'controls', 'geochart']
             }).then(() => {
                 // loadAnalytics();
             });
@@ -428,14 +428,13 @@
                             var fanCountNet = (data.page_fan_adds.data) - (data.page_fan_removes.data);
                             if(fanCountNet <= 0) {
                                 $("#fbPageFansInsights").attr('class', 'font-weight-bold text-danger');
-                                $("#fansGrwothIcon").attr('class', 'fas fa-long-arrow-alt-down text-danger');
-
+                                $("#fansGrowthIcon").attr('class', 'fas fa-long-arrow-alt-down text-danger ml-2');
 
                             }
                             else
                             {
                                 $("#fbPageFansInsights").attr('class', 'font-weight-bold text-success');
-                                $("#fansGrwothIcon").attr('class', 'fas fa-long-arrow-alt-up text-danger');
+                                $("#fansGrowthIcon").attr('class', 'fas fa-long-arrow-alt-up text-danger ml-2');
 
                             }
 
@@ -456,6 +455,29 @@
 
                             $("#fbPageContentActivity").html(convertToInternationalCurrencySystem((data.page_content_activity.data)));
                             $("#fbPageContentActivityTooltip").attr('title', nl2br(data.page_content_activity.desc));
+
+                            // drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Column', {
+                            //     hAxis: {
+                            //         textPosition: 'out',
+                            //     },
+                            //     chartArea: {
+                            //         left: 100,
+                            //         right: 50,
+                            //         top: 100,
+                            //         bottom: 100,
+                            //     },
+                            //     bar: {
+                            //         groupWidth: 50
+                            //     }
+                            // });
+
+                            drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
+                        tooltip: {
+                            isHtml: true
+                        }
+                    });
+                            
+
 
                         }
 
@@ -631,14 +653,14 @@
                 <div class="row p-20">
                     <div class="col-md-10 col-12 pl-5">
                         <div class="row mt-4">
-                            <div class="col-6 mb-2">
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
                                 <span class="text-red"><em class="far fa-id-card"></em> Total Page Actions</span><sup>
                                 <em id="fbPageActionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
                                 <br>
                                 <label id="fbPageTotalActions" class="font-weight-bold"></label>
 
                             </div>
-                            <div class="col-6 mb-2">
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
                                 <span class="text-red"><em class="fas fa-handshake"></em> Page User Engagements</span><sup>
                                 <em id="fbPageEngagedUsersTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
                                 <br>
@@ -660,11 +682,13 @@
                             <div class="col-md-3 col-sm-4 mb-2">
                                 <span class="text-red"><em class="fas fa-map-marker-alt"></em> Total Page Location Checkins</span><sup>
                                 <em id="fbPageCheckinTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
                                 <label id="fbPageCheckin" class="font-weight-bold"></label>
                             </div>
                             <div class="col-md-3 col-sm-4 mb-2">
                                 <span class="text-red"><em class="fas fa-map-pin"></em> Total Page Location Checkins (Mobile)</span><sup>
                                 <em id="fbPageCheckinMobileTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
+                                <br>
                                 <label id="fbPageCheckinMobile" class="font-weight-bold"></label>
                             </div>
                             <div class="col-md-3 col-sm-4 mb-2">
@@ -719,7 +743,7 @@
                                 <span class="text-red md-5"><em class="fas fa-users"></em> Page Fants Net</span><sup>
                                 <em id="fbPageFansTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
                                 <br>
-                                <label  id="fbPageFansInsights"   class="font-weight-bold"></label><em id="fansGrowthIcon" class=""></em>
+                                <label  id="fbPageFansInsights"   class="font-weight-bold"></label><em id="fansGrowthIcon"></em>
                             </div>
 
                             <div class="col-md-3 col-sm-4 col-6 mb-2">
@@ -764,15 +788,14 @@
                 </div>
             </div>
         </div>
-        <div class="card shadow" id="ChannelHighlights">
+        <div class="card shadow" id="GraphicalOverview">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Statistics Overview</label>
+                <label class="h3 m-0">Graphical Overview</label>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10">
-                        <div id="OverviewStatisticsChart" class="w-100 mt-3" style="height: 400px"></div>
-                        <div> <label> We're working on it! </label>
+                        <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
                     </div>
                 </div>
             </div>
