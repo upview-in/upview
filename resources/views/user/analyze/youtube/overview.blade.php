@@ -258,15 +258,15 @@
                         explorer: ""
                     });
 
-                    drawChart($('#OsWiseChart')[0], OsWise.ChartData, 'Pie', {
-                        pieHole: 0.5,
-                        chartArea: {
-                            top: 10,
-                            bottom: 60,
-                        },
-                    }, {
-                        explorer: ""
-                    });
+                        drawChart($('#OsWiseChart')[0], OsWise.ChartData, 'Pie', {
+                            pieHole: 0.5,
+                            chartArea: {
+                                top: 10,
+                                bottom: 60,
+                            },
+                        }, {
+                            explorer: ""
+                        });
 
                     drawChart($('#TrafficSourceChart')[0], TrafficSource.ChartData, 'Column', {
                         hAxis: {
