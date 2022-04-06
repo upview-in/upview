@@ -66,6 +66,6 @@ class OverviewController extends Controller
             }
         }
 
-        return view('user.analyze.instagram.ig_overview');
+        return view('user.analyze.instagram.overview');
     }
 }
