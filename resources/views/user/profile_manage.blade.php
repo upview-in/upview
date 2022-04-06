@@ -139,21 +139,17 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="card">
-						<div class="card-body">
-							<form method="POST" action="{{ route('panel.user.profile.createAyrProfile') }}">
-								@csrf
-								<div class="form-group">
-									<label class="font-weight-semibold" for="profile_name">{{ __('Profile Name') }}:</label>
-									<input type="text" class="form-control" id="profile_name" name="profile_name" placeholder="Enter Full Name" />
-								</div>
-
-								<div class="form-group">
-									<button class="btn btn-success">{{ __('Create') }}</button>
-								</div>
-							</form>
+					<form method="POST" action="{{ route('panel.user.profile.createAyrProfile') }}">
+						@csrf
+						<div class="form-group">
+							<label class="font-weight-semibold" for="profile_name">{{ __('Profile Name') }}:</label>
+							<input type="text" class="form-control" id="profile_name" name="profile_name" placeholder="Enter Full Name" />
 						</div>
-					</div>
+
+						<div class="form-group">
+							<button class="btn btn-success">{{ __('Create') }}</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
