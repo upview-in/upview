@@ -80,3 +80,8 @@
 - sudo supervisorctl reread
 - sudo supervisorctl update
 - sudo supervisorctl restart laravel-supervisord:*
+
+# Configure Locale in host system:
+
+- For Linux: 	``` sudo apt install php-intl ``` 
+- For Windows: ``` uncomment php_intl.dll from php.ini file and restart apache server. ``` 
