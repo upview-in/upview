@@ -42,10 +42,8 @@
             loadPagesList();
             loadData();
             google.charts.load('current', {
-
-                'packages': ['corechart', 'controls', 'geochart', 'bubblechart']
                 'packages': ['corechart', 'controls', 'geochart']
-              }).then(() => {
+            }).then(() => {
                 // loadAnalytics();
             });
 
