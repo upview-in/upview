@@ -52,8 +52,7 @@ class OverviewController extends Controller
                         if ($request->has(['fields'])) {
                             $data = [];
                             $response = app(FacebookController::class)->getFacebookPagesInsightsEx(new GetMineAccountDetails($request->all(['id', 'fields'])))->getData();
-                            //$data['chartData'][0] = ["This title lmfao","Impressions", "Reach", "Views"];
-
+                            
                             $data['name'] = $response->name ?? '-';
                             $data['picture'] = $response->picture ?? ['data'=>['url'=>"{{ asset('images/no-image.jpg') }}"]];
                             $data['about'] = $response->about ?? '-';
@@ -104,7 +103,9 @@ class OverviewController extends Controller
                         }       
                         $data['status'] = 200;   
 
-                        // $data['chartData']['page_impressions_by_country_unique'] = ["page_impressions_by_country_unique", 0,0];
+
+
+                        //Chart Data
 
                         $tempData = [];
                         $tempData[] = ['Country','Impressions'];
@@ -112,6 +113,9 @@ class OverviewController extends Controller
                         {
                             $_temp = [];
                             $_temp[0] = Locale::getDisplayRegion('-'.$country, 'en');
+
+                            $_temp[1] = $value; 
+
                             // $_temp[0] =  $country;
                             $_temp[1] = $value; 
                             // $_temp[1] = $country;
@@ -119,6 +123,18 @@ class OverviewController extends Controller
                             $tempData[] = $_temp;
                         }
                         $data['chartData']['page_impressions_by_country_unique'] = $tempData;
+
+                        $tempData = [];
+                        $tempData[] = ['Locale','Impressions'];
+                        foreach($data['page_impressions_by_locale_unique']['data'] as $locale=>$value)
+                        {
+                            $_temp = [];
+                            $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
+                            $_temp[1] = $value; 
+
+                            $tempData[] = $_temp;
+                        }
+                        $data['chartData']['page_impressions_by_locale_unique'] = $tempData;
                         return response()->json(collect($data), 200);
                     }
 
@@ -157,6 +173,6 @@ class OverviewController extends Controller
             }
         }
 
-        return view('user.analyze.facebook.fb_overview');
+        return view('user.analyze.facebook.overview');
     }
 }

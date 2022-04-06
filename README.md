@@ -64,6 +64,7 @@
 - php-gd
 - php-mongod
 - php-curl
+- php-intl
 
 
 # Configure Crontab for Laravel Schedule Service:
