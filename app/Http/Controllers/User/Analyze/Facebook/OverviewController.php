@@ -52,8 +52,7 @@ class OverviewController extends Controller
                         if ($request->has(['fields'])) {
                             $data = [];
                             $response = app(FacebookController::class)->getFacebookPagesInsightsEx(new GetMineAccountDetails($request->all(['id', 'fields'])))->getData();
-                            //$data['chartData'][0] = ["This title lmfao","Impressions", "Reach", "Views"];
-
+                            
                             $data['name'] = $response->name ?? '-';
                             $data['picture'] = $response->picture ?? ['data'=>['url'=>"{{ asset('images/no-image.jpg') }}"]];
                             $data['about'] = $response->about ?? '-';
@@ -107,9 +106,6 @@ class OverviewController extends Controller
 
 
                         //Chart Data
-
-                        // $data['chartData']['page_impressions_by_country_unique'] = ["page_impressions_by_country_unique", 0,0];
-
 
                         $tempData = [];
                         $tempData[] = ['Country','Impressions'];
@@ -177,6 +173,6 @@ class OverviewController extends Controller
             }
         }
 
-        return view('user.analyze.facebook.fb_overview');
+        return view('user.analyze.facebook.overview');
     }
 }
