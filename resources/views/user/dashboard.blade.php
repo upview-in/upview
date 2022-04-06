@@ -49,7 +49,7 @@
                         {{-- db --}}
                         <em class="far fa-gem  text-purple fs-20"></em>
                         <div class="m-l-15">
-                            <h2 class="m-b-0">{{ $accountLevel }}</h2>
+                            <h2 class="m-b-0">{{ Str::length($accountLevel ) ? $accountLevel :  'Free' }}</h2>
                             <p class="m-b-0 text-muted">Account Type</p>
                         </div>
                     </div>

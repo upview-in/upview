@@ -1,6 +1,6 @@
 @section('path-navigation')
     <a class="breadcrumb-item" href="#">Analayze</a>
-    <a class="breadcrumb-item" href="#">Instagram</a>
+    <a class="breadcrumb-item" href="#">Facebook</a>
     <span class="breadcrumb-item active">Overview</span>
 @endsection
 
@@ -42,7 +42,7 @@
             loadPagesList();
             loadData();
             google.charts.load('current', {
-                'packages': ['corechart', 'controls', 'geochart']
+                'packages': ['corechart', 'controls', 'geochart', 'bubblechart']
             }).then(() => {
                 // loadAnalytics();
             });
@@ -137,6 +137,8 @@
                 __BS("ChannelMainDiv");
                 __BS("FBPageDetails");
                 __BS("FBPageInsights");
+                __BS("GraphicalOverview");
+                
 
                 $.ajax({
                     url: '{{ route('panel.user.account.setSessionDefaultAccount') }}',
@@ -244,6 +246,8 @@
                 __BS("ChannelMainDiv");
                 __BS("FBPageDetails");
                 __BS("FBPageInsights");
+                __BS("GraphicalOverview");
+
 
 
                 $.ajax({
@@ -471,21 +475,35 @@
                             //     }
                             // });
 
+
+                            //Charts
+
+
+                            //Country insights
                             drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
-                        tooltip: {
-                            isHtml: true
-                        }
-                    });
+                                tooltip: { isHtml: true },
+                                colorAxis: { colors: ['#a6c5f7','#3277e6', '#075ce6'] }
+                            });
+                            $("#PageImpressionsByCountryChartTooltip").attr('title', nl2br(data.page_impressions_by_country_unique.desc));
+                            
+                            //Locale insights
+                            // drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_locale_unique, 'Bubble', {
+                            //     colorAxis: { colors: ['violet'] }
+                            // });
+                            // $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
                             
 
 
                         }
 
                         __AC("FBPageInsights");
+                        __AC("GraphicalOverview");
+
 
 
                         if(data.status != 200){
                             $("#FBPageInsights").html(noData);
+                            $("#GraphicalOverview").html(noData);
                         }
 
 
@@ -795,7 +813,12 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10">
+                        <label for="PageImpressionsByCountryChart" class="font-weight-bold" >Page Impressions by Country </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByCountryChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
                         <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-10">
+                        <label for="PageImpressionsByLocaleChart" class="font-weight-bold" >Page Impressions by Locale </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByLocaleChart" class="w-100 mt-3" style="height: 400px"></div>
                     </div>
                 </div>
             </div>
