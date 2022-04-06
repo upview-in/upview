@@ -105,14 +105,24 @@ class OverviewController extends Controller
                         $data['status'] = 200;   
 
 
+
                         //Chart Data
+
+                        // $data['chartData']['page_impressions_by_country_unique'] = ["page_impressions_by_country_unique", 0,0];
+
+
                         $tempData = [];
                         $tempData[] = ['Country','Impressions'];
                         foreach($data['page_impressions_by_country_unique']['data'] as $country=>$value)
                         {
                             $_temp = [];
                             $_temp[0] = Locale::getDisplayRegion('-'.$country, 'en');
+
                             $_temp[1] = $value; 
+
+                            // $_temp[0] =  $country;
+                            $_temp[1] = $value; 
+                            // $_temp[1] = $country;
 
                             $tempData[] = $_temp;
                         }
@@ -129,9 +139,6 @@ class OverviewController extends Controller
                             $tempData[] = $_temp;
                         }
                         $data['chartData']['page_impressions_by_locale_unique'] = $tempData;
-
-
-
                         return response()->json(collect($data), 200);
                     }
 

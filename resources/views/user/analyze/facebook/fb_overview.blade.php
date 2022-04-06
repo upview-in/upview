@@ -42,8 +42,10 @@
             loadPagesList();
             loadData();
             google.charts.load('current', {
+
                 'packages': ['corechart', 'controls', 'geochart', 'bubblechart']
-            }).then(() => {
+                'packages': ['corechart', 'controls', 'geochart']
+              }).then(() => {
                 // loadAnalytics();
             });
 
@@ -476,6 +478,7 @@
                             // });
 
 
+
                             //Charts
 
 
@@ -491,6 +494,11 @@
                             //     colorAxis: { colors: ['violet'] }
                             // });
                             // $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
+//                            drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
+  //                      tooltip: {
+    //                        isHtml: true
+      //                  }
+        //            });
                             
 
 
@@ -819,6 +827,7 @@
                     <div class="col-md-10">
                         <label for="PageImpressionsByLocaleChart" class="font-weight-bold" >Page Impressions by Locale </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
                         <div id="PageImpressionsByLocaleChart" class="w-100 mt-3" style="height: 400px"></div>
+                        <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
                     </div>
                 </div>
             </div>
