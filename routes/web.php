@@ -101,6 +101,9 @@ Route::group(['domain' => config('app.domains.app')], function () {
 
                 Route::controller(AyrProfileController::class)->group(function () {
                     Route::get('/manage', 'index')->name('manage');
+                });
+
+                Route::controller(AyrshareController::class)->group(function () {
                     Route::post('/create', 'createAyrProfile')->name('createAyrProfile');
                     Route::delete('/deleteProfile', 'deleteAyrProfile')->name('deleteProfile');
                     Route::get('/ayrshareForward/{profileKey}', 'ayrForward')->name('ayrshareForward');
