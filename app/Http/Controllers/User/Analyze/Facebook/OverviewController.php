@@ -44,102 +44,91 @@ class OverviewController extends Controller
                         return response()->json(collect($data), 200);
                     }
 
-                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
                     break;
 
-                    case 'PageAnalytics':
-                        if ($request->has(['fields'])) {
-                            $data = [];
-                            $response = app(FacebookController::class)->getFacebookPagesInsightsEx(new GetMineAccountDetails($request->all(['id', 'fields'])))->getData();
-                            
-                            $data['name'] = $response->name ?? '-';
-                            $data['picture'] = $response->picture ?? ['data'=>['url'=>"{{ asset('images/no-image.jpg') }}"]];
-                            $data['about'] = $response->about ?? '-';
-                            $data['bio'] = $response->bio ?? '-';
-                            $data['business'] = $response->business ?? '-';
-                            $data['country_pages_likes'] = $response->country_pages_likes ?? '-';
+                case 'PageAnalytics':
+                    if ($request->has(['fields'])) {
+                        $data = [];
+                        $response = app(FacebookController::class)->getFacebookPagesInsightsEx(new GetMineAccountDetails($request->all(['id', 'fields'])))->getData();
 
-                            $data['description'] = $response->description ?? '-';
-                            $data['engagement'] = $response->engagement ?? '-';
-                            $data['followers_count'] = $response->followers_count ?? '-';
-                            $data['is_published'] = $response->is_published ?? false;
-                            $response->link ? $data['link'] = $response->link : $data['link'] = '#';
+                        $data['name'] = $response->name ?? '-';
+                        $data['picture'] = $response->picture ?? ['data' => ['url' => "{{ asset('images/no-image.jpg') }}"]];
+                        $data['about'] = $response->about ?? '-';
+                        $data['bio'] = $response->bio ?? '-';
+                        $data['business'] = $response->business ?? '-';
+                        $data['country_pages_likes'] = $response->country_pages_likes ?? '-';
 
-                            $data['location']['city'] = $response->location->city ?? '';
-                            $data['location']['country'] = $response->location->city ?? '';
-                            $data['location']['zip'] = $response->location->city ?? '';                            //City, Country, ZIP
-                            $data['page_cover'] = $response->page_cover ?? "{{ asset('images/no-image.jpg') }}";
-                            $data['fan_count'] = $response->fan_count ?? '-';
-                            $data['is_community_page'] = $response->is_community_page ?? false;
-                            $data['new_like_count'] = $response->new_like_count ?? '-';
-                            strcmp($response->verification_status, 'not_verified') ? $data['verification_status'] = true : $data['verification_status'] = false;
-                            $data['feed'] = $response->feed ?? null; //Posts[Created Time, Message, id]
-                            $data['published_posts'] = $response->published_posts ?? null;
-                            $data['videos'] = $response->videos ?? null;
-                            $data['visitor_posts'] = $response->visitor_posts ?? null;
-                            $data['tagged'] = $response->tagged ?? null;
-                            $data['status'] = 200;
+                        $data['description'] = $response->description ?? '-';
+                        $data['engagement'] = $response->engagement ?? '-';
+                        $data['followers_count'] = $response->followers_count ?? '-';
+                        $data['is_published'] = $response->is_published ?? false;
+                        $response->link ? $data['link'] = $response->link : $data['link'] = '#';
 
-                            return response()->json(collect($data), 200);
-                        }
+                        $data['location']['city'] = $response->location->city ?? '';
+                        $data['location']['country'] = $response->location->city ?? '';
+                        $data['location']['zip'] = $response->location->city ?? '';                            //City, Country, ZIP
+                        $data['page_cover'] = $response->page_cover ?? "{{ asset('images/no-image.jpg') }}";
+                        $data['fan_count'] = $response->fan_count ?? '-';
+                        $data['is_community_page'] = $response->is_community_page ?? false;
+                        $data['new_like_count'] = $response->new_like_count ?? '-';
+                        strcmp($response->verification_status, 'not_verified') ? $data['verification_status'] = true : $data['verification_status'] = false;
+                        $data['feed'] = $response->feed ?? null; //Posts[Created Time, Message, id]
+                        $data['published_posts'] = $response->published_posts ?? null;
+                        $data['videos'] = $response->videos ?? null;
+                        $data['visitor_posts'] = $response->visitor_posts ?? null;
+                        $data['tagged'] = $response->tagged ?? null;
+                        $data['status'] = 200;
 
-                            return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+                        return response()->json(collect($data), 200);
+                    }
 
-                        break;
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+
+                    break;
 
                 case 'PageInsights':
                     if ($request->has(['id'])) {
                         $data = [];
                         $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
-                        
-                        foreach($response as $fbData)
-                        {
-                            foreach($fbData->data as $fb)
-                            {
+
+                        foreach ($response as $fbData) {
+                            foreach ($fbData->data as $fb) {
                                 $data[$fb->name]['data'] = $fb->values[0]->value ?? 0;
                                 $data[$fb->name]['desc'] = $fb->description ?? '';
-                            }    
-                        }       
-                        $data['status'] = 200;   
-
-
+                            }
+                        }
+                        $data['status'] = 200;
 
                         //Chart Data
-
                         $tempData = [];
-                        $tempData[] = ['Country','Impressions'];
-                        foreach($data['page_impressions_by_country_unique']['data'] as $country=>$value)
-                        {
+                        $tempData[] = ['Country', 'Impressions'];
+
+                        foreach ($data['page_impressions_by_country_unique']['data'] as $country => $value) {
                             $_temp = [];
-                            $_temp[0] = Locale::getDisplayRegion('-'.$country, 'en');
-
-                            $_temp[1] = $value; 
-
-                            // $_temp[0] =  $country;
-                            $_temp[1] = $value; 
-                            // $_temp[1] = $country;
-
+                            $_temp[0] = Locale::getDisplayRegion('-' . $country, 'en');
+                            $_temp[1] = $value;
                             $tempData[] = $_temp;
                         }
-                        $data['chartData']['page_impressions_by_country_unique'] = $tempData;
 
+                        $data['chartData']['page_impressions_by_country_unique'] = $tempData;
                         $tempData = [];
-                        $tempData[] = ['Locale','Impressions'];
-                        foreach($data['page_impressions_by_locale_unique']['data'] as $locale=>$value)
-                        {
+                        $tempData[] = ['Locale', 'Impressions'];
+
+                        foreach ($data['page_impressions_by_locale_unique']['data'] as $locale => $value) {
                             $_temp = [];
                             $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
-                            $_temp[1] = $value; 
-
+                            $_temp[1] = $value;
                             $tempData[] = $_temp;
                         }
+
                         $data['chartData']['page_impressions_by_locale_unique'] = $tempData;
+
                         return response()->json(collect($data), 200);
                     }
 
-                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
                     break;
 
                 case 'accountDetails':
