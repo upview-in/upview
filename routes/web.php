@@ -36,6 +36,7 @@ use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\PostScheduler\HistoryController;
 use App\Http\Controllers\User\PostScheduler\SchedulerController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\SocialListeningController;
 use App\Http\Controllers\User\SupportController;
 // Packages namespace
 use Illuminate\Support\Facades\Route;
@@ -76,6 +77,8 @@ Route::group(['domain' => config('app.domains.app')], function () {
         });
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('/social', [SocialListeningController::class, 'index'])->name('social');
 
         Route::prefix('user')->as('user.')->group(function () {
 
