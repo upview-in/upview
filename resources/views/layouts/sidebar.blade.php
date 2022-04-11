@@ -109,33 +109,6 @@
                 </ul>
             </li>
 
-            {{-- <li class="nav-item dropdown ">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder">
-                        <em class="anticon anticon-fund"></em>
-                    </span>
-                    <span class="title">{{ __('Track') }}</span>
-                    <span class="arrow">
-                        <em class="arrow-icon"></em>
-                    </span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item dropdown open">
-                        <a href="javascript:void(0);">
-                            <span>{{ __('Social Listening') }}</span>
-                            <span class="arrow">
-                                <em class="arrow-icon"></em>
-                            </span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="javascript:void(0)">{{ __('Keyword Tracking') }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li> --}}
-
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -196,6 +169,15 @@
                 </ul>
             </li>
 
+            <li class="nav-item dropdown {{ request()->routeIs('panel.user.social') ? 'active' : '' }}">
+                <a class="dropdown-toggle" href="{{ route('panel.user.social') }}">
+                    <span class="icon-holder">
+                        <em class="fas fa-broadcast-tower text-danger"></em>
+                    </span>
+                    <span class="title">{{ __('Social Listening') }}</span>
+                </a>
+            </li>
+
             <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
@@ -214,35 +196,6 @@
                 </a>
             </li>
 
-            {{-- <li class="nav-item dropdown {{ request()->is('panel/user/track/*') ? 'open' : '' }}">
-            <a class="dropdown-toggle" href="javascript:void(0);">
-                <span class="icon-holder">
-                    <em class="anticon anticon-fund"></em>
-                </span>
-                <span class="title">{{ __('Track') }}</span>
-                <span class="arrow">
-                    <em class="arrow-icon"></em>
-                </span>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="nav-item dropdown open">
-                    <a href="javascript:void(0);">
-                        <span>{{ __('Comp. Analysis') }}</span>
-                        <span class="arrow">
-                            <em class="arrow-icon"></em>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">{{ __('Video Tracking') }}</a>
-                        </li>
-                        <li>
-                            <a href="#">{{ __('Series Tracking') }}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            </li> --}}
         </ul>
     </div>
 </div>
