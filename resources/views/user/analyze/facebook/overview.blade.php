@@ -540,7 +540,7 @@
                 <div class="col-md-2 col-12">
 
                     <a id="fbAccURL"><img class="rounded-circle lazyload" id="fbAccProfileImage" width="100%"
-                            height="auto"> </a>
+                            height="auto" alt="FB Profile Image"> </a>
                 </div>
                 <div class="col-md-10 col-12 pl-5">
                     <div class="row mt-4">
@@ -587,7 +587,7 @@
                     <div class="col-md-2 col-12">
 
                         <a id="fbPageURL"><img class="rounded-circle lazyload" id="fbPageProfileImage" width="100%"
-                                height="auto"> </a>
+                                height="auto" alt="Fb Page Image"> </a>
                     </div>
                     <div class="col-md-10 col-12 pl-5">
                         <div class="row mt-4">
@@ -615,7 +615,7 @@
                                 <label id="fbPageBio" class="font-weight-bold"></label>
 
                             </div>
-                            <div class="col-md-3 col-sm-4 col-6 mb-2 mb-2">
+                            <div class="col-md-3 col-sm-4 col-6 mb-2">
                                 <span class="text-red"><em class="fas fa-pencil-alt"></em> Business Name</span>
                                 <br>
                                 <label id="fbPageBusiness" class="font-weight-bold"></label>

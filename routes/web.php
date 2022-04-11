@@ -36,6 +36,7 @@ use App\Http\Controllers\User\PagesController;
 use App\Http\Controllers\User\PostScheduler\HistoryController;
 use App\Http\Controllers\User\PostScheduler\SchedulerController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\SocialListeningController;
 use App\Http\Controllers\User\SupportController;
 // Packages namespace
 use Illuminate\Support\Facades\Route;
@@ -78,6 +79,8 @@ Route::group(['domain' => config('app.domains.app')], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::prefix('user')->as('user.')->group(function () {
+
+            Route::get('/social', [SocialListeningController::class, 'index'])->name('social');
 
             Route::controller(PaymentsController::class)->prefix('payment')->as('payment.')->group(function () {
                 Route::get('/success/{order}', 'onSuccess')->name('success');
