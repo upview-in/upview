@@ -169,7 +169,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item dropdown {{ request()->routeIs('panel.user.plans.list') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ request()->routeIs('panel.user.social') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.user.social') }}">
                     <span class="icon-holder">
                         <em class="fas fa-broadcast-tower text-danger"></em>
