@@ -29,7 +29,7 @@
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
                                         <div class="input-affix m-b-10">
                                             <em class="prefix-icon anticon anticon-lock"></em>
-                                            <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
+                                            <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="off" placeholder="{{ __('Password') }}">
                                         </div>
                                         @if (Route::has('password.request'))
                                         <a class="float-right font-size-13 text-muted" href="{{ route('password.request') }}">{{ __('Forgot password?') }}</a>
