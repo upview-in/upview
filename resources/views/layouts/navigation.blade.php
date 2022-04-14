@@ -15,12 +15,12 @@
         <ul class="nav-left">
             <li class="desktop-toggle">
                 <a href="javascript:void(0);">
-                    <em class="anticon"></em>
+                    <em class="anticon anticon-menu-fold"></em>
                 </a>
             </li>
             <li class="mobile-toggle">
                 <a href="javascript:void(0);">
-                    <em class="anticon"></em>
+                    <em class="anticon anticon-menu-fold"></em>
                 </a>
             </li>
             <!-- <li>

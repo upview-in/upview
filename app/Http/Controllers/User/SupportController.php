@@ -64,5 +64,4 @@ class SupportController extends Controller
 
     }
 
-    
 }

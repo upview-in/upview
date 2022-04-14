@@ -393,63 +393,124 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 col-md-2 border-right">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <span class="text-red">Subscribers</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsSubscribersGrowth"></label>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <span class="text-red">Views</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsViews"></label>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <span class="text-red">Avg. View Duration (in min)</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsAvgViewDuration"></label>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-user-friends"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Subscribers </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsSubscribersGrowth"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-10">
-                        <div class="row">
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Geographies</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopCountry"></label>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="far fa-eye"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Views </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsViews"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Device type</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopDevice"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-film"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Avg. View Duration (in min) </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsAvgViewDuration"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Operating system</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopPlatform"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-map-signs"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Geographies </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopCountry"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Traffic source types</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTrafficSource"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-mobile-alt"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Device type </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopDevice"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Sharing service</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopSocialMedia"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-desktop"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Operating system </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopPlatform"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Subs VS Non-Subs</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsSubsVsNonSubs"></label>
-                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-globe"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Traffic source types </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTrafficSource"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-share-alt"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Sharing service </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopSocialMedia"></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
