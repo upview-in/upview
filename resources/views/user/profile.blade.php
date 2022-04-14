@@ -198,7 +198,7 @@
                 <h4 class="card-title">{{ __('Change Password') }}</h4>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('panel.user.profile.change_password') }}">
+                <form method="POST" action="{{ route('panel.user.profile.change_password') }}" autocomplete="off">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-3">
