@@ -74,6 +74,8 @@
         });
     </script>
 
+    @yield('custom-scripts')
+
 </body>
 
 </html>

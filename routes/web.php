@@ -81,6 +81,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
         Route::prefix('user')->as('user.')->group(function () {
 
             Route::get('/social', [SocialListeningController::class, 'index'])->name('social');
+            Route::get('/load-social/{hash}', [SocialListeningController::class, 'load'])->name('load');
 
             Route::controller(PaymentsController::class)->prefix('payment')->as('payment.')->group(function () {
                 Route::get('/success/{order}', 'onSuccess')->name('success');
