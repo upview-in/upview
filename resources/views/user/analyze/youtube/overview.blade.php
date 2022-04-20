@@ -221,11 +221,11 @@
                     $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
                     $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
                     $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
-                    $("#HighlightsTopCountry").html(Highlights.TopCountry.Country + "<br>" + convertToInternationalCurrencySystem(Highlights.TopCountry.Views));
-                    $("#HighlightsTopDevice").html(Highlights.TopDevice.Device + "<br>" + convertToInternationalCurrencySystem(Highlights.TopDevice.Views));
-                    $("#HighlightsTopPlatform").html(Highlights.TopPlatform.Platform + "<br>" + convertToInternationalCurrencySystem(Highlights.TopPlatform.Views));
-                    $("#HighlightsTrafficSource").html(Highlights.TrafficSource.Source + "<br>" + convertToInternationalCurrencySystem(Highlights.TrafficSource.Views));
-                    $("#HighlightsTopSocialMedia").html(Highlights.SocialMediaTrafficSource.Source + "<br>" + convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares));
+                    $("#HighlightsTopCountry").html( convertToInternationalCurrencySystem(Highlights.TopCountry.Views) + "(" + Highlights.TopCountry.Country + ")" );
+                    $("#HighlightsTopDevice").html(convertToInternationalCurrencySystem(Highlights.TopDevice.Views) + "(" + Highlights.TopDevice.Device + ")" );
+                    $("#HighlightsTopPlatform").html(convertToInternationalCurrencySystem(Highlights.TopPlatform.Views) + "(" + Highlights.TopPlatform.Platform + ")"  );
+                    $("#HighlightsTrafficSource").html(convertToInternationalCurrencySystem(Highlights.TrafficSource.Views) + "(" + Highlights.TrafficSource.Source + ")"  );
+                    $("#HighlightsTopSocialMedia").html(convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares) + "(" + Highlights.SocialMediaTrafficSource.Source + ")" );
                     // $("#HighlightsSubsVsNonSubs").html();
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
