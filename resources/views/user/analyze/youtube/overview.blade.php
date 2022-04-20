@@ -221,11 +221,11 @@
                     $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
                     $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
                     $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
-                    $("#HighlightsTopCountry").html( convertToInternationalCurrencySystem(Highlights.TopCountry.Views) + "(" + Highlights.TopCountry.Country + ")" );
-                    $("#HighlightsTopDevice").html(convertToInternationalCurrencySystem(Highlights.TopDevice.Views) + "(" + Highlights.TopDevice.Device + ")" );
-                    $("#HighlightsTopPlatform").html(convertToInternationalCurrencySystem(Highlights.TopPlatform.Views) + "(" + Highlights.TopPlatform.Platform + ")"  );
-                    $("#HighlightsTrafficSource").html(convertToInternationalCurrencySystem(Highlights.TrafficSource.Views) + "(" + Highlights.TrafficSource.Source + ")"  );
-                    $("#HighlightsTopSocialMedia").html(convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares) + "(" + Highlights.SocialMediaTrafficSource.Source + ")" );
+                    $("#HighlightsTopCountry").html(convertToInternationalCurrencySystem(Highlights.TopCountry.Views) > 0 ? convertToInternationalCurrencySystem(Highlights.TopCountry.Views) + " (" + Highlights.TopCountry.Country + ")" : "N/A" );
+                    $("#HighlightsTopDevice").html(convertToInternationalCurrencySystem(Highlights.TopDevice.Views) + " (" + Highlights.TopDevice.Device + ")" );
+                    $("#HighlightsTopPlatform").html(convertToInternationalCurrencySystem(Highlights.TopPlatform.Views) + " (" + Highlights.TopPlatform.Platform + ")"  );
+                    $("#HighlightsTrafficSource").html(convertToInternationalCurrencySystem(Highlights.TrafficSource.Views) + " (" + Highlights.TrafficSource.Source + ")"  );
+                    $("#HighlightsTopSocialMedia").html(convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares) + " (" + Highlights.SocialMediaTrafficSource.Source + ")" );
                     // $("#HighlightsSubsVsNonSubs").html();
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
