@@ -221,11 +221,11 @@
                     $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
                     $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
                     $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
-                    $("#HighlightsTopCountry").html(Highlights.TopCountry.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TopCountry.Views) + " (" + Highlights.TopCountry.Country + ")" : "N/A" );
-                    $("#HighlightsTopDevice").html(convertToInternationalCurrencySystem(Highlights.TopDevice.Views) + " (" + Highlights.TopDevice.Device + ")" );
-                    $("#HighlightsTopPlatform").html(convertToInternationalCurrencySystem(Highlights.TopPlatform.Views) + " (" + Highlights.TopPlatform.Platform + ")"  );
-                    $("#HighlightsTrafficSource").html(convertToInternationalCurrencySystem(Highlights.TrafficSource.Views) + " (" + Highlights.TrafficSource.Source + ")"  );
-                    $("#HighlightsTopSocialMedia").html(convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares) + " (" + Highlights.SocialMediaTrafficSource.Source + ")" );
+                    $("#HighlightsTopCountry").html(Highlights.TopCountry.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TopCountry.Views) + " (" + Highlights.TopCountry.Country + ")" : "N/A");
+                    $("#HighlightsTopDevice").html(Highlights.TopDevice.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TopDevice.Views) + " (" + Highlights.TopDevice.Device + ")" : "N/A");
+                    $("#HighlightsTopPlatform").html(Highlights.TopPlatform.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TopPlatform.Views) + " (" + Highlights.TopPlatform.Platform + ")" : "N/A");
+                    $("#HighlightsTrafficSource").html(Highlights.TrafficSource.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TrafficSource.Views) + " (" + Highlights.TrafficSource.Source + ")" : "N/A");
+                    $("#HighlightsTopSocialMedia").html(Highlights.SocialMediaTrafficSource.Shares > 0 ? convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares) + " (" + Highlights.SocialMediaTrafficSource.Source + ")" : "N/A" );
                     // $("#HighlightsSubsVsNonSubs").html();
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
