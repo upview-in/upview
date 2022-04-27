@@ -55,7 +55,12 @@ use Illuminate\Support\Facades\Route;
 //website Route
 Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function () {
     Route::get('/', [MainSiteController::class, 'index'])->name('index');
-    Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy_policy');
+    Route::get('/about', [MainSiteController::class, 'about'])->name('about');
+    Route::get('/features', [MainSiteController::class, 'features'])->name('features');
+    Route::get('/pricing', [MainSiteController::class, 'pricing'])->name('pricing');
+    Route::get('/contact', [MainSiteController::class, 'contact'])->name('contact');
+
+    Route::get('/privacy-policy', [MainSiteController::class, 'showPrivacyPolicy'])->name('privacy-policy');
     Route::post('/contact-us', [MainSiteController::class, 'contactUs'])->name('contact_us');
 });
 
