@@ -15,27 +15,27 @@
 
 
     <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap/css/bootstrap.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/animate/animate.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/animate/custom-animate.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/fontawesome/css/all.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/jarallax/jarallax.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.pips.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/odometer/odometer.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/swiper/swiper.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/mibooz-icons/style.css') }}">
-    <link rel=" stylesheet" href="{{ asset('main/vendors/tiny-slider/tiny-slider.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/the-sayinistic-font/stylesheet.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.carousel.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.theme.default.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/bxslider/jquery.bxslider.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/bootstrap-select/css/bootstrap-select.min.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/vendors/jquery-ui/jquery-ui.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/animate/animate.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/animate/custom-animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/fontawesome/css/all.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/jarallax/jarallax.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.pips.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/odometer/odometer.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/swiper/swiper.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/mibooz-icons/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/vendors/tiny-slider/tiny-slider.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/the-sayinistic-fontstylesheet.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.theme.default.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/bxslider/jquery.bxslider.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap-select/css/bootstrap-select.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-ui/jquery-ui.css') }}" />
 
     <!-- template styles -->
-    <link rel=" stylesheet" href="{{ asset('main/css/mibooz.css') }}" />
-    <link rel=" stylesheet" href="{{ asset('main/css/mibooz-responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/css/mibooz.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/css/mibooz-responsive.css') }}" />
 </head>
 
 <body>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
-                            <a href="javascript:void();" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
 
                     </div>
@@ -112,7 +112,7 @@
                                     POWERFUL & RELIABLE</h2>
                                 <div class="main-slider-two__btn-video wow fadeInUp" data-wow-duration="2000ms">
                                     <div class="main-slider-two__btn">
-                                        <a href="features.html" class="thm-btn">Know More</a>
+                                        <a href="{{ route('main.features') }}" class="thm-btn">Know More</a>
                                     </div>
 
                                 </div>
@@ -251,7 +251,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a href="features.html" class="thm-btn welcome-two__btn">Discover More</a>
+                            <a href="{{ route('main.features') }}" class="thm-btn welcome-two__btn">Discover More</a>
                         </div>
                     </div>
                 </div>

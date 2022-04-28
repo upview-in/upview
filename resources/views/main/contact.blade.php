@@ -73,7 +73,7 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
-                            <a href="javascript:void();" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
         <!--Google Map Start-->
         <section class="contcat-page-google-map">
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160956663!2d72.74110228897307!3d19.08219784134369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1650522602268!5m2!1sen!2sin" class="contact-page-google-map__one" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.496550277191!2d72.84424901529549!3d19.173502653881936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b73af6b128cb%3A0x1d24311954e4e8e8!2sWorkafella%20Goregaon%20-%20Coworking%20Space%20in%20Mumbai!5e0!3m2!1sen!2sin!4v1651123643699!5m2!1sen!2sin" title="" class="contact-page-google-map__one" allowfullscreen></iframe>
 
         </section>
         <!--Google Map End-->

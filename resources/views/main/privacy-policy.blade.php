@@ -73,7 +73,7 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
-                            <a href="javascript:void();" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
                     </div>
                 </div>
