@@ -41,7 +41,7 @@ class MainSiteController extends Controller
         $contact->subject = $request->subject;
         $contact->message = $request->message;
         $contact->save();
-        return redirect()->back()->with('message2', 'Thank-You! Someone from Upview will contact you in 48 hours.mongo');
+        return redirect()->back()->with('message2', 'Thank-You! Someone from Upview will contact you in 48 hours.');
     }
 
     public function showPrivacyPolicy()

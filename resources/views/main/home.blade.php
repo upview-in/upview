@@ -73,10 +73,10 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
-                            <a href="https://{{ config('app.domains.app') }}/login" class="thm-btn welcome-two__btn">Login</a>
+                            <a href="{{ route('login') }}" class="thm-btn welcome-two__btn">Login</a>
                         </div>
                         <div class="main-menu-wrapper__call">
-                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <a href="{{ route('register') }}" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
 
                     </div>
