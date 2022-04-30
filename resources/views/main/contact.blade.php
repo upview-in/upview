@@ -73,6 +73,9 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
+                            <a href="https://{{ config('app.domains.app') }}/login" class="thm-btn welcome-two__btn">Login</a>
+                        </div>
+                        <div class="main-menu-wrapper__call">
                             <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
                     </div>
@@ -113,7 +116,7 @@
                         <!--Location Single-->
                         <div class="location__single">
                             <h3 class="location__title">address</h3>
-                            <p class="location__text">Mumbai</p>
+                            <p class="location__text">Workafella Goregaon AK Estate, Off Veer Savarkar Flyover, Besides Radisson Blu Hotel, SV Rd, Goregaon West, Mumbai, Maharashtra 400062</p>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4">
@@ -148,33 +151,64 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="contact-page__form">
-                            <form action="{{ asset('main/inc/sendemail.php') }}" class="comment-one__form contact-form-validated" novalidate="novalidate">
+                            <form method="POST" action="{{ route('main.contact-us') }}" class="contact-form" novalidate="novalidate">
+                                @if(session()->get('message2'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong> {{ session()->get('message2') }} </strong>
+                                </div>
+                                @endif
+                                @csrf
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="text" placeholder="Your name" name="name">
+                                            <input type="text" id="name" name="name" :value="old('name')" required autofocus placeholder="Your name">
                                         </div>
+                                        @error('name')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="email" placeholder="Email address" name="email">
+                                            <input type="email" placeholder="Email address" id="email" name="email" :value="old('email')" required autofocus>
                                         </div>
+                                        @error('email')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="text" placeholder="Phone" name="phone">
+                                            <input type="text" placeholder="Phone" id="mobile_number" name="mobile_number" :value="old('mobile_number')" required autofocus>
                                         </div>
+                                        @error('mobile_number')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="email" placeholder="Subject" name="subject">
+                                            <input type="email" placeholder="Subject" id="subject" name="subject" :value="old('subject')" required autofocus>
                                         </div>
+                                        @error('subject')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="comment-form__input-box">
-                                            <textarea name="message" placeholder="Write message"></textarea>
+                                            <textarea placeholder="Write message" id="message" name="message" :value="old('message')" required autofocus></textarea>
+                                            @error('message')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <button type="submit" class="thm-btn comment-form__btn">send a message</button>
                                     </div>

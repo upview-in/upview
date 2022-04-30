@@ -61,7 +61,7 @@ Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function
         Route::get('/pricing', 'pricing')->name('pricing');
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/privacy-policy', 'showPrivacyPolicy')->name('privacy-policy');
-        Route::get('/contact-us', 'contactUs')->name('contact-us');
+        Route::post('/contact-us', 'contactUs')->name('contact-us');
     });
 });
 
