@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'companyName' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::min(8)],
             'mobile_number' => ['required', 'phone'],
@@ -42,6 +43,7 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'companyName' => $request->companyName,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'mobile_number' =>  $request->mobile_number,

@@ -76,7 +76,10 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
-                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <a href="{{ route('login') }}" class="thm-btn welcome-two__btn">Login</a>
+                        </div>
+                        <div class="main-menu-wrapper__call">
+                            <a href="{{ route('register') }}" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
 
                     </div>
@@ -103,25 +106,26 @@
 
         <!--About Page Start-->
         <section class="about-page price-page">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-
-
-                    <div class="col-xl-4 p-0">
-
+                    <div class="col-md-3 p-2">
                         <div class="price-box">
-                            <h5>Silver Package</h5>
+                            <h5>
+                                Social Media<br />
+                                Management
+                            </h5>
                             <div class="price">
-                                <span class="currency"><i class="fa fa-rupee-sign"></i></span>
-                                <span class="value">500</span>
+                                <span class="currency"><i class="fa fa-dollar-sign"></i></span>
+                                <span class="value">25</span>
                             </div>
-                            <ul class="list-unstyled why-choose-one__points">
+                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Buy Now</a>
+                            <ul class="list-unstyled why-choose-one__points mt-3">
                                 <li>
                                     <div class="icon">
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>Nsectetur cing elit Nsectetur cing elit Nsectetur cing elit</p>
+                                        <p>YouTube & Facebook Analysis</p>
                                     </div>
                                 </li>
                                 <li>
@@ -129,7 +133,7 @@
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>Suspe ndisse suscip sagittis leo</p>
+                                        <p>Audience Insights</p>
                                     </div>
                                 </li>
                                 <li>
@@ -137,7 +141,7 @@
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>Entum estib dignissim posuere</p>
+                                        <p>Market Insights</p>
                                     </div>
                                 </li>
                                 <li>
@@ -145,88 +149,47 @@
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>If you are going to use a pass</p>
+                                        <p>Channel & Video Insights</p>
                                     </div>
                                 </li>
-
-                                <a href="javascript:void();" class="thm-btn mt-3 welcome-two__btn">Free Demo</a>
-
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Post Management</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Post Scheduling & Monitoring</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
-
-
-
                     </div>
-                    <div class="col-xl-4 p-0">
 
-                        <div class="price-box featured">
-                            <h5>Gold Package</h5>
-                            <div class="price">
-                                <span class="currency"><i class="fa fa-rupee-sign"></i></span>
-                                <span class="value">3,000</span>
-                            </div>
-                            <ul class="list-unstyled why-choose-one__points">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Nsectetur cing elit Nsectetur cing elit Nsectetur cing elit</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Suspe ndisse suscip sagittis leo</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Entum estib dignissim posuere</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>If you are going to use a pass</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Entum estib dignissim posuere</p>
-                                    </div>
-                                </li>
-                                <a href="javascript:void();" class="thm-btn2 mt-3 welcome-two__btn">Free Demo</a>
-
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-xl-4 p-0">
-
+                    <div class="col-md-3 p-2">
                         <div class="price-box">
-                            <h5>Platinum Package</h5>
+                            <h5>
+                                Social Listening <br />
+                                Starter
+                            </h5>
                             <div class="price">
-                                <span class="currency"><i class="fa fa-rupee-sign"></i></span>
-                                <span class="value">6,000</span>
+                                <span class="currency"><i class="fa fa-dollar-sign"></i></span>
+                                <span class="value">54</span>
                             </div>
-                            <ul class="list-unstyled why-choose-one__points">
+                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Buy Now</a>
+                            <ul class="list-unstyled why-choose-one__points mt-3">
                                 <li>
                                     <div class="icon">
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>Nsectetur cing elit Nsectetur cing elit Nsectetur cing elit</p>
+                                        <p>YouTube & Facebook Analysis</p>
                                     </div>
                                 </li>
                                 <li>
@@ -234,7 +197,7 @@
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>Suspe ndisse suscip sagittis leo</p>
+                                        <p>Audience Insights</p>
                                     </div>
                                 </li>
                                 <li>
@@ -242,7 +205,7 @@
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>Entum estib dignissim posuere</p>
+                                        <p>Market Insights</p>
                                     </div>
                                 </li>
                                 <li>
@@ -250,15 +213,240 @@
                                         <span class="icon-check"></span>
                                     </div>
                                     <div class="text">
-                                        <p>If you are going to use a pass</p>
+                                        <p>Channel & Video Insights</p>
                                     </div>
                                 </li>
-                                <a href="javascript:void();" class="thm-btn mt-3 welcome-two__btn">Free Demo</a>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>2 Topics to monitor</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>30,000 New Mentions/Mo.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>5,000 Stored Metnions/Mo.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Boolean Search</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Data Export PDF HTML ( Add on at $10)</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
+                    </div>
 
+                    <div class="col-md-3 p-2">
+                        <div class="price-box">
+                            <h5>
+                                Social Listening <br />
+                                Pro
+                            </h5>
+                            <div class="price">
+                                <span class="currency"><i class="fa fa-dollar-sign"></i></span>
+                                <span class="value">94</span>
+                            </div>
+                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Buy Now</a>
 
+                            <ul class="list-unstyled why-choose-one__points mt-3">
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>YouTube & Facebook Analysis</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Audience Insights</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Market Insights</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Channel & Video Insights</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>5 Topics to monitor</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>1,00,000 New Mentions/Mo.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>10,000 Stored Metnions/Mo.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Boolean Search</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Data Export PDF HTML (Add on at $20)</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
+                    <div class="col-md-3 p-2">
+                        <div class="price-box">
+                            <h5>
+                                Social Enterprise <br />
+                                plan
+                            </h5>
+                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Get A Quote</a>
+                            <ul class="list-unstyled why-choose-one__points mt-3">
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>YouTube & Facebook Analysis</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Audience Insights</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Market Insights</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Channel & Video Insights</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Custom Topics to monitor</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Upto 1,00,000 New Mentions/Mo.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Upto 10,000 Stored Metnions/Mo.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Boolean Search</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Data Export PDF HTML</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Post Management</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-check"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Post Scheduling & Monitoring</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

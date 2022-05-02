@@ -73,7 +73,10 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
-                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <a href="{{ route('login') }}" class="thm-btn welcome-two__btn">Login</a>
+                        </div>
+                        <div class="main-menu-wrapper__call">
+                            <a href="{{ route('register') }}" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
 
                     </div>
@@ -100,9 +103,11 @@
                 <div class="main-slider-two-box-9"></div>
                 <div class="main-slider-two-box-10"></div>
                 <div class="main-slider__social">
-                    <a href="https://www.facebook.com/upviewIndia/" target="_blank">facebook</a>
-                    <a href="javascript:void(0);">twitter</a>
-                    <a href="https://www.instagram.com/upviewindia/" target="_blank">instagram</a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/upviewindia/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="container">
                     <div class="row align-items-center">

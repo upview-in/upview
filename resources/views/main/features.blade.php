@@ -75,7 +75,10 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__call">
-                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <a href="{{ route('login') }}" class="thm-btn welcome-two__btn">Login</a>
+                        </div>
+                        <div class="main-menu-wrapper__call">
+                            <a href="{{ route('register') }}" class="thm-btn welcome-two__btn">Free Demo</a>
                         </div>
 
                     </div>
@@ -108,135 +111,119 @@
                     <span class="section-title__tagline">check our Features</span>
                     <h2 class="section-title__title">what we’re offering</h2>
                 </div>
-
-
-
-
-
                 <div class="every-stage__tab-box tabs-box">
                     <ul class="tab-buttons clearfix list-unstyled">
                         <li data-tab="#mission" class="tab-btn active-btn"><span>Social Media Analytics</span></li>
                         <li data-tab="#vision" class="tab-btn"><span>Social Listening</span></li>
-
                     </ul>
                     <div class="tabs-content">
                         <!--tab-->
                         <div class="tab active-tab" id="mission">
                             <div class="tabs-content__inner">
-
-
                                 <div class="services-three__top">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
-
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/analytics.png') }}" height="100"></span>
                                                 </div>
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Youtube & Facebook Analysis</a></h3>
-                                                <p class="services-three__text">Analyze and check what is working for you and what is not working. </p>
-
+                                                <h3 class="services-three__title"><a href="#">Youtube & Facebook
+                                                        Analysis</a></h3>
+                                                <p class="services-three__text">Analyze and check what is working for
+                                                    you and what is not working. </p>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/audience.png') }}" height="100"></span>
+                                                </div>
+                                                <h3 class="services-three__title"><a href="#">Audience Insights</a></h3>
+                                                <p class="services-three__text"> With Upview, get the most relevant and
+                                                    non-manipulated data regarding your audience. This insight can
+                                                    easily help you tweak your content for your audience.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
+                                            <!--Services Three Single-->
+                                            <div class="services-three__single">
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/post.png') }}" height="100"></span>
+                                                </div>
+                                                <h3 class="services-three__title"><a href="#">Publish,Schedule, Draft
+                                                        and Queue Posts</a></h3>
+                                                <p class="services-three__text">With Upview, you can not only easily
+                                                    publish & Schedule your posts but can keep your posts as Drafts or
+                                                    in Queue in case you want to get back to it and make some changes.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
+                                            <!--Services Three Single-->
+                                            <div class="services-three__single">
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/schedule.png') }}" height="100"></span>
+                                                </div>
+                                                <h3 class="services-three__title">
+                                                    <a href="#">Scheduling for optimal send time</a>
+                                                </h3>
+                                                <p class="services-three__text">Upview provides you with the best time
+                                                    frames for you to publish your posts so that you can get the most
+                                                    amount of reach on your posts.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
+                                            <!--Services Three Single-->
+                                            <div class="services-three__single">
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/paid.png') }}" height="100"></span>
 
                                                 </div>
 
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Audience Insights</a></h3>
-                                                <p class="services-three__text"> With Upview, get the most relevant and non-manipulated data regarding your audience. This insight can easily help you tweak your content for your audience.</p>
+                                                <h3 class="services-three__title"><a href="#">Paid social reporting for
+                                                        Facebook, Instagram, Twitter and LinkedIn</a></h3>
+                                                <p class="services-three__text">Get, analyze and evaluate the best
+                                                    strategy on your paid social media posts. Strategize and earn the
+                                                    most with the help of Paid Social Reports.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/report.png') }}" height="100"></span>
 
                                                 </div>
 
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Competitor Analysis</a></h3>
-                                                <p class="services-three__text">Monitor and analyze what your competitors are doing to determine how to keep ahead of them.</p>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
-                                            <!--Services Three Single-->
-                                            <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
-
-                                                </div>
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Publish,Schedule, Draft and Queue Posts</a></h3>
-                                                <p class="services-three__text">With Upview, you can not only easily publish & Schedule your posts but can keep your posts as Drafts or in Queue in case you want to get back to it and make some changes.</p>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
-                                            <!--Services Three Single-->
-                                            <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
-
-                                                </div>
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Scheduling for optimal send time</a></h3>
-                                                <p class="services-three__text">Upview provides you with the best time frames for you to publish your posts so that you can get the most amount of reach on your posts.</p>
+                                                <h3 class="services-three__title"><a href="#">Reporting</a></h3>
+                                                <p class="services-three__text">In a few steps, access the complete
+                                                    account report to analyze and strategize the perfect plan for the
+                                                    next month. Strategizing is this easy with Upview!</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/profile-reporting.png') }}" height="100"></span>
 
                                                 </div>
 
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Paid social reporting for Facebook, Instagram, Twitter and LinkedIn</a></h3>
-                                                <p class="services-three__text">Get, analyze and evaluate the best strategy on your paid social media posts. Strategize and earn the most with the help of Paid Social Reports.</p>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
-                                            <!--Services Three Single-->
-                                            <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
-
-                                                </div>
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Reporting</a></h3>
-                                                <p class="services-three__text">In a few steps, access the complete account report to analyze and strategize the perfect plan for the next month. Strategizing is this easy with Upview!</p>
+                                                <h3 class="services-three__title"><a href="#">Group, Profile and
+                                                        post-level reporting</a></h3>
+                                                <p class="services-three__text">Not only can you review your profile
+                                                    report but you can also get a group & a post level report. Easily
+                                                    access each post report and strategize the next plan!</p>
 
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
-                                            <!--Services Three Single-->
-                                            <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
 
-                                                </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Group, Profile and post-level reporting</a></h3>
-                                                <p class="services-three__text">Not only can you review your profile report but you can also get a group & a post level report. Easily access each post report and strategize the next plan!</p>
-
-                                            </div>
-                                        </div>
 
 
                                     </div>
@@ -254,54 +241,46 @@
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/content-strategy.png') }}" height="100"></span>
 
                                                 </div>
 
-
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Audience Insights</a></h3>
-                                                <p class="services-three__text"> With Upview, get the most relevant and non-manipulated data regarding your audience. This insight can easily help you tweak your content for your audience.</p>
+                                                <h3 class="services-three__title"><a href="#">Content Strategy</a></h3>
+                                                <p class="services-three__text">Prepare the best content for your social
+                                                    media posting and increase the reach of your profiles with the help
+                                                    of Upview. Strategizing your content as per your audience has never
+                                                    been this easy!</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/find-influencer.png') }}" height="100"></span>
 
                                                 </div>
-
-                                                <h3 class="services-three__title"><a href="javascript:void();">Content Strategy</a></h3>
-                                                <p class="services-three__text">Prepare the best content for your social media posting and increase the reach of your profiles with the help of Upview. Strategizing your content as per your audience has never been this easy!</p>
+                                                <h3 class="services-three__title"><a href="#">Find Influencers</a></h3>
+                                                <p class="services-three__text">With Upview, easily find the top
+                                                    influencers across the different social media platforms.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
-
-                                                </div>
-                                                <h3 class="services-three__title"><a href="javascript:void();">Find Influencers</a></h3>
-                                                <p class="services-three__text">With Upview, easily find the top influencers across the different social media platforms.</p>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
-                                            <!--Services Three Single-->
-                                            <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/evaluation.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Influencer Evaluation</a></h3>
-                                                <p class="services-three__text">Upview's thorough Influencer Evaluation is the greatest way to discover the ideal influencer to connect with for your product promotions or for finding the best influencer to collaborate with!</p>
+                                                <h3 class="services-three__title"><a href="#">Influencer Evaluation</a>
+                                                </h3>
+                                                <p class="services-three__text">Upview's thorough Influencer Evaluation
+                                                    is the greatest way to discover the ideal influencer to connect with
+                                                    for your product promotions or for finding the best influencer to
+                                                    collaborate with!</p>
 
                                             </div>
                                         </div>
@@ -309,13 +288,15 @@
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/influencer-listening.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Influencer Listening</a></h3>
-                                                <p class="services-three__text">Check which markets the influencer is influencing the most!</p>
+                                                <h3 class="services-three__title"><a href="#">Influencer Listening</a>
+                                                </h3>
+                                                <p class="services-three__text">Check which markets the influencer is
+                                                    influencing the most!</p>
 
                                             </div>
                                         </div>
@@ -323,13 +304,15 @@
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/compititor.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Competitor Analysis</a></h3>
-                                                <p class="services-three__text">Monitor and analyze what your competitors are doing to determine how to keep ahead of them.</p>
+                                                <h3 class="services-three__title"><a href="#">Competitor Analysis</a>
+                                                </h3>
+                                                <p class="services-three__text">Monitor and analyze what your
+                                                    competitors are doing to determine how to keep ahead of them.</p>
 
                                             </div>
                                         </div>
@@ -337,13 +320,17 @@
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/sentiment.png') }}" height="100"></span>
 
                                                 </div>
-                                                <h3 class="services-three__title"><a href="javascript:void();">Sentiment & Audience Interaction Analysis</a></h3>
-                                                <p class="services-three__text">With Upview’s detailed analysis, find out what your audience is appreciating and feeling. Increase your reach many folds by understanding, improving and tweaking your content accordingly.</p>
+
+                                                <h3 class="services-three__title"><a href="#">Sentiment & Audience
+                                                        Interaction Analysis</a></h3>
+                                                <p class="services-three__text">With Upview’s detailed analysis, find
+                                                    out what your audience is appreciating and feeling. Increase your
+                                                    reach many folds by understanding, improving and tweaking your
+                                                    content accordingly.</p>
 
                                             </div>
                                         </div>
@@ -352,195 +339,233 @@
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/report-monitoring.png') }}" height="100"></span>
 
                                                 </div>
-                                                <h3 class="services-three__title"><a href="javascript:void();">Reporting</a></h3>
-                                                <p class="services-three__text">In a few steps, access the complete account report to analyze and strategize the perfect plan for the next month. Strategizing is this easy with Upview!</p>
+                                                <h3 class="services-three__title"><a href="#">Reporting</a></h3>
+                                                <p class="services-three__text">In a few steps, access the complete
+                                                    account report to analyze and strategize the perfect plan for the
+                                                    next month. Strategizing is this easy with Upview!</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/follower.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Follower Quality Analysis</a></h3>
-                                                <p class="services-three__text">With an increase in the number of fake accounts, bots, likes & comments, protect yourself with Upview’s thorough Follower Quality Analysis.</p>
+                                                <h3 class="services-three__title"><a href="#">Follower Quality
+                                                        Analysis</a></h3>
+                                                <p class="services-three__text">With an increase in the number of fake
+                                                    accounts, bots, likes & comments, protect yourself with Upview’s
+                                                    thorough Follower Quality Analysis.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/location-monitor.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Keyword and location monitoring</a></h3>
-                                                <p class="services-three__text">Keywords & Location are two important pillars of social media marketing and with Upview, you get the most authenticate Keyword & Location Marketing.</p>
+                                                <h3 class="services-three__title"><a href="#">Keyword and location
+                                                        monitoring</a></h3>
+                                                <p class="services-three__text">Keywords & Location are two important
+                                                    pillars of social media marketing and with Upview, you get the most
+                                                    authenticate Keyword & Location Marketing.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/trend-analysis.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Trend analysis for twitter keywords and hashtags</a></h3>
-                                                <p class="services-three__text">While Trend Analysis is available for all platforms in our tool but since Twitter is built around these algorithms, we have a dedicated module for Twitter Trends, Keywords, and Hashtags.</p>
+                                                <h3 class="services-three__title"><a href="#">Trend analysis for twitter
+                                                        keywords and hashtags</a></h3>
+                                                <p class="services-three__text">While Trend Analysis is available for
+                                                    all platforms in our tool but since Twitter is built around these
+                                                    algorithms, we have a dedicated module for Twitter Trends, Keywords,
+                                                    and Hashtags.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/paid-promotion.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Paid social reporting for Facebook, Instagram, Twitter and LinkedIn</a></h3>
-                                                <p class="services-three__text">Get, analyze and evaluate the best strategy on your paid social media posts. Strategize and earn the most with the help of Paid Social Reports.</p>
+                                                <h3 class="services-three__title"><a href="#">Paid social reporting for
+                                                        Facebook, Instagram, Twitter and LinkedIn</a></h3>
+                                                <p class="services-three__text">Get, analyze and evaluate the best
+                                                    strategy on your paid social media posts. Strategize and earn the
+                                                    most with the help of Paid Social Reports.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/support.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Help Desk CRM and Social Commerce Integration</a></h3>
-                                                <p class="services-three__text">Our help-desk CRM will help you through any problems you might be facing, while you can obviously reach us anytime through any of our social media channels.</p>
+                                                <h3 class="services-three__title"><a href="#">Help Desk CRM and Social
+                                                        Commerce Integration</a></h3>
+                                                <p class="services-three__text">Our help-desk CRM will help you through
+                                                    any problems you might be facing, while you can obviously reach us
+                                                    anytime through any of our social media channels.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/brand-report.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Brand Reporting</a></h3>
-                                                <p class="services-three__text">Create in-depth brand reports in a few clicks for your clients. And the best of it all? Brand Reporting can be completely white-labelled.</p>
+                                                <h3 class="services-three__title"><a href="#">Brand Reporting</a></h3>
+                                                <p class="services-three__text">Create in-depth brand reports in a few
+                                                    clicks for your clients. And the best of it all? Brand Reporting can
+                                                    be completely white-labelled.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/mention-reporting.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Hashtag Reporting</a></h3>
-                                                <p class="services-three__text">Track and find the best Hashtags to boost your reach with Upview's most accurate features.</p>
+                                                <h3 class="services-three__title"><a href="#">Hashtag Reporting</a></h3>
+                                                <p class="services-three__text">Track and find the best Hashtags to
+                                                    boost your reach with Upview's most accurate features.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/influencer-tracking.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Influencers Tracking and Analytics</a></h3>
-                                                <p class="services-three__text">With Upview’s Influencer Tracking & Analytics module, easily track what the top Influencers are promoting and the impact their social media posts created in the market.</p>
+                                                <h3 class="services-three__title"><a href="#">Influencers Tracking and
+                                                        Analytics</a></h3>
+                                                <p class="services-three__text">With Upview’s Influencer Tracking &
+                                                    Analytics module, easily track what the top Influencers are
+                                                    promoting and the impact their social media posts created in the
+                                                    market.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/brand-monitor.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Brand Monitoring</a></h3>
-                                                <p class="services-three__text">Easily manage and monitor the social media accounts of your clients with in-depth analytics and reports you get on Upview.</p>
+                                                <h3 class="services-three__title"><a href="#">Brand Monitoring</a></h3>
+                                                <p class="services-three__text">Easily manage and monitor the social
+                                                    media accounts of your clients with in-depth analytics and reports
+                                                    you get on Upview.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/content-analysis.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Content Analysis</a></h3>
-                                                <p class="services-three__text">With so many social media platforms out there in the market, we need specially curated content for each of them. With Upview get the best content analysis in just a few clicks!</p>
+                                                <h3 class="services-three__title"><a href="#">Content Analysis</a></h3>
+                                                <p class="services-three__text">With so many social media platforms out
+                                                    there in the market, we need specially curated content for each of
+                                                    them. With Upview get the best content analysis in just a few
+                                                    clicks!</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/campaign-strategy.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Campaign Strategy</a></h3>
-                                                <p class="services-three__text">Equipped with the in-depth reports and analysis from Upview, it becomes easier for you to think and strategize the right path for your or your client’s brand.</p>
+                                                <h3 class="services-three__title"><a href="#">Campaign Strategy</a></h3>
+                                                <p class="services-three__text">Equipped with the in-depth reports and
+                                                    analysis from Upview, it becomes easier for you to think and
+                                                    strategize the right path for your or your client’s brand.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/compitition-intelligence.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Competitor Intelligence</a></h3>
-                                                <p class="services-three__text">Get the most real and accurate data analysis with Upview's qualitative Market Intelligence and arm yourself to effortlessly surpass the competition!</p>
+                                                <h3 class="services-three__title"><a href="#">Competitor
+                                                        Intelligence</a></h3>
+                                                <p class="services-three__text">Get the most real and accurate data
+                                                    analysis with Upview's qualitative Market Intelligence and arm
+                                                    yourself to effortlessly surpass the competition!</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/content-marketing.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Content Marketing</a></h3>
-                                                <p class="services-three__text">Create the best content such as videos, posts, or blogs as per their intended target audience and boost your profile/brand.</p>
+                                                <h3 class="services-three__title"><a href="#">Content Marketing</a></h3>
+                                                <p class="services-three__text">Create the best content such as videos,
+                                                    posts, or blogs as per their intended target audience and boost your
+                                                    profile/brand.</p>
 
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
                                             <!--Services Three Single-->
                                             <div class="services-three__single">
-                                                <div class="services-three_icon">
-                                                    <span class="fa fa-clipboard-list"></span>
+                                                <div>
+                                                    <span><img src="{{ asset('main/images/features/trend-report.png') }}" height="100"></span>
 
                                                 </div>
 
-                                                <h3 class="services-three__title"><a href="javascript:void();">Trend analysis</a></h3>
-                                                <p class="services-three__text">Get an in-depth analysis of all the ongoing trends across all the platforms. With Upview’s factual analysis, find the best trends to boost your reach.</p>
+                                                <h3 class="services-three__title"><a href="#">Trend analysis</a></h3>
+                                                <p class="services-three__text">Get an in-depth analysis of all the
+                                                    ongoing trends across all the platforms. With Upview’s factual
+                                                    analysis, find the best trends to boost your reach.</p>
 
                                             </div>
                                         </div>
@@ -553,6 +578,10 @@
                             </div>
                         </div>
                         <!--tab-->
+
+
+                        <div class="cta-one__box-1 grey"></div>
+                        <div class="cta-one__box-2 grey1"></div>
 
                     </div>
                 </div>
