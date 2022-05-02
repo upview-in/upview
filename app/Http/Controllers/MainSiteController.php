@@ -35,11 +35,13 @@ class MainSiteController extends Controller
     public function contactUs(ContactUsRequest $request)
     {
         $contact = new ContactUs();
-        $contact->name = $request->txtname;
-        $contact->email = $request->txtemail;
-        $contact->message = $request->txtmessage;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->number = $request->mobile_number;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
         $contact->save();
-        return redirect(route('main.index'));
+        return redirect()->back()->with('message2', 'Thank-You! Someone from Upview will contact you in 48 hours.');
     }
 
     public function showPrivacyPolicy()

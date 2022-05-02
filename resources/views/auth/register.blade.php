@@ -26,6 +26,18 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label class="font-weight-semibold" for="companyName">{{ __('Company Name') }}:</label>
+                                        <div class="input-affix">
+                                            <em class="prefix-icon fas fa-building"></em>
+                                            <input type="text" class="form-control {{ $errors->has('companyName')?'is-invalid':'is-valid' }}" id="companyName" name="companyName" :value="old('companyName')" required autofocus placeholder="{{ __('companyName') }}">
+                                        </div>
+                                        @error('companyName')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
                                             <em class="prefix-icon fas fa-envelope"></em>

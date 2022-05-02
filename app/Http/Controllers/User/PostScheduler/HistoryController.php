@@ -13,6 +13,6 @@ class HistoryController extends Controller
     {
         $postHistory = PostHistory::with('profile')->where(['user_id' => Auth::id()])->get();
 
-        return view('user.post_scheduling.post_history', ['postHistory'=>$postHistory]);
+        return view('user.post.history', ['postHistory'=>$postHistory]);
     }
 }
