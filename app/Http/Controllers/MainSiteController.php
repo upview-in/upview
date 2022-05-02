@@ -41,7 +41,7 @@ class MainSiteController extends Controller
         $contact->subject = $request->subject;
         $contact->message = $request->message;
         $contact->save();
-        return redirect()->back()->with('message2', 'Thank-You! Someone from Upview will contact you in 48 hours.');
+        return redirect()->back()->with('message2', 'Awesome! Someone from team Upview will contact you soon');
     }
 
     public function showPrivacyPolicy()
