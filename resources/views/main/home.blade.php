@@ -887,6 +887,18 @@
     <script src="{{ asset('main/vendors/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('main/vendors/jquery-ui/jquery-ui.js') }}"></script>
     <script src="{{ asset('main/vendors/jquery-tilt/tilt.jquery.min.js') }}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GR19Q9R87T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GR19Q9R87T');
+    </script>
     <!-- template js -->
     <script src="{{ asset('main/js/mibooz.js') }}"></script>
 </body>

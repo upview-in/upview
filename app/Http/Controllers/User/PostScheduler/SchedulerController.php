@@ -80,6 +80,7 @@ class SchedulerController extends Controller
             $postData->type = 1;
             $postData->ayrId = $response['id'];
             $postData->ayrRefId = $response['refId'];
+            $postData->scheduledAt = $request->scheduleAt;
             $postData->postedBy = $request->postedBy;
             $postData->save();
         }
