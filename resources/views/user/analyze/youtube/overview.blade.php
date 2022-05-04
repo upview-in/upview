@@ -116,12 +116,12 @@
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
-            // 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            // 'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            // 'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            // 'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
-            // 'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
-            // 'Overall': [moment(), moment()],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+            'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
+            'Overall': [moment(), moment()],
         };
 
         $('#daterange').daterangepicker({
@@ -134,22 +134,22 @@
             __startDate = picker.startDate;
             __endDate = picker.endDate;
 
-            var timestamp = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
+            // var timestamp = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
 
-            if (__startDate < timestamp) {
-                alert("You can't select morethen 30 days");
-                return;
-            }
+            // if (__startDate < timestamp) {
+            //     alert("You can't select morethen 30 days");
+            //     return;
+            // }
 
             if (__endDate . diff(__startDate, 'days') < 1) {
                 alert("Invalid range selected");
                 return;
             }
 
-            // if (__endDate.diff(__startDate, 'days') > 62) {
-            //     $("#GroupBy").prop('selectedIndex', 1);
-            //     GroupBy = $("#GroupBy").val();
-            // }
+            if (__endDate.diff(__startDate, 'days') > 62) {
+                $("#GroupBy").prop('selectedIndex', 1);
+                GroupBy = $("#GroupBy").val();
+            }
             loadAnalytics();
         });
 
@@ -171,7 +171,7 @@
                 success: function(response) {
                     let data = response.ChannelDetails;
 
-                    // $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(data.publishedAt), moment()];
+                    $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(data.publishedAt), moment()];
 
                     $("#c1ChannelProfileImage").attr('data-src', data.profileURL);
                     $("#c1ChannelProfileImage").attr('src', "{{ asset('images/others/loading.gif') }}");
@@ -369,14 +369,14 @@
             <div class="col-md-2 col-12">
                 <input class="form-control shadow" id="countryList" />
             </div>
-            <!-- <div class="col-md-auto col-12">
+            <div class="col-md-auto col-12">
                 <div class="form-group">
                     <select class="form-control shadow" id="GroupBy">
                         <option value="day" selected>Day</option>
                         <option value="month">Month</option>
                     </select>
                 </div>
-            </div> -->
+            </div>
             <div class="col-md-auto col-12">
                 <div class="form-group">
                     <div class="form-control shadow" id="daterange">
