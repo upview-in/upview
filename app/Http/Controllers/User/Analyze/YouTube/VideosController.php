@@ -85,7 +85,7 @@ class VideosController extends Controller
                 $tempArr[0] = $key;
 
                 // Set default 0
-                $tempArr[1] = $tempArr[2] = 0;
+                $tempArr[2] = $tempArr[1] = 0;
 
                 foreach ($value as $___) {
                     if ($___[$indexGender] == 'male') {
