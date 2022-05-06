@@ -30,7 +30,7 @@ class SchedulerController extends Controller
             return response()->json(collect($response), 200);
         }
 
-        return view('user.post_scheduling.post_scheduling_main', ['userProfiles' => $userProfiles]);
+        return view('user.post.scheduling', ['userProfiles' => $userProfiles]);
     }
 
     public function uploadPostMedia(UploadMediaRequest $request)
@@ -80,6 +80,7 @@ class SchedulerController extends Controller
             $postData->type = 1;
             $postData->ayrId = $response['id'];
             $postData->ayrRefId = $response['refId'];
+            $postData->scheduledAt = $request->scheduleAt;
             $postData->postedBy = $request->postedBy;
             $postData->save();
         }

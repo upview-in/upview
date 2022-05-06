@@ -46,7 +46,7 @@ class OverviewController extends Controller
                         return response()->json(collect($data), 200);
                     }
 
-                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
                     break;
 
@@ -85,10 +85,9 @@ class OverviewController extends Controller
 
                             return response()->json(collect($data), 200);
                         }
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
-                            return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-
-                        break;
+                    break;
 
                 case 'PageInsights':
                     if ($request->has(['id'])) {
@@ -157,7 +156,7 @@ class OverviewController extends Controller
                             //     $_tempArr = array_insert($_tempArr, $value);
                             // }
                             $data['chartData']['page_impressions_by_age_gender_unique'] = $tempData;
-                            dd($tempData);
+
                             $tempData = [];
                             $tempData[] = ['Number', 'Impressions'];
                             foreach ($data['page_impressions_frequency_distribution']['data'] as $number=>$value) {
@@ -321,8 +320,7 @@ class OverviewController extends Controller
                     }
                 }
 
-                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
                     break;
 
                 case 'accountDetails':

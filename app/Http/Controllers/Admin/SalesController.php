@@ -10,7 +10,7 @@ class SalesController extends Controller
 {
     public function queries()
     {
-        $queries = ContactUs::all();
+        $queries = ContactUs::search()->paginate(10);
 
         return view('admin.sales.queries.index', compact('queries'));
     }

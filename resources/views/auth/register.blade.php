@@ -26,6 +26,18 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label class="font-weight-semibold" for="companyName">{{ __('Company Name') }}:</label>
+                                        <div class="input-affix">
+                                            <em class="prefix-icon fas fa-building"></em>
+                                            <input type="text" class="form-control {{ $errors->has('companyName')?'is-invalid':'is-valid' }}" id="companyName" name="companyName" :value="old('companyName')" required autofocus placeholder="{{ __('companyName') }}">
+                                        </div>
+                                        @error('companyName')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
                                             <em class="prefix-icon fas fa-envelope"></em>
@@ -50,7 +62,7 @@
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>
                                         <div class="input-affix m-b-10">
                                             <em class="prefix-icon fas fa-lock"></em>
-                                            <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="new-password" placeholder="{{ __('Password') }}">
+                                            <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'is-valid' }}" id="password" type="password" name="password" required autocomplete="off" placeholder="{{ __('Password') }}">
                                         </div>
                                         @error('password')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -62,7 +74,7 @@
                                         <label class="font-weight-semibold" for="password_confirmation">{{ __('Confirm Password') }}:</label>
                                         <div class="input-affix m-b-10">
                                             <em class="prefix-icon fas fa-lock"></em>
-                                            <input type="password" class="form-control {{ $errors->has('password_confirmation')?'is-invalid':'is-valid' }}" id="password_confirmation" type="password" name="password_confirmation" required placeholder="{{ __('Confirm Password') }}">
+                                            <input type="password" class="form-control {{ $errors->has('password_confirmation')?'is-invalid':'is-valid' }}" id="password_confirmation" type="password" name="password_confirmation" required autocomplete="off" placeholder="{{ __('Confirm Password') }}">
                                         </div>
                                         @error('password_confirmation')
                                         <span class="invalid-feedback d-block" role="alert">

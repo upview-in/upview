@@ -431,7 +431,6 @@
                             $("#fbPagePostsImpressionsNonViral").html(convertToInternationalCurrencySystem(data.page_posts_impressions_nonviral.data));
                             $("#fbPagePostImpressionsNonViralTooltip").attr('title', nl2br(data.page_posts_impressions_nonviral.desc));
 
-
                             var fanCountNet = (data.page_fan_adds.data) - (data.page_fan_removes.data);
                             if(fanCountNet <= 0) {
                                 $("#fbPageFansInsights").attr('class', 'font-weight-bold text-danger');
@@ -498,6 +497,27 @@
 
 
 
+                            //Charts
+
+
+                            //Country insights
+                            drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
+                                tooltip: { isHtml: true },
+                                colorAxis: { colors: ['#a6c5f7','#3277e6', '#075ce6'] }
+                            });
+                            $("#PageImpressionsByCountryChartTooltip").attr('title', nl2br(data.page_impressions_by_country_unique.desc));
+
+                            //Locale insights
+                            // drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_locale_unique, 'Bubble', {
+                            //     colorAxis: { colors: ['violet'] }
+                            // });
+                            // $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
+//                            drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
+  //                      tooltip: {
+    //                        isHtml: true
+      //                  }
+        //            });
+
                         }
 
                         __AC("FBPageInsights");
@@ -534,14 +554,14 @@
             </div>
         </div>
         <div class="card-header p-15 ml-3">
-           <label class="h3 m-0">Account Details</label>
+            <label class="h3 m-0">Account Details</label>
         </div>
         <div class="card shadow" id="ChannelMainDiv">
             <div class="row p-50">
                 <div class="col-md-2 col-12">
 
                     <a id="fbAccURL"><img class="rounded-circle lazyload" id="fbAccProfileImage" width="100%"
-                            height="auto"> </a>
+                            height="auto" alt="FB Profile Image"> </a>
                 </div>
                 <div class="col-md-10 col-12 pl-5">
                     <div class="row mt-4">
@@ -588,7 +608,7 @@
                     <div class="col-md-2 col-12">
 
                         <a id="fbPageURL"><img class="rounded-circle lazyload" id="fbPageProfileImage" width="100%"
-                                height="auto"> </a>
+                                height="auto" alt="Fb Page Image"> </a>
                     </div>
                     <div class="col-md-10 col-12 pl-5">
                         <div class="row mt-4">
@@ -667,157 +687,311 @@
                 </div>
             </div>
         </div>
+
         <div class="card shadow" id="FBPageInsights">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Page Insights</label>
+                <lable class="h3 m-0">Page Insights</lable>
             </div>
-             <div class="card-body">
-                <div class="row p-20">
-                    <div class="col-md-10 col-12 pl-5">
-                        <div class="row mt-4">
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red"><em class="far fa-id-card"></em> Total Page Actions</span><sup>
-                                <em id="fbPageActionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label id="fbPageTotalActions" class="font-weight-bold"></label>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="far fa-id-card"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Total Page Actions <sup><em id="fbPageActionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageTotalActions"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-handshake"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page User Engagements <sup><em id="fbPageEngagedUsersTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageUserEngagement"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-film"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Posts Engagements <sup><em id="fbPagePostEngagedTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPagePostsEngagement"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-chalkboard-teacher"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Consumptions <sup><em id="fbPageConsumptionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageConsumptions"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-map-marker-alt"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Total Page Location Checkins <sup><em id="fbPageCheckinTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageCheckin"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-map-pin"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Total Page Location Checkins (Mobile) <sup><em id="fbPageCheckinMobileTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageCheckinMobile"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-user-minus"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Total Negative Page Feedbacks <sup><em id="fbPageNegetiveFeedbacksTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageNegetiveFeedbacks"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-shoe-prints"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Total Page Impressions <sup><em id="fbPageImpressionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageImpressions"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-share-alt"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Impressions by going viral <sup><em id="fbPageImpressionsViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageImpressionsViral"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-thumbs-up"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Impressions without going viral <sup><em id="fbPageImpressionsNonViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h4>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageImpressionsNonViral"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="far fa-file-image"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Post Impressions <sup><em id="fbPagePostsImpressionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPagePostsImpressions"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-thumbs-up"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Posts Impressions without going viral <sup><em id="fbPagePostImpressionsNonViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPagePostsImpressionsNonViral"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-users"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Fans Net <sup><em id="fbPageFansTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <span class="m-b-0 font-weight-bold" id="fbPageFansInsights"></span><em id="fansGrowthIcon"></em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-video"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Video Views <sup><em id="fbPageVideoViewsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageVideoViews"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-file-video"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Complete 30 Sec Video Views <sup><em id="fbPageCompleteVideoViews30secTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageCompleteVideoViews30sec"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-file-video"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Complete 10 Sec Video Views <sup><em id="fbPageVideoViews10secTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageVideoViews10sec"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-user-plus"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Total Page Views <sup><em id="fbTotalPageViewsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbTotalPageViews"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-columns"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Page Content Activity <sup><em id="fbPageContentActivityTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup></h6>
+                                        <p class="m-b-0 font-weight-bold" id="fbPageContentActivity"></p>
+                                    </div>
+                                </div>
+                            </div>
+<<<<<<< HEAD:resources/views/user/analyze/facebook/overview.blade.php
 
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red"><em class="fas fa-handshake"></em> Page User Engagements</span><sup>
-                                <em id="fbPageEngagedUsersTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label id="fbPageUserEngagement" class="font-weight-bold"></label>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red"><em class="fas fa-film"></em> Page Posts Engagements</span><sup>
-                                <em id="fbPagePostEngagedTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label id="fbPagePostsEngagement" class="font-weight-bold"></label>
-
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-6 mb-2 mb-2">
-                                <span class="text-red"><em class="fas fa-chalkboard-teacher"></em> Page Consumptions</span><sup>
-                                <em id="fbPageConsumptionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label id="fbPageConsumptions" class="font-weight-bold"></label>
-                            </div>
-                            <div class="col-md-3 col-sm-4 mb-2">
-                                <span class="text-red"><em class="fas fa-map-marker-alt"></em> Total Page Location Checkins</span><sup>
-                                <em id="fbPageCheckinTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label id="fbPageCheckin" class="font-weight-bold"></label>
-                            </div>
-                            <div class="col-md-3 col-sm-4 mb-2">
-                                <span class="text-red"><em class="fas fa-map-pin"></em> Total Page Location Checkins (Mobile)</span><sup>
-                                <em id="fbPageCheckinMobileTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label id="fbPageCheckinMobile" class="font-weight-bold"></label>
-                            </div>
-                            <div class="col-md-3 col-sm-4 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-user-minus"></em> Total Negative Page Feedbacks</span><sup>
-                                <em id="fbPageNegetiveFeedbacksTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageNegetiveFeedbacks"   class="font-weight-bold"></label>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-shoe-prints"></em> Total Page Impressions</span><sup>
-                                <em id="fbPageImpressionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageImpressions"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-share-alt"></em> Page Impressions by going viral</span><sup>
-                                <em id="fbPageImpressionsViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageImpressionsViral"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-thumbs-up"></em> Page Impressions without going viral</span><sup>
-                                <em id="fbPageImpressionsNonViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageImpressionsNonViral"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="far fa-file-image"></em> Page Post Impressions</span><sup>
-                                <em id="fbPagePostsImpressionsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPagePostsImpressions"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-share-alt"></em> Page Posts Impressions by going viral</span><sup>
-                                <em id="fbPagePostImpressionsViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPagePostsImpressionsViral"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-8"><em class="fas fa-thumbs-up"></em> Page Posts Impressions without going viral</span><sup>
-                                <em id="fbPagePostImpressionsNonViralTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPagePostsImpressionsNonViral"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-users"></em> Page Fants Net</span><sup>
-                                <em id="fbPageFansTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageFansInsights"   class="font-weight-bold"></label><em id="fansGrowthIcon"></em>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-video"></em> Page Video Views</span><sup>
-                                <em id="fbPageVideoViewsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageVideoViews"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-file-video"></em> Page Complete 30 Sec Video Views</span><sup>
-                                <em id="fbPageCompleteVideoViews30secTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageCompleteVideoViews30sec"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-file-video"></em> Page Complete 10 Sec Video Views</span><sup>
-                                <em id="fbPageVideoViews10secTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageVideoViews10sec"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-user-plus"></em> Total Page Views</span><sup>
-                                <em id="fbTotalPageViewsTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbTotalPageViews"   class="font-weight-bold"></label>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 col-6 mb-2">
-                                <span class="text-red md-5"><em class="fas fa-columns"></em> Page Content Activity</span><sup>
-                                <em id="fbPageContentActivityTooltip" class="anticon anticon-question-circle" data-toggle="tooltip" data-placement="top"  title=""></em></sup>
-                                <br>
-                                <label  id="fbPageContentActivity"   class="font-weight-bold"></label>
-                            </div>
 
 
-
+=======
+>>>>>>> a2e8bcadf6d32b1da3476fb73ebc2dded951e565:resources/views/user/analyze/facebook/fb_overview.blade.php
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="card shadow" id="GraphicalOverview">
             <div class="card-header p-15 ml-3">
                 <label class="h3 m-0">Graphical Overview</label>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <label for="PageImpressionsByCountryChart" class="font-weight-bold" >Page Impressions by Country </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByCountryChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
+                        <hr/>
+                    </div>
+                    <div class="col-md-10">
+<<<<<<< HEAD:resources/views/user/analyze/facebook/overview.blade.php
+                        <label for="PageImpressionsByCountryChart" class="font-weight-bold" >Page Impressions by Country </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByCountryChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+=======
+                        <label for="PageImpressionsByLocaleChart" class="font-weight-bold" >Page Impressions by Locale </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByLocaleChart" class="w-100 mt-3" style="height: 400px"></div>
+>>>>>>> a2e8bcadf6d32b1da3476fb73ebc2dded951e565:resources/views/user/analyze/facebook/fb_overview.blade.php
                         <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
                     </div>
                     <div class="col-md-12 mt-5">

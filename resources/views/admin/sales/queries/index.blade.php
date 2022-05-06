@@ -31,22 +31,35 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Subject</th>
                             <th scope="col">Message</th>
                             <th scope="col">Enquired On</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @if (!$queries->total())
+                            <tr>
+                                <td colspan="100" class="text-center pt-5 pb-5">Oops! No data found.</td>
+                            </tr>
+                        @endif
+
                         @foreach($queries as $key => $query)
                             <tr>
                                 <td>{{ $key + 1 ?? '-' }}</td>
                                 <td>{{ $query->name ?? '-' }}</td>
                                 <td>{{ $query->email ?? '-' }}</td>
+                                <td>{{ $query->number ?? '-' }}</td>
+                                <td>{{ $query->subject ?? '-' }}</td>
                                 <td>{{ $query->message ?? '-' }}</td>
                                 <td>{{ $query->created_at ?? '-' }}</td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div class="mt-4">
+                    {{ $queries->withQueryString()->links() }}
+                </div>
             </div>
         </div>
     </div>

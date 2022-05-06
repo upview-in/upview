@@ -104,18 +104,20 @@
             </ul>
         </li>
         <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><em class='bi bi-wallet2'></em>
+            <a href="{{ route('admin.userOrders.index') }}">
+                <div class="parent-icon">
+                    <em class='bi bi-wallet2'></em>
                 </div>
                 <div class="menu-title">Payments</div>
             </a>
-            <ul>
-                <li>
-                    <a href="{{ route('admin.userOrders.index') }}">
-                        <em class='bi bi-gear'></em> Manage
-                    </a>
-                </li>
-            </ul>
+        </li>
+        <li>
+            <a href="{{ route('admin.blogs.index') }}">
+                <div class="parent-icon">
+                    <em class='bi bi-stickies'></em>
+                </div>
+                <div class="menu-title">Blogs</div>
+            </a>
         </li>
     </ul>
     <!--end navigation-->

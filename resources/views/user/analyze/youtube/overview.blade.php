@@ -116,12 +116,12 @@
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().add(1, 'month').startOf('month')],
-            // 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            // 'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            // 'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            // 'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
-            // 'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
-            // 'Overall': [moment(), moment()],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'This Year': [moment().startOf('year'), moment().subtract(1, 'month').endOf('month')],
+            'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
+            'Overall': [moment(), moment()],
         };
 
         $('#daterange').daterangepicker({
@@ -134,22 +134,22 @@
             __startDate = picker.startDate;
             __endDate = picker.endDate;
 
-            var timestamp = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
+            // var timestamp = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
 
-            if (__startDate < timestamp) {
-                alert("You can't select morethen 30 days");
-                return;
-            }
+            // if (__startDate < timestamp) {
+            //     alert("You can't select morethen 30 days");
+            //     return;
+            // }
 
             if (__endDate . diff(__startDate, 'days') < 1) {
                 alert("Invalid range selected");
                 return;
             }
 
-            // if (__endDate.diff(__startDate, 'days') > 62) {
-            //     $("#GroupBy").prop('selectedIndex', 1);
-            //     GroupBy = $("#GroupBy").val();
-            // }
+            if (__endDate.diff(__startDate, 'days') > 62) {
+                $("#GroupBy").prop('selectedIndex', 1);
+                GroupBy = $("#GroupBy").val();
+            }
             loadAnalytics();
         });
 
@@ -171,7 +171,7 @@
                 success: function(response) {
                     let data = response.ChannelDetails;
 
-                    // $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(data.publishedAt), moment()];
+                    $('#daterange').data('daterangepicker').ranges["Overall"] = [moment(data.publishedAt), moment()];
 
                     $("#c1ChannelProfileImage").attr('data-src', data.profileURL);
                     $("#c1ChannelProfileImage").attr('src', "{{ asset('images/others/loading.gif') }}");
@@ -221,11 +221,11 @@
                     $("#HighlightsSubscribersGrowth").html(convertToInternationalCurrencySystem(Highlights.SubsciberGained));
                     $("#HighlightsViews").html(convertToInternationalCurrencySystem(Highlights.Views));
                     $("#HighlightsAvgViewDuration").html(formatTime(Highlights.AvgViewDuration));
-                    $("#HighlightsTopCountry").html(Highlights.TopCountry.Country + "<br>" + convertToInternationalCurrencySystem(Highlights.TopCountry.Views));
-                    $("#HighlightsTopDevice").html(Highlights.TopDevice.Device + "<br>" + convertToInternationalCurrencySystem(Highlights.TopDevice.Views));
-                    $("#HighlightsTopPlatform").html(Highlights.TopPlatform.Platform + "<br>" + convertToInternationalCurrencySystem(Highlights.TopPlatform.Views));
-                    $("#HighlightsTrafficSource").html(Highlights.TrafficSource.Source + "<br>" + convertToInternationalCurrencySystem(Highlights.TrafficSource.Views));
-                    $("#HighlightsTopSocialMedia").html(Highlights.SocialMediaTrafficSource.Source + "<br>" + convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares));
+                    $("#HighlightsTopCountry").html(Highlights.TopCountry.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TopCountry.Views) + " (" + Highlights.TopCountry.Country + ")" : "N/A");
+                    $("#HighlightsTopDevice").html(Highlights.TopDevice.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TopDevice.Views) + " (" + Highlights.TopDevice.Device + ")" : "N/A");
+                    $("#HighlightsTopPlatform").html(Highlights.TopPlatform.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TopPlatform.Views) + " (" + Highlights.TopPlatform.Platform + ")" : "N/A");
+                    $("#HighlightsTrafficSource").html(Highlights.TrafficSource.Views > 0 ? convertToInternationalCurrencySystem(Highlights.TrafficSource.Views) + " (" + Highlights.TrafficSource.Source + ")" : "N/A");
+                    $("#HighlightsTopSocialMedia").html(Highlights.SocialMediaTrafficSource.Shares > 0 ? convertToInternationalCurrencySystem(Highlights.SocialMediaTrafficSource.Shares) + " (" + Highlights.SocialMediaTrafficSource.Source + ")" : "N/A" );
                     // $("#HighlightsSubsVsNonSubs").html();
 
                     $("#OverviewStatisticsLikes").html(convertToInternationalCurrencySystem(OverviewStatistics.Likes));
@@ -369,14 +369,14 @@
             <div class="col-md-2 col-12">
                 <input class="form-control shadow" id="countryList" />
             </div>
-            <!-- <div class="col-md-auto col-12">
+            <div class="col-md-auto col-12">
                 <div class="form-group">
                     <select class="form-control shadow" id="GroupBy">
                         <option value="day" selected>Day</option>
                         <option value="month">Month</option>
                     </select>
                 </div>
-            </div> -->
+            </div>
             <div class="col-md-auto col-12">
                 <div class="form-group">
                     <div class="form-control shadow" id="daterange">
@@ -393,63 +393,124 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 col-md-2 border-right">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <span class="text-red">Subscribers</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsSubscribersGrowth"></label>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <span class="text-red">Views</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsViews"></label>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <span class="text-red">Avg. View Duration (in min)</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsAvgViewDuration"></label>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-user-friends"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Subscribers </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsSubscribersGrowth"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-10">
-                        <div class="row">
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Geographies</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopCountry"></label>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="far fa-eye"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Views </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsViews"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Device type</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopDevice"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-film"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Avg. View Duration (in min) </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsAvgViewDuration"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Operating system</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopPlatform"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-map-signs"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Geographies </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopCountry"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Traffic source types</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTrafficSource"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-mobile-alt"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Device type </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopDevice"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Top Sharing service</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsTopSocialMedia"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-desktop"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Operating system </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopPlatform"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
-                                <span class="text-red">Subs VS Non-Subs</span>
-                                <br />
-                                <label class="font-weight-bolder" id="HighlightsSubsVsNonSubs"></label>
-                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-globe"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Traffic source types </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTrafficSource"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card shadow" style="border-radius: 8%;">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="avatar avatar-icon avatar-lg avatar-blue">
+                                        <em class="fas fa-share-alt"></em>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <h6 class="m-b-0">Top Sharing service </h6>
+                                        <p class="m-b-0 font-weight-bold" id="HighlightsTopSocialMedia"></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

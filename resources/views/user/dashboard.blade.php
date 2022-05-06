@@ -1,12 +1,11 @@
 <x-app.app-layout pageHeader=0>
     <div class="row">
         <div class="col-md-6 col-lg-3">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <div class="media align-items-center">
                         <em class="fas fa-puzzle-piece text-danger fs-20"></em>
                         <div class="m-l-15">
-                            {{-- db --}}
                             <h2 class="m-b-0">1</h2>
                             <p class="m-b-0 text-muted">Active Modules</p>
                         </div>
@@ -15,12 +14,11 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <div class="media align-items-center">
                         <em class="fas fa-book text-cyan fs-20"></em>
                         <div class="m-l-15">
-                            {{-- db --}}
                             <h2 class="m-b-0">{{ $totalReports  }}</h2>
                             <p class="m-b-0 text-muted">Reports Generated</p>
                         </div>
@@ -29,12 +27,11 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <div class="media align-items-center">
                         <em class="far fa-user-circle text-gold fs-20"></em>
                         <div class="m-l-15">
-                            {{-- db --}}
                             <h2 class="m-b-0">{{ $linkedAccountsCount }}</h2>
                             <p class="m-b-0 text-muted">Accounts Linked</p>
                         </div>
@@ -43,10 +40,9 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <div class="media align-items-center">
-                        {{-- db --}}
                         <em class="far fa-gem  text-purple fs-20"></em>
                         <div class="m-l-15">
                             <h2 class="m-b-0">{{ !empty($accountLevel ) ? $accountLevel :  'Free' }}</h2>
