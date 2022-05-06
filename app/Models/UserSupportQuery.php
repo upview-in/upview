@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Concerns\Models\Searchable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Jenssegers\Mongodb\Relations\HasOne;

@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Database\Eloquent\Model;
-
 use App\Concerns\Models\Searchable;
 use App\Permissions\HasAdminPermissionsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

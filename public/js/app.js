@@ -398,7 +398,7 @@ class Chart {
     }
 
     init() {
-        // this.buildContextMenu();
+        this.buildContextMenu();
 
         switch ((this.chartType).toLocaleLowerCase()) {
             //Keep this, so even in case we by mistake give the chart name in wrong case.

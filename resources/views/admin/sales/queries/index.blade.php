@@ -38,6 +38,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (!$queries->total())
+                            <tr>
+                                <td colspan="100" class="text-center pt-5 pb-5">Oops! No data found.</td>
+                            </tr>
+                        @endif
+
                         @foreach($queries as $key => $query)
                             <tr>
                                 <td>{{ $key + 1 ?? '-' }}</td>
@@ -51,6 +57,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="mt-4">
+                    {{ $queries->withQueryString()->links() }}
+                </div>
             </div>
         </div>
     </div>

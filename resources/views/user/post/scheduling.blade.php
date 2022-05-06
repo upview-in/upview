@@ -6,12 +6,61 @@
 @section('custom-scripts')
 <script>
     $(document).ready(function() {
+        $(".tagsSelection").select2('destroy').val("");
         $(".tagsSelection").select2({
             tags: true,
-            tokenSeparators: [',', ' ']
+            tokenSeparators: [',', ' '],
+            minimumInputLength: 2,
+            maximumInputLength: 255,
+            multiple: true,
+            placeholder: 'Enter your tags or select tags from suggestions',
+            initSelection: function(element, callback) {},
+            ajax: {
+                url: "{{ route('tag.suggest') }}",
+                type: 'POST',
+                dataType: 'json',
+                delay: 250,
+                data: function (data) {
+                    return {
+                        '_token': '{{ csrf_token() }}',
+                        'search': data ?? ''
+                    };
+                },
+                processResults: function (response) {
+                    return {
+                        results: $.map(response, function (item) {
+                            return {
+                                id: item._id,
+                                text: item.tag
+                            }
+                        })
+                    };
+                },
+                cache: false
+            }
+        }).on('change', function(e) {
+            $.ajax({
+                url: "{{ route('tag.add') }}",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'tag': e.added.text
+                },
+                processResults: function (response) {
+                    return {
+                        results: $.map(response, function (item) {
+                            return {
+                                id: item._id,
+                                text: item.tag
+                            }
+                        })
+                    };
+                }
+            });
         });
-        $('#datetimepicker1').datetimepicker();
 
+        $('#datetimepicker1').datetimepicker();
         $('.js-example-basic-single').select2();
 
         $('#profile_select').change(function() {
@@ -159,7 +208,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">#</span>
                             </div>
-                            <input type="text" class="tagsSelection" style="flex : 1 1 auto; border: 0px;" id="tags" name="tags" placeholder="Enter Tags seperated by ',' comma" />
+                            <input type="text" class="tagsSelection" style="flex : 1 1 auto; border: 0px;" id="tags" name="tags"/>
                         </div>
                     </div>
                     @error('tags')
