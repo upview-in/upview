@@ -99,6 +99,8 @@ class SchedulerController extends Controller
         }
 
         $getID3 = new GetId3($fileInfo);
+        $videoInfo = $getID3->analyze();
+        dd($videoInfo);
         foreach ($platforms as $platform) {
             switch (strtolower($platform)) {
                 case 'facebook': {
@@ -112,10 +114,8 @@ class SchedulerController extends Controller
                             if ($fileInfo->getSize() < config('social_media_restrictions.facebook.video.max_size')) {
                                 return ['status' => true, 'validation_msg' => 'Validated Successfully'];
                             }
-
-                            return ['status' => false, 'validation_msg' => 'Media Size not according to Facebook\'s requirements. Please check again.'];
+                            return ['status' => false, 'validation_msg' => 'Video Size not according to Facebook\'s requirements. Please check again.'];
                         }
-
                         return ['status' => false, 'validation_msg' => 'Media type not recognised by facebook. Please check again.'];
                     }
 

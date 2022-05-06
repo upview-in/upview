@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\Instagram\Account;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetMineAccountDetails extends FormRequest
+class GetInstagramBusinessAccountDetails extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class GetMineAccountDetails extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required'],
+            'page_id' => ['required'],
         ];
     }
 }

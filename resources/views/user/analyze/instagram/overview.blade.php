@@ -40,6 +40,7 @@
 
             cb(__startDate, __endDate);
             loadData();
+            loadPagesList();
             google.charts.load('current', {
                 'packages': ['corechart', 'controls']
             }).then(() => {
@@ -137,6 +138,54 @@
                 });
             });
 
+
+            function loadPagesList() {
+
+            $.ajax({
+                    data: {
+                        part: 'RefreshPages',
+                    },
+                    dataType: "json",
+                    success: function(_PageData) {
+                        $('#select2Pages').val(_PageData["{{ session('PagesIndex_IG', 0) }}"]['id']).trigger('change');
+                        $('#select2Pages').select2({
+                            data: {
+                                results: _PageData
+                            },
+                            id: function(item) {
+                                return item.id
+                            },
+                            text: function(item) {
+                                return item.name
+                            },
+                            allowClear: true,
+                            formatResult: formatData,
+                            formatSelection: formatSelectionData,
+                            minimumResultsForSearch: -1
+                        });
+                    }
+                })
+            }
+
+            $('#select2Pages').on('change', function(e) {
+            var data = $('#select2Pages').select2('data');
+            console.log();
+            $.ajax({
+                url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
+                data: {
+                    id: data.id,
+                    platform: parseInt('{{  App\Helper\TokenHelper::$PLATFORMS["instagram"] }}'),
+
+                },
+                success: function() {
+                    var data = $('#select2Pages').select2('data');
+                    loadAnalytics(data.id);
+                    loadInstaInsights(data.id);
+                }
+            });
+            });
+
+
             let listRanges = {
                 'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
@@ -229,12 +278,14 @@
                 });
             }
 
-            function loadAnalytics() {
+            function loadAnalytics(pageID) {
 
-                $.ajax({
+                if(pageID != null)
+                {
+                    $.ajax({
                     data: {
                         part: 'Analytics',
-                        fields: 'impressions,reach',
+                        id: pageID,
                     },
                     dataType: "json",
                     success: function(response) {
@@ -269,6 +320,7 @@
                     }
                 });
             }
+        }
 
         });
     </script>
@@ -278,6 +330,9 @@
 <x-app.app-layout title="Overview">
     <div class="container-fluid">
         <div class="row mb-3 justify-content-end">
+            <div class="col-md-5 col-12">
+                <input class="shadow" id="select2Pages" />
+            </div>
             <div class="col-md-5 col-12">
                 <input class="shadow" id="select2Accounts" />
             </div>
