@@ -120,6 +120,8 @@
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.post.upload_media') }}">
+                    @csrf
+
                     @if(session()->get('message2'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success:</strong> {{ session()->get('message2') }}
@@ -129,16 +131,21 @@
                     </div>
                     @endif
 
-                    @csrf
-                    <div class="form-group">
-                        <select id="profile_select" name="profile_select" class="form-control col-md-8 js-example-disabled-results">
+                    <div class="form-group col-12">
+                        <select id="profile_select" name="profile_select" class="form-control col-12 js-example-disabled-results">
                             <option selected disabled="disabled"> Please Select Profile To Post </option>
                             @foreach($userProfiles as $key => $profiles)
-                            <option value="{{ encrypt($profiles['profile_key']) }}">{{ $profiles['title'] }}</option>
+                                <option value="{{ encrypt($profiles['profile_key']) }}">{{ $profiles['title'] }}</option>
                             @endforeach
                         </select>
+                        @error('profile_select')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    <div class="form-group col-md-8">
+
+                    <div class="form-group col-12">
                         <label class="font-weight-semibold" for="platfromSelection">{{ __('Select Social Media Platform(s)') }}:<sup>*</sup></label>
                         <div class="checkbox row">
                             <div class="col-md-2">
@@ -177,17 +184,17 @@
                         @enderror
                     </div>
 
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-12">
                         <label class="font-weight-semibold" for="caption">{{ __('Caption') }}:<sup>*</sup></label>
                         <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter a caption here..">
+                        @error('caption')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    @error('caption')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-12">
                         <label class="font-weight-semibold" for="mention">{{ __('Mention Users') }}:</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -195,14 +202,14 @@
                             </div>
                             <input type="text" class="form-control" id="mention" name="mention" placeholder="Enter Username to mention seperated by ',' comma " />
                         </div>
+                        @error('mention')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    @error('mention')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-12">
                         <label class="font-weight-semibold" for="tags">{{ __('Tags') }}:</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -210,54 +217,51 @@
                             </div>
                             <input type="text" class="tagsSelection" style="flex : 1 1 auto; border: 0px;" id="tags" name="tags"/>
                         </div>
+                        @error('tags')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    @error('tags')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-12">
                         <label class="font-weight-semibold" for="scheduleAt">{{ __('Schedule Post') }}:</label>
                         <input type="datetime-local" class="form-control" id="scheduleAt" name="scheduleAt" placeholder="Select Date & Time">
+                        @error('scheduleAt')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    @error('scheduleAt')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-12">
                         <label class="font-weight-semibold" for="postedBy">{{ __('Posted By') }}:<sup>*</sup></label>
                         <input type="text" class="form-control" id="postedBy" name="postedBy" placeholder="Enter Your Full Name">
+                        @error('postedBy')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    @error('postedBy')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
-                    <div class="form-group media align-items-center col-md-8">
-
-                        <input id="post_media" name="post_media" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
-
-                        <div class="m-l-20 m-r-20">
-                            <h5 class="m-b-5 font-size-18">{{ __('Choose Post Image') }}</h5>
-                            <p class="opacity-07 font-size-13 m-b-0">
-                                {{ __('Recommended Resolution') }}: 1080 x 1350p<br>
-                                Our system will automatically manage resolutions for Facebook & Instagram.
-                                Max file size: 6MB
-                            </p>
-                        </div>
+                    <div class="form-group col-12">
+                        <h5 class="m-b-5 font-size-18">{{ __('Choose Post Image') }}</h5>
+                        <p class="opacity-07 font-size-13 m-b-0 media">
+                            <input id="post_media" name="post_media" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
+                            {{ __('Recommended Resolution') }}: 1080 x 1350p<br>
+                            Our system will automatically manage resolutions for Facebook & Instagram.
+                            Max file size: 6MB
+                        </p>
+                        @error('post_media')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    <div class="form-group col-md-8">
+
+                    <div class="form-group col-12">
                         <button id="btnUploadPostMedia" class="btn btn-tone btn-lg btn-primary btn-block">{{ __('Upload') }}</button>
                     </div>
-                    @error('post_media')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
                 </form>
 
