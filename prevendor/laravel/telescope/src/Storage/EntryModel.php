@@ -3,7 +3,6 @@
 namespace Laravel\Telescope\Storage;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Laravel\Telescope\Database\Factories\EntryModelFactory;
 
@@ -69,8 +68,8 @@ class EntryModel extends Model
             ->whereBatchId($query, $options)
             ->whereTag($query, $options)
             ->whereFamilyHash($query, $options)
-            ->whereBeforeSequence($query, $options)
-            ->filter($query, $options);
+            ->whereBeforeSequence($query, $options);
+            //->filter($query, $options);
 
         return $query;
     }
