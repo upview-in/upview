@@ -4,22 +4,28 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPermissionsController;
 use App\Http\Controllers\Admin\AdminRolesController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\SalesController;
 use App\Http\Controllers\Admin\SupportController as AdminSupportController;
+use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserOrdersController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
+
 // API Ayrshare namespace
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
+
 // Common namespace
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\PaymentsController;
+
 // Support chat panel namespace
 use App\Http\Controllers\Support\ChatController;
+
 // User namespace
 use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\AccountController;
@@ -38,6 +44,7 @@ use App\Http\Controllers\User\PostScheduler\SchedulerController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SocialListeningController;
 use App\Http\Controllers\User\SupportController;
+
 // Packages namespace
 use Illuminate\Support\Facades\Route;
 
@@ -75,6 +82,10 @@ Route::group(['domain' => config('app.domains.app')], function () {
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
     Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
+
+    // Smart tags management for social media posts
+    Route::post('tag/suggest', [TagsController::class, 'suggest'])->name('tag.suggest');
+    Route::post('tag/add', [TagsController::class, 'add'])->name('tag.add');
 
     // Routes for user panel
     Route::prefix('panel')->as('panel.')->middleware(['auth', 'verified'])->group(function () {
@@ -215,6 +226,9 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
 
         // Manage payments
         Route::resource('userOrders', UserOrdersController::class);
+
+        // Blog management
+        Route::resource('blogs', BlogController::class);
     });
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');

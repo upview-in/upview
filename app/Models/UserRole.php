@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Database\Eloquent\Model;
 use App\Concerns\Models\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
