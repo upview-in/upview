@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="phoneNumber">{{ __('Phone') }}:</label>
-                                        <input type="text" id="phoneNumber" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" id="mobile_number" name="mobile_number" value="{{ old('mobile_number') }}" required autofocus>
+                                        <input type="text" id="phoneNumber" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" name="mobile_number" value="{{ old('mobile_number') }}" required autofocus>
                                         @error('mobile_number')
                                         <span class="invalid-feedback d-block" role="alert">
                                             <strong>{{ $message }}</strong>
