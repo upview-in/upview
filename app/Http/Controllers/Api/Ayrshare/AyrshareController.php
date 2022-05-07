@@ -131,7 +131,7 @@ class AyrshareController extends Controller
     public static function generateAyrJWTTokenURL(AyrJWTTokenProfileKey $request)
     {
         try {
-            $file = File::get(storage_path('private.key'));
+            $file = File::get(storage_path('ayr-private.key'));
         } catch (FileNotFoundException $e) {
             // Private Key not found!
             return abort(404);
@@ -143,7 +143,7 @@ class AyrshareController extends Controller
             [
                 'domain' => 'upview',
                 'privateKey' => $file, // required
-                'profileKey' => $request->profileKey, // requires
+                'profileKey' => $request->profileKey, // required
                 'logout' => true,
             ]
         )->body());
