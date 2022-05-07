@@ -120,13 +120,8 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.blogs.index') }}">
+                    <a href="{{ route('admin.blog.list') }}">
                         <em class='bi bi-people'></em> Post
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <em class='bi bi-question-circle'></em> History
                     </a>
                 </li>
             </ul>
