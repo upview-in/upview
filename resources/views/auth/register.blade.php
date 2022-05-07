@@ -17,7 +17,7 @@
                                         <label class="font-weight-semibold" for="name">{{ __('Name') }}:</label>
                                         <div class="input-affix">
                                             <em class="prefix-icon fas fa-user"></em>
-                                            <input type="text" class="form-control {{ $errors->has('name')?'is-invalid':'is-valid' }}" id="name" name="name" :value="old('name')" required autofocus placeholder="{{ __('Name') }}">
+                                            <input type="text" class="form-control {{ $errors->has('name')?'is-invalid':'is-valid' }}" id="name" name="name" value="{{ old('name') }}" required autofocus placeholder="{{ __('Name') }}">
                                         </div>
                                         @error('name')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -29,7 +29,7 @@
                                         <label class="font-weight-semibold" for="companyName">{{ __('Company Name') }}:</label>
                                         <div class="input-affix">
                                             <em class="prefix-icon fas fa-building"></em>
-                                            <input type="text" class="form-control {{ $errors->has('companyName')?'is-invalid':'is-valid' }}" id="companyName" name="companyName" :value="old('companyName')" required autofocus placeholder="{{ __('companyName') }}">
+                                            <input type="text" class="form-control {{ $errors->has('companyName')?'is-invalid':'is-valid' }}" id="companyName" name="companyName" value="{{ old('companyName') }}" required autofocus placeholder="{{ __('companyName') }}">
                                         </div>
                                         @error('companyName')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -41,7 +41,7 @@
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
                                             <em class="prefix-icon fas fa-envelope"></em>
-                                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
+                                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="{{ __('E-mail address') }}">
                                         </div>
                                         @error('email')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="phoneNumber">{{ __('Phone') }}:</label>
-                                        <input type="text" id="phoneNumber" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" id="mobile_number" name="mobile_number" :value="old('mobile_number')" required autofocus>
+                                        <input type="text" id="phoneNumber" class="form-control {{ $errors->has('mobile_number')?'is-invalid':'is-valid' }}" name="mobile_number" value="{{ old('mobile_number') }}" required autofocus>
                                         @error('mobile_number')
                                         <span class="invalid-feedback d-block" role="alert">
                                             <strong>{{ $message }}</strong>
