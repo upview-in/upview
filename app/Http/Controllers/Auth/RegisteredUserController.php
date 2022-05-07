@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'companyName' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::min(8)],
-            'mobile_number' => ['required', 'phone'],
+            'mobile_number' => ['required', 'phone:AUTO'],
         ]);
 
         $user = User::create([

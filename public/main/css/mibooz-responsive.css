@@ -1288,9 +1288,9 @@
 # Slider All Responsice Css
 --------------------------------------------------------------*/
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
-    .main-slider-two .main-slider__social {
+  /*  .main-slider-two .main-slider__social {
         display: none;
-    }
+    }*/
 
 
 }
@@ -1299,7 +1299,7 @@
 
 @media only screen and (min-width: 1200px) and (max-width: 1475px) {
     .main-slider-two__content {
-        margin-left: 0;
+        margin-left: 40px;
     }
 
     .main-slider-two__img {
@@ -1397,6 +1397,12 @@
 
 }
 
+@media screen and (max-width:1281px){
+.main-slider__social{
+    bottom: 385px;
+    left: -74px;
+}
+}
 
 
 

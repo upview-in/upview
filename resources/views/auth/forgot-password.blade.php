@@ -27,7 +27,7 @@
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
                                             <em class="prefix-icon anticon anticon-mail"></em>
-                                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('E-mail address') }}">
+                                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="{{ __('E-mail address') }}">
                                         </div>
                                         @error('email')
                                         <span class="invalid-feedback d-block" role="alert">

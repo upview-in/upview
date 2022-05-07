@@ -161,7 +161,7 @@
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="text" id="name" name="name" :value="old('name')" required autofocus placeholder="Your name">
+                                            <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus placeholder="Your name">
                                         </div>
                                         @error('name')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="email" placeholder="Email address" id="email" name="email" :value="old('email')" required autofocus>
+                                            <input type="email" placeholder="Email address" id="email" name="email" value="{{ old('email') }}" required autofocus>
                                         </div>
                                         @error('email')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -181,7 +181,7 @@
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="text" placeholder="Phone" id="mobile_number" name="mobile_number" :value="old('mobile_number')" required autofocus>
+                                            <input type="text" placeholder="Phone" id="mobile_number" name="mobile_number" value="{{ old('mobile_number') }}" required autofocus>
                                         </div>
                                         @error('mobile_number')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="comment-form__input-box">
-                                            <input type="email" placeholder="Subject" id="subject" name="subject" :value="old('subject')" required autofocus>
+                                            <input type="email" placeholder="Subject" id="subject" name="subject" value="{{ old('subject') }}" required autofocus>
                                         </div>
                                         @error('subject')
                                         <span class="invalid-feedback d-block" role="alert">
@@ -203,7 +203,7 @@
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="comment-form__input-box">
-                                            <textarea placeholder="Write message" id="message" name="message" :value="old('message')" required autofocus></textarea>
+                                            <textarea placeholder="Write message" id="message" name="message" value="{{ old('message') }}" required autofocus></textarea>
                                             @error('message')
                                             <span class="invalid-feedback d-block" role="alert">
                                                 <strong>{{ $message }}</strong>
