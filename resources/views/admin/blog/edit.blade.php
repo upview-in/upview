@@ -10,6 +10,9 @@
 
 <script>
     $(document).ready(function() {
+        $('#blogDescriptionEditor').html($('#blogDescriptionTextArea').text());
+        $('#blogHtmlPageEditor').html($('#blogHtmlPageTextArea').text());
+
         var toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
             ['blockquote', 'code-block'],
@@ -57,6 +60,12 @@
     });
 </script>
 
+@if(session()->get('message'))
+<script>
+    notify('success', "{{ session()->get('message') }}", 'check');
+</script>
+@endif
+
 @endsection
 
 @section('custom-styles')
@@ -65,8 +74,9 @@
 @endsection
 
 <x-admin.app-layout title="Blogs">
-    <form id="blog-form" class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.blogs.store') }}" reset=true>
+    <form id="blog-form" class="ajax-form" method="POST" enctype="multipart/form-data" action="{{ route('admin.blogs.update', $blog->id) }}">
         @csrf
+        @method('patch')
         <div class="col-md-12">
             <div class="card border-top border-0 border-4 border-primary">
                 <div class="card-body p-5">
@@ -76,15 +86,15 @@
                             <h5 class="mb-0 text-primary">{{ __('Basic') }}</h5>
                         </div>
                         <div class="d-flex align-items-center flex-shrink-1 pointer" onclick="$(this).closest('form').submit();">
-                            <em class="bi bi-plus-circle me-2 font-22 text-primary"></em>
-                            <strong>Create</strong>
+                            <em class="bi bi-save me-2 font-22 text-primary"></em>
+                            <strong>Save</strong>
                         </div>
                     </div>
                     <hr>
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label font-weight-semibold required" for="title">{{ __('Title') }}</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Blog Title" required>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Blog Title" value="{{ old('title') ?? $blog->title }}" required>
                             @error('title')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -93,7 +103,7 @@
                         </div>
                         <div class="col-md-12">
                             <label class="form-label font-weight-semibold required" for="blogDescriptionEditor">{{ __('Description') }}</label>
-                            <textarea id="blogDescriptionTextArea" name="blogDescription" class="form-control hide"></textarea>
+                            <textarea id="blogDescriptionTextArea" name="blogDescription" class="form-control hide">{!! old('blogDescription') ?? $blog->blog_description !!}</textarea>
                             <div class="w-100">
                                 <div id="blogDescriptionEditor"></div>
                             </div>
@@ -105,7 +115,7 @@
                         </div>
                         <div class="col-md-12">
                             <label class="form-label font-weight-semibold required" for="blogHtmlPageEditor">{{ __('Html Page') }}</label>
-                            <textarea id="blogHtmlPageTextArea" name="blogHtmlPage" class="form-control hide"></textarea>
+                            <textarea id="blogHtmlPageTextArea" name="blogHtmlPage" class="form-control hide">{!! old('blogHtmlPage') ?? $blog->blog_html_page !!}</textarea>
                             <div class="w-100">
                                 <div id="blogHtmlPageEditor"></div>
                             </div>
@@ -116,7 +126,7 @@
                             @enderror
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label font-weight-semibold required" for="name">{{ __('Poster') }}</label>
+                            <label class="form-label font-weight-semibold required" for="poster">{{ __('Poster') }}</label>
                             <input type="file" class="form-control" id="poster" name="poster" placeholder="Cover Page" required>
                             @error('poster')
                             <span class="invalid-feedback d-block" role="alert">

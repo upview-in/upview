@@ -1,5 +1,5 @@
 @section('path-navigation')
-<li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.blog.list') }}">Blog</a></li>
+<li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.blogs.index') }}">Blog</a></li>
 <li class="breadcrumb-item active" aria-current="page">Post</li>
 @endsection
 
@@ -23,7 +23,7 @@
                     <h5 class="mb-0 text-primary">{{ __('Blogs') }}</h5>
                 </div>
                 <div class="flex-shrink-1 pointer">
-                    <a href="{{ route('admin.blog.create') }}" class="d-flex align-items-center"><em class="bi bi-plus-circle me-1 font-22 text-primary"></em> <strong>Create</strong></a>
+                    <a href="{{ route('admin.blogs.create') }}" class="d-flex align-items-center"><em class="bi bi-plus-circle me-1 font-22 text-primary"></em> <strong>Create</strong></a>
                 </div>
             </div>
             <div class="row mt-3">
@@ -42,18 +42,28 @@
                     <thead>
                         <tr>
                             <th scope="col">Actions</th>
+                            <th scope="col">Enabled</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Short Description</th>
-                            <th scope="col">Posted By</th>
-                            <th scope="col">Posted On</th>
+                            <th scope="col">Updated By</th>
+                            <th scope="col">Updated At</th>
+                            <th scope="col">Created By</th>
+                            <th scope="col">Created At</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @if (!$blogs->total())
+                            <tr>
+                                <td colspan="100" class="text-center pt-5 pb-5">Oops! No data found.</td>
+                            </tr>
+                        @endif
+
+                        @foreach($blogs as $blog)
                         <tr>
                             <th scope="row">
-                                <form class="ajax-form" method="POST" action="#">
+                                <form class="ajax-form" method="POST" action="{{ route('admin.blogs.destroy', $blog->id) }}">
+                                    @method('delete')
                                     @csrf
-                                    <a href="" class="btn btn-sm p-1">
+                                    <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="btn btn-sm p-1">
                                         <em class="bi bi-pencil-square text-primary fs-5"></em>
                                     </a>
                                     <button type="submit" class="btn btn-sm p-1 remove-table-row">
@@ -61,14 +71,27 @@
                                     </button>
                                 </form>
                             </th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <form class="ajax-form" method="POST" action="{{ route('admin.blogs.update', $blog->id) }}">
+                                    @method('patch')
+                                    @csrf
+                                    <div class="form-check form-switch">
+                                        <input type="hidden" name="enabled" value="false">
+                                        <input class="form-check-input" name="enabled" type="checkbox" value="true" onchange="$(this).closest('form').submit();" {{ ($admin->enabled ?? true)?'checked':'' }}>
+                                    </div>
+                                </form>
+                            </td>
+                            <td>{{ $blog->title }}</td>
+                            <td>{{ $blog->updatedBy->name }} ({{ $blog->updatedBy->username }})</td>
+                            <td>{{ $blog->updated_at }}</td>
+                            <td>{{ $blog->createdBy->name }} ({{ $blog->createdBy->username }})</td>
+                            <td>{{ $blog->created_at }}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="mt-4">
+                    {{ $blogs->withQueryString()->links() }}
                 </div>
             </div>
         </div>
