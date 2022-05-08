@@ -6,57 +6,55 @@
 - set .env
 - copy prevendor to vendor
 
-
 # Steps for Apache Config:
 
-- Add Virtualhost for SSL
+- Add Virtual host for SSL
 - Set domains as app.upview.localhost pointing to Upview/public  & admin.upview.localhost pointing to Upview/public
 - Enable rewrite and ssl modules of apache2
 
- 
-
 		sudo a2enmod rewrite
-
 		sudo a2enmod ssl
 
 - Add .htaccess permissions for directory inside vhost file:
 
 		<VirtualHost app.upview.localhost:443>
 
-		ServerAdmin webmaster@app.upview.localhost DocumentRoot /var/www/html/Upview/public/
+			ServerAdmin webmaster@app.upview.localhost
+			DocumentRoot /var/www/html/Upview/public/
+			ServerName app.upview.localhost
 
-		<Directory /var/www/html/Upview/public/>
-         Options -Indexes +FollowSymLinks +MultiViews
-         AllowOverride All
-         Require all granted </Directory>
+			<Directory /var/www/html/Upview/public/>
+				Options -Indexes +FollowSymLinks +MultiViews
+				AllowOverride All
+				Require all granted
+			</Directory>
 
-		ServerName app.upview.localhost
+			ErrorLog ${APACHE_LOG_DIR}/error.log
+			CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-		ErrorLog ${APACHE_LOG_DIR}/error.log
-		CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-
-		SSLEngine on
-		SSLCertificateFile /home/jimmy/ssl_upview/79865261_app.upview.localhost.cert
-		SSLCertificateKeyFile /home/jimmy/ssl_upview/79865261_app.upview.localhost.key
-
+			SSLEngine on
+			SSLCertificateFile /path/app.upview.localhost.cert
+			SSLCertificateKeyFile /path/app.upview.localhost.key
 
 		</VirtualHost>
 
-
-
 # Steps for Git Setup:
 
-- add git command to ignore file chmod changes & make folder 777: 
+- add git command to ignore file chmod changes & make folder 777:
 
 	    git config core.fileMode false
-    	sudo  chmod -R 777 Upview 
+    	sudo chmod -R 777 Upview
 
-- Set local git config for username & email
+- Set local git config for username & email:
+
+		git config user.name "Github Username"
+		git config user.email "Github Email Address"
 
 # Linking Storage:
 
-- Run command php artisan storage:link
+- Run command
+
+		php artisan storage:link
 
 
 # List of PHP Extensions required:
@@ -65,19 +63,22 @@
 - php-mongod
 - php-curl
 - php-intl
+- php-exif
 
 
 # Configure Crontab for Laravel Schedule Service:
 
-- sudo crontab -e
-	- Add this at last "* * * * * cd /var/lib/jenkins/workspace/upview-prod && sudo php artisan schedule:run >> /dev/null 2>&1"
-- sudo service cron restart
+	sudo crontab -e
+		- Add below text at last without double quotes
+			"* * * * * cd /var/lib/jenkins/workspace/upview-prod && sudo php artisan schedule:run >> /dev/null 2>&1"
+	sudo service cron restart
 
 
 # Configure Supervisor for jobs:
 
 - Install supervisor package
-- sudo cp -f "./laravel-supervisord.conf" "/etc/supervisor/conf.d/"
-- sudo supervisorctl reread
-- sudo supervisorctl update
-- sudo supervisorctl restart laravel-supervisord:*
+
+		sudo cp -f "./laravel-supervisord.conf" "/etc/supervisor/conf.d/"
+		sudo supervisorctl reread
+		sudo supervisorctl update
+		sudo supervisorctl restart laravel-supervisord:*

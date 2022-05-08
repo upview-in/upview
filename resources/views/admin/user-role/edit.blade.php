@@ -86,6 +86,7 @@
 
         $('#user-roles-form').submit(function () {
             $('#longDescriptionTextArea').html(longDescriptionEditor.root.innerHTML);
+            $('#shortDescriptionTextArea').html(shortDescriptionEditor.root.innerHTML);
         });
     });
 </script>
@@ -201,7 +202,10 @@
                     </div>
                     <div class="col-md-12">
                         <label class="form-label font-weight-semibold required" for="shortDescriptionEditor">{{ __('Short plan description') }}</label>
-                        <textarea id="shortDescriptionTextArea" name="shortDescription" class="form-control">{!! old('shortDescription') ?? $userRole->shortDescription !!}</textarea>
+                        <textarea id="shortDescriptionTextArea" name="shortDescription" class="form-control hide">{!! old('shortDescription') ?? $userRole->shortDescription !!}</textarea>
+                        <div class="w-100">
+                            <div id="shortDescriptionEditor"></div>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <label class="form-label font-weight-semibold required" for="longDescriptionEditor">{{ __('Long plan description') }}</label>
