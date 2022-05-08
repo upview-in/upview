@@ -228,7 +228,10 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
         Route::resource('userOrders', UserOrdersController::class);
 
         // Blog management
-        Route::resource('blogs', BlogController::class);
+        Route::controller(BlogController::class)->prefix('blogs')->as('blog.')->group(function () {
+            Route::get('/', 'index')->name('list');
+            Route::get('/create', 'create')->name('create');
+        });
     });
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
