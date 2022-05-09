@@ -145,6 +145,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
                 Route::get('/scheduler', [SchedulerController::class, 'index'])->name('scheduler');
                 Route::post('/scheduler', [SchedulerController::class, 'uploadPostMedia'])->name('upload_media');
                 Route::get('/history', [HistoryController::class, 'index'])->name('history');
+                Route::get('/verificaition', [SchedulerController::class, 'verificaition'])->name('verificaition');
             });
 
             //Routes For Account Management for social Media

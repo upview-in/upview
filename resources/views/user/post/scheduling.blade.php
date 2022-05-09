@@ -30,7 +30,7 @@
                     return {
                         results: $.map(response, function (item) {
                             return {
-                                id: item._id,
+                                id: item.tag,
                                 text: item.tag
                             }
                         })
@@ -116,6 +116,7 @@
         <div class="card">
             <div class="card-header p-15 ml-3 w-500">
                 <h4 class="h3 m-0">{{ __('Post Details') }}</h4>
+                <span>To verify supported media types <a href="{{ route('panel.user.post.verificaition') }}">click here</a>.</span>
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.post.upload_media') }}">
