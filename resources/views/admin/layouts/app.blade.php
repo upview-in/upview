@@ -36,8 +36,6 @@
 
 	<!-- Icon Style CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-	<!-- <link href="{{ asset('admin/css/icons.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 
 	<style>
 		.hidden {
@@ -121,7 +119,7 @@
 		<a href="javaScript:;" class="back-to-top"><em class='bi bi-arrow-up-short'></em></a>
 		<!--End Back To Top Button-->
 
-		<!-- @include('admin.layouts.footer') -->
+		{{-- @include('admin.layouts.footer') --}}
 	</div>
 	<!--end wrapper-->
 

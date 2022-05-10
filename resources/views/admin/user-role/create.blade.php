@@ -89,6 +89,11 @@
             },
             theme: 'snow',
         });
+
+        $('#user-roles-form').submit(function () {
+            $('#longDescriptionTextArea').html(longDescriptionEditor.root.innerHTML);
+            $('#shortDescriptionTextArea').html(shortDescriptionEditor.root.innerHTML);
+        });
     });
 </script>
 
@@ -209,7 +214,7 @@
                     </div>
                     <div class="col-md-12">
                         <label class="form-label font-weight-semibold required" for="longDescriptionEditor">{{ __('Long plan description') }}</label>
-                        <textarea id="longDescriptionEditorTextArea" name="longDescription" class="form-control hide"></textarea>
+                        <textarea id="longDescriptionTextArea" name="longDescription" class="form-control hide"></textarea>
                         <div class="w-100">
                             <div id="longDescriptionEditor"></div>
                         </div>

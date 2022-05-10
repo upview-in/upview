@@ -112,24 +112,12 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;" class="has-arrow">
+            <a href="{{ route('admin.blogs.index') }}">
                 <div class="parent-icon">
                     <em class='bi bi-stickies'></em>
                 </div>
                 <div class="menu-title">Blogs</div>
             </a>
-            <ul>
-                <li>
-                    <a href="{{ route('admin.blogs.index') }}">
-                        <em class='bi bi-people'></em> Post
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <em class='bi bi-question-circle'></em> History
-                    </a>
-                </li>
-            </ul>
         </li>
     </ul>
     <!--end navigation-->

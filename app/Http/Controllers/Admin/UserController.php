@@ -123,15 +123,11 @@ class UserController extends Controller
         $user->mobile_number = $request->mobile_number ?? $user->mobile_number;
         $user->birth_date = $request->birth_date ?? $user->birth_date;
         $user->local_lang = $request->local_lang ?? $user->local_lang;
-
-        if ($request->has('new_password') && !empty($request->new_password)) {
-            $user->password = Hash::make($request->new_password);
-        }
-
         $user->country = $request->country ?? $user->country;
         $user->state = $request->state ?? $user->state;
         $user->city = $request->city ?? $user->city;
         $user->address = $request->address ?? $user->address;
+        $user->awario_profile_hash = $request->awario_profile_hash ?? $user->awario_profile_hash;
 
         !$request->has('enabled') ?: ($user->enabled = filter_var($request->enabled, FILTER_VALIDATE_BOOLEAN));
         !$request->has('verified') ?: ($user->email_verified_at = (filter_var($request->verified, FILTER_VALIDATE_BOOLEAN) ? Carbon::now() : null));
@@ -143,7 +139,9 @@ class UserController extends Controller
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         }
 
-        $user->awario_profile_hash = $request->awario_profile_hash ?? $user->awario_profile_hash;
+        if ($request->has('new_password') && !empty($request->new_password)) {
+            $user->password = Hash::make($request->new_password);
+        }
 
         $user->update();
 
