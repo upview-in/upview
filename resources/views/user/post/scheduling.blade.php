@@ -116,7 +116,7 @@
         <div class="card">
             <div class="card-header p-15 ml-3 w-500">
                 <h4 class="h3 m-0">{{ __('Post Details') }}</h4>
-                <span>To verify supported media types <a href="" data-toggle="modal" data-target="#postVerification">click here</a>.</span>
+                <span>To know more about platform requirements <a href="" data-toggle="modal" data-target="#postStandards">click here</a>.</span>
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.post.upload_media') }}">
@@ -269,32 +269,67 @@
         </div>
     </div>
 
-    <div class="modal fade bd-example-modal-xl" id="postVerification" tabindex="-1" role="dialog" aria-labelledby="addAccountModalLabel" aria-hidden="true">
+    <div class="modal fade bd-example-modal-xl" id="postStandards" tabindex="-1" role="dialog" aria-labelledby="addAccountModalLabel" aria-hidden="true">
         <div class="modal-dialog  modal-xl modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Post Verification</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Media Standards</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
-                        <table class="table table-borderless" data-toggle="table" data-pagination="true" data-search="true">
+                        <table class="table table-borderless" data-toggle="table" >
                             <caption></caption>
                             <thead>
                                 <tr>
-                                    <th scope="col" rowspan="2" data-sortable="true">#</th>
-                                    <th scope="col" rowspan="2" data-sortable="true" data-field="Platform">Platform</th>
-                                    <th scope="col" rowspan="2" data-sortable="true" data-field="supported_type">Supported Media Type</th>
+                                    <th scope="col" rowspan="2">#</th>
+                                    <th scope="col" rowspan="2" data-field="Platform">Platform</th>
+                                    <th scope="col" rowspan="2" data-field="supported_type">Supported Media Type</th>
                                     <th scope="col" colspan="2">Max Size Supported</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col" data-sortable="true" data-field="images_size">Image</th>
-                                    <th scope="col" data-sortable="true" data-field="video_size">Video</th>
+                                    <th scope="col" data-field="images_size">Image</th>
+                                    <th scope="col" data-field="video_size">Video</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Facebook</td>
+                                    <td>JPG,BMP,PNG,GIF,TIFF,MP4,MOV,AVI</td>
+                                    <td>10 MB</td>
+                                    <td>3 GB</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Instagram</td>
+                                    <td>JPG,PNG,MP4,MOV</td>
+                                    <td>8 MB</td>
+                                    <td>100 MB</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>LinkedIn</td>
+                                    <td>JPG,PNG,GIF,ASF,AVI,FLV,MP4,MOV,MKV,WEBM</td>
+                                    <td>5 MB</td>
+                                    <td>10 GB</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Twitter</td>
+                                    <td>JPG,PNG,GIF,WEBP,MP4,MOV</td>
+                                    <td>5 MB</td>
+                                    <td>512 MB</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>YouTube</td>
+                                    <td>MP4,MOV</td>
+                                    <td>N/A</td>
+                                    <td>5 GB</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

@@ -194,10 +194,4 @@ class SchedulerController extends Controller
             }
         }
     }
-
-    public function verificaition()
-    {
-        return view('user.post.verification');
-    }
-
 }
