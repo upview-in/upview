@@ -10,6 +10,7 @@ use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
 use App\Http\Requests\User\PostScheduler\UploadMediaRequest;
 use App\Models\AyrUserProfile;
 use App\Models\PostHistory;
+use Carbon\Carbon;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,6 @@ class SchedulerController extends Controller
         }
 
         $platforms = TokenHelper::getFlippedPlatforms();
-
         if ($request->hasFile('post_media')) {
             $enabledPlatforms = [];
             foreach ($request->platform as $platform) {
@@ -50,8 +50,12 @@ class SchedulerController extends Controller
 
             $fileMain = $request->file('post_media');
             $validation = (self::validateUploadMedia($fileMain, $enabledPlatforms));
-            if (!$validation['status']) {
-                return redirect()->back()->with('validation_error', $validation['validation_msg']);
+
+            foreach($validation as $val)
+            {
+                if (!$val['status']) {
+                    return redirect()->back()->with('validation_error', $val['validation_msg']);
+                }
             }
             $fileInfo = $request->file('post_media')->store('User');
             $mediaURL = encrypt($fileInfo);
@@ -61,7 +65,9 @@ class SchedulerController extends Controller
                 array_push($userTags, ['username' => $mentions, 'x' => 1.0, 'y' => 1.0]);
             }
 
-            $data = ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
+            // $scheduledData = Carbon::createFromFormat('Y-m-d H:i:s', $request->scheduleAt, 'UTC')->setTimezone('America/Los_Angeles') ?? false;
+            $scheduledData = $request->scheduleAt ?? false;
+            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)],'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
             $response = (new AyrshareController())->ayrSocialMediaPosts(new AyrSocialMediaPosts($data));
             $user = Auth::user();
             $postData = new PostHistory();
@@ -83,6 +89,7 @@ class SchedulerController extends Controller
             $postData->scheduledAt = $request->scheduleAt;
             $postData->postedBy = $request->postedBy;
             $postData->save();
+
         }
 
         return redirect()->back()->with('message2', 'Sucsessfully Posted!');
@@ -100,98 +107,89 @@ class SchedulerController extends Controller
         }
 
         $getID3 = new GetId3($fileInfo);
+        $retArr = [];
         foreach ($platforms as $platform) {
             switch (strtolower($platform)) {
                 case 'facebook': {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.facebook.image.supported_types')) && $isImage)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.facebook.image.max_size')) {
-                                return ['status' => true, 'validation_msg' => 'Validated Successfully'];
-                            }
-
-                            return ['status' => false, 'validation_msg' => 'Media Size not according to Facebook\'s requirements. Please check again.'];
+                                $retArr[] =  [ 'platform'=>'facebook','status' => true, 'validation_msg' => 'Validated Successfully'];
+                            } else $retArr[] = ['platform'=>'facebook','status' => false, 'validation_msg' => 'Media Size not according to Facebook\'s requirements. Please check again.'];
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.facebook.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.facebook.video.max_size')) {
-                                return ['status' => true, 'validation_msg' => 'Validated Successfully'];
-                            }
-
-                            return ['status' => false, 'validation_msg' => 'Media Size not according to Facebook\'s requirements. Please check again.'];
-                        }
-
-                        return ['status' => false, 'validation_msg' => 'Media type not recognised by facebook. Please check again.'];
+                                $retArr[] = ['platform'=>'facebook', 'status' => true, 'validation_msg' => 'Validated Successfully'];
+                            } else $retArr[] = ['platform'=>'facebook', 'status' => false, 'validation_msg' => 'Video Size not according to Facebook\'s requirements. Please check again.'];
+                        }else $retArr[] = ['platform'=>'facebook', 'status' => false, 'validation_msg' => 'Media type not recognised by facebook. Please check again.'];
+                        break;
                     }
-
                 case 'instagram': {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.instagram.image.supported_types')) && $isImage)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.instagram.image.max_size')) {
-                                return ['status' => true, 'validation_msg' => 'Validated Successfully'];
+                                $retArr[] = ['platform'=>'instagram','status' => true, 'validation_msg' => 'Validated Successfully'];
                             }
 
-                            return ['status' => false, 'validation_msg' => 'Media Size not according to Instagram\'s requirements. Please check again.'];
+                            else $retArr[] = ['platform'=>'instagram','status' => false, 'validation_msg' => 'Media Size not according to Instagram\'s requirements. Please check again.'];
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.instagram.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.instagram.video.max_size')) {
                                 if (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.instagram.video.max_duration')) && ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.instagram.video.min_duration'))) {
-                                    return ['status' => true, 'validation_msg' => 'Validated Successfully'];
-                                }
-
-                                return ['status' => false, 'validation_msg' => 'Video\'s length is not according to Instagram requirements. Please check again.'];
-                            }
-
-                            return ['status' => false, 'validation_msg' => 'Media Size not according to Facebook\'s requirements. Please check again.'];
-                        }
-
-                        return ['status' => false, 'validation_msg' => 'Media type not recognised by Instagram. Please check again.'];
+                                    $retArr[] = ['platform'=>'instagram','status' => true, 'validation_msg' => 'Validated Successfully'];
+                                } else $retArr[] = ['platform'=>'instagram','status' => false, 'validation_msg' => 'Video\'s length is not according to Instagram requirements. Please check again.'];
+                            } else $retArr[] = ['platform'=>'instagram','status' => false, 'validation_msg' => 'Media Size not according to Facebook\'s requirements. Please check again.'];
+                        } else $retArr[] = ['platform'=>'instagram','status' => false, 'validation_msg' => 'Media type not recognised by Instagram. Please check again.'];
+                        break;
                     }
-
                 case 'youtube': {
                         if ($isImage) {
-                            return ['status' => false, 'validation_msg' => 'Image posting not allowed on Youtube. Please Select a video file or de-select youtube from platforms.'];
+                            $retArr[] = ['platform'=>'youtube','status' => false, 'validation_msg' => 'Image posting not allowed on Youtube. Please Select a video file or de-select youtube from platforms.'];
+                            break;
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.youtube.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.youtube.video.max_size')) {
-                                return true;
+                                $retArr[] = ['platform'=>'youtube','status' => true, 'validation_msg' => 'Validated Successfully'];
                             }
+                            else $retArr[] = ['platform'=>'youtube','status' => false, 'validation_msg' => 'Media size not according to Youtube requirements. Please check again.'];
                         } else {
-                            return ['status' => false, 'validation_msg' => 'Media type not recognised by Youtube. Please check again.'];
+                            $retArr[] = ['platform'=>'youtube','status' => false, 'validation_msg' => 'Media type not recognised by Youtube. Please check again.'];
                         }
+                        break;
                     }
                 case 'twitter': {
                         if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.twitter.image.supported_types')) && $isImage)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.twitter.image.max_size')) {
-                                return true;
-                            }
+                                $retArr[] = ['platform'=>'twitter','status' => true, 'validation_msg' => 'Validated Successfully'];
+                            }else $retArr[] = ['platform'=>'twitter','status' => false, 'validation_msg' => 'Image size is not according to Twitter requirements. Please check again.'];
                         } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.twitter.video.supported_types')) && $isVideo)) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.twitter.video.max_size')) {
                                 if (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.twitter.video.max_duration')) && ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.twitter.video.min_duration'))) {
-                                    return ['status' => true, 'validation_msg' => 'Validated Successfully'];
+                                    $retArr[] = ['platform'=>'twitter','status' => true, 'validation_msg' => 'Validated Successfully'];
                                 }
-
-                                return ['status' => false, 'validation_msg' => 'Video\'s length is not according to Twitter requirements. Please check again.'];
+                                else $retArr[] = ['platform'=>'twitter','status' => false, 'validation_msg' => 'Video\'s length is not according to Twitter requirements. Please check again.'];
                             }
                         } else {
-                            return ['status' => false, 'validation_msg' => 'Media type not recognised by Twitter. Please check again.'];
+                            $retArr[] = ['platform'=>'twitter','status' => false, 'validation_msg' => 'Media type not recognised by Twitter. Please check again.'];
                         }
                     }
                 case 'linkedin': {
-                        if ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.linkedin.image.supported_types')) && $isImage)) {
+                        if (($isImage && in_array($fileInfo->getMIMEType(), config('social_media_restrictions.linkedin.image.supported_types')))) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.linkedin.image.max_size')) {
-                                return true;
-                            }
-                        } elseif ((in_array($fileInfo->getMIMEType(), config('social_media_restrictions.linkedin.video.supported_types')) && $isVideo)) {
+                                $retArr[] = ['platform'=>'linkedin','status' => true, 'validation_msg' => 'Validated Successfully'];
+                            }else $retArr[] = ['platform'=>'linkedin','status' => false, 'validation_msg' => 'Image size not according to Linkedin\'s requirements. Please check again.'];
+                        } elseif ($isVideo && (in_array($fileInfo->getMIMEType(), config('social_media_restrictions.linkedin.video.supported_types')))) {
                             if ($fileInfo->getSize() < config('social_media_restrictions.linkedin.video.max_size')) {
                                 if (($getID3->getPlaytimeSeconds() <= config('social_media_restrictions.linkedin.video.max_duration')) && ($getID3->getPlaytimeSeconds() >= config('social_media_restrictions.linkedin.video.min_duration'))) {
-                                    return ['status' => true, 'validation_msg' => 'Validated Successfully'];
+                                    $retArr[] = ['platform'=>'linkedin','status' => true, 'validation_msg' => 'Validated Successfully'];
                                 }
 
-                                return ['status' => false, 'validation_msg' => 'Video\'s length is not according to Linkedin requirements. Please check again.'];
+                               else $retArr[] = ['platform'=>'linkedin','status' => false, 'validation_msg' => 'Video\'s length is not according to Linkedin requirements. Please check again.'];
                             }
                         } else {
-                            return ['status' => false, 'validation_msg' => 'Media type not recognised by Linkedin. Please check again.'];
+                            $retArr[] = ['platform'=>'linkedin','status' => false, 'validation_msg' => 'Media type not recognised by Linkedin. Please check again.'];
                         }
                         break;
                     }
-
                 default:
-                    return ['status' => false, 'validation_msg' => 'Something went wrong. Please check again.'];
+                    $retArr[] = ['status' => false, 'validation_msg' => 'Something went wrong. Please check again.'];
             }
+            return $retArr;
         }
     }
 }
