@@ -10,6 +10,7 @@ use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
 use App\Http\Requests\User\PostScheduler\UploadMediaRequest;
 use App\Models\AyrUserProfile;
 use App\Models\PostHistory;
+use Carbon\Carbon;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,12 +51,11 @@ class SchedulerController extends Controller
             $fileMain = $request->file('post_media');
             $validation = (self::validateUploadMedia($fileMain, $enabledPlatforms));
 
-            dd($validation);
-            foreach($validation as $e){
-
-            }
-            if (!$validation['status']) {
-                return redirect()->back()->with('validation_error', $validation['validation_msg']);
+            foreach($validation as $val)
+            {
+                if (!$val['status']) {
+                    return redirect()->back()->with('validation_error', $val['validation_msg']);
+                }
             }
             $fileInfo = $request->file('post_media')->store('User');
             $mediaURL = encrypt($fileInfo);
@@ -65,7 +65,9 @@ class SchedulerController extends Controller
                 array_push($userTags, ['username' => $mentions, 'x' => 1.0, 'y' => 1.0]);
             }
 
-            $data = ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
+            // $scheduledData = Carbon::createFromFormat('Y-m-d H:i:s', $request->scheduleAt, 'UTC')->setTimezone('America/Los_Angeles') ?? false;
+            $scheduledData = $request->scheduleAt ?? false;
+            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)],'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
             $response = (new AyrshareController())->ayrSocialMediaPosts(new AyrSocialMediaPosts($data));
             $user = Auth::user();
             $postData = new PostHistory();
@@ -87,6 +89,7 @@ class SchedulerController extends Controller
             $postData->scheduledAt = $request->scheduleAt;
             $postData->postedBy = $request->postedBy;
             $postData->save();
+
         }
 
         return redirect()->back()->with('message2', 'Sucsessfully Posted!');
