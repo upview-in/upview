@@ -245,8 +245,8 @@
             function loadData() {
                 __BS("ChannelMainDiv");
                 __BS("FBPageDetails");
-                __BS("FBPageInsights");
-                __BS("GraphicalOverview");
+                // __BS("FBPageInsights");
+                // __BS("GraphicalOverview");
 
 
 
@@ -374,10 +374,13 @@
                     }
                 });
                 }
-                else console.log("ID is null");
+                else console.log("Page ID: Null Error");
             }
 
             function loadPageInsights(pageID) {
+
+                __BS("FBPageInsights");
+                __BS("GraphicalOverview");
 
                 $.ajax({
                     data: {
@@ -459,20 +462,38 @@
                             $("#fbPageContentActivity").html(convertToInternationalCurrencySystem((data.page_content_activity.data)));
                             $("#fbPageContentActivityTooltip").attr('title', nl2br(data.page_content_activity.desc));
 
-                            // drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Column', {
-                            //     hAxis: {
-                            //         textPosition: 'out',
-                            //     },
+                    
+                            //Charts
+
+                            //Country insights
+                            // drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
+                            //     tooltip: { isHtml: true },
+                            //     colorAxis: { colors: ['#a6c5f7','#3277e6', '#075ce6'] },
+                            // });
+                            // $("#PageImpressionsByCountryChartTooltip").attr('title', nl2br(data.page_impressions_by_country_unique.desc));
+
+                            // //Locale insights
+                            // drawChart($('#PageImpressionsByLocaleChart')[0], data.chartData.page_impressions_by_locale_unique, 'Pie', {
+                            //     pieHole: 0.5,
                             //     chartArea: {
-                            //         left: 100,
-                            //         right: 50,
-                            //         top: 100,
-                            //         bottom: 100,
+                            //         top: 10,
+                            //         bottom: 60,
                             //     },
-                            //     bar: {
-                            //         groupWidth: 50
+                            // }, {
+                            //     explorer: ""
+                            // });
+                            // $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
+                            // drawChart($('#PageImpressionsByAgeGenderChart')[0], data.chartData.page_impressions_by_age_gender_unique, 'Bar', {
+                            //     isStacked: true,
+                            //     hAxis: {
+                            //         format: ';'
+                            //     },
+                            //     vAxis: {
+                            //         direction: -1
                             //     }
                             // });
+                            // $("#PageImpressionsByAgeGenderChartTooltip").attr('title', nl2br(data.page_impressions_by_age_gender_unique.desc));
+
 
 
 
@@ -941,6 +962,12 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD:resources/views/user/analyze/facebook/overview.blade.php
+
+
+
+=======
+>>>>>>> a2e8bcadf6d32b1da3476fb73ebc2dded951e565:resources/views/user/analyze/facebook/fb_overview.blade.php
                         </div>
                     </div>
                 </div>
@@ -959,10 +986,56 @@
                         <hr/>
                     </div>
                     <div class="col-md-10">
+<<<<<<< HEAD:resources/views/user/analyze/facebook/overview.blade.php
+                        <label for="PageImpressionsByCountryChart" class="font-weight-bold" >Page Impressions by Country </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByCountryChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+=======
                         <label for="PageImpressionsByLocaleChart" class="font-weight-bold" >Page Impressions by Locale </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
                         <div id="PageImpressionsByLocaleChart" class="w-100 mt-3" style="height: 400px"></div>
+>>>>>>> a2e8bcadf6d32b1da3476fb73ebc2dded951e565:resources/views/user/analyze/facebook/fb_overview.blade.php
                         <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
                     </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsByLocaleChart" class="font-weight-bold" >Page Impressions by Locale </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByLocaleChart" class="w-50 mt-3" style="height: 400px"></div><hr />
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsByAgeGenderChart" class="font-weight-bold" >Page Impressions by Age-Gender </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByAgeGenderChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByAgeGenderChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsByFrequencyChart" class="font-weight-bold" >Page Impressions by Frequency Distribution </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByFrequencyChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByFrequencyChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsByViralFrequencyChart" class="font-weight-bold" >Page Impressions by Frequency Distribution (Viral) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByViralChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByViralFrequencyChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PagePostsImpressionsChart" class="font-weight-bold" >Page Posts Impressions  </label><em class="anticon anticon-question-circle ml-2" id="PagePostsImpressionsChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PagePostsImpressionsChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageVideoImpressionsByPaidNonPaidChart" class="font-weight-bold" >Page Video Impressions by Paid-Non Paid </label><em class="anticon anticon-question-circle ml-2" id="PageVideoImpressionsByPaidNonPaidChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageVideoImpressionsByPaidNonPaidChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsByProfileTabChart" class="font-weight-bold" >Page  Impressions by Profile Tab </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByProfileTabChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByProfileTabChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsByInternalRefererChart" class="font-weight-bold" >Page Impressions by Internal Referer (Logged in) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByInternalRefererChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByInternalRefererChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsBySiteLoggedinChart" class="font-weight-bold" >Page Impressions by Site (Logged In) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsBySiteLoggedinChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsBySiteLoggedinChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label for="PageImpressionsByInternalRefererChart" class="font-weight-bold" >Page Impressions by Internal Referer (Logged in) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByInternalRefererChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                        <div id="PageImpressionsByInternalRefererChart" class="w-100 mt-5" style="height: 400px"></div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Analyze\Instagram;
 use App\Helper\TokenHelper;
 use App\Http\Controllers\Api\Instagram\InstagramController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Instagram\Account\GetInstagramBusinessAccountDetails;
 use App\Http\Requests\Api\Instagram\Account\GetMineAccountDetails;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,14 @@ class OverviewController extends Controller
 
         if ($request->ajax() && $request->has('part')) {
             switch ($request->part) {
+                case 'RefreshPages':
+                    return response()->json(app(InstagramController::class)->listInstaBusinessAccountsData(), 200);
+                    break;
                 case 'Analytics':
                     if ($request->has(['fields'])) {
                         $data = [];
-                        $response = app(InstagramController::class)->getMineAccountInsights(new GetMineAccountDetails($request->all(['fields'])))->getData();
+                        $response = app(InstagramController::class)->getMineAccountInsights(new GetMineAccountDetails($request->all(['id'])))->getData();
 
-                        $data['chartData'][0] = ['This title lmfao', 'Impressions', 'Reach', 'Views'];
                         $data['impressions'] = $response->data[0]->values[0]->value;
                         $data['reach'] = $response->data[1]->values[0]->value;
                         // $data['profile_views']['dayBeforeYest'] = $response->data[2]->values[0]->value;
@@ -31,6 +34,8 @@ class OverviewController extends Controller
 
                         $response = app(InstagramController::class)->getMineAccountProfileViews()->getData();
                         $data['profile_views'] = $response->profile_views;
+
+                        $data['chartData'][0] = ['This title', 'Impressions', 'Reach', 'Views'];
                         $data['chartData'][1] = ['Insights', 0, 0, 0];
                         $data['chartData'][2] = ['Insights', $data['impressions'], $data['reach'], $data['profile_views']];
                         $data['status'] = 200;
