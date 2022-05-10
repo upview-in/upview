@@ -66,7 +66,7 @@ class SchedulerController extends Controller
 
             // $scheduledData = Carbon::createFromFormat('Y-m-d H:i:s', $request->scheduleAt, 'UTC')->setTimezone('America/Los_Angeles') ?? false;
             $scheduledData = $request->has('scheduleAt') ? $request->scheduleAt.':00Z' : false;
-            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => ['https://i.imgur.com/4hSzNY0.jpeg'/*route('image.displayImage', $mediaURL)*/],'scheduleDate' => $scheduledData,'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
+            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)],'scheduleDate' => $scheduledData,'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
             $response = (new AyrshareController())->ayrSocialMediaPosts(new AyrSocialMediaPosts($data));
             $user = Auth::user();
             $postData = new PostHistory();
