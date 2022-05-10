@@ -209,7 +209,7 @@
                 },
                 dataType: "json",
                 success: function(data) {
-                    let Highlights = data.Heighlights;
+                    let Highlights = data.Highlights;
                     let OverviewStatistics = data.OverviewStatistics;
                     let Demographics = data.Demographics;
                     let DeviceWise = data.DeviceWise;

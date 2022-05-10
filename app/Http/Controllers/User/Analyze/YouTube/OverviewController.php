@@ -59,8 +59,8 @@ class OverviewController extends Controller
         $ChannelCategory = '';
 
         if (!is_null($topicDetails)) {
-            foreach ($topicDetails->topicCategories as $topicCategorie) {
-                $ChannelCategory .= "<a href='" . $topicCategorie . "' target='_blank'>" . str_replace(['-', '_', '_', ''], ' ', str_replace('https://en.wikipedia.org/wiki/', '', $topicCategorie)) . '</a><br />';
+            foreach ($topicDetails->topicCategories as $topicCategory) {
+                $ChannelCategory .= "<a href='" . $topicCategory . "' target='_blank'>" . str_replace(['-', '_', '_', ''], ' ', str_replace('https://en.wikipedia.org/wiki/', '', $topicCategory)) . '</a><br />';
             }
         }
 
@@ -80,7 +80,7 @@ class OverviewController extends Controller
     {
         if ($request->has(['startDate', 'endDate', 'dimensions', 'sort', 'filters'])) {
             $data = [];
-            $SubsciberGained = $Views = $AvgViewDuration = $Likes = $Shares = $Comments = $EstMinWatched = 0;
+            $SubscriberGained = $Views = $AvgViewDuration = $Likes = $Shares = $Comments = $EstMinWatched = 0;
 
             $ChannelAnalyticsResponse = app(ChannelController::class)->getMineChannelAnalytics(new GetMineChannelAnalytics($request->all(['startDate', 'endDate', 'dimensions', 'sort', 'filters'])))->getData();
 
@@ -95,10 +95,10 @@ class OverviewController extends Controller
             $indexEstMinWatched = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'estimatedMinutesWatched');
 
             $OverviewStatisticsChartData = [];
-            $OverviewStatisticsChartData[] = ['Date', 'Subsciber', 'Views', 'Likes', 'Shares', 'Comments', 'Est. Min. Watched', 'Avg. View Duration'];
+            $OverviewStatisticsChartData[] = ['Date', 'Subscriber', 'Views', 'Likes', 'Shares', 'Comments', 'Est. Min. Watched', 'Avg. View Duration'];
 
             foreach ($ChannelAnalyticsResponse->rows as $key => $value) {
-                $SubsciberGained += $value[$indexSubscribersGained];
+                $SubscriberGained += $value[$indexSubscribersGained];
                 $Views += $value[$indexViews];
                 $AvgViewDuration += $value[$indexAvgViewDuration];
 
@@ -130,7 +130,7 @@ class OverviewController extends Controller
                 $tempArr[0] = $key;
 
                 // Set default 0
-                $tempArr[1] = $tempArr[2] = 0;
+                $tempArr[2] = $tempArr[1] = 0;
 
                 foreach ($value as $___) {
                     if ($___[$indexGender] == 'male') {
@@ -269,14 +269,14 @@ class OverviewController extends Controller
 
             $data['GeographicStatistics']['ChartData'] = $GeographicStatisticsChartData;
 
-            $data['Heighlights']['SubsciberGained'] = $SubsciberGained;
-            $data['Heighlights']['Views'] = $Views;
-            $data['Heighlights']['AvgViewDuration'] = $AvgViewDuration;
-            $data['Heighlights']['TopCountry'] = $TopCountry;
-            $data['Heighlights']['TopDevice'] = $TopDevice;
-            $data['Heighlights']['TopPlatform'] = $TopPlatform;
-            $data['Heighlights']['TrafficSource'] = $TrafficSource;
-            $data['Heighlights']['SocialMediaTrafficSource'] = $SocialMediaTrafficSource;
+            $data['Highlights']['SubscriberGained'] = $SubscriberGained;
+            $data['Highlights']['Views'] = $Views;
+            $data['Highlights']['AvgViewDuration'] = $AvgViewDuration;
+            $data['Highlights']['TopCountry'] = $TopCountry;
+            $data['Highlights']['TopDevice'] = $TopDevice;
+            $data['Highlights']['TopPlatform'] = $TopPlatform;
+            $data['Highlights']['TrafficSource'] = $TrafficSource;
+            $data['Highlights']['SocialMediaTrafficSource'] = $SocialMediaTrafficSource;
 
             return response()->json(collect($data));
         }
