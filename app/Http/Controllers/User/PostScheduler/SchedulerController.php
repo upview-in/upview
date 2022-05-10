@@ -66,7 +66,7 @@ class SchedulerController extends Controller
             }
 
             // $scheduledData = Carbon::createFromFormat('Y-m-d H:i:s', $request->scheduleAt, 'UTC')->setTimezone('America/Los_Angeles') ?? false;
-            $scheduledData = $request->scheduleAt ?? false;
+            $scheduledData = $request->scheduleAt.':00Z' ?? false;
             $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)],'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
             $response = (new AyrshareController())->ayrSocialMediaPosts(new AyrSocialMediaPosts($data));
             $user = Auth::user();
