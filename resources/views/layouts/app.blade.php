@@ -32,10 +32,31 @@
             font-size: 18px;
             font-weight: bolder;
         }
+
         .iti {
             display: block;
         }
+
     </style>
+
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = 'f5aee1c7586cf61819760d4593ca25417042dc39';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
 
     @yield('custom-css')
 </head>
@@ -52,15 +73,16 @@
                 <!-- Content Wrapper START -->
                 <div class="main-content">
                     @if ($pageHeader ?? true === true)
-                    <div class="page-header">
-                        <h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
-                        <div class="header-sub-title">
-                            <nav class="breadcrumb breadcrumb-dash">
-                                <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><em class="anticon anticon-home m-r-5"></em>Home</a>
-                                @yield('path-navigation')
-                            </nav>
+                        <div class="page-header">
+                            <h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
+                            <div class="header-sub-title">
+                                <nav class="breadcrumb breadcrumb-dash">
+                                    <a href="{{ route('panel.dashboard') }}" class="breadcrumb-item"><em
+                                            class="anticon anticon-home m-r-5"></em>Home</a>
+                                    @yield('path-navigation')
+                                </nav>
+                            </div>
                         </div>
-                    </div>
                     @endif
 
                     <!-- Content goes Here -->
