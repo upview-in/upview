@@ -46,17 +46,23 @@ class Functions
         return ucfirst(strtolower(str_replace('_', ' ', $str)));
     }
 
-    public static function FormatNumber(int $number)
+    public static function formatNumber(?int $number): string
     {
-        if ($number >= 1E9) {
-            return round($number / 1E9, 2) . 'b';
-        } elseif ($number >= 1E6) {
-            return round($number / 1E6, 2) . 'm';
-        } elseif ($number >= 1E3) {
-            return round($number / 1E3, 2) . 'k';
+        if (is_null($number)) {
+            return "N/A";
         }
 
-        return $number;
+        if ($number >= 1E9) {
+            $formatted_number = round($number / 1E9, 2) . 'b';
+        } elseif ($number >= 1E6) {
+            $formatted_number = round($number / 1E6, 2) . 'm';
+        } elseif ($number >= 1E3) {
+            $formatted_number = round($number / 1E3, 2) . 'k';
+        } else {
+            $formatted_number = $number;
+        }
+
+        return $formatted_number;
     }
 
     public static function getUserCountry(User $user = null)
