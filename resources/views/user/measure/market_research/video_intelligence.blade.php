@@ -148,17 +148,17 @@
                             <div class="col">
                                 <span class="text-red">Views</span>
                                 <br>
-                                <label id="v1VideoViews" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->viewCount) }}</label>
+                                <label id="v1VideoViews" class="font-weight-bold">{{ Functions::formatNumber($TrendingVideo->statistics->viewCount) }}</label>
                             </div>
                             <div class="col">
                                 <span class="text-red"><em class="anticon anticon-like"></em> Likes</span>
                                 <br>
-                                <label id="v1VideoLikes" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->likeCount) }}</label>
+                                <label id="v1VideoLikes" class="font-weight-bold">{{ Functions::formatNumber($TrendingVideo->statistics->likeCount) }}</label>
                             </div>
                             <div class="col">
                                 <span class="text-red">Comments</span>
                                 <br>
-                                <label id="v1VideoComments" class="font-weight-bold">{{ Functions::FormatNumber($TrendingVideo->statistics->commentCount) }}</label>
+                                <label id="v1VideoComments" class="font-weight-bold">{{ Functions::formatNumber($TrendingVideo->statistics->commentCount) }}</label>
                             </div>
                             <div class="col">
                                 <span class="text-red"><em class="anticon anticon-calendar"></em> Published Date</span>
