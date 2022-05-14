@@ -41,9 +41,14 @@ class Functions
         return 0;
     }
 
-    public static function ConvertToRegularString($str)
+    public static function convertToRegularString(?string $str): ?string
     {
         return ucfirst(strtolower(str_replace('_', ' ', $str)));
+    }
+
+    public static function splitCamelCase(?string $word): ?string
+    {
+        return implode(' ', preg_split('/(^[^A-Z]+|[A-Z][^A-Z]+)/', $word, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE));
     }
 
     public static function formatNumber(?int $number): string
@@ -63,6 +68,13 @@ class Functions
         }
 
         return $formatted_number;
+    }
+
+    public static function formatSizeUnits($size)
+    {
+        $units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        $power = $size > 0 ? floor(log($size, 1024)) : 0;
+        return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power] ?? '';
     }
 
     public static function getUserCountry(User $user = null)

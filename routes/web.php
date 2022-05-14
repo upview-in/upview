@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\SalesController;
 use App\Http\Controllers\Admin\SupportController as AdminSupportController;
+use App\Http\Controllers\Admin\SystemInfoController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserOrdersController;
@@ -206,7 +207,16 @@ Route::group(['domain' => config('app.domains.app')], function () {
 // Admin Routes
 Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' => 'admin.'], function () {
     Route::middleware(['admin'])->group(function () {
-        Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+        Route::controller(AdminDashboard::class)->prefix('dashboard')->as('dashboard.')->group(function () {
+            Route::get('/main', 'main')->name('main');
+            Route::get('/server-info', 'serverInfo')->name('server.info');
+            Route::get('/phpinfo', 'phpInfo')->name('phpinfo');
+        });
+
+        Route::controller(SystemInfoController::class)->prefix('system')->as('system.')->group(function () {
+            Route::post('/CPU-info', 'getCPUInfo')->name('getCPUInfo');
+            Route::post('/memory-info', 'getMemoryInfo')->name('getMemoryInfo');
+        });
 
         Route::get('/support/queries', [AdminSupportController::class, 'queries'])->name('support.queries');
         Route::resource('support/users', AdminSupportController::class, ['as' => 'support']);
