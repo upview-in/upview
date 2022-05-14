@@ -110,10 +110,10 @@ class VideosController extends Controller
             $TopDevice = ['Views' => 0, 'Device' => ''];
 
             foreach ($DeviceWiseAnalyticsResponse->rows as $key => $value) {
-                $DeviceWiseChartData[] = [Functions::ConvertToRegularString($value[$indexDeviceType]), $value[$indexDeviceWiseViews]];
+                $DeviceWiseChartData[] = [Functions::convertToRegularString($value[$indexDeviceType]), $value[$indexDeviceWiseViews]];
                 if ($value[$indexDeviceWiseViews] > $TopDevice['Views']) {
                     $TopDevice['Views'] = $value[$indexDeviceWiseViews];
-                    $TopDevice['Device'] = Functions::ConvertToRegularString($value[$indexDeviceType]);
+                    $TopDevice['Device'] = Functions::convertToRegularString($value[$indexDeviceType]);
                 }
             }
 
@@ -130,10 +130,10 @@ class VideosController extends Controller
             $TopPlatform['Platform'] = '';
 
             foreach ($OsWiseAnalyticsResponse->rows as $key => $value) {
-                $OsWiseChartData[] = [Functions::ConvertToRegularString($value[$indexOsType]), $value[$indexOsWiseViews]];
+                $OsWiseChartData[] = [Functions::convertToRegularString($value[$indexOsType]), $value[$indexOsWiseViews]];
                 if ($value[$indexOsWiseViews] > $TopPlatform['Views']) {
                     $TopPlatform['Views'] = $value[$indexOsWiseViews];
-                    $TopPlatform['Platform'] = Functions::ConvertToRegularString($value[$indexOsType]);
+                    $TopPlatform['Platform'] = Functions::convertToRegularString($value[$indexOsType]);
                 }
             }
 
@@ -152,10 +152,10 @@ class VideosController extends Controller
             $TrafficSource['Source'] = '';
 
             foreach ($TrafficSourceAnalyticsResponse->rows as $key => $value) {
-                $TrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]), $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];
+                $TrafficSourceChartData[] = [Functions::convertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]), $value[$indexTrafficSourceViews], $value[$indexTrafficSourceEstimatedMinutesWatched]];
                 if ($value[$indexTrafficSourceViews] > $TrafficSource['Views']) {
                     $TrafficSource['Views'] = $value[$indexTrafficSourceViews];
-                    $TrafficSource['Source'] = Functions::ConvertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
+                    $TrafficSource['Source'] = Functions::convertToRegularString($value[$indexTrafficSourceInsightTrafficSourceType]);
                 }
             }
 
@@ -172,11 +172,11 @@ class VideosController extends Controller
             $SocialMediaTrafficSource['Source'] = '';
 
             foreach ($SocialMediaTrafficSourceAnalyticsResponse->rows as $key => $value) {
-                $SocialMediaTrafficSourceChartData[] = [Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]), $value[$indexSocialMediaTrafficSourceShares]];
+                $SocialMediaTrafficSourceChartData[] = [Functions::convertToRegularString($value[$indexSocialMediaTrafficSourceType]), $value[$indexSocialMediaTrafficSourceShares]];
 
                 if ($value[$indexTrafficSourceViews] > $SocialMediaTrafficSource['Shares']) {
                     $SocialMediaTrafficSource['Shares'] = $value[$indexSocialMediaTrafficSourceShares];
-                    $SocialMediaTrafficSource['Source'] = Functions::ConvertToRegularString($value[$indexSocialMediaTrafficSourceType]);
+                    $SocialMediaTrafficSource['Source'] = Functions::convertToRegularString($value[$indexSocialMediaTrafficSourceType]);
                 }
             }
 
