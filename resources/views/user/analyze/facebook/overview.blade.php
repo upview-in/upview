@@ -134,10 +134,7 @@
             $('#select2Accounts').on('change', function(e) {
                 var data = $(this).select2('data');
 
-                __BS("ChannelMainDiv");
-                __BS("FBPageDetails");
-                __BS("FBPageInsights");
-                __BS("GraphicalOverview");
+                __BS(["ChannelMainDiv", "FBPageDetails"]);
 
 
                 $.ajax({
@@ -243,12 +240,8 @@
             });
 
             function loadData() {
+
                 __BS("ChannelMainDiv");
-                __BS("FBPageDetails");
-                // __BS("FBPageInsights");
-                // __BS("GraphicalOverview");
-
-
 
                 $.ajax({
                     data: {
@@ -379,8 +372,7 @@
 
             function loadPageInsights(pageID) {
 
-                __BS("FBPageInsights");
-                __BS("GraphicalOverview");
+                __BS(["FBPageInsights", "GraphicalOverview", "ImpressionLocale", "ImpressionFrequence", "ImpressionFrequenceVira", "ImpressionPNP", "ImpressionProfileByTab"]);
 
                 $.ajax({
                     data: {
@@ -462,44 +454,7 @@
                             $("#fbPageContentActivity").html(convertToInternationalCurrencySystem((data.page_content_activity.data)));
                             $("#fbPageContentActivityTooltip").attr('title', nl2br(data.page_content_activity.desc));
 
-                    
                             //Charts
-
-                            //Country insights
-                            // drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
-                            //     tooltip: { isHtml: true },
-                            //     colorAxis: { colors: ['#a6c5f7','#3277e6', '#075ce6'] },
-                            // });
-                            // $("#PageImpressionsByCountryChartTooltip").attr('title', nl2br(data.page_impressions_by_country_unique.desc));
-
-                            // //Locale insights
-                            // drawChart($('#PageImpressionsByLocaleChart')[0], data.chartData.page_impressions_by_locale_unique, 'Pie', {
-                            //     pieHole: 0.5,
-                            //     chartArea: {
-                            //         top: 10,
-                            //         bottom: 60,
-                            //     },
-                            // }, {
-                            //     explorer: ""
-                            // });
-                            // $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
-                            // drawChart($('#PageImpressionsByAgeGenderChart')[0], data.chartData.page_impressions_by_age_gender_unique, 'Bar', {
-                            //     isStacked: true,
-                            //     hAxis: {
-                            //         format: ';'
-                            //     },
-                            //     vAxis: {
-                            //         direction: -1
-                            //     }
-                            // });
-                            // $("#PageImpressionsByAgeGenderChartTooltip").attr('title', nl2br(data.page_impressions_by_age_gender_unique.desc));
-
-
-
-
-                            //Charts
-
-
                             //Country insights
                             drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
                                 tooltip: { isHtml: true },
@@ -508,36 +463,113 @@
                             $("#PageImpressionsByCountryChartTooltip").attr('title', nl2br(data.page_impressions_by_country_unique.desc));
 
                             //Locale insights
-                            // drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_locale_unique, 'Bubble', {
-                            //     colorAxis: { colors: ['violet'] }
-                            // });
-                            // $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
-//                            drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
-  //                      tooltip: {
-    //                        isHtml: true
-      //                  }
-        //            });
+                            drawChart($('#PageImpressionsByLocaleChart')[0], data.chartData.page_impressions_by_locale_unique, 'pie', {
+                                pieHole: 0.5,
+                                chartArea: {
+                                    top: 10,
+                                    bottom: 60,
+                                },
+                            }, {
+                                explorer: ""
+                            });
+                            $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
+
+                            //Page Impression by Frequency chart
+                            drawChart($('#PageImpressionsByFrequencyChart')[0], data.chartData.page_impressions_frequency_distribution, 'pie', {
+                                pieHole: 0.5,
+                                chartArea: {
+                                    top: 10,
+                                    bottom: 60,
+                                },
+                            }, {
+                                explorer: ""
+                            });
+                            $("#PageImpressionsByFrequencyChartTooltip").attr('title', nl2br(data.page_impressions_frequency_distribution.desc));
+
+                            //Page Impression by viral Frequency chart
+                            drawChart($('#PageImpressionsByViralFrequencyChart')[0], data.chartData.page_impressions_viral_frequency_distribution, 'pie', {
+                                pieHole: 0.5,
+                                chartArea: {
+                                    top: 10,
+                                    bottom: 60,
+                                },
+                            }, {
+                                explorer: ""
+                            });
+                            $("#PageImpressionsByViralFrequencyChartTooltip").attr('title', nl2br(data.page_impressions_viral_frequency_distribution.desc));
+
+                            //Page Video views by paid non paid
+                            drawChart($('#PageVideoImpressionsByPaidNonPaidChart')[0], data.chartData.page_video_views_by_paid_non_paid, 'Column', {
+                                hAxis: {
+                                textPosition: 'out',
+                            },
+                            chartArea: {
+                                left: 100,
+                                right: 50,
+                                top: 26,
+                                bottom: 100,
+                            },
+                            bar: {
+                                groupWidth: 50
+                            }
+                            });
+                            $("#PageVideoImpressionsByPaidNonPaidChartTooltip").attr('title', nl2br(data.page_video_views_by_paid_non_paid.desc));
+
+                            //Page Video views by paid non paid
+                            drawChart($('#PageImpressionsByProfileTabChart')[0], data.chartData.page_views_by_profile_tab_logged_in_unique, 'pie', {
+                                pieHole: 0.5,
+                                chartArea: {
+                                    top: 10,
+                                    bottom: 60,
+                                },
+                            }, {
+                                explorer: ""
+                            });
+                            $("#PageImpressionsByProfileTabChartTooltip").attr('title', nl2br(data.page_views_by_profile_tab_logged_in_unique.desc));
+
+                            //Page Views by internal referer
+                            drawChart($('#PageImpressionsByInternalRefererChart')[0], data.chartData.page_views_by_internal_referer_logged_in_unique, 'Column', {
+                                hAxis: {
+                                textPosition: 'out',
+                            },
+                            chartArea: {
+                                left: 100,
+                                right: 50,
+                                top: 26,
+                                bottom: 100,
+                            },
+                            bar: {
+                                groupWidth: 50
+                            }
+                            });
+                            $("#PageImpressionsByInternalRefererChartTooltip").attr('title', nl2br(data.page_views_by_internal_referer_logged_in_unique.desc));
+
+                            //Page view by site logged in unique
+                            drawChart($('#PageViewBySiteLoginUniqueChart')[0], data.chartData.page_views_by_site_logged_in_unique, 'pie', {
+                                pieHole: 0.5,
+                                chartArea: {
+                                    top: 10,
+                                    bottom: 60,
+                                },
+                            }, {
+                                explorer: ""
+                            });
+                            $("#PageViewBySiteLoginUniqueChartTooltip").attr('title', nl2br(data.page_views_by_site_logged_in_unique.desc));
+
+                             //Page Fan Locale
+                            drawChart($('#PageFansOnlineChart')[0], data.chartData.page_fans_online, 'Line');
+                            $("#PageFansOnlineChartTooltip").attr('title', nl2br('Daily: The number of your fans who saw any posts on Facebook on a given day, broken down by hour of day in PST/PDT.'));
 
                         }
-
-                        __AC("FBPageInsights");
-                        __AC("GraphicalOverview");
-
-
 
                         if(data.status != 200){
                             $("#FBPageInsights").html(noData);
                             $("#GraphicalOverview").html(noData);
                         }
-
-
+                        __AC(["FBPageInsights", "GraphicalOverview", "ImpressionLocale", "ImpressionFrequence", "ImpressionFrequenceVira", "ImpressionPNP", "ImpressionProfileByTab"]);
                     }
-
                 });
             }
-
-
-
         });
     </script>
 
@@ -553,52 +585,55 @@
                 <input class="shadow" id="select2Accounts" />
             </div>
         </div>
-        <div class="card-header p-15 ml-3">
-            <label class="h3 m-0">Account Details</label>
-        </div>
-        <div class="card shadow" id="ChannelMainDiv">
-            <div class="row p-50">
-                <div class="col-md-2 col-12">
+        <div class="card shadow">
+            <div class="card-header p-15 ml-3">
+                <label class="h3 m-0">Account Details</label>
+            </div>
+            <div class="card-body" id="ChannelMainDiv">
+                <div class="row p-50">
+                    <div class="col-md-2 col-12">
 
-                    <a id="fbAccURL"><img class="rounded-circle lazyload" id="fbAccProfileImage" width="100%"
-                            height="auto" alt="FB Profile Image"> </a>
-                </div>
-                <div class="col-md-10 col-12 pl-5">
-                    <div class="row mt-4">
-                        <div class="col">
-                            <label class="h1 font-weight-bold" id="fbAccName"> </label>
-                            <span id="fbAccVerifiedStatusIcon"></span>
-                        </div>
-
+                        <a id="fbAccURL"><img class="rounded-circle lazyload" id="fbAccProfileImage" width="100%"
+                                height="auto" alt="FB Profile Image"> </a>
                     </div>
-
-                    <div class="row mt-4">
-                        <div class="col">
-                            <span class="text-red"><em class="far fa-id-card"></em> Birthday</span>
-                            <br>
-                            <label id="fbAccBirthday" class="font-weight-bold"></label>
+                    <div class="col-md-10 col-12 pl-5">
+                        <div class="row mt-4">
+                            <div class="col">
+                                <label class="h1 font-weight-bold" id="fbAccName"> </label>
+                                <span id="fbAccVerifiedStatusIcon"></span>
+                            </div>
 
                         </div>
-                        <div class="col">
-                            <span class="text-red"><em class="fas fa-users"></em> Friends</span>
-                            <br>
-                            <label id="fbAccFollowersCount" class="font-weight-bold"></label>
-                        </div>
-                        <div class="col">
-                            <span class="text-red"><em class="fas fa-photo-video"></em> Total Posts</span>
-                            <br>
-                            <label id="fbAccMediaCount" class="font-weight-bold"></label>
-                        </div>
-                        <div class="col">
-                            <span class="text-red"><em class="far fa-id-card"></em> Gender</span>
-                            <br>
-                            <label id="fbAccGender" class="font-weight-bold"></label>
 
+                        <div class="row mt-4">
+                            <div class="col">
+                                <span class="text-red"><em class="far fa-id-card"></em> Birthday</span>
+                                <br>
+                                <label id="fbAccBirthday" class="font-weight-bold"></label>
+
+                            </div>
+                            <div class="col">
+                                <span class="text-red"><em class="fas fa-users"></em> Friends</span>
+                                <br>
+                                <label id="fbAccFollowersCount" class="font-weight-bold"></label>
+                            </div>
+                            <div class="col">
+                                <span class="text-red"><em class="fas fa-photo-video"></em> Total Posts</span>
+                                <br>
+                                <label id="fbAccMediaCount" class="font-weight-bold"></label>
+                            </div>
+                            <div class="col">
+                                <span class="text-red"><em class="far fa-id-card"></em> Gender</span>
+                                <br>
+                                <label id="fbAccGender" class="font-weight-bold"></label>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="card shadow" id="FBInsights">
             <div class="card-header p-15 ml-3">
                 <label class="h3 m-0">Page Details</label>
@@ -962,12 +997,6 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD:resources/views/user/analyze/facebook/overview.blade.php
-
-
-
-=======
->>>>>>> a2e8bcadf6d32b1da3476fb73ebc2dded951e565:resources/views/user/analyze/facebook/fb_overview.blade.php
                         </div>
                     </div>
                 </div>
@@ -976,68 +1005,140 @@
 
         <div class="card shadow" id="GraphicalOverview">
             <div class="card-header p-15 ml-3">
-                <label class="h3 m-0">Graphical Overview</label>
+                <label class="h3 m-0">Page Impressions by Country</label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByCountryChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="PageImpressionsByCountryChart" class="font-weight-bold" >Page Impressions by Country </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByCountryChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
                         <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
                         <hr/>
                     </div>
-                    <div class="col-md-10">
-<<<<<<< HEAD:resources/views/user/analyze/facebook/overview.blade.php
-                        <label for="PageImpressionsByCountryChart" class="font-weight-bold" >Page Impressions by Country </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByCountryChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-=======
-                        <label for="PageImpressionsByLocaleChart" class="font-weight-bold" >Page Impressions by Locale </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByLocaleChart" class="w-100 mt-3" style="height: 400px"></div>
->>>>>>> a2e8bcadf6d32b1da3476fb73ebc2dded951e565:resources/views/user/analyze/facebook/fb_overview.blade.php
-                        <div id="PageImpressionsByCountryChart" class="w-100 mt-3" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsByLocaleChart" class="font-weight-bold" >Page Impressions by Locale </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByLocaleChart" class="w-50 mt-3" style="height: 400px"></div><hr />
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsByAgeGenderChart" class="font-weight-bold" >Page Impressions by Age-Gender </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByAgeGenderChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByAgeGenderChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsByFrequencyChart" class="font-weight-bold" >Page Impressions by Frequency Distribution </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByFrequencyChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByFrequencyChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsByViralFrequencyChart" class="font-weight-bold" >Page Impressions by Frequency Distribution (Viral) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByViralChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByViralFrequencyChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PagePostsImpressionsChart" class="font-weight-bold" >Page Posts Impressions  </label><em class="anticon anticon-question-circle ml-2" id="PagePostsImpressionsChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PagePostsImpressionsChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageVideoImpressionsByPaidNonPaidChart" class="font-weight-bold" >Page Video Impressions by Paid-Non Paid </label><em class="anticon anticon-question-circle ml-2" id="PageVideoImpressionsByPaidNonPaidChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageVideoImpressionsByPaidNonPaidChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsByProfileTabChart" class="font-weight-bold" >Page  Impressions by Profile Tab </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByProfileTabChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByProfileTabChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsByInternalRefererChart" class="font-weight-bold" >Page Impressions by Internal Referer (Logged in) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByInternalRefererChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByInternalRefererChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsBySiteLoggedinChart" class="font-weight-bold" >Page Impressions by Site (Logged In) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsBySiteLoggedinChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsBySiteLoggedinChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <label for="PageImpressionsByInternalRefererChart" class="font-weight-bold" >Page Impressions by Internal Referer (Logged in) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByInternalRefererChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
-                        <div id="PageImpressionsByInternalRefererChart" class="w-100 mt-5" style="height: 400px"></div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="ImpressionLocale">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page Impressions by Locale</label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByLocaleChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageImpressionsByLocaleChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="ImpressionFrequence">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page Impressions by Frequency Distribution</label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByFrequencyChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageImpressionsByFrequencyChart" class="w-100 mt-3" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card shadow" id="ImpressionFrequenceVira">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page Impressions by Frequency Distribution (Viral) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByViralFrequencyChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageImpressionsByViralFrequencyChart" class="w-100 mt-5" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="ImpressionPNP">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page Video Impressions by Paid-Non Paid </label><em class="anticon anticon-question-circle ml-2" id="PageVideoImpressionsByPaidNonPaidChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageVideoImpressionsByPaidNonPaidChart" class="w-100 mt-5" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="ImpressionProfileByTab">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page  Impressions by Profile Tab </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByProfileTabChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageImpressionsByProfileTabChart" class="w-100 mt-5" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card shadow" id="ImpressionFrequenceVira">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page Views By Internal Referer (Unique) </label><em class="anticon anticon-question-circle ml-2" id="PageImpressionsByInternalRefererChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageImpressionsByInternalRefererChart" class="w-100 mt-5" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page views by site logged in (Unique)  </label><em class="anticon anticon-question-circle ml-2" id="PageViewBySiteLoginUniqueChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageViewBySiteLoginUniqueChart" class="w-100 mt-5" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="card shadow" id="PageFansOnline">
+                    <div class="card-header p-15 ml-3">
+                        <label class="h3 m-0">Page fans online</label><em class="anticon anticon-question-circle ml-2" id="PageFansOnlineChartTooltip" data-placement="top" data-toggle="tooltip" title=""></em>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="PageFansOnlineChart" class="w-100 mt-5" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </x-app.app-layout>

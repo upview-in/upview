@@ -113,8 +113,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-7">
                             <div class="main-slider-two__content">
-                                <h2 data-wow-duration="2000ms" class="wow fadeInUp">Social Listening: <br>
-                                    POWERFUL & RELIABLE</h2>
+                                <h2 data-wow-duration="2000ms" class="wow fadeInUp">SOCIAL MEDIA MANAGEMENT BY DAY
+                                    INVENTION LAB BY NIGHT</h2>
                                 <div class="main-slider-two__btn-video wow fadeInUp" data-wow-duration="2000ms">
                                     <div class="main-slider-two__btn">
                                         <a href="{{ route('main.features') }}" class="thm-btn">Know More</a>
@@ -335,109 +335,7 @@
 
 
         <!--Project Two Start-->
-        <section class="project-two">
-            <div class="container">
-                <div class="project-two__top">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12">
-                            <div class="project-two__left">
-                                <div class="section-title text-center">
-                                    <span class="section-title__tagline">recent projects</span>
-                                    <h2 class="section-title__title">Case Studies</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="project-two__work">
-                <div class="project-two__work-inner">
-                    <div class="row filter-layout masonary-layout">
-                        <div class="col-xl-3 col-lg-6 col-md-6 filter-item bra photo web">
-                            <!--Portfolio One Single-->
-                            <div class="project-one__single">
-                                <div class="project-one__img">
-                                    <img src="{{ asset('main/images/resources/project-two-img-2.jpg') }}" alt="">
-                                    <div class="project-one__hover">
-                                        <p class="project-one__tagline">Graphic</p>
-                                        <h3 class="project-one__title"><a href="javascript:void();">Fimlor
-                                                Experience</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 filter-item bra web">
-                            <!--Portfolio One Single-->
-                            <div class="project-one__single">
-                                <div class="project-one__img">
-                                    <img src="{{ asset('main/images/resources/project-two-img-3.jpg') }}" alt="">
-                                    <div class="project-one__hover">
-                                        <p class="project-one__tagline">Graphic</p>
-                                        <h3 class="project-one__title"><a href="javascript:void();">Fimlor
-                                                Experience</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6 col-lg-6 col-md-6 filter-item bra photo">
-                            <!--Portfolio One Single-->
-                            <div class="project-one__single">
-                                <div class="project-one__img">
-                                    <img src="{{ asset('main/images/resources/project-two-img-1.jpg') }}" alt="">
-                                    <div class="project-one__hover">
-                                        <p class="project-one__tagline">Graphic</p>
-                                        <h3 class="project-one__title"><a href="javascript:void();">Fimlor
-                                                Experience</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 filter-item bra photo app">
-                            <!--Portfolio One Single-->
-                            <div class="project-one__single">
-                                <div class="project-one__img">
-                                    <img src="{{ asset('main/images/resources/project-two-img-6.jpg') }}" alt="">
-                                    <div class="project-one__hover">
-                                        <p class="project-one__tagline">Graphic</p>
-                                        <h3 class="project-one__title"><a href="javascript:void();">Fimlor
-                                                Experience</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 filter-item bra app web">
-                            <!--Portfolio One Single-->
-                            <div class="project-one__single">
-                                <div class="project-one__img">
-                                    <img src="{{ asset('main/images/resources/project-two-img-4.jpg') }}" alt="">
-                                    <div class="project-one__hover">
-                                        <p class="project-one__tagline">Graphic</p>
-                                        <h3 class="project-one__title"><a href="javascript:void();">Fimlor
-                                                Experience</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 filter-item bra web">
-                            <!--Portfolio One Single-->
-                            <div class="project-one__single">
-                                <div class="project-one__img">
-                                    <img src="{{ asset('main/images/resources/project-two-img-5.jpg') }}" alt="">
-                                    <div class="project-one__hover">
-                                        <p class="project-one__tagline">Graphic</p>
-                                        <h3 class="project-one__title"><a href="javascript:void();">Fimlor
-                                                Experience</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
+            <!-- Code Removed For temporary basis -->
         <!--Project Two End-->
 
 
@@ -469,11 +367,11 @@
                                     <p class="testimonial-two__text">I must have used more than 3 platforms but have never been more satisfied with the features of a platform than with Upview. A permanent user of Upview forever!</p>
                                     <div class="testimonial-two__client-info">
                                         <div class="testimonial-two__client-img">
-                                            <img src="{{ asset('main/images/testimonial/testimonial-one-img-2.jpg') }}" alt="">
+                                            <!-- <img src="{{ asset('main/images/testimonial/testimonial-one-img-2.jpg') }}" alt=""> -->
                                         </div>
                                         <div class="testimonial-two__client-details">
-                                            <h4 class="testimonial-two__client-name">Lorem Ipsum</h4>
-                                            <p class="testimonial-two__client-title">Customer</p>
+                                            <h4 class="testimonial-two__client-name">Viral Rathod</h4>
+                                            <p class="testimonial-two__client-title">B99 Esports</p>
                                         </div>
                                     </div>
                                 </div>
@@ -482,11 +380,11 @@
                                     <p class="testimonial-two__text">One issue I was facing with other applications is that they are limited to just one or two platforms and I use several different applications to post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not only removed all these hassles but saved me lots of time as well.</p>
                                     <div class="testimonial-two__client-info">
                                         <div class="testimonial-two__client-img">
-                                            <img src="{{ asset('main/images/testimonial/testimonial-one-img-1.jpg') }}" alt="">
+                                            <!-- <img src="{{ asset('main/images/testimonial/testimonial-one-img-1.jpg') }}" alt=""> -->
                                         </div>
                                         <div class="testimonial-two__client-details">
-                                            <h4 class="testimonial-two__client-name">Lorem Ipsum</h4>
-                                            <p class="testimonial-two__client-title">Customer</p>
+                                            <h4 class="testimonial-two__client-name">Rashmi Mishra</h4>
+                                            <p class="testimonial-two__client-title">Actor/Model</p>
                                         </div>
                                     </div>
                                 </div>
@@ -495,11 +393,11 @@
                                     <p class="testimonial-two__text">Upview has been a saviour, I was struggling in keeping up with the posting but now I can easily schedule it all together and not have to worry about anything. And to add to it, I can assess what was working for me and what was not.</p>
                                     <div class="testimonial-two__client-info">
                                         <div class="testimonial-two__client-img">
-                                            <img src="{{ asset('main/images/testimonial/testimonial-one-img-3.jpg') }}" alt="">
+                                            <!-- <img src="{{ asset('main/images/testimonial/testimonial-one-img-3.jpg') }}" alt=""> -->
                                         </div>
                                         <div class="testimonial-two__client-details">
-                                            <h4 class="testimonial-two__client-name">Lorem Ipsum</h4>
-                                            <p class="testimonial-two__client-title">Customer</p>
+                                            <h4 class="testimonial-two__client-name">Siddhanthraj Chavda</h4>
+                                            <p class="testimonial-two__client-title">Digital Marketer</p>
                                         </div>
                                     </div>
                                 </div>
@@ -515,7 +413,7 @@
 
 
         <!--Brand Two Start-->
-        <section class="brand-one">
+        <!-- <section class="brand-one">
             <div class="container">
                 <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
                     "0": {
@@ -546,42 +444,42 @@
                     <div class=" swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-1.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-2.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-3.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-4.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-5.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-1.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-2.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-3.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-4.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('main/images/brand/brand-1-5.png') }}" alt="">
-                        </div><!-- /.swiper-slide -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!--Brand Two End-->
 
         <!--Blog Two Start-->
-        <section class="blog-two">
+        <!-- <section class="blog-two">
             <div class="blog-two-shape" style="background-image: url('{{ asset('main/images/shapes/blog-two-shape.png') }}')"></div>
             <div class="container">
                 <div class="section-title text-center">
@@ -590,7 +488,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                        <!--Blog One Single-->
+
                         <div class="blog-one__single">
                             <div class="blog-one__img">
                                 <img src="{{ asset('main/images/blog/blog-one-img-1.jpg') }}" alt="">
@@ -618,7 +516,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
-                        <!--Blog One Single-->
+
                         <div class="blog-one__single">
                             <div class="blog-one__img">
                                 <img src="{{ asset('main/images/blog/blog-one-img-2.jpg') }}" alt="">
@@ -646,7 +544,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
-                        <!--Blog One Single-->
+
                         <div class="blog-one__single">
                             <div class="blog-one__img">
                                 <img src="{{ asset('main/images/blog/blog-one-img-3.jpg') }}" alt="">
@@ -675,7 +573,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!--Blog Two End-->
 
         <!--CTA One Start-->
@@ -695,7 +593,7 @@
                                 </div>
                             </div>
                             <div class="cta-one__right">
-                                <a href="contact.html" class="thm-btn cta-one__btn">let’s get started</a>
+                                <a href="{{ route('main.contact') }}" class="thm-btn cta-one__btn">let’s get started</a>
                             </div>
                         </div>
                     </div>
