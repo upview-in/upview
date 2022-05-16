@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\User\ExportPermissions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserPermissions\CreatePermissionRequest;
 use App\Http\Requests\Admin\UserPermissions\DeletePermissionRequest;
 use App\Http\Requests\Admin\UserPermissions\EditPermissionRequest;
+use App\Http\Requests\Admin\UserPermissions\ExportPermissionsRequest;
+use App\Http\Requests\Admin\UserPermissions\ImportPermissionsRequest;
 use App\Http\Requests\Admin\UserPermissions\IndexPermissionRequest;
 use App\Http\Requests\Admin\UserPermissions\StorePermissionRequest;
 use App\Http\Requests\Admin\UserPermissions\UpdatePermissionRequest;
 use App\Http\Requests\Admin\UserPermissions\ViewPermissionRequest;
+use App\Imports\User\PermissionsImport;
 use App\Models\UserPermission;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserPermissionsController extends Controller
 {
@@ -129,5 +135,25 @@ class UserPermissionsController extends Controller
         }
 
         return redirect()->back()->withInput()->with('message', 'Permission (' . $userPermission->name . ') deleted successfully!');
+    }
+
+    public function export(ExportPermissionsRequest $request)
+    {
+        return Excel::download(new ExportPermissions, 'user_permissions_' . Carbon::now()->toDateTimeString() . '.xlsx');
+    }
+
+    public function import(ImportPermissionsRequest $request)
+    {
+        Excel::import(new PermissionsImport, $request->file('file'));
+
+        if ($request->ajax()) {
+            return response()->json([
+                'variant' => 'success',
+                'message' => 'Permission imported successfully!',
+                'icon' => 'check',
+            ]);
+        }
+
+        return back();
     }
 }

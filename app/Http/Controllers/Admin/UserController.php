@@ -153,8 +153,10 @@ class UserController extends Controller
                         $roles_ids[] = $role;
                     }
                 }
+                $user->roles()->sync($roles_ids);
+            } else {
+                $user->roles()->sync([]);
             }
-            $user->roles()->sync($roles_ids);
         }
 
         if ($request->ajax()) {

@@ -17,7 +17,10 @@ class HSTS
     public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
-        $response->header('Strict-Transport-Security', 'max-age=31536000; includeSubdomains');
+        if (method_exists($response, 'header')) {
+            $response->header('Strict-Transport-Security', 'max-age=31536000; includeSubdomains');
+        }
+
         return $response;
     }
 }

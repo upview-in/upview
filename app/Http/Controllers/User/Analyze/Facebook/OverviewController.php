@@ -85,14 +85,14 @@ class OverviewController extends Controller
 
                             return response()->json(collect($data), 200);
                         }
+
                     return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
                     break;
 
                 case 'PageInsights':
                     if ($request->has(['id'])) {
-                        try
-                        {
+                        try {
                             $data = [];
                             $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
                             foreach ($response as $fbData) {
@@ -120,9 +120,9 @@ class OverviewController extends Controller
                                 $_temp = [];
 
                                 switch ($locale) {
-                                    case 'en_GB': $_temp[0] = "English (UK)";
+                                    case 'en_GB': $_temp[0] = 'English (UK)';
                                                 break;
-                                    case 'es_LA': $_temp[0] = "Spanish (Latin America)";
+                                    case 'es_LA': $_temp[0] = 'Spanish (Latin America)';
                                                 break;
                                     default: $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
                                 }
@@ -134,7 +134,7 @@ class OverviewController extends Controller
                             $data['chartData']['page_impressions_by_locale_unique'] = $tempData;
 
                             $tempData = [];
-                            $tempData[] = ['Age','Male', 'Female'];
+                            $tempData[] = ['Age', 'Male', 'Female'];
                             foreach ($data['page_impressions_by_age_gender_unique']['data'] as $demo => $value) {
                                 $_temp = [];
                                 $_arr = explode('.', $demo);
@@ -299,8 +299,8 @@ class OverviewController extends Controller
                                 $tempData[] = $_temp;
                             }
                             $data['chartData']['page_fans_city'] = $tempData;
-                            return response()->json(collect($data), 200);
 
+                            return response()->json(collect($data), 200);
                     }catch (FacebookResponseException $e) {
                         return response()->json(collect(), 404);
                     }catch (Exception $e) {
@@ -309,7 +309,6 @@ class OverviewController extends Controller
                 } else {
                     return response()->json(['status' => 400, 'message' => 'Missing required fields']);
                 }
-
 
                 case 'accountDetails':
                     $data = [];

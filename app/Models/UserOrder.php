@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Concerns\Models\Searchable;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 class UserOrder extends Model
 {
@@ -15,7 +15,7 @@ class UserOrder extends Model
         'Active',
         'Cancelled',
         'Failed',
-        'Expired'
+        'Expired',
     ];
 
     public static $status_color = [

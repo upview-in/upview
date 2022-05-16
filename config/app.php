@@ -189,6 +189,9 @@ return [
         // Helper methods
         App\Providers\HelperServiceProvider::class,
 
+        // Import/Export excel, csv
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         // Permissions Providers
         App\Providers\UserPermissionsServiceProvider::class,
         App\Providers\AdminPermissionsServiceProvider::class,
@@ -246,6 +249,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Functions' => App\Helper\Functions::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

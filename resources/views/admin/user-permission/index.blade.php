@@ -16,8 +16,16 @@
                     <em class="bi bi-shield-shaded me-2 font-22 text-primary"></em>
                     <h5 class="mb-0 text-primary">{{ __('Permissions') }}</h5>
                 </div>
-                <div class="flex-shrink-1 pointer">
-                    <a href="{{ route('admin.userPermissions.create') }}" class="d-flex align-items-center"><em class="bi bi-plus-circle me-1 font-22 text-primary"></em> <strong>Create</strong></a>
+                <div class="d-flex flex-shrink-1 pointer">
+                    <a class="d-flex align-items-center ps-3 text-success" onclick="$('#import-file').click()"><em class="bi bi-cloud-arrow-up me-1 font-22"></em> <strong>Import</strong></a>
+                    <form class="ajax-form hidden" method="POST" action="{{ route('admin.userPermissions.import') }}">
+                        @csrf
+                        <div class="input-group">
+                            <input type="file" name="file" id="import-file" onchange="$(this).closest('form').submit();">
+                        </div>
+                    </form>
+                    <a href="{{ route('admin.userPermissions.export') }}" class="d-flex align-items-center ps-3 text-warning"><em class="bi bi-cloud-arrow-down me-1 font-22"></em> <strong>Export</strong></a>
+                    <a href="{{ route('admin.userPermissions.create') }}" class="d-flex align-items-center ps-5"><em class="bi bi-plus-circle me-1 font-22 text-primary"></em> <strong>Create</strong></a>
                 </div>
             </div>
             <div class="row mt-3">

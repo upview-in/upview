@@ -13,7 +13,7 @@ class MainDashboardRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return adminUser()->can('admin.dashboard.view');
     }
 
     /**

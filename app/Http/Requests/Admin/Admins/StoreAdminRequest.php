@@ -32,7 +32,7 @@ class StoreAdminRequest extends FormRequest
             'password' => ['required', 'same:confirm_password', Password::min(8)],
             'local_lang' => ['nullable', 'in:' . implode(',', Functions::getAvailableLanguages())],
             'avatar' => ['nullable', 'image', 'max:6144'],
-            'roles' => ['array'],
+            'roles' => ['nullable', 'array'],
         ];
     }
 }

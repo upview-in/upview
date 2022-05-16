@@ -14,21 +14,16 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserOrdersController;
 use App\Http\Controllers\Admin\UserPermissionsController;
 use App\Http\Controllers\Admin\UserRolesController;
-
 // API Ayrshare namespace
 use App\Http\Controllers\Api\Ayrshare\AyrshareController;
-
 // Common namespace
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\PaymentsController;
-
 // Support chat panel namespace
 use App\Http\Controllers\Support\ChatController;
-
 // User namespace
-use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Analyze\Facebook\OverviewController as FbOverviewController;
 use App\Http\Controllers\User\Analyze\Instagram\OverviewController as IgOverviewController;
@@ -40,12 +35,12 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\Measure\MarketResearch\ChannelIntelligence;
 use App\Http\Controllers\User\Measure\MarketResearch\VideoIntelligence;
 use App\Http\Controllers\User\PagesController;
+use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\PostScheduler\HistoryController;
 use App\Http\Controllers\User\PostScheduler\SchedulerController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SocialListeningController;
 use App\Http\Controllers\User\SupportController;
-
 // Packages namespace
 use Illuminate\Support\Facades\Route;
 
@@ -97,7 +92,6 @@ Route::group(['domain' => config('app.domains.app')], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::prefix('user')->as('user.')->group(function () {
-
             Route::get('/social', [SocialListeningController::class, 'index'])->name('social');
             Route::get('/load-social/{hash}', [SocialListeningController::class, 'load'])->name('load');
 
@@ -207,12 +201,20 @@ Route::group(['domain' => config('app.domains.app')], function () {
 // Admin Routes
 Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' => 'admin.'], function () {
     Route::middleware(['admin'])->group(function () {
+        // Import/Export routes
+        Route::post('/adminPermissions/import', [AdminPermissionsController::class, 'import'])->name('adminPermissions.import');
+        Route::get('/adminPermissions/export', [AdminPermissionsController::class, 'export'])->name('adminPermissions.export');
+        Route::post('/userPermissions/import', [UserPermissionsController::class, 'import'])->name('userPermissions.import');
+        Route::get('/userPermissions/export', [UserPermissionsController::class, 'export'])->name('userPermissions.export');
+
+        // Dashboard routes
         Route::controller(AdminDashboard::class)->prefix('dashboard')->as('dashboard.')->group(function () {
             Route::get('/main', 'main')->name('main');
             Route::get('/server-info', 'serverInfo')->name('server.info');
             Route::get('/phpinfo', 'phpInfo')->name('phpinfo');
         });
 
+        // Fetch system information API
         Route::controller(SystemInfoController::class)->prefix('system')->as('system.')->group(function () {
             Route::post('/CPU-info', 'getCPUInfo')->name('getCPUInfo');
             Route::post('/memory-info', 'getMemoryInfo')->name('getMemoryInfo');
@@ -221,7 +223,7 @@ Route::group(['domain' => config('app.domains.admin'), 'guard' => 'admin', 'as' 
         Route::get('/support/queries', [AdminSupportController::class, 'queries'])->name('support.queries');
         Route::resource('support/users', AdminSupportController::class, ['as' => 'support']);
 
-        //Manage Sales inquery from the Main Site
+        //Manage Sales inquiry from the Main Site
         Route::get('/sales/queries', [SalesController::class, 'queries'])->name('sales.queries');
 
         // Manage users and their roles and permissions

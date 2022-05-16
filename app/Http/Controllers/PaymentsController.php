@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Payment\InitPaymentRequest;
 use App\Models\UserOrder;
 use App\Models\UserRole;
-use Illuminate\Http\Request;
-use Stripe\Checkout\Session;
-use Stripe\Stripe;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Stripe\Checkout\Session;
 use Stripe\PaymentIntent;
+use Stripe\Stripe;
 
 class PaymentsController extends Controller
 {
@@ -49,12 +49,12 @@ class PaymentsController extends Controller
                 $order->update();
 
                 return redirect()->to($checkout_session->url)->send();
-            } else {
-                return abort(500);
             }
-        } else {
-            return abort(404);
+
+            return abort(500);
         }
+
+        return abort(404);
     }
 
     public function onSuccess(Request $request, UserOrder $order)
@@ -101,7 +101,7 @@ class PaymentsController extends Controller
                 $response['code'] = 'danger';
             }
         } else {
-            $response['message'] = "Order is invalid";
+            $response['message'] = 'Order is invalid';
             $response['code'] = 'warning';
         }
 
@@ -114,6 +114,7 @@ class PaymentsController extends Controller
             $order->status = 2;
             $order->update();
         }
+
         return redirect()->route('panel.user.plans.list');
     }
 
@@ -124,7 +125,10 @@ class PaymentsController extends Controller
 
     public static function getSysAmount(int $price): int
     {
-        if ($price === 0) { return 0; }
+        if ($price === 0) {
+            return 0;
+        }
+
         return round($price / 100);
     }
 }

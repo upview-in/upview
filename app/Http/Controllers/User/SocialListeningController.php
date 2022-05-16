@@ -13,7 +13,8 @@ class SocialListeningController extends Controller
     {
         $hash = sha1(rand());
         session(['validate_url_hash' => $hash]);
-        return view('user.social_listening', ['hash' => encrypt($hash) ]);
+
+        return view('user.social_listening', ['hash' => encrypt($hash)]);
     }
 
     public function load(Request $request, $hash)
@@ -28,7 +29,8 @@ class SocialListeningController extends Controller
 
         if (!empty($rey_hash) && $rey_hash === $hash) {
             session()->forget('validate_url_hash');
-            return redirect('https://app.awario.com/#/login-by-hash/'.Auth::user()->awario_profile_hash);
+
+            return redirect('https://app.awario.com/#/login-by-hash/' . Auth::user()->awario_profile_hash);
         }
 
         return abort(404);
