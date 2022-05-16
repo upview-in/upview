@@ -76,10 +76,10 @@ class SchedulerController extends Controller
             if (is_null($post_info)) {
                 $post_info = [];
             }
-            foreach ($response['postIds'] as $post) {
-                $post_info[] = $post;
-            }
-            $postData->post_info = $post_info;
+            // foreach ($response['postIds'] as $post) {
+            //     $post_info[] = $post;
+            // }
+            // $postData->post_info = $post_info;
             $postData->caption = $request->caption . ' ' . $tags;
             $postData->media_url = [route('image.displayImage', $mediaURL)];
             $postData->type = 1;

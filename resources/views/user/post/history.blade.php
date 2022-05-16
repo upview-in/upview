@@ -26,7 +26,7 @@
                             <tr>
                                 <th scope="col" data-sortable="true">#</th>
                                 <th scope="col" data-sortable="true" data-field="posted_from_profile">Posted From Profile</th>
-                                <th scope="col" data-sortable="true" data-field="posted_on_platforms">Posted on Platforms</th>
+                                <!-- <th scope="col" data-sortable="true" data-field="posted_on_platforms">Posted on Platforms</th> -->
                                 <th scope="col" data-sortable="true" data-field="caption">Caption</th>
                                 <th scope="col" data-sortable="true" data-field="status">Status</th>
                                 <th scope="col" data-sortable="true" data-field="postedBy">Posted By</th>
@@ -38,7 +38,7 @@
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td class="justify-center">{{ $history->profile->title ?? '-' }}</td>
-                                <td class="justify-center">
+                                <!-- <td class="justify-center">
                                     @foreach($history->post_info as $postInfo)
                                     @if($postInfo['platform'] == 'facebook')
                                     <a href="{{ $postInfo['postUrl'] }}" target="_blank"><em class='fab fa-facebook-f p-1'></em></a>
@@ -63,7 +63,7 @@
                                     @endif
                                     @endforeach
 
-                                </td>
+                                </td> -->
                                 <td class="justify-center">{{ $history->caption ?? '-' }}</td>
                                 <td class="justify-center">
                                     @if( $history->status == 0 )

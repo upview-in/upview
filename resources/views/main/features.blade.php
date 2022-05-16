@@ -130,8 +130,7 @@
                                                 </div>
                                                 <h3 class="services-three__title"><a href="#">Youtube & Facebook
                                                         Analysis</a></h3>
-                                                <p class="services-three__text">Analyze and check what is working for
-                                                    you and what is not working. </p>
+                                                <p class="services-three__text">Make more powerfull and strategic changes to your business decisions with the ease of social media analytics</p>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
@@ -295,8 +294,7 @@
 
                                                 <h3 class="services-three__title"><a href="#">Influencer Listening</a>
                                                 </h3>
-                                                <p class="services-three__text">Check which markets the influencer is
-                                                    influencing the most!</p>
+                                                <p class="services-three__text">Get the insights of markets where influencers are influencing the most!</p>
 
                                             </div>
                                         </div>

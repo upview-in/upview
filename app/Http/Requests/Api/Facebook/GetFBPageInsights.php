@@ -24,9 +24,7 @@ class GetFBPageInsights extends FormRequest
     public function rules()
     {
         return [
-            'metrics'=>['required'],
             'id'=>['required'],
-
         ];
     }
 }
