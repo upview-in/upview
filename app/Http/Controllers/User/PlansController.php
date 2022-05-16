@@ -8,9 +8,9 @@ use App\Http\Requests\Payment\InitPaymentRequest;
 use App\Http\Requests\User\Plans\DetailRequest;
 use App\Models\UserOrder;
 use App\Models\UserRole;
-use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class PlansController extends Controller
 {
@@ -39,7 +39,7 @@ class PlansController extends Controller
             if (!in_array($plan->id, $purchased_plans)) {
                 $paymentRequest = new InitPaymentRequest();
                 $paymentRequest->replace([
-                    'plan_id' => $plan->id
+                    'plan_id' => $plan->id,
                 ]);
 
                 $paymentsController = new PaymentsController();

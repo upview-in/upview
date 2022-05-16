@@ -4,16 +4,13 @@ namespace App\Http\Controllers\Api\Instagram;
 
 use App\Helper\InstagramHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Instagram\Account\GetInstagramBusinessAccountDetails;
 use App\Http\Requests\Api\Instagram\Account\GetMineAccountDetails;
 use DateTime;
 use Exception;
-use Illuminate\Http\Client\Request;
 use Illuminate\Support\Arr;
 
 class InstagramController extends Controller
 {
-
     public static function listInstaBusinessAccountsData()
     {
         $ig = new InstagramHelper();
@@ -22,7 +19,6 @@ class InstagramController extends Controller
         $IGUser = $ig_client->get('/me/accounts?fields=instagram_business_account')->getGraphEdge();
         dd($IGUser);
         // $IGUser = $ig_client->get('/' . $MINEUserID[session('AccountIndex_IG', 0)]['id'] . '?fields=instagram_business_account')->getGraphUser();
-
     }
 
     public function getMineAccountInsights(GetMineAccountDetails $request)
@@ -35,18 +31,14 @@ class InstagramController extends Controller
 
         $key = 0;
         $IGBizAcc = [];
-        foreach($IGUser as $acc)
-        {
-            if(Arr::exists($acc, "instagram_business_account"))
-            {
+        foreach ($IGUser as $acc) {
+            if (Arr::exists($acc, 'instagram_business_account')) {
                 $IGBizAcc[$key++] = $acc['instagram_business_account']['id'];
             }
         }
         $key = 0;
-        foreach($IGBizAcc as $acc=>$id)
-        {
+        foreach ($IGBizAcc as $acc=>$id) {
             $IGData = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=days_28')->getBody();
-
         }
         $IGData = $ig_client->get('/' . $MINE . '/insights?metric=' . $request->fields . '&period=days_28')->getBody();
 
@@ -76,12 +68,9 @@ class InstagramController extends Controller
         $IGUser = $ig_client->get('/me/accounts?fields=instagram_business_account')->getGraphEdge();
         // $MINEUserID = $ig_client->get('/' . $MINEUserID[0]['id'] . '?fields=instagram_business_account')->getGraphUser();
 
-
         $key = 0;
-        foreach($IGUser as $acc)
-        {
-            if(Arr::exists($acc, "instagram_business_account"))
-            {
+        foreach ($IGUser as $acc) {
+            if (Arr::exists($acc, 'instagram_business_account')) {
                 $IGBizAcc[$key++] = $acc['instagram_business_account']['id'];
             }
         }

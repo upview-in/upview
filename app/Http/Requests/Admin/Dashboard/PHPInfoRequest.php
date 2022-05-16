@@ -13,7 +13,7 @@ class PHPInfoRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return adminUser()->can('admin.server.phpinfo');
     }
 
     /**

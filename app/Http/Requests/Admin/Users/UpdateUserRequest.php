@@ -41,6 +41,7 @@ class UpdateUserRequest extends FormRequest
             'enabled' => ['sometimes', 'in:true,false'],
             'verified' => ['sometimes', 'in:true,false'],
             'awario_profile_hash' => ['nullable', 'string'],
+            'roles' => ['nullable', 'array'],
         ];
     }
 }

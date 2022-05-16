@@ -44,7 +44,7 @@ class SystemInfoController extends Controller
             $splitted_values = explode(' ', trim($value));
 
             if (count($splitted_values) > 1 && Str::lower($splitted_values[1]) == 'kb') {
-                $value = Functions::formatSizeUnits(($splitted_values[0] ?? 0)?($splitted_values[0] ?? 0) * 1024: 0);
+                $value = Functions::formatSizeUnits(($splitted_values[0] ?? 0) ? ($splitted_values[0] ?? 0) * 1024 : 0);
             }
 
             $info .= '<div class="col-lg-2 col-md-3 col-sm-4 col-12 mt-2 mb-2">
@@ -57,6 +57,5 @@ class SystemInfoController extends Controller
         return $info;
     }
 }
-
 
 // run as root use "echo (password) | sudo -S (command)"

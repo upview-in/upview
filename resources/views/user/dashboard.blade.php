@@ -62,11 +62,11 @@
         </div>
 
         <div class="card-body">
-            <video controls width="900" style="border: 1px solid #000;">
+            <!-- <video controls width="100%" height="auto" style="border: 1px solid #000;">
                 <source src="{{ asset('videos/upview.mp4')  }} "
                         type="video/mp4">
                 Sorry, your browser doesn't support embedded videos.
-            </video>
+            </video> -->
         </div>
     </div>
 </div>
