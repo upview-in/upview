@@ -381,7 +381,7 @@ class Chart {
 
     buildContextMenu() {
         let _this = this;
-        let menu = '<div id="' + this.id.id + 'ContextMenu" class="dropdown dropdown-animated scale-right float-right mr-5 pointer"><i class="anticon anticon-menu" data-toggle="dropdown"></i><div class="dropdown-menu"><button id="DownloadPdf' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PDF</button><button id="DownloadPng' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PNG</button><button id="Fullscreen' + this.id.id + 'Chart" class="dropdown-item" type="button">Fullscreen</button></div></div>';
+        let menu = '<div id="' + this.id.id + 'ContextMenu" class="dropdown dropdown-animated scale-right float-right mr-5 pointer" style="z-index: 9999;"><i class="anticon anticon-menu" data-toggle="dropdown"></i><div class="dropdown-menu"><button id="DownloadPdf' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PDF</button><button id="DownloadPng' + this.id.id + 'Chart" class="dropdown-item" type="button">Export PNG</button><button id="Fullscreen' + this.id.id + 'Chart" class="dropdown-item" type="button">Fullscreen</button></div></div>';
         this.id.parentNode.insertAdjacentHTML("afterbegin", menu);
 
         $("#Fullscreen" + this.id.id + "Chart").click(function () {
