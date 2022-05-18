@@ -626,10 +626,10 @@ class FilesystemAdapter implements CloudFilesystemContract
         // it as the base URL instead of the default path. This allows the developer to
         // have full control over the base path for this filesystem's generated URLs.
         if (isset($this->config['url'])) {
-            $splited_url = Str::of(Str::replace(['http://', 'http://'], '', $this->config['url']))->explode('/', );
-            $splited_url->shift();
-            $builed_url = $splited_url->implode('/');
-            return $this->concatPathToUrl(Request::root() . '/' . $builed_url, $path);
+            $splitted_url = Str::of(Str::replace(['http://', 'https://'], '', $this->config['url']))->explode('/', );
+            $splitted_url->shift();
+            $builded_url = $splitted_url->implode('/');
+            return $this->concatPathToUrl(Request::root() . '/' . $builded_url, $path);
         }
 
         $path = '/storage/'.$path;
