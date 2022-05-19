@@ -320,7 +320,7 @@ class OverviewController extends Controller
                     }
                 }
 
-                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields', "Error"=> print_r(debug_backtrace())]);
                     break;
 
                 case 'accountDetails':
