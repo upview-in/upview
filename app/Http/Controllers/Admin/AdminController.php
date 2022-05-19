@@ -137,12 +137,16 @@ class AdminController extends Controller
 
         if ($request->has('roles')) {
             $roles_ids = [];
-            foreach ($request->roles as $role) {
-                if (!is_null(AdminRole::find($role))) {
-                    $roles_ids[] = $role;
+            if (!is_null($request->roles)) {
+                foreach ($request->roles as $role) {
+                    if (!is_null(AdminRole::find($role))) {
+                        $roles_ids[] = $role;
+                    }
                 }
+                $admin->roles()->sync($roles_ids);
+            } else {
+                $admin->roles()->sync([]);
             }
-            $admin->roles()->sync($roles_ids);
         }
 
         if ($request->ajax()) {

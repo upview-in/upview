@@ -28,9 +28,10 @@ class TagsController extends Controller
             $tag = new Tags();
             $tag->tag = $request->tag;
             $tag->save();
+
             return ['code' => 200, 'message' => 'success'];
-        } else {
-            return ['code' => 200, 'message' => 'exists'];
         }
+
+        return ['code' => 200, 'message' => 'exists'];
     }
 }

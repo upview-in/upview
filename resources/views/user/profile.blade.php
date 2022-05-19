@@ -77,7 +77,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">{{ __('Basic Infomation') }}</h4>
+                <h4 class="card-title">{{ __('Basic Information') }}</h4>
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('panel.user.profile.change_avatar') }}">
@@ -93,19 +93,16 @@
 
                     @csrf
                     <div class="media align-items-center">
-                        <div class="avatar avatar-image  m-h-10 m-r-15" style="height: 80px; width: 80px">
-                            <img src="{{Auth::user()->getFirstMediaUrl('avatars', 'thumb') }}" alt="{{ Auth::user()->name }}" id="avatarImg" class="pointer">
-                            <input id="avatar" name="avatar" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
+                        <div class="avatar avatar-image  m-h-10 m-r-15" style="width: 80px; height: 80px; flex-shrink: 0;">
+                            <img src="{{ Auth::user()->getFirstMediaUrl('avatars', 'thumb') }}" alt="{{ Auth::user()->name }}" id="avatarImg" class="pointer">
                         </div>
+                        <input id="avatar" name="avatar" type="file" class="d-none" accept="image/png, image/jpeg, image/jpg" onchange="$(this).closest('form').submit();">
                         <div class="m-l-20 m-r-20">
                             <h5 class="m-b-5 font-size-18">{{ __('Change Avatar') }}</h5>
                             <p class="opacity-07 font-size-13 m-b-0">
                                 {{ __('Recommended Aspect Ratio') }}: 1:1<br>
                                 Max file size: 6MB
                             </p>
-                        </div>
-                        <div>
-                            <button id="btnUpdateAvatar" class="btn btn-tone btn-primary">{{ __('Upload') }}</button>
                         </div>
                     </div>
                     @error('avatar')

@@ -117,10 +117,10 @@
                         </div>
                         <hr>
                         <div class="d-flex align-items-center">
-                            <div class="avatar avatar-image ms-2 me-3" style="height: 80px; width: 80px">
+                            <div class="avatar avatar-image ms-2 me-3" style="height: 80px; width: 80px; flex-shrink: 0;">
                                 <img src="{{ $user->getFirstMediaUrl('avatars', 'thumb') }}" alt="" id="avatarImg" class="pointer">
-                                <input id="avatar" name="avatar" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
                             </div>
+                            <input id="avatar" name="avatar" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
                             <div class="ms-2 me-2">
                                 <h5 class="mb-2 font-size-18">{{ __('Change Avatar') }}</h5>
                                 <p class="opacity-07 font-size-13 mb-0">

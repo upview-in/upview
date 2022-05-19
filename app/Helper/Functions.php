@@ -41,22 +41,41 @@ class Functions
         return 0;
     }
 
-    public static function ConvertToRegularString($str)
+    public static function convertToRegularString(?string $str): ?string
     {
         return ucfirst(strtolower(str_replace('_', ' ', $str)));
     }
 
-    public static function FormatNumber(int $number)
+    public static function splitCamelCase(?string $word): ?string
     {
-        if ($number >= 1E9) {
-            return round($number / 1E9, 2) . 'b';
-        } elseif ($number >= 1E6) {
-            return round($number / 1E6, 2) . 'm';
-        } elseif ($number >= 1E3) {
-            return round($number / 1E3, 2) . 'k';
+        return implode(' ', preg_split('/(^[^A-Z]+|[A-Z][^A-Z]+)/', $word, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE));
+    }
+
+    public static function formatNumber(?int $number): string
+    {
+        if (is_null($number)) {
+            return 'N/A';
         }
 
-        return $number;
+        if ($number >= 1E9) {
+            $formatted_number = round($number / 1E9, 2) . 'b';
+        } elseif ($number >= 1E6) {
+            $formatted_number = round($number / 1E6, 2) . 'm';
+        } elseif ($number >= 1E3) {
+            $formatted_number = round($number / 1E3, 2) . 'k';
+        } else {
+            $formatted_number = $number;
+        }
+
+        return $formatted_number;
+    }
+
+    public static function formatSizeUnits($size)
+    {
+        $units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        $power = $size > 0 ? floor(log($size, 1024)) : 0;
+
+        return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power] ?? '';
     }
 
     public static function getUserCountry(User $user = null)

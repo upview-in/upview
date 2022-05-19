@@ -13,17 +13,34 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="{{ route('admin.dashboard') }}">
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon">
                     <em class='bi bi-speedometer2'></em>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.dashboard.main') }}">
+                        <em class='bi bi-activity'></em> Main
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.dashboard.server.info') }}">
+                        <em class='bi bi-hdd-rack'></em> Server Info
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.dashboard.phpinfo') }}">
+                        <em class='bi bi-info-circle'></em> PHP Info
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon">
-                    <em class='bi-chat-left-text'></em>
+                    <em class='bi bi-chat-left-text'></em>
                 </div>
                 <div class="menu-title">Support</div>
             </a>

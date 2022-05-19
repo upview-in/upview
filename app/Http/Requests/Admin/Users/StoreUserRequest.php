@@ -39,6 +39,7 @@ class StoreUserRequest extends FormRequest
             'avatar' => ['nullable', 'image', 'max:6144'],
             'roles' => ['array'],
             'awario_profile_hash' => ['string'],
+            'roles' => ['nullable', 'array'],
         ];
     }
 }

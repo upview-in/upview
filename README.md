@@ -64,6 +64,7 @@
 - php-curl
 - php-intl
 - php-exif
+- php-iconv
 
 
 # Configure Crontab for Laravel Schedule Service:

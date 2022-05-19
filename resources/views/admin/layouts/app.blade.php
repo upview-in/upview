@@ -96,7 +96,7 @@
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><em class="bi bi-house-door"></em></a>
+								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard.main') }}"><em class="bi bi-house-door"></em></a>
 								</li>
 								@yield('path-navigation')
 							</ol>
@@ -160,7 +160,7 @@
 			let ret =
 				// Nine Zeroes for Billions
 				Math.abs(Number(labelValue)) >= 1.0e+9 ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B" :
-				// Six Zeroes for Millions 
+				// Six Zeroes for Millions
 				Math.abs(Number(labelValue)) >= 1.0e+6 ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M" :
 				// Three Zeroes for Thousands
 				Math.abs(Number(labelValue)) >= 1.0e+3 ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K" :

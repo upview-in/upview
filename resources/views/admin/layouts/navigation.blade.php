@@ -2,7 +2,7 @@
 <header>
     <div class="topbar d-flex align-items-center">
         <nav class="navbar navbar-expand">
-            <div class="mobile-toggle-menu"><i class='bi bi-menu'></i>
+            <div class="mobile-toggle-menu"><em class='bi bi-list'></em>
             </div>
             <!-- <div class="search-bar flex-grow-1">
                 <div class="position-relative search-bar-box">

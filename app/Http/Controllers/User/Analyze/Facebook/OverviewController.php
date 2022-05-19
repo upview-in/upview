@@ -85,17 +85,16 @@ class OverviewController extends Controller
 
                             return response()->json(collect($data), 200);
                         }
+
                     return response()->json(['status' => 400, 'message' => 'Missing required fields']);
 
                     break;
 
                 case 'PageInsights':
                     if ($request->has(['id'])) {
-                        try
-                        {
+                        try {
                             $data = [];
                             $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
-
                             foreach ($response as $fbData) {
                                 foreach ($fbData->data as $fb) {
                                     $data[$fb->name]['data'] = $fb->values[0]->value ?? 0;
@@ -120,11 +119,10 @@ class OverviewController extends Controller
                             foreach ($data['page_impressions_by_locale_unique']['data'] as $locale=>$value) {
                                 $_temp = [];
 
-                                switch($locale)
-                                {
-                                    case 'en_GB': $_temp[0] = "English (UK)";
+                                switch ($locale) {
+                                    case 'en_GB': $_temp[0] = 'English (UK)';
                                                 break;
-                                    case 'es_LA': $_temp[0] = "Spanish (Latin America)";
+                                    case 'es_LA': $_temp[0] = 'Spanish (Latin America)';
                                                 break;
                                     default: $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
                                 }
@@ -136,13 +134,13 @@ class OverviewController extends Controller
                             $data['chartData']['page_impressions_by_locale_unique'] = $tempData;
 
                             $tempData = [];
-                            $tempData[] = ['Age','Male', 'Female'];
-                            foreach ($data['page_impressions_by_age_gender_unique']['data'] as  $demo=>$value) {
+                            $tempData[] = ['Age', 'Male', 'Female'];
+                            foreach ($data['page_impressions_by_age_gender_unique']['data'] as $demo => $value) {
                                 $_temp = [];
-                                $_arr = explode('.',$demo);
+                                $_arr = explode('.', $demo);
                                 $_temp[0] = $_arr[1];
 
-                                if($_arr[0] === 'M'){
+                                if ($_arr[0] === 'M') {
                                     $_temp[$_temp[0]]['Male'] = $value;
                                 } else {
                                     $_temp[$_temp[0]]['Female'] = $value;
@@ -150,16 +148,11 @@ class OverviewController extends Controller
                                 $tempData = array_merge_recursive($tempData, $_temp);
                             }
 
-                            // $_tempArr = [];
-                            // foreach($tempData as $key=>$value)
-                            // {
-                            //     $_tempArr = array_insert($_tempArr, $value);
-                            // }
                             $data['chartData']['page_impressions_by_age_gender_unique'] = $tempData;
 
                             $tempData = [];
                             $tempData[] = ['Number', 'Impressions'];
-                            foreach ($data['page_impressions_frequency_distribution']['data'] as $number=>$value) {
+                            foreach ($data['page_impressions_frequency_distribution']['data'] as $number => $value) {
                                 $_temp = [];
                                 $_temp[0] = $number;
                                 $_temp[1] = $value;
@@ -170,7 +163,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Number', 'Viral Impressions'];
-                            foreach ($data['page_impressions_viral_frequency_distribution']['data'] as $number=>$value) {
+                            foreach ($data['page_impressions_viral_frequency_distribution']['data'] as $number => $value) {
                                 $_temp = [];
                                 $_temp[0] = $number;
                                 $_temp[1] = $value ?? 0;
@@ -181,7 +174,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Number', 'Impressions'];
-                            foreach ($data['page_posts_impressions_frequency_distribution']['data'] as $number=>$value) {
+                            foreach ($data['page_posts_impressions_frequency_distribution']['data'] as $number => $value) {
                                 $_temp = [];
                                 $_temp[0] = $number;
                                 $_temp[1] = $value ?? 0;
@@ -192,8 +185,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_video_views_by_paid_non_paid']['data'] as $metric=>$value) {
-                                $_temp = [];
+                            foreach ($data['page_video_views_by_paid_non_paid']['data'] as $metric => $value) {
                                 $_temp[0] = $metric;
                                 $_temp[1] = $value ?? 0;
 
@@ -203,7 +195,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_views_by_profile_tab_logged_in_unique']['data'] as $metric=>$value) {
+                            foreach ($data['page_views_by_profile_tab_logged_in_unique']['data'] as $metric => $value) {
                                 $_temp = [];
                                 $_temp[0] = $metric;
                                 $_temp[1] = $value ?? 0;
@@ -214,7 +206,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_views_by_internal_referer_logged_in_unique']['data'] as $metric=>$value) {
+                            foreach ($data['page_views_by_internal_referer_logged_in_unique']['data'] as $metric => $value) {
                                 $_temp = [];
                                 $_temp[0] = $metric;
                                 $_temp[1] = $value ?? 0;
@@ -225,7 +217,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_views_by_site_logged_in_unique']['data'] as $metric=>$value) {
+                            foreach ($data['page_views_by_site_logged_in_unique']['data'] as $metric => $value) {
                                 $_temp = [];
                                 $_temp[0] = $metric;
                                 $_temp[1] = $value ?? 0;
@@ -234,44 +226,44 @@ class OverviewController extends Controller
                             }
                             $data['chartData']['page_views_by_site_logged_in_unique'] = $tempData;
 
+                            // $tempData = [];
+                            // $tempData[] = ['Metric', 'Impressions'];
+                            // foreach ($data['page_content_activity_by_age_gender_unique']['data'] as $metric=>$value) {
+                            //     $_temp = [];
+                            //     $_temp[0] = $metric;
+                            //     $_temp[1] = $value ?? 0;
+
+                            //     $tempData[] = $_temp;
+                            // }
+                            // $data['chartData']['page_content_activity_by_age_gender_unique'] = $tempData;
+
+                            // $tempData = [];
+                            // $tempData[] = ['Country', 'Activity'];
+                            // foreach ($data['page_content_activity_by_country_unique']['data'] as $country=>$value) {
+                            //     $_temp = [];
+                            //     $_temp[0] = Locale::getDisplayRegion('-' . $country, 'en');
+                            //     $_temp[1] = $value ?? 0;
+
+                            //     $tempData[] = $_temp;
+                            // }
+                            // $data['chartData']['page_content_activity_by_country_unique'] = $tempData;
+
+                            // $tempData = [];
+                            // $tempData[] = ['Locale', 'Activity'];
+                            // foreach ($data['page_content_activity_by_locale_unique']['data'] as $locale=>$value) {
+                            //     $_temp = [];
+                            //     $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
+                            //     $_temp[1] = $value ?? 0;
+
+                            //     $tempData[] = $_temp;
+                            // }
+                            // $data['chartData']['page_content_activity_by_locale_unique'] = $tempData;
+
                             $tempData = [];
-                            $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_content_activity_by_age_gender_unique']['data'] as $metric=>$value) {
+                            $tempData[] = ['Activity', 'Hour'];
+                            foreach ($data['page_fans_online']['data'] as $hour => $value) {
                                 $_temp = [];
-                                $_temp[0] = $metric;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_content_activity_by_age_gender_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Country', 'Activity'];
-                            foreach ($data['page_content_activity_by_country_unique']['data'] as $country=>$value) {
-                                $_temp = [];
-                                $_temp[0] = Locale::getDisplayRegion('-' . $country, 'en');
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_content_activity_by_country_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Locale', 'Activity'];
-                            foreach ($data['page_content_activity_by_locale_unique']['data'] as $locale=>$value) {
-                                $_temp = [];
-                                $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_content_activity_by_locale_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Hour', 'Activity'];
-                            foreach ($data['page_fans_online']['data'] as $hour=>$value) {
-                                $_temp = [];
-                                $_temp[0] = sprintf('%02d',$hour);
+                                $_temp[0] = sprintf('%02d', $hour);
                                 $_temp[1] = $value ?? 0;
 
                                 $tempData[] = $_temp;
@@ -280,7 +272,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_fan_adds_by_paid_non_paid_unique']['data'] as $metric=>$value) {
+                            foreach ($data['page_fan_adds_by_paid_non_paid_unique']['data'] as $metric => $value) {
                                 $_temp = [];
                                 $_temp[0] = $metric;
                                 $_temp[1] = $value ?? 0;
@@ -291,7 +283,7 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['Locale', 'Impressions'];
-                            foreach ($data['page_fans_locale']['data'] as $Locale=>$value) {
+                            foreach ($data['page_fans_locale']['data'] as $locale => $value) {
                                 $_temp = [];
                                 $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
                                 $tempData[] = $_temp;
@@ -300,15 +292,19 @@ class OverviewController extends Controller
 
                             $tempData = [];
                             $tempData[] = ['City', 'Impressions'];
-                            foreach ($data['page_fans_city']['data'] as $city=>$value) {
+                            foreach ($data['page_fans_city']['data'] as $city => $value) {
                                 $_temp = [];
                                 $_temp[0] = $city;
+                                $_temp[1] = $value;
                                 $tempData[] = $_temp;
                             }
                             $data['chartData']['page_fans_city'] = $tempData;
 
                             return response()->json(collect($data), 200);
-
+                    }catch (FacebookResponseException $e) {
+                        return response()->json(collect(), 404);
+                    }catch (Exception $e) {
+                        return response()->json(collect(), 404);
                     }
                     catch(FacebookResponseException $e)
                     {
@@ -319,37 +315,29 @@ class OverviewController extends Controller
                         // dd("Exception: ", $e);
                     }
                 }
-
-                    return response()->json(['status' => 400, 'message' => 'Missing required fields', "Error"=> print_r(debug_backtrace())]);
-                    break;
+                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+                    // return response()->json(['status' => 400, 'message' => 'Missing required fields', "Error"=> print_r(debug_backtrace())]);
 
                 case 'accountDetails':
                     $data = [];
                     $response = app(FacebookController::class)->getMineAccountData(new GetMineAccountDetails($request->all(['fields'])))->getData();
-                    $data['chartData'][0] = ['This title lmfao', 'Friends', 'Posts'];
 
-                    $data['id'] = $response->id;
-                    $data['name'] = $response->name;
-                    $data['birthday'] = $response->birthday;
-                    $data['age_range'] = $response->age_range->min;
-                    $data['posts'] = $response->posts;
-                    $data['friends_count'] = $response->friends->summary->total_count;
-                    $data['gender'] = $response->gender;
-                    $data['profile_link'] = $response->link;
-                    $data['profile_picture'] = $response->picture->data->url;
-
+                    $data['id'] = $response->id ?? '0';
+                    $data['name'] = $response->name ?? 'N/A';
+                    $data['birthday'] = $response->birthday ?? 'N/A';
+                    $data['age_range'] = $response->age_range->min ?? '0';
+                    $data['posts'] = $response->posts ?? 0;
+                    $data['friends_count'] = $response->friends->summary->total_count ?? 0;
+                    $data['gender'] = $response->gender ?? 'N/A';
+                    $data['profile_link'] = $response->link ?? '#';
+                    $data['profile_picture'] = $response->picture->data->url ?? '#';
                     $data['is_verified'] = app(FacebookController::class)->getUserVerifiedStatus($response->name);
-
-                    $data['chartData'][1] = ['Insights', 0, 0];
-
-                    $data['chartData'][2] = ['Insights', $data['friends_count'], count($data['posts']->data)];
 
                     $data['status'] = 200;
 
                     return response()->json(collect($data));
                 default:
                     return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-                    break;
             }
         }
 
