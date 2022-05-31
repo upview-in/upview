@@ -149,7 +149,7 @@
                     <div class="clearfix">
                         <!--Logo-->
                         <div class="logo float-left">
-                            <a href="index.html" class="img-responsive"><img
+                            <a href="{{ route('main.index') }}" class="img-responsive"><img
                                     src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
                                     title=""></a>
                         </div>
@@ -159,7 +159,7 @@
                             <nav class="main-menu clearfix">
                                 <!--Keep This Empty / Menu will come through Javascript-->
                             </nav>
-                            <a class="btn-one ml-4 m-4" href="contact.html">
+                            <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
                                 <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
                             </a>
                         </div>
@@ -173,7 +173,7 @@
                 <div class="menu-backdrop"></div>
                 <div class="close-btn"><span class="icon fa fa-times-circle"></span></div>
                 <nav class="menu-box">
-                    <div class="nav-logo"><a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}"
+                    <div class="nav-logo"><a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}"
                                 width="150px" height="50px" alt="" title=""></a></div>
                     <div class="menu-outer">
                         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
@@ -1118,7 +1118,7 @@
 									<h2>Get in touch, or create an account.</h2>
 								</div>
 								<div class="button-box">
-									<a class="btn-one" href="#">
+									<a class="btn-one" href="{{ route('main.contact') }}">
 										<div class="border_line">
 											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
 										</div>
@@ -1185,7 +1185,7 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
+									<li><a href="#">Blog</a></li>
 									<li><a href="#">Members</a></li>
 								</ul>
 							</div>
