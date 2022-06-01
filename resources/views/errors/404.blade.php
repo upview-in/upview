@@ -2,308 +2,443 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
     <title>Upview</title>
-    <!-- favicons Icons -->
+
+    <!-- responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/custom-animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/imp.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/scrollbar.css') }}">
+
+    <!-- Module css -->
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/header-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/banner-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/about-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/blog-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/fact-counter-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/faq-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/contact-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/breadcrumb-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/team-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/partner-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/testimonial-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/services-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/footer-section.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('main/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-16x16.png') }}" sizes="16x16">
 
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/animate/animate.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/animate/custom-animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/fontawesome/css/all.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jarallax/jarallax.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.pips.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/odometer/odometer.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/swiper/swiper.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/mibooz-icons/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('main/vendors/tiny-slider/tiny-slider.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/the-sayinistic-font/stylesheet.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.theme.default.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/bxslider/jquery.bxslider.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap-select/css/bootstrap-select.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-ui/jquery-ui.css') }}" />
-
-    <!-- template styles -->
-    <link rel="stylesheet" href="{{ asset('main/css/mibooz.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/css/mibooz-responsive.css') }}" />
 </head>
 
 <body>
-    <div class="preloader">
-        <img class="preloader__image" width="60" src="{{ asset('main/images/loader.png') }}" alt="" />
-    </div>
-    <!-- /.preloader -->
-    <div class="page-wrapper">
 
-        <header class="main-header main-header-two clearfix innerpgae">
-            <nav class="main-menu main-menu-two clearfix">
-                <div class="main-menu-wrapper">
-                    <div class="main-menu-wrapper__logo">
-                        <a href="{{ route('main.index') }}"><img src="{{ asset('main/images/resources/logo-2.png') }}" alt=""></a>
-                    </div>
-                    <div class="main-menu-wrapper__main-menu">
-                        <a href="index2.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
-                        <ul class="main-menu__list">
-                            <li>
-                                <a href="{{ route('main.index') }}">Home</a>
+    <div class="boxed_wrapper ltr">
 
-                            </li>
-                            <li>
-                                <a href="{{ route('main.about') }}">About Us</a>
+        <!-- Preloader -->
+        <div class="loader-wrap">
+            <div class="preloader">
+            </div>
+            <div class="layer layer-one"><span class="overlay"></span></div>
+            <div class="layer layer-two"><span class="overlay"></span></div>
+            <div class="layer layer-three"><span class="overlay"></span></div>
+        </div>
 
-                            </li>
-                            <li>
-                                <a href="{{ route('main.features') }}">Features</a>
+        <!-- page-direction -->
+        <div class="page_direction">
+            <div class="demo-rtl direction_switch"><button class="rtl">RTL</button></div>
+            <div class="demo-ltr direction_switch"><button class="ltr">LTR</button></div>
+        </div>
+        <!-- page-direction end -->
 
-                            </li>
-                            <li>
-                                <a href="{{ route('main.pricing') }}">Pricing</a>
 
-                            </li>
+        <!-- Main header-->
+        <header class="main-header header-style-three">
+            <!--Start Header-->
+            <div class="header-three clearfix">
+                <div class="auto-container clearfix">
+                    <div class="outer-box clearfix">
+                        <div class="header-three_left">
 
-                            <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="main-menu-wrapper__right">
-                        <div class="main-menu-wrapper__call">
-                            <a href="https://{{ config('app.domains.app') }}/register" class="thm-btn welcome-two__btn">Free Demo</a>
+                            <div class="logo">
+                                <a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+									161px" height="60px" alt="Awesome Logo" title="" /></a>
+                            </div>
+
+                            <div class="nav-outer style3 clearfix">
+                                <!--Mobile Navigation Toggler-->
+                                <div class="mobile-nav-toggler">
+                                    <div class="inner">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </div>
+                                </div>
+                                <!-- Main Menu -->
+                                <nav class="main-menu style3 navbar-expand-md navbar-light">
+                                    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                        <ul class="navigation clearfix">
+                                            <li><a href="{{ route('main.index') }}">Home</a></li>
+                                            <li class="dropdown">
+                                                <a href="#">Solutions</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('main.socialPosting') }}">Social Media Posting</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('main.socialListening') }}">Social Listening</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="{{ route('main.pricing') }}">Pricing</a></li>
+                                            <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                                <!-- Main Menu End-->
+                            </div>
+
+                        </div>
+
+                        <div class="header-three_right">
+                            <div class="btns-box">
+                                <a class="btn-one" href="contact.html">
+                                    <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                                </a>
+                            </div>
                         </div>
 
                     </div>
                 </div>
-            </nav>
-        </header>
-
-        <div class="stricky-header stricked-menu main-menu-two main-menu">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header-bg" style="background-image: url('{{ asset('main/images/backgrounds/page-header-bg.jpg') }} ') ">
             </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li>404 error</li>
-                    </ul>
-                    <h2>404 error</h2>
+            <!--End header-->
+
+            <!--Sticky Header-->
+            <div class="sticky-header">
+                <div class="container">
+                    <div class="clearfix">
+                        <!--Logo-->
+                        <div class="logo float-left">
+                            <a href="{{ route('main.index') }}" class="img-responsive"><img
+                                    src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
+                                    title=""></a>
+                        </div>
+                        <!--Right Col-->
+                        <div class="right-col float-right">
+                            <!-- Main Menu -->
+                            <nav class="main-menu clearfix">
+                                <!--Keep This Empty / Menu will come through Javascript-->
+                            </nav>
+                            <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
+                                <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!--Page Header End-->
+            <!--End Sticky Header-->
 
-        <!--Error Page Start-->
-        <section class="error-page">
+            <!-- Mobile Menu  -->
+            <div class="mobile-menu">
+                <div class="menu-backdrop"></div>
+                <div class="close-btn"><span class="icon fa fa-times-circle"></span></div>
+                <nav class="menu-box">
+                    <div class="nav-logo"><a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}"
+                                width="150px" height="50px" alt="" title=""></a></div>
+                    <div class="menu-outer">
+                        <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                    </div>
+                    <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
+                        <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                    </a>
+                    <!--Social Links-->
+                    <div class="social-links">
+                        <ul class="clearfix">
+                            <li><a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a></li>
+                            <li><a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a></li>
+                            <li><a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a></li>
+                            <li><a href="https://instagram.com/upviewindia"><span class="fab fa fa-instagram-square"></span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- End Mobile Menu -->
+        </header>
+
+
+        <!--Start breadcrumb area-->
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg" style="background-image: url({{ asset('main/assets/images/breadcrumb/breadcrumb-1.jpg') }} );"></div>
+            <div class="breadcrumb-social-link">
+                <ul class="clearfix">
+                    <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
+                        <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
+                        <a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                        <a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
+                        <a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="error-page__inner">
-                            <h2 class="error-page__title">404</h2>
-                            <h3 class="error-page__tagline">Aww Snap! Nothing Here..</h3>
-                            <p class="error-page__text mb-3">The page you are looking for probably never existed.</p>
-
-                            <a onclick="history.back()" class="thm-btn error-page__btn">back to home</a>
+                        <div class="inner-content paroller text-center">
+                            <div class="title">
+                                <h2>Oooppss! Something went wrong</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--Error Page End-->
+        <!--End breadcrumb area-->
 
 
-        <!--Site Footer Start-->
-        <footer class="site-footer">
-
-            <div class="site-footer__middle">
-                <div class="container">
-                    <div class="site-footer__middle-inner">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
-                                <div class="footer-widget__column footer-widget__contact">
-                                    <h3 class="footer-widget__title">Contact</h3>
-                                    <p class="footer-widget__contact-text">Mumbai</p>
-                                    <h4 class="footer-widget__contact-email-phone">
-                                        <a href="mailto:info@upview.in" class="footer-widget__contact-email">info@upview.in</a>
-                                        <a href="tel:+91 9324633735" class="footer-widget__contact-phone">+91 9324633735</a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 wow fadeInUp" data-wow-delay="200ms">
-                                <div class="footer-widget__column footer-widget__links clearfix">
-                                    <h3 class="footer-widget__title">Features</h3>
-                                    <ul class="footer-widget__links-list list-unstyled clearfix">
-                                        <li><a href="javascript:void(0);">Audience Insights</a></li>
-                                        <li><a href="javascript:void(0);">Publish,Schedule, Draft and Queue Posts</a></li>
-                                        <li><a href="javascript:void(0);">Scheduling for optimal send time</a></li>
-                                        <li><a href="javascript:void(0);">Paid social reporting for Facebook, Instagram, Twitter and LinkedIn</a></li>
-                                        <li><a href="javascript:void(0);">Reporting</a></li>
-                                        <li><a href="javascript:void(0);">Group, Profile and post-level reporting</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled">
-                                        <li><a href="javascript:void(0);">Youtube & Facebook Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Competitor Intelligence</a></li>
-                                        <li><a href="javascript:void(0);">Content Strategy</a></li>
-                                        <li><a href="javascript:void(0);">Find Influencers</a></li>
-                                        <li><a href="javascript:void(0);">Influencer Evaluation</a></li>
-                                        <li><a href="javascript:void(0);">Influencer Listening</a></li>
-                                        <li><a href="javascript:void(0);">Sentiment & Audience Interaction Analysis</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled">
-                                        <li><a href="javascript:void(0);">Follower Quality Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Keyword and location monitoring</a></li>
-                                        <li><a href="javascript:void(0);">Trend analysis for twitter keywords and hashtags</a></li>
-                                        <li><a href="javascript:void(0);">Help Desk CRM and Social Commerce Integration</a></li>
-                                        <li><a href="javascript:void(0);">Brand Reporting</a></li>
-                                        <li><a href="javascript:void(0);">Hashtag Reporting</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled clearfix">
-                                        <li><a href="javascript:void(0);">Influencers Tracking and Analytics</a></li>
-                                        <li><a href="javascript:void(0);">Brand Monitoring</a></li>
-                                        <li><a href="javascript:void(0);">Content Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Campaign Strategy</a></li>
-                                        <li><a href="javascript:void(0);">Competitor Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Content Marketing</a></li>
-                                        <li><a href="javascript:void(0);">Trend analysis</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="site-footer__top">
-
-                <div class="container">
-                    <div class="site-footer__top-inner">
-                        <div class="site-footer__top-left">
-                            <h3 class="site-footer__top-left-title">Your Perfect Business Partner Solution</h3>
-                            <a href="tel:+91 9324633735" class="site-footer__top-left-phone">+91 9324633735</a>
-                        </div>
-                        <div class="site-footer__top-right">
-                            <div class="site-footer__top-right-social">
-                                <a href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fab fa-facebook"></i></a>
-
-                                <a href="https://www.instagram.com/upviewindia/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <!--Start Error Page Area-->
+        <section class="error-page-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="error-content text-center wow slideInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <h4>Page Not Found</h4>
+                            <div class="title clr1">404</div>
+                            <p>We’re unable to find a page you are looking for, Try later or click the button.</p>
+                            <div class="btns-box">
+                                <a class="btn-one" href="{{ route('main.index') }}">
+                                    <div class="border_line"><img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt=""></div>
+                                    <div class="left_round"></div>
+                                    <div class="right_round"></div>
+                                    <span class="txt">Back to Home<i class="flaticon-plus-1 plusicon"></i></span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="site-footer__bottom">
+        </section>
+        <!--End Error Page Area-->
+
+
+        <!--Start footer area -->
+        <footer class="footer-area style2 mt-5">
+            <div class="shape">
+                <img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
+            </div>
+            <div class="footer-top">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyrights, <span class="dynamic-year"></span> <a href="javascript:void(0);">Upview.</a> All Rights Reserved.
-                                </p>
+                            <div class="inner">
+                                <div class="text">
+                                    <h6>Ready to get started?</h6>
+                                    <h2>Get in touch, or create an account.</h2>
+                                </div>
+                                <div class="button-box">
+                                    <a class="btn-one" href="{{ route('main.contact') }}">
+                                        <div class="border_line">
+                                            <img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+                                        </div>
+                                        <div class="left_round"></div>
+                                        <div class="right_round"></div>
+                                        <span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!--Site Footer End-->
+            <!--Start Footer-->
+            <div class="footer">
+                <div class="container">
+                    <div class="row text-right-rtl">
+                        <!--Start single footer widget-->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
+                            <div class="single-footer-widget">
+                                <div class="our-company-info">
+                                    <div class="footer-logo">
+                                        <a href="index.html">
+                                            <img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
+                                    </div>
+                                    <div class="text-box">
+                                        <p style="font-size: 19px;">
+                                            We help transform relevant information into desired results.
+                                        </p>
+                                    </div>
+                                    <div class="copyright-text style2">
+                                        <p>
+                                            &copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
+                                            Rights Reserved.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
+                        <!--Start single footer widget-->
+                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
+                            <div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
+                                <div class="title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <ul class="footer-widget-links1">
+                                    <li><a href="{{ route('main.index') }}">Home</a></li>
+                                    <li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
+                                    <li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
+                                    <li><a href="{{ route('main.socialListening') }}"> Social Listening</a></li>
+                                    <li><a href="{{ route('main.contact') }}">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
-    </div><!-- /.page-wrapper -->
+                        <!--Start single footer widget-->
+                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
+                            <div class="single-footer-widget mar-left2 pdtop60">
+                                <div class="title">
+                                    <h3>Community</h3>
+                                </div>
+                                <ul class="footer-widget-links1">
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Members</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
+                        <!--Start single footer widget-->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
+                            <div class="single-footer-widget fixwidth pdtop60">
+                                <div class="title">
+                                    <h3>Our Socials</h3>
+                                </div>
+                                <ul class="instagram-box">
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
 
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <!-- /.mobile-nav__overlay -->
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-
-            <div class="logo-box">
-                <a href="{{ route('main.index') }}" aria-label="logo image"><img src="{{ asset('main/images/resources/logo-2.png') }}" width="155" alt="" /></a>
+                                <div class="bottom-box">
+                                    <ul>
+                                        <li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
+                                        <li><a href="#">Terms & Conditions </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.logo-box -->
-            <div class="mobile-nav__container"></div>
-            <!-- /.mobile-nav__container -->
-
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:info@upview.in">info@upview.in</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+91 9324633735">+91 9324633735</a>
-                </li>
-            </ul><!-- /.mobile-nav__contact -->
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
-                    <a href="index2.html#" class="fab fa-twitter"></a>
-                    <a href="index2.html#" class="fab fa-facebook-square"></a>
-                    <a href="index2.html#" class="fab fa-pinterest-p"></a>
-                    <a href="index2.html#" class="fab fa-instagram"></a>
-                </div><!-- /.mobile-nav__social -->
-            </div><!-- /.mobile-nav__top -->
+            <!--End Footer-->
+        </footer>
+        <!--End footer area-->
 
 
 
-        </div>
-        <!-- /.mobile-nav__content -->
+
+
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-angle-up"></span>
+        </button>
+
     </div>
-    <!-- /.mobile-nav__wrapper -->
-
-    <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <!-- /.search-popup__overlay -->
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
-        <!-- /.search-popup__content -->
-    </div>
-    <!-- /.search-popup -->
-
-    <a href="{{ route('main.about') }}" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
-    <script src="{{ asset('main/vendors/jquery/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jarallax/jarallax.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-appear/jquery.appear.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-circle-progress/jquery.circle-progress.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-validate/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/nouislider/nouislider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/odometer/odometer.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/swiper/swiper.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/tiny-slider/tiny-slider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/wnumb/wNumb.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/wow/wow.js') }}"></script>
-    <script src="{{ asset('main/vendors/isotope/isotope.js') }}"></script>
-    <script src="{{ asset('main/vendors/countdown/countdown.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/owl-carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bxslider/jquery.bxslider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-tilt/tilt.jquery.min.js') }}"></script>
-    <!-- template js -->
-    <script src="{{ asset('main/js/mibooz.js') }}"></script>
+
+
+
+
+    <script src="{{ asset('main/assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('main/assets/js/aos.js') }}"></script>
+    <script src="{{ asset('main/assets/js/appear.js') }}"></script>
+    <script src="{{ asset('main/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/isotope.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.enllax.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.paroller.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('main/assets/js/knob.js') }}"></script>
+    <script src="{{ asset('main/assets/js/map-script.js') }}"></script>
+    <script src="{{ asset('main/assets/js/owl.js') }}"></script>
+    <script src="{{ asset('main/assets/js/pagenav.js') }}"></script>
+    <script src="{{ asset('main/assets/js/parallax.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/scrollbar.js') }}"></script>
+    <script src="{{ asset('main/assets/js/TweenMax.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/validation.js') }}"></script>
+    <script src="{{ asset('main/assets/js/wow.js') }}"></script>
+
+
+
+    <!-- thm custom script -->
+    <script src="{{ asset('main/assets/js/custom.js') }}"></script>
+
+
+
+
 </body>
 
 </html>

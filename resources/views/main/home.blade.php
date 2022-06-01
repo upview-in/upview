@@ -10,11 +10,8 @@
 	<!-- For IE -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-		rel="stylesheet" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-		rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
 
 	<link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
 	<link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
@@ -122,16 +119,16 @@
 											<li class="dropdown">
 												<a href="javascript:void();">Solutions</a>
 												<ul>
-                                                    <li>
-                                                        <a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('main.socialPosting') }}">Social Media Posting</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('main.socialListening') }}">Social Listening</a>
-                                                    </li>
-                                                </ul>
+													<li>
+														<a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a>
+													</li>
+													<li>
+														<a href="{{ route('main.socialPosting') }}">Social Media Posting</a>
+													</li>
+													<li>
+														<a href="{{ route('main.socialListening') }}">Social Listening</a>
+													</li>
+												</ul>
 											</li>
 											<li><a href="{{ route('main.pricing') }}">Pricing</a></li>
 											<li><a href="{{ route('main.contact') }}">Contact Us</a></li>
@@ -160,9 +157,7 @@
 					<div class="clearfix">
 						<!--Logo-->
 						<div class="logo float-left">
-							<a href="{{ route('main.index') }}" class="img-responsive"><img
-									src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
-									title="" /></a>
+							<a href="{{ route('main.index') }}" class="img-responsive"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" title="" /></a>
 						</div>
 						<!--Right Col-->
 						<div class="right-col float-right">
@@ -187,8 +182,7 @@
 				</div>
 				<nav class="menu-box">
 					<div class="nav-logo">
-						<a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="150px"
-								height="50px" alt="" title="" /></a>
+						<a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="150px" height="50px" alt="" title="" /></a>
 					</div>
 					<div class="menu-outer">
 						<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
@@ -200,16 +194,16 @@
 					<div class="social-links">
 						<ul class="clearfix">
 							<li>
-								<a href="#"><span class="fab fa fa-facebook-square"></span></a>
+								<a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a>
 							</li>
 							<li>
-								<a href="#"><span class="fab fa fa-twitter-square"></span></a>
+								<a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a>
 							</li>
 							<li>
-								<a href="#"><span class="fab fa fa-youtube-square"></span></a>
+								<a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a>
 							</li>
 							<li>
-								<a href="#"><span class="fab fa fa-instagram"></span></a>
+								<a href="https://instagram.com/upviewindia?igshid=YmMyMTA2M2Y="><span class="fab fa fa-instagram"></span></a>
 							</li>
 						</ul>
 					</div>
@@ -223,20 +217,16 @@
 			<div class="header-social-link-1">
 				<ul class="clearfix">
 					<li class="wow slideInDown" data-wow-delay="500ms" data-wow-duration="1500ms">
-						<a href="#" style="color: white;"><i class="fa fa-facebook" aria-hidden="true"
-								style="transform: rotate(265deg);"></i></a>
+						<a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 					<li class="wow slideInDown" data-wow-delay="400ms" data-wow-duration="2000ms">
-						<a href="#" style="color: white;"><i class="fa fa-twitter" aria-hidden="true"
-								style="transform: rotate(265deg);"></i></a>
+						<a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 					<li class="wow slideInDown" data-wow-delay="300ms" data-wow-duration="2500ms">
-						<a href="#" style="color: white;"><i class="fa fa-linkedin" aria-hidden="true"
-								style="transform: rotate(265deg);"></i></a>
+						<a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
-						<a href="#" style="color: white;"><i class="fa fa-instagram" aria-hidden="true"
-								style="transform: rotate(265deg);"></i></a>
+						<a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -246,19 +236,14 @@
 					<div class="overflow-hidden">
 						<div class="home-hero-container position-relative js-webgl-globe-data">
 							<div class="home-hero position-absolute z-1 top-0 right-0 bottom-0 left-0 overflow-hidden">
-								<div
-									class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive pb-md-9">
+								<div class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive pb-md-9">
 
-									<div
-										class="d-flex gutter gutter-spacious flex-column flex-lg-row flex-items-center height-full px-0 px-lg-3">
+									<div class="d-flex gutter gutter-spacious flex-column flex-lg-row flex-items-center height-full px-0 px-lg-3">
 										<div class="ml-md-n3 mr-md-3 col-12 col-lg-6 text-center text-md-left">
-											<h1 class="h3-mktg color-text-white mb-3 position-relative z-2"
-												style="color: #ffffff;">
-												<span class="magic">Our Skills,<br />Your Growth
-												</span>
+											<h1 class="h3-mktg color-text-white mb-3 position-relative z-2" style="color: #ffffff;">
+												<span class="magic" id="randomTagLine"></span>
 											</h1>
-											<p
-												class="f2-mktg text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2">
+											<p class="f2-mktg text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2">
 												It’s easy to impress but influencing requires a lot of efforts.
 												Let's grow together.
 											</p>
@@ -271,41 +256,24 @@
 												</a>
 											</div>
 
-											<!-- '"` -->
-											<!-- </textarea></xmp> -->
 										</div>
 
 										<div class="col-12 col-lg-6 text-center text-md-left position-relative">
 											<div class="home-globe-container home-globe-container-webgl">
-												<div
-													class="mx-auto width-full mt-n9 mt-lg-2 home-globe position-relative height-full js-webgl-globe">
-													<video width="700" height="700" loop="" muted="" playsinline=""
-														autoplay preload="none" style="margin-left:10%;"
-														class="home-globe-container-video js-globe-fallback-video ">
+												<div class="mx-auto width-full mt-n9 mt-lg-2 home-globe position-relative height-full js-webgl-globe">
+													<video width="700" height="700" loop="" muted="" playsinline="" autoplay preload="none" style="margin-left:10%;" class="home-globe-container-video js-globe-fallback-video ">
 														<!-- <source type="video/mp4; codecs=hevc,mp4a.40.2"
 															src="images/modules/site/home/globe-900.hevc.mp4"> -->
-														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
-															src="{{ asset('main/images/modules/site/home/globe-900.h264.mp4') }}">
+														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/globe-900.h264.mp4') }}">
 													</video>
-													<video loop="" muted="" playsinline="" preload="none" autoplay
-														class="home-globe-container-video js-globe-fallback-video-small"
-														hidden>
+													<video loop="" muted="" playsinline="" preload="none" autoplay class="home-globe-container-video js-globe-fallback-video-small" hidden>
 														<!-- <source type="video/mp4; codecs=hevc,mp4a.40.2"
 															src="images/modules/site/home/globe-500.hevc.mp4"> -->
-														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
-															src="{{ asset('main/images/modules/site/home/globe-500.h264.mp4') }}">
+														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/globe-500.h264.mp4') }}">
 													</video>
-													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w"
-														sizes="(max-width: 700px) 70vw, 700px"
-														src="{{ asset('main/images/modules/site/home/globe.jpg') }}"
-														alt="Planet earth with visualization of GitHub activity crossing the globe"
-														class="width-full height-auto js-globe-fallback-image"
-														loading="lazy" decoding="async" width="1238" height="1404"
-														hidden>
+													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w" sizes="(max-width: 700px) 70vw, 700px" src="{{ asset('main/images/modules/site/home/globe.jpg') }}" alt="Planet earth with visualization of GitHub activity crossing the globe" class="width-full height-auto js-globe-fallback-image" loading="lazy" decoding="async" width="1238" height="1404" hidden>
 
-													<canvas width="900" height="900"
-														class="webgl-canvas js-globe-canvas"
-														style="display: block; width: 900px; height: 900px;"></canvas>
+													<canvas width="900" height="900" class="webgl-canvas js-globe-canvas" style="display: block; width: 900px; height: 900px;"></canvas>
 												</div>
 											</div>
 
@@ -314,28 +282,19 @@
 									</div>
 								</div>
 
-								<img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="Glowing universe"
-									class="position-absolute home-hero-glow events-none z-1">
-								<video loop="" muted="" playsinline="" preload="none"
-									class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0"
-									style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
-									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
-										src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
+								<img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="Glowing universe" class="position-absolute home-hero-glow events-none z-1">
+								<video loop="" muted="" playsinline="" preload="none" class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0" style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
+									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
 								</video>
 							</div>
 
 							<div class="position-absolute width-full color-bg-default" style="bottom: -4rem;">
 								<div class="container-xl p-responsive">
 									<div class="d-flex flex-justify-center flex-lg-justify-end color-bg-default">
-										<div
-											class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
+										<div class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
 											<picture>
-												<source srcset="{{ asset('main/images/modules/site/home/astro-mona.webp') }}"
-													type="image/webp">
-												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960"
-													height="967"
-													class="home-astro-mona width-full position-absolute bottom-0 height-auto"
-													alt="Mona looking at GitHub activity across the globe">
+												<source srcset="{{ asset('main/images/modules/site/home/astro-mona.webp') }}" type="image/webp">
+												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="Mona looking at GitHub activity across the globe">
 											</picture>
 										</div>
 									</div>
@@ -344,8 +303,7 @@
 
 						</div>
 
-						<div class="mx-auto container-xl p-responsive py-8 py-md-9 overflow-hidden d-flex gutter gutter-spacious js-build-in-trigger"
-							data-build-margin-bottom="20">
+						<div class="mx-auto container-xl p-responsive py-8 py-md-9 overflow-hidden d-flex gutter gutter-spacious js-build-in-trigger" data-build-margin-bottom="20">
 						</div>
 
 					</div>
@@ -465,10 +423,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xl-5">
-						<div class="skill-style2_image-box-outer"
-							style="margin-right: -250px;margin-left: 0px;left: -110px;top: -50px;">
-							<div class="skill-style1_image-box skill-style2_image-box"
-								style="background-image: url( {{ asset('main/assets/images/resources/about.png') }} );"></div>
+						<div class="skill-style2_image-box-outer" style="margin-right: -250px;margin-left: 0px;left: -110px;top: -50px;">
+							<div class="skill-style1_image-box skill-style2_image-box" style="background-image: url( {{ asset('main/assets/images/resources/about.png') }} );"></div>
 						</div>
 					</div>
 
@@ -508,8 +464,7 @@
 								satisfied with the features of a platform than with Upview. A permanent
 								user of Upview forever!</div>
 							<div class="info-box">
-								<div class="thumb"><img
-										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<div class="thumb"><img src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
 								<h4 class="name">Viral Rathod</h4>
 								<span class="designation">B99 Esports</span>
 							</div>
@@ -524,8 +479,7 @@
 								worry about anything. And to add to it, I can assess what was working
 								for me and what was not.</div>
 							<div class="info-box">
-								<div class="thumb"><img
-										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<div class="thumb"><img src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
 								<h4 class="name">Siddhantraj Chavda</h4>
 								<span class="designation">Digital Marketer</span>
 							</div>
@@ -540,8 +494,7 @@
 								post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not
 								only removed all these hassles but saved a lot of time as well.</div>
 							<div class="info-box">
-								<div class="thumb"><img
-										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<div class="thumb"><img src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
 								<h4 class="name">Rashmi Mishra</h4>
 								<span class="designation">Actor/Model</span>
 							</div>
@@ -550,8 +503,7 @@
 				</div>
 
 				<div class="thumb-layer paroller">
-					<figure class="image"><img src="{{ asset('main/assets/images/testimonial/user-thumbs.png') }}"
-							alt="">
+					<figure class="image"><img src="{{ asset('main/assets/images/testimonial/user-thumbs.png') }}" alt="">
 					</figure>
 				</div>
 			</div>
@@ -569,17 +521,13 @@
 				<div class="row">
 					<div class="col-xl-6">
 						<div class="about-style1_image-box about-style2_image-box clearfix">
-							<!-- <div class="shape">
-								<img class="zoom-fade" src="{{ asset('main/images/shape/thm-shape-1.png') }}" alt="" />
-							</div> -->
 							<div class="image-box left">
 								<div class="single-box image-box1">
 									<div class="inner">
 										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
 									</div>
 								</div>
-								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery"
-									href="https://www.youtube.com/watch?v=p25gICT63ek">
+								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
 									<span class="flaticon-play-button-2 playicon"></span>
 								</a>
 							</div>
@@ -628,8 +576,7 @@
 					<div class="col-xl-12">
 						<div class="fact-counter_box">
 							<ul class="clearfix">
-								<li class="single-fact-counter wow slideInLeft" data-wow-delay="200ms"
-									data-wow-duration="1500ms">
+								<li class="single-fact-counter wow slideInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
 									<div class="border-box"></div>
 									<div class="outer-box">
 										<div class="count-outer count-box">
@@ -640,34 +587,29 @@
 										</div>
 									</div>
 								</li>
-								<li class="single-fact-counter wow slideInLeft" data-wow-delay="500ms"
-									data-wow-duration="1500ms">
+								<li class="single-fact-counter wow slideInLeft" data-wow-delay="500ms" data-wow-duration="1500ms">
 									<div class="border-box"></div>
 									<div class="outer-box">
 										<div class="count-outer count-box">
-											<span class="count-text" data-speed="3000"
-												data-stop="14">0</span><span>M+</span>
+											<span class="count-text" data-speed="3000" data-stop="14">0</span><span>M+</span>
 										</div>
 										<div class="title">
 											<h6 style="color: #FFF;">Pages Crawled</h6>
 										</div>
 									</div>
 								</li>
-								<li class="single-fact-counter wow slideInRight" data-wow-delay="500ms"
-									data-wow-duration="1500ms">
+								<li class="single-fact-counter wow slideInRight" data-wow-delay="500ms" data-wow-duration="1500ms">
 									<div class="border-box"></div>
 									<div class="outer-box">
 										<div class="count-outer count-box">
-											<span class="count-text" data-speed="3000"
-												data-stop="100">0</span><span>K+</span>
+											<span class="count-text" data-speed="3000" data-stop="100">0</span><span>K+</span>
 										</div>
 										<div class="title">
 											<h6 style="color: #FFF;">Influencer's Reached</h6>
 										</div>
 									</div>
 								</li>
-								<li class="single-fact-counter wow slideInRight" data-wow-delay="200ms"
-									data-wow-duration="1500ms">
+								<li class="single-fact-counter wow slideInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
 									<div class="border-box"></div>
 									<div class="outer-box">
 										<div class="count-outer count-box">
@@ -723,6 +665,7 @@
 				</div>
 				<div class="row text-right-rtl owl-carousel owl-theme portfolio-carousel ">
 					<!--Start Single blog Style1-->
+					@foreach($blogs as $blog)
 					<div class="col-xl-12 col-lg-12">
 						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
 							<div class="img-holder">
@@ -735,17 +678,14 @@
 							</div>
 							<div class="text-holder">
 								<h3 class="blog-title">
-									<a href="blog-single.html">Blog 1</a>
+									<a href="{{ route('main.blog', $blog->id) }}">{{ $blog->title }}</a>
 								</h3>
 								<div class="text">
-									<p>
-										Nam mollis turpis sed magna vestibulum, et. Mauris
-										vehicula tortor.
-									</p>
+									{!! $blog->blog_description !!}
 								</div>
 								<div class="bottom-box">
 									<div class="btns-box">
-										<a class="btn-one" href="blog-single.html">
+										<a class="btn-one" href="{{ route('main.blog', $blog->id) }}">
 											<div class="border_line">
 												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
 											</div>
@@ -754,168 +694,20 @@
 											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
 										</a>
 									</div>
-									<div class="meta-box">
-										<ul class="meta-info">
-											<li>
-												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
-													Comments</a>
-											</li>
-											<li><a href="#">Adrian Eli</a></li>
-										</ul>
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					@endforeach
 					<!--End Single blog Style1-->
 
-					<!--Start Single blog Style1-->
-					<div class="col-xl-12 col-lg-12">
-						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
-							<div class="img-holder">
-								<div class="inner">
-									<img src="{{ asset('main/assets/images/blog/blog-v2-2.jpg') }}" alt="" />
-								</div>
-								<div class="shape">
-									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
-								</div>
-							</div>
-							<div class="text-holder">
-								<h3 class="blog-title">
-									<a href="blog-single.html">Blog 2</a>
-								</h3>
-								<div class="text">
-									<p>
-										Nam mollis turpis sed magna vestibulum, et. Mauris
-										vehicula tortor.
-									</p>
-								</div>
-								<div class="bottom-box">
-									<div class="btns-box">
-										<a class="btn-one" href="blog-single.html">
-											<div class="border_line">
-												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
-											</div>
-											<div class="left_round"></div>
-											<div class="right_round"></div>
-											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
-										</a>
-									</div>
-									<div class="meta-box">
-										<ul class="meta-info">
-											<li>
-												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
-													Comments</a>
-											</li>
-											<li><a href="#">Adrian Eli</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--End Single blog Style1-->
-
-					<!--Start Single blog Style1-->
-					<div class="col-xl-12 col-lg-12">
-						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
-							<div class="img-holder">
-								<div class="inner">
-									<img src="{{ asset('main/assets/images/blog/blog-v2-3.jpg') }}" alt="" />
-								</div>
-								<div class="shape">
-									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
-								</div>
-							</div>
-							<div class="text-holder">
-								<h3 class="blog-title">
-									<a href="blog-single.html">Blog 3</a>
-								</h3>
-								<div class="text">
-									<p>
-										Nam mollis turpis sed magna vestibulum, et. Mauris
-										vehicula tortor.
-									</p>
-								</div>
-								<div class="bottom-box">
-									<div class="btns-box">
-										<a class="btn-one" href="blog-single.html">
-											<div class="border_line">
-												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
-											</div>
-											<div class="left_round"></div>
-											<div class="right_round"></div>
-											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
-										</a>
-									</div>
-									<div class="meta-box">
-										<ul class="meta-info">
-											<li>
-												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
-													Comments</a>
-											</li>
-											<li><a href="#">Adrian Eli</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--End Single blog Style1-->
-
-					<!--Start Single blog Style1-->
-					<div class="col-xl-12 col-lg-12">
-						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
-							<div class="img-holder">
-								<div class="inner">
-									<img src="{{ asset('main/assets/images/blog/blog-v2-3.jpg') }}" alt="" />
-								</div>
-								<div class="shape">
-									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
-								</div>
-							</div>
-							<div class="text-holder">
-								<h3 class="blog-title">
-									<a href="blog-single.html">Blog 4</a>
-								</h3>
-								<div class="text">
-									<p>
-										Nam mollis turpis sed magna vestibulum, et. Mauris
-										vehicula tortor.
-									</p>
-								</div>
-								<div class="bottom-box">
-									<div class="btns-box">
-										<a class="btn-one" href="blog-single.html">
-											<div class="border_line">
-												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
-											</div>
-											<div class="left_round"></div>
-											<div class="right_round"></div>
-											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
-										</a>
-									</div>
-									<div class="meta-box">
-										<ul class="meta-info">
-											<li>
-												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
-													Comments</a>
-											</li>
-											<li><a href="#">Adrian Eli</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--End Single blog Style1-->
 				</div>
 			</div>
 		</section>
 		<!--End Blog Style1 Area-->
 
 		<!--Start Partner Area-->
-        <!-- to do code once live -->
+		<!-- to do code once live -->
 		<!--End Partner Area-->
 
 		<!--Start footer area -->
@@ -957,8 +749,7 @@
 								<div class="our-company-info">
 									<div class="footer-logo">
 										<a href="index.html">
-											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
-												height="60px" alt="" /></a>
+											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
 									</div>
 									<div class="text-box">
 										<p style="font-size: 19px;">
@@ -1097,6 +888,18 @@
 
 	<!-- thm custom script -->
 	<script src="{{ asset('main/assets/js/custom.js') }}"></script>
+
+	<script>
+		$(document).ready(function() {
+			var taglines = [
+				"Our Skills<br /> Your Growth",
+				"Frame Your<br />Social Space",
+				"Edge out<br />the Competion"
+			];
+
+			$("#randomTagLine").html(taglines[Math.floor(Math.random() * taglines.length)]);
+		});
+	</script>
 </body>
 
 </html>

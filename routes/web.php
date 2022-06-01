@@ -62,6 +62,7 @@ Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function
         Route::get('/solutions/socialAnalytics', 'socialAnalytics')->name('socialAnalytics');
         Route::get('/solutions/socialPosting', 'socialPosting')->name('socialPosting');
         Route::get('/solutions/socialListening', 'socialListening')->name('socialListening');
+        Route::get('/blogs/{blog}', 'blog')->name('blog');
         Route::get('/pricing', 'pricing')->name('pricing');
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/privacy-policy', 'showPrivacyPolicy')->name('privacy-policy');

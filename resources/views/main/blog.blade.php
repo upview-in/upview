@@ -2,64 +2,65 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Upview</title>
 
     <!-- responsive meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- For IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap-select.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/custom-animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/fancybox.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/flaticon.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/imp.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/jquery-ui.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/magnific-popup.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/owl.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/rtl.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/custom-animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/imp.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/scrollbar.css') }}">
 
     <!-- Module css -->
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/header-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/banner-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/about-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/blog-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/fact-counter-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/faq-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/contact-page.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/breadcrumb-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/team-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/partner-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/testimonial-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/services-section.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/footer-section.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/header-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/banner-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/about-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/blog-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/fact-counter-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/faq-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/contact-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/breadcrumb-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/team-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/partner-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/testimonial-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/services-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/footer-section.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('main/assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('main/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}" />
-    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-32x32.png') }}" sizes="32x32" />
-    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-16x16.png') }}" sizes="16x16" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-16x16.png') }}" sizes="16x16">
+
 
 </head>
 
 <body>
+
     <div class="boxed_wrapper ltr">
+
         <!-- Preloader -->
         <div class="loader-wrap">
-            <div class="preloader"></div>
+            <div class="preloader">
+            </div>
             <div class="layer layer-one"><span class="overlay"></span></div>
             <div class="layer layer-two"><span class="overlay"></span></div>
             <div class="layer layer-three"><span class="overlay"></span></div>
@@ -67,14 +68,11 @@
 
         <!-- page-direction -->
         <div class="page_direction">
-            <div class="demo-rtl direction_switch">
-                <button class="rtl">RTL</button>
-            </div>
-            <div class="demo-ltr direction_switch">
-                <button class="ltr">LTR</button>
-            </div>
+            <div class="demo-rtl direction_switch"><button class="rtl">RTL</button></div>
+            <div class="demo-ltr direction_switch"><button class="ltr">LTR</button></div>
         </div>
         <!-- page-direction end -->
+
 
         <!-- Main header-->
         <header class="main-header header-style-three">
@@ -103,7 +101,7 @@
                                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                         <ul class="navigation clearfix">
                                             <li><a href="{{ route('main.index') }}">Home</a></li>
-                                            <li class="dropdown current">
+                                            <li class="dropdown">
                                                 <a href="#">Solutions</a>
                                                 <ul>
                                                     <li>
@@ -192,9 +190,10 @@
             <!-- End Mobile Menu -->
         </header>
 
+
         <!--Start breadcrumb area-->
-        <section class="breadcrumb-area breadcrumb-area-style2">
-            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Social_Media_Analytics.png') }} );"></div>
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg" style="background-image: url({{ asset('main/assets/images/breadcrumb/breadcrumb-1.jpg') }} );"></div>
             <div class="breadcrumb-social-link">
                 <ul class="clearfix">
                     <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
@@ -211,13 +210,12 @@
                     </li>
                 </ul>
             </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="inner-content paroller text-center">
-                            <div class="title">
-                                <h2>Social Media<br />Analytics</h2>
+                        <div class="inner-content text-center">
+                            <div class="title paroller">
+                                <h2>{!! $blog->title !!}</h2>
                             </div>
                         </div>
                     </div>
@@ -226,156 +224,26 @@
         </section>
         <!--End breadcrumb area-->
 
-        <!--Start Service Details Area-->
-        <section class="service-details-area">
+        <!--Start Blog Details Area-->
+        <section class="blog-details-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="service-deails-box">
-                            <div class="shape1">
-                                <img src="{{ asset('main/assets/images/shape/thm-shape-5.png') }}" alt="" />
-                            </div>
-                            <div class="bg-shape"></div>
-                            <div class="service-details-content-box">
-                                <div class="text">
-                                    <h3>
-                                        Wondering which of your social media tactics are actually
-                                        working ?
-                                    </h3>
-                                    <div class="mt-5">
-                                        <p>
-                                            Do you spend a bunch of time designing a social media
-                                            post only to see it fail miserably? There could be a lot
-                                            of reasons for that. But one of the most common reasons
-                                            this happens is posting at the wrong time, posting when
-                                            your target audiences are not online or not interested
-                                            in engaging with you.<br /><br />This is where our
-                                            Analytics comes to rescue. It views your audiance
-                                            behaviour social media & recommends the most optimal
-                                            times to post, best type of content to post and much
-                                            more.
-                                        </p>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="blog-details-content">
+                            <div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
+                                <div class="text-holder">
+                                    <div class="text">
+                                        {!! $blog->blog_html_page !!}
                                     </div>
                                 </div>
                             </div>
-                            <div class="service-details-image-box">
-                                <img src="{{ asset('main/assets/images/breadcrumb/Social_Media_Analytics-Small.png') }}" alt="" />
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--End Service Details Area-->
+        <!--End Blog Details Area-->
 
-        <!--Start SKill style1 Area-->
-        <section class="service-style3-area">
-            <div class="container">
-                <div class="sec-title text-center">
-                    <div class="sub-title">
-                        <h3>Our Services</h3>
-                    </div>
-                    <h2>
-                        Strategic social media analysis<br />at the tip of your fingers
-                    </h2>
-                </div>
-                <div class="row">
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-1.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="services-details.html">Audience Insight</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                        Measure all your social metrics and key performance
-                                        indicators on one platform. With our social media
-                                        analytics tools, you’re able to track social metrics such
-                                        as impressions, engagement, and pageviews across several
-                                        digital channels on a single-view dashboard.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-2.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="services-details.html">Content Strategy </a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                        We understand how overwhelming content planning can be
-                                        sometimes , and finding the right strategies is one heck
-                                        of a ride. Through UPVIEW’s content strategy feature now
-                                        you can get in-depth insights about each post and
-                                        understand what content is working better for you.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-3.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="services-details.html">Market Intelligence</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                        Imagine getting in depth insights of competitors post, getting to know all the
-                                        hidden tags used. What a blessing right? UPVIEW’s Market Intelligence helps you
-                                        to understand competitor insights in just few clicks. Right from Title to hidden
-                                        Keywords to Upcoming Trends it will give you all the data in two clicks! The
-                                        Fastest & cost effective marketing solution for your business.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-4.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="services-details.html">Media Planning and Measurements</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                        Create professional reports and dashboards in just 3 seconds. With UPVIEW, you
-                                        can integrate your client’s social networks and generate a single document with
-                                        all the information. All reports, dashboards, metrics, and features aim to
-                                        ensure that you can show to the client the results of your work. Our reports
-                                        helps facilitate the communication of marketing professionals and their clients.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Service Style3-->
-                </div>
-            </div>
-        </section>
-        <!--End SKill style1 Area-->
 
         <!--Start footer area -->
         <footer class="footer-area style2 mt-5">
@@ -392,7 +260,7 @@
 									<h2>Get in touch, or create an account.</h2>
 								</div>
 								<div class="button-box">
-									<a class="btn-one" href="#">
+									<a class="btn-one" href="{{ route('main.contact') }}">
 										<div class="border_line">
 											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
 										</div>
@@ -442,10 +310,10 @@
 									<h3>Categories</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="{{ route('main.index') }}">Home</a></li>
+                                    <li><a href="{{ route('main.index') }}">Home</a></li>
 									<li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
 									<li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
-									<li><a href="{{ route('main.socialListening') }}">Social Listening</a></li>
+									<li><a href="{{ route('main.socialListening') }}"> Social Listening</a></li>
 									<li><a href="{{ route('main.contact') }}">Contact</a></li>
 								</ul>
 							</div>
@@ -459,7 +327,7 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
+									<li><a href="#">Blog</a></li>
 									<li><a href="#">Members</a></li>
 								</ul>
 							</div>
@@ -507,7 +375,7 @@
 
 								<div class="bottom-box">
 									<ul>
-										<li><a href="privacy-policy.html">Privacy</a></li>
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
 										<li><a href="#">Terms & Conditions </a></li>
 									</ul>
 								</div>
@@ -520,10 +388,18 @@
 		</footer>
         <!--End footer area-->
 
+
+
+
         <button class="scroll-top scroll-to-target" data-target="html">
             <span class="fa fa-angle-up"></span>
         </button>
+
+
+
     </div>
+
+
 
     <script src="{{ asset('main/assets/js/jquery.js') }}"></script>
     <script src="{{ asset('main/assets/js/aos.js') }}"></script>
@@ -539,7 +415,6 @@
     <script src="{{ asset('main/assets/js/jquery.paroller.min.js') }}"></script>
     <script src="{{ asset('main/assets/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('main/assets/js/knob.js') }}"></script>
-    <script src="{{ asset('main/assets/js/map-script.js') }}"></script>
     <script src="{{ asset('main/assets/js/owl.js') }}"></script>
     <script src="{{ asset('main/assets/js/pagenav.js') }}"></script>
     <script src="{{ asset('main/assets/js/parallax.min.js') }}"></script>
@@ -548,8 +423,12 @@
     <script src="{{ asset('main/assets/js/validation.js') }}"></script>
     <script src="{{ asset('main/assets/js/wow.js') }}"></script>
 
+
     <!-- thm custom script -->
     <script src="{{ asset('main/assets/js/custom.js') }}"></script>
+
+
+
 </body>
 
 </html>

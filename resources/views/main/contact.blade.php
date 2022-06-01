@@ -181,11 +181,10 @@
                     <!--Social Links-->
                     <div class="social-links">
                         <ul class="clearfix">
-                            <li><a href="#"><span class="fab fa fa-facebook-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-twitter-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-pinterest-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-google-plus-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-youtube-square"></span></a></li>
+                            <li><a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a></li>
+                            <li><a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a></li>
+                            <li><a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a></li>
+                            <li><a href="https://instagram.com/upviewindia"><span class="fab fa fa-instagram-square"></span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -201,16 +200,16 @@
             <div class="breadcrumb-social-link">
                 <ul class="clearfix">
                     <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     </li>
                     <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                     </li>
                     <li class="wow slideInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </li>
                     <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
-                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>
