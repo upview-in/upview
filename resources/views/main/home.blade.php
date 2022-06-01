@@ -2,803 +2,1101 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="{{ asset('main/images/favicon.ico') }}">
-    <title>Upview</title>
+	<meta charset="UTF-8" />
+	<title>Upview</title>
 
-    <!-- fonts -->
+	<!-- responsive meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- For IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+		rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+		rel="stylesheet" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap-select.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/custom-animate.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/fancybox.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/flaticon.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/font-awesome.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/imp.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/jquery-ui.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/magnific-popup.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/owl.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/rtl.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/scrollbar.css') }}" />
+
+	<!-- Module css -->
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/header-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/banner-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/about-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/blog-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/fact-counter-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/faq-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/contact-page.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/breadcrumb-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/team-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/partner-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/testimonial-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/services-section.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/module-css/footer-section.css') }}" />
 
 
-    <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/animate/animate.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/animate/custom-animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/fontawesome/css/all.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jarallax/jarallax.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.pips.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/odometer/odometer.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/swiper/swiper.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/mibooz-icons/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('main/vendors/tiny-slider/tiny-slider.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/the-sayinistic-fontstylesheet.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.theme.default.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/bxslider/jquery.bxslider.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap-select/css/bootstrap-select.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-ui/jquery-ui.css') }}" />
+	<!-- stylesheet git globe -->
+	<link rel="stylesheet" href="{{ asset('main/gitasset/primer-856885a5a549.css') }}">
+	<link rel="stylesheet" href="{{ asset('main/gitasset/site-7b08dc8b1766.css') }}">
+	<link rel="stylesheet" href="{{ asset('main/gitasset/home-e461cf7ec7b7.css') }}">
 
-    <!-- template styles -->
-    <link rel="stylesheet" href="{{ asset('main/css/mibooz.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/css/mibooz-responsive.css') }}" />
+	<script src="{{ asset('main/gitasset/webgl-globe-f61153182664.js') }}"></script>
+
+
+	<!-- new testimonial cdn -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css'>
+	<link rel="stylesheet" href="{{ asset('main/assets/testimonial/style.css') }}">
+
+	<link rel="stylesheet" href="{{ asset('main/assets/css/style.css') }}" />
+	<link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}" />
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}" />
+	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="32x32" />
+	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="16x16" />
+
 </head>
 
 <body>
-    <div class=" preloader">
-        <img class="preloader__image" width="60" alt="loader" src="{{ asset('main/images/loader.png') }}" />
-    </div>
-    <!-- /.preloader -->
-    <div class=" page-wrapper">
-        <header class="main-header main-header-two clearfix">
-            <nav class="main-menu main-menu-two clearfix">
-                <div class="main-menu-wrapper">
-                    <div class="main-menu-wrapper__logo">
-                        <a href="{{ route('main.index') }}"><img src="{{ asset('main/images/resources/logo-2.png') }}" alt=""></a>
-                    </div>
-                    <div class=" main-menu-wrapper__main-menu">
-                        <a href="index2.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
-                        <ul class="main-menu__list">
-                            <li class="current">
-                                <a href="{{ route('main.index') }}">Home</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('main.about') }}">About Us</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('main.features') }}">Features</a>
+	<div class="boxed_wrapper ltr">
+		<!-- Preloader -->
+		<div class="loader-wrap">
+			<div class="preloader">
+			</div>
+			<div class="layer layer-one"><span class="overlay"></span></div>
+			<div class="layer layer-two"><span class="overlay"></span></div>
+			<div class="layer layer-three"><span class="overlay"></span></div>
+		</div>
 
-                            </li>
-                            <li>
-                                <a href="{{ route('main.pricing') }}">Pricing</a>
+		<!-- page-direction -->
+		<div class="page_direction">
+			<div class="demo-rtl direction_switch">
+				<button class="rtl">RTL</button>
+			</div>
+			<div class="demo-ltr direction_switch">
+				<button class="ltr">LTR</button>
+			</div>
+		</div>
+		<!-- page-direction end -->
 
-                            </li>
+		<!-- Main header-->
+		<header class="main-header header-style-three">
+			<!--Start Header-->
+			<div class="header-three clearfix">
+				<div class="auto-container clearfix">
+					<div class="outer-box clearfix">
+						<div class="header-three_left">
+							<div class="logo">
+								<a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+									161px" height="60px" alt="Awesome Logo" title="" /></a>
+							</div>
 
-                            <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="main-menu-wrapper__right">
-                        <div class="main-menu-wrapper__call">
-                            <a href="{{ route('login') }}" class="thm-btn welcome-two__btn">Login</a>
-                        </div>
-                        <div class="main-menu-wrapper__call">
-                            <a href="{{ route('register') }}" class="thm-btn welcome-two__btn">Free Demo</a>
-                        </div>
+							<div class="nav-outer style3 clearfix">
+								<!--Mobile Navigation Toggler-->
+								<div class="mobile-nav-toggler">
+									<div class="inner">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</div>
+								</div>
+								<!-- Main Menu -->
+								<nav class="main-menu style3 navbar-expand-md navbar-light">
+									<div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+										<ul class="navigation clearfix">
+											<li class="current"><a href="{{ route('main.index') }}">Home</a></li>
+											<li class="dropdown">
+												<a href="javascript:void();">Solutions</a>
+												<ul>
+                                                    <li>
+                                                        <a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('main.socialPosting') }}">Social Media Posting</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('main.socialListening') }}">Social Listening</a>
+                                                    </li>
+                                                </ul>
+											</li>
+											<li><a href="{{ route('main.pricing') }}">Pricing</a></li>
+											<li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+										</ul>
+									</div>
+								</nav>
+								<!-- Main Menu End-->
+							</div>
+						</div>
 
-                    </div>
-                </div>
-            </nav>
-        </header>
+						<div class="header-three_right">
+							<div class="btns-box">
+								<a class="btn-one" href="{{ route('login') }}">
+									<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End header-->
 
-        <div class="stricky-header stricked-menu main-menu main-menu-two">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
+			<!--Sticky Header-->
+			<div class="sticky-header">
+				<div class="container">
+					<div class="clearfix">
+						<!--Logo-->
+						<div class="logo float-left">
+							<a href="{{ route('main.index') }}" class="img-responsive"><img
+									src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
+									title="" /></a>
+						</div>
+						<!--Right Col-->
+						<div class="right-col float-right">
+							<!-- Main Menu -->
+							<nav class="main-menu clearfix">
+								<!--Keep This Empty / Menu will come through Javascript-->
+							</nav>
+							<a class="btn-one ml-4 m-4" href="contact.html">
+								<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End Sticky Header-->
 
-        <!--Main Slider Start-->
-        <section class="main-slider-two">
-            <div class="main-slider-two__wrapper">
-                <div class="image-layer" style="background-image: url(' {{ asset('main/images/backgrounds/main-slider-two-bg.png') }} ') "></div>
-                <div class="main-slider-two-box-1"></div>
-                <div class="main-slider-two-box-2"></div>
-                <div class="main-slider-two-box-3"></div>
-                <div class="main-slider-two-box-4"></div>
-                <div class="main-slider-two-box-5"></div>
-                <div class="main-slider-two-box-6"></div>
-                <div class="main-slider-two-box-7"></div>
-                <div class="main-slider-two-box-8"></div>
-                <div class="main-slider-two-box-9"></div>
-                <div class="main-slider-two-box-10"></div>
-                <div class="main-slider__social">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/upviewindia/" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7">
-                            <div class="main-slider-two__content">
-                                <h2 data-wow-duration="2000ms" class="wow fadeInUp">SOCIAL MEDIA MANAGEMENT BY DAY
-                                    INVENTION LAB BY NIGHT</h2>
-                                <div class="main-slider-two__btn-video wow fadeInUp" data-wow-duration="2000ms">
-                                    <div class="main-slider-two__btn">
-                                        <a href="{{ route('main.features') }}" class="thm-btn">Know More</a>
-                                    </div>
+			<!-- Mobile Menu  -->
+			<div class="mobile-menu">
+				<div class="menu-backdrop"></div>
+				<div class="close-btn">
+					<span class="icon fa fa-times-circle"></span>
+				</div>
+				<nav class="menu-box">
+					<div class="nav-logo">
+						<a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="150px"
+								height="50px" alt="" title="" /></a>
+					</div>
+					<div class="menu-outer">
+						<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+					</div>
+					<a class="btn-one m-4" href="{{ route('login') }}">
+						<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+					</a>
+					<!--Social Links-->
+					<div class="social-links">
+						<ul class="clearfix">
+							<li>
+								<a href="#"><span class="fab fa fa-facebook-square"></span></a>
+							</li>
+							<li>
+								<a href="#"><span class="fab fa fa-twitter-square"></span></a>
+							</li>
+							<li>
+								<a href="#"><span class="fab fa fa-youtube-square"></span></a>
+							</li>
+							<li>
+								<a href="#"><span class="fab fa fa-instagram"></span></a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<!-- End Mobile Menu -->
+		</header>
 
-                                </div>
-                                <div class="main-slider-two__img">
-                                    <img src="{{ asset('main/images/img-3.png') }}" alt="" data-wow-duration=" 2000ms" class="wow fadeInRight" />
+		<!-- Start Main Slider -->
+		<section class="main-slider style3">
+			<div class="header-social-link-1">
+				<ul class="clearfix">
+					<li class="wow slideInDown" data-wow-delay="500ms" data-wow-duration="1500ms">
+						<a href="#" style="color: white;"><i class="fa fa-facebook" aria-hidden="true"
+								style="transform: rotate(265deg);"></i></a>
+					</li>
+					<li class="wow slideInDown" data-wow-delay="400ms" data-wow-duration="2000ms">
+						<a href="#" style="color: white;"><i class="fa fa-twitter" aria-hidden="true"
+								style="transform: rotate(265deg);"></i></a>
+					</li>
+					<li class="wow slideInDown" data-wow-delay="300ms" data-wow-duration="2500ms">
+						<a href="#" style="color: white;"><i class="fa fa-linkedin" aria-hidden="true"
+								style="transform: rotate(265deg);"></i></a>
+					</li>
+					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
+						<a href="#" style="color: white;"><i class="fa fa-instagram" aria-hidden="true"
+								style="transform: rotate(265deg);"></i></a>
+					</li>
+				</ul>
+			</div>
+			<div class="slider-box">
+				<!-- Banner Carousel -->
+				<main class="font-mktg">
+					<div class="overflow-hidden">
+						<div class="home-hero-container position-relative js-webgl-globe-data">
+							<div class="home-hero position-absolute z-1 top-0 right-0 bottom-0 left-0 overflow-hidden">
+								<div
+									class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive pb-md-9">
 
-                                </div>
+									<div
+										class="d-flex gutter gutter-spacious flex-column flex-lg-row flex-items-center height-full px-0 px-lg-3">
+										<div class="ml-md-n3 mr-md-3 col-12 col-lg-6 text-center text-md-left">
+											<h1 class="h3-mktg color-text-white mb-3 position-relative z-2"
+												style="color: #ffffff;">
+												<span class="magic">Our Skills,<br />Your Growth
+												</span>
+											</h1>
+											<p
+												class="f2-mktg text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2">
+												It’s easy to impress but influencing requires a lot of efforts.
+												Let's grow together.
+											</p>
+											<div class="btns-box">
+												<a class="btn-one" href="{{ route('register') }}">
+													<div class="border_line">
+														<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+													</div>
+													<span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+												</a>
+											</div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Main Slider End-->
+											<!-- '"` -->
+											<!-- </textarea></xmp> -->
+										</div>
 
-        <!--Feature One Start-->
-        <section class="feature-one">
-            <div class="feature-one__container">
-                <ul class="list-unstyled feature-one__list clearfix">
-                    <!--Feature One Single-->
-                    <li class="feature-one__single wow fadeInUp" data-wow-delay="200ms">
-                        <div class="feature-one__content">
-                            <div class="feature-one__icon">
-                                <span class="icon-checking"></span>
-                            </div>
-                            <h4 class="feature-one__title"><a href="javascript:void();">Social Listening</a></h4>
-                            <p class="feature-one__text">Listen to what is happening on the web</p>
-                        </div>
-                    </li>
-                    <!--Feature One Single-->
-                    <li class="feature-one__single wow fadeInUp" data-wow-delay="400ms">
-                        <div class="feature-one__content">
-                            <div class="feature-one__icon">
-                                <span class="icon-graphic-designer"></span>
-                            </div>
-                            <h4 class="feature-one__title"><a href="javascript:void();">Schedule your posts</a></h4>
-                            <p class="feature-one__text">With Upview, schedule your posts hassle-free</p>
-                        </div>
-                    </li>
-                    <!--Feature One Single-->
-                    <li class="feature-one__single wow fadeInUp" data-wow-delay="600ms">
-                        <div class="feature-one__content">
-                            <div class="feature-one__icon">
-                                <span class="icon-social-media"></span>
-                            </div>
-                            <h4 class="feature-one__title"><a href="javascript:void();">Hashtag Reporting</a></h4>
-                            <p class="feature-one__text">Track not just the top trending hashtags but also the hashtags your audience is using!</p>
-                        </div>
-                    </li>
-                    <!--Feature One Single-->
-                    <li class="feature-one__single wow fadeInUp" data-wow-delay="800ms">
-                        <div class="feature-one__content">
-                            <div class="feature-one__icon">
-                                <span class="icon-recommend"></span>
-                            </div>
-                            <h4 class="feature-one__title"><a href="javascript:void();">Brand Management</a></h4>
-                            <p class="feature-one__text">With over 25 tools at your disposal, you can easily control your brand's social media reach.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!--Feature One End-->
+										<div class="col-12 col-lg-6 text-center text-md-left position-relative">
+											<div class="home-globe-container home-globe-container-webgl">
+												<div
+													class="mx-auto width-full mt-n9 mt-lg-2 home-globe position-relative height-full js-webgl-globe">
+													<video width="700" height="700" loop="" muted="" playsinline=""
+														autoplay preload="none" style="margin-left:10%;"
+														class="home-globe-container-video js-globe-fallback-video ">
+														<!-- <source type="video/mp4; codecs=hevc,mp4a.40.2"
+															src="images/modules/site/home/globe-900.hevc.mp4"> -->
+														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
+															src="{{ asset('main/images/modules/site/home/globe-900.h264.mp4') }}">
+													</video>
+													<video loop="" muted="" playsinline="" preload="none" autoplay
+														class="home-globe-container-video js-globe-fallback-video-small"
+														hidden>
+														<!-- <source type="video/mp4; codecs=hevc,mp4a.40.2"
+															src="images/modules/site/home/globe-500.hevc.mp4"> -->
+														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
+															src="{{ asset('main/images/modules/site/home/globe-500.h264.mp4') }}">
+													</video>
+													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w"
+														sizes="(max-width: 700px) 70vw, 700px"
+														src="{{ asset('main/images/modules/site/home/globe.jpg') }}"
+														alt="Planet earth with visualization of GitHub activity crossing the globe"
+														class="width-full height-auto js-globe-fallback-image"
+														loading="lazy" decoding="async" width="1238" height="1404"
+														hidden>
 
-        <!--Welcome Two Start-->
-        <section class="welcome-two">
-            <div class="container">
-                <div class="section-title text-center">
-                    <span class="section-title__tagline">welcome to Upview</span>
-                    <h2 class="section-title__title">About Us</h2>
-                </div>
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="welcome-two__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
-                            <div class="welcome-two__img-box">
-                                <div class="welcome-two__img">
-                                    <img src="{{ asset('main/images/resources/home-about-us-1.jpg') }}" alt="">
-                                </div>
-                                <div class=" welcome-two__small-img">
-                                    <img src="{{ asset('main/images/resources/home-about-us-2.jpg') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-xl-6">
-                        <div class="welcome-two__right">
-                            <div class="welcome-two__big-text">Upview</div>
-                            <p class="welcome-two__right-text">Helping Create Powerful Brand Identities: We provide the most unique and all-in-one tool for all of your social media platform needs/demands.</p>
-                            <ul class="welcome-two__points list-unstyled">
-                                <li>
+													<canvas width="900" height="900"
+														class="webgl-canvas js-globe-canvas"
+														style="display: block; width: 900px; height: 900px;"></canvas>
+												</div>
+											</div>
 
-                                    <div class="icon">
-                                        <span class="icon-tick"></span>
-                                    </div>
-                                    <div class="text">
-                                        <h4>One-stop solution</h4>
-                                        <p>When you have Upview, you don’t need anything else to manage and grow your social media presence.</p>
-                                    </div>
+										</div>
 
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick"></span>
-                                    </div>
-                                    <div class="text">
-                                        <h4>Effortless to Use</h4>
-                                        <p>Our app is one of the simplest on the market. Adding Profiles and analyzing them has never been easier!</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick"></span>
-                                    </div>
-                                    <div class="text">
-                                        <h4>Trend Analysis</h4>
-                                        <p>Get the most detailed analysis of the ongoing trends across all the different platforms.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick"></span>
-                                    </div>
-                                    <div class="text">
-                                        <h4>Content Strategy</h4>
-                                        <p>We not only assist you in assessing your content, but we also assist you in developing the ideal content plan for increasing your reach!</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick"></span>
-                                    </div>
-                                    <div class="text">
-                                        <h4>Audience Insights</h4>
-                                        <p>Get the most relevant and non-manipulated data regarding your audience.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <a href="{{ route('main.features') }}" class="thm-btn welcome-two__btn">Discover More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Welcome Two End-->
+									</div>
+								</div>
+
+								<img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="Glowing universe"
+									class="position-absolute home-hero-glow events-none z-1">
+								<video loop="" muted="" playsinline="" preload="none"
+									class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0"
+									style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
+									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
+										src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
+								</video>
+							</div>
+
+							<div class="position-absolute width-full color-bg-default" style="bottom: -4rem;">
+								<div class="container-xl p-responsive">
+									<div class="d-flex flex-justify-center flex-lg-justify-end color-bg-default">
+										<div
+											class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
+											<picture>
+												<source srcset="{{ asset('main/images/modules/site/home/astro-mona.webp') }}"
+													type="image/webp">
+												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960"
+													height="967"
+													class="home-astro-mona width-full position-absolute bottom-0 height-auto"
+													alt="Mona looking at GitHub activity across the globe">
+											</picture>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="mx-auto container-xl p-responsive py-8 py-md-9 overflow-hidden d-flex gutter gutter-spacious js-build-in-trigger"
+							data-build-margin-bottom="20">
+						</div>
+
+					</div>
+				</main>
+			</div>
+		</section>
+		<!-- End Main Slider -->
+
+		<!--Start Service Style3 Area-->
+		<section class="service-style3-area">
+			<div class="container">
+				<div class="sec-title text-center">
+					<div class="sub-title">
+						<h3>Our Services</h3>
+					</div>
+					<h2>
+						Strategic social media analysis<br />at the tip of your fingers
+					</h2>
+				</div>
+				<div class="row">
+					<!--Start Single Service Style3-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="single-service-style3 text-center">
+							<div class="icon">
+								<img src="{{ asset('main/assets/images/icon/services/calendar.gif') }}" style="height: 70px;" alt="" />
+							</div>
+							<div class="title">
+								<h3>
+									<a href="javascript:void();">Scheduling & Publishing</a>
+								</h3>
+								<div class="border-box"></div>
+								<div class="inner-text">
+									<p>
+										Effortlessly plan, manage & create social media content. Let your profile stand
+										out! Strategised postings keep your audience hooked and it’s always good to have
+										a to-do list for the same.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single Service Style3-->
+					<!--Start Single Service Style3-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="single-service-style3 text-center">
+							<div class="icon">
+								<img src="{{ asset('main/assets/images/icon/services/pie-chart.gif') }}" style="height: 70px;" alt="" />
+							</div>
+							<div class="title">
+								<h3>
+									<a href="javascript:void();">Analytics </a>
+								</h3>
+								<div class="border-box"></div>
+								<div class="inner-text">
+									<p>
+										Real time Analytics to measure performance, gives you the ability to create,
+										schedule, plan, publish, and monitor your posts, plus engage directly with your
+										audience on Facebook, Instagram & YouTube.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single Service Style3-->
+					<!--Start Single Service Style3-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="single-service-style3 text-center">
+							<div class="icon">
+								<img src="{{ asset('main/assets/images/icon/services/hacking.gif') }}" style="height: 70px;" alt="" />
+							</div>
+							<div class="title">
+								<h3>
+									<a href="javascript:void();">Social Listening</a>
+								</h3>
+								<div class="border-box"></div>
+								<div class="inner-text">
+									<p>
+										Get access to billions of cross profile conversations, tag searches, brand
+										watches & competitor analysis across the whole World Wide Web. Monitor results
+										in real time to find impactful and relevant insights through AI powered
+										analysis.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single Service Style3-->
+					<!--Start Single Service Style3-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="single-service-style3 text-center">
+							<div class="icon">
+								<img src="{{ asset('main/assets/images/icon/services/balance.gif') }}" style="height: 70px;" alt="" />
+							</div>
+							<div class="title">
+								<h3>
+									<a href="services-details.html">Brand Analysis</a>
+								</h3>
+								<div class="border-box"></div>
+								<div class="inner-text">
+									<p>
+										With over 25 tools at your finger tips, you can now easily control your brand's
+										social media reach & get accurate social media reports on the go. Unlike other
+										brand monitoring tools & social media monitoring software, we crawl millions of web pages daily.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single Service Style3-->
+				</div>
+			</div>
+		</section>
+		<!--End Service Style3 Area-->
+
+		<!--Start SKill style1 Area-->
+		<section class="skill-style1-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-5">
+						<div class="skill-style2_image-box-outer"
+							style="margin-right: -250px;margin-left: 0px;left: -110px;top: -50px;">
+							<div class="skill-style1_image-box skill-style2_image-box"
+								style="background-image: url( {{ asset('main/assets/images/resources/about.png') }} );"></div>
+						</div>
+					</div>
+
+					<div class="col-xl-7">
+						<div class="skill-style1_content-box skill-style2_content-box" style="padding-top: 2px;">
+							<h2>
+								About Us
+							</h2>
+							<p>
+								Our mission is to help you reach every prospective customer & enjoy new found business
+								with our performance-driven digital marketing services. Our creative, strategical &
+								data-driven online advertising will surge your business growth & revenue to place you
+								above the competition.<br /><br />
+								We provide proven and effective marketing services to ensure your company remains
+								competitive now and in the future.
+								Don’t just run a business, belong!
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--End SKill style1 Area-->
+
+		<!--Start Testimonial style1 Area-->
+		<section class="testimonial-section">
+			<div class="large-container">
+				<div class="sec-title">
+					<h2>This is what the <span style="color: #0e52dd;">Upview</span> family has to say!</h2>
+				</div>
+
+				<div class="testimonial-carousel owl-carousel owl-theme">
+					<!-- Testimonial Block -->
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="text">I must have used more than 3 platforms but have never been more
+								satisfied with the features of a platform than with Upview. A permanent
+								user of Upview forever!</div>
+							<div class="info-box">
+								<div class="thumb"><img
+										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<h4 class="name">Viral Rathod</h4>
+								<span class="designation">B99 Esports</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Testimonial Block -->
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="text">Upview has been a saviour, I was struggling in keeping up with the
+								posting but now I can easily schedule it all together and not have to
+								worry about anything. And to add to it, I can assess what was working
+								for me and what was not.</div>
+							<div class="info-box">
+								<div class="thumb"><img
+										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<h4 class="name">Siddhantraj Chavda</h4>
+								<span class="designation">Digital Marketer</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Testimonial Block -->
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="text">One issue I was facing with other applications is that they are limited
+								to just one or two platforms and I use several different platforms to
+								post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not
+								only removed all these hassles but saved a lot of time as well.</div>
+							<div class="info-box">
+								<div class="thumb"><img
+										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<h4 class="name">Rashmi Mishra</h4>
+								<span class="designation">Actor/Model</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="thumb-layer paroller">
+					<figure class="image"><img src="{{ asset('main/assets/images/testimonial/user-thumbs.png') }}"
+							alt="">
+					</figure>
+				</div>
+			</div>
+		</section>
+		<!--End Testimonial Style1 Area-->
+
+		<!--Start About Style2 Area-->
+		<section class="about-style2-area">
+			<div class="container">
+				<div class="sec-title text-center">
+					<h2>
+						We Get You Ready For The Millions Watching You!
+					</h2>
+				</div>
+				<div class="row">
+					<div class="col-xl-6">
+						<div class="about-style1_image-box about-style2_image-box clearfix">
+							<!-- <div class="shape">
+								<img class="zoom-fade" src="{{ asset('main/images/shape/thm-shape-1.png') }}" alt="" />
+							</div> -->
+							<div class="image-box left">
+								<div class="single-box image-box1">
+									<div class="inner">
+										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
+									</div>
+								</div>
+								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery"
+									href="https://www.youtube.com/watch?v=p25gICT63ek">
+									<span class="flaticon-play-button-2 playicon"></span>
+								</a>
+							</div>
+							<div class="image-box right">
+								<div class="single-box image-box2">
+									<div class="inner">
+										<img src="{{ asset('main/assets/images/about/abt-2.png') }}" style="height: 270px;" alt="" />
+									</div>
+								</div>
+								<div class="single-box image-box3">
+									<div class="inner">
+										<img src="{{ asset('main/assets/images/about/abt-3.png') }}" alt="" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-6">
+						<div class="about-style1_content-box about-style2_content-box">
+							<h2>
+								Grow your digital presence!<br />
+								Helping your brand say it’s story to the society about the values and desires it serves!
+							</h2>
+							<div class="text">
+								<p>
+									We are passionate about helping people find what they need. We are built for growing
+									businesses.
+									You get the tools you need to sell your products, reach new customers, and take your
+									business to the next level.
+									Put our marketing and sales tools behind your brand, or business and we will help
+									you share it with the world.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--End About Style2 Area-->
+
+		<!--Start Fact Counter Area-->
+		<section class="fact-counter-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="fact-counter_box">
+							<ul class="clearfix">
+								<li class="single-fact-counter wow slideInLeft" data-wow-delay="200ms"
+									data-wow-duration="1500ms">
+									<div class="border-box"></div>
+									<div class="outer-box">
+										<div class="count-outer count-box">
+											<span class="count-text" data-speed="3000" data-stop="302">0</span>
+										</div>
+										<div class="title">
+											<h6 style="color: #FFF;">Brands Build</h6>
+										</div>
+									</div>
+								</li>
+								<li class="single-fact-counter wow slideInLeft" data-wow-delay="500ms"
+									data-wow-duration="1500ms">
+									<div class="border-box"></div>
+									<div class="outer-box">
+										<div class="count-outer count-box">
+											<span class="count-text" data-speed="3000"
+												data-stop="14">0</span><span>M+</span>
+										</div>
+										<div class="title">
+											<h6 style="color: #FFF;">Pages Crawled</h6>
+										</div>
+									</div>
+								</li>
+								<li class="single-fact-counter wow slideInRight" data-wow-delay="500ms"
+									data-wow-duration="1500ms">
+									<div class="border-box"></div>
+									<div class="outer-box">
+										<div class="count-outer count-box">
+											<span class="count-text" data-speed="3000"
+												data-stop="100">0</span><span>K+</span>
+										</div>
+										<div class="title">
+											<h6 style="color: #FFF;">Influencer's Reached</h6>
+										</div>
+									</div>
+								</li>
+								<li class="single-fact-counter wow slideInRight" data-wow-delay="200ms"
+									data-wow-duration="1500ms">
+									<div class="border-box"></div>
+									<div class="outer-box">
+										<div class="count-outer count-box">
+											<span class="count-text" data-speed="3000" data-stop="335">0</span>
+										</div>
+										<div class="title">
+											<h6 style="color: #FFF;">Experts Team</h6>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--End Fact Counter Area-->
+
+		<!--Start Working process area -->
+		<section class="working-process-area">
+			<div class="auto-container">
+				<div class="working-process-bg">
+					<video autoplay muted loop>
+						<source src="{{ asset('main/assets/images/video/tweet.mp4') }}" type="video/mp4" />
+					</video>
+				</div>
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="working-process-inner" style="height: 6in;">
+							<div class="title">
+								<h2 style="color: #ffffff; font-size: 35px; margin-top: -70px;">Stop wasting time & generate awesome
+									marketing campaings,
+									leads & incerease you customer base. Subscribe now !</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--End Working process area -->
+
+		<!--Start Blog Style1 Area-->
+		<section class="blog-style1-area">
+			<div class="container">
+				<div class="sec-title text-center">
+					<div class="sub-title">
+						<h3>Blogs</h3>
+					</div>
+					<h2>
+						Come check these few blogs to get an idea of how eye catching and impeccable your social media
+						could look!
+					</h2>
+				</div>
+				<div class="row text-right-rtl owl-carousel owl-theme portfolio-carousel ">
+					<!--Start Single blog Style1-->
+					<div class="col-xl-12 col-lg-12">
+						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
+							<div class="img-holder">
+								<div class="inner">
+									<img src="{{ asset('main/assets/images/blog/blog-v2-1.jpg') }}" alt="" />
+								</div>
+								<div class="shape">
+									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
+								</div>
+							</div>
+							<div class="text-holder">
+								<h3 class="blog-title">
+									<a href="blog-single.html">Blog 1</a>
+								</h3>
+								<div class="text">
+									<p>
+										Nam mollis turpis sed magna vestibulum, et. Mauris
+										vehicula tortor.
+									</p>
+								</div>
+								<div class="bottom-box">
+									<div class="btns-box">
+										<a class="btn-one" href="blog-single.html">
+											<div class="border_line">
+												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+											</div>
+											<div class="left_round"></div>
+											<div class="right_round"></div>
+											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
+										</a>
+									</div>
+									<div class="meta-box">
+										<ul class="meta-info">
+											<li>
+												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
+													Comments</a>
+											</li>
+											<li><a href="#">Adrian Eli</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single blog Style1-->
+
+					<!--Start Single blog Style1-->
+					<div class="col-xl-12 col-lg-12">
+						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
+							<div class="img-holder">
+								<div class="inner">
+									<img src="{{ asset('main/assets/images/blog/blog-v2-2.jpg') }}" alt="" />
+								</div>
+								<div class="shape">
+									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
+								</div>
+							</div>
+							<div class="text-holder">
+								<h3 class="blog-title">
+									<a href="blog-single.html">Blog 2</a>
+								</h3>
+								<div class="text">
+									<p>
+										Nam mollis turpis sed magna vestibulum, et. Mauris
+										vehicula tortor.
+									</p>
+								</div>
+								<div class="bottom-box">
+									<div class="btns-box">
+										<a class="btn-one" href="blog-single.html">
+											<div class="border_line">
+												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+											</div>
+											<div class="left_round"></div>
+											<div class="right_round"></div>
+											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
+										</a>
+									</div>
+									<div class="meta-box">
+										<ul class="meta-info">
+											<li>
+												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
+													Comments</a>
+											</li>
+											<li><a href="#">Adrian Eli</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single blog Style1-->
+
+					<!--Start Single blog Style1-->
+					<div class="col-xl-12 col-lg-12">
+						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
+							<div class="img-holder">
+								<div class="inner">
+									<img src="{{ asset('main/assets/images/blog/blog-v2-3.jpg') }}" alt="" />
+								</div>
+								<div class="shape">
+									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
+								</div>
+							</div>
+							<div class="text-holder">
+								<h3 class="blog-title">
+									<a href="blog-single.html">Blog 3</a>
+								</h3>
+								<div class="text">
+									<p>
+										Nam mollis turpis sed magna vestibulum, et. Mauris
+										vehicula tortor.
+									</p>
+								</div>
+								<div class="bottom-box">
+									<div class="btns-box">
+										<a class="btn-one" href="blog-single.html">
+											<div class="border_line">
+												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+											</div>
+											<div class="left_round"></div>
+											<div class="right_round"></div>
+											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
+										</a>
+									</div>
+									<div class="meta-box">
+										<ul class="meta-info">
+											<li>
+												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
+													Comments</a>
+											</li>
+											<li><a href="#">Adrian Eli</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single blog Style1-->
+
+					<!--Start Single blog Style1-->
+					<div class="col-xl-12 col-lg-12">
+						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
+							<div class="img-holder">
+								<div class="inner">
+									<img src="{{ asset('main/assets/images/blog/blog-v2-3.jpg') }}" alt="" />
+								</div>
+								<div class="shape">
+									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
+								</div>
+							</div>
+							<div class="text-holder">
+								<h3 class="blog-title">
+									<a href="blog-single.html">Blog 4</a>
+								</h3>
+								<div class="text">
+									<p>
+										Nam mollis turpis sed magna vestibulum, et. Mauris
+										vehicula tortor.
+									</p>
+								</div>
+								<div class="bottom-box">
+									<div class="btns-box">
+										<a class="btn-one" href="blog-single.html">
+											<div class="border_line">
+												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+											</div>
+											<div class="left_round"></div>
+											<div class="right_round"></div>
+											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
+										</a>
+									</div>
+									<div class="meta-box">
+										<ul class="meta-info">
+											<li>
+												<i class="fa fa-comments-o" aria-hidden="true"></i><a href="#">No
+													Comments</a>
+											</li>
+											<li><a href="#">Adrian Eli</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Single blog Style1-->
+				</div>
+			</div>
+		</section>
+		<!--End Blog Style1 Area-->
+
+		<!--Start Partner Area-->
+        <!-- to do code once live -->
+		<!--End Partner Area-->
+
+		<!--Start footer area -->
+		<footer class="footer-area style2">
+			<div class="shape">
+				<img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
+			</div>
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="inner">
+								<div class="text">
+									<h6>Ready to get started?</h6>
+									<h2>Get in touch, or create an account.</h2>
+								</div>
+								<div class="button-box">
+									<a class="btn-one" href="#">
+										<div class="border_line">
+											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+										</div>
+										<div class="left_round"></div>
+										<div class="right_round"></div>
+										<span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Start Footer-->
+			<div class="footer">
+				<div class="container">
+					<div class="row text-right-rtl">
+						<!--Start single footer widget-->
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
+							<div class="single-footer-widget">
+								<div class="our-company-info">
+									<div class="footer-logo">
+										<a href="index.html">
+											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
+												height="60px" alt="" /></a>
+									</div>
+									<div class="text-box">
+										<p style="font-size: 19px;">
+											We help transform relevant information into desired results.
+										</p>
+									</div>
+									<div class="copyright-text style2">
+										<p>
+											&copy;Copywright <a href="#">@Neomobile Advertising LLP.</a> All
+											Rights Reserved.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--End single footer widget-->
+
+						<!--Start single footer widget-->
+						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
+							<div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
+								<div class="title">
+									<h3>Categories</h3>
+								</div>
+								<ul class="footer-widget-links1">
+									<li><a href="{{ route('main.index') }}">Home</a></li>
+									<li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
+									<li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
+									<li><a href="{{ route('main.socialListening') }}"> Social Listening</a></li>
+									<li><a href="{{ route('main.contact') }}">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--End single footer widget-->
+
+						<!--Start single footer widget-->
+						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
+							<div class="single-footer-widget mar-left2 pdtop60">
+								<div class="title">
+									<h3>Community</h3>
+								</div>
+								<ul class="footer-widget-links1">
+									<li><a href="blog.html">Blog</a></li>
+									<li><a href="#">Members</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--End single footer widget-->
+
+						<!--Start single footer widget-->
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
+							<div class="single-footer-widget fixwidth pdtop60">
+								<div class="title">
+									<h3>Our Socials</h3>
+								</div>
+								<ul class="instagram-box">
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+								<div class="bottom-box">
+									<ul>
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
+										<li><a href="#">Terms & Conditions </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End Footer-->
+		</footer>
+		<!--End footer area-->
+
+		<button class="scroll-top scroll-to-target" data-target="html">
+			<span class="fa fa-angle-up"></span>
+		</button>
+	</div>
 
 
+	<!-- new testimonial script -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js'></script>
+	<script src="{{ asset('main/assets/testimonial/script.js') }}"></script>
 
-        <!--Services Two Start-->
-        <section class="services-two">
-            <div class="services-two-shape" style="background-image: url('{{ asset('main/images/shapes/services-two-shape.png') }}' )">
-            </div>
-            <div class="container-fluid">
-                <div class="section-title text-center">
+	<script src="{{ asset('main/assets/js/jquery.js') }}"></script>
+	<script src="{{ asset('main/assets/js/aos.js') }}"></script>
+	<script src="{{ asset('main/assets/js/appear.js') }}"></script>
+	<script src="{{ asset('main/assets/js/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/bootstrap-select.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/isotope.js') }}"></script>
+	<script src="{{ asset('main/assets/js/jquery.countTo.js') }}"></script>
+	<script src="{{ asset('main/assets/js/jquery.easing.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/jquery.enllax.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/jquery.fancybox.js') }}"></script>
+	<script src="{{ asset('main/assets/js/jquery.magnific-popup.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/jquery.paroller.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/jquery-ui.js') }}"></script>
+	<script src="{{ asset('main/assets/js/knob.js') }}"></script>
+	<script src="{{ asset('main/assets/js/map-script.js') }}"></script>
+	<script src="{{ asset('main/assets/js/owl.js') }}"></script>
+	<script src="{{ asset('main/assets/js/pagenav.js') }}"></script>
+	<script src="{{ asset('main/assets/js/parallax.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/scrollbar.js') }}"></script>
+	<script src="{{ asset('main/assets/js/TweenMax.min.js') }}"></script>
+	<script src="{{ asset('main/assets/js/validation.js') }}"></script>
+	<script src="{{ asset('main/assets/js/wow.js') }}"></script>
 
-                    <h2 class="section-title__title">what we’re offering</h2>
-                    <p class="">All in one solution to Social Media Management</p>
-
-                </div>
-                <ul class="list-unstyled clearfix services-two__list">
-                    <!--Services Two Single-->
-                    <li class="services-two__single wow fadeInUp" data-wow-delay="200ms">
-                        <div class="class-icon">
-                            <div class="services-two__icon">
-                                <span class="icon-online-shopping"></span>
-                            </div>
-                            <h3 class="services-two__title"><a href="javascript:void();">Youtube & Facebook <br> Analysis</a>
-                            </h3>
-                            <p class="services-two__text">Analyze and check what is working for you and what is not working.</p>
-                        </div>
-                    </li>
-                    <!--Services Two Single-->
-                    <li class="services-two__single wow fadeInUp" data-wow-delay="400ms">
-                        <div class="class-icon">
-                            <div class="services-two__icon">
-                                <span class="icon-growth"></span>
-                            </div>
-                            <h3 class="services-two__title"><a href="javascript:void();">Competitor <br> Analysis</a></h3>
-                            <p class="services-two__text">Monitor and analyze what your competitors are doing to determine how to keep ahead of them.</p>
-                        </div>
-                    </li>
-                    <!--Services Two Single-->
-                    <li class="services-two__single wow fadeInUp" data-wow-delay="600ms">
-                        <div class="class-icon">
-                            <div class="services-two__icon">
-                                <span class="icon-webpage"></span>
-                            </div>
-                            <h3 class="services-two__title"><a href="javascript:void();">Brand <br> Monitoring</a></h3>
-                            <p class="services-two__text">Monitor how and what a brand is doing.</p>
-                        </div>
-                    </li>
-                    <!--Services Two Single-->
-                    <li class="services-two__single wow fadeInUp" data-wow-delay="800ms">
-                        <div class="class-icon">
-                            <div class="services-two__icon">
-                                <span class="icon-front-end"></span>
-                            </div>
-                            <h3 class="services-two__title"><a href="javascript:void();">Influencer <br> Listening</a>
-                            </h3>
-                            <p class="services-two__text">Check which markets the influencer is influencing the most!</p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="row">
-                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="900ms">
-                        <div class="services-two__btn-box">
-                            <a href="{{ route('main.features') }}" class="services-two__btn">view all Features</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Services Two End-->
-
-
-
-        <!--Project Two Start-->
-            <!-- Code Removed For temporary basis -->
-        <!--Project Two End-->
-
-
-
-        <!--Testimonial Two Start-->
-        <section class="testimonial-two">
-            <div class="testimonial-two-shape wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms"><img src="{{ asset('main/images/shapes/testimonial-two-shape.png') }}" alt=""></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5">
-                        <div class="testimonial-two__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
-                            <div class="testimonial-two__img">
-                                <img src="{{ asset('main/images/testimonial/testimonial-two-img.png') }}" alt="">
-
-                                <div class="testimonial-two__box-1"></div>
-                                <div class="testimonial-two__box-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-7">
-                        <div class="testimonial-two__right">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">testimonials</span>
-                                <h2 class="section-title__title">What they’re saying</h2>
-                            </div>
-                            <div class="testimonial-two__carousel owl-theme owl-carousel">
-                                <!--Testimonial Two Single-->
-                                <div class="testimonial-two__single">
-                                    <p class="testimonial-two__text">I must have used more than 3 platforms but have never been more satisfied with the features of a platform than with Upview. A permanent user of Upview forever!</p>
-                                    <div class="testimonial-two__client-info">
-                                        <div class="testimonial-two__client-img">
-                                            <!-- <img src="{{ asset('main/images/testimonial/testimonial-one-img-2.jpg') }}" alt=""> -->
-                                        </div>
-                                        <div class="testimonial-two__client-details">
-                                            <h4 class="testimonial-two__client-name">Viral Rathod</h4>
-                                            <p class="testimonial-two__client-title">B99 Esports</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Testimonial Two Single-->
-                                <div class="testimonial-two__single">
-                                    <p class="testimonial-two__text">One issue I was facing with other applications is that they are limited to just one or two platforms and I use several different applications to post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not only removed all these hassles but saved me lots of time as well.</p>
-                                    <div class="testimonial-two__client-info">
-                                        <div class="testimonial-two__client-img">
-                                            <!-- <img src="{{ asset('main/images/testimonial/testimonial-one-img-1.jpg') }}" alt=""> -->
-                                        </div>
-                                        <div class="testimonial-two__client-details">
-                                            <h4 class="testimonial-two__client-name">Rashmi Mishra</h4>
-                                            <p class="testimonial-two__client-title">Actor/Model</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Testimonial Two Single-->
-                                <div class="testimonial-two__single">
-                                    <p class="testimonial-two__text">Upview has been a saviour, I was struggling in keeping up with the posting but now I can easily schedule it all together and not have to worry about anything. And to add to it, I can assess what was working for me and what was not.</p>
-                                    <div class="testimonial-two__client-info">
-                                        <div class="testimonial-two__client-img">
-                                            <!-- <img src="{{ asset('main/images/testimonial/testimonial-one-img-3.jpg') }}" alt=""> -->
-                                        </div>
-                                        <div class="testimonial-two__client-details">
-                                            <h4 class="testimonial-two__client-name">Siddhanthraj Chavda</h4>
-                                            <p class="testimonial-two__client-title">Digital Marketer</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Testimonial Two End-->
-
-
-
-        <!--Brand Two Start-->
-        <!-- <section class="brand-one">
-            <div class="container">
-                <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
-                    "0": {
-                        "spaceBetween": 30,
-                        "slidesPerView": 2
-                    },
-                    "375": {
-                        "spaceBetween": 30,
-                        "slidesPerView": 2
-                    },
-                    "575": {
-                        "spaceBetween": 30,
-                        "slidesPerView": 3
-                    },
-                    "767": {
-                        "spaceBetween": 50,
-                        "slidesPerView": 4
-                    },
-                    "991": {
-                        "spaceBetween": 50,
-                        "slidesPerView": 5
-                    },
-                    "1199": {
-                        "spaceBetween": 100,
-                        "slidesPerView": 5
-                    }
-                }}'>
-                    <div class=" swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-1.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-2.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-3.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-4.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-5.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-1.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-2.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-3.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-4.png') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('main/images/brand/brand-1-5.png') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!--Brand Two End-->
-
-        <!--Blog Two Start-->
-        <!-- <section class="blog-two">
-            <div class="blog-two-shape" style="background-image: url('{{ asset('main/images/shapes/blog-two-shape.png') }}')"></div>
-            <div class="container">
-                <div class="section-title text-center">
-                    <span class="section-title__tagline">directly from the blog</span>
-                    <h2 class="section-title__title">What’s happening?</h2>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-
-                        <div class="blog-one__single">
-                            <div class="blog-one__img">
-                                <img src="{{ asset('main/images/blog/blog-one-img-1.jpg') }}" alt="">
-                                <a href="blog-details.html">
-                                    <span class="blog-one__plus"></span>
-                                </a>
-                                <div class="blog-one__date">
-                                    <p>26 aug</p>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <ul class="list-unstyled blog-one__meta">
-                                    <li><a href="blog-details.html"><i class="far fa-user-circle"></i> By admin</a></li>
-                                    <li><span>/</span></li>
-                                    <li><a href="blog-details.html"><i class="far fa-comments"></i> 2 Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 class="blog-one__title">
-                                    <a href="blog-details.html">How much does a website cost to build</a>
-                                </h3>
-                                <div class="blog-one__read-btn">
-                                    <a href="blog-details.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="400ms">
-
-                        <div class="blog-one__single">
-                            <div class="blog-one__img">
-                                <img src="{{ asset('main/images/blog/blog-one-img-2.jpg') }}" alt="">
-                                <a href="blog-details.html">
-                                    <span class="blog-one__plus"></span>
-                                </a>
-                                <div class="blog-one__date">
-                                    <p>26 aug</p>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <ul class="list-unstyled blog-one__meta">
-                                    <li><a href="blog-details.html"><i class="far fa-user-circle"></i> By admin</a></li>
-                                    <li><span>/</span></li>
-                                    <li><a href="blog-details.html"><i class="far fa-comments"></i> 2 Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 class="blog-one__title">
-                                    <a href="blog-details.html">task researched data enterprise process</a>
-                                </h3>
-                                <div class="blog-one__read-btn">
-                                    <a href="blog-details.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
-
-                        <div class="blog-one__single">
-                            <div class="blog-one__img">
-                                <img src="{{ asset('main/images/blog/blog-one-img-3.jpg') }}" alt="">
-                                <a href="blog-details.html">
-                                    <span class="blog-one__plus"></span>
-                                </a>
-                                <div class="blog-one__date">
-                                    <p>26 aug</p>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <ul class="list-unstyled blog-one__meta">
-                                    <li><a href="blog-details.html"><i class="far fa-user-circle"></i> By admin</a></li>
-                                    <li><span>/</span></li>
-                                    <li><a href="blog-details.html"><i class="far fa-comments"></i> 2 Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 class="blog-one__title">
-                                    <a href="blog-details.html">Uniquely enable accurate supply chains</a>
-                                </h3>
-                                <div class="blog-one__read-btn">
-                                    <a href="blog-details.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!--Blog Two End-->
-
-        <!--CTA One Start-->
-        <section class="cta-one">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="cta-one__inner wow fadeInUp" data-wow-delay="300ms">
-                            <div class="cta-one__box-1"></div>
-                            <div class="cta-one__box-2"></div>
-                            <div class="cta-one__left">
-                                <div class="cta-one__icon">
-                                    <span class="icon-consulting"></span>
-                                </div>
-                                <div class="cta-one__title-box">
-                                    <h2 class="cta-one__title">we’re delivering the best <br> customer experience</h2>
-                                </div>
-                            </div>
-                            <div class="cta-one__right">
-                                <a href="{{ route('main.contact') }}" class="thm-btn cta-one__btn">let’s get started</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--CTA One End-->
-
-        <!--Site Footer Start-->
-        <footer class="site-footer">
-
-            <div class="site-footer__middle">
-                <div class="container">
-                    <div class="site-footer__middle-inner">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
-                                <div class="footer-widget__column footer-widget__contact">
-                                    <h3 class="footer-widget__title">Contact</h3>
-                                    <p class="footer-widget__contact-text">Mumbai</p>
-                                    <h4 class="footer-widget__contact-email-phone">
-                                        <a href="mailto:info@upview.in" class="footer-widget__contact-email">info@upview.in</a>
-                                        <a href="tel:+91 9324633735" class="footer-widget__contact-phone">+91 9324633735</a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 wow fadeInUp" data-wow-delay="200ms">
-                                <div class="footer-widget__column footer-widget__links clearfix">
-                                    <h3 class="footer-widget__title">Features</h3>
-                                    <ul class="footer-widget__links-list list-unstyled clearfix">
-                                        <li><a href="javascript:void(0);">Audience Insights</a></li>
-                                        <li><a href="javascript:void(0);">Publish,Schedule, Draft and Queue Posts</a></li>
-                                        <li><a href="javascript:void(0);">Scheduling for optimal send time</a></li>
-                                        <li><a href="javascript:void(0);">Paid social reporting for Facebook, Instagram, Twitter and LinkedIn</a></li>
-                                        <li><a href="javascript:void(0);">Reporting</a></li>
-                                        <li><a href="javascript:void(0);">Group, Profile and post-level reporting</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled">
-                                        <li><a href="javascript:void(0);">Youtube & Facebook Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Competitor Intelligence</a></li>
-                                        <li><a href="javascript:void(0);">Content Strategy</a></li>
-                                        <li><a href="javascript:void(0);">Find Influencers</a></li>
-                                        <li><a href="javascript:void(0);">Influencer Evaluation</a></li>
-                                        <li><a href="javascript:void(0);">Influencer Listening</a></li>
-                                        <li><a href="javascript:void(0);">Sentiment & Audience Interaction Analysis</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled">
-                                        <li><a href="javascript:void(0);">Follower Quality Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Keyword and location monitoring</a></li>
-                                        <li><a href="javascript:void(0);">Trend analysis for twitter keywords and hashtags</a></li>
-                                        <li><a href="javascript:void(0);">Help Desk CRM and Social Commerce Integration</a></li>
-                                        <li><a href="javascript:void(0);">Brand Reporting</a></li>
-                                        <li><a href="javascript:void(0);">Hashtag Reporting</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled clearfix">
-                                        <li><a href="javascript:void(0);">Influencers Tracking and Analytics</a></li>
-                                        <li><a href="javascript:void(0);">Brand Monitoring</a></li>
-                                        <li><a href="javascript:void(0);">Content Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Campaign Strategy</a></li>
-                                        <li><a href="javascript:void(0);">Competitor Analysis</a></li>
-                                        <li><a href="javascript:void(0);">Content Marketing</a></li>
-                                        <li><a href="javascript:void(0);">Trend analysis</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="site-footer__top">
-
-                <div class="container">
-                    <div class="site-footer__top-inner">
-                        <div class="site-footer__top-left">
-                            <h3 class="site-footer__top-left-title">Your Perfect Business Partner Solution</h3>
-                            <a href="tel:+91 9324633735" class="site-footer__top-left-phone">+91 9324633735</a>
-                        </div>
-                        <div class="site-footer__top-right">
-                            <div class="site-footer__top-right-social">
-                                <a href="javascript:void();"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fab fa-facebook"></i></a>
-
-                                <a href="https://www.instagram.com/upviewindia/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="site-footer__bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-10">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyrights, <span class="dynamic-year"></span> <a href="javascript:void();">Upview.</a> All Rights Reserved.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 text-end">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text"><a href="{{ route('main.privacy-policy') }}">Privacy Policy</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--Site Footer End-->
-
-
-    </div><!-- /.page-wrapper -->
-
-
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <!-- /.mobile-nav__overlay -->
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-
-            <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="{{ asset('main/images/resources/logo-2.png') }}" width="155" alt="" /></a>
-            </div>
-            <!-- /.logo-box -->
-            <div class="mobile-nav__container"></div>
-            <!-- /.mobile-nav__container -->
-
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:info@upview.in">info@upview.in</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+91 9324633735">+91 9324633735</a>
-                </li>
-            </ul><!-- /.mobile-nav__contact -->
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
-                    <a href="index2.html#" class="fab fa-twitter"></a>
-                    <a href="index2.html#" class="fab fa-facebook-square"></a>
-                    <a href="index2.html#" class="fab fa-instagram"></a>
-                </div><!-- /.mobile-nav__social -->
-            </div><!-- /.mobile-nav__top -->
-
-
-
-        </div>
-        <!-- /.mobile-nav__content -->
-    </div>
-    <!-- /.mobile-nav__wrapper -->
-
-    <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <!-- /.search-popup__overlay -->
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
-        <!-- /.search-popup__content -->
-    </div>
-    <!-- /.search-popup -->
-
-    <a href="index2.html#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
-
-
-    <script src="{{ asset('main/vendors/jquery/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jarallax/jarallax.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-appear/jquery.appear.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-circle-progress/jquery.circle-progress.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-validate/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/nouislider/nouislider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/odometer/odometer.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/swiper/swiper.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/tiny-slider/tiny-slider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/wnumb/wNumb.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/wow/wow.js') }}"></script>
-    <script src="{{ asset('main/vendors/isotope/isotope.js') }}"></script>
-    <script src="{{ asset('main/vendors/countdown/countdown.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/owl-carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bxslider/jquery.bxslider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-tilt/tilt.jquery.min.js') }}"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GR19Q9R87T"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-GR19Q9R87T');
-    </script>
-    <!-- template js -->
-    <script src="{{ asset('main/js/mibooz.js') }}"></script>
+	<!-- thm custom script -->
+	<script src="{{ asset('main/assets/js/custom.js') }}"></script>
 </body>
 
 </html>

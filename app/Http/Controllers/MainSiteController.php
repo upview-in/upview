@@ -12,14 +12,19 @@ class MainSiteController extends Controller
         return view('main.home');
     }
 
-    public function about()
+    public function socialAnalytics()
     {
-        return view('main.about');
+        return view('main.social-analytics');
     }
 
-    public function features()
+    public function socialPosting()
     {
-        return view('main.features');
+        return view('main.social-posting');
+    }
+
+    public function socialListening()
+    {
+        return view('main.social-listening');
     }
 
     public function pricing()

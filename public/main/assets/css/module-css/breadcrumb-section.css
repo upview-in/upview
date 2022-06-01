@@ -1,0 +1,203 @@
+
+
+
+
+/*** 
+=============================================
+    Breadcrumb area style
+=============================================
+***/
+.breadcrumb-area {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 371px 0 238px;
+    z-index: 10;
+}
+.breadcrumb-area-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+.breadcrumb-area-bg:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #212121;
+    opacity: 0.8;
+    content: "";
+    z-index: -1;
+}
+
+.breadcrumb-area .inner-content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+.breadcrumb-area .inner-content .shape1 {
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    z-index: 1;
+}
+.breadcrumb-area .inner-content .shape2 {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    z-index: 1;
+}
+
+.breadcrumb-area .title {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    z-index: 1;
+}
+.breadcrumb-area .title h2{
+    font-size: 85px;
+    line-height: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke:2px #ffffff;
+}
+
+.breadcrumb-menu{
+    position: relative;
+    display: block;
+    line-height: 0;
+    z-index: 1;
+}
+.breadcrumb-menu ul {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+.breadcrumb-menu ul li {
+    position: relative;
+    display: inline-block;
+    float: none;
+    color: var(--thm-base);
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--thm-oswald-font);
+}
+.breadcrumb-menu ul li span:before {
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    padding-left: 7px;
+    font-size: 12px;
+}
+.breadcrumb-menu ul li a {
+    color: var(--thm-base);
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+.breadcrumb-menu ul li:hover a,
+.breadcrumb-menu ul li.active{
+    color: #ffffff;
+}
+
+
+
+.breadcrumb-social-link{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    z-index: 1;
+}
+.breadcrumb-social-link ul {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.breadcrumb-social-link ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.breadcrumb-social-link ul li:last-child{
+    margin-right: 0px;      
+}
+.breadcrumb-social-link ul li a{
+    position: relative;
+    display: block;
+    background: rgba(255, 255, 255, 0.10);
+    width: 40px;
+    height: 70px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #b9b9b9;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 13px;
+    -webkit-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;        
+}
+.breadcrumb-social-link ul li a:hover{
+    color: #1f2026;
+    background: var(--thm-base); 
+}
+.breadcrumb-social-link ul li a:before{
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    height: 5px;
+    width: 5px;
+    background: var(--thm-base);
+    border-radius: 50%;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+.breadcrumb-social-link ul li a:hover:before{
+    background: var(--thm-black);
+}
+
+
+
+/*** 
+=============================================
+    Breadcrumb area style
+=============================================
+***/
+.breadcrumb-area-style2 {
+    padding: 371px 0 538px;
+}
+.breadcrumb-area-style2 .breadcrumb-social-link {
+    bottom: 290px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
