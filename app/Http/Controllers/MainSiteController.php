@@ -3,28 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Main\ContactUsRequest;
+use App\Models\Blog;
 use App\Models\ContactUs;
+use Illuminate\Http\Request;
 
 class MainSiteController extends Controller
 {
     public function index()
     {
-        return view('main.home');
+        $blogs = Blog::all();
+        return view('main.home', ['blogs' => $blogs]);
     }
 
-    public function about()
+    public function socialAnalytics()
     {
-        return view('main.about');
+        return view('main.social-analytics');
     }
 
-    public function features()
+    public function socialPosting()
     {
-        return view('main.features');
+        return view('main.social-posting');
+    }
+
+    public function socialListening()
+    {
+        return view('main.social-listening');
     }
 
     public function pricing()
     {
         return view('main.pricing');
+    }
+
+    public function blog(Request $request, Blog $blog)
+    {
+        if ($blog->enabled ?? true) {
+            return view('main.blog', ['blog' => $blog]);
+        }
+        abort(404);
     }
 
     public function contact()

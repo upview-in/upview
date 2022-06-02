@@ -2,644 +2,548 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="{{ asset('main/images/favicon.ico') }}">
+    <meta charset="UTF-8">
     <title>Upview</title>
 
+    <!-- responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/custom-animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/imp.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/scrollbar.css') }}">
+
+    <!-- Module css -->
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/header-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/banner-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/about-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/blog-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/fact-counter-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/faq-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/contact-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/breadcrumb-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/team-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/partner-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/testimonial-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/services-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/module-css/footer-section.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('main/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-16x16.png') }}" sizes="16x16">
 
 
-    <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/animate/animate.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/animate/custom-animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/fontawesome/css/all.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jarallax/jarallax.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/nouislider/nouislider.pips.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/odometer/odometer.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/swiper/swiper.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/mibooz-icons/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('main/vendors/tiny-slider/tiny-slider.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/the-sayinistic-font/stylesheet.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/owl-carousel/owl.theme.default.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/bxslider/jquery.bxslider.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/bootstrap-select/css/bootstrap-select.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/vendors/jquery-ui/jquery-ui.css') }}" />
-
-    <!-- template styles -->
-    <link rel="stylesheet" href="{{ asset('main/css/mibooz.css') }}" />
-    <link rel="stylesheet" href="{{ asset('main/css/mibooz-responsive.css') }}" />
 </head>
 
 <body>
-    <div class="preloader">
-        <img class="preloader__image" width="60" src="{{ asset('main/images/loader.png') }}" alt="" />
-    </div>
-    <!-- /.preloader -->
-    <div class="page-wrapper">
 
-        <header class="main-header main-header-two clearfix innerpgae">
-            <nav class="main-menu main-menu-two clearfix">
-                <div class="main-menu-wrapper">
-                    <div class="main-menu-wrapper__logo">
-                        <a href="{{ route('main.index') }}"><img src="{{ asset('main/images/resources/logo-2.png') }}" alt=""></a>
+    <div class="boxed_wrapper ltr">
+
+        <!-- Preloader -->
+        <div class="loader-wrap">
+            <div class="preloader">
+            </div>
+            <div class="layer layer-one"><span class="overlay"></span></div>
+            <div class="layer layer-two"><span class="overlay"></span></div>
+            <div class="layer layer-three"><span class="overlay"></span></div>
+        </div>
+
+        <!-- page-direction -->
+        <div class="page_direction">
+            <div class="demo-rtl direction_switch"><button class="rtl">RTL</button></div>
+            <div class="demo-ltr direction_switch"><button class="ltr">LTR</button></div>
+        </div>
+        <!-- page-direction end -->
+
+
+        <!-- Main header-->
+        <header class="main-header header-style-three">
+            <!--Start Header-->
+            <div class="header-three clearfix">
+                <div class="auto-container clearfix">
+                    <div class="outer-box clearfix">
+                        <div class="header-three_left">
+
+                            <div class="logo">
+                                <a href="{{ route('login') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+									161px" height="60px" alt="Awesome Logo" title="" /></a>
+                            </div>
+
+                            <div class="nav-outer style3 clearfix">
+                                <!--Mobile Navigation Toggler-->
+                                <div class="mobile-nav-toggler">
+                                    <div class="inner">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </div>
+                                </div>
+                                <!-- Main Menu -->
+                                <nav class="main-menu style3 navbar-expand-md navbar-light">
+                                    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                        <ul class="navigation clearfix">
+                                            <li><a href="{{ route('main.index') }}">Home</a></li>
+                                            <li class="dropdown">
+                                                <a href="#">Solutions</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('main.socialPosting') }}">Social Media Posting</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('main.socialListening') }}">Social Listening</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="current"><a href="{{ route('main.pricing') }}">Pricing</a></li>
+                                            <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                                <!-- Main Menu End-->
+                            </div>
+
+                        </div>
+
+                        <div class="header-three_right">
+                            <div class="btns-box">
+                                <a class="btn-one" href="{{ route('login') }}">
+                                    <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="main-menu-wrapper__main-menu">
-                        <a href="index2.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
-                        <ul class="main-menu__list">
-                            <li>
-                                <a href="{{ route('main.index') }}">Home</a>
+                </div>
+            </div>
+            <!--End header-->
 
-                            </li>
-                            <li>
-                                <a href="{{ route('main.about') }}">About Us</a>
+            <!--Sticky Header-->
+            <div class="sticky-header">
+                <div class="container">
+                    <div class="clearfix">
+                        <!--Logo-->
+                        <div class="logo float-left">
+                            <a href="{{ route('main.index') }}" class="img-responsive"><img
+                                    src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
+                                    title=""></a>
+                        </div>
+                        <!--Right Col-->
+                        <div class="right-col float-right">
+                            <!-- Main Menu -->
+                            <nav class="main-menu clearfix">
+                                <!--Keep This Empty / Menu will come through Javascript-->
+                            </nav>
+                            <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
+                                <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Sticky Header-->
 
-                            </li>
-                            <li>
-                                <a href="{{ route('main.features') }}">Features</a>
-
-                            </li>
-                            <li class="current">
-                                <a href="{{ route('main.pricing') }}">Pricing</a>
-
-                            </li>
-
-                            <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+            <!-- Mobile Menu  -->
+            <div class="mobile-menu">
+                <div class="menu-backdrop"></div>
+                <div class="close-btn"><span class="icon fa fa-times-circle"></span></div>
+                <nav class="menu-box">
+                    <div class="nav-logo"><a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}"
+                                width="150px" height="50px" alt="" title=""></a></div>
+                    <div class="menu-outer">
+                        <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                    </div>
+                    <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
+                        <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                    </a>
+                    <!--Social Links-->
+                    <div class="social-links">
+                        <ul class="clearfix">
+                            <li><a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a></li>
+                            <li><a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a></li>
+                            <li><a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a></li>
+                            <li><a href="https://instagram.com/upviewindia"><span class="fab fa fa-instagram-square"></span></a></li>
                         </ul>
                     </div>
-                    <div class="main-menu-wrapper__right">
-                        <div class="main-menu-wrapper__call">
-                            <a href="{{ route('login') }}" class="thm-btn welcome-two__btn">Login</a>
-                        </div>
-                        <div class="main-menu-wrapper__call">
-                            <a href="{{ route('register') }}" class="thm-btn welcome-two__btn">Free Demo</a>
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
+            <!-- End Mobile Menu -->
         </header>
 
-        <div class="stricky-header stricked-menu main-menu-two main-menu">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
 
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header-bg" style="background-image: url('{{ asset('main/images/backgrounds/page-header-bg.jpg') }} ') ">
+        <!--Start breadcrumb area-->
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Pricing.png') }} );">
             </div>
+            <div class="breadcrumb-social-link">
+                <ul class="clearfix">
+                    <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
+                        <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
+                        <a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                        <a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
+                        <a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="container">
-                <div class="page-header__inner">
-
-                    <h2>Pricing</h2>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
-
-        <!--About Page Start-->
-        <section class="about-page price-page">
-            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3 p-2">
-                        <div class="price-box">
-                            <h5>
-                                Social Media<br />
-                                Management
-                            </h5>
-                            <div class="price">
-                                <span class="currency"><i class="fa fa-dollar-sign"></i></span>
-                                <span class="value">25</span>
+                    <div class="col-xl-12">
+                        <div class="inner-content text-center">
+                            <div class="title paroller">
+                                <h2>Our Plans</h2>
                             </div>
-                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Buy Now</a>
-                            <ul class="list-unstyled why-choose-one__points mt-3">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>YouTube & Facebook Analysis</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Audience Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Market Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Channel & Video Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Post Management</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Post Scheduling & Monitoring</p>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-md-3 p-2">
-                        <div class="price-box">
-                            <h5>
-                                Social Listening <br />
-                                Starter
-                            </h5>
-                            <div class="price">
-                                <span class="currency"><i class="fa fa-dollar-sign"></i></span>
-                                <span class="value">54</span>
+        </section>
+        <!--End breadcrumb area-->
+
+        <!--Start Service Style3 Area-->
+        <section class="service-style3-area">
+            <div class="container">
+                <div class="sec-title text-center">
+                    <div class="sub-title">
+                        <h3>Our Prices</h3>
+                    </div>
+                    <h2>Subscribe now to get proven and effective marketing results that ensures your brand remains
+                        competative now & in the future.</h2>
+                </div>
+                <div class="row">
+                    <!--Start Single Service Style3-->
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="single-service-style3 text-center">
+                            <div class="title">
+                                <h2><a href="services-details.html">SOCIAL MEDIA<br />MANAGEMENT</a></h2>
+                                <hr />
+                                <h2 class="mt-3">$45</h2>
+                                <div class="inner-text">
+                                    <p>
+                                        YouTube & Facebook Analysis<br /><br />
+                                        Audience Insights<br /><br />
+                                        Market Insights<br /><br />
+                                        Channel & Video Insights<br /><br />
+                                        Post Management<br /><br />
+                                        Post Scheduling & Monitoring<br /><br /><br /><br /><br /><br /><br />
+                                        <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                            <span class="txt">Buy Now</span>
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
-                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Buy Now</a>
-                            <ul class="list-unstyled why-choose-one__points mt-3">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>YouTube & Facebook Analysis</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Audience Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Market Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Channel & Video Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>2 Topics to monitor</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>30,000 New Mentions/Mo.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>5,000 Stored Metnions/Mo.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Boolean Search</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Data Export PDF HTML ( Add on at $10)</p>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-
-                    <div class="col-md-3 p-2">
-                        <div class="price-box">
-                            <h5>
-                                Social Listening <br />
-                                Pro
-                            </h5>
-                            <div class="price">
-                                <span class="currency"><i class="fa fa-dollar-sign"></i></span>
-                                <span class="value">94</span>
+                    <!--End Single Service Style3-->
+                    <!--Start Single Service Style3-->
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="single-service-style3 text-center">
+                            <div class="title">
+                                <h2><a href="services-details.html">SOCIAL LISTENING<br />STARTER</a></h2>
+                                <hr />
+                                <h2 class="mt-3">$54</h2>
+                                <div class="inner-text">
+                                    <p>
+                                        YouTube & Facebook Analysis<br /><br />
+                                        Audience Insights<br /><br />
+                                        Market Insights<br /><br />
+                                        Channel & Video Insights<br /><br />
+                                        2 Topics to monitor<br /><br />
+                                        30,000 New Mentions/Mo.<br /><br />
+                                        5K Stored Metnions/Mo.<br /><br />
+                                        Boolean Search<br /><br />
+                                        Data Export PDF HTML ( Add on at $10)<br />
+                                        <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                            <span class="txt">Buy Now</span>
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
-                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Buy Now</a>
-
-                            <ul class="list-unstyled why-choose-one__points mt-3">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>YouTube & Facebook Analysis</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Audience Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Market Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Channel & Video Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>5 Topics to monitor</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>1,00,000 New Mentions/Mo.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>10,000 Stored Metnions/Mo.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Boolean Search</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Data Export PDF HTML (Add on at $20)</p>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
+                    <!--End Single Service Style3-->
+                    <!--Start Single Service Style3-->
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="single-service-style3 text-center">
+                            <div class="title">
+                                <h2><a href="services-details.html">SOCIAL LISTENING<br />PRO</a></h2>
+                                <hr />
+                                <h2 class="mt-3">$99</h2>
+                                <div class="inner-text">
+                                    <p>
+                                        YouTube & Facebook Analysis<br /><br />
+                                        Audience Insights<br /><br />
+                                        Market Insights<br /><br />
+                                        Channel & Video Insights<br /><br />
+                                        5 Topics to monitor<br /><br />
+                                        1,00,000 New Mentions/Mo.<br /><br />
+                                        10K Stored Metnions/Mo.<br /><br />
+                                        Boolean Search<br /><br />
+                                        Data Export PDF HTML (Add on at $20)<br />
+                                        <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                            <span class="txt">Buy Now</span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Single Service Style3-->
+                </div>
+            </div>
+        </section>
+        <!--End Service Style3 Area-->
 
-                    <div class="col-md-3 p-2">
-                        <div class="price-box">
-                            <h5>
-                                Social Enterprise <br />
-                                plan
-                            </h5>
-                            <a href="#" class="thm-btn mt-3 welcome-two__btn">Get A Quote</a>
-                            <ul class="list-unstyled why-choose-one__points mt-3">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>YouTube & Facebook Analysis</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Audience Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Market Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Channel & Video Insights</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Custom Topics to monitor</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Upto 1,00,000 New Mentions/Mo.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Upto 10,000 Stored Metnions/Mo.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Boolean Search</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Data Export PDF HTML</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Post Management</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-check"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Post Scheduling & Monitoring</p>
-                                    </div>
-                                </li>
-                            </ul>
+
+        <!--Start Working process area -->
+        <section class="working-process-area">
+            <div class="auto-container">
+                <div class="working-process-bg"
+                    style="background-image: url( {{ asset('main/assets/images/slides/slider.jpg') }} );"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="working-process-inner">
+                            <div class="shape1 wow slideInLeft" data-wow-delay="400ms" data-wow-duration="1500ms">
+                                <img class="zoom-fade" src="{{ asset('main/assets/images/shape/working-process-shape-1.png') }}" alt="">
+                            </div>
+                            <div class="shape2 wow slideInRight" data-wow-delay="400ms" data-wow-duration="3500ms">
+                                <img class="float-bob" src="{{ asset('main/assets/images/shape/working-process-shape-2.png') }}" alt="">
+                            </div>
+
+                            <div class="title" style="margin-bottom: 150px;">
+                                <h2>To get your customized plan,</h2>
+                            </div>
+                            <div class="btns-box" style="margin-left: auto;margin-right: auto;width: 10rem;">
+                                <a class="btn-one" href="{{ route('main.contact') }}">
+                                    <span class="txt">Contact Us</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--About Page End-->
+        <!--End Working process area -->
 
 
-        <!--Site Footer Start-->
-        <footer class="site-footer">
+        <!--Start footer area -->
+        <footer class="footer-area style2 mt-5">
+			<div class="shape">
+				<img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
+			</div>
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="inner">
+								<div class="text">
+									<h6>Ready to get started?</h6>
+									<h2>Get in touch, or create an account.</h2>
+								</div>
+								<div class="button-box">
+									<a class="btn-one" href="{{ route('main.contact') }}">
+										<div class="border_line">
+											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+										</div>
+										<div class="left_round"></div>
+										<div class="right_round"></div>
+										<span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Start Footer-->
+			<div class="footer">
+				<div class="container">
+					<div class="row text-right-rtl">
+						<!--Start single footer widget-->
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
+							<div class="single-footer-widget">
+								<div class="our-company-info">
+									<div class="footer-logo">
+										<a href="index.html">
+											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
+												height="60px" alt="" /></a>
+									</div>
+									<div class="text-box">
+										<p style="font-size: 19px;">
+											We help transform relevant information into desired results.
+										</p>
+									</div>
+									<div class="copyright-text style2">
+										<p>
+											&copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
+											Rights Reserved.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--End single footer widget-->
 
-            <div class="site-footer__middle">
-                <div class="container">
-                    <div class="site-footer__middle-inner">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
-                                <div class="footer-widget__column footer-widget__contact">
-                                    <h3 class="footer-widget__title">Contact</h3>
-                                    <p class="footer-widget__contact-text">Mumbai</p>
-                                    <h4 class="footer-widget__contact-email-phone">
-                                        <a href="mailto:info@upview.in" class="footer-widget__contact-email">info@upview.in</a>
-                                        <a href="tel:+91 9324633735" class="footer-widget__contact-phone">+91 9324633735</a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 wow fadeInUp" data-wow-delay="200ms">
-                                <div class="footer-widget__column footer-widget__links clearfix">
-                                    <h3 class="footer-widget__title">Features</h3>
-                                    <ul class="footer-widget__links-list list-unstyled clearfix">
-                                        <li><a href="javascript:void();">Audience Insights</a></li>
-                                        <li><a href="javascript:void();">Publish,Schedule, Draft and Queue Posts</a></li>
-                                        <li><a href="javascript:void();">Scheduling for optimal send time</a></li>
-                                        <li><a href="javascript:void();">Paid social reporting for Facebook, Instagram, Twitter and LinkedIn</a></li>
-                                        <li><a href="javascript:void();">Reporting</a></li>
-                                        <li><a href="javascript:void();">Group, Profile and post-level reporting</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled">
-                                        <li><a href="javascript:void();">Youtube & Facebook Analysis</a></li>
-                                        <li><a href="javascript:void();">Competitor Intelligence</a></li>
-                                        <li><a href="javascript:void();">Content Strategy</a></li>
-                                        <li><a href="javascript:void();">Find Influencers</a></li>
-                                        <li><a href="javascript:void();">Influencer Evaluation</a></li>
-                                        <li><a href="javascript:void();">Influencer Listening</a></li>
-                                        <li><a href="javascript:void();">Sentiment & Audience Interaction Analysis</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled">
-                                        <li><a href="javascript:void();">Follower Quality Analysis</a></li>
-                                        <li><a href="javascript:void();">Keyword and location monitoring</a></li>
-                                        <li><a href="javascript:void();">Trend analysis for twitter keywords and hashtags</a></li>
-                                        <li><a href="javascript:void();">Help Desk CRM and Social Commerce Integration</a></li>
-                                        <li><a href="javascript:void();">Brand Reporting</a></li>
-                                        <li><a href="javascript:void();">Hashtag Reporting</a></li>
-                                    </ul>
-                                    <ul class="footer-widget__links-list footer-widget__links-list-two list-unstyled clearfix">
-                                        <li><a href="javascript:void();">Influencers Tracking and Analytics</a></li>
-                                        <li><a href="javascript:void();">Brand Monitoring</a></li>
-                                        <li><a href="javascript:void();">Content Analysis</a></li>
-                                        <li><a href="javascript:void();">Campaign Strategy</a></li>
-                                        <li><a href="javascript:void();">Competitor Analysis</a></li>
-                                        <li><a href="javascript:void();">Content Marketing</a></li>
-                                        <li><a href="javascript:void();">Trend analysis</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+						<!--Start single footer widget-->
+						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
+							<div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
+								<div class="title">
+									<h3>Categories</h3>
+								</div>
+								<ul class="footer-widget-links1">
+                                    <li><a href="{{ route('main.index') }}">Home</a></li>
+									<li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
+									<li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
+									<li><a href="{{ route('main.socialListening') }}"> Social Listening</a></li>
+									<li><a href="{{ route('main.contact') }}">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--End single footer widget-->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+						<!--Start single footer widget-->
+						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
+							<div class="single-footer-widget mar-left2 pdtop60">
+								<div class="title">
+									<h3>Community</h3>
+								</div>
+								<ul class="footer-widget-links1">
+									<li><a href="blog.html">Blog</a></li>
+									<li><a href="#">Members</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--End single footer widget-->
 
-            <div class="site-footer__top">
+						<!--Start single footer widget-->
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
+							<div class="single-footer-widget fixwidth pdtop60">
+								<div class="title">
+									<h3>Our Socials</h3>
+								</div>
+								<ul class="instagram-box">
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
 
-                <div class="container">
-                    <div class="site-footer__top-inner">
-                        <div class="site-footer__top-left">
-                            <h3 class="site-footer__top-left-title">Your Perfect Business Partner Solution</h3>
-                            <a href="tel:+91 9324633735" class="site-footer__top-left-phone">+91 9324633735</a>
-                        </div>
-                        <div class="site-footer__top-right">
-                            <div class="site-footer__top-right-social">
-                                <a href="javascript:void();"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fab fa-facebook"></i></a>
-
-                                <a href="https://www.instagram.com/upviewindia/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="site-footer__bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-10">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyrights, <span class="dynamic-year"></span> <a href="javascript:void();">Upview.</a> All Rights Reserved.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 text-end">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text"><a href="{{ route('main.privacy-policy') }}">Privacy Policy</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--Site Footer End-->
-
-
-    </div><!-- /.page-wrapper -->
-
-
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <!-- /.mobile-nav__overlay -->
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-
-            <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="{{ asset('main/images/resources/logo-2.png') }}" width="155" alt="" /></a>
-            </div>
-            <!-- /.logo-box -->
-            <div class="mobile-nav__container"></div>
-            <!-- /.mobile-nav__container -->
-
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:info@upview.in">info@upview.in</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+91 9324633735">+91 9324633735</a>
-                </li>
-            </ul><!-- /.mobile-nav__contact -->
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
-                    <a href="index2.html#" class="fab fa-twitter"></a>
-                    <a href="index2.html#" class="fab fa-facebook-square"></a>
-                    <a href="index2.html#" class="fab fa-pinterest-p"></a>
-                    <a href="index2.html#" class="fab fa-instagram"></a>
-                </div><!-- /.mobile-nav__social -->
-            </div><!-- /.mobile-nav__top -->
+								<div class="bottom-box">
+									<ul>
+										<li><a href="privacy-policy.html">Privacy</a></li>
+										<li><a href="#">Terms & Conditions </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End Footer-->
+		</footer>
+        <!--End footer area-->
 
 
 
-        </div>
-        <!-- /.mobile-nav__content -->
+
+
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-angle-up"></span>
+        </button>
+
     </div>
-    <!-- /.mobile-nav__wrapper -->
-
-    <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <!-- /.search-popup__overlay -->
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
-        <!-- /.search-popup__content -->
-    </div>
-    <!-- /.search-popup -->
-
-    <a href="about.html#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
-    <script src="{{ asset('main/vendors/jquery/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jarallax/jarallax.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-appear/jquery.appear.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-circle-progress/jquery.circle-progress.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-validate/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/nouislider/nouislider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/odometer/odometer.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/swiper/swiper.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/tiny-slider/tiny-slider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/wnumb/wNumb.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/wow/wow.js') }}"></script>
-    <script src="{{ asset('main/vendors/isotope/isotope.js') }}"></script>
-    <script src="{{ asset('main/vendors/countdown/countdown.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/owl-carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bxslider/jquery.bxslider.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('main/vendors/jquery-tilt/tilt.jquery.min.js') }}"></script>
-    <!-- template js -->
-    <script src="{{ asset('main/js/mibooz.js') }}"></script>
+
+
+
+
+    <script src="{{ asset('main/assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('main/assets/js/aos.js') }}"></script>
+    <script src="{{ asset('main/assets/js/appear.js') }}"></script>
+    <script src="{{ asset('main/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/isotope.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.enllax.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery.paroller.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('main/assets/js/knob.js') }}"></script>
+    <script src="{{ asset('main/assets/js/map-script.js') }}"></script>
+    <script src="{{ asset('main/assets/js/owl.js') }}"></script>
+    <script src="{{ asset('main/assets/js/pagenav.js') }}"></script>
+    <script src="{{ asset('main/assets/js/parallax.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/scrollbar.js') }}"></script>
+    <script src="{{ asset('main/assets/js/TweenMax.min.js') }}"></script>
+    <script src="{{ asset('main/assets/js/validation.js') }}"></script>
+    <script src="{{ asset('main/assets/js/wow.js') }}"></script>
+
+
+
+    <!-- thm custom script -->
+    <script src="{{ asset('main/assets/js/custom.js') }}"></script>
+
+
+
 </body>
 
 </html>
