@@ -1,0 +1,179 @@
+
+/*** 
+=============================================
+    Team Style1 Area Css
+=============================================
+***/
+.team-style1-area{
+    position: relative;
+    display: block;
+    background: #f3f3f4;
+    padding: 120px 0 70px;
+}
+.team-style1-area.pdtop0{
+    padding-top: 0;
+}
+
+
+.team-style1_title{
+    position: relative;
+    display: block;
+}
+.team-style1_title .sec-title{
+    padding-bottom: 63px;    
+}
+.team-style1_title .btns-box {
+    line-height: 0;
+}
+
+.single-team-style1{
+    position: relative;
+    display: block;
+    margin-bottom: 43px;
+}
+.single-team-style1 .img-holder{
+    position: relative;
+    display: block;
+}
+.single-team-style1 .img-holder .inner{
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+.single-team-style1 .img-holder .inner img{
+    width: 100%;
+    filter: grayscale(100%);
+}
+.single-team-style1:hover .img-holder .inner img{
+    transform: scale(1.1) rotate(2deg);
+}
+.single-team-style1 .img-holder .overlay-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #212121;
+    opacity: 0;
+    transition-delay: .1s;
+    transition-timing-function: ease-in-out;
+    transition-duration: .7s;
+    transition-property: all;
+}
+.single-team-style1:hover .img-holder .overlay-box{
+    opacity: 0.70;
+}
+.single-team-style1 .img-holder .shape {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 0;
+    transition: all 900ms linear;
+    transition-delay: 0.4s;
+}
+.single-team-style1:hover .img-holder .shape{
+    width: 100%;
+}
+.single-team-style1 .img-holder .shape img{
+    width: auto;
+    transform: none;
+}
+
+.single-team-style1 .title-holder{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 24px;
+}
+.single-team-style1 .title-holder .title{
+    position: relative;
+    display: block;
+}
+
+.single-team-style1 .title-holder .title h3{
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.single-team-style1 .title-holder .title h3 a{
+    color: var(--thm-black);
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+.single-team-style1 .title-holder .title h3 a:hover{
+    color: var(--thm-base);
+}
+.single-team-style1 .title-holder .title p{
+    text-transform: uppercase;
+    margin: 10px 0 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+.single-team-style1 .title-holder .social-links{
+    position: relative;
+    display: block;
+    opacity: 0;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    -webkit-transform: perspective(400px) rotateX(90deg);
+    -ms-transform: perspective(400px) rotateX(90deg);
+    transform: perspective(400px) rotateX(90deg);
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+}
+.single-team-style1:hover .title-holder .social-links{
+    opacity: 1.0;
+    -webkit-transform: perspective(400px) rotateX(0deg);
+    -ms-transform: perspective(400px) rotateX(0deg);
+    transform: perspective(400px) rotateX(0deg);
+}
+
+.single-team-style1 .title-holder .social-links ul{
+    overflow: hidden;
+}
+.single-team-style1 .title-holder .social-links ul li{
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+}
+.single-team-style1 .title-holder .social-links ul li:last-child{
+    margin-right: 0;
+}
+.single-team-style1 .title-holder .social-links ul li a{
+    position: relative;
+    display: block;
+    width: 55px;
+    height: 55px;
+    border: 1px solid var(--thm-base);
+    border-radius: 50%;
+    color: var(--thm-base);
+    font-size: 18px;
+    line-height: 53px;
+    text-align: center;
+    background: #ffffff;
+    transition: all 500ms ease;  
+}
+.single-team-style1 .title-holder .social-links ul li a:hover{
+    color: #ffffff;
+    border-color: var(--thm-black);
+    background-color: var(--thm-black);
+}
+
+
+
+
+
+
+
+
+
+
+
