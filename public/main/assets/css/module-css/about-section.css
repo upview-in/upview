@@ -1,0 +1,240 @@
+/*** 
+=============================================
+    About Style1 Area Css   
+=============================================
+***/
+.about-style1-area {
+    position: relative;
+    display: block;
+    background: #f3f3f4;
+    padding: 120px 0 90px;
+}
+
+.about-style1_image-box {
+    position: relative;
+    display: block;
+    max-width: 570px;
+    width: 100%;
+}
+
+.about-style1_image-box .shape {
+    position: absolute;
+    top: -40px;
+    right: -100px;
+}
+
+.about-style1_image-box .image-box {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+
+.about-style1_image-box .image-box.right {
+    margin-left: 30px;
+}
+
+.about-style1_image-box .image-box .single-box {
+    position: relative;
+    display: block;
+    padding-bottom: 30px;
+}
+
+.about-style1_image-box .image-box .single-box .inner {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 7px;
+}
+
+.about-style1_image-box .image-box .single-box .inner::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    -webkit-transform: translate(-100%, -100%);
+    transform: translate(-100%, -100%);
+    opacity: 0;
+    z-index: 10;
+}
+
+.about-style1_image-box .image-box .single-box:hover .inner::before {
+    -webkit-animation: circle .95s;
+    animation: circle .95s;
+}
+
+
+
+.about-style1_image-box .image-box .single-box .inner img {
+    width: 100%;
+}
+
+.about-style1_image-box .image-box .single-box:hover .inner img {
+    transform: scale(1.2) rotate(1deg);
+}
+
+.about-style1_image-box .image-box .image-box2 {
+    padding-right: 100px;
+}
+
+.about-style1_image-box .inner-caption {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    transform: rotate(90deg);
+    transform-origin: right;
+    margin: 196px 0 0;
+}
+
+.about-style1_image-box .inner-caption h3 {
+    color: #1f2026 font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.xoven-video-galler-1 {
+    position: relative;
+    display: block;
+    width: 105px;
+    height: 105px;
+    background: var(--thm-base);
+    border-radius: 8px;
+    color: var(--thm-black);
+    font-size: 40px;
+    line-height: 100px;
+    text-align: center;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.xoven-video-galler-1:hover {
+    color: #ffffff;
+}
+
+.xoven-video-galler-1 span:before {
+    position: relative;
+    display: inline-block;
+    line-height: 105px;
+}
+
+
+
+.about-style1_content-box {
+    position: relative;
+    display: block;
+    padding-top: 62px;
+    padding-left: 100px;
+}
+
+.about-style1_content-box h2 {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    margin: 0 0 37px;
+}
+
+.about-style1_content-box h3 {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    margin: 0 0 37px;
+}
+
+.about-style1_content-box .text {
+    position: relative;
+    display: block;
+}
+
+.about-style1_bottom-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 46px;
+}
+
+.about-style1-user-box {
+    position: relative;
+    display: flex;
+}
+
+.about-style1-user-box .single-box {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.about-style1-user-box .single-box.two {
+    margin-left: -35px;
+}
+
+.about-style1-user-box .single-box.three {
+    margin-left: -35px;
+}
+
+.about-style1-user-box .single-box.four {
+    margin-left: -35px;
+}
+
+.about-style1-user-box .single-box.five {
+    margin-left: -35px;
+}
+
+.about-style1-user-box .single-box img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.about-style1_user-name {
+    position: relative;
+    display: block;
+    padding-left: 20px;
+}
+
+.about-style1_user-name h3 {
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0 0 8px;
+}
+
+.about-style1_user-name p {
+    color: #777777;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+    font-family: var(--thm-oswald-font)
+}
+
+
+
+
+/*** 
+=============================================
+    About Style2 Area Css   
+=============================================
+***/
+.about-style2-area {
+    position: relative;
+    display: block;
+    background: #f3f3f4;
+    padding: 120px 0 90px;
+}
+
+
+.about-style2_image-box .image-box {
+    margin-left: -375px;
+}
+
+.about-style2_image-box .xoven-video-galler-1 {
+    float: right;
+    margin-right: 65px;
+}

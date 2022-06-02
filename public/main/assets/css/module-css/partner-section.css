@@ -1,0 +1,98 @@
+
+
+/*** 
+=============================================
+    Partner Area Css
+=============================================
+***/
+.partner-area {
+    position: relative;
+    display: block;
+    background: #1f2026;
+    padding: 103px 0 60px;
+    z-index: 2;
+}
+.partner-area .partner-title{
+    position: relative;
+    display: block;
+    margin-bottom: 55px;
+}
+.partner-area .partner-title h2{
+    color: #ffffff;
+    font-size: 72px;
+    line-height: 1.2em;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.partner-area .partner-title h2 span{
+    color: #fca817;
+}
+.partner-area .partner-title .thm-logo{
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+}
+.partner-area .top-box {
+    position: relative;
+    display: block;
+    margin-bottom: 56px;
+}
+.partner-area .top-box .title{
+    position: relative;
+    display: block;
+    margin-top: -13px;
+}
+.partner-area .top-box .title h2{
+    font-size: 48px;
+    line-height: 62px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.partner-box {
+    position: relative;
+    display: block;
+}
+.single-partner-logo-box {
+    position: relative;
+    display: block;
+    text-align: center;
+    line-height: 0;
+    z-index: 1;
+}
+.single-partner-logo-box a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+.single-partner-logo-box a img {
+    opacity: 0.60;
+    transition: all 0.2s ease-in-out 0.1s;
+    filter: grayscale(100%);
+}
+.single-partner-logo-box:hover a img{
+    opacity: 1.0;
+    filter: grayscale(0);
+    transition: all 0.8s ease-in-out 0.1s;
+}
+
+
+
+/*** 
+=============================================
+    Partner Style2 Area Css
+=============================================
+***/
+.partner-style2-area{
+    background: #f3f3f4;
+}
+.partner-style2-area.pdtop0{
+    padding-top: 0;
+}
+.partner-style2-area .partner-title h2 {
+    color: #1f2026;
+}
+.partner-style2-area .single-partner-logo-box a img {
+    opacity: 0.99;
+}
+
