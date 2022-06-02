@@ -356,7 +356,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -366,7 +366,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>

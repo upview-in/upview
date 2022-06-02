@@ -241,18 +241,12 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Your customers are talking about you right now! Tune into their conversations
-                                        with social listening
+                                        Social is about engaging, it’s about conversation, it’s about listening.
                                     </h3>
                                     <div class="mt-5">
                                         <p>
-                                            Over 5.5mbillion active users share content everyday on social media.
-                                            With so much content being shared, you need help to keep up with everything.
-                                            You need Social Listening!<br /><br />
-                                            You can now spot emerging trends faster then ever across social media. Get
-                                            to know who is driving the most impactful conversations. Get a clear picture
-                                            of how you stack up against your competition. You can count on Upview to
-                                            reveal where other brands succeed.
+                                        A brand is no longer what we tell the consumer it is. It is what consumers tell each other it is. At Upview, we help you to make sense of the millions of customer conversations happening in real time. It's as easy as searching for topics of interest in real-time from the 5.5 billion new posts added daily. You can save keywords to find meaningful trends and patterns you might miss with regular social monitoring. Filter your searches for specifics like demographics and locations. Whether you’re planning your next big launch or going through a crisis, Upview gives your decision makers the tools to make critical business decisions with the right insights.<br /><br />
+                                        We help you to cut through the noise, uncover emerging trends, and spot important conversations that others miss.
                                         </p>
                                     </div>
                                 </div>
@@ -544,7 +538,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-faceboom" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -554,7 +548,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>

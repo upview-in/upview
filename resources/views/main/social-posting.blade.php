@@ -241,17 +241,11 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Plan ahead & ensure your content<br /> strategy makes sense with Upview
+                                        Plan, Organize and Schedule Your Social Content on the go
                                     </h3>
                                     <div class="mt-5">
                                         <p>
-                                            Make the most of Social Media through our social media posting feature. Save
-                                            time by scheduling posts across all your social networks in just a few
-                                            clicks.<br /><br /> Access your image assets directly from our user friendly
-                                            dashboard
-                                            to make regular posting easy. Produce quality content that delights your
-                                            audience with UPVIEW
-                                            more.
+                                        Our social media management and content marketing features help marketers, agencies, and corporations put social media posts on autopilot. With its in-depth analytics and true insights modules, you can now work in perfect harmony and empower your brand to make informed marketing decisions.<br /><br /> A perfect combination of AI-powered content discovery modules to help you discover, plan, schedule, publish, and analyse content for multiple brands and social channels with ease.
                                         </p>
                                     </div>
                                 </div>
@@ -487,7 +481,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -497,7 +491,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>

@@ -85,7 +85,7 @@
                         <div class="header-three_left">
 
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+                                <a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
                             </div>
 
@@ -239,21 +239,11 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Wondering which of your social media tactics are actually
-                                        working ?
+                                        Never let scattered marketing data slow you down..
                                     </h3>
                                     <div class="mt-5">
                                         <p>
-                                            Do you spend a bunch of time designing a social media
-                                            post only to see it fail miserably? There could be a lot
-                                            of reasons for that. But one of the most common reasons
-                                            this happens is posting at the wrong time, posting when
-                                            your target audiences are not online or not interested
-                                            in engaging with you.<br /><br />This is where our
-                                            Analytics comes to rescue. It views your audiance
-                                            behaviour social media & recommends the most optimal
-                                            times to post, best type of content to post and much
-                                            more.
+                                        Track all of your social media analytics in one place. You can boost your social media strategy with accurate data and insights to make better business decisions. Upview helps you track your progress against your goals and objectives.<br /><br /> It’s time to eliminate time-consuming manual processes in favour of automated, presentation-ready insights. Go beyond reporting with Premium Analytics. Uncover more insight into performance gaps and showcase the true value of social for your brand. Find your grip with unique social data and share tailored information for your strategy.
                                         </p>
                                     </div>
                                 </div>
@@ -488,7 +478,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -498,7 +488,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>

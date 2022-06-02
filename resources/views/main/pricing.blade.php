@@ -340,7 +340,7 @@
                                 <img class="float-bob" src="{{ asset('main/assets/images/shape/working-process-shape-2.png') }}" alt="">
                             </div>
 
-                            <div class="title">
+                            <div class="title" style="margin-bottom: 150px;">
                                 <h2>To get your customized plan,</h2>
                             </div>
                             <div class="btns-box" style="margin-left: auto;margin-right: auto;width: 10rem;">
@@ -467,7 +467,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -477,7 +477,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>

@@ -98,7 +98,7 @@
 					<div class="outer-box clearfix">
 						<div class="header-three_left">
 							<div class="logo">
-								<a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+								<a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
 							</div>
 
@@ -243,9 +243,7 @@
 											<h1 class="h3-mktg color-text-white mb-3 position-relative z-2" style="color: #ffffff;">
 												<span class="magic" id="randomTagLine"></span>
 											</h1>
-											<p class="f2-mktg text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2">
-												It’s easy to impress but influencing requires a lot of efforts.
-												Let's grow together.
+											<p class="f2-mktg text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2" id="randomBottomTagLine">
 											</p>
 											<div class="btns-box">
 												<a class="btn-one" href="{{ route('register') }}">
@@ -288,7 +286,8 @@
 								</video>
 							</div>
 
-							<div class="position-absolute width-full color-bg-default" style="bottom: -4rem;">
+							<!-- placeholder for mascot image -->
+							<!-- <div class="position-absolute width-full color-bg-default" style="bottom: -4rem;">
 								<div class="container-xl p-responsive">
 									<div class="d-flex flex-justify-center flex-lg-justify-end color-bg-default">
 										<div class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
@@ -299,7 +298,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 
@@ -320,7 +319,7 @@
 						<h3>Our Services</h3>
 					</div>
 					<h2>
-						Strategic social media analysis<br />at the tip of your fingers
+						Better Discussions, Greater Conversions.<br />We offer solutions for everyone – Startups, Brands, Ad-Agencies & Influencers.
 					</h2>
 				</div>
 				<div class="row">
@@ -337,9 +336,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Effortlessly plan, manage & create social media content. Let your profile stand
-										out! Strategised postings keep your audience hooked and it’s always good to have
-										a to-do list for the same.
+									With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently.  You don’t even need to be in the office when you can drive everything remotely.   Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
 									</p>
 								</div>
 							</div>
@@ -359,9 +356,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Real time Analytics to measure performance, gives you the ability to create,
-										schedule, plan, publish, and monitor your posts, plus engage directly with your
-										audience on Facebook, Instagram & YouTube.
+									Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
 									</p>
 								</div>
 							</div>
@@ -381,10 +376,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Get access to billions of cross profile conversations, tag searches, brand
-										watches & competitor analysis across the whole World Wide Web. Monitor results
-										in real time to find impactful and relevant insights through AI powered
-										analysis.
+									Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
 									</p>
 								</div>
 							</div>
@@ -404,9 +396,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										With over 25 tools at your finger tips, you can now easily control your brand's
-										social media reach & get accurate social media reports on the go. Unlike other
-										brand monitoring tools & social media monitoring software, we crawl millions of web pages daily.
+									It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
 									</p>
 								</div>
 							</div>
@@ -434,13 +424,8 @@
 								About Us
 							</h2>
 							<p>
-								Our mission is to help you reach every prospective customer & enjoy new found business
-								with our performance-driven digital marketing services. Our creative, strategical &
-								data-driven online advertising will surge your business growth & revenue to place you
-								above the competition.<br /><br />
-								We provide proven and effective marketing services to ensure your company remains
-								competitive now and in the future.
-								Don’t just run a business, belong!
+							Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
+							Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
 							</p>
 						</div>
 					</div>
@@ -464,7 +449,7 @@
 								satisfied with the features of a platform than with Upview. A permanent
 								user of Upview forever!</div>
 							<div class="info-box">
-								<div class="thumb"><img src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/viral.jpg') }}" alt=""></div>
 								<h4 class="name">Viral Rathod</h4>
 								<span class="designation">B99 Esports</span>
 							</div>
@@ -479,7 +464,7 @@
 								worry about anything. And to add to it, I can assess what was working
 								for me and what was not.</div>
 							<div class="info-box">
-								<div class="thumb"><img src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/chavda.jpg') }}" alt=""></div>
 								<h4 class="name">Siddhantraj Chavda</h4>
 								<span class="designation">Digital Marketer</span>
 							</div>
@@ -494,7 +479,7 @@
 								post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not
 								only removed all these hassles but saved a lot of time as well.</div>
 							<div class="info-box">
-								<div class="thumb"><img src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/rashmi.jpg') }}" alt=""></div>
 								<h4 class="name">Rashmi Mishra</h4>
 								<span class="designation">Actor/Model</span>
 							</div>
@@ -549,17 +534,11 @@
 					<div class="col-xl-6">
 						<div class="about-style1_content-box about-style2_content-box">
 							<h2>
-								Grow your digital presence!<br />
-								Helping your brand say it’s story to the society about the values and desires it serves!
+								Improve your social strategy by understanding Metrics that Matter
 							</h2>
 							<div class="text">
 								<p>
-									We are passionate about helping people find what they need. We are built for growing
-									businesses.
-									You get the tools you need to sell your products, reach new customers, and take your
-									business to the next level.
-									Put our marketing and sales tools behind your brand, or business and we will help
-									you share it with the world.
+									Spend less time on manual tasks and more time connecting with your audience. Billions of conversations take place on social media every day. Those discussions help people to make purchasing decisions and influence public perceptions. Whatever kind of business you’re in, people on social media are talking about your industry, your competitors, and you. If you fail to pay attention, you will miss out on a lot of opportunities. Upview can help you start listening.
 								</p>
 							</div>
 						</div>
@@ -616,7 +595,7 @@
 											<span class="count-text" data-speed="3000" data-stop="335">0</span>
 										</div>
 										<div class="title">
-											<h6 style="color: #FFF;">Experts Team</h6>
+											<h6 style="color: #FFF;">Expert Team</h6>
 										</div>
 									</div>
 								</li>
@@ -640,9 +619,7 @@
 					<div class="col-xl-12">
 						<div class="working-process-inner" style="height: 6in;">
 							<div class="title">
-								<h2 style="color: #ffffff; font-size: 35px; margin-top: -70px;">Stop wasting time & generate awesome
-									marketing campaings,
-									leads & incerease you customer base. Subscribe now !</h2>
+								<h2 style="color: #ffffff; font-size: 30px; margin-top: -70px;">A social media tool which is all ears into the industry.<br />Start your Upview journey today!</h2>
 							</div>
 						</div>
 					</div>
@@ -670,7 +647,7 @@
 						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
 							<div class="img-holder">
 								<div class="inner">
-									<img src="{{ asset('main/assets/images/blog/blog-v2-1.jpg') }}" alt="" />
+									<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
 								</div>
 								<div class="shape">
 									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
@@ -820,7 +797,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -830,7 +807,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -897,7 +874,16 @@
 				"Edge out<br />the Competion"
 			];
 
+			var bottomTaglines = [
+				"We get you ready for the million watching you.",
+				"We are ready to serve you differently.",
+				"Be where the world is going.",
+				"Creating, rejuvenating, repositioning brands.",
+				"Social Media Beyond Expectation."
+			];
+
 			$("#randomTagLine").html(taglines[Math.floor(Math.random() * taglines.length)]);
+			$("#randomBottomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
 		});
 	</script>
 </body>
