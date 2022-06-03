@@ -611,7 +611,7 @@
 		<section class="working-process-area">
 			<div class="auto-container">
 				<div class="working-process-bg">
-					<video autoplay muted loop>
+					<video autoplay muted loop preload="none">
 						<source src="{{ asset('main/assets/images/video/tweet.mp4') }}" type="video/mp4" />
 					</video>
 				</div>
