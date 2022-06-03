@@ -7,6 +7,9 @@
 
 	<!-- responsive meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta http-equiv="Cache-control" content="public">
+
 	<!-- For IE -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<!-- Google Fonts -->
@@ -65,6 +68,20 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}" />
 	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="32x32" />
 	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="16x16" />
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GR19Q9R87T"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-GR19Q9R87T');
+	</script>
 
 </head>
 
@@ -280,7 +297,7 @@
 									</div>
 								</div>
 
-								<img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="Glowing universe" class="position-absolute home-hero-glow events-none z-1">
+								<!-- <img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="" class="position-absolute home-hero-glow events-none z-1"> -->
 								<video loop="" muted="" playsinline="" preload="none" class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0" style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
 									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
 								</video>
@@ -336,7 +353,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently.  You don’t even need to be in the office when you can drive everything remotely.   Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
+										With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently. You don’t even need to be in the office when you can drive everything remotely. Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
 									</p>
 								</div>
 							</div>
@@ -356,7 +373,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
+										Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
 									</p>
 								</div>
 							</div>
@@ -376,7 +393,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
+										Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
 									</p>
 								</div>
 							</div>
@@ -396,7 +413,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
+										It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
 									</p>
 								</div>
 							</div>
@@ -424,8 +441,8 @@
 								About Us
 							</h2>
 							<p>
-							Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
-							Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
+								Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
+								Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
 							</p>
 						</div>
 					</div>
@@ -512,7 +529,7 @@
 										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
 									</div>
 								</div>
-								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
+								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://vimeo.com/716754349">
 									<span class="flaticon-play-button-2 playicon"></span>
 								</a>
 							</div>
@@ -648,9 +665,9 @@
 							<div class="img-holder">
 								<div class="inner">
 									@if( !is_null($blog->poster) )
-										<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
+									<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
 									@else
-										<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
+									<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
 									@endif
 								</div>
 								<div class="shape">
