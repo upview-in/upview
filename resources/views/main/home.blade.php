@@ -280,7 +280,7 @@
 									</div>
 								</div>
 
-								<img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="Glowing universe" class="position-absolute home-hero-glow events-none z-1">
+								<!-- <img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="" class="position-absolute home-hero-glow events-none z-1"> -->
 								<video loop="" muted="" playsinline="" preload="none" class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0" style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
 									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
 								</video>
