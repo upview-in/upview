@@ -280,7 +280,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Review Management </a>
+                                    <a href="javascript:void();">Review Management </a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -302,7 +302,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Paid Promotion tools to Boost Facebook Tools</a>
+                                    <a href="javascript:void();">Paid Promotion tools to Boost Facebook Tools</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -325,7 +325,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Scheduling for optimal send time</a>
+                                    <a href="javascript:void();">Scheduling for optimal send time</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -349,7 +349,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Media Planning and Measurements</a>
+                                    <a href="javascript:void();">Media Planning and Measurements</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -408,7 +408,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -452,8 +452,8 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Members</a></li>
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
 								</ul>
 							</div>
 						</div>
@@ -500,7 +500,7 @@
 
 								<div class="bottom-box">
 									<ul>
-										<li><a href="privacy-policy.html">Privacy</a></li>
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
 										<li><a href="#">Terms & Conditions </a></li>
 									</ul>
 								</div>

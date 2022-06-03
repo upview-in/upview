@@ -86,7 +86,7 @@
                         <div class="header-three_left">
 
                             <div class="logo">
-                                <a href="{{ route('login') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+                                <a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
                             </div>
 
@@ -245,7 +245,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="title">
-                                <h2><a href="services-details.html">SOCIAL MEDIA<br />MANAGEMENT</a></h2>
+                                <h2><a href="javascript:void();">SOCIAL MEDIA<br />MANAGEMENT</a></h2>
                                 <hr />
                                 <h2 class="mt-3">$45</h2>
                                 <div class="inner-text">
@@ -269,7 +269,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="title">
-                                <h2><a href="services-details.html">SOCIAL LISTENING<br />STARTER</a></h2>
+                                <h2><a href="javascript:void();">SOCIAL LISTENING<br />STARTER</a></h2>
                                 <hr />
                                 <h2 class="mt-3">$54</h2>
                                 <div class="inner-text">
@@ -296,7 +296,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="title">
-                                <h2><a href="services-details.html">SOCIAL LISTENING<br />PRO</a></h2>
+                                <h2><a href="javascript:void();">SOCIAL LISTENING<br />PRO</a></h2>
                                 <hr />
                                 <h2 class="mt-3">$99</h2>
                                 <div class="inner-text">
@@ -394,7 +394,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -438,8 +438,8 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Members</a></li>
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
 								</ul>
 							</div>
 						</div>
@@ -486,7 +486,7 @@
 
 								<div class="bottom-box">
 									<ul>
-										<li><a href="privacy-policy.html">Privacy</a></li>
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
 										<li><a href="#">Terms & Conditions </a></li>
 									</ul>
 								</div>

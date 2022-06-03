@@ -165,7 +165,7 @@
 							<nav class="main-menu clearfix">
 								<!--Keep This Empty / Menu will come through Javascript-->
 							</nav>
-							<a class="btn-one ml-4 m-4" href="contact.html">
+							<a class="btn-one ml-4 m-4" href="{{ route('main.index') }}">
 								<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
 							</a>
 						</div>
@@ -331,7 +331,7 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="javascript:void();">Scheduling & Publishing</a>
+									<a href="{{ route('main.socialPosting') }}">Scheduling & Publishing</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
@@ -351,7 +351,7 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="javascript:void();">Analytics </a>
+									<a href="{{ route('main.socialAnalytics') }}">Analytics </a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
@@ -371,7 +371,7 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="javascript:void();">Social Listening</a>
+									<a href="{{ route('main.socialListening') }}">Social Listening</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
@@ -391,7 +391,7 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="services-details.html">Brand Analysis</a>
+									<a href="{{ route('main.socialListening') }}">Brand Analysis</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
@@ -647,7 +647,11 @@
 						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
 							<div class="img-holder">
 								<div class="inner">
-									<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
+									@if( !is_null($blog->poster) )
+										<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
+									@else
+										<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
+									@endif
 								</div>
 								<div class="shape">
 									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
@@ -725,7 +729,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
 									</div>
 									<div class="text-box">
@@ -768,8 +772,8 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Members</a></li>
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
 								</ul>
 							</div>
 						</div>
