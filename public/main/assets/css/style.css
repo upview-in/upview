@@ -239,7 +239,6 @@ li{
     left: 10px;
     width: 10px;
     height: 10px;
-    background: #f3f3f4;
     border-radius: 50%;
 }
 .btn-one .right_round {
@@ -249,7 +248,6 @@ li{
     bottom: 0;
     width: 10px;
     height: 10px;
-    background: #f3f3f4;
     border-radius: 50%;
 }
 .btn-one .border_line {

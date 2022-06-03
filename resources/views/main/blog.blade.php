@@ -83,7 +83,7 @@
                         <div class="header-three_left">
 
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+                                <a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
                             </div>
 
@@ -283,7 +283,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -327,8 +327,8 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Members</a></li>
+									<li><a href="javascript:void()">Blog</a></li>
+									<li><a href="javascript:void()">Members</a></li>
 								</ul>
 							</div>
 						</div>

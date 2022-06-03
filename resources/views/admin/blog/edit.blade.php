@@ -83,7 +83,7 @@
                     <div class="card-title d-flex align-items-center">
                         <div class="d-flex align-items-center w-100">
                             <em class="bi bi-person me-2 font-22 text-primary"></em>
-                            <h5 class="mb-0 text-primary">{{ __('Basic') }}</h5>
+                            <h5 class="mb-0 text-primary">{{ __('Edit Blog') }}</h5>
                         </div>
                         <div class="d-flex align-items-center flex-shrink-1 pointer" onclick="$(this).closest('form').submit();">
                             <em class="bi bi-save me-2 font-22 text-primary"></em>
@@ -102,7 +102,7 @@
                             @enderror
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label font-weight-semibold required" for="blogDescriptionEditor">{{ __('Description') }}</label>
+                            <label class="form-label font-weight-semibold required" for="blogDescriptionEditor">{{ __('Short Description') }}</label>
                             <textarea id="blogDescriptionTextArea" name="blogDescription" class="form-control hide">{!! old('blogDescription') ?? $blog->blog_description !!}</textarea>
                             <div class="w-100">
                                 <div id="blogDescriptionEditor"></div>
@@ -114,7 +114,7 @@
                             @enderror
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label font-weight-semibold required" for="blogHtmlPageEditor">{{ __('Html Page') }}</label>
+                            <label class="form-label font-weight-semibold required" for="blogHtmlPageEditor">{{ __('Long Description') }}</label>
                             <textarea id="blogHtmlPageTextArea" name="blogHtmlPage" class="form-control hide">{!! old('blogHtmlPage') ?? $blog->blog_html_page !!}</textarea>
                             <div class="w-100">
                                 <div id="blogHtmlPageEditor"></div>
@@ -126,7 +126,7 @@
                             @enderror
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label font-weight-semibold required" for="poster">{{ __('Poster') }}</label>
+                            <label class="form-label font-weight-semibold required" for="poster">{{ __('Cover Image') }}</label>
                             <input type="file" class="form-control" id="poster" name="poster" placeholder="Cover Page" required>
                             @error('poster')
                             <span class="invalid-feedback d-block" role="alert">
@@ -134,7 +134,7 @@
                             </span>
                             @enderror
                             <div class="w-100 text-center mt-3">
-                                <img id="showPosterPreview" alt="" width="100%" height="auto">
+                                <img id="showPosterPreview" alt="" width="50%" height="auto">
                             </div>
                         </div>
                     </div>
