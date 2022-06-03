@@ -529,7 +529,7 @@
 										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
 									</div>
 								</div>
-								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
+								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://vimeo.com/716754349">
 									<span class="flaticon-play-button-2 playicon"></span>
 								</a>
 							</div>
