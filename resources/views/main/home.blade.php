@@ -69,6 +69,20 @@
 	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="32x32" />
 	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="16x16" />
 
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GR19Q9R87T"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-GR19Q9R87T');
+	</script>
+
 </head>
 
 <body>
@@ -339,7 +353,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently.  You don’t even need to be in the office when you can drive everything remotely.   Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
+										With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently. You don’t even need to be in the office when you can drive everything remotely. Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
 									</p>
 								</div>
 							</div>
@@ -359,7 +373,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
+										Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
 									</p>
 								</div>
 							</div>
@@ -379,7 +393,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
+										Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
 									</p>
 								</div>
 							</div>
@@ -399,7 +413,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-									It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
+										It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
 									</p>
 								</div>
 							</div>
@@ -427,8 +441,8 @@
 								About Us
 							</h2>
 							<p>
-							Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
-							Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
+								Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
+								Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
 							</p>
 						</div>
 					</div>
@@ -651,9 +665,9 @@
 							<div class="img-holder">
 								<div class="inner">
 									@if( !is_null($blog->poster) )
-										<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
+									<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
 									@else
-										<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
+									<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
 									@endif
 								</div>
 								<div class="shape">
