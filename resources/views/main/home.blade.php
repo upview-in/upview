@@ -647,7 +647,11 @@
 						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
 							<div class="img-holder">
 								<div class="inner">
-									<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
+									@if( !is_null($blog->poster) )
+										<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
+									@else
+										<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
+									@endif
 								</div>
 								<div class="shape">
 									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
