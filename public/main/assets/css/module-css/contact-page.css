@@ -142,10 +142,10 @@
     position: relative;
     display: block;
 }
-.contact-form form .button-box button.btn-one .left_round {
+.contact-form form .button-box button.btn-one {
     background: #ffffff;
 }
-.contact-form form .button-box button.btn-one .right_round {
+.contact-form form .button-box button.btn-one {
     background: #ffffff;
 }
 

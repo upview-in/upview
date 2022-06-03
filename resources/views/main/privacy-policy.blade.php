@@ -88,7 +88,7 @@
                         <div class="header-three_left">
 
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+                                <a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
                             </div>
 
@@ -132,7 +132,7 @@
 
                         <div class="header-three_right">
                             <div class="btns-box">
-                                <a class="btn-one" href="contact.html">
+                                <a class="btn-one" href="{{ route('login') }}">
                                     <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
                                 </a>
                             </div>
@@ -1140,7 +1140,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>

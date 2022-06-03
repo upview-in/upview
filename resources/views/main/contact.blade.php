@@ -86,7 +86,7 @@
                         <div class="header-three_left">
 
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+                                <a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
                             </div>
 
@@ -256,23 +256,22 @@
                             <div class="contact-style1_form">
                                 <div class="top-title">
                                     <h3>Leave A Comment!</h3>
-                                    <!-- <p>Morbi et sagittis dui, sed fermentum ante. Pellentesque molestie sit amet
-                                        dolor<br> vel euismod.</p> -->
                                 </div>
                                 <div class="contact-form">
-                                    <form name="contact_form" class="default-form2" method="post">
+                                    <form  method="POST" name="contact_form" class="default-form2" action="{{ route('main.contact-us') }}">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-xl-6">
                                                 <div class="input-box">
                                                     <label>Full Name</label>
-                                                    <input type="text" name="form_name" value=""
+                                                    <input type="text" id="name" name="name" value=""
                                                         placeholder="Full Name :" required="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6">
                                                 <div class="input-box">
                                                     <label>Email</label>
-                                                    <input type="email" name="form_email" value="" placeholder="Email :"
+                                                    <input type="email" id="email" name="email" value="" placeholder="Email :"
                                                         required="">
                                                 </div>
                                             </div>
@@ -282,13 +281,13 @@
                                             <div class="col-xl-6">
                                                 <div class="input-box">
                                                     <label>Phone</label>
-                                                    <input type="text" name="form_phone" value="" placeholder="Phone :">
+                                                    <input type="text" id="mobile_number" name="mobile_number" value="" placeholder="Phone :">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6">
                                                 <div class="input-box">
                                                     <label>Subject</label>
-                                                    <input type="text" name="form_subject" value=""
+                                                    <input type="text" id="subject" name="subject" value=""
                                                         placeholder="Subject :">
                                                 </div>
                                             </div>
@@ -298,7 +297,7 @@
                                             <div class="col-xl-12">
                                                 <div class="input-box">
                                                     <label>Message</label>
-                                                    <textarea name="form_message" placeholder="Enter your message..."
+                                                    <textarea id="message" name="message" placeholder="Enter your message..."
                                                         required=""></textarea>
                                                 </div>
                                                 <div class="button-box">
@@ -422,7 +421,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img alt="" src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -466,8 +465,8 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Members</a></li>
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
 								</ul>
 							</div>
 						</div>

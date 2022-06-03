@@ -281,7 +281,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Influencer Evaluation</a>
+                                    <a href="javascript:void();">Influencer Evaluation</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -309,7 +309,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Competitor Analysis </a>
+                                    <a href="javascript:void();">Competitor Analysis </a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -336,7 +336,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Sentiment & Audience Interaction Analysis</a>
+                                    <a href="javascript:void();">Sentiment & Audience Interaction Analysis</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -361,7 +361,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">content strategy and audience</a>
+                                    <a href="javascript:void();">content strategy and audience</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -384,7 +384,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Hashtag Reporting</a>
+                                    <a href="javascript:void();">Hashtag Reporting</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -407,7 +407,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Trend Analysis</a>
+                                    <a href="javascript:void();">Trend Analysis</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -465,7 +465,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -509,8 +509,8 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Members</a></li>
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
 								</ul>
 							</div>
 						</div>
@@ -557,7 +557,7 @@
 
 								<div class="bottom-box">
 									<ul>
-										<li><a href="privacy-policy.html">Privacy</a></li>
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
 										<li><a href="#">Terms & Conditions </a></li>
 									</ul>
 								</div>
