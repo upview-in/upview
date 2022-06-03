@@ -7,6 +7,9 @@
 
 	<!-- responsive meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta http-equiv="Cache-control" content="public">
+
 	<!-- For IE -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<!-- Google Fonts -->
