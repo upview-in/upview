@@ -149,6 +149,7 @@
 											</li>
 											<li><a href="{{ route('main.pricing') }}">Pricing</a></li>
 											<li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+											<li><a href="{{ route('login') }}">login</a></li>
 										</ul>
 									</div>
 								</nav>
@@ -158,8 +159,8 @@
 
 						<div class="header-three_right">
 							<div class="btns-box">
-								<a class="btn-one" href="{{ route('login') }}">
-									<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+								<a class="btn-one" href="{{ route('register') }}">
+									<span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
 								</a>
 							</div>
 						</div>
@@ -182,8 +183,8 @@
 							<nav class="main-menu clearfix">
 								<!--Keep This Empty / Menu will come through Javascript-->
 							</nav>
-							<a class="btn-one ml-4 m-4" href="{{ route('main.index') }}">
-								<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+							<a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+								<span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
 							</a>
 						</div>
 					</div>
@@ -204,8 +205,8 @@
 					<div class="menu-outer">
 						<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
 					</div>
-					<a class="btn-one m-4" href="{{ route('login') }}">
-						<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+					<a class="btn-one m-4" href="{{ route('register') }}">
+						<span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
 					</a>
 					<!--Social Links-->
 					<div class="social-links">
@@ -529,7 +530,7 @@
 										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
 									</div>
 								</div>
-								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://vimeo.com/716754349">
+								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://vimeo.com/716777486">
 									<span class="flaticon-play-button-2 playicon"></span>
 								</a>
 							</div>
