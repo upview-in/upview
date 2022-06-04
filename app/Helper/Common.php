@@ -11,3 +11,8 @@ function supportUser()
 {
     return Auth::guard('support')->user();
 }
+
+function appUser()
+{
+    return Auth::guard('web')->user();
+}
