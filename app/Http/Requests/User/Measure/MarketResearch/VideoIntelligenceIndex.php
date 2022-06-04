@@ -13,7 +13,7 @@ class VideoIntelligenceIndex extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return appUser()->can('measure.market-research.video-intelligence');
     }
 
     /**

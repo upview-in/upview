@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\Measure\MarketResearch;
+namespace App\Http\Requests\User\Analyze\YouTube;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VideoDetailsRequest extends FormRequest
+class ViewAudienceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class VideoDetailsRequest extends FormRequest
      */
     public function authorize()
     {
-        return appUser()->can('measure.market-research.video-details');
+        return appUser()->can('analyze.youtube.view-audience');
     }
 
     /**

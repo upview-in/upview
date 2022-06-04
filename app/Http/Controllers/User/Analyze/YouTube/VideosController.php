@@ -7,11 +7,11 @@ use App\Helper\TokenHelper;
 use App\Http\Controllers\Api\YouTube\VideoController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\YouTube\Video\GetVideoAnalytics;
-use Illuminate\Http\Request;
+use App\Http\Requests\User\Analyze\YouTube\ViewVideosRequest;
 
 class VideosController extends Controller
 {
-    public function videos(Request $request)
+    public function videos(ViewVideosRequest $request)
     {
         if (!count(TokenHelper::getAuthToken_YT())) {
             return redirect()->route('panel.user.account.accounts_manager');
@@ -34,7 +34,7 @@ class VideosController extends Controller
         return view('user.analyze.youtube.videos');
     }
 
-    private function getAnalytics(Request $request)
+    private function getAnalytics(ViewVideosRequest $request)
     {
         if ($request->has(['video_id', 'startDate', 'endDate', 'dimensions', 'sort', 'filters'])) {
             $data = [];
