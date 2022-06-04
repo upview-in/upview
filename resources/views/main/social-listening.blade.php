@@ -119,6 +119,7 @@
                                             </li>
                                             <li><a href="{{ route('main.pricing') }}">Pricing</a></li>
                                             <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+                                            <li><a href="{{ route('login') }}">Login</a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -129,8 +130,8 @@
 
                         <div class="header-three_right">
                             <div class="btns-box">
-                                <a class="btn-one" href="{{ route('login') }}">
-                                    <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                                <a class="btn-one" href="{{ route('register') }}">
+                                    <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -156,8 +157,8 @@
                             <nav class="main-menu clearfix">
                                 <!--Keep This Empty / Menu will come through Javascript-->
                             </nav>
-                            <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
-                                <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                            <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                             </a>
                         </div>
                     </div>
@@ -175,8 +176,8 @@
                     <div class="menu-outer">
                         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                     </div>
-                    <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
-                        <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                    <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                        <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                     </a>
                     <!--Social Links-->
                     <div class="social-links">
@@ -196,22 +197,6 @@
         <section class="breadcrumb-area breadcrumb-area-style2">
             <div class="breadcrumb-area-bg"
                 style="background-image: url({{ asset('main/assets/images/breadcrumb/Social_Media_Listening.png') }} );">
-            </div>
-            <div class="breadcrumb-social-link">
-                <ul class="clearfix">
-                    <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
-                        <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
-                        <a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
-                        <a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
             </div>
 
             <div class="container">
