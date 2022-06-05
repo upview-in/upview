@@ -233,7 +233,9 @@
                             <td>{{ \Carbon\Carbon::parse($order->expired_at)->toDateString() }}</td>
                             <td class="font-weight-bolder text-{{ \App\Models\UserOrder::$status_color[$order->status ?? 0] }}">{{ \App\Models\UserOrder::$status[$order->status ?? 0] }}</td>
                             <td class="text-center">
-                                <a href="{{ $order->payment_details['charges']['data'][0]['receipt_url'] ?? '#' }}" title="Download receipt" target="_blank"><em class="fa fa-download"></em></a>
+                                @if ($order->payment_gateway_using === 0)
+                                    <a href="{{ $order->payment_details['charges']['data'][0]['receipt_url'] ?? '#' }}" title="Download receipt" target="_blank"><em class="fa fa-download"></em></a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

@@ -10,6 +10,7 @@
 <script>
     $(document).ready(function () {
         $('#longDescriptionEditor').html($('#longDescriptionTextArea').text());
+        $('#shortDescriptionEditor').html($('#shortDescriptionTextArea').text());
 
         $('.module-switch').change(function () {
             let changeTo = $(this).prop('checked');
@@ -77,6 +78,14 @@
         ];
 
         var longDescriptionEditor = new Quill('#longDescriptionEditor', {
+            modules: {
+                syntax: true, // Include syntax module
+                toolbar: toolbarOptions
+            },
+            theme: 'snow',
+        });
+
+        var shortDescriptionEditor = new Quill('#shortDescriptionEditor', {
             modules: {
                 syntax: true, // Include syntax module
                 toolbar: toolbarOptions
