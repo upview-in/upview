@@ -98,14 +98,16 @@ Route::group(['domain' => config('app.domains.app')], function () {
             Route::get('/load-social/{hash}', [SocialListeningController::class, 'load'])->name('load');
 
             Route::controller(PaymentsController::class)->prefix('payment')->as('payment.')->group(function () {
-                Route::get('/success/{order}', 'onSuccess')->name('success');
-                Route::get('/cancel/{order}', 'onCancel')->name('cancel');
+                Route::get('/stripe/success/{order}', 'onSuccessOfStripePaymentGateway')->name('stripe.success');
+                Route::get('/stripe/cancel/{order}', 'onCancelOfStripePaymentGateway')->name('stripe.cancel');
+
+                Route::post('/razorpay/payment-callback/{order}', 'onPaymentCallbackOfRazorPayPaymentGateway')->name('razor-pay.callback');
             });
 
             Route::controller(PlansController::class)->prefix('plans')->as('plans.')->group(function () {
                 Route::get('/list', 'list')->name('list');
                 Route::get('/details/{plan}', 'details')->name('details');
-                Route::get('/{plan}/buy', 'buy')->name('buy');
+                Route::get('/{plan}/buy/{paymentGateway}', 'buy')->name('buy');
             });
 
             Route::prefix('profile')->as('profile.')->group(function () {

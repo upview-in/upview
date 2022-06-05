@@ -17,7 +17,7 @@ class PlansController extends Controller
     public function list()
     {
         $plans = UserRole::enabled()->get();
-        $orders_history = UserOrder::with('plan')->search()->where('user_id', Auth::id())->orderBy('id', 'desc')->paginate(5);
+        $orders_history = UserOrder::with('plan')->search()->where('user_id', Auth::id())->orderBy('_id', 'desc')->paginate(10);
 
         return view('user.plans.list', ['plans' => $plans, 'orders_history' => $orders_history]);
     }
@@ -29,7 +29,7 @@ class PlansController extends Controller
         return view('user.plans.details', ['plan' => $plan, 'purchased_plans' => $purchased_plans]);
     }
 
-    public function buy(Request $request, UserRole $plan)
+    public function buy(Request $request, UserRole $plan, int $paymentGateway)
     {
         $plan->enabled = $plan->enabled ?? true;
 
@@ -43,7 +43,13 @@ class PlansController extends Controller
                 ]);
 
                 $paymentsController = new PaymentsController();
-                $paymentsController->initPayment($paymentRequest);
+                if ($paymentGateway === 0) {
+                    return $paymentsController->initPaymentStripePaymentGateway($paymentRequest);
+                } elseif ($paymentGateway === 1) {
+                    return $paymentsController->initRazorPayPaymentGateway($paymentRequest);
+                } else {
+                    return redirect()->back();
+                }
             } else {
                 return abort(404);
             }
