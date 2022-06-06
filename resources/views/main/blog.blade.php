@@ -83,7 +83,7 @@
                         <div class="header-three_left">
 
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+                                <a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
                             </div>
 
@@ -117,6 +117,7 @@
                                             </li>
                                             <li><a href="{{ route('main.pricing') }}">Pricing</a></li>
                                             <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+                                            <li><a href="{{ route('login') }}">login</a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -127,8 +128,8 @@
 
                         <div class="header-three_right">
                             <div class="btns-box">
-                                <a class="btn-one" href="contact.html">
-                                    <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                                <a class="btn-one" href="{{ route('register') }}">
+                                    <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -154,8 +155,8 @@
                             <nav class="main-menu clearfix">
                                 <!--Keep This Empty / Menu will come through Javascript-->
                             </nav>
-                            <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
-                                <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                            <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                             </a>
                         </div>
                     </div>
@@ -194,29 +195,12 @@
         <!--Start breadcrumb area-->
         <section class="breadcrumb-area">
             <div class="breadcrumb-area-bg" style="background-image: url({{ asset('main/assets/images/breadcrumb/breadcrumb-1.jpg') }} );"></div>
-            <div class="breadcrumb-social-link">
-                <ul class="clearfix">
-                    <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
-                        <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
-                        <a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
-                        <a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
-            </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="inner-content paroller text-center">
-                            <div class="title">
-                                <h2>Oooppss! Something went wrong</h2>
+                        <div class="inner-content text-center">
+                            <div class="title paroller">
+                                <h2>{!! $blog->title !!}</h2>
                             </div>
                         </div>
                     </div>
@@ -225,174 +209,169 @@
         </section>
         <!--End breadcrumb area-->
 
-
-        <!--Start Error Page Area-->
-        <section class="error-page-area">
+        <!--Start Blog Details Area-->
+        <section class="blog-details-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="error-content text-center wow slideInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <h4>Page Not Found</h4>
-                            <div class="title clr1">404</div>
-                            <p>We’re unable to find a page you are looking for, Try later or click the button.</p>
-                            <div class="btns-box">
-                                <a class="btn-one" href="{{ route('main.index') }}">
-                                    <div class="border_line"><img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt=""></div>
-                                    <div class="left_round"></div>
-                                    <div class="right_round"></div>
-                                    <span class="txt">Back to Home<i class="flaticon-plus-1 plusicon"></i></span>
-                                </a>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="blog-details-content">
+                            <div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
+                                <div class="text-holder">
+                                    <div class="text">
+                                        {!! $blog->blog_html_page !!}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--End Error Page Area-->
+        <!--End Blog Details Area-->
 
 
         <!--Start footer area -->
         <footer class="footer-area style2 mt-5">
-            <div class="shape">
-                <img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
-            </div>
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="inner">
-                                <div class="text">
-                                    <h6>Ready to get started?</h6>
-                                    <h2>Get in touch, or create an account.</h2>
-                                </div>
-                                <div class="button-box">
-                                    <a class="btn-one" href="{{ route('main.contact') }}">
-                                        <div class="border_line">
-                                            <img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
-                                        </div>
-                                        <div class="left_round"></div>
-                                        <div class="right_round"></div>
-                                        <span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Start Footer-->
-            <div class="footer">
-                <div class="container">
-                    <div class="row text-right-rtl">
-                        <!--Start single footer widget-->
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
-                            <div class="single-footer-widget">
-                                <div class="our-company-info">
-                                    <div class="footer-logo">
-                                        <a href="index.html">
-                                            <img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
-                                    </div>
-                                    <div class="text-box">
-                                        <p style="font-size: 19px;">
-                                            We help transform relevant information into desired results.
-                                        </p>
-                                    </div>
-                                    <div class="copyright-text style2">
-                                        <p>
-                                            &copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
-                                            Rights Reserved.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End single footer widget-->
+			<div class="shape">
+				<img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
+			</div>
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="inner">
+								<div class="text">
+									<h6>Ready to get started?</h6>
+									<h2>Get in touch, or create an account.</h2>
+								</div>
+								<div class="button-box">
+									<a class="btn-one" href="{{ route('main.contact') }}">
+										<div class="border_line">
+											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+										</div>
+										<div class="left_round"></div>
+										<div class="right_round"></div>
+										<span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Start Footer-->
+			<div class="footer">
+				<div class="container">
+					<div class="row text-right-rtl">
+						<!--Start single footer widget-->
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
+							<div class="single-footer-widget">
+								<div class="our-company-info">
+									<div class="footer-logo">
+										<a href="{{ route('main.index') }}">
+											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
+												height="60px" alt="" /></a>
+									</div>
+									<div class="text-box">
+										<p style="font-size: 19px;">
+											We help transform relevant information into desired results.
+										</p>
+									</div>
+									<div class="copyright-text style2">
+										<p>
+											&copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
+											Rights Reserved.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--End single footer widget-->
 
-                        <!--Start single footer widget-->
-                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
-                            <div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
-                                <div class="title">
-                                    <h3>Categories</h3>
-                                </div>
-                                <ul class="footer-widget-links1">
+						<!--Start single footer widget-->
+						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
+							<div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
+								<div class="title">
+									<h3>Categories</h3>
+								</div>
+								<ul class="footer-widget-links1">
                                     <li><a href="{{ route('main.index') }}">Home</a></li>
-                                    <li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
-                                    <li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
-                                    <li><a href="{{ route('main.socialListening') }}"> Social Listening</a></li>
-                                    <li><a href="{{ route('main.contact') }}">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--End single footer widget-->
+									<li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
+									<li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
+									<li><a href="{{ route('main.socialListening') }}"> Social Listening</a></li>
+									<li><a href="{{ route('main.contact') }}">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--End single footer widget-->
 
-                        <!--Start single footer widget-->
-                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
-                            <div class="single-footer-widget mar-left2 pdtop60">
-                                <div class="title">
-                                    <h3>Community</h3>
-                                </div>
-                                <ul class="footer-widget-links1">
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Members</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--End single footer widget-->
+						<!--Start single footer widget-->
+						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
+							<div class="single-footer-widget mar-left2 pdtop60">
+								<div class="title">
+									<h3>Community</h3>
+								</div>
+								<ul class="footer-widget-links1">
+									<li><a href="javascript:void()">Blog</a></li>
+									<li><a href="javascript:void()">Members</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--End single footer widget-->
 
-                        <!--Start single footer widget-->
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
-                            <div class="single-footer-widget fixwidth pdtop60">
-                                <div class="title">
-                                    <h3>Our Socials</h3>
-                                </div>
-                                <ul class="instagram-box">
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+						<!--Start single footer widget-->
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
+							<div class="single-footer-widget fixwidth pdtop60">
+								<div class="title">
+									<h3>Our Socials</h3>
+								</div>
+								<ul class="instagram-box">
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
+											<div class="overlay">
+												<div class="inner">
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
 
-                                <div class="bottom-box">
-                                    <ul>
-                                        <li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
-                                        <li><a href="#">Terms & Conditions </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Footer-->
-        </footer>
+								<div class="bottom-box">
+									<ul>
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
+										<li><a href="#">Terms & Conditions </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End Footer-->
+		</footer>
         <!--End footer area-->
-
 
 
 
@@ -401,10 +380,9 @@
             <span class="fa fa-angle-up"></span>
         </button>
 
+
+
     </div>
-
-
-
 
 
 
@@ -422,7 +400,6 @@
     <script src="{{ asset('main/assets/js/jquery.paroller.min.js') }}"></script>
     <script src="{{ asset('main/assets/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('main/assets/js/knob.js') }}"></script>
-    <script src="{{ asset('main/assets/js/map-script.js') }}"></script>
     <script src="{{ asset('main/assets/js/owl.js') }}"></script>
     <script src="{{ asset('main/assets/js/pagenav.js') }}"></script>
     <script src="{{ asset('main/assets/js/parallax.min.js') }}"></script>
@@ -432,10 +409,8 @@
     <script src="{{ asset('main/assets/js/wow.js') }}"></script>
 
 
-
     <!-- thm custom script -->
     <script src="{{ asset('main/assets/js/custom.js') }}"></script>
-
 
 
 

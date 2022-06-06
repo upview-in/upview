@@ -142,10 +142,17 @@
     position: relative;
     display: block;
 }
+<<<<<<< HEAD
 .contact-form form .button-box button.btn-one .left_round {
     background: #ffffff;
 }
 .contact-form form .button-box button.btn-one .right_round {
+=======
+.contact-form form .button-box button.btn-one {
+    background: #ffffff;
+}
+.contact-form form .button-box button.btn-one {
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
     background: #ffffff;
 }
 

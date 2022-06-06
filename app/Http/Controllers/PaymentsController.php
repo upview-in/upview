@@ -8,18 +8,20 @@ use App\Models\UserRole;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Razorpay\Api\Api;
 use Stripe\Checkout\Session;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 
 class PaymentsController extends Controller
 {
-    public function initPayment(InitPaymentRequest $request)
+    public function initPaymentStripePaymentGateway(InitPaymentRequest $request)
     {
         $plan = UserRole::find($request->plan_id);
 
         if (!is_null($plan)) {
             $order = new UserOrder();
+            $order->payment_gateway_using = 0;
             $order->user_id = Auth::id();
             $order->plan_id = $plan->id;
             $order->status = 0;
@@ -42,8 +44,8 @@ class PaymentsController extends Controller
                         'quantity' => 1,
                     ]],
                     'mode' => 'payment',
-                    'success_url' => route('panel.user.payment.success', $order->id),
-                    'cancel_url' => route('panel.user.payment.cancel', $order->id),
+                    'success_url' => route('panel.user.payment.stripe.success', $order->id),
+                    'cancel_url' => route('panel.user.payment.stripe.cancel', $order->id),
                 ]);
                 $order->payment_id = $checkout_session->payment_intent;
                 $order->update();
@@ -57,11 +59,12 @@ class PaymentsController extends Controller
         return abort(404);
     }
 
-    public function onSuccess(Request $request, UserOrder $order)
+    public function onSuccessOfStripePaymentGateway(Request $request, UserOrder $order)
     {
         $response = [
             'message' => 'Something wrong!',
             'code' => 'danger',
+            'response_code' => 6,
         ];
 
         if (Auth::id() === $order->user_id) {
@@ -83,32 +86,37 @@ class PaymentsController extends Controller
                         $response['message'] = 'Plan ' . $plan_details->name . ' successfully purchased. Total $' . $this->getSysAmount($payment_details['amount_received']) . ' amount paid.';
                         $response['code'] = 'success';
                     } else {
-                        $response['message'] = 'You\'ve already purchased plan ' . $plan_details->name . '. Total $' . $this->getSysAmount($payment_details['amount_received']) . ' amount paid. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query to support chat for refund.';
+                        $response['message'] = 'You\'ve already purchased plan ' . $plan_details->name . '. Total $' . $this->getSysAmount($payment_details['amount_received']) . ' amount paid. ' . $this->getSubmitQueryButton('your query to support chat for refund.');
                         $response['code'] = 'info';
                     }
+                    $response['response_code'] = 1;
                 } else {
-                    $order->status = 3;
-
-                    $response['message'] = 'Failed to purchase plan ' . $plan_details->name . '. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query if you have trouble to buy.';
+                    $response['message'] = 'Failed to purchase plan ' . $plan_details->name . '. ' . $this->getSubmitQueryButton();
                     $response['code'] = 'danger';
+                    $response['response_code'] = 3;
                 }
 
                 $order->payment_details = $payment_details;
                 $order->payment_status = $payment_details['status'];
-                $order->update();
             } else {
-                $response['message'] = 'Failed to purchase plan ' . $plan_details->name . '. <a href="' . route('panel.user.support.submit') . '">Submit</a> your query if you have trouble to buy.';
+                $response['message'] = 'Failed to purchase plan ' . $plan_details->name . '. ' . $this->getSubmitQueryButton();
                 $response['code'] = 'danger';
+                $response['response_code'] = 3;
             }
         } else {
-            $response['message'] = 'Order is invalid';
+            $response['message'] = 'Order is invalid. ' . $this->getSubmitQueryButton();
             $response['code'] = 'warning';
+            $response['response_code'] = 6;
         }
+
+        $order->response_message = $response['message'];
+        $order->status = (int) $response['response_code'];
+        $order->save();
 
         return redirect()->route('panel.user.plans.list')->with('data', $response);
     }
 
-    public function onCancel(Request $request, UserOrder $order)
+    public function onCancelOfStripePaymentGateway(Request $request, UserOrder $order)
     {
         if (Auth::id() === $order->user_id) {
             $order->status = 2;
@@ -116,6 +124,103 @@ class PaymentsController extends Controller
         }
 
         return redirect()->route('panel.user.plans.list');
+    }
+
+    public function initRazorPayPaymentGateway(InitPaymentRequest $request)
+    {
+        $plan = UserRole::find($request->plan_id);
+
+        if (!is_null($plan)) {
+            $order = new UserOrder();
+            $order->payment_gateway_using = 1;
+            $order->user_id = Auth::id();
+            $order->plan_id = $plan->id;
+            $order->status = 0;
+
+            if ($order->save()) {
+                $amount = $this->getAmount($plan->price);
+
+                $pg_api = new Api(config('razor-pay.api_key'), config('razor-pay.api_secret'));
+                $pg_order = $pg_api->order->create([
+                    'receipt'         => 'payment_' . $order->id,
+                    'amount'          => $amount,
+                    'currency'        => 'USD',
+                ]);
+                $order->payment_id = $pg_order->id;
+                $order->update();
+
+                return view('payment-gateway.razor-pay-checkout', ['order_id' => $order->id, 'payment_id' => $order->payment_id, 'plan' => $plan, 'amount' => $amount, 'plan_price' => $plan->price]);
+            }
+            abort(500);
+        }
+        abort(404);
+    }
+
+    public function onPaymentCallbackOfRazorPayPaymentGateway(Request $request, UserOrder $order)
+    {
+        $response = [
+            'message' => 'Something wrong!',
+            'code' => 'danger',
+            'response_code' => 6,
+        ];
+
+        if ($request->has(['razorpay_signature', 'razorpay_order_id', 'razorpay_payment_id'])) {
+            $pg_api = new Api(config('razor-pay.api_key'), config('razor-pay.api_secret'));
+            try {
+                $pg_api->utility->verifyPaymentSignature([
+                    'razorpay_order_id' => $request->razorpay_order_id,
+                    'razorpay_signature' => $request->razorpay_signature,
+                    'razorpay_payment_id' => $request->razorpay_payment_id
+                ]);
+
+                if (Auth::id() === $order->user_id) {
+                    $plan_details = UserRole::find($order->plan_id);
+
+                    if (!is_null($plan_details)) {
+                        if ($order->status !== 1) {
+                            $order->purchased_at = Carbon::now();
+                            $order->expired_at = Carbon::now()->addDays($plan_details->plan_validity);
+
+                            $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
+                            if (!in_array($plan_details->id, $roles_ids)) {
+                                $roles_ids[] = $plan_details->id;
+                                Auth::user()->roles()->sync($roles_ids);
+
+                                $response['message'] = 'Plan ' . $plan_details->name . ' successfully purchased.';
+                                $response['code'] = 'success';
+                            } else {
+                                $response['message'] = 'You\'ve already purchased plan ' . $plan_details->name . '. ' . $this->getSubmitQueryButton('your query to support chat for refund.');
+                                $response['code'] = 'info';
+                            }
+                            $response['response_code'] = 1;
+                        } else {
+                            $response['message'] = 'Failed to purchase plan ' . $plan_details->name . '. ' . $this->getSubmitQueryButton();
+                            $response['code'] = 'danger';
+                            $response['response_code'] = 3;
+                        }
+                    } else {
+                        $response['message'] = 'Failed to purchase plan. ' . $this->getSubmitQueryButton();
+                        $response['code'] = 'danger';
+                        $response['response_code'] = 3;
+                    }
+                } else {
+                    $response['message'] = 'Order is invalid. ' . $this->getSubmitQueryButton();
+                    $response['code'] = 'warning';
+                    $response['response_code'] = 6;
+                }
+            } catch (SignatureVerificationError $e) {
+                $response['message'] = 'Payment signature is invalid. ';
+                $response['code'] = 'warning';
+                $response['response_code'] = 5;
+            }
+        }
+
+        $order->payment_details = $request->all();
+        $order->response_message = $response['message'];
+        $order->status = (int) $response['response_code'];
+        $order->save();
+
+        return redirect()->route('panel.user.plans.list')->with('data', $response);
     }
 
     public static function getAmount(int $price): int
@@ -130,5 +235,10 @@ class PaymentsController extends Controller
         }
 
         return round($price / 100);
+    }
+
+    public function getSubmitQueryButton($message = null): string
+    {
+        return '<a href="' . route('panel.user.support.submit') . '">Submit</a> ' . is_null($message) ? 'your query if you have trouble to buy.' : $message;
     }
 }

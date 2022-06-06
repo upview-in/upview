@@ -318,10 +318,17 @@
     background: #1f2026;
     padding-bottom: 70px;
 }
+<<<<<<< HEAD
 .footer-area.style2 .footer-top .inner .button-box .btn-one .left_round{
     background: #1f2026;
 }
 .footer-area.style2 .footer-top .inner .button-box .btn-one .right_round{
+=======
+.footer-area.style2 .footer-top .inner .button-box .btn-one {
+    background: #1f2026;
+}
+.footer-area.style2 .footer-top .inner .button-box .btn-one {
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
     background: #1f2026;
 }
 

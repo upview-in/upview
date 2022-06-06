@@ -119,6 +119,7 @@
                                             </li>
                                             <li><a href="{{ route('main.pricing') }}">Pricing</a></li>
                                             <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+                                            <li><a href="{{ route('login') }}">Login</a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -129,8 +130,8 @@
 
                         <div class="header-three_right">
                             <div class="btns-box">
-                                <a class="btn-one" href="{{ route('login') }}">
-                                    <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                                <a class="btn-one" href="{{ route('register') }}">
+                                    <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -156,8 +157,8 @@
                             <nav class="main-menu clearfix">
                                 <!--Keep This Empty / Menu will come through Javascript-->
                             </nav>
-                            <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
-                                <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                            <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                             </a>
                         </div>
                     </div>
@@ -175,17 +176,16 @@
                     <div class="menu-outer">
                         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                     </div>
-                    <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
-                        <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+                    <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                        <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
                     </a>
                     <!--Social Links-->
                     <div class="social-links">
                         <ul class="clearfix">
-                            <li><a href="#"><span class="fab fa fa-facebook-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-twitter-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-pinterest-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-google-plus-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa fa-youtube-square"></span></a></li>
+                            <li><a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a></li>
+                            <li><a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a></li>
+                            <li><a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a></li>
+                            <li><a href="https://instagram.com/upviewindia"><span class="fab fa fa-instagram-square"></span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -198,23 +198,6 @@
             <div class="breadcrumb-area-bg"
                 style="background-image: url({{ asset('main/assets/images/breadcrumb/Social_Media_Posting.png') }} );">
             </div>
-            <div class="breadcrumb-social-link">
-                <ul class="clearfix">
-                    <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
-                        <a href="#" style="color: white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
-                        <a href="#" style="color: white"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <a href="#" style="color: white"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
-                        <a href="#" style="color: white"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
-            </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -242,17 +225,11 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Plan ahead & ensure your content<br /> strategy makes sense with Upview
+                                        Plan, Organize and Schedule Your Social Content on the go
                                     </h3>
                                     <div class="mt-5">
                                         <p>
-                                            Make the most of Social Media through our social media posting feature. Save
-                                            time by scheduling posts across all your social networks in just a few
-                                            clicks.<br /><br /> Access your image assets directly from our user friendly
-                                            dashboard
-                                            to make regular posting easy. Produce quality content that delights your
-                                            audience with UPVIEW
-                                            more.
+                                        Our social media management and content marketing features help marketers, agencies, and corporations put social media posts on autopilot. With its in-depth analytics and true insights modules, you can now work in perfect harmony and empower your brand to make informed marketing decisions.<br /><br /> A perfect combination of AI-powered content discovery modules to help you discover, plan, schedule, publish, and analyse content for multiple brands and social channels with ease.
                                         </p>
                                     </div>
                                 </div>
@@ -287,7 +264,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Review Management </a>
+                                    <a href="javascript:void();">Review Management </a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -309,7 +286,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Paid Promotion tools to Boost Facebook Tools</a>
+                                    <a href="javascript:void();">Paid Promotion tools to Boost Facebook Tools</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -332,7 +309,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Scheduling for optimal send time</a>
+                                    <a href="javascript:void();">Scheduling for optimal send time</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -356,7 +333,7 @@
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="services-details.html">Media Planning and Measurements</a>
+                                    <a href="javascript:void();">Media Planning and Measurements</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -415,7 +392,7 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
-										<a href="index.html">
+										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -459,8 +436,8 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Members</a></li>
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
 								</ul>
 							</div>
 						</div>
@@ -488,7 +465,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -498,7 +475,7 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -507,7 +484,7 @@
 
 								<div class="bottom-box">
 									<ul>
-										<li><a href="privacy-policy.html">Privacy</a></li>
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
 										<li><a href="#">Terms & Conditions </a></li>
 									</ul>
 								</div>

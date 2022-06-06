@@ -239,7 +239,10 @@ li{
     left: 10px;
     width: 10px;
     height: 10px;
+<<<<<<< HEAD
     background: #f3f3f4;
+=======
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
     border-radius: 50%;
 }
 .btn-one .right_round {
@@ -249,7 +252,10 @@ li{
     bottom: 0;
     width: 10px;
     height: 10px;
+<<<<<<< HEAD
     background: #f3f3f4;
+=======
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
     border-radius: 50%;
 }
 .btn-one .border_line {
@@ -3265,6 +3271,13 @@ select:focus {
 
 }
 
+<<<<<<< HEAD
+=======
+.fa {
+    color: white;
+}
+
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 
 
 

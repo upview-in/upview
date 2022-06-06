@@ -119,6 +119,10 @@
                                             </li>
                                             <li><a href="{{ route('main.pricing') }}">Pricing</a></li>
                                             <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+<<<<<<< HEAD
+=======
+                                            <li><a href="{{ route('login') }}">Login</a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                         </ul>
                                     </div>
                                 </nav>
@@ -129,8 +133,13 @@
 
                         <div class="header-three_right">
                             <div class="btns-box">
+<<<<<<< HEAD
                                 <a class="btn-one" href="{{ route('login') }}">
                                     <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+                                <a class="btn-one" href="{{ route('register') }}">
+                                    <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </a>
                             </div>
                         </div>
@@ -156,8 +165,13 @@
                             <nav class="main-menu clearfix">
                                 <!--Keep This Empty / Menu will come through Javascript-->
                             </nav>
+<<<<<<< HEAD
                             <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
                                 <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+                            <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                             </a>
                         </div>
                     </div>
@@ -175,17 +189,29 @@
                     <div class="menu-outer">
                         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                     </div>
+<<<<<<< HEAD
                     <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
                         <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+                    <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                        <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                     </a>
                     <!--Social Links-->
                     <div class="social-links">
                         <ul class="clearfix">
+<<<<<<< HEAD
                             <li><a href="#"><span class="fab fa fa-facebook-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-twitter-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-pinterest-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-google-plus-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-youtube-square"></span></a></li>
+=======
+                            <li><a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a></li>
+                            <li><a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a></li>
+                            <li><a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a></li>
+                            <li><a href="https://instagram.com/upviewindia"><span class="fab fa fa-instagram-square"></span></a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                         </ul>
                     </div>
                 </nav>
@@ -198,6 +224,7 @@
             <div class="breadcrumb-area-bg"
                 style="background-image: url({{ asset('main/assets/images/breadcrumb/Social_Media_Listening.png') }} );">
             </div>
+<<<<<<< HEAD
             <div class="breadcrumb-social-link">
                 <ul class="clearfix">
                     <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
@@ -214,6 +241,8 @@
                     </li>
                 </ul>
             </div>
+=======
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 
             <div class="container">
                 <div class="row">
@@ -242,6 +271,7 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
+<<<<<<< HEAD
                                         Your customers are talking about you right now! Tune into their conversations
                                         with social listening
                                     </h3>
@@ -254,6 +284,14 @@
                                             to know who is driving the most impactful conversations. Get a clear picture
                                             of how you stack up against your competition. You can count on Upview to
                                             reveal where other brands succeed.
+=======
+                                        Social is about engaging, it’s about conversation, it’s about listening.
+                                    </h3>
+                                    <div class="mt-5">
+                                        <p>
+                                        A brand is no longer what we tell the consumer it is. It is what consumers tell each other it is. At Upview, we help you to make sense of the millions of customer conversations happening in real time. It's as easy as searching for topics of interest in real-time from the 5.5 billion new posts added daily. You can save keywords to find meaningful trends and patterns you might miss with regular social monitoring. Filter your searches for specifics like demographics and locations. Whether you’re planning your next big launch or going through a crisis, Upview gives your decision makers the tools to make critical business decisions with the right insights.<br /><br />
+                                        We help you to cut through the noise, uncover emerging trends, and spot important conversations that others miss.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                         </p>
                                     </div>
                                 </div>
@@ -288,7 +326,11 @@
                             </div>
                             <div class="title">
                                 <h3>
+<<<<<<< HEAD
                                     <a href="services-details.html">Influencer Evaluation</a>
+=======
+                                    <a href="javascript:void();">Influencer Evaluation</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -316,7 +358,11 @@
                             </div>
                             <div class="title">
                                 <h3>
+<<<<<<< HEAD
                                     <a href="services-details.html">Competitor Analysis </a>
+=======
+                                    <a href="javascript:void();">Competitor Analysis </a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -343,7 +389,11 @@
                             </div>
                             <div class="title">
                                 <h3>
+<<<<<<< HEAD
                                     <a href="services-details.html">Sentiment & Audience Interaction Analysis</a>
+=======
+                                    <a href="javascript:void();">Sentiment & Audience Interaction Analysis</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -368,7 +418,11 @@
                             </div>
                             <div class="title">
                                 <h3>
+<<<<<<< HEAD
                                     <a href="services-details.html">content strategy and audience</a>
+=======
+                                    <a href="javascript:void();">content strategy and audience</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -391,7 +445,11 @@
                             </div>
                             <div class="title">
                                 <h3>
+<<<<<<< HEAD
                                     <a href="services-details.html">Hashtag Reporting</a>
+=======
+                                    <a href="javascript:void();">Hashtag Reporting</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -414,7 +472,11 @@
                             </div>
                             <div class="title">
                                 <h3>
+<<<<<<< HEAD
                                     <a href="services-details.html">Trend Analysis</a>
+=======
+                                    <a href="javascript:void();">Trend Analysis</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </h3>
                                 <div class="inner-text">
                                     <p>
@@ -472,7 +534,11 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
+<<<<<<< HEAD
 										<a href="index.html">
+=======
+										<a href="{{ route('main.index') }}">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -516,8 +582,13 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
+<<<<<<< HEAD
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="#">Members</a></li>
+=======
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</ul>
 							</div>
 						</div>
@@ -545,7 +616,11 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
+<<<<<<< HEAD
 													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+=======
+													<a href="#"><i class="fa fa-faceboom" aria-hidden="true"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 												</div>
 											</div>
 										</div>
@@ -555,7 +630,11 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
+<<<<<<< HEAD
 													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+=======
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 												</div>
 											</div>
 										</div>
@@ -564,7 +643,11 @@
 
 								<div class="bottom-box">
 									<ul>
+<<<<<<< HEAD
 										<li><a href="privacy-policy.html">Privacy</a></li>
+=======
+										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 										<li><a href="#">Terms & Conditions </a></li>
 									</ul>
 								</div>

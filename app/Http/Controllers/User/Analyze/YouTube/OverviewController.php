@@ -8,11 +8,11 @@ use App\Http\Controllers\Api\YouTube\ChannelController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\YouTube\Channel\GetMineChannelAnalytics;
 use App\Http\Requests\Api\YouTube\Channel\GetMineChannelList;
-use Illuminate\Http\Request;
+use App\Http\Requests\User\Analyze\YouTube\ViewOverviewRequest;
 
 class OverviewController extends Controller
 {
-    public function overview(Request $request)
+    public function overview(ViewOverviewRequest $request)
     {
         if (!count(TokenHelper::getAuthToken_YT())) {
             return redirect()->route('panel.user.account.accounts_manager');
@@ -39,7 +39,7 @@ class OverviewController extends Controller
         return view('user.analyze.youtube.overview');
     }
 
-    private function getChannelDetails(Request $request)
+    private function getChannelDetails(ViewOverviewRequest $request)
     {
         $data = [];
         $response = app(ChannelController::class)->getMineChannelList(new GetMineChannelList($request->all()))->getData();
@@ -76,7 +76,7 @@ class OverviewController extends Controller
         return response()->json(collect($data));
     }
 
-    private function getAnalytics(Request $request)
+    private function getAnalytics(ViewOverviewRequest $request)
     {
         if ($request->has(['startDate', 'endDate', 'dimensions', 'sort', 'filters'])) {
             $data = [];

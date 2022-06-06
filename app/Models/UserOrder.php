@@ -10,12 +10,19 @@ class UserOrder extends Model
 {
     use HasFactory, Searchable;
 
+    public static $payment_gateways = [
+        'Stripe',
+        'Razorpay',
+    ];
+
     public static $status = [
         'Pending',
         'Active',
         'Cancelled',
         'Failed',
         'Expired',
+        'Unverified',
+        'Invalid',
     ];
 
     public static $status_color = [
@@ -24,6 +31,8 @@ class UserOrder extends Model
         'dark',
         'danger',
         'warning',
+        'warning',
+        'danger',
     ];
 
     /**
@@ -39,6 +48,7 @@ class UserOrder extends Model
         'status',
         'purchased_at',
         'expired_at',
+        'payment_gateway_using',
     ];
 
     /**
@@ -53,8 +63,10 @@ class UserOrder extends Model
         'payment_details',
         'payment_status',
         'status',
+        'response_message',
         'purchased_at',
         'expired_at',
+        'payment_gateway_using',
     ];
 
     /**

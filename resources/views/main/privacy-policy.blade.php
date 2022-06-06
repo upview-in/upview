@@ -88,7 +88,11 @@
                         <div class="header-three_left">
 
                             <div class="logo">
+<<<<<<< HEAD
                                 <a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+=======
+                                <a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
                             </div>
 
@@ -120,8 +124,14 @@
                                                     </li>
                                                 </ul>
                                             </li>
+<<<<<<< HEAD
                                             <li class="current"><a href="{{ route('main.pricing') }}">Pricing</a></li>
                                             <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+=======
+                                            <li><a href="{{ route('main.pricing') }}">Pricing</a></li>
+                                            <li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+                                            <li><a href="{{ route('login') }}">Login</a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                         </ul>
                                     </div>
                                 </nav>
@@ -132,8 +142,13 @@
 
                         <div class="header-three_right">
                             <div class="btns-box">
+<<<<<<< HEAD
                                 <a class="btn-one" href="contact.html">
                                     <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+                                <a class="btn-one" href="{{ route('register') }}">
+                                    <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                                 </a>
                             </div>
                         </div>
@@ -159,8 +174,13 @@
                             <nav class="main-menu clearfix">
                                 <!--Keep This Empty / Menu will come through Javascript-->
                             </nav>
+<<<<<<< HEAD
                             <a class="btn-one ml-4 m-4" href="{{ route('login') }}">
                                 <span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+                            <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+                                <span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                             </a>
                         </div>
                     </div>
@@ -184,11 +204,18 @@
                     <!--Social Links-->
                     <div class="social-links">
                         <ul class="clearfix">
+<<<<<<< HEAD
                             <li><a href="#"><span class="fab fa fa-facebook-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-twitter-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-pinterest-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-google-plus-square"></span></a></li>
                             <li><a href="#"><span class="fab fa fa-youtube-square"></span></a></li>
+=======
+                            <li><a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a></li>
+                            <li><a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a></li>
+                            <li><a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a></li>
+                            <li><a href="https://instagram.com/upviewindia"><span class="fab fa fa-instagram-square"></span></a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                         </ul>
                     </div>
                 </nav>
@@ -204,6 +231,7 @@
             <div class="breadcrumb-social-link">
                 <ul class="clearfix">
                     <li class="wow slideInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
+<<<<<<< HEAD
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     </li>
                     <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
@@ -214,6 +242,18 @@
                     </li>
                     <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
                         <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+=======
+                        <a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="700ms" data-wow-duration="2000ms">
+                        <a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                        <a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="wow slideInUp" data-wow-delay="1100ms" data-wow-duration="2100ms">
+                        <a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
                     </li>
                 </ul>
             </div>
@@ -1141,7 +1181,11 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
+<<<<<<< HEAD
 										<a href="index.html">
+=======
+										<a href="{{ route('main.index') }}">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
 									</div>
@@ -1214,7 +1258,11 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
+<<<<<<< HEAD
 													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+=======
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 												</div>
 											</div>
 										</div>
@@ -1224,7 +1272,11 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
+<<<<<<< HEAD
 													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+=======
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 												</div>
 											</div>
 										</div>
@@ -1279,8 +1331,11 @@
     <script src="{{ asset('main/assets/js/validation.js') }}"></script>
     <script src="{{ asset('main/assets/js/wow.js') }}"></script>
 
+<<<<<<< HEAD
     <script src="{{ asset('main/assets/js/bxslider.min.js') }}"></script>
 
+=======
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 
 
     <!-- thm custom script -->

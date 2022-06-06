@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use Jenssegers\Mongodb\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Jenssegers\Mongodb\Eloquent\Model;
 
 class City extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'id', 'state_id', 'name', 'status',
+        'id', 'state_id', 'name', 'status'
     ];
 
     public function state(): BelongsTo

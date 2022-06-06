@@ -7,14 +7,14 @@
 
 	<!-- responsive meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta http-equiv="Cache-control" content="public">
+
 	<!-- For IE -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-		rel="stylesheet" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-		rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
 
 	<link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
 	<link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
@@ -69,6 +69,20 @@
 	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="32x32" />
 	<link rel="icon" type="image/svg+xml" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="16x16" />
 
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GR19Q9R87T"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-GR19Q9R87T');
+	</script>
+
 </head>
 
 <body>
@@ -101,7 +115,7 @@
 					<div class="outer-box clearfix">
 						<div class="header-three_left">
 							<div class="logo">
-								<a href="index.html"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
+								<a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="
 									161px" height="60px" alt="Awesome Logo" title="" /></a>
 							</div>
 
@@ -122,6 +136,7 @@
 											<li class="dropdown">
 												<a href="javascript:void();">Solutions</a>
 												<ul>
+<<<<<<< HEAD
                                                     <li>
                                                         <a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a>
                                                     </li>
@@ -135,6 +150,22 @@
 											</li>
 											<li><a href="{{ route('main.pricing') }}">Pricing</a></li>
 											<li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+=======
+													<li>
+														<a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a>
+													</li>
+													<li>
+														<a href="{{ route('main.socialPosting') }}">Social Media Posting</a>
+													</li>
+													<li>
+														<a href="{{ route('main.socialListening') }}">Social Listening</a>
+													</li>
+												</ul>
+											</li>
+											<li><a href="{{ route('main.pricing') }}">Pricing</a></li>
+											<li><a href="{{ route('main.contact') }}">Contact Us</a></li>
+											<li><a href="{{ route('login') }}">login</a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 										</ul>
 									</div>
 								</nav>
@@ -144,8 +175,13 @@
 
 						<div class="header-three_right">
 							<div class="btns-box">
+<<<<<<< HEAD
 								<a class="btn-one" href="{{ route('login') }}">
 									<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+								<a class="btn-one" href="{{ route('register') }}">
+									<span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</a>
 							</div>
 						</div>
@@ -160,9 +196,13 @@
 					<div class="clearfix">
 						<!--Logo-->
 						<div class="logo float-left">
+<<<<<<< HEAD
 							<a href="{{ route('main.index') }}" class="img-responsive"><img
 									src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
 									title="" /></a>
+=======
+							<a href="{{ route('main.index') }}" class="img-responsive"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" title="" /></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 						</div>
 						<!--Right Col-->
 						<div class="right-col float-right">
@@ -170,8 +210,13 @@
 							<nav class="main-menu clearfix">
 								<!--Keep This Empty / Menu will come through Javascript-->
 							</nav>
+<<<<<<< HEAD
 							<a class="btn-one ml-4 m-4" href="contact.html">
 								<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+							<a class="btn-one ml-4 m-4" href="{{ route('register') }}">
+								<span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 							</a>
 						</div>
 					</div>
@@ -187,19 +232,29 @@
 				</div>
 				<nav class="menu-box">
 					<div class="nav-logo">
+<<<<<<< HEAD
 						<a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="150px"
 								height="50px" alt="" title="" /></a>
+=======
+						<a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="150px" height="50px" alt="" title="" /></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 					</div>
 					<div class="menu-outer">
 						<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
 					</div>
+<<<<<<< HEAD
 					<a class="btn-one m-4" href="{{ route('login') }}">
 						<span class="txt">Login<i class="flaticon-plus-1 plusicon"></i></span>
+=======
+					<a class="btn-one m-4" href="{{ route('register') }}">
+						<span class="txt">Free Demo<i class="flaticon-plus-1 plusicon"></i></span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 					</a>
 					<!--Social Links-->
 					<div class="social-links">
 						<ul class="clearfix">
 							<li>
+<<<<<<< HEAD
 								<a href="#"><span class="fab fa fa-facebook-square"></span></a>
 							</li>
 							<li>
@@ -210,6 +265,18 @@
 							</li>
 							<li>
 								<a href="#"><span class="fab fa fa-instagram"></span></a>
+=======
+								<a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a>
+							</li>
+							<li>
+								<a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a>
+							</li>
+							<li>
+								<a href="https://instagram.com/upviewindia?igshid=YmMyMTA2M2Y="><span class="fab fa fa-instagram"></span></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 							</li>
 						</ul>
 					</div>
@@ -223,6 +290,7 @@
 			<div class="header-social-link-1">
 				<ul class="clearfix">
 					<li class="wow slideInDown" data-wow-delay="500ms" data-wow-duration="1500ms">
+<<<<<<< HEAD
 						<a href="#" style="color: white;"><i class="fa fa-facebook" aria-hidden="true"
 								style="transform: rotate(265deg);"></i></a>
 					</li>
@@ -237,6 +305,18 @@
 					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
 						<a href="#" style="color: white;"><i class="fa fa-instagram" aria-hidden="true"
 								style="transform: rotate(265deg);"></i></a>
+=======
+						<a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+					</li>
+					<li class="wow slideInDown" data-wow-delay="400ms" data-wow-duration="2000ms">
+						<a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+					</li>
+					<li class="wow slideInDown" data-wow-delay="300ms" data-wow-duration="2500ms">
+						<a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+					</li>
+					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
+						<a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 					</li>
 				</ul>
 			</div>
@@ -246,6 +326,7 @@
 					<div class="overflow-hidden">
 						<div class="home-hero-container position-relative js-webgl-globe-data">
 							<div class="home-hero position-absolute z-1 top-0 right-0 bottom-0 left-0 overflow-hidden">
+<<<<<<< HEAD
 								<div
 									class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive pb-md-9">
 
@@ -261,6 +342,16 @@
 												class="f2-mktg text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2">
 												It’s easy to impress but influencing requires a lot of efforts.
 												Let's grow together.
+=======
+								<div class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive pb-md-9">
+
+									<div class="d-flex gutter gutter-spacious flex-column flex-lg-row flex-items-center height-full px-0 px-lg-3">
+										<div class="ml-md-n3 mr-md-3 col-12 col-lg-6 text-center text-md-left">
+											<h1 class="h3-mktg color-text-white mb-3 position-relative z-2" style="color: #ffffff;">
+												<span class="magic" id="randomTagLine"></span>
+											</h1>
+											<p class="f2-mktg text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2" id="randomBottomTagLine">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 											</p>
 											<div class="btns-box">
 												<a class="btn-one" href="{{ route('register') }}">
@@ -271,12 +362,16 @@
 												</a>
 											</div>
 
+<<<<<<< HEAD
 											<!-- '"` -->
 											<!-- </textarea></xmp> -->
+=======
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 										</div>
 
 										<div class="col-12 col-lg-6 text-center text-md-left position-relative">
 											<div class="home-globe-container home-globe-container-webgl">
+<<<<<<< HEAD
 												<div
 													class="mx-auto width-full mt-n9 mt-lg-2 home-globe position-relative height-full js-webgl-globe">
 													<video width="700" height="700" loop="" muted="" playsinline=""
@@ -306,6 +401,22 @@
 													<canvas width="900" height="900"
 														class="webgl-canvas js-globe-canvas"
 														style="display: block; width: 900px; height: 900px;"></canvas>
+=======
+												<div class="mx-auto width-full mt-n9 mt-lg-2 home-globe position-relative height-full js-webgl-globe">
+													<video width="700" height="700" loop="" muted="" playsinline="" autoplay preload="none" style="margin-left:10%;" class="home-globe-container-video js-globe-fallback-video ">
+														<!-- <source type="video/mp4; codecs=hevc,mp4a.40.2"
+															src="images/modules/site/home/globe-900.hevc.mp4"> -->
+														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/globe-900.h264.mp4') }}">
+													</video>
+													<video loop="" muted="" playsinline="" preload="none" autoplay class="home-globe-container-video js-globe-fallback-video-small" hidden>
+														<!-- <source type="video/mp4; codecs=hevc,mp4a.40.2"
+															src="images/modules/site/home/globe-500.hevc.mp4"> -->
+														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/globe-500.h264.mp4') }}">
+													</video>
+													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w" sizes="(max-width: 700px) 70vw, 700px" src="{{ asset('main/images/modules/site/home/globe.jpg') }}" alt="Planet earth with visualization of GitHub activity crossing the globe" class="width-full height-auto js-globe-fallback-image" loading="lazy" decoding="async" width="1238" height="1404" hidden>
+
+													<canvas width="900" height="900" class="webgl-canvas js-globe-canvas" style="display: block; width: 900px; height: 900px;"></canvas>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 												</div>
 											</div>
 
@@ -314,6 +425,7 @@
 									</div>
 								</div>
 
+<<<<<<< HEAD
 								<img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="Glowing universe"
 									class="position-absolute home-hero-glow events-none z-1">
 								<video loop="" muted="" playsinline="" preload="none"
@@ -336,16 +448,40 @@
 													height="967"
 													class="home-astro-mona width-full position-absolute bottom-0 height-auto"
 													alt="Mona looking at GitHub activity across the globe">
+=======
+								<!-- <img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="" class="position-absolute home-hero-glow events-none z-1"> -->
+								<video loop="" muted="" playsinline="" preload="none" class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0" style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
+									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
+								</video>
+							</div>
+
+							<!-- placeholder for mascot image -->
+							<!-- <div class="position-absolute width-full color-bg-default" style="bottom: -4rem;">
+								<div class="container-xl p-responsive">
+									<div class="d-flex flex-justify-center flex-lg-justify-end color-bg-default">
+										<div class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
+											<picture>
+												<source srcset="{{ asset('main/images/modules/site/home/astro-mona.webp') }}" type="image/webp">
+												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="Mona looking at GitHub activity across the globe">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 											</picture>
 										</div>
 									</div>
 								</div>
+<<<<<<< HEAD
 							</div>
 
 						</div>
 
 						<div class="mx-auto container-xl p-responsive py-8 py-md-9 overflow-hidden d-flex gutter gutter-spacious js-build-in-trigger"
 							data-build-margin-bottom="20">
+=======
+							</div> -->
+
+						</div>
+
+						<div class="mx-auto container-xl p-responsive py-8 py-md-9 overflow-hidden d-flex gutter gutter-spacious js-build-in-trigger" data-build-margin-bottom="20">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 						</div>
 
 					</div>
@@ -362,7 +498,11 @@
 						<h3>Our Services</h3>
 					</div>
 					<h2>
+<<<<<<< HEAD
 						Strategic social media analysis<br />at the tip of your fingers
+=======
+						Better Discussions, Greater Conversions.<br />We offer solutions for everyone – Startups, Brands, Ad-Agencies & Influencers.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 					</h2>
 				</div>
 				<div class="row">
@@ -374,14 +514,22 @@
 							</div>
 							<div class="title">
 								<h3>
+<<<<<<< HEAD
 									<a href="javascript:void();">Scheduling & Publishing</a>
+=======
+									<a href="{{ route('main.socialPosting') }}">Scheduling & Publishing</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
+<<<<<<< HEAD
 										Effortlessly plan, manage & create social media content. Let your profile stand
 										out! Strategised postings keep your audience hooked and it’s always good to have
 										a to-do list for the same.
+=======
+										With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently. You don’t even need to be in the office when you can drive everything remotely. Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									</p>
 								</div>
 							</div>
@@ -396,14 +544,22 @@
 							</div>
 							<div class="title">
 								<h3>
+<<<<<<< HEAD
 									<a href="javascript:void();">Analytics </a>
+=======
+									<a href="{{ route('main.socialAnalytics') }}">Analytics </a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
+<<<<<<< HEAD
 										Real time Analytics to measure performance, gives you the ability to create,
 										schedule, plan, publish, and monitor your posts, plus engage directly with your
 										audience on Facebook, Instagram & YouTube.
+=======
+										Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									</p>
 								</div>
 							</div>
@@ -418,15 +574,23 @@
 							</div>
 							<div class="title">
 								<h3>
+<<<<<<< HEAD
 									<a href="javascript:void();">Social Listening</a>
+=======
+									<a href="{{ route('main.socialListening') }}">Social Listening</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
+<<<<<<< HEAD
 										Get access to billions of cross profile conversations, tag searches, brand
 										watches & competitor analysis across the whole World Wide Web. Monitor results
 										in real time to find impactful and relevant insights through AI powered
 										analysis.
+=======
+										Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									</p>
 								</div>
 							</div>
@@ -441,14 +605,22 @@
 							</div>
 							<div class="title">
 								<h3>
+<<<<<<< HEAD
 									<a href="services-details.html">Brand Analysis</a>
+=======
+									<a href="{{ route('main.socialListening') }}">Brand Analysis</a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
+<<<<<<< HEAD
 										With over 25 tools at your finger tips, you can now easily control your brand's
 										social media reach & get accurate social media reports on the go. Unlike other
 										brand monitoring tools & social media monitoring software, we crawl millions of web pages daily.
+=======
+										It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									</p>
 								</div>
 							</div>
@@ -465,10 +637,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xl-5">
+<<<<<<< HEAD
 						<div class="skill-style2_image-box-outer"
 							style="margin-right: -250px;margin-left: 0px;left: -110px;top: -50px;">
 							<div class="skill-style1_image-box skill-style2_image-box"
 								style="background-image: url( {{ asset('main/assets/images/resources/about.png') }} );"></div>
+=======
+						<div class="skill-style2_image-box-outer" style="margin-right: -250px;margin-left: 0px;left: -110px;top: -50px;">
+							<div class="skill-style1_image-box skill-style2_image-box" style="background-image: url( {{ asset('main/assets/images/resources/about.png') }} );"></div>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 						</div>
 					</div>
 
@@ -478,6 +655,7 @@
 								About Us
 							</h2>
 							<p>
+<<<<<<< HEAD
 								Our mission is to help you reach every prospective customer & enjoy new found business
 								with our performance-driven digital marketing services. Our creative, strategical &
 								data-driven online advertising will surge your business growth & revenue to place you
@@ -485,6 +663,10 @@
 								We provide proven and effective marketing services to ensure your company remains
 								competitive now and in the future.
 								Don’t just run a business, belong!
+=======
+								Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
+								Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 							</p>
 						</div>
 					</div>
@@ -508,8 +690,12 @@
 								satisfied with the features of a platform than with Upview. A permanent
 								user of Upview forever!</div>
 							<div class="info-box">
+<<<<<<< HEAD
 								<div class="thumb"><img
 										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+=======
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/viral.jpg') }}" alt=""></div>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								<h4 class="name">Viral Rathod</h4>
 								<span class="designation">B99 Esports</span>
 							</div>
@@ -524,8 +710,12 @@
 								worry about anything. And to add to it, I can assess what was working
 								for me and what was not.</div>
 							<div class="info-box">
+<<<<<<< HEAD
 								<div class="thumb"><img
 										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+=======
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/chavda.jpg') }}" alt=""></div>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								<h4 class="name">Siddhantraj Chavda</h4>
 								<span class="designation">Digital Marketer</span>
 							</div>
@@ -540,8 +730,12 @@
 								post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not
 								only removed all these hassles but saved a lot of time as well.</div>
 							<div class="info-box">
+<<<<<<< HEAD
 								<div class="thumb"><img
 										src="http://t.commonsupport.com/adro/images/resource/thumb-1.jpg" alt=""></div>
+=======
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/rashmi.jpg') }}" alt=""></div>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								<h4 class="name">Rashmi Mishra</h4>
 								<span class="designation">Actor/Model</span>
 							</div>
@@ -550,8 +744,12 @@
 				</div>
 
 				<div class="thumb-layer paroller">
+<<<<<<< HEAD
 					<figure class="image"><img src="{{ asset('main/assets/images/testimonial/user-thumbs.png') }}"
 							alt="">
+=======
+					<figure class="image"><img src="{{ asset('main/assets/images/testimonial/user-thumbs.png') }}" alt="">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 					</figure>
 				</div>
 			</div>
@@ -569,17 +767,24 @@
 				<div class="row">
 					<div class="col-xl-6">
 						<div class="about-style1_image-box about-style2_image-box clearfix">
+<<<<<<< HEAD
 							<!-- <div class="shape">
 								<img class="zoom-fade" src="{{ asset('main/images/shape/thm-shape-1.png') }}" alt="" />
 							</div> -->
+=======
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 							<div class="image-box left">
 								<div class="single-box image-box1">
 									<div class="inner">
 										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
 									</div>
 								</div>
+<<<<<<< HEAD
 								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery"
 									href="https://www.youtube.com/watch?v=p25gICT63ek">
+=======
+								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://vimeo.com/716777486">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									<span class="flaticon-play-button-2 playicon"></span>
 								</a>
 							</div>
@@ -601,6 +806,7 @@
 					<div class="col-xl-6">
 						<div class="about-style1_content-box about-style2_content-box">
 							<h2>
+<<<<<<< HEAD
 								Grow your digital presence!<br />
 								Helping your brand say it’s story to the society about the values and desires it serves!
 							</h2>
@@ -612,6 +818,13 @@
 									business to the next level.
 									Put our marketing and sales tools behind your brand, or business and we will help
 									you share it with the world.
+=======
+								Improve your social strategy by understanding Metrics that Matter
+							</h2>
+							<div class="text">
+								<p>
+									Spend less time on manual tasks and more time connecting with your audience. Billions of conversations take place on social media every day. Those discussions help people to make purchasing decisions and influence public perceptions. Whatever kind of business you’re in, people on social media are talking about your industry, your competitors, and you. If you fail to pay attention, you will miss out on a lot of opportunities. Upview can help you start listening.
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</p>
 							</div>
 						</div>
@@ -628,8 +841,12 @@
 					<div class="col-xl-12">
 						<div class="fact-counter_box">
 							<ul class="clearfix">
+<<<<<<< HEAD
 								<li class="single-fact-counter wow slideInLeft" data-wow-delay="200ms"
 									data-wow-duration="1500ms">
+=======
+								<li class="single-fact-counter wow slideInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									<div class="border-box"></div>
 									<div class="outer-box">
 										<div class="count-outer count-box">
@@ -640,6 +857,7 @@
 										</div>
 									</div>
 								</li>
+<<<<<<< HEAD
 								<li class="single-fact-counter wow slideInLeft" data-wow-delay="500ms"
 									data-wow-duration="1500ms">
 									<div class="border-box"></div>
@@ -647,12 +865,20 @@
 										<div class="count-outer count-box">
 											<span class="count-text" data-speed="3000"
 												data-stop="14">0</span><span>M+</span>
+=======
+								<li class="single-fact-counter wow slideInLeft" data-wow-delay="500ms" data-wow-duration="1500ms">
+									<div class="border-box"></div>
+									<div class="outer-box">
+										<div class="count-outer count-box">
+											<span class="count-text" data-speed="3000" data-stop="14">0</span><span>M+</span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 										</div>
 										<div class="title">
 											<h6 style="color: #FFF;">Pages Crawled</h6>
 										</div>
 									</div>
 								</li>
+<<<<<<< HEAD
 								<li class="single-fact-counter wow slideInRight" data-wow-delay="500ms"
 									data-wow-duration="1500ms">
 									<div class="border-box"></div>
@@ -660,21 +886,36 @@
 										<div class="count-outer count-box">
 											<span class="count-text" data-speed="3000"
 												data-stop="100">0</span><span>K+</span>
+=======
+								<li class="single-fact-counter wow slideInRight" data-wow-delay="500ms" data-wow-duration="1500ms">
+									<div class="border-box"></div>
+									<div class="outer-box">
+										<div class="count-outer count-box">
+											<span class="count-text" data-speed="3000" data-stop="100">0</span><span>K+</span>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 										</div>
 										<div class="title">
 											<h6 style="color: #FFF;">Influencer's Reached</h6>
 										</div>
 									</div>
 								</li>
+<<<<<<< HEAD
 								<li class="single-fact-counter wow slideInRight" data-wow-delay="200ms"
 									data-wow-duration="1500ms">
+=======
+								<li class="single-fact-counter wow slideInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									<div class="border-box"></div>
 									<div class="outer-box">
 										<div class="count-outer count-box">
 											<span class="count-text" data-speed="3000" data-stop="335">0</span>
 										</div>
 										<div class="title">
+<<<<<<< HEAD
 											<h6 style="color: #FFF;">Experts Team</h6>
+=======
+											<h6 style="color: #FFF;">Expert Team</h6>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 										</div>
 									</div>
 								</li>
@@ -690,7 +931,11 @@
 		<section class="working-process-area">
 			<div class="auto-container">
 				<div class="working-process-bg">
+<<<<<<< HEAD
 					<video autoplay muted loop>
+=======
+					<video autoplay muted loop preload="none">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 						<source src="{{ asset('main/assets/images/video/tweet.mp4') }}" type="video/mp4" />
 					</video>
 				</div>
@@ -698,9 +943,13 @@
 					<div class="col-xl-12">
 						<div class="working-process-inner" style="height: 6in;">
 							<div class="title">
+<<<<<<< HEAD
 								<h2 style="color: #ffffff; font-size: 35px; margin-top: -70px;">Stop wasting time & generate awesome
 									marketing campaings,
 									leads & incerease you customer base. Subscribe now !</h2>
+=======
+								<h2 style="color: #ffffff; font-size: 30px; margin-top: -70px;">A social media tool which is all ears into the industry.<br />Start your Upview journey today!</h2>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 							</div>
 						</div>
 					</div>
@@ -723,10 +972,15 @@
 				</div>
 				<div class="row text-right-rtl owl-carousel owl-theme portfolio-carousel ">
 					<!--Start Single blog Style1-->
+<<<<<<< HEAD
+=======
+					@foreach($blogs as $blog)
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 					<div class="col-xl-12 col-lg-12">
 						<div class="single-blog-style1 wow fadeInUp" data-wow-duration="1500ms">
 							<div class="img-holder">
 								<div class="inner">
+<<<<<<< HEAD
 									<img src="{{ asset('main/assets/images/blog/blog-v2-1.jpg') }}" alt="" />
 								</div>
 								<div class="shape">
@@ -822,6 +1076,13 @@
 							<div class="img-holder">
 								<div class="inner">
 									<img src="{{ asset('main/assets/images/blog/blog-v2-3.jpg') }}" alt="" />
+=======
+									@if( !is_null($blog->poster) )
+									<img src="{{ $blog->poster->getFirstMediaUrl() }}" alt="" />
+									@else
+									<img src="{{ asset('main/assets/images/blog/bog.png') }}" alt="" />
+									@endif
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</div>
 								<div class="shape">
 									<img src="{{ asset('main/assets/images/shape/blog-shape-1.png') }}" alt="" />
@@ -829,6 +1090,7 @@
 							</div>
 							<div class="text-holder">
 								<h3 class="blog-title">
+<<<<<<< HEAD
 									<a href="blog-single.html">Blog 3</a>
 								</h3>
 								<div class="text">
@@ -840,6 +1102,16 @@
 								<div class="bottom-box">
 									<div class="btns-box">
 										<a class="btn-one" href="blog-single.html">
+=======
+									<a href="{{ route('main.blog', $blog->id) }}">{{ $blog->title }}</a>
+								</h3>
+								<div class="text">
+									{!! $blog->blog_description !!}
+								</div>
+								<div class="bottom-box">
+									<div class="btns-box">
+										<a class="btn-one" href="{{ route('main.blog', $blog->id) }}">
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 											<div class="border_line">
 												<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
 											</div>
@@ -848,6 +1120,7 @@
 											<span class="txt">Read More<i class="flaticon-plus-1 plusicon"></i></span>
 										</a>
 									</div>
+<<<<<<< HEAD
 									<div class="meta-box">
 										<ul class="meta-info">
 											<li>
@@ -857,10 +1130,13 @@
 											<li><a href="#">Adrian Eli</a></li>
 										</ul>
 									</div>
+=======
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</div>
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<!--End Single blog Style1-->
 
 					<!--Start Single blog Style1-->
@@ -909,13 +1185,22 @@
 						</div>
 					</div>
 					<!--End Single blog Style1-->
+=======
+					@endforeach
+					<!--End Single blog Style1-->
+
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 				</div>
 			</div>
 		</section>
 		<!--End Blog Style1 Area-->
 
 		<!--Start Partner Area-->
+<<<<<<< HEAD
         <!-- to do code once live -->
+=======
+		<!-- to do code once live -->
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 		<!--End Partner Area-->
 
 		<!--Start footer area -->
@@ -956,9 +1241,14 @@
 							<div class="single-footer-widget">
 								<div class="our-company-info">
 									<div class="footer-logo">
+<<<<<<< HEAD
 										<a href="index.html">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
 												height="60px" alt="" /></a>
+=======
+										<a href="{{ route('main.index') }}">
+											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 									</div>
 									<div class="text-box">
 										<p style="font-size: 19px;">
@@ -1000,8 +1290,13 @@
 									<h3>Community</h3>
 								</div>
 								<ul class="footer-widget-links1">
+<<<<<<< HEAD
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="#">Members</a></li>
+=======
+									<li><a href="javascript:void();">Blog</a></li>
+									<li><a href="javascript:void();">Members</a></li>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 								</ul>
 							</div>
 						</div>
@@ -1029,7 +1324,11 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
+<<<<<<< HEAD
 													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+=======
+													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 												</div>
 											</div>
 										</div>
@@ -1039,7 +1338,11 @@
 											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
 											<div class="overlay">
 												<div class="inner">
+<<<<<<< HEAD
 													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+=======
+													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 												</div>
 											</div>
 										</div>
@@ -1097,6 +1400,30 @@
 
 	<!-- thm custom script -->
 	<script src="{{ asset('main/assets/js/custom.js') }}"></script>
+<<<<<<< HEAD
+=======
+
+	<script>
+		$(document).ready(function() {
+			var taglines = [
+				"Our Skills<br /> Your Growth",
+				"Frame Your<br />Social Space",
+				"Edge out<br />the Competion"
+			];
+
+			var bottomTaglines = [
+				"We get you ready for the million watching you.",
+				"We are ready to serve you differently.",
+				"Be where the world is going.",
+				"Creating, rejuvenating, repositioning brands.",
+				"Social Media Beyond Expectation."
+			];
+
+			$("#randomTagLine").html(taglines[Math.floor(Math.random() * taglines.length)]);
+			$("#randomBottomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
+		});
+	</script>
+>>>>>>> 9c3a0a5ede4773de58842b4e9a732431c44d4ff3
 </body>
 
 </html>
