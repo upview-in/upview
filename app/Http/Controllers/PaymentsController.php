@@ -144,7 +144,7 @@ class PaymentsController extends Controller
                 $pg_order = $pg_api->order->create([
                     'receipt'         => 'payment_' . $order->id,
                     'amount'          => $amount,
-                    'currency'        => 'INR',
+                    'currency'        => 'USD',
                 ]);
                 $order->payment_id = $pg_order->id;
                 $order->update();
