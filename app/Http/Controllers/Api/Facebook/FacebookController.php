@@ -18,82 +18,12 @@ class FacebookController extends Controller
         $fb = new FacebookHelper();
         $fb_client = $fb->getFacebookClient();
 
-        $fbUser = $fb_client->get('/me?fields=' . $request->fields)->getBody();
+        $fbUser = $fb_client->get('/me?fields=id,name,birthday,age_range,location,hometown,likes,posts,videos,friends,gender,link,picture')->getBody();
         // dd(response()->json($fbUser, 200));
         return response()->json(json_decode($fbUser, true), 200);
     }
 
     // @TODO Find some workaround to get Facebook Verified account status
-
-    public static function getMineAccountInsightsEx()
-    {
-        $ig = new FacebookHelper();
-        $fb_client = $ig->getFacebookClient();
-
-        $dataArr = [];
-        $MINEUserID = $fb_client->get('/me/accounts')->getGraphEdge();
-        $MINEUserID = $fb_client->get('/' . $MINEUserID[session('PagesIndex_IG', 0)]['id'] . '?fields=Facebook_business_account')->getGraphUser();
-        $MINE = $MINEUserID['Facebook_business_account']['id'];
-        $dataArr['insights'] = $fb_client->get('/' . $MINE . '/insights?metric=impressions,reach&period=days_28')->getBody();
-        $dataArr['profile_views'] = self::getMineAccountProfileViewsEx();
-        //dd(response()->json($igUser, 200));
-        return response()->json(json_encode($dataArr, true), 200);
-    }
-
-    public static function getMineAccountProfileViews($lastDays = '-28 day')
-    {
-        $ig = new FacebookHelper();
-        $fb_client = $ig->getFacebookClient();
-
-        $MINEUserID = $fb_client->get('/me/accounts')->getGraphEdge();
-        $MINEUserID = $fb_client->get('/' . $MINEUserID[0]['id'] . '?fields=facebook_business_account')->getGraphUser();
-        $MINE = $MINEUserID['Facebook_business_account']['id'];
-        $since = new DateTime();
-        $until = new DateTime();
-        $since->modify($lastDays);
-        $igUser = $fb_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since=' . $since->getTimestamp() . '&until=' . $until->getTimestamp())->getBody();
-        $igUser = json_decode($igUser);
-
-        $sum = 0;
-        foreach ($igUser->data[0]->values as $value) {
-            $sum = $sum + $value->value;
-        }
-        $dataArr['profile_views'] = $sum;
-        //dd(response()->json($igUser, 200));
-        return response()->json(($dataArr), 200);
-    }
-
-    public static function getMineAccountProfileViewsEx($lastDays = '-28 day')
-    {
-        $fb = new FacebookHelper();
-        $fb_client = $fb->getFacebookClient();
-
-        $MINEUserID = $fb_client->get('/me/accounts')->getGraphEdge();
-        $MINEUserID = $fb_client->get('/' . $MINEUserID[0]['id'] . '?fields=facebook_business_account')->getGraphUser();
-        $MINE = $MINEUserID['Facebook_business_account']['id'];
-        $since = new DateTime();
-        $until = new DateTime();
-        $since->modify($lastDays);
-        $igUser = $fb_client->get('/' . $MINE . '/insights?metric=profile_views&period=day&since=' . $since->getTimestamp() . '&until=' . $until->getTimestamp())->getBody();
-        $igUser = json_decode($igUser);
-
-        $sum = 0;
-        foreach ($igUser->data[0]->values as $value) {
-            $sum = $sum + $value->value;
-        }
-
-        return $sum;
-    }
-
-    public static function listMineFacebookPages()
-    {
-        $fb = new FacebookHelper();
-        $fb_client = $fb->getFacebookClient();
-
-        return $fb_client->get('/me/accounts')->getBody();
-        //  $fbUser = json_encode($fbUser, true);
-    }
-
     public static function getFacebookPageData()
     {
         $fb = new FacebookHelper();
@@ -117,14 +47,14 @@ class FacebookController extends Controller
         return $dataArr;
     }
 
-    public static function getFacebookPagesInsights(GetFBPageInsights $request)
+    public static function getFacebookPageInsights(GetFBPageInsights $request)
     {
         $fb = new FacebookHelper();
         $fb_client = $fb->getFacebookClient();
         $fbUser = $fb_client->get('/me/accounts')->getBody();
         $fbUser = json_decode($fbUser, true);
-        $fbPageID = $fbUser['data'][session('PagesIndex_FB', 1)]['id'];
-        $fbUser = $fb_client->get('/' . $fbPageID . '?fields=access_token,name')->getGraphUser();
+        $fbPageID = $fbUser['data'][session('PagesIndex_FB', 0)]['id'];
+        $fbUser = $fb_client->get('/' . $fbPageID . '?fields=access_token')->getGraphUser();
         $fb_client->setDefaultAccessToken($fbUser['access_token']);
 
         $metrics = [];
@@ -134,24 +64,24 @@ class FacebookController extends Controller
         $metrics['day'] = 'page_tab_views_logout_top,page_places_checkins_by_age_gender,page_places_checkins_by_locale,page_places_checkins_by_country,page_fans_online,page_fans_online_per_day,page_fan_adds_by_paid_non_paid_unique,page_actions_post_reactions_total,page_fans,page_fans_locale,page_fans_city,page_fans_country,page_fans_gender_age,page_fan_adds,page_fans_by_like_source,page_fans_by_like_source_unique,page_fan_removes,page_fans_by_unlike_source_unique,page_video_view_time,page_views_logout,page_views_external_referrals';
 
         $responseData = [];
-        $responseData['days_28'] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics['days_28'] . '&period=days_28')->getBody());
-        $responseData['week'] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics['week'] . '&period=week')->getBody());
-        $responseData['lifetime'] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics['lifetime'] . '&period=lifetime')->getBody());
-        $responseData['day'] = json_decode($fb_client->get($request->id . '/insights?metric=' . $metrics['day'] . '&period=day')->getBody());
+        $responseData['days_28'] = json_decode($fb_client->get($fbPageID . '/insights?metric=' . $metrics['days_28'] . '&period=days_28')->getBody());
+        $responseData['week'] = json_decode($fb_client->get($fbPageID . '/insights?metric=' . $metrics['week'] . '&period=week')->getBody());
+        $responseData['lifetime'] = json_decode($fb_client->get($fbPageID . '/insights?metric=' . $metrics['lifetime'] . '&period=lifetime')->getBody());
+        $responseData['day'] = json_decode($fb_client->get($fbPageID . '/insights?metric=' . $metrics['day'] . '&period=day')->getBody());
 
         return response()->json(($responseData), 200);
     }
 
-    public static function getFacebookPagesInsightsEx(GetMineAccountDetails $request)
+    public static function getFacebookPageDetails(GetMineAccountDetails $request)
     {
         $fb = new FacebookHelper();
         $fb_client = $fb->getFacebookClient();
         $fbUser = $fb_client->get('/me/accounts')->getBody();
         $fbUser = json_decode($fbUser, true);
-        $fbPageID = $request->id;
+        $fbPageID = $fbUser['data'][session('PagesIndex_FB', 0)]['id'];
         $fbUser = $fb_client->get('/' . $fbPageID . '?fields=access_token')->getGraphUser();
         $fb_client->setDefaultAccessToken($fbUser['access_token']);
-        $fbUser = $fb_client->get($fbPageID . '?fields=' . $request->fields)->getBody();
+        $fbUser = $fb_client->get($fbPageID . '?fields=picture,name,about,bio,business,category,category_list,country_page_likes,description,engagement,followers_count,general_info,is_published,link,location,members,cover,fan_count,phone,preferred_audience,is_community_page,new_like_count,overall_star_rating,page_token,verification_status,feed,published_posts,videos,visitor_posts,tagged,posts')->getBody();
         $fbUser = json_decode($fbUser);
 
         return response()->json(($fbUser), 200);
@@ -162,7 +92,7 @@ class FacebookController extends Controller
 
         // try {
 
-        //     $base_url = 'https://www.Facebook.com/george_mcreary'. '' . '/' . '?__a=1';
+        //     $base_url = 'https://www.facebook.com/george_mcreary'. '' . '/' . '?__a=1';
 
         //     $response = file_get_contents($base_url);
         //    // $responseArr = json_decode($response);

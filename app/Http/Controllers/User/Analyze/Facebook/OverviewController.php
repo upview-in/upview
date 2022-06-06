@@ -24,36 +24,10 @@ class OverviewController extends Controller
             switch ($request->part) {
                 case 'RefreshPages':
                     return response()->json((FacebookController::getFacebookPageData()), 200);
-                    break;
-
-                case 'Analytics':
-                    if ($request->has(['fields'])) {
-                        $data = [];
-                        $response = app(FacebookController::class)->getMINEAccountInsightsEx(new GetMineAccountDetails($request->all(['fields'])))->getData();
-
-                        $data['chartData'][0] = ['This title lmfao', 'Impressions', 'Reach', 'Views'];
-                        $data['impressions'] = $response->data[0]->values[0]->value ?? 0;
-                        $data['reach'] = $response->data[1]->values[0]->value ?? 0;
-                        // $data['profile_views']['dayBeforeYest'] = $response->data[2]->values[0]->value;
-                        // $data['profile_views']['yest'] = $response->data[2]->values[1]->value;
-
-                        $response = app(InstagramController::class)->getMineAccountProfileViews()->getData();
-                        $data['profile_views'] = $response->profile_views;
-                        $data['chartData'][1] = ['Insights', 0, 0, 0];
-                        $data['chartData'][2] = ['Insights', $data['impressions'], $data['reach'], $data['profile_views']];
-                        $data['status'] = 200;
-
-                        return response()->json(collect($data), 200);
-                    }
-
-                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-
-                    break;
 
                     case 'PageAnalytics':
-                        if ($request->has(['fields'])) {
                             $data = [];
-                            $response = app(FacebookController::class)->getFacebookPagesInsightsEx(new GetMineAccountDetails($request->all(['id', 'fields'])))->getData();
+                            $response = app(FacebookController::class)->getFacebookPageDetails(new GetMineAccountDetails($request->all()))->getData();
 
                             $data['name'] = $response->name ?? '-';
                             $data['picture'] = $response->picture ?? ['data'=>['url'=>"{{ asset('images/no-image.jpg') }}"]];
@@ -84,17 +58,12 @@ class OverviewController extends Controller
                             $data['status'] = 200;
 
                             return response()->json(collect($data), 200);
-                        }
-
-                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-
-                    break;
 
                     case 'PageInsights':
                         if ($request->has(['id'])) {
                             try {
                                 $data = [];
-                                $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
+                                $response = app(FacebookController::class)->getFacebookPageInsights(new GetFBPageInsights($request->all(['id'])))->getData();
                                 foreach ($response as $fbData) {
                                     foreach ($fbData->data as $fb) {
                                         $data[$fb->name]['data'] = $fb->values[0]->value ?? 0;
@@ -364,7 +333,7 @@ class OverviewController extends Controller
                         // return response()->json(['status' => 400, 'message' => 'Missing required fields', "Error"=> print_r(debug_backtrace())]);
                 case 'accountDetails':
                     $data = [];
-                    $response = app(FacebookController::class)->getMineAccountData(new GetMineAccountDetails($request->all(['fields'])))->getData();
+                    $response = app(FacebookController::class)->getMineAccountData(new GetMineAccountDetails($request->all()))->getData();
 
                     $data['id'] = $response->id ?? '0';
                     $data['name'] = $response->name ?? 'N/A';
