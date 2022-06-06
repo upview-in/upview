@@ -1,0 +1,86 @@
+
+
+/*** 
+=============================================
+    Faq Style1 Area Css
+=============================================
+***/
+.faq-style1-area {
+    position: relative;
+    display: block;
+    background: #ffffff;
+    padding: 120px 0 95px;
+}
+.faq-style1-content {
+    position: relative;
+    display: block;
+}
+
+
+.accordion-box {
+    position: relative;
+    display: block;
+}
+.accordion-box .accordion {
+    position: relative;
+    display: block;
+    padding: 45px 50px 45px;
+    box-shadow: 0px 5px 24px 6px rgba(0, 0, 0, 0.06);
+    margin-bottom: 25px;
+}
+.accordion-box .accordion .accord-btn {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: all 500ms ease;
+}
+.accordion-box .accordion .accord-btn h4 {
+    color: #222222;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 700;
+    text-transform: none;
+    transition: all 500ms ease;
+}
+
+.accordion-box .accordion .accord-btn::after {
+    font-family: flaticon !important;
+    position: absolute;
+    content: "\f12b";
+    top: 50%;
+    right: 0px;
+    color: #222222;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 400;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: all 500ms ease 0s;
+}
+.accordion-box .accordion .accord-btn.active h4 {
+    position: relative;
+    color: var(--thm-primary);
+}
+
+.accordion-box .accordion .accord-btn.active:after{
+    content: "\f10d";
+    color: var(--thm-primary);
+    opacity: 1;
+}
+.accordion-box .accordion .accord-content {
+    position: relative;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 0;
+    padding-right: 0px;
+    display: none;
+    z-index: 1;
+}
+.accordion-box .accordion .accord-content.collapsed {
+    display: block;
+}
+.accordion-box .accordion .accord-content p {
+    margin: 0;
+}
+

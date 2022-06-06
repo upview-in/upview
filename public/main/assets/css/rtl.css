@@ -1,0 +1,393 @@
+
+
+/** template rtl css **/
+
+.page_direction{
+    display: none;
+}
+
+.rtl {
+  direction: rtl; 
+}
+
+.ltr {
+  direction: ltr; 
+}
+
+.demo-rtl{
+  position: fixed;
+  top: 300px;
+  left: 0;
+  z-index: 9999;
+}
+
+button.rtl{
+  background: rgba(0, 0, 0, 0.90);
+  display: block;
+  text-indent: inherit;
+  font-size: 12px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-weight: 700;
+  margin: 0px;
+  color: #fff !important;
+}
+
+.demo-ltr{
+  position: fixed;
+  top: 300px;
+  left: auto;
+  right: 0;
+  z-index: 9999;
+}
+
+button.ltr {
+  background: rgba(0, 0, 0, 0.90);
+  display: block;
+  text-indent: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin: 0px;
+  color: #fff !important;
+}
+
+.boxed_wrapper.ltr .demo-rtl{
+  display: block;
+}
+.boxed_wrapper.ltr .demo-ltr{
+  display: none;
+}
+.boxed_wrapper.rtl .demo-rtl{
+  display: none;
+}
+.boxed_wrapper.rtl .demo-ltr{
+  display: block;
+}
+
+.rtl .pull-left{
+  float: right;
+}
+.rtl .pull-right{
+  float: left;
+}
+
+
+
+
+
+
+.rtl .main-menu {
+    float: right;
+}
+.rtl .main-menu .navigation>li {
+    float: right;
+}
+.rtl .main-menu .navigation> li:first-child {
+    margin-right: 0px;
+}
+.rtl .main-menu .navigation> li:last-child {
+    margin-right: 40px;
+}
+.rtl .main-menu .navigation> li> ul {
+    left: auto;
+    right: inherit;
+}
+.rtl .main-menu .navigation> li> ul> li> a {
+    text-align: right;
+}
+.rtl .main-menu .navigation> li> ul> li> a:before {
+    display: none;
+}
+.rtl .main-menu .navigation> li> ul> li> ul> li a:before {
+    display: none;
+}
+.rtl .main-menu .navigation> li> ul> li.dropdown> a:after {
+    display: none;
+}
+.rtl .main-menu .navigation> li> ul> li> ul {
+    left: auto;
+    right: 100%;
+}
+.rtl .main-menu .navigation> li> ul> li> ul> li> a {
+    text-align: right;
+}
+.rtl .sticky-header .main-menu .navigation> li {
+    float: right;
+}
+
+
+.rtl .main-menu .navigation> li> .megamenu li> a {
+	text-align: right;
+}
+.rtl .main-menu .navigation> li> .megamenu li> a:hover {
+    padding-left: 0;
+}
+.rtl .main-menu .navigation> li> .megamenu li:hover a:before{
+    width: 0;
+}
+
+
+
+.rtl .mobile-menu{
+  text-align: right;
+}
+.rtl .mobile-menu .nav-logo{
+  text-align: right;
+}
+.rtl .mobile-menu .navigation li > a:before{
+  left: inherit;
+  right: 0px;
+}
+.rtl .mobile-menu .navigation li.dropdown .dropdown-btn{
+  right: inherit;
+  left: 6px;
+  transform: rotate(90deg);
+}
+.rtl .mobile-menu .navigation li.dropdown .dropdown-btn.open{
+  transform: rotate(0deg);
+}
+
+
+
+.rtl .scroll-top {
+    left: 20px;
+    right: auto;
+}
+.rtl .switcher .switch_btn {
+    top: 0px;
+    right: 0px;
+}
+.rtl .switcher .switch_menu {
+    left: -240px;
+}
+
+
+.rtl .banner-carousel{
+    direction: ltr;
+    text-align: right;
+}
+.rtl .testimonial-style1_carousel{
+    direction: ltr; 
+    text-align: right;  
+}
+.rtl .event-carousel{
+  direction: ltr; 
+  text-align: right;  
+}
+.rtl .partner-carousel{
+  direction: ltr; 
+  text-align: right;    
+}
+
+
+
+.rtl .text-right-rtl{
+    text-align: right;
+}
+
+
+
+
+
+
+/*________________Header_______________ */
+
+
+
+
+.rtl .header-right_buttom:before {
+  left: -100000000px;
+  right: auto;
+}
+.rtl .header-right_buttom {
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-right: 100px;
+  padding-right: 50px;
+}
+.rtl .header-right_buttom a span::before {
+  padding-right: 0px;
+  padding-left: 7px;
+}
+
+
+
+.rtl .header-right_buttom a::before {
+  display: none;
+}
+.rtl .header-right_buttom a::after {
+  display: none;
+}
+
+
+.rtl .about-style1-content-box {
+  padding-left: 0px;
+  padding-right: 90px;
+}
+.rtl .about-style1_image_box .shape {
+  display: none;
+}
+.rtl .about-style1_image_box {
+  max-width: 100%;
+  margin-right: 0;
+}
+
+
+.rtl .single-project-style1 .text-holder .readmore a i:before {
+  padding-left: 0px;
+  padding-right: 6px;
+  transform: rotate(180deg);
+}
+
+
+
+
+
+/*** 
+=============================================
+    Inner Page Css
+=============================================
+***/
+.rtl .single-blog-style1 .text-holder .meta-info li {
+    float: right;
+}
+.rtl .single-blog-style1 .right_box .readmore {
+  text-align: left;
+}
+.rtl .single-blog-style1 .right_box .readmore a i:before {
+  padding-left: 0;
+  padding-right: 7px;
+  transform: rotate(180deg);
+}
+
+
+.rtl .single-footer-widget .instagram li {
+  float: right;
+}
+.rtl .footer-contact-info .text {
+  padding-left: 0px;
+  padding-right: 20px;
+}
+
+
+.rtl .header-contact-info li .title {
+  padding-left: 0px;
+  padding-right: 10px;
+}
+
+
+.rtl .main-slider.style2 .content .btns-box {
+  justify-content: flex-end;
+}
+
+
+.rtl .subscribe-form input[type="email"] {
+  padding-left: 70px;
+}
+.rtl .subscribe-form button {
+  right: auto;
+  left: 0;
+}
+.rtl .subscribe-box p .dot {
+  margin-right: 0px;
+  margin-left: 15px;
+}
+
+
+.rtl .btn-one .txt i.arrow1 {
+  position: relative;
+  display: inline-block;
+  transform: rotate(180deg);
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-left: 10px;
+}
+
+
+
+.rtl .single-testimonial-style1 .client-info {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.rtl .single-testimonial-style1 .client-info .client_name {
+  padding-left: 0px;
+  padding-right: 20px;
+}
+
+
+
+
+
+
+
+
+
+/*** 
+=============================================
+    RTL Page Responsive Css
+=============================================
+***/
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) { 
+ 
+
+
+
+
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+@media only screen and (max-width: 991px) and (min-width: 768px){
+        
+.rtl .sidebar-wrapper {
+    float: right;
+}
+    
+    
+
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+@media only screen and (max-width: 767px) { 
+
+     
+.rtl .sidebar-wrapper {
+    float: right;
+}  
+    
+
+    
+
+
+   
+    
+    
+}

@@ -1,0 +1,260 @@
+
+
+
+/*** 
+=============================================
+   Testimonial Style1 Area Css
+=============================================
+***/
+.testimonial-style1-area{
+    position: relative;
+    display: block;
+    background: var(--thm-base);
+    padding: 111px 0 120px;
+    z-index: 1;
+}
+.testimonial-style1-area.pdbottom240{
+    padding-bottom: 240px;
+}
+
+
+.testimonial-style1_title{
+    position: relative;
+    display: block;
+    padding-left: 200px;
+    padding-bottom: 67px;
+}
+.testimonial-style1_title h2{
+    font-size: 72px;
+    line-height: 1em;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px #1f2026;
+}
+.testimonial-style1_title h2 span{
+    color: var(--thm-black);
+    -webkit-text-stroke: 0px #ffffff;
+}
+.testimonial-style1-content{
+    position: relative;
+    display: block;
+    padding-left: 200px;
+    padding-right: 170px;
+}
+
+.single-testimonial-style1{
+    position: relative;
+    display: block;
+    padding-left: 50px;
+}
+.single-testimonial-style1 .quote-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.single-testimonial-style1 .quote-box .quote-border{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.single-testimonial-style1 .quote-box span:before {
+    position: relative;
+    display: inline-block;
+    color: var(--thm-black);
+    font-size: 30px;
+    line-height: 30px;
+}
+
+
+.single-testimonial-style1 .text-holder{
+    position: relative;
+    display: block;
+    padding-top: 18px;
+    padding-left: 20px;
+}
+.single-testimonial-style1 .text-holder .text{
+    position: relative;
+    display: block;
+    padding: 0 0 48px;
+}
+.single-testimonial-style1 .text-holder .text h3{
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: 400;
+    margin: 0 0 13px;
+}
+
+.single-testimonial-style1 .text-holder .client-info{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.single-testimonial-style1 .text-holder .client-info .img-box{
+    position: relative;
+    display: block;
+    width: 70px;
+}
+.single-testimonial-style1 .text-holder .client-info .img-box img{
+    width: 100%;
+    border-radius: 50%;
+    filter: grayscale(1.0);
+}
+.single-testimonial-style1 .text-holder .inner-title{
+    position: relative;
+    display: block;
+    padding-left: 20px;
+}
+.single-testimonial-style1 .text-holder .inner-title h4{
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0 0 3px;
+}
+.single-testimonial-style1 .text-holder .inner-title h6{
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+
+.testimonial-style1-carousel.owl-carousel .owl-dots {
+    position: absolute;
+    right: -175px;
+    bottom: 30px;
+    line-height: 0;
+}
+.testimonial-style1-carousel.owl-carousel .owl-dots .owl-dot {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 5px;
+    border: 0px solid transparent;
+    margin: 0px 5px;
+    padding: 0px;
+    background: var(--thm-black);
+    transition: all 100ms linear;
+    transition-delay: 0.1s;
+}
+.testimonial-style1-carousel.owl-carousel .owl-dots .owl-dot.active{
+    background: #ffffff;
+}
+
+
+
+
+/*** 
+=============================================
+   Testimonial Style2 Area Css
+=============================================
+***/
+.testimonial-style2-area{
+    position: relative;
+    display: block;
+    background: #f3f3f4;
+    padding: 120px 0 120px;
+    z-index: 1;
+}
+
+.testimonial-style2-area .sec-title {
+    padding-bottom: 64px;
+}
+.testimonial-style2-content{}
+
+.single-testimonial-style2-outer-box{
+    position: relative;
+    display: block;
+    background: #ffffff;
+    padding: 70px 30px 70px;
+}
+.single-testimonial-style2 .quote-box span:before {
+    color: var(--thm-base);
+}
+.single-testimonial-style2 .text-holder {
+    padding-top: 21px;
+}
+.single-testimonial-style1 .text-holder .text {
+    padding: 0 0 29px;
+}
+.single-testimonial-style2 .text-holder .text h3 {
+    font-size: 18px;
+    line-height: 32px;
+    margin: 0 0 13px;
+}
+.single-testimonial-style2 .text-holder .inner-title h4 {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 0 5px;
+}
+.single-testimonial-style2 .text-holder .inner-title h6 {
+    color: #777777;
+}
+
+
+
+.testimonial-style2-carousel.owl-carousel .owl-dots {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 0 23px;
+    margin-top: 70px !important;
+}
+.testimonial-style2-carousel.owl-carousel .owl-dots:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #ffffff;
+    content: "";
+    width: 150px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+.testimonial-style2-carousel.owl-carousel .owl-dots .owl-dot {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 5px;
+    border: 0px solid transparent;
+    margin: 0px 5px;
+    padding: 0px;
+    background: var(--thm-black);
+    transition: all 100ms linear;
+    transition-delay: 0.1s;
+}
+.testimonial-style2-carousel.owl-carousel .owl-dots .owl-dot.active{
+    background: var(--thm-base);
+}
+
+
+
+/*** 
+=============================================
+   Testimonial Page One Css
+=============================================
+***/
+.testimonial-page-one{
+    position: relative;
+    display: block;
+    padding-bottom: 90px;
+}
+.testimonial-page-one .row {
+    justify-content: center;
+}
+.single-testimonial-style2-outer-box.marbtm30{
+    margin-bottom: 30px;
+}
+
+
+

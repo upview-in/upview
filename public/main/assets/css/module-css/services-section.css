@@ -1,0 +1,223 @@
+/*** 
+=============================================
+    service Style1 Area Css
+=============================================
+***/
+.service-style1-area{
+    position: relative;
+    display: block;
+    padding: 115px 0 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+.service-style1-area_bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    z-index: -1;    
+}
+.service-style1-area_bg::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #1f2026;
+    opacity: .80; 
+}
+
+.service-style1-area .shape1{
+    position: absolute;
+    top: -20px;
+    left: -10px;
+}
+.service-style1-area .shape2{
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+}
+
+.single-service-style1{
+    position: relative;
+    display: block;
+    padding-left: 70px;
+    margin-bottom: 111px;
+}
+.single-service-style1 .icon{
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 70px;    
+
+}
+.single-service-style1 .icon img{
+    position: relative;
+    display: inline-block;
+    -webkit-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+.single-service-style1:hover .icon img{
+    transform: rotateY(180deg)
+}
+
+.single-service-style1 .title{
+    position: relative;
+    display: block;
+    padding-left: 30px;
+}
+.single-service-style1 .title h3{
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    text-transform: uppercase;    
+}
+.single-service-style1 .title h3 a{
+    color: #ffffff;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+.single-service-style1 .title h3 a:hover{
+    color: var(--thm-base);
+}
+
+.single-service-style1 .title .inner-text{
+    position: relative;
+    display: block;
+    margin-top: 21px;
+    padding-left: 20px;
+}
+.single-service-style1 .title .inner-text:before{
+    position: absolute;
+    top: 9px;
+    left: 0;
+    width: 10px;
+    height: 4px;
+    background: var(--thm-base);
+    content: "";
+}
+.single-service-style1 .title .inner-text p{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    margin: 0;
+}
+
+
+
+/*** 
+=============================================
+    Service Style2 Area Css
+=============================================
+***/
+.service-style2-area{
+    position: relative;
+    overflow: hidden;
+    display: block;
+    padding: 120px 0 5px;
+    background: #f3f3f4;
+    z-index: 1;
+}
+.service-style2-area .sec-title{
+    padding-bottom: 60px;
+}
+.service-style2-area .single-service-style1 .title h3 a {
+    color: var(--thm-black);
+}
+.service-style2-area .single-service-style1 .title h3 a:hover {
+    color: var(--thm-base);
+}
+
+
+
+/*** 
+=============================================
+    Service Style3 Area Css
+=============================================
+***/
+.service-style3-area{
+    position: relative;
+    display: block;
+    background: #f3f3f4;
+    padding: 120px 0 90px;
+}
+.service-style3-area.pdtop0{
+    padding-top: 0;
+}
+
+
+.single-service-style3{
+    position: relative;
+    display: block;
+    background: #ffffff;
+    padding: 60px 30px 52px;
+    margin-bottom: 30px;
+    transition: all 0.1s ease-in-out 0.1s;
+}
+.single-service-style3:hover{
+    transform: translateY(-10px);
+    transition: all 0.5s ease-in-out 0.1s;
+}
+
+.single-service-style3 .icon{
+    position: relative;
+    display: block;
+    margin-bottom: 42px;
+}
+.single-service-style3 .icon img{
+    position: relative;
+    display: inline-block;
+    width: auto;
+    transition: all 0.5s ease-in-out 0.1s;
+}
+.single-service-style3:hover .icon img{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out 0.1s;
+}
+
+.single-service-style3 .title{
+    position: relative;
+    display: block;
+}
+.single-service-style3 .title h3{
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.single-service-style3 .title h3 a{
+    color: #1f2026;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+.single-service-style3:hover .title h3 a{
+    color: var(--thm-base);
+}
+.single-service-style3 .title .border-box {
+    position: relative;
+    display: block;
+    background: var(--thm-base);
+    width: 10px;
+    height: 4px;
+    margin: 0 auto;
+}
+.single-service-style3 .title .inner-text{
+    position: relative;
+    display: block;
+    margin-top: 23px;
+}
+.single-service-style3 .title .inner-text p{
+    margin: 0;
+}
+
+
+
+
