@@ -95,7 +95,7 @@ class OverviewController extends Controller
             $indexEstMinWatched = Functions::getIndexFromHeaderName($ChannelAnalyticsResponse->columnHeaders, 'estimatedMinutesWatched');
 
             $OverviewStatisticsChartData = [];
-            $OverviewStatisticsChartData[] = ['Date', 'Subscriber', 'Views', 'Likes', 'Shares', 'Comments', 'Est. Min. Watched', 'Avg. View Duration'];
+            $OverviewStatisticsChartData[] = ['Date', 'Subscribers', 'Views', 'Likes', 'Shares', 'Comments', 'Est. Min. Watched', 'Avg. View Duration'];
 
             foreach ($ChannelAnalyticsResponse->rows as $key => $value) {
                 $SubscriberGained += $value[$indexSubscribersGained];

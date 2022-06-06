@@ -456,6 +456,7 @@
 
                             //Charts
                             //Country insights
+                            console.log("overview ",data.chartData.page_impressions_by_country_unique);
                             drawChart($('#PageImpressionsByCountryChart')[0], data.chartData.page_impressions_by_country_unique, 'Geo', {
                                 tooltip: { isHtml: true },
                                 colorAxis: { colors: ['#a6c5f7','#3277e6', '#075ce6'] }
@@ -472,19 +473,19 @@
                             }, {
                                 explorer: ""
                             });
-                            $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
+                            // $("#PageImpressionsByLocaleChartTooltip").attr('title', nl2br(data.page_impressions_by_locale_unique.desc));
 
-                            //Page Impression by Frequency chart
-                            drawChart($('#PageImpressionsByFrequencyChart')[0], data.chartData.page_impressions_frequency_distribution, 'pie', {
-                                pieHole: 0.5,
-                                chartArea: {
-                                    top: 10,
-                                    bottom: 60,
-                                },
-                            }, {
-                                explorer: ""
-                            });
-                            $("#PageImpressionsByFrequencyChartTooltip").attr('title', nl2br(data.page_impressions_frequency_distribution.desc));
+                            // //Page Impression by Frequency chart
+                            // drawChart($('#PageImpressionsByFrequencyChart')[0], data.chartData.page_impressions_frequency_distribution, 'pie', {
+                            //     pieHole: 0.5,
+                            //     chartArea: {
+                            //         top: 10,
+                            //         bottom: 60,
+                            //     },
+                            // }, {
+                            //     explorer: ""
+                            // });
+                            // $("#PageImpressionsByFrequencyChartTooltip").attr('title', nl2br(data.page_impressions_frequency_distribution.desc));
 
                             //Page Impression by viral Frequency chart
                             drawChart($('#PageImpressionsByViralFrequencyChart')[0], data.chartData.page_impressions_viral_frequency_distribution, 'pie', {

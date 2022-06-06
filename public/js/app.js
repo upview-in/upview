@@ -245,6 +245,7 @@ function viewFullScreenDiv(__id) {
 }
 
 function drawChart(eleId, data, type, options = {}, removeOptions = {}) {
+    console.log("Here",data);
     if (data.length <= 1) {
         $("#" + eleId.id + "ContextMenu").remove();
         $('#' + eleId.id).html(noData);
