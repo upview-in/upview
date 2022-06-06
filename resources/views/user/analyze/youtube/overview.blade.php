@@ -1,5 +1,5 @@
 @section('path-navigation')
-<a class="breadcrumb-item" href="#">Analayze</a>
+<a class="breadcrumb-item" href="#">Analyze</a>
 <a class="breadcrumb-item" href="#">YouTube</a>
 <span class="breadcrumb-item active">Overview</span>
 @endsection
