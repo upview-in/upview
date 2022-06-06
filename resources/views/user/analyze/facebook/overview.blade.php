@@ -1,5 +1,5 @@
 @section('path-navigation')
-    <a class="breadcrumb-item" href="#">Analayze</a>
+    <a class="breadcrumb-item" href="#">Analyze</a>
     <a class="breadcrumb-item" href="#">Facebook</a>
     <span class="breadcrumb-item active">Overview</span>
 @endsection
@@ -372,7 +372,7 @@
 
             function loadPageInsights(pageID) {
 
-                __BS(["FBPageInsights", "GraphicalOverview", "ImpressionLocale", "ImpressionFrequence", "ImpressionFrequenceVira", "ImpressionPNP", "ImpressionProfileByTab"]);
+                __BS(["FBPageInsights", "GraphicalOverview", "ImpressionLocale", "ImpressionFrequence", "ImpressionFrequenceVira", "ImpressionPNP"]);
 
                 $.ajax({
                     data: {
