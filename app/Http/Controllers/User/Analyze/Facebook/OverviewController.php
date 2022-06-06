@@ -90,226 +90,278 @@ class OverviewController extends Controller
 
                     break;
 
-                case 'PageInsights':
-                    if ($request->has(['id'])) {
-                        try {
-                            $data = [];
-                            $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
-                            foreach ($response as $fbData) {
-                                foreach ($fbData->data as $fb) {
-                                    $data[$fb->name]['data'] = $fb->values[0]->value ?? 0;
-                                    $data[$fb->name]['desc'] = $fb->description ?? '';
-                                }
-                            }
-                            $data['status'] = 200;
-
-                            //Chart Data
-                            $tempData = [];
-                            $tempData[] = ['Country', 'Impressions'];
-                            foreach ($data['page_impressions_by_country_unique']['data'] as $country=>$value) {
-                                $_temp = [];
-                                $_temp[0] = Locale::getDisplayRegion('-' . $country, 'en');
-                                $_temp[1] = $value ?? 0;
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_impressions_by_country_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Locale', 'Impressions'];
-                            foreach ($data['page_impressions_by_locale_unique']['data'] as $locale=>$value) {
-                                $_temp = [];
-
-                                switch ($locale) {
-                                    case 'en_GB': $_temp[0] = 'English (UK)';
-                                                break;
-                                    case 'es_LA': $_temp[0] = 'Spanish (Latin America)';
-                                                break;
-                                    default: $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
+                    case 'PageInsights':
+                        if ($request->has(['id'])) {
+                            try {
+                                $data = [];
+                                $response = app(FacebookController::class)->getFacebookPagesInsights(new GetFBPageInsights($request->all(['id'])))->getData();
+                                foreach ($response as $fbData) {
+                                    foreach ($fbData->data as $fb) {
+                                        $data[$fb->name]['data'] = $fb->values[0]->value ?? 0;
+                                        $data[$fb->name]['desc'] = $fb->description ?? '';
+                                    }
                                 }
 
-                                $_temp[1] = $value ?? 0;
+                                //Chart Data
 
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_impressions_by_locale_unique'] = $tempData;
+                                $tempData = [];
+                                $tempData[] = ['Country', 'Impressions'];
+                                $desc = $data['chartData']['page_impressions_by_country_unique']['desc'] ?? [];
 
-                            $tempData = [];
-                            $tempData[] = ['Age', 'Male', 'Female'];
-                            foreach ($data['page_impressions_by_age_gender_unique']['data'] as $demo => $value) {
-                                $_temp = [];
-                                $_arr = explode('.', $demo);
-                                $_temp[0] = $_arr[1];
-
-                                if ($_arr[0] === 'M') {
-                                    $_temp[$_temp[0]]['Male'] = $value;
-                                } else {
-                                    $_temp[$_temp[0]]['Female'] = $value;
+                                if (!empty($data['page_impressions_by_country_unique']['data'])) {
+                                    foreach ($data['page_impressions_by_country_unique']['data'] as $country=>$value) {
+                                        $_temp = [];
+                                        $_temp[0] = Locale::getDisplayRegion('-' . $country, 'en');
+                                        $_temp[1] = $value ?? 0;
+                                        $tempData[] = $_temp;
+                                    }
                                 }
-                                $tempData = array_merge_recursive($tempData, $_temp);
+                                $data['chartData']['page_impressions_by_country_unique'] = $tempData;
+                                $data['page_impressions_by_country_unique']['desc'] = $desc;
+
+                                $tempData = [];
+                                $tempData[] = ['Locale', 'Impressions'];
+                                $desc = $data['page_impressions_by_locale_unique']['desc'] ?? [];
+
+                                if (!empty($data['page_impressions_by_locale_unique']['data'])) {
+                                    foreach ($data['page_impressions_by_locale_unique']['data'] as $locale=>$value) {
+                                        $_temp = [];
+
+                                        switch ($locale) {
+                                            case 'en_GB': $_temp[0] = 'English (UK)';
+                                                        break;
+                                            case 'es_LA': $_temp[0] = 'Spanish (Latin America)';
+                                                        break;
+                                            default: $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
+                                        }
+
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+
+                                $data['chartData']['page_impressions_by_locale_unique'] = $tempData;
+                                $data['page_impressions_by_locale_unique']['desc'] = $desc;
+
+                                // $tempData = [];
+                                // $tempData[] = ['Age', 'Male', 'Female'];
+                                // foreach ($data['page_impressions_by_age_gender_unique']['data'] as $demo => $value) {
+                                //     $_temp = [];
+                                //     $_arr = explode('.', $demo);
+                                //     $_temp[0] = $_arr[1];
+
+                                //     if ($_arr[0] === 'M') {
+                                //         $_temp[$_temp[0]]['Male'] = $value;
+                                //     } else {
+                                //         $_temp[$_temp[0]]['Female'] = $value;
+                                //     }
+                                //     $tempData = array_merge_recursive($tempData, $_temp);
+                                // }
+
+                                // $data['chartData']['page_impressions_by_age_gender_unique'] = $tempData;
+
+                                $tempData = [];
+                                $tempData[] = ['Number', 'Impressions'];
+                                $desc = $data['page_impressions_frequency_distribution']['desc'] ?? [];
+
+                                if (!empty($data['page_impressions_frequency_distribution']['data'])) {
+                                    foreach ($data['page_impressions_frequency_distribution']['data'] as $number => $value) {
+                                        $_temp = [];
+                                        $_temp[0] = $number;
+                                        $_temp[1] = $value;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_impressions_frequency_distribution'] = $tempData;
+                                $data['page_impressions_frequency_distribution']['desc'] = $desc;
+
+                                $tempData = [];
+                                $tempData[] = ['Number', 'Viral Impressions'];
+                                $desc = $data['page_impressions_viral_frequency_distribution']['desc'] ?? [];
+
+                                if (!empty($data['page_impressions_viral_frequency_distribution']['data'])) {
+                                    foreach ($data['page_impressions_viral_frequency_distribution']['data'] as $number => $value) {
+                                        $_temp = [];
+                                        $_temp[0] = $number;
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_impressions_viral_frequency_distribution'] = $tempData;
+                                $data['page_impressions_viral_frequency_distribution']['desc'] = $desc;
+
+                                $tempData = [];
+                                $tempData[] = ['Number', 'Impressions'];
+                                $desc = $data['page_posts_impressions_frequency_distribution']['desc'] ?? [];
+
+                                if (!empty($data['page_posts_impressions_frequency_distribution']['data'])) {
+                                    foreach ($data['page_posts_impressions_frequency_distribution']['data'] as $number => $value) {
+                                        $_temp = [];
+                                        $_temp[0] = $number;
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_posts_impressions_frequency_distribution'] = $tempData;
+                                $data['page_posts_impressions_frequency_distribution']['desc'] = $desc;
+
+                                $tempData = [];
+                                $tempData[] = ['Metric', 'Impressions'];
+                                $desc = $data['page_video_views_by_paid_non_paid']['desc'] ?? [];
+
+                                if (!empty($data['page_video_views_by_paid_non_paid']['data'])) {
+                                    foreach ($data['page_video_views_by_paid_non_paid']['data'] as $metric => $value) {
+                                        $_temp[0] = $metric;
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_video_views_by_paid_non_paid'] = $tempData;
+                                $data['page_video_views_by_paid_non_paid']['desc'] = $desc;
+
+                                $tempData = [];
+                                $tempData[] = ['Metric', 'Impressions'];
+                                $desc = $data['page_views_by_profile_tab_logged_in_unique']['desc'] ?? [];
+
+                                if (!empty($data['page_views_by_profile_tab_logged_in_unique']['data'])) {
+                                    foreach ($data['page_views_by_profile_tab_logged_in_unique']['data'] as $metric => $value) {
+                                        $_temp = [];
+                                        $_temp[0] = $metric;
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_views_by_profile_tab_logged_in_unique'] = $tempData;
+
+                                $tempData = [];
+                                $tempData[] = ['Metric', 'Impressions'];
+                                $desc = $data['page_views_by_internal_referer_logged_in_unique']['desc'] ?? [];
+
+                                if (!empty($data['page_views_by_internal_referer_logged_in_unique']['data'])) {
+                                    foreach ($data['page_views_by_internal_referer_logged_in_unique']['data'] as $metric => $value) {
+                                        $_temp = [];
+                                        $_temp[0] = $metric;
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_views_by_internal_referer_logged_in_unique'] = $tempData;
+                                $data['page_views_by_internal_referer_logged_in_unique']['desc'] = $desc;
+
+
+                                $tempData = [];
+                                $tempData[] = ['Metric', 'Impressions'];
+                                $desc = $data['page_views_by_site_logged_in_unique']['desc'] ?? [];
+
+                                if (!empty($data['page_views_by_site_logged_in_unique']['data'])) {
+                                    foreach ($data['page_views_by_site_logged_in_unique']['data'] as $metric => $value) {
+                                        $_temp = [];
+                                        $_temp[0] = $metric;
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_views_by_site_logged_in_unique'] = $tempData;
+                                $data['page_views_by_site_logged_in_unique']['desc'] = $desc;
+
+
+                                // $tempData = [];
+                                // $tempData[] = ['Metric', 'Impressions'];
+                                // foreach ($data['page_content_activity_by_age_gender_unique']['data'] as $metric=>$value) {
+                                //     $_temp = [];
+                                //     $_temp[0] = $metric;
+                                //     $_temp[1] = $value ?? 0;
+
+                                //     $tempData[] = $_temp;
+                                // }
+                                // $data['chartData']['page_content_activity_by_age_gender_unique'] = $tempData;
+
+                                // $tempData = [];
+                                // $tempData[] = ['Country', 'Activity'];
+                                // foreach ($data['page_content_activity_by_country_unique']['data'] as $country=>$value) {
+                                //     $_temp = [];
+                                //     $_temp[0] = Locale::getDisplayRegion('-' . $country, 'en');
+                                //     $_temp[1] = $value ?? 0;
+
+                                //     $tempData[] = $_temp;
+                                // }
+                                // $data['chartData']['page_content_activity_by_country_unique'] = $tempData;
+
+                                // $tempData = [];
+                                // $tempData[] = ['Locale', 'Activity'];
+                                // foreach ($data['page_content_activity_by_locale_unique']['data'] as $locale=>$value) {
+                                //     $_temp = [];
+                                //     $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
+                                //     $_temp[1] = $value ?? 0;
+
+                                //     $tempData[] = $_temp;
+                                // }
+                                // $data['chartData']['page_content_activity_by_locale_unique'] = $tempData;
+
+                                $tempData = [];
+                                $tempData[] = ['Activity', 'Hour'];
+                                $desc = $data['page_fans_online']['desc'] ?? [];
+
+                                if (!empty($data['page_fans_online']['data'])) {
+                                    foreach ($data['page_fans_online']['data'] as $hour => $value) {
+                                        $_temp = [];
+                                        $_temp[0] = sprintf('%02d', $hour);
+                                        $_temp[1] = $value ?? 0;
+
+                                        $tempData[] = $_temp;
+                                    }
+                                }
+                                $data['chartData']['page_fans_online'] = $tempData;
+                                $data['page_fans_online']['desc'] = $desc;
+                                // $tempData = [];
+                                // $tempData[] = ['Metric', 'Impressions'];
+                                // foreach ($data['page_fan_adds_by_paid_non_paid_unique']['data'] as $metric => $value) {
+                                //     $_temp = [];
+                                //     $_temp[0] = $metric;
+                                //     $_temp[1] = $value ?? 0;
+
+                                //     $tempData[] = $_temp;
+                                // }
+                                // $data['chartData']['page_fan_adds_by_paid_non_paid_unique'] = $tempData;
+
+                                // $tempData = [];
+                                // $tempData[] = ['Locale', 'Impressions'];
+                                // foreach ($data['page_fans_locale']['data'] as $locale => $value) {
+                                //     $_temp = [];
+                                //     $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
+                                //     $tempData[] = $_temp;
+                                // }
+                                // $data['chartData']['page_fans_locale'] = $tempData;
+
+                                // $tempData = [];
+                                // $tempData[] = ['City', 'Impressions'];
+                                // foreach ($data['page_fans_city']['data'] as $city => $value) {
+                                //     $_temp = [];
+                                //     $_temp[0] = $city;
+                                //     $_temp[1] = $value;
+                                //     $tempData[] = $_temp;
+                                // }
+                                // $data['chartData']['page_fans_city'] = $tempData;
+                                $data['status'] = 200;
+
+                                return response()->json(collect($data), 200);
+                            } catch (FacebookResponseException $e) {
+                                return response()->json(collect(['fb_exception' => '' . $e]), 405);
+                            } catch (Exception $e) {
+                                return response()->json(collect(['fb_exception' => '' . $e]), 405);
                             }
+                        }
 
-                            $data['chartData']['page_impressions_by_age_gender_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Number', 'Impressions'];
-                            foreach ($data['page_impressions_frequency_distribution']['data'] as $number => $value) {
-                                $_temp = [];
-                                $_temp[0] = $number;
-                                $_temp[1] = $value;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_impressions_frequency_distribution'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Number', 'Viral Impressions'];
-                            foreach ($data['page_impressions_viral_frequency_distribution']['data'] as $number => $value) {
-                                $_temp = [];
-                                $_temp[0] = $number;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_impressions_viral_frequency_distribution'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Number', 'Impressions'];
-                            foreach ($data['page_posts_impressions_frequency_distribution']['data'] as $number => $value) {
-                                $_temp = [];
-                                $_temp[0] = $number;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_posts_impressions_frequency_distribution'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_video_views_by_paid_non_paid']['data'] as $metric => $value) {
-                                $_temp[0] = $metric;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_video_views_by_paid_non_paid'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_views_by_profile_tab_logged_in_unique']['data'] as $metric => $value) {
-                                $_temp = [];
-                                $_temp[0] = $metric;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_views_by_profile_tab_logged_in_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_views_by_internal_referer_logged_in_unique']['data'] as $metric => $value) {
-                                $_temp = [];
-                                $_temp[0] = $metric;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_views_by_internal_referer_logged_in_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_views_by_site_logged_in_unique']['data'] as $metric => $value) {
-                                $_temp = [];
-                                $_temp[0] = $metric;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_views_by_site_logged_in_unique'] = $tempData;
-
-                            // $tempData = [];
-                            // $tempData[] = ['Metric', 'Impressions'];
-                            // foreach ($data['page_content_activity_by_age_gender_unique']['data'] as $metric=>$value) {
-                            //     $_temp = [];
-                            //     $_temp[0] = $metric;
-                            //     $_temp[1] = $value ?? 0;
-
-                            //     $tempData[] = $_temp;
-                            // }
-                            // $data['chartData']['page_content_activity_by_age_gender_unique'] = $tempData;
-
-                            // $tempData = [];
-                            // $tempData[] = ['Country', 'Activity'];
-                            // foreach ($data['page_content_activity_by_country_unique']['data'] as $country=>$value) {
-                            //     $_temp = [];
-                            //     $_temp[0] = Locale::getDisplayRegion('-' . $country, 'en');
-                            //     $_temp[1] = $value ?? 0;
-
-                            //     $tempData[] = $_temp;
-                            // }
-                            // $data['chartData']['page_content_activity_by_country_unique'] = $tempData;
-
-                            // $tempData = [];
-                            // $tempData[] = ['Locale', 'Activity'];
-                            // foreach ($data['page_content_activity_by_locale_unique']['data'] as $locale=>$value) {
-                            //     $_temp = [];
-                            //     $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
-                            //     $_temp[1] = $value ?? 0;
-
-                            //     $tempData[] = $_temp;
-                            // }
-                            // $data['chartData']['page_content_activity_by_locale_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Activity', 'Hour'];
-                            foreach ($data['page_fans_online']['data'] as $hour => $value) {
-                                $_temp = [];
-                                $_temp[0] = sprintf('%02d', $hour);
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_fans_online'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Metric', 'Impressions'];
-                            foreach ($data['page_fan_adds_by_paid_non_paid_unique']['data'] as $metric => $value) {
-                                $_temp = [];
-                                $_temp[0] = $metric;
-                                $_temp[1] = $value ?? 0;
-
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_fan_adds_by_paid_non_paid_unique'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['Locale', 'Impressions'];
-                            foreach ($data['page_fans_locale']['data'] as $locale => $value) {
-                                $_temp = [];
-                                $_temp[0] = Locale::getDisplayLanguage($locale, 'en');
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_fans_locale'] = $tempData;
-
-                            $tempData = [];
-                            $tempData[] = ['City', 'Impressions'];
-                            foreach ($data['page_fans_city']['data'] as $city => $value) {
-                                $_temp = [];
-                                $_temp[0] = $city;
-                                $_temp[1] = $value;
-                                $tempData[] = $_temp;
-                            }
-                            $data['chartData']['page_fans_city'] = $tempData;
-
-                            return response()->json(collect($data), 200);
-                    }catch (FacebookResponseException $e) {
-                        return response()->json(collect(), 404);
-                    }catch (Exception $e) {
-                        return response()->json(collect(), 404);
-                    }
-                } else {
-                    return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-                }
-
+                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
+                        // return response()->json(['status' => 400, 'message' => 'Missing required fields', "Error"=> print_r(debug_backtrace())]);
                 case 'accountDetails':
                     $data = [];
                     $response = app(FacebookController::class)->getMineAccountData(new GetMineAccountDetails($request->all(['fields'])))->getData();

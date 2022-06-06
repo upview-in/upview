@@ -53,9 +53,9 @@
                             <li>
                                 <a href="{{ route('panel.user.analyze.instagram.overview') }}">{{ __('Overview') }}</a> {{-- {{ route('panel.dashboard.insta') }} --}}
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#">{{ __('Media') }}</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
 
@@ -71,9 +71,9 @@
                             <li>
                                 <a href="{{ route('panel.user.analyze.facebook.overview') }}">{{ __('Overview') }}</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('panel.user.analyze.facebook.media') }}">{{ __('Media') }}</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                 </ul>
