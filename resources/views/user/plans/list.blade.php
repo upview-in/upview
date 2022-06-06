@@ -186,7 +186,7 @@
                         <h4><sup>$</sup>{{ $plan->price }}</h4>
                     </div>
                     <div class="option">
-                        {{ $plan->shortDescription }}
+                        {!! $plan->shortDescription !!}
                     </div>
                     <a href="{{ route('panel.user.plans.details', $plan->id) }}">Details</a>
                 </div>
