@@ -21,7 +21,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-/app/Models/City.php
-/app/Models/Country.php
-/app/Models/State.php
-/app/Models/CountryStateCityTableSeeder.php
