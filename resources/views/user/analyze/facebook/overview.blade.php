@@ -38,6 +38,9 @@
             var GroupBy = "day";
             var country = "";
 
+            __BS("ChannelMainDiv");
+            __BS(["FBPageInsights", "GraphicalOverview", "ImpressionLocale", "ImpressionFrequence", "ImpressionFrequenceVira", "ImpressionPNP"]);
+
             cb(__startDate, __endDate);
             loadPagesList();
             loadData();
@@ -132,13 +135,11 @@
             $('#select2Accounts').val(accounts["{{ session('AccountIndex_FB', 0) }}"]['_id']).trigger('change');
 
             $('#select2Accounts').on('change', function(e) {
-                var data = $(this).select2('data');
+                let data = $(this).select2('data');
 
                 __BS(["ChannelMainDiv", "FBPageDetails"]);
-
-
                 $.ajax({
-                    url: '{{ route('panel.user.account.setSessionDefaultAccount') }}',
+                    url: "{{ route('panel.user.account.setSessionDefaultAccount') }}",
                     data: {
                         id: data._id,
                         platform: parseInt('{{ App\Helper\TokenHelper::$PLATFORMS["facebook"] }}'),
@@ -158,7 +159,8 @@
                     },
                     dataType: "json",
                     success: function(_PageData) {
-                        $('#select2Pages').val(_PageData["{{ session('PagesIndex_FB', 0) }}"]['id']).trigger('change');
+                        let pageID = _PageData["{{ session('PagesIndex_FB', 0) }}"]['id'];
+                        $('#select2Pages').val(pageID).trigger('change');
                         $('#select2Pages').select2({
                             data: {
                                 results: _PageData
@@ -180,7 +182,6 @@
 
             $('#select2Pages').on('change', function(e) {
                 var data = $('#select2Pages').select2('data');
-                console.log();
                 $.ajax({
                     url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
                     data: {
@@ -189,7 +190,7 @@
 
                     },
                     success: function() {
-                        var data = $('#select2Pages').select2('data');
+                        let data = $('#select2Pages').select2('data');
                         loadAnalytics(data.id);
                         loadPageInsights(data.id);
                     }
@@ -241,12 +242,10 @@
 
             function loadData() {
 
-                __BS("ChannelMainDiv");
 
                 $.ajax({
                     data: {
                         part: 'accountDetails',
-                        fields: 'id,name,birthday,age_range,location,hometown,likes,posts,videos,friends,gender,link,picture',
                     },
                     dataType: "json",
                     success: function(response) {
@@ -255,9 +254,9 @@
                         {
                             data.gender[0].toUpperCase();
                             $("#fbAccURL").attr('href', data.profile_link);
-                            $("#fbAccProfileImage").attr('data-src', data.profile_picture);
                             $("#fbAccProfileImage").attr('src',
                                 "{{ asset('images/others/loading.gif') }}");
+                            $("#fbAccProfileImage").attr('data-src', data.profile_picture);
                             loadImages(); //Remember to call after loading images for LazyLoader
 
                             $("#fbAccName").html((data.name));
@@ -301,9 +300,7 @@
                 {
                     $.ajax({
                     data: {
-                        id: pageID,
                         part: 'PageAnalytics',
-                        fields: 'access_token,picture,name,about,bio,business,category,category_list,country_page_likes,description,engagement,followers_count,general_info,is_published,link,location,members,cover,fan_count,phone,preferred_audience,is_community_page,new_like_count,overall_star_rating,page_token,verification_status,feed,published_posts,videos,visitor_posts,tagged,posts',
                     },
                     dataType: "json",
                     success: function(response) {
@@ -360,9 +357,9 @@
                         }
 
                         if(data.status != 200){
-                            $("#FBInsights").html(noData);
+                            $("#FBPageDetails").html(noData);
                         }
-                        __AC("FBInsights");
+                        __AC("FBPageDetails");
 
                     }
                 });
@@ -371,9 +368,6 @@
             }
 
             function loadPageInsights(pageID) {
-
-                __BS(["FBPageInsights", "GraphicalOverview", "ImpressionLocale", "ImpressionFrequence", "ImpressionFrequenceVira", "ImpressionPNP"]);
-
                 $.ajax({
                     data: {
                         id: pageID,
@@ -561,11 +555,6 @@
                             $("#PageFansOnlineChartTooltip").attr('title', nl2br('Daily: The number of your fans who saw any posts on Facebook on a given day, broken down by hour of day in PST/PDT.'));
 
                         }
-
-                        if(data.status != 200){
-                            $("#FBPageInsights").html(noData);
-                            $("#GraphicalOverview").html(noData);
-                        }
                         __AC(["FBPageInsights", "GraphicalOverview", "ImpressionLocale", "ImpressionFrequence", "ImpressionFrequenceVira", "ImpressionPNP", "ImpressionProfileByTab"]);
                     }
                 });
@@ -634,7 +623,7 @@
             </div>
         </div>
 
-        <div class="card shadow" id="FBInsights">
+        <div class="card shadow" id="FBPageDetails">
             <div class="card-header p-15 ml-3">
                 <label class="h3 m-0">Page Details</label>
             </div>
