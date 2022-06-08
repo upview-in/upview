@@ -61,9 +61,9 @@ class PlansController extends Controller
     public static function validatePlan()
     {
         $flag = false;
-        $filtered_roles_ids = [];
+        $expired_role_ids = [];
         $active_orders = UserOrder::with('plan')->where(['user_id' => Auth::id(), 'status' => 1])->get();
-        $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
+        $role_ids = Auth::user()->roles()->pluck('_id')->toArray();
 
         foreach ($active_orders as $order) {
             if (Carbon::now()->gte($order->expired_at ?? Carbon::now()->subDay(1))) {
@@ -71,13 +71,12 @@ class PlansController extends Controller
 
                 $order->status = 4;
                 $order->save();
-            } else {
-                $filtered_roles_ids[] = $order->plan->id;
+                $expired_role_ids[] = $order->plan->id;
             }
         }
 
         if ($flag) {
-            Auth::user()->roles()->sync($roles_ids);
+            Auth::user()->roles()->sync(array_diff($role_ids, $expired_role_ids));
         }
     }
 }
