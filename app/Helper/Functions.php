@@ -130,6 +130,6 @@ class Functions
             $reg = 'regex:';
         }
 
-        return $reg . "/^[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+/";
+        return $reg . "/^[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+/";
     }
 }
