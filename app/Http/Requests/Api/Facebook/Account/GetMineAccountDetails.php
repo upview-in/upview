@@ -24,7 +24,6 @@ class GetMineAccountDetails extends FormRequest
     public function rules()
     {
         return [
-            'fields' => 'required',
         ];
     }
 }
