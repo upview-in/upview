@@ -476,7 +476,7 @@
                                 <div class="bottom-box">
                                     <ul>
                                         <li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
-                                        <li><a href="#">Terms & Conditions </a></li>
+                                        <li><a href="{{ route('main.terms-conditions') }}">Terms & Conditions </a></li>
                                     </ul>
                                 </div>
                             </div>
