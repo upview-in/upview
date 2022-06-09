@@ -530,9 +530,14 @@
 										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
 									</div>
 								</div>
-								<a class="video-popup xoven-video-galler-1" title="Xoven Video Gallery" href="https://vimeo.com/716777486">
+								<div class="xoven-video-galler-pr">
+									<p style="color: black;">
+										<!-- Click to button to see how upview helps you. -->
+									</p>
+								<a class="video-popup xoven-video-galler-1 mt-12" title="Xoven Video Gallery" href="https://vimeo.com/716777486">
 									<span class="flaticon-play-button-2 playicon"></span>
 								</a>
+								</div>
 							</div>
 							<div class="image-box right">
 								<div class="single-box image-box2">
@@ -839,7 +844,7 @@
 								<div class="bottom-box">
 									<ul>
 										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
-										<li><a href="#">Terms & Conditions </a></li>
+										<li><a href="{{ route('main.terms-conditions') }}">Terms & Conditions </a></li>
 									</ul>
 								</div>
 							</div>
