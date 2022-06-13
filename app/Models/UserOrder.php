@@ -84,4 +84,9 @@ class UserOrder extends Model
     {
         return $this->hasOne(UserRole::class, '_id', 'plan_id');
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, '_id', 'user_id');
+    }
 }
