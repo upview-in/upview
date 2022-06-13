@@ -101,6 +101,7 @@
                                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                         <ul class="navigation clearfix">
                                             <li><a href="{{ route('main.index') }}">Home</a></li>
+                                            <li><a href="{{ route('main.videos') }}">Videos</a></li>
                                             <li class="dropdown">
                                                 <a href="#">Solutions</a>
                                                 <ul>
@@ -481,7 +482,7 @@
                                 <div class="bottom-box">
                                     <ul>
                                         <li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
-                                        <li><a href="#">Terms & Conditions </a></li>
+                                        <li><a href="{{ route('main.terms-conditions') }}">Terms & Conditions </a></li>
                                     </ul>
                                 </div>
                             </div>
