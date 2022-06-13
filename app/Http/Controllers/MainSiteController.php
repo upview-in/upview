@@ -48,6 +48,11 @@ class MainSiteController extends Controller
         return view('main.contact');
     }
 
+    public function videos()
+    {
+        return view('main.videos');
+    }
+
     public function contactUs(ContactUsRequest $request)
     {
         $contact = new ContactUs();
