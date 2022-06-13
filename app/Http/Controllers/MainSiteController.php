@@ -48,6 +48,11 @@ class MainSiteController extends Controller
         return view('main.contact');
     }
 
+    public function videos()
+    {
+        return view('main.videos');
+    }
+
     public function contactUs(ContactUsRequest $request)
     {
         $contact = new ContactUs();
@@ -64,5 +69,10 @@ class MainSiteController extends Controller
     public function showPrivacyPolicy()
     {
         return view('main.privacy-policy');
+    }
+
+    public function showTermsAndConditions()
+    {
+        return view('main.terms-condition');
     }
 }
