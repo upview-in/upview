@@ -103,8 +103,8 @@ class PlansController extends Controller
             }
         }
 
-        $expired_plans = array_unique($expired_plans);
-        $expired_soon_plans = array_unique($expired_soon_plans);
+        $expired_plans = array_values(array_unique($expired_plans));
+        $expired_soon_plans = array_values(array_unique($expired_soon_plans));
 
         if (count($expired_soon_plans) > 1) {
             $expired_soon_plans[count($expired_soon_plans) - 1] = 'and ' . $expired_soon_plans[count($expired_soon_plans) - 1];
@@ -129,6 +129,7 @@ class PlansController extends Controller
         $message .= ' <a href="' . route('panel.user.plans.list') . '">Active now!</a>';
 
         if ($is_any_plans_are_active) {
+            $display = false;
             $timeout = 30;
         }
 
