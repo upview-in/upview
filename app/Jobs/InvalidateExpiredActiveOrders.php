@@ -32,7 +32,7 @@ class InvalidateExpiredActiveOrders implements ShouldQueue
      */
     public function handle()
     {
-        $expired_active_orders = UserOrder::with(['plan', 'user'])->where('status', 1)->whereDate('expired_at', '<=', Carbon::now())->get();
+        $expired_active_orders = UserOrder::with(['plan', 'user'])->where('status', 1)->where('expired_at', '<', Carbon::now()->addDay())->get();
         Log::alert("Invalidate Expired Active Orders | " . json_encode($expired_active_orders, JSON_PRETTY_PRINT));
 
         foreach ($expired_active_orders as $order) {
