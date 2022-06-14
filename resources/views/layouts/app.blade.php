@@ -37,6 +37,27 @@
             display: block;
         }
 
+        .statusbar-danger {
+            width: 100%;
+            margin-top: 70px;
+            padding: 4px;
+            padding-left: 12px;
+            height: 32px;
+            position: fixed;
+            background-color: #ff5f2e;
+            color: white;
+            font-weight: 600;
+            z-index: 99999999;
+        }
+
+        .statusbar-danger a {
+            color: #3000b5;
+        }
+
+        .main-content-statusbar-danger {
+            padding: calc(70px + 32px + 25px) 25px 25px !important;
+            min-height: calc(100vh - (70px + 32px)) !important;
+        }
     </style>
 
     <!-- Smartsupp Live Chat script -->
@@ -70,8 +91,17 @@
             <!-- Page Container START -->
             <div class="page-container">
 
+                @if (!empty($planStatus['display']))
+                    <div class="statusbar-danger">
+                        {!! $planStatus['message'] !!}
+                    </div>
+                @endif
+
                 <!-- Content Wrapper START -->
-                <div class="main-content">
+                <div @class([
+                        'main-content',
+                        'main-content-statusbar-danger' => $planStatus['display']
+                    ])>
                     @if ($pageHeader ?? true === true)
                         <div class="page-header">
                             <h2 class="header-title">{{ $title ?? 'Dashboard' }}</h2>
