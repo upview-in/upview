@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\User;
 use App\Models\UserOrder;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
@@ -32,16 +33,17 @@ class InvalidateExpiredActiveOrders implements ShouldQueue
      */
     public function handle()
     {
-        $expired_active_orders = UserOrder::with(['plan', 'user'])->where('status', 1)->where('expired_at', '<', Carbon::now()->addDay())->get();
-        Log::alert("Invalidate Expired Active Orders | " . json_encode($expired_active_orders, JSON_PRETTY_PRINT));
+        $expired_active_orders = UserOrder::with(['plan', 'user'])->where('status', 1)->where('expired_at', '<', Carbon::now())->get();
+        Log::alert('Invalidate Expired Active Orders | ' . json_encode($expired_active_orders, JSON_PRETTY_PRINT));
 
         foreach ($expired_active_orders as $order) {
             if (Carbon::now()->gte($order->expired_at ?? Carbon::now()->subDay(1))) {
-                $role_ids = $order->user()->roles()->pluck('_id')->toArray();
+                $role_ids = User::find($order->user->_id)->roles()->pluck('_id')->toArray();
 
                 $order->status = 4;
                 $order->save();
-                $order->user()->roles()->sync(array_diff($role_ids, [$order->plan->id]));
+
+                User::find($order->user->_id)->roles()->sync(array_diff($role_ids, [$order->plan->id]));
             }
         }
     }
