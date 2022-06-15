@@ -30,12 +30,16 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="{{ request()->routeIs('panel.user.analyze.youtube.overview') ? 'active' : '' }}">
-                                <a id="YtOverviewConfirm" class="pointer" data-url="{{ route('panel.user.analyze.youtube.overview') }}">{{ __('Overview') }}</a>
-                            </li>
-                            <li class="{{ request()->routeIs('panel.user.analyze.youtube.videos') ? 'active' : '' }}">
-                                <a href="{{ route('panel.user.analyze.youtube.videos') }}">{{ __('Videos') }}</a>
-                            </li>
+                            @if (appUser()->can('analyze.youtube.view-overview'))
+                                <li class="{{ request()->routeIs('panel.user.analyze.youtube.overview') ? 'active' : '' }}">
+                                    <a id="YtOverviewConfirm" class="pointer" data-url="{{ route('panel.user.analyze.youtube.overview') }}">{{ __('Overview') }}</a>
+                                </li>
+                            @endif
+                            @if (appUser()->can('analyze.youtube.view-videos'))
+                                <li class="{{ request()->routeIs('panel.user.analyze.youtube.videos') ? 'active' : '' }}">
+                                    <a href="{{ route('panel.user.analyze.youtube.videos') }}">{{ __('Videos') }}</a>
+                                </li>
+                            @endif
                             {{-- <li class="{{ request()->routeIs('panel.user.analyze.youtube.audience') ? 'active' : '' }}">
                                 <a href="{{ route('panel.user.analyze.youtube.audience') }}">{{ __('Audience') }}</a>
                             </li> --}}
@@ -98,12 +102,16 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="{{ request()->routeIs('panel.user.measure.market_research.channel_intelligence.index') ? 'active' : '' }}">
-                                <a href="{{ route('panel.user.measure.market_research.channel_intelligence.index') }}">{{ __('Channel Intelligence') }}</a>
-                            </li>
-                            <li class="{{ request()->routeIs('panel.user.measure.market_research.video_intelligence.index') ? 'active' : '' }}">
-                                <a href="{{ route('panel.user.measure.market_research.video_intelligence.index') }}">{{ __('Video Intelligence') }}</a>
-                            </li>
+                            @if (appUser()->can('measure.market-research.channel-intelligence'))
+                                <li class="{{ request()->routeIs('panel.user.measure.market_research.channel_intelligence.index') ? 'active' : '' }}">
+                                    <a href="{{ route('panel.user.measure.market_research.channel_intelligence.index') }}">{{ __('Channel Intelligence') }}</a>
+                                </li>
+                            @endif
+                            @if (appUser()->can('measure.market-research.video-intelligence'))
+                                <li class="{{ request()->routeIs('panel.user.measure.market_research.video_intelligence.index') ? 'active' : '' }}">
+                                    <a href="{{ route('panel.user.measure.market_research.video_intelligence.index') }}">{{ __('Video Intelligence') }}</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 </ul>
@@ -178,14 +186,14 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
+            <!-- <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">
                     <span class="icon-holder">
                         <em class="fas fa-book text-secondary"></em>
                     </span>
                     <span class="title">{{ __('Reports') }}</span>
                 </a>
-            </li>
+            </li> -->
 
             <li class="nav-item dropdown {{ request()->routeIs('panel.user.plans.list') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.user.plans.list') }}">
