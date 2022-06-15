@@ -16,5 +16,9 @@ class PostScheduler extends Model
         'mentions',
         'tags',
         'image_name',
+        'is_scheduled',
+        'ayrId',
+        'scheduled_at',
+        'posted_by',
     ];
 }

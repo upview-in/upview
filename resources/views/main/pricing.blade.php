@@ -233,15 +233,16 @@
                             <div class="title">
                                 <h2><a href="javascript:void();">SOCIAL MEDIA<br />MANAGEMENT</a></h2>
                                 <hr />
-                                <h2 class="mt-3">$45</h2>
+                                <h2 class="mt-3">₹3,999</h2>
                                 <div class="inner-text">
                                     <p>
-                                        YouTube & Facebook Analysis<br /><br />
+                                        Post Management<br /><br />
+                                        Post Scheduling & Monitoring<br /><br />
+                                        YouTube, Facebook & Instagram Analysis<br /><br />
                                         Audience Insights<br /><br />
                                         Market Insights<br /><br />
                                         Channel & Video Insights<br /><br />
-                                        Post Management<br /><br />
-                                        Post Scheduling & Monitoring<br /><br /><br /><br /><br /><br /><br />
+                                        <br /><br /><br /><br /><br />
                                         <a class="btn-one ml-4 m-4" href="{{ route('register') }}">
                                             <span class="txt">Buy Now</span>
                                         </a>
@@ -257,7 +258,7 @@
                             <div class="title">
                                 <h2><a href="javascript:void();">SOCIAL LISTENING<br />STARTER</a></h2>
                                 <hr />
-                                <h2 class="mt-3">$54</h2>
+                                <h2 class="mt-3">₹18,999</h2>
                                 <div class="inner-text">
                                     <p>
                                         YouTube & Facebook Analysis<br /><br />
@@ -284,7 +285,7 @@
                             <div class="title">
                                 <h2><a href="javascript:void();">SOCIAL LISTENING<br />PRO</a></h2>
                                 <hr />
-                                <h2 class="mt-3">$99</h2>
+                                <h2 class="mt-3">₹49,999</h2>
                                 <div class="inner-text">
                                     <p>
                                         YouTube & Facebook Analysis<br /><br />
