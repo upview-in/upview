@@ -200,7 +200,7 @@
                     <div class="col-xl-12">
                         <div class="inner-content text-center">
                             <div class="title paroller">
-                                <h2>Our Video</h2>
+                                <h2>Play Now to know more</h2>
                             </div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
         <section class="team-style1-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-lg-6">
+                    <!-- <div class="col-xl-4 col-lg-6 col-lg-6">
                         <div class="team-style1_title">
                             <div class="sec-title">
                                 <div class="sub-title">
@@ -232,7 +232,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!--Start Single Team Style1-->
                     <div class="col-xl-4 col-lg-6 col-lg-6">
                         <div class="single-team-style1 wow fadeInRight animated" data-wow-delay="00ms" data-wow-duration="1500ms">

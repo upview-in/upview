@@ -306,7 +306,7 @@
 							</div>
 
 							<!-- placeholder for mascot image -->
-							<!-- <div class="position-absolute width-full color-bg-default" style="bottom: -4rem;">
+							<div class="position-absolute width-full color-bg-default" style="bottom: -4rem;">
 								<div class="container-xl p-responsive">
 									<div class="d-flex flex-justify-center flex-lg-justify-end color-bg-default">
 										<div class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
@@ -317,7 +317,7 @@
 										</div>
 									</div>
 								</div>
-							</div> -->
+							</div>
 
 						</div>
 
@@ -530,14 +530,6 @@
 									<div class="inner">
 										<img src="{{ asset('main/assets/images/about/abt-1.png') }}" alt="" />
 									</div>
-								</div>
-								<div class="xoven-video-galler-pr">
-									<p style="color: black;">
-										<!-- Click to button to see how upview helps you. -->
-									</p>
-								<a class="video-popup xoven-video-galler-1 mt-12" title="Xoven Video Gallery" href="https://vimeo.com/716777486">
-									<span class="flaticon-play-button-2 playicon"></span>
-								</a>
 								</div>
 							</div>
 							<div class="image-box right">

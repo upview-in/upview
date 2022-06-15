@@ -24,11 +24,11 @@ class UploadMediaRequest extends FormRequest
     public function rules()
     {
         return [
-            'post_media' => ['required', 'image', 'max:6144'],
+            'post_media' => ['image | video', 'max:' . (1024 * 1024) * 5],
             'caption' => ['required'],
             'platform' => ['required', 'array', 'min:1'],
             'profile_select' => ['required'],
-            'postedBy' => ['required'],
+            'posted_by' => ['required'],
         ];
     }
 }

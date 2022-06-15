@@ -6,6 +6,10 @@
 @section('custom-scripts')
 <script>
     $(document).ready(function() {
+        var selected_post_type = 0;
+        var enabled_platforms_profile;
+        var platforms = ['instagram', 'facebook', 'linkedin', 'twitter', 'youtube', 'pintrest'];
+
         $(".tagsSelection").select2('destroy').val("");
         $(".tagsSelection").select2({
             tags: true,
@@ -72,40 +76,42 @@
                 },
                 dataType: 'json',
                 success: function(response) {
-                    let data = response;
-                    if (data.length > 0) {
-
-                        if (data.includes('instagram')) {
-                            $('#cbinstagram').removeAttr('disabled');
-                        }
-                        if (data.includes('facebook')) {
-                            $('#cbfacebook').removeAttr('disabled');
-                        }
-                        if (data.includes('linkedin')) {
-                            $('#cblinkdin').removeAttr('disabled');
-                        }
-                        if (data.includes('twitter')) {
-                            $('#cbtwitter').removeAttr('disabled');
-                        }
-                        if (data.includes('youtube')) {
-                            $('#cbyoutube').removeAttr('disabled');
-                        }
-                        if (data.includes('pinterest')) {
-                            $('#cbpintrest').removeAttr('disabled');
-                        }
-
-                    }
-                    if (data.length == 0) {
-                        $('#cbinstagram').attr('disabled', true);
-                        $('#cbfacebook').attr('disabled', true);
-                        $('#cblinkdin').attr('disabled', true);
-                        $('#cbtwitter').attr('disabled', true);
-                        $('#cbyoutube').attr('disabled', true);
-                        $('#cbpintrest').attr('disabled', true);
-                    }
+                    enabled_platforms_profile = response;
+                    checkEnabledPlatforms();
                 }
             });
         });
+
+        $('.post_type').on('change', function() {
+            selected_post_type = $(this).val();
+            checkEnabledPlatforms();
+        });
+
+        function checkEnabledPlatforms() {
+            let selecteable_platforms = [];
+
+            //( 0 = Images, 1 = Video )media type supported platforms
+            if (selected_post_type == 0) {
+                selecteable_platforms = ['instagram', 'facebook', 'linkedin', 'twitter', 'pintrest'];
+            } else if (selected_post_type == 1) {
+                selecteable_platforms = ['instagram', 'facebook', 'linkedin', 'youtube', 'twitter'];
+            }
+
+            let data = enabled_platforms_profile;
+            if (data.length > 0) {
+                platforms.forEach(platform => {
+                    if (data.includes(platform) && selecteable_platforms.includes(platform)) {
+                        $('#cb' + platform).removeAttr('disabled');
+                    } else {
+                        $('#cb' + platform).attr('disabled', true);
+                    }
+                });
+            } else {
+                platforms.forEach(platform => {
+                    $('#cb' + platform).attr('disabled', true);
+                });
+            }
+        }
 
     });
 </script>
@@ -129,6 +135,13 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    @elseif(session()->get('validation_error'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Warning:</strong> {{ session()->get('validation_error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     @endif
 
                     <div class="form-group col-12">
@@ -143,6 +156,24 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+
+                    <div class="form-group col-12">
+                        <div>
+                            <label class="font-weight-semibold">{{ __('Select media type to upload') }}:<sup>*</sup></label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input post_type" type="radio" name="post_type" id="post_type_image" value="0" checked>
+                            <label class="form-check-label" for="post_type_image">
+                                Image
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input post_type" type="radio" name="post_type" id="post_type_video" value="1">
+                            <label class="form-check-label" for="post_type_video">
+                                Video
+                            </label>
+                        </div>
                     </div>
 
                     <div class="form-group col-12">
@@ -168,8 +199,8 @@
                             </div>
 
                             <div class="col-md-2">
-                                <input id="cblinkdin" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['linkedin'] }}" disabled type="checkbox">
-                                <label for="cblinkdin">linkedIn</label>
+                                <input id="cblinkedin" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['linkedin'] }}" disabled type="checkbox">
+                                <label for="cblinkedin">linkedIn</label>
                             </div>
 
                             <div class="col-md-2">
@@ -225,9 +256,9 @@
                     </div>
 
                     <div class="form-group col-12">
-                        <label class="font-weight-semibold" for="scheduleAt">{{ __('Schedule Post') }}:</label>
-                        <input type="datetime-local" class="form-control" id="scheduleAt" name="scheduleAt" placeholder="Select Date & Time">
-                        @error('scheduleAt')
+                        <label class="font-weight-semibold" for="scheduled_at">{{ __('Schedule Post') }}:</label>
+                        <input type="datetime-local" class="form-control" id="scheduled_at" name="scheduled_at" placeholder="Select Date & Time">
+                        @error('scheduled_at')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -235,9 +266,9 @@
                     </div>
 
                     <div class="form-group col-12">
-                        <label class="font-weight-semibold" for="postedBy">{{ __('Posted By') }}:<sup>*</sup></label>
-                        <input type="text" class="form-control" id="postedBy" name="postedBy" placeholder="Enter Your Full Name">
-                        @error('postedBy')
+                        <label class="font-weight-semibold" for="posted_by">{{ __('Posted By') }}:<sup>*</sup></label>
+                        <input type="text" class="form-control" id="posted_by" name="posted_by" placeholder="Enter Your Full Name">
+                        @error('posted_by')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -245,12 +276,10 @@
                     </div>
 
                     <div class="form-group col-12">
-                        <h5 class="m-b-5 font-size-18">{{ __('Choose Post Image') }}</h5>
+                        <h5 class="m-b-5 font-size-18">{{ __('Choose Post Media') }}</h5>
                         <p class="opacity-07 font-size-13 m-b-0 media">
-                            <input id="post_media" name="post_media" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
-                            {{ __('Recommended Resolution') }}: 1080 x 1350p<br>
-                            Our system will automatically manage resolutions for Facebook & Instagram.
-                            Max file size: 6MB
+                            <input id="post_media" name="post_media" type="file" class="hidden" accept="image/*, video/*">
+                            <a href="" data-toggle="modal" data-target="#postStandards" class="mr-1">Click here</a>to check the recommended size
                         </p>
                         @error('post_media')
                         <span class="invalid-feedback d-block" role="alert">
@@ -280,7 +309,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
-                        <table class="table table-borderless" data-toggle="table" >
+                        <table class="table table-borderless" data-toggle="table">
                             <caption></caption>
                             <thead>
                                 <tr>
