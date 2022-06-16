@@ -27,6 +27,8 @@
             z-index: 1;
         }
     </style>
+
+    @yield('custom-styles')
 </head>
 
 <body>

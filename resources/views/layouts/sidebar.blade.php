@@ -178,7 +178,7 @@
             </li>
 
             <li class="nav-item dropdown {{ request()->routeIs('panel.user.social') ? 'active' : '' }}">
-                <a class="dropdown-toggle" href="{{ route('panel.user.social') }}">
+                <a class="dropdown-toggle" href="{{ route('panel.user.social') }}" target="_blank">
                     <span class="icon-holder">
                         <em class="fas fa-broadcast-tower text-danger"></em>
                     </span>
@@ -195,15 +195,29 @@
                 </a>
             </li> -->
 
-            <li class="nav-item dropdown {{ request()->routeIs('panel.user.plans.list') ? 'active' : '' }}">
-                <a class="dropdown-toggle" href="{{ route('panel.user.plans.list') }}">
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
-                        <em class="fas fa-info-circle text-danger"></em>
+                        <em class="fas fa-tasks text-danger"></em>
                     </span>
-                    <span class="title">{{ __('Plans') }}</span>
+                    <span class="title">{{ __('Pricing') }}</span>
+                    <span class="arrow">
+                        <em class="arrow-icon"></em>
+                    </span>
                 </a>
+                <ul class="dropdown-menu ">
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.plans.list') ? 'active' : '' }}">
+                        <a href="{{ route('panel.user.plans.list') }}">
+                            <span class="title">{{ __('Plans') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.plans.orders') ? 'active' : '' }}">
+                        <a href="{{ route('panel.user.plans.orders') }}">
+                            <span class="title">{{ __('Orders Receipt') }}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-
         </ul>
     </div>
 </div>

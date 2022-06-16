@@ -39,19 +39,23 @@
 
         .statusbar-danger {
             width: 100%;
+            width: -moz-available;
             margin-top: 70px;
             padding: 4px;
             padding-left: 12px;
-            height: 32px;
             position: fixed;
             background-color: #ff5f2e;
             color: white;
             font-weight: 600;
-            z-index: 99999999;
+            z-index: 100;
         }
 
         .statusbar-danger a {
-            color: #3000b5;
+            color: #000000;
+        }
+
+        .statusbar-danger em {
+            cursor: pointer;
         }
 
         .main-content-statusbar-danger {
@@ -92,8 +96,11 @@
             <div class="page-container">
 
                 @if (!empty($planStatus['display']))
-                    <div class="statusbar-danger">
+                    <div class="statusbar-danger d-flex align-items-center">
                         {!! $planStatus['message'] !!}
+                        @if (!empty($planStatus['can_dismiss']))
+                            <em class="fa fa-times float-right ml-auto mr-3" id="dismiss_statusbar" onclick="$(this).parent().attr('style','display:none !important');"></em>
+                        @endif
                     </div>
                 @endif
 

@@ -26,6 +26,7 @@ class CreateUserOrdersTable extends Migration
             $table->dateTime('expired_at')->nullable();
             $table->tinyInteger('payment_gateway_using');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
