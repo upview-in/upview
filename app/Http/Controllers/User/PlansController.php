@@ -95,13 +95,11 @@ class PlansController extends Controller
         $active_orders = UserOrder::with('plan')->where('user_id', Auth::id())->whereIn('status', [1, 4])->get();
 
         foreach ($active_orders as $order) {
-            if (!empty($order->plan)) {
+            if (!empty($order->plan) && !empty($order->expired_at)) {
                 if (($order->status === 4 && Carbon::now()->gte($order->expired_at ?? Carbon::now()->subDay())) || is_null($order->expired_at)) {
-                    $display = true;
-                    $expired_plans[] = $order->plan;
+                    $expired_plans[] = $order;
                 } elseif ($order->status === 1 && Carbon::now()->gte($order->expired_at->subDays(7))) {
-                    $display = true;
-                    $expired_soon_plans[] = $order->plan;
+                    $expired_soon_plans[] = $order;
                 } else {
                     $is_any_plans_are_active = true;
                 }
@@ -112,13 +110,14 @@ class PlansController extends Controller
         $expired_soon_plans = array_values(array_unique($expired_soon_plans));
 
         if (!empty($expired_soon_plans)) {
+            $display = true;
             if (count($expired_soon_plans) > 1) {
-                $expired_soon_plans[count($expired_soon_plans) - 1]->name = 'and ' . $expired_soon_plans[count($expired_soon_plans) - 1]->name;
+                $expired_soon_plans[count($expired_soon_plans) - 1]->plan->name = 'and ' . $expired_soon_plans[count($expired_soon_plans) - 1]->plan->name;
                 foreach ($expired_soon_plans as $key => $value) {
-                    $message .= $expired_soon_plans[$key]->name . ' (expired at ' . Carbon::now()->diffForHumans($expired_soon_plans[$key]->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . ')';
+                    $message .= $value->plan->name . ' (expired at ' . Carbon::now()->diffForHumans($value->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . ')';
                 }
             } else {
-                $message .= $expired_soon_plans[0]->name . ' plan will be expired in ' . Carbon::now()->diffForHumans($expired_soon_plans[0]->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . '.';
+                $message .= $expired_soon_plans[0]->plan->name . ' plan will be expired in ' . Carbon::now()->diffForHumans($expired_soon_plans[0]->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . '.';
             }
         }
 
@@ -126,9 +125,12 @@ class PlansController extends Controller
 
         // Display popup if there is no any plans are active and if any plans are active then check will be expired soon or not
         if (empty($expired_soon_plans) && !empty($expired_plans) && !$is_any_plans_are_active) {
+            $display = true;
             if (count($expired_plans) > 1) {
-                $expired_plans[count($expired_plans) - 1] = 'and ' . $expired_plans[count($expired_plans) - 1];
-                $message .= implode(', ', $expired_plans) . ' plans are expired.';
+                $expired_plans[count($expired_plans) - 1]->plan->name = 'and ' . $expired_plans[count($expired_plans) - 1]->plan->name;
+                foreach ($expired_plans as $key => $value) {
+                    $message .= $value->plan->name . ' (expired at ' . Carbon::now()->diffForHumans($value->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . ')';
+                }
             } else {
                 $message .= $expired_plans[0] . ' plan is expired.';
             }
