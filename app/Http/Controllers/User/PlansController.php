@@ -114,7 +114,7 @@ class PlansController extends Controller
             if (count($expired_soon_plans) > 1) {
                 $expired_soon_plans[count($expired_soon_plans) - 1]->plan->name = 'and ' . $expired_soon_plans[count($expired_soon_plans) - 1]->plan->name;
                 foreach ($expired_soon_plans as $key => $value) {
-                    $message .= $value->plan->name . ' (expired at ' . Carbon::now()->diffForHumans($value->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . ')';
+                    $message .= $value->plan->name . ' plan (expires in ' . Carbon::now()->diffForHumans($value->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . '), ';
                 }
             } else {
                 $message .= $expired_soon_plans[0]->plan->name . ' plan will be expired in ' . Carbon::now()->diffForHumans($expired_soon_plans[0]->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . '.';
@@ -129,10 +129,10 @@ class PlansController extends Controller
             if (count($expired_plans) > 1) {
                 $expired_plans[count($expired_plans) - 1]->plan->name = 'and ' . $expired_plans[count($expired_plans) - 1]->plan->name;
                 foreach ($expired_plans as $key => $value) {
-                    $message .= $value->plan->name . ' (expired at ' . Carbon::now()->diffForHumans($value->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . ')';
+                    $message .= $value->plan->name . ' plan (expires in ' . Carbon::now()->diffForHumans($value->expired_at ?? Carbon::now()->subDay(), CarbonInterface::DIFF_ABSOLUTE) . '), ';
                 }
             } else {
-                $message .= $expired_plans[0] . ' plan is expired.';
+                $message .= $expired_plans[0]->plan->name . ' plan is expired.';
             }
         }
 
