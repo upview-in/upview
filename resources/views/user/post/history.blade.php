@@ -38,7 +38,7 @@
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td class="justify-center">{{ $history->profile->title ?? '-' }}</td>
-                                <!-- <td class="justify-center">
+                                {{--<!-- <td class="justify-center">
                                     @foreach($history->post_info as $postInfo)
                                     @if($postInfo['platform'] == 'facebook')
                                     <a href="{{ $postInfo['postUrl'] }}" target="_blank"><em class='fab fa-facebook-f p-1'></em></a>
@@ -63,7 +63,7 @@
                                     @endif
                                     @endforeach
 
-                                </td> -->
+                                </td> -->--}}
                                 <td class="justify-center">{{ $history->caption ?? '-' }}</td>
                                 <td class="justify-center">
                                     @if( $history->is_scheduled === 0 )
