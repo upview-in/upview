@@ -338,7 +338,7 @@
 						<h3>Our Services</h3>
 					</div>
 					<h2>
-						Level Up Your Social Media Management
+						Better Discussions, Greater Conversions.<br />We offer solutions for everyone – Startups, Brands, Ad-Agencies & Influencers.
 					</h2>
 				</div>
 				<div class="row">
@@ -350,12 +350,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialPosting') }}">Make publishing easy / Publishing &amp; Scheduling</a>
+									<a href="{{ route('main.socialPosting') }}">Scheduling & Publishing</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Updating every social channel you handle individually is error-prone and time-consuming. On UPVIEW, you hit publish once and watch as all your channels get updated. You can even schedule your posts to a time when your content gets higher engagement.
+										With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently. You don’t even need to be in the office when you can drive everything remotely. Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
 									</p>
 								</div>
 							</div>
@@ -370,12 +370,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialAnalytics') }}">Strategic decisions backed by data / Analytics</a>
+									<a href="{{ route('main.socialAnalytics') }}">Analytics </a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										UPVIEW’s intuitive dashboard presents actionable insights based on data from social networks. Take the guesswork out of decision-making by building your social media strategy based on real audience behavior. Generate visually attractive reports for your team effortlessly.
+										Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
 									</p>
 								</div>
 							</div>
@@ -390,12 +390,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialListening') }}">Tune in to social conversations / Social Listening</a>
+									<a href="{{ route('main.socialListening') }}">Social Listening</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Keep up with consumer opinions, track competitors, and maintain brand health with UPVIEW’s advanced Social Listening tool. Our granular sentiment analysis provides real-time updates and helps you identify key influencers driving conversations about your brand on the web.
+										Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
 									</p>
 								</div>
 							</div>
@@ -410,12 +410,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialListening') }}">Build a loyal brand following</a>
+									<a href="{{ route('main.socialListening') }}">Brand Analysis</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										The audience rewards the brands that create content tailored to their preferences. By putting powerful tools at your disposal, UPVIEW helps you understand your audience, track the competition, and study market trends that always keep you one step ahead.
+										It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
 									</p>
 								</div>
 							</div>
@@ -442,9 +442,10 @@
 							<h2>
 								About Us
 							</h2>
-							<p>Social media has forever changed the rules of branding, marketing, and advertising. The creators and brands who develop a large following and engagement on social media platforms put their audience at the heart of all decisions. They use social media not just to talk to consumers but also to listen to them.</p>
-							<p>At UPVIEW, we are building tools for creators, agencies, and marketers that enable these two-way conversations. That’s why we have brought together all the essential tools you need to push content and measure performance under one roof.</p>
-							<p>We are a team of engineers and marketers based in Mumbai passionate about bringing advanced technology to a broader group of people and companies. We are constantly adding more capabilities to UPVIEW so that everyone can harness the true power of social media.</p>
+							<p>
+								Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
+								Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -456,7 +457,7 @@
 		<section class="testimonial-section">
 			<div class="large-container">
 				<div class="sec-title">
-					<h2>This is what the <span style="color: #0e52dd;">UPVIEW</span> family has to say!</h2>
+					<h2>This is what the <span style="color: #0e52dd;">Upview</span> family has to say!</h2>
 				</div>
 
 				<div class="testimonial-carousel owl-carousel owl-theme">
@@ -577,7 +578,7 @@
 											<span class="count-text" data-speed="3000" data-stop="302">0</span>
 										</div>
 										<div class="title">
-											<h6 style="color: #FFF;">HAPPY CUSTOMERS</h6>
+											<h6 style="color: #FFF;">Brands Build</h6>
 										</div>
 									</div>
 								</li>
@@ -607,10 +608,10 @@
 									<div class="border-box"></div>
 									<div class="outer-box">
 										<div class="count-outer count-box">
-											<span class="count-text" data-speed="3000" data-stop="1635">0</span>
+											<span class="count-text" data-speed="3000" data-stop="335">0</span>
 										</div>
 										<div class="title">
-											<h6 style="color: #FFF;">POSTS PUBLISHED</h6>
+											<h6 style="color: #FFF;">Expert Team</h6>
 										</div>
 									</div>
 								</li>
@@ -634,7 +635,7 @@
 					<div class="col-xl-12">
 						<div class="working-process-inner" style="height: 6in;">
 							<div class="title">
-								<h2 style="color: #ffffff; font-size: 30px; margin-top: -70px;">Everyone has different needs. That’s why we have developed three pricing plans. Pay for the features that suit your needs. Get in touch with us for a customized plan.</h2>
+								<h2 style="color: #ffffff; font-size: 30px; margin-top: -70px;">A social media tool which is all ears into the industry.<br />Start your Upview journey today!</h2>
 							</div>
 						</div>
 					</div>
@@ -651,7 +652,8 @@
 						<h3>Blogs</h3>
 					</div>
 					<h2>
-						Insights, tactics, and developments from the world of social media
+						Come check these few blogs to get an idea of how eye catching and impeccable your social media
+						could look!
 					</h2>
 				</div>
 				<div class="row text-right-rtl owl-carousel owl-theme portfolio-carousel ">
@@ -746,10 +748,11 @@
 										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
 									</div>
-									<!-- <div class="text-box">
+									<div class="text-box">
 										<p style="font-size: 19px;">
+											We help transform relevant information into desired results.
 										</p>
-									</div> -->
+									</div>
 									<div class="copyright-text style2">
 										<p>
 											&copy;Copywright <a href="#">@Neomobile Advertising LLP.</a> All
@@ -886,20 +889,21 @@
 	<script>
 		$(document).ready(function() {
 			var taglines = [
-				'Tap into the power of social media',
-				'The all-in-one social media management tool',
-				'Adding intelligence to social media management'
+				"Our Skills<br /> Your Growth",
+				"Frame Your<br />Social Space",
+				"Edge out<br />the Competion"
 			];
 
 			var bottomTaglines = [
-				'A suite of products to streamline publishing, build data-backed strategies, and develop audience intelligence via social listening.',
-				'Grow your brand online with UPVIEW\’s powerful Publishing, Analytics, and Social Listening features.',
-				'Build, grow, and protect your brand online with UPVIEW\’s suite of products.'
+				"We get you ready for the million watching you.",
+				"We are ready to serve you differently.",
+				"Be where the world is going.",
+				"Creating, rejuvenating, repositioning brands.",
+				"Social Media Beyond Expectation."
 			];
 
-			var randomIndex = Math.floor(Math.random() * taglines.length);
-			$("#randomTagLine").html(taglines[randomIndex]);
-			$("#randomBottomTagLine").html(bottomTaglines[randomIndex]);
+			$("#randomTagLine").html(taglines[Math.floor(Math.random() * taglines.length)]);
+			$("#randomBottomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
 		});
 	</script>
 </body>
