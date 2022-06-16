@@ -37,7 +37,7 @@ class InvalidateExpiredActiveOrders implements ShouldQueue
         Log::alert('Invalidate Expired Active Orders | ' . json_encode($expired_active_orders, JSON_PRETTY_PRINT));
 
         foreach ($expired_active_orders as $order) {
-            if (Carbon::now()->gte($order->expired_at ?? Carbon::now()->subDay(1))) {
+            if (Carbon::now()->gte($order->expired_at ?? Carbon::now()->subDay())) {
                 $role_ids = User::find($order->user->_id)->roles()->pluck('_id')->toArray();
 
                 $order->status = 4;

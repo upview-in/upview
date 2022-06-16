@@ -108,6 +108,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
 
             Route::controller(PlansController::class)->prefix('plans')->as('plans.')->group(function () {
                 Route::get('/list', 'list')->name('list');
+                Route::get('/orders', 'orders')->name('orders');
                 Route::get('/details/{plan}', 'details')->name('details');
                 Route::get('/{plan}/buy/{paymentGateway}', 'buy')->name('buy');
             });
