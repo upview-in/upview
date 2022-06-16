@@ -22,6 +22,7 @@ class CreateBlogsTable extends Migration
             $table->string('updated_by');
             $table->boolean('enabled');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

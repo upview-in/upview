@@ -26,6 +26,7 @@ class CreateLinkedAccountsTable extends Migration
             $table->string('created');
             $table->tinyInteger('platform');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

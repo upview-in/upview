@@ -20,6 +20,7 @@ class CreateAdminPermissionsTable extends Migration
             $table->string('slug');
             $table->boolean('enabled')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

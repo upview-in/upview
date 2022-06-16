@@ -24,6 +24,7 @@ class CreateUserSupportChatsTable extends Migration
             $table->timestamps();
             $table->foreign('user_id')->on('users')->references('id');
             $table->foreign('support_user_id')->on('support_users')->references('id');
+            $table->softDeletes();
         });
     }
 
