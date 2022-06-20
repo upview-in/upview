@@ -11,11 +11,13 @@ class AppLayout extends Component
 {
     public $title;
     public $pageHeader;
+    public $planStatus;
 
     public function __construct($title = null, $pageHeader = null)
     {
         $this->title = $title;
         $this->pageHeader = $pageHeader;
+        $this->planStatus = PlansController::getMessage();
     }
 
     /**

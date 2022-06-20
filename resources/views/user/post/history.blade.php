@@ -29,7 +29,7 @@
                                 <!-- <th scope="col" data-sortable="true" data-field="posted_on_platforms">Posted on Platforms</th> -->
                                 <th scope="col" data-sortable="true" data-field="caption">Caption</th>
                                 <th scope="col" data-sortable="true" data-field="status">Status</th>
-                                <th scope="col" data-sortable="true" data-field="postedBy">Posted By</th>
+                                <th scope="col" data-sortable="true" data-field="posted_by">Posted By</th>
                                 <th scope="col" data-sortable="true" data-field="posted_on">Posted On</th>
                             </tr>
                         </thead>
@@ -38,7 +38,7 @@
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td class="justify-center">{{ $history->profile->title ?? '-' }}</td>
-                                <!-- <td class="justify-center">
+                                {{--<!-- <td class="justify-center">
                                     @foreach($history->post_info as $postInfo)
                                     @if($postInfo['platform'] == 'facebook')
                                     <a href="{{ $postInfo['postUrl'] }}" target="_blank"><em class='fab fa-facebook-f p-1'></em></a>
@@ -63,16 +63,16 @@
                                     @endif
                                     @endforeach
 
-                                </td> -->
+                                </td> -->--}}
                                 <td class="justify-center">{{ $history->caption ?? '-' }}</td>
                                 <td class="justify-center">
-                                    @if( $history->status == 0 )
+                                    @if( $history->is_scheduled === 0 )
                                     <span class="justify-center text-success">Posted</span>
-                                    @elseif( $history->status == 1 )
+                                    @elseif( $history->is_scheduled === 1 )
                                     <span class="justify-center text-warning">Scheduled</span>
                                     @endif
                                 </td>
-                                <td class="justify-center">{{ $history->postedBy ?? '-' }}</td>
+                                <td class="justify-center">{{ $history->posted_by ?? '-' }}</td>
                                 <td class="justify-center">{{ $history->created_at ?? '-' }}</td>
                             </tr>
                             @endforeach

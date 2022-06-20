@@ -36,8 +36,8 @@
     <!-- partial:index.partial.html -->
     <div class="container">
         <div class="row">
-            <div class="span4">
-                <img alt="Upview" src="{{ asset('main/assets/images/resources/logo-black.svg') }}" class="img-rounded logo">
+            <div class="span">
+                <img alt="Upview" src="{{ asset('main/assets/images/resources/neomobile.png') }}" class="img-rounded logo">
                 <address>
                     <strong>Neomobile Advertising LLP</strong><br>
                     <br>
@@ -75,14 +75,14 @@
                         <tr>
                             <th>Plan</th>
                             <th>Description</th>
-                            <th>Month/Quantity</th>
+                            <th>Month</th>
                             <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>SEO Bronze</td>
-                            <td>www.swaransoft.com</td>
+                            <td>Social Media Starter</td>
+                            <td>Upview Social Media Analytics Sarter pack</td>
                             <td>8 Months</td>
                             <td>$1000</td>
                         </tr>
