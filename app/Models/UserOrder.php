@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Concerns\Models\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 class UserOrder extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, SoftDeletes;
 
     public static $payment_gateways = [
         'Stripe',
@@ -83,5 +84,10 @@ class UserOrder extends Model
     public function plan()
     {
         return $this->hasOne(UserRole::class, '_id', 'plan_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, '_id', 'user_id');
     }
 }

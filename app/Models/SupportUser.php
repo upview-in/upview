@@ -6,6 +6,7 @@ use App\Concerns\Models\Searchable;
 use App\Permissions\HasAdminPermissionsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -13,7 +14,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class SupportUser extends Authenticatable implements HasMedia
 {
-    use HasFactory, HasAdminPermissionsTrait, InteractsWithMedia, Searchable;
+    use HasFactory, HasAdminPermissionsTrait, InteractsWithMedia, Searchable, SoftDeletes;
 
     /**
      * Searchable attributes.

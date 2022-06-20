@@ -8,7 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
 
 class PostHistory extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'user_id',

@@ -23,6 +23,7 @@ class CreateRolesTable extends Migration
             $table->longText('longDescription');
             $table->boolean('enabled')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

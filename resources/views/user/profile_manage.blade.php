@@ -80,7 +80,7 @@
 								<tr>
 									<th scope="row">{{ $key+1 }}</th>
 									<td class="justify-center">{{ $profiles['title'] ?? '' }}</td>
-									<td class="justify-center"> 
+									<td class="justify-center">
 										@foreach($linked_platforms[$key] as $platforms)
 											@if($platforms == 'facebook')
 												<em class='fab fa-facebook-f p-1 font-size-20'></em>

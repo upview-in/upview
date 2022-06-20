@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Concerns\Models\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 class UserPermission extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, SoftDeletes;
 
     /**
      * Searchable attributes.

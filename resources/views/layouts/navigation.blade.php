@@ -129,11 +129,11 @@
                     </a>
                 </div>
             </li>
-            <li>
+            <!-- <li>
                 <a href="javascript:void(0);" data-toggle="modal" data-target="#quick-view">
                     <em class="anticon anticon-appstore"></em>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>
