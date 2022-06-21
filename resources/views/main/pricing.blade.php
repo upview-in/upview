@@ -354,8 +354,8 @@
 						<div class="col-xl-12">
 							<div class="inner">
 								<div class="text">
-									<h6>Ready to get started?</h6>
-									<h2>Get in touch, or create an account.</h2>
+                                    <h6>Ready to get started?</h6>
+                                    <h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
 								</div>
 								<div class="button-box">
 									<a class="btn-one" href="{{ route('main.contact') }}">
@@ -364,7 +364,7 @@
 										</div>
 										<div class="left_round"></div>
 										<div class="right_round"></div>
-										<span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+										<span class="txt">Book a Demo<i class="flaticon-plus-1 plusicon"></i></span>
 									</a>
 								</div>
 							</div>

@@ -10,11 +10,8 @@
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
@@ -148,9 +145,7 @@
                     <div class="clearfix">
                         <!--Logo-->
                         <div class="logo float-left">
-                            <a href="{{ route('main.index') }}" class="img-responsive"><img
-                                    src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
-                                    title=""></a>
+                            <a href="{{ route('main.index') }}" class="img-responsive"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" title=""></a>
                         </div>
                         <!--Right Col-->
                         <div class="right-col float-right">
@@ -172,8 +167,7 @@
                 <div class="menu-backdrop"></div>
                 <div class="close-btn"><span class="icon fa fa-times-circle"></span></div>
                 <nav class="menu-box">
-                    <div class="nav-logo"><a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}"
-                                width="150px" height="50px" alt="" title=""></a></div>
+                    <div class="nav-logo"><a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="150px" height="50px" alt="" title=""></a></div>
                     <div class="menu-outer">
                         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                     </div>
@@ -196,8 +190,7 @@
 
         <!--Start breadcrumb area-->
         <section class="breadcrumb-area breadcrumb-area-style2">
-            <div class="breadcrumb-area-bg"
-                style="background-image: url({{ asset('main/assets/images/breadcrumb/Social_Media_Posting.png') }} );">
+            <div class="breadcrumb-area-bg" style="background-image: url({{ asset('main/assets/images/breadcrumb/Social_Media_Posting.png') }} );">
             </div>
 
             <div class="container">
@@ -205,7 +198,8 @@
                     <div class="col-xl-12">
                         <div class="inner-content paroller text-center">
                             <div class="title">
-                                <h2>Social Media<br />Posting</h2>
+                                <h2 style="font-size: 50px;" id="randomHeadLine"></h2><br />
+                                <h4 style="font-weight: 400; color: #fff;" id="randomTagLine"></h4>
                             </div>
                         </div>
                     </div>
@@ -231,7 +225,7 @@
                                     </h3>
                                     <div class="mt-5">
                                         <p>
-                                        Our social media management and content marketing features help marketers, agencies, and corporations put social media posts on autopilot. With its in-depth analytics and true insights modules, you can now work in perfect harmony and empower your brand to make informed marketing decisions.<br /><br /> A perfect combination of AI-powered content discovery modules to help you discover, plan, schedule, publish, and analyse content for multiple brands and social channels with ease.
+                                            Publishing is an essential but time-consuming step in attracting and engaging followers. And the more social media channels you manage, the greater the hassle. Elements like captions, hashtags, and mentions must be manually entered for every social channel – increasing the chances of errors. With UPVIEW’s Social Media Posting Tool, you publish once and lean back as the content goes up on all your connected channels.
                                         </p>
                                     </div>
                                 </div>
@@ -251,10 +245,10 @@
             <div class="container">
                 <div class="sec-title text-center">
                     <div class="sub-title">
-                        <h3>Our Services</h3>
+                        <h3>FEATURES</h3>
                     </div>
                     <h2>
-                        Strategic social media analysis<br />at the tip of your fingers
+                        Focus on creatives by freeing up<br /> your mind from repetitive tasks
                     </h2>
                 </div>
                 <div class="row">
@@ -262,18 +256,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-1.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/posting/connect-social-profiles.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Review Management </a>
+                                    <a href="{{ route('main.socialPostingInner') }}#connect-account">Connect all social media accounts</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        We Manage your social reputation. Review management feature helps leverage
-                                        real-time customer engagement, alerts, and reports across social media and
-                                        deliver a thorough customer service experience to your clients.Spark new ideas &
-                                        foster a truly customer-first approach with your audience.
+                                        UPVIEW integrates with leading social media platforms such as Facebook, Instagram, YouTube, LinkedIn, Twitter, Pinterest, Reddit, and Telegram. Upload your content, enter captions and hashtags, and publish to any connected platform.
                                     </p>
                                 </div>
                             </div>
@@ -284,19 +275,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-2.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/posting/schedule-post.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Paid Promotion tools to Boost Facebook Tools</a>
+                                    <a href="{{ route('main.socialPostingInner') }}#schedule-post">Schedule your posts</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Upview’s AI and performance marketing helps predict your next best move and
-                                        allow the machine to optimize ad budgets across funnel stages and channels. Go
-                                        Beyond Human Limits, let our AI-powered machine that thinks like the best media
-                                        buyer in the world & help you increase your ad ROI while spending less time
-                                        managing them.
+                                        Not ready to publish yet? You can schedule your post to go up on the date and time of your choosing. Find out when your audience is online in the Analytics section and schedule your post accordingly to maximize engagement.
                                     </p>
                                 </div>
                             </div>
@@ -307,20 +294,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-3.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/posting/hashtag.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Scheduling for optimal send time</a>
+                                    <a href="{{ route('main.socialPostingInner') }}#hashtag">Intelligent hashtag suggestions</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Time Optimization allows you to send messages at the optimal time for each
-                                        contact. It helps your business to engage more effectively with contacts,
-                                        gaining contacts' attention when they are historically most attentive to their
-                                        social media. This option takes the guesswork out of choosing the ideal send
-                                        time because we calculate it for you based on things like a recipient's previous
-                                        engagement and where they are located.
+                                        Hashtags play a critical role in boosting the organic reach of social media content. Just start typing your hashtag, and UPVIEW’s hashtag recommendation engine will offer suggestions on commonly used and trending hashtags.
                                     </p>
                                 </div>
                             </div>
@@ -331,20 +313,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-4.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/posting/handel-account.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Media Planning and Measurements</a>
+                                    <a href="{{ route('main.socialPostingInner') }}#multi-profile">Handle multiple profiles</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Create professional reports and dashboards in just 3 seconds. With UPVIEW, you
-                                        can integrate your client’s social networks and generate a single document with
-                                        all the information. All reports, dashboards, metrics, and features aim to
-                                        ensure that you can show to the client the results of your work. Our reports
-                                        helps facilitate the communication of marketing professionals and their clients.
-                                        Use this feature to get a great overview of all your marketing activities.
+                                        Handling multiple brands or influencers? Just select the brand or influencer from the drop-down menu before uploading the content. UPVIEW also maintains a log of user activity, enhancing collaboration and tracking within teams.
                                     </p>
                                 </div>
                             </div>
@@ -357,146 +334,145 @@
         <!--End SKill style1 Area-->
 
         <!--Start footer area -->
-        <footer class="footer-area style2 mt-5">
-			<div class="shape">
-				<img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
-			</div>
-			<div class="footer-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-12">
-							<div class="inner">
-								<div class="text">
-									<h6>Ready to get started?</h6>
-									<h2>Get in touch, or create an account.</h2>
-								</div>
-								<div class="button-box">
-									<a class="btn-one" href="{{ route('main.contact') }}">
-										<div class="border_line">
-											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
-										</div>
-										<div class="left_round"></div>
-										<div class="right_round"></div>
-										<span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--Start Footer-->
-			<div class="footer">
-				<div class="container">
-					<div class="row text-right-rtl">
-						<!--Start single footer widget-->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
-							<div class="single-footer-widget">
-								<div class="our-company-info">
-									<div class="footer-logo">
-										<a href="{{ route('main.index') }}">
-											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
-												height="60px" alt="" /></a>
-									</div>
-									<div class="text-box">
-										<p style="font-size: 19px;">
-											We help transform relevant information into desired results.
-										</p>
-									</div>
-									<div class="copyright-text style2">
-										<p>
-											&copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
-											Rights Reserved.
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--End single footer widget-->
+        <footer class="footer-area style2">
+            <div class="shape">
+                <img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
+            </div>
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="inner">
+                                <div class="text">
+                                    <h6>Ready to get started?</h6>
+                                    <h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
+                                </div>
+                                <div class="button-box">
+                                    <a class="btn-one" href="{{ route('main.contact') }}">
+                                        <div class="border_line">
+                                            <img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+                                        </div>
+                                        <div class="left_round"></div>
+                                        <div class="right_round"></div>
+                                        <span class="txt">Book a Demo<i class="flaticon-plus-1 plusicon"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Start Footer-->
+            <div class="footer">
+                <div class="container">
+                    <div class="row text-right-rtl">
+                        <!--Start single footer widget-->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
+                            <div class="single-footer-widget">
+                                <div class="our-company-info">
+                                    <div class="footer-logo">
+                                        <a href="{{ route('main.index') }}">
+                                            <img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
+                                    </div>
+                                    <div class="text-box">
+                                        <p style="font-size: 19px;">
+                                            We help transform relevant information into desired results.
+                                        </p>
+                                    </div>
+                                    <div class="copyright-text style2">
+                                        <p>
+                                            &copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
+                                            Rights Reserved.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
-						<!--Start single footer widget-->
-						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
-							<div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
-								<div class="title">
-									<h3>Categories</h3>
-								</div>
-								<ul class="footer-widget-links1">
-									<li><a href="{{ route('main.index') }}">Home</a></li>
-									<li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
-									<li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
-									<li><a href="{{ route('main.socialListening') }}">Social Listening</a></li>
-									<li><a href="{{ route('main.contact') }}">Contact</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--End single footer widget-->
+                        <!--Start single footer widget-->
+                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
+                            <div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
+                                <div class="title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <ul class="footer-widget-links1">
+                                    <li><a href="{{ route('main.index') }}">Home</a></li>
+                                    <li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
+                                    <li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
+                                    <li><a href="{{ route('main.socialListening') }}">Social Listening</a></li>
+                                    <li><a href="{{ route('main.contact') }}">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
-						<!--Start single footer widget-->
-						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
-							<div class="single-footer-widget mar-left2 pdtop60">
-								<div class="title">
-									<h3>Community</h3>
-								</div>
-								<ul class="footer-widget-links1">
-									<li><a href="javascript:void();">Blog</a></li>
-									<li><a href="javascript:void();">Members</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--End single footer widget-->
+                        <!--Start single footer widget-->
+                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
+                            <div class="single-footer-widget mar-left2 pdtop60">
+                                <div class="title">
+                                    <h3>Community</h3>
+                                </div>
+                                <ul class="footer-widget-links1">
+                                    <li><a href="javascript:void();">Blog</a></li>
+                                    <li><a href="javascript:void();">Members</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
-						<!--Start single footer widget-->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
-							<div class="single-footer-widget fixwidth pdtop60">
-								<div class="title">
-									<h3>Our Socials</h3>
-								</div>
-								<ul class="instagram-box">
-									<li>
-										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
-											<div class="overlay">
-												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
-											<div class="overlay">
-												<div class="inner">
-													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
-											<div class="overlay">
-												<div class="inner">
-													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
+                        <!--Start single footer widget-->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
+                            <div class="single-footer-widget fixwidth pdtop60">
+                                <div class="title">
+                                    <h3>Our Socials</h3>
+                                </div>
+                                <ul class="instagram-box">
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
 
-								<div class="bottom-box">
-									<ul>
-										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
-										<li><a href="{{ route('main.terms-conditions') }}">Terms & Conditions </a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--End Footer-->
-		</footer>
+                                <div class="bottom-box">
+                                    <ul>
+                                        <li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
+                                        <li><a href="{{ route('main.terms-conditions') }}">Terms & Conditions </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Footer-->
+        </footer>
         <!--End footer area-->
 
         <button class="scroll-top scroll-to-target" data-target="html">
@@ -529,6 +505,22 @@
 
     <!-- thm custom script -->
     <script src="{{ asset('main/assets/js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var headline = [
+                "Take the pain out of publishing on social media",
+                "Publish to all social media channels from one place"
+            ];
+
+            var bottomTaglines = [
+                "Engage your followers on all social media channels with your latest content in just a few clicks.",
+                "Keep your social channels active and updated with your latest content in just a few clicks."
+            ];
+
+            $("#randomHeadLine").html(headline[Math.floor(Math.random() * headline.length)]);
+            $("#randomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
+        });
+    </script>
 </body>
 
 </html>
