@@ -75,4 +75,19 @@ class MainSiteController extends Controller
     {
         return view('main.terms-condition');
     }
+
+    public function socialAnalyticsInner()
+    {
+        return view('main.features.social-analytics-inner');
+    }
+
+    public function socialPostingInner()
+    {
+        return view('main.features.social-posting-inner');
+    }
+
+    public function socialListeningInner()
+    {
+        return view('main.features.social-listening-inner');
+    }
 }

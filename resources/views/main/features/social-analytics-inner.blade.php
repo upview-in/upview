@@ -10,8 +10,11 @@
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
@@ -45,6 +48,14 @@
 
     <link rel="stylesheet" href="{{ asset('main/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}" />
+    <!-- Custom Placeholder CSS -->
+    <link rel="stylesheet" href="{{ asset('main/assets/customstyle.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+        integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+        integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}" />
     <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-32x32.png') }}" sizes="32x32" />
@@ -189,16 +200,16 @@
         </header>
 
         <!--Start breadcrumb area-->
-        <section class="breadcrumb-area breadcrumb-area-style2">
-            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Social_Media_Analytics.png') }} );"></div>
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg"
+                style="background-image: url( {{ asset('main/assets/images/breadcrumb/Social_Media_Analytics.png') }} );"></div>
 
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="inner-content paroller text-center">
                             <div class="title">
-                                <h2 style="font-size: 50px;" id="randomHeadLine"></h2><br />
-                                <h4 style="font-weight: 400; color: #fff;" id="randomTagLine"></h4>
+                                <h2 style="font-size: 50px;">Social Media Analytics</h2>
                             </div>
                         </div>
                     </div>
@@ -207,130 +218,250 @@
         </section>
         <!--End breadcrumb area-->
 
-        <!--Start Service Details Area-->
-        <section class="service-details-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="service-deails-box">
-                            <div class="shape1">
-                                <img src="{{ asset('main/assets/images/shape/thm-shape-5.png') }}" alt="" />
-                            </div>
-                            <div class="bg-shape"></div>
-                            <div class="service-details-content-box">
-                                <div class="text">
-                                    <h3>
-                                        Never let scattered marketing data slow you down..
-                                    </h3>
-                                    <div class="mt-5">
-                                        <p>
-                                            Social media metrics are critical in understanding what content connects with your audience and why. However, the numbers lie in silos and are presented with little context. UPVIEW pulls data from major social media networks and provides a consolidated view of your channel performance. We mine the data and offer actionable and readily presentable insights that help you build a social media strategy that delivers.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="service-details-image-box">
-                                <img src="{{ asset('main/assets/images/breadcrumb/Social_Media_Analytics-Small.png') }}" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End Service Details Area-->
 
-        <!--Start SKill style1 Area-->
-        <section class="service-style3-area">
-            <div class="container">
-                <div class="sec-title text-center">
-                    <div class="sub-title">
-                        <h3>Features</h3>
-                    </div>
-                    <h2>
-                        Cut through the confusion of raw<br /> numbers and get to the insights
-                    </h2>
+        <!-- Audience profile section -->
+        <section id="audience-profile" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Build your audience profile</h2>
                 </div>
-                <div class="row">
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/audience.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#audience-profile">Build your audience profile</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Break down your audience by key demographic metrics such as geography, gender, and age. You can also fine-tune your promotional campaigns by identifying their device and the sources that drive traffic to your channels.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Geo Location
+                        </h3>
+                        <p class="pr-docs">Build content and schedule your posts to target the countries that make up
+                            the bulk of your traffic. </p>
                     </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/content-strategy.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#content-strategy">Tailor your content strategy</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Drive greater organic engagement and virality by finding out when your Facebook followers are most likely to be active and scheduling your posts accordingly. Discover what actions your followers are taking after engaging with your content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Geo Location.png') }}" alt="">
                     </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/tabs.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#market-competitors">Keep tabs on the market and competitors</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Trends rise and fall quickly on social media channels. Get real-time access to the content and channels trending on YouTube and keep on top of the competition. Dive deeper by getting access to tags used by popular videos and channels.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Age Group
+                        </h3>
+                        <p class="pr-docs">Tailor your content and promotions by getting a break up of your audience by
+                            their age group.</p>
                     </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/report.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#reports">Deliver Professional Reports</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Generate visual and presentable insights to align your team in just a few clicks. This helps in plotting your social media strategy and demonstrating the value of social strategy based on current and the most relevant data.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Age Group.png') }}" alt="">
                     </div>
-                    <!--End Single Service Style3-->
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">03</p>
+                        <h3 class="pr-h3-title">
+                            Device
+                        </h3>
+                        <p class="pr-docs">Find out if your YouTube audience is watching your videos on smartphones,
+                            computers or TV.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Device.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">04</p>
+                        <h3 class="pr-h3-title">
+                            Organic vs. Paid
+                        </h3>
+                        <p class="pr-docs">View the split between organic and paid audiences on Facebook to measure the
+                            efficacy of your promotional campaigns</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Organic vs Paid.png') }}" alt="">
+                    </div>
                 </div>
             </div>
         </section>
-        <!--End SKill style1 Area-->
+        <!-- Audience Profile section end  -->
+
+        <!-- content strategy section -->
+        <section id="content-strategy" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Tailor your content strategy</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Page fans online
+                        </h3>
+                        <p class="pr-docs">Maximize engagement and virality through a graph view of when your Facebook
+                            audience tends to be online.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Page fans online.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Track sources
+                        </h3>
+                        <p class="pr-docs">Identify the sources driving traffic to your Facebook Pages and YouTube
+                            channels to get better ROI on promotions.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Track sources.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">03</p>
+                        <h3 class="pr-h3-title">
+                            Sharing behavior
+                        </h3>
+                        <p class="pr-docs">Get an insight into how your audience behaves after watching your YouTube
+                            videos.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Sharing behavior.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- content strategy section end  -->
+
+        <!-- market competitors section -->
+        <section id="market-competitors" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Keep Tabs on the market & competitors</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Competitor performance
+                        </h3>
+                        <p class="pr-docs">Search for any competitor’s YouTube channel to view the key numbers
+                            associated with their videos.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Competitor performance.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Insight into trending videos
+                        </h3>
+                        <p class="pr-docs">Engage your audiences better by ideating around trends that are already
+                            popular on YouTube.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Insight into trending videos.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">03</p>
+                        <h3 class="pr-h3-title">
+                            Hashtag intelligence
+                        </h3>
+                        <p class="pr-docs">Increase organic reach by accessing the hashtags used by top-performing
+                            channels in your category.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Hashtag intelligence.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- market competitors section end  -->
+
+        <!-- reports section -->
+        <section id="reports" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Deliver Professional Reports</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Export easily
+                        </h3>
+                        <p class="pr-docs">Getting access to presentation-ready reports is as easy as hitting ‘Export.’
+                        </p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Export easily.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Select date range
+                        </h3>
+                        <p class="pr-docs">Present the most relevant information by segmenting insights by date range.
+                        </p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-media-analytics/Select date range.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- reports section end  -->
 
         <!--Start footer area -->
         <footer class="footer-area style2">
@@ -505,20 +636,7 @@
     <!-- thm custom script -->
     <script src="{{ asset('main/assets/js/custom.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            var headline = [
-                "Build your social media strategy backed by data",
-                "Powerful analytics to uncover actionable insights"
-            ];
-
-            var bottomTaglines = [
-                "Get powerful, visual, and actionable insights into audience behavior to drive your KPIs.",
-                "Measure and track your KPIs to build content that boosts audience engagement"
-            ];
-
-            $("#randomHeadLine").html(headline[Math.floor(Math.random() * headline.length)]);
-            $("#randomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
-        });
+        AOS.init();
     </script>
 </body>
 
