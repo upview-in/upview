@@ -11,6 +11,9 @@ class SocialListeningController extends Controller
 {
     public function index()
     {
+        if (empty(Auth::user()->awario_profile_hash)) {
+            return abort(404);
+        }
         $hash = sha1(rand());
         session(['validate_url_hash' => $hash]);
 

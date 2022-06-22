@@ -127,7 +127,7 @@ class UserController extends Controller
         $user->state = $request->state ?? $user->state;
         $user->city = $request->city ?? $user->city;
         $user->address = $request->address ?? $user->address;
-        $user->awario_profile_hash = $request->awario_profile_hash ?? $user->awario_profile_hash;
+        $user->awario_profile_hash = $request->awario_profile_hash;
 
         !$request->has('enabled') ?: ($user->enabled = filter_var($request->enabled, FILTER_VALIDATE_BOOLEAN));
         !$request->has('verified') ?: ($user->email_verified_at = (filter_var($request->verified, FILTER_VALIDATE_BOOLEAN) ? Carbon::now() : null));

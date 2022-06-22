@@ -60,8 +60,11 @@ Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function
     Route::controller(MainSiteController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/solutions/socialAnalytics', 'socialAnalytics')->name('socialAnalytics');
+        Route::get('/solutions/socialAnalytics/socialAnalyticsInner', 'socialAnalyticsInner')->name('socialAnalyticsInner');
         Route::get('/solutions/socialPosting', 'socialPosting')->name('socialPosting');
+        Route::get('/solutions/socialAnalytics/socialPostingInner', 'socialPostingInner')->name('socialPostingInner');
         Route::get('/solutions/socialListening', 'socialListening')->name('socialListening');
+        Route::get('/solutions/socialAnalytics/socialListeningInner', 'socialListeningInner')->name('socialListeningInner');
         Route::get('/blogs/{blog}', 'blog')->name('blog');
         Route::get('/pricing', 'pricing')->name('pricing');
         Route::get('/contact', 'contact')->name('contact');

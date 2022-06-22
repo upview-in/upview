@@ -45,6 +45,10 @@
 
     <link rel="stylesheet" href="{{ asset('main/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}" />
+    <!-- Custom Placeholder CSS -->
+    <link rel="stylesheet" href="{{ asset('main/assets/customstyle.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}" />
     <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-32x32.png') }}" sizes="32x32" />
@@ -189,16 +193,15 @@
         </header>
 
         <!--Start breadcrumb area-->
-        <section class="breadcrumb-area breadcrumb-area-style2">
-            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Social_Media_Analytics.png') }} );"></div>
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Social_Media_Listening.png') }} );"></div>
 
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="inner-content paroller text-center">
                             <div class="title">
-                                <h2 style="font-size: 50px;" id="randomHeadLine"></h2><br />
-                                <h4 style="font-weight: 400; color: #fff;" id="randomTagLine"></h4>
+                                <h2 style="font-size: 50px;">Social Listening</h2>
                             </div>
                         </div>
                     </div>
@@ -207,133 +210,356 @@
         </section>
         <!--End breadcrumb area-->
 
-        <!--Start Service Details Area-->
-        <section class="service-details-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="service-deails-box">
-                            <div class="shape1">
-                                <img src="{{ asset('main/assets/images/shape/thm-shape-5.png') }}" alt="" />
-                            </div>
-                            <div class="bg-shape"></div>
-                            <div class="service-details-content-box">
-                                <div class="text">
-                                    <h3>
-                                        Never let scattered marketing data slow you down..
-                                    </h3>
-                                    <div class="mt-5">
-                                        <p>
-                                            Social media metrics are critical in understanding what content connects with your audience and why. However, the numbers lie in silos and are presented with little context. UPVIEW pulls data from major social media networks and provides a consolidated view of your channel performance. We mine the data and offer actionable and readily presentable insights that help you build a social media strategy that delivers.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="service-details-image-box">
-                                <img src="{{ asset('main/assets/images/breadcrumb/Social_Media_Analytics-Small.png') }}" alt="" />
-                            </div>
-                        </div>
+        <!-- Intuitive setup section -->
+        <section id="Intuitive-setup" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Intuitive Setup</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Set up alerts
+                        </h3>
+                        <p class="pr-docs">Create alerts by adding (or excluding) keywords for your brands and product
+                            categories. You can also use Boolean rules to create alerts.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Set up alerts.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Focus on key locations
+                        </h3>
+                        <p class="pr-docs">You can fine-tune your social listening by specifying the countries you wish
+                            to track. </p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Focus on key locations.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">03</p>
+                        <h3 class="pr-h3-title">
+                            Specify sources
+                        </h3>
+                        <p class="pr-docs">Choose from a wide range of sources, including Twitter, Facebook, Instagram,
+                            YouTube, Vimeo, Reddit, News/Blogs, and webpages.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Specify sources.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">04</p>
+                        <h3 class="pr-h3-title">
+                            Specify date range
+                        </h3>
+                        <p class="pr-docs">You can filter results by date range – tracking the performance of
+                            promotional campaigns or measuring the impact of virality.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Specify date range.png') }}" alt="">
                     </div>
                 </div>
             </div>
         </section>
-        <!--End Service Details Area-->
+        <!-- Intuitive setup section end  -->
 
-        <!--Start SKill style1 Area-->
-        <section class="service-style3-area">
-            <div class="container">
-                <div class="sec-title text-center">
-                    <div class="sub-title">
-                        <h3>Features</h3>
-                    </div>
-                    <h2>
-                        Cut through the confusion of raw<br /> numbers and get to the insights
-                    </h2>
+        <!-- track competitors section -->
+        <section id="track-competitors" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Track Competitors</h2>
                 </div>
-                <div class="row">
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/audience.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#audience-profile">Build your audience profile</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Break down your audience by key demographic metrics such as geography, gender, and age. You can also fine-tune your promotional campaigns by identifying their device and the sources that drive traffic to your channels.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Competitor alert
+                        </h3>
+                        <p class="pr-docs"> Set up alerts for key competitor brands to build an understanding of their
+                            reach and influence.</p>
                     </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/content-strategy.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#content-strategy">Tailor your content strategy</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Drive greater organic engagement and virality by finding out when your Facebook followers are most likely to be active and scheduling your posts accordingly. Discover what actions your followers are taking after engaging with your content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Competitor alert.png') }}" alt="">
                     </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/tabs.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#market-competitors">Keep tabs on the market and competitors</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Trends rise and fall quickly on social media channels. Get real-time access to the content and channels trending on YouTube and keep on top of the competition. Dive deeper by getting access to tags used by popular videos and channels.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Sentiment comparison
+                        </h3>
+                        <p class="pr-docs">Compare how your customers feel about your brand in comparison to competitor
+                            brands. </p>
                     </div>
-                    <!--End Single Service Style3-->
-                    <!--Start Single Service Style3-->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="single-service-style3 text-center">
-                            <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/analytics/report.png') }}" alt="" />
-                            </div>
-                            <div class="title">
-                                <h3>
-                                    <a href="{{ route('main.socialAnalyticsInner') }}#reports">Deliver Professional Reports</a>
-                                </h3>
-                                <div class="inner-text">
-                                    <p>
-                                    Generate visual and presentable insights to align your team in just a few clicks. This helps in plotting your social media strategy and demonstrating the value of social strategy based on current and the most relevant data.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Sentiment comparison.png') }}" alt="">
                     </div>
-                    <!--End Single Service Style3-->
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">03</p>
+                        <h3 class="pr-h3-title">
+                            Topic cloud intersection
+                        </h3>
+                        <p class="pr-docs">Identify the topics where you and your competitors are mentioned in the same
+                            context to adjust your communication.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Topic cloud intersection.png') }}" alt="">
+                    </div>
                 </div>
             </div>
         </section>
-        <!--End SKill style1 Area-->
+        <!-- track competitors section end  -->
+
+        <!-- get the context section -->
+        <section id="get-the-context" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Get the context</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Topic clouds
+                        </h3>
+                        <p class="pr-docs">Get an easy-to-digest overview of the topics where you are being mentioned by
+                            people online.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Topic clouds.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Real-time updates
+                        </h3>
+                        <p class="pr-docs">Respond swiftly by getting real-time updates when people discuss your brand.
+                        </p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Real-time updates.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">03</p>
+                        <h3 class="pr-h3-title">
+                            Measure reach
+                        </h3>
+                        <p class="pr-docs">Get a sense of the number of people talking about you and the number of brand
+                            mentions.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Measure reach.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">04</p>
+                        <h3 class="pr-h3-title">
+                            Demographic breakdown
+                        </h3>
+                        <p class="pr-docs">Dive deeper by segmenting the audience by age and gender.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Demographic breakdown.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- get the context section end  -->
+
+        <!-- sentiment analysis section -->
+        <section id="sentiment-analysis" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Sentiment Analysis</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Positive or Negative
+                        </h3>
+                        <p class="pr-docs">Our intelligent algorithms scan and interpret updates to classify sentiments
+                            into two easy-to-understand categories. </p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Positive or Negative.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            View content updates
+                        </h3>
+                        <p class="pr-docs">Optimize your content strategy by viewing the tweets, photos, videos, and
+                            articles driving positive or negative sentiments.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/View content updates.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- sentiment analysis section end  -->
+
+        <!-- evaluate influencer section -->
+        <section id="evaluate-influencers" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Evaluate Influencers</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Key drivers
+                        </h3>
+                        <p class="pr-docs">Identify the influencers or company handles whose updates have an outsized
+                            impact on positive or negative sentiments. This helps in areas like promotion strategy or
+                            crisis communication</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Key drivers.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Filter by source
+                        </h3>
+                        <p class="pr-docs">View the platforms where your brand is being discussed the most. You can even
+                            filter findings by source.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Filter by source.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- evaluate influencer section end  -->
+
+        <!-- generate reports section -->
+        <section id="generate-reports" class="pr-section">
+            <div class="inner-content paroller text-center">
+                <div class="title">
+                    <h2 style="font-size: 50px;">Generate reports</h2>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">01</p>
+                        <h3 class="pr-h3-title">
+                            Easy report generation
+                        </h3>
+                        <p class="pr-docs">Generate visual, presentation-ready reports with just a few clicks. </p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Easy report generation.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pr-row">
+                <div class="pr-col">
+                    <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <p class="pr-nob">02</p>
+                        <h3 class="pr-h3-title">
+                            Widget-based layout
+                        </h3>
+                        <p class="pr-docs">Tailor your reports by dragging and dropping data points that show the most relevant information.</p>
+                    </div>
+                </div>
+                <div class="pr-col">
+                    <div class="pr-img" data-aos="fade-left" ata-aos-offset="150" data-aos-easing="ease-in-sine">
+                        <img src="{{ asset('main/assets/images/social-listening/Widget-based layout.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- generate reports section end  -->
+
 
         <!--Start footer area -->
-        <footer class="footer-area style2">
+        <footer class="footer-area style2 mt-5">
             <div class="shape">
                 <img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
             </div>
@@ -505,20 +731,7 @@
     <!-- thm custom script -->
     <script src="{{ asset('main/assets/js/custom.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            var headline = [
-                "Build your social media strategy backed by data",
-                "Powerful analytics to uncover actionable insights"
-            ];
-
-            var bottomTaglines = [
-                "Get powerful, visual, and actionable insights into audience behavior to drive your KPIs.",
-                "Measure and track your KPIs to build content that boosts audience engagement"
-            ];
-
-            $("#randomHeadLine").html(headline[Math.floor(Math.random() * headline.length)]);
-            $("#randomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
-        });
+        AOS.init();
     </script>
 </body>
 
