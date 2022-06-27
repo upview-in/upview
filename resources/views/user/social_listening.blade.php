@@ -26,10 +26,12 @@
 @section('custom-scripts')
     <script>
         $(document).ready(function() {
-            setTimeout(function() {
-                $(".loading-screen").css('display', 'none');
-                $("#social_listing_iframe").css('display', 'block');
-            }, 3000);
+            $("#social_listing_iframe").ready(function () {
+                setTimeout(function() {
+                    $(".loading-screen").css('display', 'none');
+                    $("#social_listing_iframe").css('display', 'block');
+                }, 3000);
+            });
         });
     </script>
 @endsection
