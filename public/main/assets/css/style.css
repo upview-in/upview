@@ -3243,7 +3243,7 @@ select:focus {
 }
 .magic {
     text-transform: uppercase;
-    animation: glow 3s ease-in-out infinite;
+    animation: glow 6s ease-in-out infinite;
 }
 
 @keyframes glow {

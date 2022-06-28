@@ -296,7 +296,7 @@
                                                 <h3>Telephone</h3>
                                             </div>
                                             <div class="inner_text">
-                                                <p><a href="tel:+919324633735">+91 9324633735</a></p>
+                                                <p><a href="tel:+919820909500">+91 9820909500</a></p>
                                             </div>
                                         </div>
                                     </li>
@@ -322,6 +322,7 @@
                                                     <li><a href="https://www.facebook.com/upviewIndia/"><i class="fa fa-facebook"></i></a></li>
                                                     <li><a href="https://twitter.com/UpviewIndia"><i class="fa fa-twitter"></i></a></li>
                                                     <li><a href="https://instagram.com/upviewindia"><i class="fa fa-instagram"></i></a></li>
+                                                    <li><a href="https://instagram.com/upviewindia"><i class="fa fa-linkedin"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>

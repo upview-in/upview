@@ -386,7 +386,7 @@
                                     <h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
                                 </div>
                                 <div class="button-box">
-                                    <a class="btn-one" href="#">
+                                    <a class="btn-one" href="{{ route('main.contact') }}">
                                         <div class="border_line">
                                             <img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
                                         </div>
