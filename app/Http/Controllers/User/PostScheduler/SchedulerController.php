@@ -54,6 +54,12 @@ class SchedulerController extends Controller
             array_push($userTags, ['username' => $mentions, 'x' => 1.0, 'y' => 1.0]);
         }
 
+        // Getting Youtube Title
+        $ytTitle = $request->yt_title;
+        if (in_array('Youtube', $enabledPlatforms) && empty($ytTitle)) {
+            return redirect()->back()->with('validation_error', 'Youtube Title is required for YouTube');
+        }
+
         //  Getting schedule date and time to schedule the post
         $scheduledData = $request->has('scheduled_at') ? $request->scheduled_at . ':00Z' : false;
 
@@ -70,6 +76,9 @@ class SchedulerController extends Controller
             $fileInfo = $request->file('post_media')->store('User');
             $mediaURL = encrypt($fileInfo);
             $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
+            if (in_array('Youtube', $enabledPlatforms)) {
+                $data['youTubeOptions'] = ['title' => $ytTitle];
+            }
         } elseif (in_array('Instagram', $enabledPlatforms) || in_array('Youtube', $enabledPlatforms) || in_array('Pinterest', $enabledPlatforms)) {
             return redirect()->back()->with('validation_error', 'Selected Platform(s) require to have Image/Video.');
         } else {
