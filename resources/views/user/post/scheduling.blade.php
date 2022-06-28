@@ -87,6 +87,14 @@
             checkEnabledPlatforms();
         });
 
+        $('#cbyoutube').on('change', function() {
+            if ($('#cbyoutube').is(":checked")) {
+                $("#yt_title").css('display', 'block');
+            } else {
+                $("#yt_title").css('display', 'none');
+            }
+        })
+
         function checkEnabledPlatforms() {
             let selecteable_platforms = [];
 
@@ -103,6 +111,8 @@
                     if (data.includes(platform) && selecteable_platforms.includes(platform)) {
                         $('#cb' + platform).removeAttr('disabled');
                     } else {
+                        $('#cb' + platform).prop('checked', false);
+                        $('#cb' + platform).trigger('change');
                         $('#cb' + platform).attr('disabled', true);
                     }
                 });
@@ -185,7 +195,7 @@
                             </div>
                             <div class="col-md-2">
                                 <input id="cbyoutube" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['youtube'] }}" disabled type="checkbox">
-                                <label for="cbyoutube">YouTube</label>
+                                <label for="cbyoutube">YouTube</label>&nbsp;<sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="Default visibility of video uploaded to YouTube is Private."></em></sup>
                             </div>
 
                             <div class="col-md-2">
@@ -216,13 +226,18 @@
                     </div>
 
                     <div class="form-group col-12">
-                        <label class="font-weight-semibold" for="caption">{{ __('Caption') }}:<sup>*</sup></label>
-                        <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter a caption here..">
+                        <label class="font-weight-semibold" for="caption">{{ __('Caption / Description') }}:<sup>*</sup></label>
+                        <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter a caption / Description here..">
                         @error('caption')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+
+                    <div class="form-group col-12" id="yt_title" style="display: none;">
+                        <label class="font-weight-semibold" for="yt_title">{{ __('Youtube Title') }}:<sup>*</sup></label>
+                        <input type="text" class="form-control" max="100" id="yt_title" name="yt_title" placeholder="Enter Youtube title here">
                     </div>
 
                     <div class="form-group col-12">
@@ -256,7 +271,7 @@
                     </div>
 
                     <div class="form-group col-12">
-                        <label class="font-weight-semibold" for="scheduled_at">{{ __('Schedule Post') }}:</label>
+                        <label class="font-weight-semibold" for="scheduled_at">{{ __('Schedule Post') }}:</label><sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="Currently we are supporting UTC time zone. Please check the timezones before scheduling."></em></sup>
                         <input type="datetime-local" class="form-control" id="scheduled_at" name="scheduled_at" placeholder="Select Date & Time">
                         @error('scheduled_at')
                         <span class="invalid-feedback d-block" role="alert">
@@ -279,7 +294,7 @@
                         <h5 class="m-b-5 font-size-18">{{ __('Choose Post Media') }}</h5>
                         <p class="opacity-07 font-size-13 m-b-0 media">
                             <input id="post_media" name="post_media" type="file" class="hidden" accept="image/*, video/*">
-                            <a href="" data-toggle="modal" data-target="#postStandards" class="mr-1">Click here</a>to check the recommended size
+                            <a href="" data-toggle="modal" data-target="#postStandards" class="mr-1">Click here</a>to check the recommended size.
                         </p>
                         @error('post_media')
                         <span class="invalid-feedback d-block" role="alert">
@@ -316,7 +331,7 @@
                                     <th scope="col" rowspan="2">#</th>
                                     <th scope="col" rowspan="2" data-field="Platform">Platform</th>
                                     <th scope="col" rowspan="2" data-field="supported_type">Supported Media Type</th>
-                                    <th scope="col" colspan="2">Max Size Supported</th>
+                                    <th scope="col" colspan="2">Max Size & Aspect Ratio</th>
                                 </tr>
                                 <tr>
                                     <th scope="col" data-field="images_size">Image</th>
@@ -328,36 +343,36 @@
                                     <th scope="row">1</th>
                                     <td>Facebook</td>
                                     <td>JPG,BMP,PNG,GIF,TIFF,MP4,MOV,AVI</td>
-                                    <td>10 MB</td>
-                                    <td>3 GB</td>
+                                    <td>10 MB / 1:1</td>
+                                    <td>3 GB / 16:9 / 9:16</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
                                     <td>Instagram</td>
                                     <td>JPG,PNG,MP4,MOV</td>
-                                    <td>8 MB</td>
-                                    <td>100 MB</td>
+                                    <td>8 MB / 4:5 to 1.91:1 range</td>
+                                    <td>100 MB / 4:5 / 16:9</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
                                     <td>LinkedIn</td>
                                     <td>JPG,PNG,GIF,ASF,AVI,FLV,MP4,MOV,MKV,WEBM</td>
                                     <td>5 MB</td>
-                                    <td>10 GB</td>
+                                    <td>10 GB / 1:2.4 & 2.4:1</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
                                     <td>Twitter</td>
                                     <td>JPG,PNG,GIF,WEBP,MP4,MOV</td>
-                                    <td>5 MB</td>
-                                    <td>512 MB</td>
+                                    <td>5 MB / 16:9</td>
+                                    <td>512 MB / 1:3 & 3:1</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
                                     <td>YouTube</td>
                                     <td>MP4,MOV</td>
                                     <td>N/A</td>
-                                    <td>5 GB</td>
+                                    <td>5 GB / 16:9</td>
                                 </tr>
                             </tbody>
                         </table>

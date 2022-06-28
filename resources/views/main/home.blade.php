@@ -288,7 +288,7 @@
 															src="images/modules/site/home/globe-500.hevc.mp4"> -->
 														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/globe-500.h264.mp4') }}">
 													</video>
-													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w" sizes="(max-width: 700px) 70vw, 700px" src="{{ asset('main/images/modules/site/home/globe.jpg') }}" alt="Planet earth with visualization of GitHub activity crossing the globe" class="width-full height-auto js-globe-fallback-image" loading="lazy" decoding="async" width="1238" height="1404" hidden>
+													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w" sizes="(max-width: 700px) 70vw, 700px" src="{{ asset('main/images/modules/site/home/globe.jpg') }}" alt="Upview power of collecting data from the globe" class="width-full height-auto js-globe-fallback-image" loading="lazy" decoding="async" width="1238" height="1404" hidden>
 
 													<canvas width="900" height="900" class="webgl-canvas js-globe-canvas" style="display: block; width: 900px; height: 900px;"></canvas>
 												</div>
@@ -299,7 +299,6 @@
 									</div>
 								</div>
 
-								<!-- <img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="" class="position-absolute home-hero-glow events-none z-1"> -->
 								<video loop="" muted="" playsinline="" preload="none" class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0" style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
 									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
 								</video>
@@ -312,7 +311,7 @@
 										<div class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
 											<picture>
 												<source srcset="{{ asset('main/images/modules/site/home/astro-mona.webp') }}" type="image/webp">
-												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="Mona looking at GitHub activity across the globe">
+												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="">
 											</picture>
 										</div>
 									</div>
@@ -378,10 +377,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										UPVIEW’s intuitive dashboard presents actionable insights based on data from
-										social networks. Take the guesswork out of decision-making by building your
-										social media strategy based on real audience behavior. Generate visually
-										attractive reports for your team effortlessly.
+										Take the guesswork out of decision-making by building your social media strategy based on real audience behavior. UPVIEW’s intuitive dashboard presents actionable insights based on social data. You can also generate visual reports for your team effortlessly.
 									</p>
 								</div>
 							</div>
@@ -401,10 +397,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Keep up with consumer opinions, track competitors, and maintain brand health
-										with UPVIEW’s advanced Social Listening tool. Our granular sentiment analysis
-										provides real-time updates and helps you identify key influencers driving
-										conversations about your brand on the web.
+										Keep up with consumer opinions, track competitors, and maintain brand health with our advanced Social Listening tool. Our sentiment analysis provides real-time updates and identifies key influencers driving conversations about your brand on the web.
 									</p>
 								</div>
 							</div>
@@ -748,10 +741,10 @@
 							<div class="inner">
 								<div class="text">
 									<h6>Ready to get started?</h6>
-                                    <h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
+									<h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
 								</div>
 								<div class="button-box">
-									<a class="btn-one" href="#">
+									<a class="btn-one" href="{{ route('main.contact') }}">
 										<div class="border_line">
 											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
 										</div>
@@ -926,7 +919,7 @@
 			var bottomTaglines = [
 				"A suite of products to streamline publishing, build data-backed strategies, and develop audience intelligence via social listening.",
 				"Grow your brand online with UPVIEW’s powerful Publishing, Analytics, and Social Listening features.",
-				"Build, grow, and protect your brand online with UPVIEW’s suite of products."
+				"Build, protect, and grow your brand online with UPVIEW’s suite of products"
 			];
 
 			$("#randomTagLine").html(taglines[Math.floor(Math.random() * taglines.length)]);
