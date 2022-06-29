@@ -81,7 +81,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
         return redirect()->route('login');
     });
 
-    Route::get('media/{file}', [CommonController::class, 'displayMedia'])->name('media.displayMedia');
+    Route::get('media/{dir}/{file}', [CommonController::class, 'displayMedia'])->name('media.displayMedia');
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
     Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');
