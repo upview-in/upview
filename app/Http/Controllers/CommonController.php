@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Response;
 
 class CommonController extends Controller
 {
-    public function displayMedia(Request $request, $file)
+    public function displayMedia(Request $request, $dir, $file)
     {
-        $file = storage_path('app/' . $file);
+        $file = storage_path('app/' . $dir . '/' . $file);
 
         if (!File::exists($file)) {
             return abort(404);
