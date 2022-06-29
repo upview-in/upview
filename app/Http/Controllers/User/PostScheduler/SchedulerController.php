@@ -98,7 +98,7 @@ class SchedulerController extends Controller
             $post_info = [];
         }
 
-        if ($request->has('scheduled_at')) {
+        if (!empty($request->scheduled_at)) {
             $postData->caption = $request->caption . ' ' . $tags;
             $postData->media_url = [route('media.displayMedia', $mediaURL)];
             $postData->is_scheduled = 1; //Scheduled
