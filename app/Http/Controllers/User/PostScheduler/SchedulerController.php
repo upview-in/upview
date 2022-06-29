@@ -61,7 +61,7 @@ class SchedulerController extends Controller
         }
 
         //  Getting schedule date and time to schedule the post
-        $scheduledData = $request->has('scheduled_at') ? $request->scheduled_at . ':00Z' : false;
+        $scheduledData = !empty($request->scheduled_at) ? $request->scheduled_at . ':00Z' : false;
 
         // Check if request has post media or not. If present check for the post type (scheduled or unscheduled).
         // Check for platforms where post media is required
@@ -74,7 +74,8 @@ class SchedulerController extends Controller
                 }
             }
             $mediaURL = $request->file('post_media')->store('User');
-            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', $mediaURL)], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
+            $splittedMediaUrl = explode('/', $mediaURL);
+            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'profile_key' => decrypt($request->profile_select)];
             if (in_array('Youtube', $enabledPlatforms)) {
                 $data['youTubeOptions'] = ['title' => $ytTitle];
             }
@@ -100,7 +101,7 @@ class SchedulerController extends Controller
 
         if (!empty($request->scheduled_at)) {
             $postData->caption = $request->caption . ' ' . $tags;
-            $postData->media_url = [route('media.displayMedia', $mediaURL)];
+            $postData->media_url = [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])];
             $postData->is_scheduled = 1; //Scheduled
             $postData->ayrId = $response['id'];
             $postData->scheduled_at = $request->scheduled_at;
@@ -117,7 +118,7 @@ class SchedulerController extends Controller
 
             $postData->post_info = $post_info;
             $postData->caption = $request->caption . ' ' . $tags;
-            $postData->media_url = [route('media.displayMedia', $mediaURL)];
+            $postData->media_url = [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])];
             $postData->is_scheduled = 0; //Posted
             $postData->ayrId = $response['id'];
             $postData->ayrRefId = $response['refId'];
