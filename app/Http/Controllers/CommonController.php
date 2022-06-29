@@ -9,14 +9,8 @@ use Illuminate\Support\Facades\Response;
 
 class CommonController extends Controller
 {
-    public function displayImage(Request $request, $file)
+    public function displayMedia(Request $request, $file)
     {
-        try {
-            $file = decrypt($file);
-        } catch (DecryptException $e) {
-            return abort(404);
-        }
-
         $file = storage_path('app/' . $file);
 
         if (!File::exists($file)) {

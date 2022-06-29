@@ -73,9 +73,8 @@ class SchedulerController extends Controller
                     return redirect()->back()->with('validation_error', $val['validation_msg']);
                 }
             }
-            $fileInfo = $request->file('post_media')->store('User');
-            $mediaURL = encrypt($fileInfo);
-            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
+            $mediaURL = $request->file('post_media')->store('User');
+            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', $mediaURL)], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
             if (in_array('Youtube', $enabledPlatforms)) {
                 $data['youTubeOptions'] = ['title' => $ytTitle];
             }
@@ -101,7 +100,7 @@ class SchedulerController extends Controller
 
         if ($request->has('scheduled_at')) {
             $postData->caption = $request->caption . ' ' . $tags;
-            $postData->media_url = [route('image.displayImage', $mediaURL)];
+            $postData->media_url = [route('media.displayMedia', $mediaURL)];
             $postData->is_scheduled = 1; //Scheduled
             $postData->ayrId = $response['id'];
             $postData->scheduled_at = $request->scheduled_at;
@@ -118,7 +117,7 @@ class SchedulerController extends Controller
 
             $postData->post_info = $post_info;
             $postData->caption = $request->caption . ' ' . $tags;
-            $postData->media_url = [route('image.displayImage', $mediaURL)];
+            $postData->media_url = [route('media.displayMedia', $mediaURL)];
             $postData->is_scheduled = 0; //Posted
             $postData->ayrId = $response['id'];
             $postData->ayrRefId = $response['refId'];
