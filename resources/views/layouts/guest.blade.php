@@ -59,7 +59,7 @@
                 var telInputErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
                 $("#phoneNumber").intlTelInput({
                     placeholderNumberType: "MOBILE",
-                    initialCountry: "auto",
+                    initialCountry: "IN",
                 });
 
                 $('form').submit(function (e) {

@@ -16,6 +16,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \App\Http\Middleware\HttpRedirect::class,
         \App\Http\Middleware\HSTS::class,
+        \App\Http\Middleware\Verified::class,
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
@@ -66,7 +67,7 @@ class Kernel extends HttpKernel
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'verified' => \App\Http\Middleware\Verified::class,
         'yt.token.validate' => \App\Http\Middleware\YtTokenCheck::class,
     ];
 }

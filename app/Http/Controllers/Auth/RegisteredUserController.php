@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserOrder;
+use App\Models\UserRole;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +53,24 @@ class RegisteredUserController extends Controller
             'mobile_number' =>  $request->mobile_number,
             'country' => $request->country,
         ]);
+
+        // Add free plan to new registered user
+        $trial_plan = UserRole::getTrialPlan();
+
+        if (!empty($trial_plan)) {
+            $order = new UserOrder();
+            $order->payment_gateway_using = 0;
+            $order->user_id = $user->id;
+            $order->plan_id = $trial_plan->id;
+            $order->status = 1;
+            $order->payment_id = '0';
+            $order->purchased_at = Carbon::now();
+            $order->expired_at = Carbon::now()->addDays($trial_plan->plan_validity);
+            $order->response_message = 'Free plan added successfully.';
+            $order->save();
+
+            $user->roles()->attach([$trial_plan->id]);
+        }
 
         event(new Registered($user));
 

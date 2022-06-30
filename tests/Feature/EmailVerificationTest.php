@@ -20,7 +20,7 @@ class EmailVerificationTest extends TestCase
     public function test_email_verification_screen_can_be_rendered()
     {
         $user = User::factory()->create([
-            'email_verified_at' => null,
+            'verified_at' => null,
         ]);
 
         $response = $this->actingAs($user)->get('/verify-email');
@@ -33,7 +33,7 @@ class EmailVerificationTest extends TestCase
         Event::fake();
 
         $user = User::factory()->create([
-            'email_verified_at' => null,
+            'verified_at' => null,
         ]);
 
         $verificationUrl = URL::temporarySignedRoute(
@@ -52,7 +52,7 @@ class EmailVerificationTest extends TestCase
     public function test_email_is_not_verified_with_invalid_hash()
     {
         $user = User::factory()->create([
-            'email_verified_at' => null,
+            'verified_at' => null,
         ]);
 
         $verificationUrl = URL::temporarySignedRoute(
