@@ -12,19 +12,7 @@ var channelCategories = [
 ];
 
 function toast(title, message, delay, icon = 'info', color = 'info') {
-    var toastHTML =
-        '<div class="toast fade hide text-' + color + '" data-delay="' + delay + '">' +
-        '   <div class="toast-header">' +
-        '       <i class="anticon anticon-' + icon + '-circle text-' + color + ' m-r-5"></i>' +
-        '       <strong class="mr-auto text-' + color + '">' + title + '</strong>' +
-        '       <button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">' +
-        '           <span aria-hidden="true">&times;</span>' +
-        '       </button>' +
-        '   </div>' +
-        '   <div class="toast-body">' +
-        '       ' + message +
-        '   </div>' +
-        '</div>';
+    var toastHTML = '<div class="toast fade hide text-' + color + '" data-delay="' + delay + '">' + '   <div class="toast-header">' + '       <i class="anticon anticon-' + icon + '-circle text-' + color + ' m-r-5"></i>' + '       <strong class="mr-auto text-' + color + '">' + title + '</strong>' + '       <button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">' + '           <span aria-hidden="true">&times;</span>' + '       </button>' + '   </div>' + '   <div class="toast-body">' + '       ' + message + '   </div>' + '</div>';
 
     $('#notification-toast').append(toastHTML);
     $('#notification-toast .toast').toast('show');
@@ -34,11 +22,17 @@ function toast(title, message, delay, icon = 'info', color = 'info') {
 }
 
 function convertToInternationalCurrencySystem(num, fixed = 1) {
-    if (typeof num === undefined) { return '0'; }
-    if (num === null) { return '0'; } // terminate early
-    if (num === 0) { return '0'; } // terminate early
+    if (typeof num === undefined) {
+        return '0';
+    }
+    if (num === null) {
+        return '0';
+    } // terminate early
+    if (num === 0) {
+        return '0';
+    } // terminate early
 
-    fixed = (!fixed || fixed < 0) ? 0 : fixed; // number of decimal places to show
+    fixed = (! fixed || fixed < 0) ? 0 : fixed; // number of decimal places to show
 
     num = Number(num);
 
@@ -46,13 +40,21 @@ function convertToInternationalCurrencySystem(num, fixed = 1) {
         k = b.length === 1 ? 0 : Math.floor(Math.min(b[1].slice(1), 14) / 3), // floor at decimals, ceiling at trillions
         c = k < 1 ? num.toFixed(0 + fixed) : (num / Math.pow(10, k * 3)).toFixed(1 + fixed), // divide by power
         d = c < 0 ? c : Math.abs(c), // enforce -0 is 0
-        e = d + ['', 'K', 'M', 'B', 'T'][k]; // append power
+        e = d + [
+            '',
+            'K',
+            'M',
+            'B',
+            'T'
+        ][k]; // append power
     return e;
 
 }
 
 function formatTime(mins) {
-    return Math.floor(mins / 60) + ":" + (mins % 60) + " (" + mins + " Minutes)";
+    return Math.floor(mins / 60) + ":" + (
+        mins % 60
+    ) + " (" + mins + " Minutes)";
 }
 
 function timeSince(date) {
@@ -114,11 +116,9 @@ function GetParameterValues(param) {
 
 function openTab(link) {
     var win = window.open(link, '_blank');
-    if (win) {
-        //Browser has allowed it to be opened
+    if (win) { // Browser has allowed it to be opened
         win.focus();
-    } else {
-        //Browser has blocked it
+    } else { // Browser has blocked it
         alert('Please allow popups for this website');
     }
 }
@@ -250,7 +250,9 @@ function drawChart(eleId, data, type, options = {}, removeOptions = {}) {
         $('#' + eleId.id).html(noData);
     } else {
         var chartData = new google.visualization.arrayToDataTable(data);
-        var chart = new Chart(eleId, chartData, options, removeOptions, [7, 8], type);
+        var chart = new Chart(eleId, chartData, options, removeOptions, [
+            7, 8
+        ], type);
         chart.init();
     }
 }
@@ -293,14 +295,14 @@ class Chart {
             left: 50,
             right: 50,
             top: 26,
-            bottom: 70,
+            bottom: 70
         },
         crosshair: {
             trigger: 'both',
             orientation: 'vertical'
         },
         explorer: {
-            actions: ["dragToZoom", "rightClickToReset"],
+            actions: ["dragToZoom", "rightClickToReset"]
         }
     };
 
@@ -355,13 +357,9 @@ class Chart {
     }
 
     downloadChartPDF() {
-        const {
-            jsPDF
-        } = window.jspdf;
+        const {jsPDF} = window.jspdf;
 
-        let doc = new jsPDF({
-            orientation: 'landscape',
-        });
+        let doc = new jsPDF({orientation: 'landscape'});
 
         let imgData = this.chart.getImageURI();
         const imgProps = doc.getImageProperties(imgData);
@@ -400,8 +398,7 @@ class Chart {
     init() {
         this.buildContextMenu();
 
-        switch ((this.chartType).toLocaleLowerCase()) {
-            //Keep this, so even in case we by mistake give the chart name in wrong case.
+        switch ((this.chartType).toLocaleLowerCase()) { // Keep this, so even in case we by mistake give the chart name in wrong case.
             case "bar":
                 this.chart = new google.visualization.BarChart(this.id);
                 break;
@@ -480,13 +477,9 @@ class Chart {
 }
 
 $(document).ready(function () {
-    $('.select2').select2({
-        allowClear: true,
-    });
+    $('.select2').select2({allowClear: true});
 
-    $('.datepicker-input').datepicker({
-        format: 'yyyy-mm-dd',
-    });
+    $('.datepicker-input').datepicker({format: 'yyyy-mm-dd'});
 
     if (getCookie('isFolded') != "" && getCookie('isFolded') == "true") {
         $(".app").addClass("is-folded");
@@ -502,13 +495,11 @@ $(document).ready(function () {
         mutations.forEach(function (mutation) {
             if (mutation.attributeName === "class") {
                 var isFolded = getCookie('isFolded') == "true" ? true : false;
-                setCookie('isFolded', !isFolded, 365);
+                setCookie('isFolded', ! isFolded, 365);
             }
         });
     });
-    observer.observe($div[0], {
-        attributes: true
-    });
+    observer.observe($div[0], {attributes: true});
 
 
     $("#YtOverviewConfirm").confirm({
@@ -528,17 +519,20 @@ $(document).ready(function () {
                 text: "Cancel",
                 btnClass: "btn-danger",
                 isHidden: false,
-                isDisabled: false,
+                isDisabled: false
             }
         }
     });
 
     if ($("#phoneNumber").length) {
-        var telInputErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
-        $("#phoneNumber").intlTelInput({
-            placeholderNumberType: "MOBILE",
-            initialCountry: "auto",
-        });
+        var telInputErrorMap = [
+            "Invalid number",
+            "Invalid country code",
+            "Too short",
+            "Too long",
+            "Invalid number"
+        ];
+        $("#phoneNumber").intlTelInput({placeholderNumberType: "MOBILE", initialCountry: "IN"});
 
         $('form').submit(function (e) {
             if ($(this).find("#phoneNumber").length) {
@@ -548,8 +542,7 @@ $(document).ready(function () {
                         toast('Error', 'Phone Number is invalid', 3000, 'danger', 'danger');
                     } else {
                         toast('Error', telInputErrorMap[error_msg], 3000, 'danger', 'danger');
-                    }
-                    e.preventDefault();
+                    } e.preventDefault();
                 } else {
                     var phone_number = $("#phoneNumber").intlTelInput("getNumber");
                     $("#phoneNumber").val(phone_number);

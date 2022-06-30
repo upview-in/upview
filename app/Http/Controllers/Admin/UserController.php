@@ -56,7 +56,7 @@ class UserController extends Controller
             $sanitized['password'] = Hash::make($request->password);
         }
 
-        $sanitized['email_verified_at'] = Carbon::now();
+        $sanitized['verified_at'] = Carbon::now();
         $user = User::create($sanitized);
 
         // Set user profile photo if uploaded
@@ -130,7 +130,7 @@ class UserController extends Controller
         $user->awario_profile_hash = $request->awario_profile_hash;
 
         !$request->has('enabled') ?: ($user->enabled = filter_var($request->enabled, FILTER_VALIDATE_BOOLEAN));
-        !$request->has('verified') ?: ($user->email_verified_at = (filter_var($request->verified, FILTER_VALIDATE_BOOLEAN) ? Carbon::now() : null));
+        !$request->has('verified') ?: ($user->verified_at = (filter_var($request->verified, FILTER_VALIDATE_BOOLEAN) ? Carbon::now() : null));
 
         if ($request->hasFile('avatar')) {
             if ($user->hasMedia('avatars')) {

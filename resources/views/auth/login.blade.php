@@ -13,6 +13,13 @@
 
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
+
+                                    @if (session()->has('message'))
+                                        <div class="alert alert-success">
+                                            <strong>{{ session()->get('message') }}</strong>
+                                        </div>
+                                    @endif
+
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
