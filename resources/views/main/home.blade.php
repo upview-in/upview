@@ -317,7 +317,6 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
 
 						<div class="mx-auto container-xl p-responsive py-8 py-md-9 overflow-hidden d-flex gutter gutter-spacious js-build-in-trigger" data-build-margin-bottom="20">
@@ -337,7 +336,7 @@
 						<h3>Our Services</h3>
 					</div>
 					<h2>
-						Level Up Your Social Media Management
+						Take Social Media Management to the next level
 					</h2>
 				</div>
 				<div class="row">
@@ -349,15 +348,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialPosting') }}">Make publishing easy / Publishing & Scheduling</a>
+									<a href="{{ route('main.socialPosting') }}">Make publishing easy</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Updating every social channel you handle individually is error-prone and
-										time-consuming. On UPVIEW, you hit publish once and watch as all your channels
-										get updated. You can even schedule your posts to a time when your content gets
-										higher engagement.
+										Individually updating every social channel you handle is error-prone and time-consuming. On UPVIEW, you hit publish once and watch as all your channels get updated. You can even schedule your posts to a time when your content gets higher engagement.
 									</p>
 								</div>
 							</div>
@@ -372,12 +368,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialAnalytics') }}">Strategic decisions backed by data / Analytics</a>
+									<a href="{{ route('main.socialAnalytics') }}">Take Strategic decisions backed by data</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Take the guesswork out of decision-making by building your social media strategy based on real audience behavior. UPVIEW’s intuitive dashboard presents actionable insights based on social data. You can also generate visual reports for your team effortlessly.
+										Take the guesswork out of decision-making by building your social media strategy based on actual audience behavior. UPVIEW’s intuitive dashboard presents actionable insights based on social data. You can also generate visual reports for your team effortlessly.
 									</p>
 								</div>
 							</div>
@@ -392,7 +388,7 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialListening') }}">Tune in to social conversations / Social Listening</a>
+									<a href="{{ route('main.socialListening') }}">Tune in to social conversations</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
@@ -417,10 +413,7 @@
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										The audience rewards the brands that create content tailored to their
-										preferences. By putting powerful tools at your disposal, UPVIEW helps you
-										understand your audience, track the competition, and study market trends that
-										always keep you one step ahead.
+										Consumers reward brands that deliver content tailored to their preferences. By putting powerful tools at your disposal, UPVIEW helps you understand your audience, track the competition, and study market trends that always keep you one step ahead.
 									</p>
 								</div>
 							</div>
@@ -448,10 +441,7 @@
 								About Us
 							</h2>
 							<p>
-								Social media has forever changed the rules of branding, marketing, and advertising. The
-								creators and brands who develop a large following and engagement on social media
-								platforms put their audience at the heart of all decisions. They use social media not
-								just to talk to consumers but also to listen to them.<br /><br />
+								Creators and brands who develop a large following and engagement on social media platforms put their audience at the heart of all decisions. They use social media not just to talk to consumers but also to listen to them.<br /><br />
 
 								At UPVIEW, we are building tools for creators, agencies, and marketers that enable these
 								two-way conversations. That’s why we have brought together all the essential tools you
@@ -770,11 +760,6 @@
 										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
 									</div>
-									<div class="text-box">
-										<p style="font-size: 19px;">
-											We help transform relevant information into desired results.
-										</p>
-									</div>
 									<div class="copyright-text style2">
 										<p>
 											&copy;Copywright <a href="#">@Neomobile Advertising LLP.</a> All
@@ -919,7 +904,7 @@
 			var bottomTaglines = [
 				"A suite of products to streamline publishing, build data-backed strategies, and develop audience intelligence via social listening.",
 				"Grow your brand online with UPVIEW’s powerful Publishing, Analytics, and Social Listening features.",
-				"Build, protect, and grow your brand online with UPVIEW’s suite of products"
+				"Build, protect, and grow your brand online with UPVIEW’s powerful Publishing, Analytics, and Social Listening features."
 			];
 
 			$("#randomTagLine").html(taglines[Math.floor(Math.random() * taglines.length)]);

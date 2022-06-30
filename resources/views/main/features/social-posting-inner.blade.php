@@ -10,11 +10,8 @@
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
@@ -50,12 +47,8 @@
     <link rel="stylesheet" href="{{ asset('main/assets/css/responsive.css') }}" />
     <!-- Custom Placeholder CSS -->
     <link rel="stylesheet" href="{{ asset('main/assets/customstyle.css') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-        integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
-        integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('main/assets/images/favicon/apple-touch-icon.png') }}" />
     <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favicon-32x32.png') }}" sizes="32x32" />
@@ -201,8 +194,7 @@
 
         <!--Start breadcrumb area-->
         <section class="breadcrumb-area">
-            <div class="breadcrumb-area-bg"
-                style="background-image: url( {{ asset('main/assets/images/breadcrumb/Social_Media_Posting.png') }} );"></div>
+            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Social_Media_Posting.png') }} );"></div>
 
             <div class="container">
                 <div class="row">
@@ -291,7 +283,7 @@
                         <h3 class="pr-h3-title">
                             Build a pipeline
                         </h3>
-                        <p class="pr-docs">	Plan your posts in advance. Schedule your posts based on when your audience is most likely to be online. </p>
+                        <p class="pr-docs"> Plan your posts in advance. Schedule your posts based on when your audience is most likely to be online. </p>
                     </div>
                 </div>
                 <div class="pr-col">
@@ -315,7 +307,7 @@
                     <div class="pr-nifo" data-aos="fade-right" ata-aos-offset="150" data-aos-easing="ease-in-sine">
                         <p class="pr-nob">01</p>
                         <h3 class="pr-h3-title">
-                            Use the right hash tags
+                            Use the right hashtags
                         </h3>
                         <p class="pr-docs">Just start typing and our recommendation engine will suggest the most relevant or trending hashtags. </p>
                     </div>

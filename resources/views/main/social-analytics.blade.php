@@ -220,7 +220,7 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Never let scattered marketing data slow you down..
+                                        All your social data in one easy-to-use dashboard
                                     </h3>
                                     <div class="mt-5">
                                         <p>
@@ -372,11 +372,6 @@
                                     <div class="footer-logo">
                                         <a href="{{ route('main.index') }}">
                                             <img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
-                                    </div>
-                                    <div class="text-box">
-                                        <p style="font-size: 19px;">
-                                            We help transform relevant information into desired results.
-                                        </p>
                                     </div>
                                     <div class="copyright-text style2">
                                         <p>

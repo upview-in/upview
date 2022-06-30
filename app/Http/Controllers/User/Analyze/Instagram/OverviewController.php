@@ -6,11 +6,12 @@ use App\Helper\TokenHelper;
 use App\Http\Controllers\Api\Instagram\InstagramController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Instagram\Account\GetMineAccountDetails;
+use App\Http\Requests\User\Analyze\Instagram\ViewOverviewRquest;
 use Illuminate\Http\Request;
 
 class OverviewController extends Controller
 {
-    public function overview(Request $request)
+    public function overview(ViewOverviewRquest $request)
     {
         if (!count(TokenHelper::getAuthToken_IG())) {
             return redirect()->route('panel.user.account.accounts_manager');

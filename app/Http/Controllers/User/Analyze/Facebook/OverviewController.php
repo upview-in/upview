@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Facebook\FacebookController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Facebook\Account\GetMineAccountDetails;
 use App\Http\Requests\Api\Facebook\GetFBPageInsights;
+use App\Http\Requests\User\Analyze\Facebook\ViewOverviewRquest;
 use Exception;
 use Facebook\Exceptions\FacebookResponseException;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ use Locale;
 
 class OverviewController extends Controller
 {
-    public function overview(Request $request)
+    public function overview(ViewOverviewRquest $request)
     {
         if (!count(TokenHelper::getAuthToken_FB())) {
             return redirect()->route('panel.user.account.accounts_manager');
