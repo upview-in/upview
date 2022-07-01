@@ -110,24 +110,21 @@ class SchedulerController extends Controller
             $postData->save();
 
             return redirect()->back()->with('message2', 'Post Successfully Scheduled!');
-
-        } else {
-            foreach ($response['postIds'] as $post) {
-                $post_info[] = $post;
-            }
-
-            $postData->post_info = $post_info;
-            $postData->caption = $request->caption . ' ' . $tags;
-            $postData->media_url = [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])];
-            $postData->is_scheduled = 0; //Posted
-            $postData->ayrId = $response['id'];
-            $postData->ayrRefId = $response['refId'];
-            $postData->posted_by = $request->posted_by;
-            $postData->save();
-
-            return redirect()->back()->with('message2', 'Sucsessfully Posted!');
-
         }
+        foreach ($response['postIds'] as $post) {
+            $post_info[] = $post;
+        }
+
+        $postData->post_info = $post_info;
+        $postData->caption = $request->caption . ' ' . $tags;
+        $postData->media_url = [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])];
+        $postData->is_scheduled = 0; //Posted
+        $postData->ayrId = $response['id'];
+        $postData->ayrRefId = $response['refId'];
+        $postData->posted_by = $request->posted_by;
+        $postData->save();
+
+        return redirect()->back()->with('message2', 'Sucsessfully Posted!');
     }
 
     private static function validateUploadMedia($fileInfo, $platforms)

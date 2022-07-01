@@ -224,7 +224,6 @@ class OverviewController extends Controller
                                 $data['chartData']['page_views_by_internal_referer_logged_in_unique'] = $tempData;
                                 $data['page_views_by_internal_referer_logged_in_unique']['desc'] = $desc;
 
-
                                 $tempData = [];
                                 $tempData[] = ['Metric', 'Impressions'];
                                 $desc = $data['page_views_by_site_logged_in_unique']['desc'] ?? [];
@@ -240,7 +239,6 @@ class OverviewController extends Controller
                                 }
                                 $data['chartData']['page_views_by_site_logged_in_unique'] = $tempData;
                                 $data['page_views_by_site_logged_in_unique']['desc'] = $desc;
-
 
                                 // $tempData = [];
                                 // $tempData[] = ['Metric', 'Impressions'];

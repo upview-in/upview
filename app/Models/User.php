@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Concerns\Models\Searchable;
-use App\Notifications\Auth\QueuedVerifyEmail;
 use App\Permissions\HasPermissionsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;

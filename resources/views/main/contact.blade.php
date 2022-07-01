@@ -50,6 +50,7 @@
     <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="32x32" />
     <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="16x16" />
 
+    {!! NoCaptcha::renderJs() !!}
 
 </head>
 
@@ -258,6 +259,14 @@
                                                     <label>Message</label>
                                                     <textarea id="message" name="message" placeholder="Enter your message..." required=""></textarea>
                                                 </div>
+
+                                                {!! NoCaptcha::display() !!}
+                                                @error('g-recaptcha-response')
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+
                                                 <div class="button-box">
                                                     <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
                                                     <button class="btn-one" type="submit" data-loading-text="Please wait...">

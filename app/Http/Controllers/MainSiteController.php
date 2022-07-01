@@ -12,6 +12,7 @@ class MainSiteController extends Controller
     public function index()
     {
         $blogs = Blog::all();
+
         return view('main.home', ['blogs' => $blogs]);
     }
 

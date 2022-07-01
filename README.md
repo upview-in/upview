@@ -2,6 +2,7 @@
 # Steps for Project Setup:
 
 - git clone this repo
+- composer check-platform-reqs
 - composer install (Make sure composer is latest 2.x)
 - set .env
 - copy prevendor to vendor
@@ -65,6 +66,7 @@
 - php-intl
 - php-exif
 - php-iconv
+- php-redis
 
 
 # Configure Crontab for Laravel Schedule Service:
@@ -83,3 +85,14 @@
 		sudo supervisorctl reread
 		sudo supervisorctl update
 		sudo supervisorctl restart laravel-supervisord:*
+
+
+# Configure Redis
+
+- Install redis-server package
+
+		sudo apt install redis-server
+		sudo systemctl restart redis
+		sudo systemctl enable redis-server
+
+- Reference Link: https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04

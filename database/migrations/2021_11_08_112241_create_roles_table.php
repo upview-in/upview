@@ -34,7 +34,7 @@ class CreateRolesTable extends Migration
             'plan_validity' => 3,
             'shortDescription' => 'Free Default Plan',
             'longDescription' => 'Free Default Plan',
-            'enabled' => true
+            'enabled' => true,
         ]);
     }
 

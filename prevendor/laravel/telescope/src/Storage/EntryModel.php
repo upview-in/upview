@@ -69,7 +69,7 @@ class EntryModel extends Model
             ->whereTag($query, $options)
             ->whereFamilyHash($query, $options)
             ->whereBeforeSequence($query, $options);
-            //->filter($query, $options);
+        //->filter($query, $options);
 
         return $query;
     }

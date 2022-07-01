@@ -170,7 +170,7 @@ class PaymentsController extends Controller
                 $pg_api->utility->verifyPaymentSignature([
                     'razorpay_order_id' => $request->razorpay_order_id,
                     'razorpay_signature' => $request->razorpay_signature,
-                    'razorpay_payment_id' => $request->razorpay_payment_id
+                    'razorpay_payment_id' => $request->razorpay_payment_id,
                 ]);
 
                 if (Auth::id() === $order->user_id) {
