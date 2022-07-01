@@ -25,9 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('city', 35)->nullable();
             $table->string('state', 60)->nullable();
             $table->foreignId('country_id')->constrained()->nullable();
-            $table->string('pincode', 11)->nullable();
             $table->tinyInteger('currency')->default(1);
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('verified_at')->nullable();
             $table->string('password');
             $table->boolean('enabled')->default(true);
             $table->rememberToken();

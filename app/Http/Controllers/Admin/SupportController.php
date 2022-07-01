@@ -56,7 +56,7 @@ class SupportController extends Controller
             $sanitized['password'] = Hash::make($request->password);
         }
 
-        $sanitized['email_verified_at'] = Carbon::now();
+        $sanitized['verified_at'] = Carbon::now();
         $admin = SupportUser::create($sanitized);
 
         // Set admin profile photo if uploaded
