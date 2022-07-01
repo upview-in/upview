@@ -4,10 +4,10 @@ namespace Laravel\Telescope;
 
 use Illuminate\Broadcasting\BroadcastEvent;
 use Illuminate\Database\Eloquent\Collection;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Events\CallQueuedListener;
 use Illuminate\Mail\SendQueuedMailable;
 use Illuminate\Notifications\SendQueuedNotifications;
+use Jenssegers\Mongodb\Eloquent\Model;
 use ReflectionClass;
 use stdClass;
 
@@ -137,7 +137,7 @@ class ExtractTags
             return collect((new ReflectionClass($target))->getProperties())->map(function ($property) use ($target) {
                 $property->setAccessible(true);
 
-                if (PHP_VERSION_ID < 70400 || ! is_object($target) || $property->isInitialized($target)) {
+                if (PHP_VERSION_ID < 70400 || !is_object($target) || $property->isInitialized($target)) {
                     return static::resolveValue($property->getValue($target));
                 }
             })->collapse()->filter();
@@ -148,9 +148,9 @@ class ExtractTags
      * Extract the listener from a queued job.
      *
      * @param  mixed  $job
+     * @throws \ReflectionException
      * @return mixed
      *
-     * @throws \ReflectionException
      */
     protected static function extractListener($job)
     {
@@ -174,7 +174,7 @@ class ExtractTags
      * Resolve the given value.
      *
      * @param  mixed  $value
-     * @return \Illuminate\Support\Collection|null
+     * @return null|\Illuminate\Support\Collection
      */
     protected static function resolveValue($value)
     {

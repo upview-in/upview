@@ -18,7 +18,7 @@ class EmailGatewayController extends Controller
             'sender' => '',
             'numbers' => '',
             'message' => '',
-            'messagetype' => ''
+            'messagetype' => '',
         ]);
 
         $emailLog->gateway_response = $gateway_response->body();

@@ -63,7 +63,6 @@ class PasswordResetController extends Controller
         }
 
         if (intval($data['otp']) === session('password_reset_user_otp')) {
-
             session([
                 'password_reset_email' => $data['email'],
                 'password_reset_mobile_number' => $data['mobile_number'],
@@ -74,21 +73,20 @@ class PasswordResetController extends Controller
             session()->forget([
                 'password_reset_user_otp',
                 'password_reset_user_otp_sended_time',
-                'password_reset_user_can_resend_otp_in'
+                'password_reset_user_can_resend_otp_in',
             ]);
 
             return [
                 'redirect' => true,
-                'redirect_to' => route('password.reset')
-            ];
-        } else {
-            session(['password_reset_wrong_otp_entered' => session('password_reset_wrong_otp_entered', 1) + 1]);
-
-            return [
-                'error' => true,
-                'message' => 'Invalid OTP. ' . (4 - session('password_reset_wrong_otp_entered', 1)) . ' attempts left.',
+                'redirect_to' => route('password.reset'),
             ];
         }
+        session(['password_reset_wrong_otp_entered' => session('password_reset_wrong_otp_entered', 1) + 1]);
+
+        return [
+            'error' => true,
+            'message' => 'Invalid OTP. ' . (4 - session('password_reset_wrong_otp_entered', 1)) . ' attempts left.',
+        ];
     }
 
     public function send(Request $request)

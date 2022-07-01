@@ -59,6 +59,8 @@
 
     <!--app JS-->
     <script src="{{ asset('admin/js/app.js') }}"></script>
+
+    @yield('custom-scripts')
 </body>
 
 </html>

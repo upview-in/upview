@@ -73,7 +73,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     /**
      * The temporary URL builder callback.
      *
-     * @var \Closure|null
+     * @var null|\Closure
      */
     protected $temporaryUrlCallback;
 
@@ -92,15 +92,34 @@ class FilesystemAdapter implements CloudFilesystemContract
         $this->config = $config;
 
         $this->prefixer = new PathPrefixer(
-            $config['root'] ?? '', $config['directory_separator'] ?? DIRECTORY_SEPARATOR
+            $config['root'] ?? '',
+            $config['directory_separator'] ?? DIRECTORY_SEPARATOR
         );
+    }
+
+    /**
+     * Pass dynamic methods call onto Flysystem.
+     *
+     * @param  string  $method
+     * @param  array  $parameters
+     * @throws \BadMethodCallException
+     * @return mixed
+     *
+     */
+    public function __call($method, array $parameters)
+    {
+        if (static::hasMacro($method)) {
+            return $this->macroCall($method, $parameters);
+        }
+
+        return $this->driver->{$method}(...$parameters);
     }
 
     /**
      * Assert that the given file or directory exists.
      *
-     * @param  string|array  $path
-     * @param  string|null  $content
+     * @param  array|string  $path
+     * @param  null|string  $content
      * @return $this
      */
     public function assertExists($path, $content = null)
@@ -111,10 +130,11 @@ class FilesystemAdapter implements CloudFilesystemContract
 
         foreach ($paths as $path) {
             PHPUnit::assertTrue(
-                $this->exists($path), "Unable to find a file or directory at path [{$path}]."
+                $this->exists($path),
+                "Unable to find a file or directory at path [{$path}]."
             );
 
-            if (! is_null($content)) {
+            if (!is_null($content)) {
                 $actual = $this->get($path);
 
                 PHPUnit::assertSame(
@@ -131,7 +151,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     /**
      * Assert that the given file or directory does not exist.
      *
-     * @param  string|array  $path
+     * @param  array|string  $path
      * @return $this
      */
     public function assertMissing($path)
@@ -142,7 +162,8 @@ class FilesystemAdapter implements CloudFilesystemContract
 
         foreach ($paths as $path) {
             PHPUnit::assertFalse(
-                $this->exists($path), "Found unexpected file or directory at path [{$path}]."
+                $this->exists($path),
+                "Found unexpected file or directory at path [{$path}]."
             );
         }
 
@@ -168,7 +189,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      */
     public function missing($path)
     {
-        return ! $this->exists($path);
+        return !$this->exists($path);
     }
 
     /**
@@ -190,7 +211,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      */
     public function fileMissing($path)
     {
-        return ! $this->fileExists($path);
+        return !$this->fileExists($path);
     }
 
     /**
@@ -212,7 +233,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      */
     public function directoryMissing($path)
     {
-        return ! $this->directoryExists($path);
+        return !$this->directoryExists($path);
     }
 
     /**
@@ -230,7 +251,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      * Get the contents of a file.
      *
      * @param  string  $path
-     * @return string|null
+     * @return null|string
      */
     public function get($path)
     {
@@ -245,9 +266,9 @@ class FilesystemAdapter implements CloudFilesystemContract
      * Create a streamed response for a given file.
      *
      * @param  string  $path
-     * @param  string|null  $name
+     * @param  null|string  $name
      * @param  array  $headers
-     * @param  string|null  $disposition
+     * @param  null|string  $disposition
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
     public function response($path, $name = null, array $headers = [], $disposition = 'inline')
@@ -257,7 +278,9 @@ class FilesystemAdapter implements CloudFilesystemContract
         $filename = $name ?? basename($path);
 
         $disposition = $response->headers->makeDisposition(
-            $disposition, $filename, $this->fallbackName($filename)
+            $disposition,
+            $filename,
+            $this->fallbackName($filename)
         );
 
         $response->headers->replace($headers + [
@@ -279,7 +302,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      * Create a streamed download response for a given file.
      *
      * @param  string  $path
-     * @param  string|null  $name
+     * @param  null|string  $name
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
     public function download($path, $name = null, array $headers = [])
@@ -288,21 +311,10 @@ class FilesystemAdapter implements CloudFilesystemContract
     }
 
     /**
-     * Convert the string to ASCII characters that are equivalent to the given name.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    protected function fallbackName($name)
-    {
-        return str_replace('%', '', Str::ascii($name));
-    }
-
-    /**
      * Write the contents of a file.
      *
      * @param  string  $path
-     * @param  \Psr\Http\Message\StreamInterface|\Illuminate\Http\File|\Illuminate\Http\UploadedFile|string|resource  $contents
+     * @param  \Illuminate\Http\File|\Illuminate\Http\UploadedFile|\Psr\Http\Message\StreamInterface|resource|string  $contents
      * @param  mixed  $options
      * @return bool
      */
@@ -345,7 +357,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      * @param  string  $path
      * @param  \Illuminate\Http\File|\Illuminate\Http\UploadedFile|string  $file
      * @param  mixed  $options
-     * @return string|false
+     * @return false|string
      */
     public function putFile($path, $file, $options = [])
     {
@@ -361,7 +373,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      * @param  \Illuminate\Http\File|\Illuminate\Http\UploadedFile|string  $file
      * @param  string  $name
      * @param  mixed  $options
-     * @return string|false
+     * @return false|string
      */
     public function putFileAs($path, $file, $name, $options = [])
     {
@@ -371,7 +383,9 @@ class FilesystemAdapter implements CloudFilesystemContract
         // they provide better performance than alternatives. Once we write the file this
         // stream will get closed automatically by us so the developer doesn't have to.
         $result = $this->put(
-            $path = trim($path.'/'.$name, '/'), $stream, $options
+            $path = trim($path . '/' . $name, '/'),
+            $stream,
+            $options
         );
 
         if (is_resource($stream)) {
@@ -427,7 +441,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     public function prepend($path, $data, $separator = PHP_EOL)
     {
         if ($this->fileExists($path)) {
-            return $this->put($path, $data.$separator.$this->get($path));
+            return $this->put($path, $data . $separator . $this->get($path));
         }
 
         return $this->put($path, $data);
@@ -444,7 +458,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     public function append($path, $data, $separator = PHP_EOL)
     {
         if ($this->fileExists($path)) {
-            return $this->put($path, $this->get($path).$separator.$data);
+            return $this->put($path, $this->get($path) . $separator . $data);
         }
 
         return $this->put($path, $data);
@@ -453,7 +467,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     /**
      * Delete the file at a given path.
      *
-     * @param  string|array  $paths
+     * @param  array|string  $paths
      * @return bool
      */
     public function delete($paths)
@@ -530,7 +544,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      * Get the mime-type of a given file.
      *
      * @param  string  $path
-     * @return string|false
+     * @return false|string
      */
     public function mimeType($path)
     {
@@ -580,9 +594,9 @@ class FilesystemAdapter implements CloudFilesystemContract
      * Get the URL for the file at the given path.
      *
      * @param  string  $path
+     * @throws \RuntimeException
      * @return string
      *
-     * @throws \RuntimeException
      */
     public function url($path)
     {
@@ -596,52 +610,8 @@ class FilesystemAdapter implements CloudFilesystemContract
             return $this->getFtpUrl($path);
         } elseif ($adapter instanceof LocalAdapter) {
             return $this->getLocalUrl($path);
-        } else {
-            throw new RuntimeException('This driver does not support retrieving URLs.');
         }
-    }
-
-    /**
-     * Get the URL for the file at the given path.
-     *
-     * @param  string  $path
-     * @return string
-     */
-    protected function getFtpUrl($path)
-    {
-        return isset($this->config['url'])
-                ? $this->concatPathToUrl($this->config['url'], $path)
-                : $path;
-    }
-
-    /**
-     * Get the URL for the file at the given path.
-     *
-     * @param  string  $path
-     * @return string
-     */
-    protected function getLocalUrl($path)
-    {
-        // If an explicit base URL has been set on the disk configuration then we will use
-        // it as the base URL instead of the default path. This allows the developer to
-        // have full control over the base path for this filesystem's generated URLs.
-        if (isset($this->config['url'])) {
-            $splitted_url = Str::of(Str::replace(['http://', 'https://'], '', $this->config['url']))->explode('/', );
-            $splitted_url->shift();
-            $builded_url = $splitted_url->implode('/');
-            return $this->concatPathToUrl(Request::root() . '/' . $builded_url, $path);
-        }
-
-        $path = '/storage/'.$path;
-
-        // If the path contains "storage/public", it probably means the developer is using
-        // the default disk to generate the path instead of the "public" disk like they
-        // are really supposed to use. We will remove the public from this path here.
-        if (str_contains($path, '/storage/public/')) {
-            return Str::replaceFirst('/public/', '/', $path);
-        }
-
-        return $path;
+        throw new RuntimeException('This driver does not support retrieving URLs.');
     }
 
     /**
@@ -650,9 +620,9 @@ class FilesystemAdapter implements CloudFilesystemContract
      * @param  string  $path
      * @param  \DateTimeInterface  $expiration
      * @param  array  $options
+     * @throws \RuntimeException
      * @return string
      *
-     * @throws \RuntimeException
      */
     public function temporaryUrl($path, $expiration, array $options = [])
     {
@@ -662,7 +632,9 @@ class FilesystemAdapter implements CloudFilesystemContract
 
         if ($this->temporaryUrlCallback) {
             return $this->temporaryUrlCallback->bindTo($this, static::class)(
-                $path, $expiration, $options
+                $path,
+                $expiration,
+                $options
             );
         }
 
@@ -670,38 +642,9 @@ class FilesystemAdapter implements CloudFilesystemContract
     }
 
     /**
-     * Concatenate a path to a URL.
-     *
-     * @param  string  $url
-     * @param  string  $path
-     * @return string
-     */
-    protected function concatPathToUrl($url, $path)
-    {
-        return rtrim($url, '/').'/'.ltrim($path, '/');
-    }
-
-    /**
-     * Replace the scheme, host and port of the given UriInterface with values from the given URL.
-     *
-     * @param  \Psr\Http\Message\UriInterface  $uri
-     * @param  string  $url
-     * @return \Psr\Http\Message\UriInterface
-     */
-    protected function replaceBaseUrl($uri, $url)
-    {
-        $parsed = parse_url($url);
-
-        return $uri
-            ->withScheme($parsed['scheme'])
-            ->withHost($parsed['host'])
-            ->withPort($parsed['port'] ?? null);
-    }
-
-    /**
      * Get an array of all files in a directory.
      *
-     * @param  string|null  $directory
+     * @param  null|string  $directory
      * @param  bool  $recursive
      * @return array
      */
@@ -720,7 +663,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     /**
      * Get all of the files from the given directory (recursive).
      *
-     * @param  string|null  $directory
+     * @param  null|string  $directory
      * @return array
      */
     public function allFiles($directory = null)
@@ -731,7 +674,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     /**
      * Get all of the directories within a given directory.
      *
-     * @param  string|null  $directory
+     * @param  null|string  $directory
      * @param  bool  $recursive
      * @return array
      */
@@ -750,7 +693,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     /**
      * Get all the directories within a given directory (recursive).
      *
-     * @param  string|null  $directory
+     * @param  null|string  $directory
      * @return array
      */
     public function allDirectories($directory = null)
@@ -827,12 +770,107 @@ class FilesystemAdapter implements CloudFilesystemContract
     }
 
     /**
+     * Define a custom temporary URL builder callback.
+     *
+     * @param  \Closure  $callback
+     * @return void
+     */
+    public function buildTemporaryUrlsUsing(Closure $callback)
+    {
+        $this->temporaryUrlCallback = $callback;
+    }
+
+    /**
+     * Convert the string to ASCII characters that are equivalent to the given name.
+     *
+     * @param  string  $name
+     * @return string
+     */
+    protected function fallbackName($name)
+    {
+        return str_replace('%', '', Str::ascii($name));
+    }
+
+    /**
+     * Get the URL for the file at the given path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    protected function getFtpUrl($path)
+    {
+        return isset($this->config['url'])
+                ? $this->concatPathToUrl($this->config['url'], $path)
+                : $path;
+    }
+
+    /**
+     * Get the URL for the file at the given path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    protected function getLocalUrl($path)
+    {
+        // If an explicit base URL has been set on the disk configuration then we will use
+        // it as the base URL instead of the default path. This allows the developer to
+        // have full control over the base path for this filesystem's generated URLs.
+        if (isset($this->config['url'])) {
+            $splitted_url = Str::of(Str::replace(['http://', 'https://'], '', $this->config['url']))->explode('/', );
+            $splitted_url->shift();
+            $builded_url = $splitted_url->implode('/');
+
+            return $this->concatPathToUrl(Request::root() . '/' . $builded_url, $path);
+        }
+
+        $path = '/storage/' . $path;
+
+        // If the path contains "storage/public", it probably means the developer is using
+        // the default disk to generate the path instead of the "public" disk like they
+        // are really supposed to use. We will remove the public from this path here.
+        if (str_contains($path, '/storage/public/')) {
+            return Str::replaceFirst('/public/', '/', $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * Concatenate a path to a URL.
+     *
+     * @param  string  $url
+     * @param  string  $path
+     * @return string
+     */
+    protected function concatPathToUrl($url, $path)
+    {
+        return rtrim($url, '/') . '/' . ltrim($path, '/');
+    }
+
+    /**
+     * Replace the scheme, host and port of the given UriInterface with values from the given URL.
+     *
+     * @param  \Psr\Http\Message\UriInterface  $uri
+     * @param  string  $url
+     * @return \Psr\Http\Message\UriInterface
+     */
+    protected function replaceBaseUrl($uri, $url)
+    {
+        $parsed = parse_url($url);
+
+        return $uri
+            ->withScheme($parsed['scheme'])
+            ->withHost($parsed['host'])
+            ->withPort($parsed['port'] ?? null);
+    }
+
+    /**
      * Parse the given visibility value.
      *
-     * @param  string|null  $visibility
-     * @return string|null
-     *
+     * @param  null|string  $visibility
      * @throws \InvalidArgumentException
+     * @return null|string
+     *
      */
     protected function parseVisibility($visibility)
     {
@@ -848,17 +886,6 @@ class FilesystemAdapter implements CloudFilesystemContract
     }
 
     /**
-     * Define a custom temporary URL builder callback.
-     *
-     * @param  \Closure  $callback
-     * @return void
-     */
-    public function buildTemporaryUrlsUsing(Closure $callback)
-    {
-        $this->temporaryUrlCallback = $callback;
-    }
-
-    /**
      * Determine if Flysystem exceptions should be thrown.
      *
      * @return bool
@@ -866,23 +893,5 @@ class FilesystemAdapter implements CloudFilesystemContract
     protected function throwsExceptions(): bool
     {
         return (bool) ($this->config['throw'] ?? false);
-    }
-
-    /**
-     * Pass dynamic methods call onto Flysystem.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return mixed
-     *
-     * @throws \BadMethodCallException
-     */
-    public function __call($method, array $parameters)
-    {
-        if (static::hasMacro($method)) {
-            return $this->macroCall($method, $parameters);
-        }
-
-        return $this->driver->{$method}(...$parameters);
     }
 }

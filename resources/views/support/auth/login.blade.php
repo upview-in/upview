@@ -8,6 +8,10 @@
     </style>
 @endsection
 
+@section('custom-scripts')
+    {!! NoCaptcha::renderJs() !!}
+@endsection
+
 <x-support.guest-layout>
     <div class="row d-flex h-100">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto my-auto">
@@ -41,7 +45,15 @@
                                 {{ __('Remember password') }}
                             </label>
                         </div>
-                        <div class="d-grid">
+
+                        {!! NoCaptcha::display() !!}
+                        @error('g-recaptcha-response')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+
+                        <div class="d-grid mt-2">
                             <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign in</button>
                         </div>
                     </form>

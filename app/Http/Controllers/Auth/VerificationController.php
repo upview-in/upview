@@ -19,7 +19,7 @@ class VerificationController extends Controller
     public function check(Request $request)
     {
         $data = $request->validate([
-            'otp' => ['required', 'string', 'size:6']
+            'otp' => ['required', 'string', 'size:6'],
         ]);
 
         if (!empty(session('otp_timeout'))) {
@@ -60,15 +60,14 @@ class VerificationController extends Controller
             session()->forget([
                 'user_otp',
                 'user_otp_sended_time',
-                'user_can_resend_otp_in'
+                'user_can_resend_otp_in',
             ]);
 
             return redirect()->to(RouteServiceProvider::HOME);
-        } else {
-            session(['wrong_otp_entered' => session('wrong_otp_entered', 1) + 1]);
-
-            return redirect()->back()->withErrors(['otp' => 'Invalid OTP. ' . (4 - session('wrong_otp_entered', 1)) . ' attempts left.']);
         }
+        session(['wrong_otp_entered' => session('wrong_otp_entered', 1) + 1]);
+
+        return redirect()->back()->withErrors(['otp' => 'Invalid OTP. ' . (4 - session('wrong_otp_entered', 1)) . ' attempts left.']);
     }
 
     public function send()
@@ -79,7 +78,7 @@ class VerificationController extends Controller
         if (!empty(session('otp_timeout')) && Carbon::parse(session('otp_timeout'))->gte(Carbon::now())) {
             return [
                 'success' => false,
-                'message' => 'Try after 10 mins.'
+                'message' => 'Try after 10 mins.',
             ];
         }
 
@@ -91,18 +90,18 @@ class VerificationController extends Controller
             session([
                 'user_otp' => $otp,
                 'user_otp_sended_time' => Carbon::now(),
-                'user_can_resend_otp_in' => (session('user_can_resend_otp_in', 1) * 2)
+                'user_can_resend_otp_in' => (session('user_can_resend_otp_in', 1) * 2),
             ]);
         } else {
             return [
                 'success' => false,
-                'message' => 'You can resend OTP after ' . Carbon::parse(session('user_otp_sended_time'))->addMinutes(session('user_can_resend_otp_in', 1))->diffForHumans() . '.'
+                'message' => 'You can resend OTP after ' . Carbon::parse(session('user_otp_sended_time'))->addMinutes(session('user_can_resend_otp_in', 1))->diffForHumans() . '.',
             ];
         }
 
         return [
             'success' => true,
-            'message' => 'OTP sent!'
+            'message' => 'OTP sent!',
         ];
     }
 }

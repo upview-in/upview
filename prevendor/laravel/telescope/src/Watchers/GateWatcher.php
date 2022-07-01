@@ -5,8 +5,8 @@ namespace Laravel\Telescope\Watchers;
 use Illuminate\Auth\Access\Events\GateEvaluated;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Support\Str;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Laravel\Telescope\FormatModel;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
@@ -40,7 +40,7 @@ class GateWatcher extends Watcher
     /**
      * Record a gate check.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|null  $user
+     * @param  null|\Illuminate\Contracts\Auth\Authenticatable  $user
      * @param  string  $ability
      * @param  bool  $result
      * @param  array  $arguments
@@ -48,7 +48,7 @@ class GateWatcher extends Watcher
      */
     public function recordGateCheck(?Authenticatable $user, $ability, $result, $arguments)
     {
-        if (! Telescope::isRecording() || $this->shouldIgnore($ability)) {
+        if (!Telescope::isRecording() || $this->shouldIgnore($ability)) {
             return;
         }
 
