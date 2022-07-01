@@ -10,11 +10,8 @@
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('main/assets/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('main/assets/css/aos.css') }}" />
@@ -148,9 +145,7 @@
                     <div class="clearfix">
                         <!--Logo-->
                         <div class="logo float-left">
-                            <a href="{{ route('main.index') }}" class="img-responsive"><img
-                                    src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt=""
-                                    title=""></a>
+                            <a href="{{ route('main.index') }}" class="img-responsive"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" title=""></a>
                         </div>
                         <!--Right Col-->
                         <div class="right-col float-right">
@@ -172,8 +167,7 @@
                 <div class="menu-backdrop"></div>
                 <div class="close-btn"><span class="icon fa fa-times-circle"></span></div>
                 <nav class="menu-box">
-                    <div class="nav-logo"><a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}"
-                                width="150px" height="50px" alt="" title=""></a></div>
+                    <div class="nav-logo"><a href="{{ route('main.index') }}"><img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="150px" height="50px" alt="" title=""></a></div>
                     <div class="menu-outer">
                         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                     </div>
@@ -196,8 +190,7 @@
 
         <!--Start breadcrumb area-->
         <section class="breadcrumb-area breadcrumb-area-style2">
-            <div class="breadcrumb-area-bg"
-                style="background-image: url({{ asset('main/assets/images/breadcrumb/Social_Media_Listening.png') }} );">
+            <div class="breadcrumb-area-bg" style="background-image: url({{ asset('main/assets/images/breadcrumb/Social_Media_Listening.png') }} );">
             </div>
 
             <div class="container">
@@ -228,7 +221,7 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Social is about engaging, it’s about conversation, it’s about listening.
+                                        Social is about engaging with your audience. And it starts with listening.
                                     </h3>
                                     <div class="mt-5">
                                         <p>
@@ -275,10 +268,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                    Setting up social listening is as simple as adding keywords. You can specify the date
-                                        range and the channels to crawl. This includes social networks like Twitter,
-                                        Facebook, Instagram, YouTube, Vimeo, and Reddit, as well as news sources, blogs,
-                                        and the broader Web.
+                                        Setting up social listening is as simple as adding keywords. You specify the date range and track social networks like Twitter, Facebook, Instagram, YouTube, Vimeo, and Reddit, as well as news sources, blogs, and websites.
                                     </p>
                                 </div>
                             </div>
@@ -297,9 +287,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                    You can set up social listening for your brands or competitors on UPVIEW. Our
-                                        algorithm crawls the web to provide real-time updates and a comparative analysis of
-                                        how your brand is faring as opposed to the competition.
+                                        You can set up social listening for competitor brands on UPVIEW. Our algorithm crawls the web to provide real-time updates and a comparative analysis of how your brand is faring as opposed to the competition.
                                     </p>
                                 </div>
                             </div>
@@ -318,10 +306,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                    UPVIEW analyzes updates and provides an intuitive topic cloud to provide you with
-                                        the context in which your brands are being mentioned. It further breaks the
-                                        mentions down by age and gender, helping you build a deeper understanding of your
-                                        audience.
+                                        UPVIEW analyzes updates and churns out a topic cloud that gives you the context in which your brands are mentioned. It breaks down mentions by age and gender, helping you build a deeper understanding of your audience.
                                     </p>
                                 </div>
                             </div>
@@ -340,10 +325,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                    UPVIEW’s advanced algorithms analyze updates where your brand is mentioned and
-                                        discern their sentiment. When you know how your consumers feel about your brand,
-                                        you can proactively address their needs or problems they are facing – earning their
-                                        trust and loyalty.
+                                        UPVIEW’s advanced algorithms discern sentiments expressed in updates. When you know how your consumers feel about your brand, you can proactively address their needs – earning their trust and loyalty.
                                     </p>
                                 </div>
                             </div>
@@ -362,9 +344,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                    Our Social Listening dashboard presents you with a list of influencers and websites
-                                        driving sentiments around your brand. This allows brands to initiate conversations
-                                        with those sources and fine-tune promotional campaigns that maximize their ROI.
+                                        Our Social Listening dashboard presents you with a list of influencers and websites driving sentiments around your brand. This allows brands to initiate conversations with those sources and fine-tune promotional campaigns to maximize their ROI.
                                     </p>
                                 </div>
                             </div>
@@ -383,7 +363,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                    Tuning into online conversations has implications not just for your social media
+                                        Tuning into online conversations has implications not just for your social media
                                         strategy, but also for CRM and PR. Align your teams with easy-to-create reports. Our
                                         widget-based system makes customization easy as you drag and drop relevant data
                                         points.
@@ -400,140 +380,139 @@
 
         <!--Start footer area -->
         <footer class="footer-area style2">
-			<div class="shape">
-				<img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
-			</div>
-			<div class="footer-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-12">
-							<div class="inner">
-								<div class="text">
-									<h6>Ready to get started?</h6>
-									<h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
-								</div>
-								<div class="button-box">
-									<a class="btn-one" href="{{ route('main.contact') }}">
-										<div class="border_line">
-											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
-										</div>
-										<div class="left_round"></div>
-										<div class="right_round"></div>
-										<span class="txt">Book a Demo<i class="flaticon-plus-1 plusicon"></i></span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--Start Footer-->
-			<div class="footer">
-				<div class="container">
-					<div class="row text-right-rtl">
-						<!--Start single footer widget-->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
-							<div class="single-footer-widget">
-								<div class="our-company-info">
-									<div class="footer-logo">
-										<a href="{{ route('main.index') }}">
-											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px"
-												height="60px" alt="" /></a>
-									</div>
-									<div class="copyright-text style2">
-										<p>
-											&copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
-											Rights Reserved.
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--End single footer widget-->
+            <div class="shape">
+                <img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
+            </div>
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="inner">
+                                <div class="text">
+                                    <h6>Ready to get started?</h6>
+                                    <h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
+                                </div>
+                                <div class="button-box">
+                                    <a class="btn-one" href="{{ route('main.contact') }}">
+                                        <div class="border_line">
+                                            <img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+                                        </div>
+                                        <div class="left_round"></div>
+                                        <div class="right_round"></div>
+                                        <span class="txt">Book a Demo<i class="flaticon-plus-1 plusicon"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Start Footer-->
+            <div class="footer">
+                <div class="container">
+                    <div class="row text-right-rtl">
+                        <!--Start single footer widget-->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.1s">
+                            <div class="single-footer-widget">
+                                <div class="our-company-info">
+                                    <div class="footer-logo">
+                                        <a href="{{ route('main.index') }}">
+                                            <img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
+                                    </div>
+                                    <div class="copyright-text style2">
+                                        <p>
+                                            &copy; Copywright <a href="#">@Neomobile Advertising LLP.</a> All
+                                            Rights Reserved.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
-						<!--Start single footer widget-->
-						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
-							<div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
-								<div class="title">
-									<h3>Categories</h3>
-								</div>
-								<ul class="footer-widget-links1">
-									<li><a href="{{ route('main.index') }}">Home</a></li>
-									<li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
-									<li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
-									<li><a href="{{ route('main.socialListening') }}">Social Listening</a></li>
-									<li><a href="{{ route('main.contact') }}">Contact</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--End single footer widget-->
+                        <!--Start single footer widget-->
+                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.3s">
+                            <div class="single-footer-widget mar-left pdtop60 pdtop0" style="margin-left: 40px;">
+                                <div class="title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <ul class="footer-widget-links1">
+                                    <li><a href="{{ route('main.index') }}">Home</a></li>
+                                    <li><a href="{{ route('main.socialAnalytics') }}">Social Media Analytics</a></li>
+                                    <li><a href="{{ route('main.socialPosting') }}">Social Media Posting</a></li>
+                                    <li><a href="{{ route('main.socialListening') }}">Social Listening</a></li>
+                                    <li><a href="{{ route('main.contact') }}">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
-						<!--Start single footer widget-->
-						<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
-							<div class="single-footer-widget mar-left2 pdtop60">
-								<div class="title">
-									<h3>Community</h3>
-								</div>
-								<ul class="footer-widget-links1">
-									<li><a href="javascript:void();">Blog</a></li>
-									<li><a href="javascript:void();">Members</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--End single footer widget-->
+                        <!--Start single footer widget-->
+                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.5s">
+                            <div class="single-footer-widget mar-left2 pdtop60">
+                                <div class="title">
+                                    <h3>Community</h3>
+                                </div>
+                                <ul class="footer-widget-links1">
+                                    <li><a href="javascript:void();">Blog</a></li>
+                                    <li><a href="javascript:void();">Members</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
 
-						<!--Start single footer widget-->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
-							<div class="single-footer-widget fixwidth pdtop60">
-								<div class="title">
-									<h3>Our Socials</h3>
-								</div>
-								<ul class="instagram-box">
-									<li>
-										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
-											<div class="overlay">
-												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
-											<div class="overlay">
-												<div class="inner">
-													<a href="#"><i class="fa fa-faceboom" aria-hidden="true"></i></a>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
-											<div class="overlay">
-												<div class="inner">
-													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
+                        <!--Start single footer widget-->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 wow animated fadeInUp" data-wow-delay="0.7s">
+                            <div class="single-footer-widget fixwidth pdtop60">
+                                <div class="title">
+                                    <h3>Our Socials</h3>
+                                </div>
+                                <ul class="instagram-box">
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-faceboom" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-holder">
+                                            <img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
+                                            <div class="overlay">
+                                                <div class="inner">
+                                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
 
-								<div class="bottom-box">
-									<ul>
-										<li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
-										<li><a href="{{ route('main.terms-conditions') }}">Terms & Conditions </a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--End Footer-->
-		</footer>
+                                <div class="bottom-box">
+                                    <ul>
+                                        <li><a href="{{ route('main.privacy-policy') }}">Privacy</a></li>
+                                        <li><a href="{{ route('main.terms-conditions') }}">Terms & Conditions </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Footer-->
+        </footer>
         <!--End footer area-->
 
         <button class="scroll-top scroll-to-target" data-target="html">
@@ -567,19 +546,19 @@
     <!-- thm custom script -->
     <script src="{{ asset('main/assets/js/custom.js') }}"></script>
     <script>
-		$(document).ready(function() {
-			var headline = [
-				"Strengthen your brand with sentiment analysis"
-			];
+        $(document).ready(function() {
+            var headline = [
+                "Strengthen your brand with sentiment analysis"
+            ];
 
-			var bottomTaglines = [
-				"Powerful social listening tools to tune in to conversations that help you grow your brand."
-			];
+            var bottomTaglines = [
+                "Powerful social listening tools to tune in to audience conversations that help you grow your brand."
+            ];
 
-			$("#randomHeadLine").html(headline[Math.floor(Math.random() * headline.length)]);
-			$("#randomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
-		});
-	</script>
+            $("#randomHeadLine").html(headline[Math.floor(Math.random() * headline.length)]);
+            $("#randomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
+        });
+    </script>
 </body>
 
 </html>

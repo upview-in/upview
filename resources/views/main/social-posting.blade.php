@@ -221,11 +221,11 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Plan, Organize and Schedule Your Social Content on the go
+                                        Plan, organize, and schedule your social content
                                     </h3>
                                     <div class="mt-5">
                                         <p>
-                                            Publishing is an essential but time-consuming step in attracting and engaging followers. And the more social media channels you manage, the greater the hassle. Elements like captions, hashtags, and mentions must be manually entered for every social channel – increasing the chances of errors. With UPVIEW’s Social Media Posting Tool, you publish once and lean back as the content goes up on all your connected channels.
+                                            Publishing is an essential but time-consuming step in attracting and engaging followers. And the more social media channels you manage, the greater the hassle. Elements like captions, hashtags, and mentions must be manually entered for every social channel – increasing the chances of errors. With UPVIEW’s Social Media Posting tool, you publish once and lean back as the content goes up on all your connected channels.
                                         </p>
                                     </div>
                                 </div>
@@ -248,7 +248,7 @@
                         <h3>FEATURES</h3>
                     </div>
                     <h2>
-                        Focus on creatives by freeing up<br /> your mind from repetitive tasks
+                        Free your mind from repetitive<br /> tasks and focus on creatives
                     </h2>
                 </div>
                 <div class="row">
@@ -283,7 +283,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Not ready to publish yet? You can schedule your post to go up on the date and time of your choosing. Find out when your audience is online in the Analytics section and schedule your post accordingly to maximize engagement.
+                                        Batch your tasks by scheduling your posts to go up on the date and time of your choosing. Find out when your audience is online in the Analytics section and publish your post accordingly to maximize engagement.
                                     </p>
                                 </div>
                             </div>
@@ -302,7 +302,7 @@
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Hashtags play a critical role in boosting the organic reach of social media content. Just start typing your hashtag, and UPVIEW’s hashtag recommendation engine will offer suggestions on commonly used and trending hashtags.
+                                        Hashtags play a critical role in boosting your social media content’s organic reach. Just start typing, and UPVIEW’s hashtag recommendation engine will offer suggestions on commonly used and trending hashtags.
                                     </p>
                                 </div>
                             </div>
@@ -331,6 +331,32 @@
                 </div>
             </div>
         </section>
+
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="single-service-style3 text-center">
+                <div class="title">
+                    <h3>
+                        <a style="font-size: 25px; font-weight: 800;">Tailored Services</a>
+                    </h3>
+                    <h4>AI-powered paid promotion</h4>
+                    <div class="inner-text">
+                        <p style="padding: 10px; padding-bottom: 25px;">
+                            We offer customized services that help improve the performance of your paid promotion campaigns. Get AI-powered insights into which creatives are delivering the maximum impressions and conversions for you. Get in touch with our team to know more.
+                        </p>
+                        <div class="button-box">
+                            <a class="btn-one" href="{{ route('main.contact') }}">
+                                <div class="border_line">
+                                    <img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
+                                </div>
+                                <div class="left_round"></div>
+                                <div class="right_round"></div>
+                                <span class="txt">Get in Touch<i class="flaticon-plus-1 plusicon"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--End SKill style1 Area-->
 
         <!--Start footer area -->
@@ -373,11 +399,6 @@
                                     <div class="footer-logo">
                                         <a href="{{ route('main.index') }}">
                                             <img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
-                                    </div>
-                                    <div class="text-box">
-                                        <p style="font-size: 19px;">
-                                            We help transform relevant information into desired results.
-                                        </p>
                                     </div>
                                     <div class="copyright-text style2">
                                         <p>
