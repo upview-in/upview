@@ -90,7 +90,7 @@
                                         <label class="font-weight-semibold" for="country">{{ __('Country') }}</label>
                                         <select class="select2 {{ $errors->has('country')?'is-invalid':'is-valid' }}" id="country" name="country" placeholder="Select Country">
                                             @foreach (\App\Models\Country::all() as $country)
-                                                <option value="{{ $country->_id }}">{{ ucfirst($country->name) }}</option>
+                                                <option value="{{ $country->_id }}" {{ Str::lower($country->name) != 'india'?: 'selected' }}>{{ ucfirst($country->name) }}</option>
                                             @endforeach
                                         </select>
                                         @error('country')
