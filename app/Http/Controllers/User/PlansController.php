@@ -54,15 +54,15 @@ class PlansController extends Controller
                     return $paymentsController->initPaymentStripePaymentGateway($paymentRequest);
                 } elseif ($paymentGateway === 1) {
                     return $paymentsController->initRazorPayPaymentGateway($paymentRequest);
-                } else {
-                    return redirect()->back();
                 }
-            } else {
-                return abort(404);
+
+                return redirect()->back();
             }
-        } else {
+
             return abort(404);
         }
+
+        return abort(404);
     }
 
     public static function validatePlan()
@@ -146,7 +146,7 @@ class PlansController extends Controller
         return [
             'display' => $display,
             'message' => $message,
-            'can_dismiss' => $can_dismiss
+            'can_dismiss' => $can_dismiss,
         ];
     }
 }

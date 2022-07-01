@@ -6,7 +6,6 @@ use App\Helper\FacebookHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Facebook\Account\GetMineAccountDetails;
 use App\Http\Requests\Api\Facebook\GetFBPageInsights;
-use DateTime;
 use Exception;
 
 class FacebookController extends Controller

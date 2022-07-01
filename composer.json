@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "ext-mongodb": "*",
+        "anhskohbo/no-captcha": "^3.4",
         "barryvdh/laravel-snappy": "^1.0.0",
         "dipeshsukhia/laravel-country-state-city-data": "^2.0",
         "facebook/graph-sdk": "^5.1",
@@ -25,10 +25,18 @@
         "maatwebsite/excel": "^3.1",
         "mongodb/mongodb": "^1.11",
         "owen-oj/laravel-getid3": "^2.0",
+        "predis/predis": "^2.0",
         "propaganistas/laravel-phone": "^4.3",
         "razorpay/razorpay": "^2.8",
         "spatie/laravel-medialibrary": "^10.0",
-        "stripe/stripe-php": "^7.119"
+        "stripe/stripe-php": "^7.119",
+        "ext-mongodb": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
+        "ext-curl": "*",
+        "ext-exif": "*",
+        "ext-iconv": "*",
+        "ext-redis": "*"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

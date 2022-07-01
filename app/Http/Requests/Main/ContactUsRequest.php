@@ -29,6 +29,7 @@ class ContactUsRequest extends FormRequest
             'subject' => ['required', 'string', 'max:255'],
             'message' => ['required', 'string', 'max:255'],
             'mobile_number' => ['required', 'numeric'],
+            'g-recaptcha-response' => ['required', 'captcha'],
         ];
     }
 }

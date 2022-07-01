@@ -67,8 +67,8 @@ class UserRole extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public static function getTrialPlan(): ?UserRole
+    public static function getTrialPlan(): ?self
     {
-        return UserRole::where('slug', 'free')->first();
+        return self::where('slug', 'free')->first();
     }
 }
