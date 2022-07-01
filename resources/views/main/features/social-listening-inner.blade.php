@@ -241,8 +241,7 @@
                         <h3 class="pr-h3-title">
                             Focus on key locations
                         </h3>
-                        <p class="pr-docs">You can fine-tune your social listening by specifying the countries you wish
-                            to track. </p>
+                        <p class="pr-docs">You can fine-tune your social listening further by specifying the countries you wish to track.</p>
                     </div>
                 </div>
                 <div class="pr-col">
@@ -258,8 +257,7 @@
                         <h3 class="pr-h3-title">
                             Specify sources
                         </h3>
-                        <p class="pr-docs">Choose from a wide range of sources, including Twitter, Facebook, Instagram,
-                            YouTube, Vimeo, Reddit, News/Blogs, and webpages.</p>
+                        <p class="pr-docs">Don’t miss out on any conversation. Choose from sources like Twitter, Facebook, Instagram, YouTube, Vimeo, Reddit, News/Blogs, and webpages.</p>
                     </div>
                 </div>
                 <div class="pr-col">
@@ -275,8 +273,7 @@
                         <h3 class="pr-h3-title">
                             Specify date range
                         </h3>
-                        <p class="pr-docs">You can filter results by date range – tracking the performance of
-                            promotional campaigns or measuring the impact of virality.</p>
+                        <p class="pr-docs">You can filter results by date range – tracking the performance of your promotional campaigns or measuring the impact of content that has gone viral.</p>
                     </div>
                 </div>
                 <div class="pr-col">
@@ -380,7 +377,7 @@
                         <h3 class="pr-h3-title">
                             Real-time updates
                         </h3>
-                        <p class="pr-docs">Respond swiftly by getting real-time updates when people discuss your brand.
+                        <p class="pr-docs">Strategize and respond swiftly by getting real-time updates when people discuss your brand.
                         </p>
                     </div>
                 </div>
@@ -397,8 +394,7 @@
                         <h3 class="pr-h3-title">
                             Measure reach
                         </h3>
-                        <p class="pr-docs">Get a sense of the number of people talking about you and the number of brand
-                            mentions.</p>
+                        <p class="pr-docs">Get a sense of the number of people talking about you and the number of mentions your brand is getting.</p>
                     </div>
                 </div>
                 <div class="pr-col">

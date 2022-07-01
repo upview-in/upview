@@ -372,8 +372,7 @@
                         <h3 class="pr-h3-title">
                             Competitor performance
                         </h3>
-                        <p class="pr-docs">Search for any competitor’s YouTube channel to view the key numbers
-                            associated with their videos.</p>
+                        <p class="pr-docs">Search for your competitors’ YouTube channels to view the key numbers associated with their videos.</p>
                     </div>
                 </div>
                 <div class="pr-col">
