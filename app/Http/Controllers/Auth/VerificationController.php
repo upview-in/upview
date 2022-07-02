@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SMSGatewayController;
+use App\Models\UserRole;
 use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -62,6 +63,12 @@ class VerificationController extends Controller
                 'user_otp_sended_time',
                 'user_can_resend_otp_in',
             ]);
+
+            $formatted_number = Str::replace('+', '', appUser()->mobile_number);
+            $trial_plan = UserRole::getTrialPlan();
+
+            (new SMSGatewayController())->sendSMS([$formatted_number], 'Welcome, ' . appUser()->name . ' to UPVIEW. Visit upview.in and login now to enjoy your personal ' . $trial_plan->plan_validity . ' day trial to our services.', 'welcome_message');
+            (new SMSGatewayController())->sendSMS(['917990719157'], 'Alert! New use registered on UPVIEW.\n ID - ' . $user->id . '\n Name - ' . $user->name . '\n Email - ' . $user->email . '\n Mobile - ' . $user->mobile_number, 'new_user_registered_alert_to_admin');
 
             return redirect()->to(RouteServiceProvider::HOME);
         }
