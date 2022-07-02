@@ -649,37 +649,52 @@
                                     <h3>Our Socials</h3>
                                 </div>
                                 <ul class="instagram-box">
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://instagram.com/upviewindia"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://www.facebook.com/upviewIndia/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://www.linkedin.com/showcase/upview-india"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://youtube.com/channel/UCyfrXeg5UCAHgth9k_1vBYA"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://twitter.com/UpviewIndia"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
 
                                 <div class="bottom-box">
                                     <ul>
