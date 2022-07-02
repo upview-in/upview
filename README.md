@@ -61,12 +61,13 @@
 # List of PHP Extensions required:
 
 - php-gd
-- php-mongod
+- php-mongodb
 - php-curl
 - php-intl
 - php-exif
 - php-iconv
 - php-redis
+- php-zip
 
 
 # Configure Crontab for Laravel Schedule Service:
@@ -91,7 +92,7 @@
 
 - Install redis-server package
 
-		sudo apt install redis-server
+		sudo apt-get install redis-server
 		sudo systemctl restart redis
 		sudo systemctl enable redis-server
 
