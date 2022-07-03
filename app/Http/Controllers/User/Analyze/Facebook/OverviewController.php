@@ -10,7 +10,6 @@ use App\Http\Requests\Api\Facebook\GetFBPageInsights;
 use App\Http\Requests\User\Analyze\Facebook\ViewOverviewRquest;
 use Exception;
 use Facebook\Exceptions\FacebookResponseException;
-use Illuminate\Http\Request;
 use Locale;
 
 class OverviewController extends Controller
