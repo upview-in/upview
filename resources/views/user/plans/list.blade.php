@@ -192,7 +192,7 @@
                         <h2>{{ $plan->name ?? '-' }}</h2>
                     </div>
                     <div class="price">
-                        <h4><sup>$</sup>{{ $plan->price }}</h4>
+                        <h4><sup>Rs. </sup>{{ $plan->price }}</h4>
                     </div>
                     <div class="option">
                         {!! $plan->shortDescription !!}
