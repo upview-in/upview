@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Controllers\SMSGatewayController;
 use App\Models\User;
 use App\Models\UserOrder;
 use Carbon\Carbon;
@@ -44,6 +45,10 @@ class InvalidateExpiredActiveOrders implements ShouldQueue
                 $order->save();
 
                 User::find($order->user->_id)->roles()->sync(array_diff($role_ids, [$order->plan->id]));
+
+                if (!empty($order->user->mobile_number) && !empty($order->user->name)) {
+                    (new SMSGatewayController())->sendSMS([$order->user->mobile_number], 'Hello, ' . $order->user->name . ". Your subscription to UPVIEW has expired. Don't worry, you can renew the subscription and continue to enjoy our subscription.", 'plan_expired');
+                }
             }
         }
     }

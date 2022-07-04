@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('telescope:prune')->daily();
         $schedule->job(new InvalidateExpiredActiveOrders)->everyFiveMinutes()->evenInMaintenanceMode();
-        $schedule->job(new SendReminderNotificationOfExpiration)->hourly()->evenInMaintenanceMode();
+        $schedule->job(new SendReminderNotificationOfExpiration)->dailyAt('10:00')->evenInMaintenanceMode();
     }
 
     /**

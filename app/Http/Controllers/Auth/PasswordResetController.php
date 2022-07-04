@@ -126,7 +126,7 @@ class PasswordResetController extends Controller
 
             if (!empty($input_data['mobile_number'])) {
                 $formatted_number = Str::replace('+', '', $input_data['mobile_number']);
-                (new SMSGatewayController())->sendSMS([$formatted_number], $otp . ' is the OTP for your password reset on UPVIEW. if you didn\'t initiate you can safely ignore this message and report at support@upview.in', 'reset_password_otp');
+                (new SMSGatewayController())->sendSMS([$formatted_number], $otp . " is the OTP for your password reset on UPVIEW. if you didn\'t initiate you can safely ignore this message and report at support@upview.in", 'reset_password_otp');
             } else {
                 return [
                     'success' => true,
