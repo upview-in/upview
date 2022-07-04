@@ -8,16 +8,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Ayrshare\AyrActiveSocialAccount;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
 use App\Http\Requests\User\PostScheduler\UploadMediaRequest;
+use App\Http\Requests\User\PostScheduler\ViewPostManagementRequest;
 use App\Models\AyrUserProfile;
 use App\Models\PostHistory;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Owenoj\LaravelGetId3\GetId3;
 
 class SchedulerController extends Controller
 {
-    public function index(Request $request)
+    public function index(ViewPostManagementRequest $request)
     {
         $userProfiles = AyrUserProfile::where(['user_id' => Auth::id()])->get();
         if ($request->ajax() && $request->has('profile_key')) {

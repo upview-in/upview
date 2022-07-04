@@ -128,14 +128,17 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu ">
-                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.scheduler') ? 'active' : '' }}">
-                        <a href="{{ route('panel.user.post.scheduler') }}">
-                            <span class="icon-holder">
-                                <em class="fas fa-calendar-day text-warning"></em>
-                            </span>
-                            <span class="title">{{ __('Post Management') }}</span>
-                        </a>
-                    </li>
+                    @if (appUser()->can('posts.management.post-management'))
+                        <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.scheduler') ? 'active' : '' }}">
+                            <a href="{{ route('panel.user.post.scheduler') }}">
+                                <span class="icon-holder">
+                                    <em class="fas fa-calendar-day text-warning"></em>
+                                </span>
+                                <span class="title">{{ __('Post Management') }}</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if (appUser()->can('posts.management.post-history'))
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.history') ? 'active' : '' }}">
                         <a href="{{ route('panel.user.post.history') }}">
                             <span class="icon-holder">
@@ -144,6 +147,7 @@
                             <span class="title">{{ __('Post History') }}</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
 
