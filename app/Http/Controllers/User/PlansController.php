@@ -151,4 +151,17 @@ class PlansController extends Controller
             'can_dismiss' => $can_dismiss,
         ];
     }
+
+    public static function getFormattedPlanValidity(int $days): string
+    {
+        if ($days >= 365) {
+            $years = ($days / 365);
+            return $years . ' ' . ($years == 1 ? 'year' : 'years');
+        } elseif ($days >= 30) {
+            $months = ($days / 30);
+            return $months . ' ' . ($months == 1 ? 'month' : 'months');
+        } else {
+            return $days . ' ' . ($days == 1 ? 'day' : 'days');
+        }
+    }
 }

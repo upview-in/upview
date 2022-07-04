@@ -191,8 +191,11 @@
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
                         <h2>{{ $plan->name ?? '-' }}</h2>
                     </div>
-                    <div class="price">
-                        <h4><sup>Rs. </sup>{{ $plan->price }}</h4>
+                    <div class="price text-white mt-3 mb-3">
+                        <label class="font-weight-bolder h1 w-100">
+                            Rs. {{ $plan->price }}
+                        </label>
+                        <label class="w-100">For {{ \App\Http\Controllers\User\PlansController::getFormattedPlanValidity($plan->plan_validity) }}</label>
                     </div>
                     <div class="option">
                         {!! $plan->shortDescription !!}
