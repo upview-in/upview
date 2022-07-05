@@ -51,7 +51,7 @@ class UserRole extends Model
     public function scopeEnabled($query, $value = true)
     {
         if ($value) {
-            return $query->whereNull('enabled')->orWhere('enabled', true);
+            return $query->whereNull('enabled')->orWhere('enabled', true)->where('slug', '!=', 'free');
         }
 
         return $query->where('enabled', false);
@@ -65,5 +65,10 @@ class UserRole extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public static function getTrialPlan(): ?self
+    {
+        return self::where('slug', 'free')->first();
     }
 }

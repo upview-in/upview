@@ -14,21 +14,32 @@
                                 <form method="POST" action="{{ route('password.update') }}">
                                     @csrf
 
-                                    <!-- Password Reset Token -->
-                                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-                                    <div class="form-group">
-                                        <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
-                                        <div class="input-affix">
-                                            <em class="prefix-icon anticon anticon-mail"></em>
-                                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'is-valid' }}" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="{{ __('E-mail address') }}">
+                                    @if (!empty(session('password_reset_email')))
+                                        <div class="form-group">
+                                            <label class="font-weight-semibold" for="password_reset_email">{{ __('Email') }}:</label>
+                                            <div class="input-affix">
+                                                <em class="prefix-icon anticon anticon-mail"></em>
+                                                <input type="password_reset_email" class="form-control {{ $errors->has('password_reset_email')?'is-invalid':'is-valid' }}" id="password_reset_email" name="password_reset_email" value="{{ session('password_reset_email') }}" required autofocus placeholder="{{ __('E-mail address') }}">
+                                            </div>
+                                            @error('password_reset_email')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
-                                        @error('email')
-                                        <span class="invalid-feedback d-block" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
+                                    @endif
+
+                                    @if (!empty(session('password_reset_mobile_number')))
+                                        <div class="form-group">
+                                            <label class="font-weight-semibold" for="phoneNumber">{{ __('Phone') }}:</label>
+                                            <input type="text" id="phoneNumber" class="form-control {{ $errors->has('password_reset_mobile_number')?'is-invalid':'is-valid' }}" name="password_reset_mobile_number" value="{{ session('password_reset_mobile_number') }}" required  autofocus>
+                                            @error('password_reset_mobile_number')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    @endif
 
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password">{{ __('Password') }}:</label>

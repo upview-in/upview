@@ -21,7 +21,7 @@ class ExtractProperties
             ->mapWithKeys(function ($property) use ($target) {
                 $property->setAccessible(true);
 
-                if (PHP_VERSION_ID >= 70400 && ! $property->isInitialized($target)) {
+                if (PHP_VERSION_ID >= 70400 && !$property->isInitialized($target)) {
                     return [];
                 }
 
@@ -34,9 +34,9 @@ class ExtractProperties
                             'properties' => json_decode(json_encode($value), true),
                         ],
                     ];
-                } else {
-                    return [$property->getName() => json_decode(json_encode($value), true)];
                 }
+
+                return [$property->getName() => json_decode(json_encode($value), true)];
             })->toArray();
     }
 }

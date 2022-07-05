@@ -1,3 +1,7 @@
+@section('custom-scripts')
+    {!! NoCaptcha::renderJs() !!}
+@endsection
+
 <x-app.guest-layout>
     <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex" style="background-image: url('{{ asset('images/others/login-3.png') }}')">
         <div class="d-flex flex-column justify-content-between w-100">
@@ -13,6 +17,13 @@
 
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
+
+                                    @if (session()->has('message'))
+                                        <div class="alert alert-success">
+                                            <strong>{{ session()->get('message') }}</strong>
+                                        </div>
+                                    @endif
+
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="email">{{ __('Email') }}:</label>
                                         <div class="input-affix">
@@ -44,7 +55,15 @@
                                         <input id="remember" type="checkbox" name="remember">
                                         <label class="font-weight-semibold" for="remember">{{ __('Remember me') }}</label>
                                     </div>
-                                    <div class="form-group">
+
+                                    {!! NoCaptcha::display() !!}
+                                    @error('g-recaptcha-response')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+
+                                    <div class="form-group mt-2">
                                         <div class="d-flex align-items-center justify-content-between">
                                             @if (Route::has('register'))
                                             <span class="font-size-13 text-muted">

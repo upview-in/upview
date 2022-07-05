@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -25,6 +26,16 @@ class CreateRolesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        UserRole::firstOrCreate([
+            'name' => 'Free',
+            'slug' => 'free',
+            'price' => 0,
+            'plan_validity' => 3,
+            'shortDescription' => 'Free Default Plan',
+            'longDescription' => 'Free Default Plan',
+            'enabled' => true,
+        ]);
     }
 
     /**

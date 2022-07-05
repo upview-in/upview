@@ -197,7 +197,8 @@
                     <div class="col-xl-12">
                         <div class="inner-content paroller text-center">
                             <div class="title">
-                                <h2>Social Media<br />Analytics</h2>
+                                <h2 style="font-size: 50px;" id="randomHeadLine"></h2><br />
+                                <h4 style="font-weight: 400; color: #fff;" id="randomTagLine"></h4>
                             </div>
                         </div>
                     </div>
@@ -219,11 +220,11 @@
                             <div class="service-details-content-box">
                                 <div class="text">
                                     <h3>
-                                        Never let scattered marketing data slow you down..
+                                        All your social data in one easy-to-use dashboard
                                     </h3>
                                     <div class="mt-5">
                                         <p>
-                                            Track all of your social media analytics in one place. You can boost your social media strategy with accurate data and insights to make better business decisions. Upview helps you track your progress against your goals and objectives.<br /><br /> It’s time to eliminate time-consuming manual processes in favour of automated, presentation-ready insights. Go beyond reporting with Premium Analytics. Uncover more insight into performance gaps and showcase the true value of social for your brand. Find your grip with unique social data and share tailored information for your strategy.
+                                            Social media metrics are critical in understanding what content connects with your audience and why. However, the numbers lie in silos and are presented with little context. UPVIEW pulls data from major social media networks and provides a consolidated view of your channel performance. We mine the data and offer actionable and readily presentable insights that help you build a social media strategy that delivers.
                                         </p>
                                     </div>
                                 </div>
@@ -243,10 +244,10 @@
             <div class="container">
                 <div class="sec-title text-center">
                     <div class="sub-title">
-                        <h3>Our Services</h3>
+                        <h3>Features</h3>
                     </div>
                     <h2>
-                        Strategic social media analysis<br />at the tip of your fingers
+                        Cut through the confusion of raw<br /> numbers and get to the insights
                     </h2>
                 </div>
                 <div class="row">
@@ -254,19 +255,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-1.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/analytics/audience.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Audience Insight</a>
+                                    <a href="{{ route('main.socialAnalyticsInner') }}#audience-profile">Build your audience profile</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Measure all your social metrics and key performance
-                                        indicators on one platform. With our social media
-                                        analytics tools, you’re able to track social metrics such
-                                        as impressions, engagement, and pageviews across several
-                                        digital channels on a single-view dashboard.
+                                    Break down your audience by key demographic metrics such as geography, gender, and age. You can also fine-tune your promotional campaigns by identifying their device and the sources that drive traffic to your channels.
                                     </p>
                                 </div>
                             </div>
@@ -277,19 +274,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-2.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/analytics/content-strategy.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Content Strategy </a>
+                                    <a href="{{ route('main.socialAnalyticsInner') }}#content-strategy">Tailor your content strategy</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        We understand how overwhelming content planning can be
-                                        sometimes , and finding the right strategies is one heck
-                                        of a ride. Through UPVIEW’s content strategy feature now
-                                        you can get in-depth insights about each post and
-                                        understand what content is working better for you.
+                                    Drive greater organic engagement and virality by finding out when your Facebook followers are most likely to be active and scheduling your posts accordingly. Discover what actions your followers are taking after engaging with your content.
                                     </p>
                                 </div>
                             </div>
@@ -300,19 +293,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-3.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/analytics/tabs.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Market Intelligence</a>
+                                    <a href="{{ route('main.socialAnalyticsInner') }}#market-competitors">Keep tabs on the market and competitors</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Imagine getting in depth insights of competitors post, getting to know all the
-                                        hidden tags used. What a blessing right? UPVIEW’s Market Intelligence helps you
-                                        to understand competitor insights in just few clicks. Right from Title to hidden
-                                        Keywords to Upcoming Trends it will give you all the data in two clicks! The
-                                        Fastest & cost effective marketing solution for your business.
+                                    Trends rise and fall quickly on social media channels. Get real-time access to the content and channels trending on YouTube and keep on top of the competition. Dive deeper by getting access to tags used by popular videos and channels.
                                     </p>
                                 </div>
                             </div>
@@ -323,19 +312,15 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="single-service-style3 text-center">
                             <div class="icon">
-                                <img src="{{ asset('main/assets/images/icon/services/service-v2-4.png') }}" alt="" />
+                                <img src="{{ asset('main/assets/images/icon/analytics/report.png') }}" alt="" />
                             </div>
                             <div class="title">
                                 <h3>
-                                    <a href="javascript:void();">Media Planning and Measurements</a>
+                                    <a href="{{ route('main.socialAnalyticsInner') }}#reports">Deliver Professional Reports</a>
                                 </h3>
                                 <div class="inner-text">
                                     <p>
-                                        Create professional reports and dashboards in just 3 seconds. With UPVIEW, you
-                                        can integrate your client’s social networks and generate a single document with
-                                        all the information. All reports, dashboards, metrics, and features aim to
-                                        ensure that you can show to the client the results of your work. Our reports
-                                        helps facilitate the communication of marketing professionals and their clients.
+                                    Generate visual and presentable insights to align your team in just a few clicks. This helps in plotting your social media strategy and demonstrating the value of social strategy based on current and the most relevant data.
                                     </p>
                                 </div>
                             </div>
@@ -348,7 +333,7 @@
         <!--End SKill style1 Area-->
 
         <!--Start footer area -->
-        <footer class="footer-area style2 mt-5">
+        <footer class="footer-area style2">
             <div class="shape">
                 <img src="{{ asset('main/assets/images/shape/thm-shape-4.png') }}" alt="" />
             </div>
@@ -359,16 +344,16 @@
                             <div class="inner">
                                 <div class="text">
                                     <h6>Ready to get started?</h6>
-                                    <h2>Get in touch, or create an account.</h2>
+                                    <h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
                                 </div>
                                 <div class="button-box">
-                                    <a class="btn-one" href="#">
+                                    <a class="btn-one" href="{{ route('main.contact') }}">
                                         <div class="border_line">
                                             <img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
                                         </div>
                                         <div class="left_round"></div>
                                         <div class="right_round"></div>
-                                        <span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+                                        <span class="txt">Book a Demo<i class="flaticon-plus-1 plusicon"></i></span>
                                     </a>
                                 </div>
                             </div>
@@ -387,11 +372,6 @@
                                     <div class="footer-logo">
                                         <a href="{{ route('main.index') }}">
                                             <img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
-                                    </div>
-                                    <div class="text-box">
-                                        <p style="font-size: 19px;">
-                                            We help transform relevant information into desired results.
-                                        </p>
                                     </div>
                                     <div class="copyright-text style2">
                                         <p>
@@ -442,37 +422,52 @@
                                     <h3>Our Socials</h3>
                                 </div>
                                 <ul class="instagram-box">
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://instagram.com/upviewindia"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://www.facebook.com/upviewIndia/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://www.linkedin.com/showcase/upview-india"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://youtube.com/channel/UCyfrXeg5UCAHgth9k_1vBYA"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://twitter.com/UpviewIndia"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
 
                                 <div class="bottom-box">
                                     <ul>
@@ -519,6 +514,22 @@
 
     <!-- thm custom script -->
     <script src="{{ asset('main/assets/js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var headline = [
+                "Build your social media strategy backed by data",
+                "Powerful analytics to uncover actionable insights"
+            ];
+
+            var bottomTaglines = [
+                "Get powerful, visual, and actionable insights into audience behavior to drive your KPIs.",
+                "Measure and track your KPIs to build content that boosts audience engagement"
+            ];
+
+            $("#randomHeadLine").html(headline[Math.floor(Math.random() * headline.length)]);
+            $("#randomTagLine").html(bottomTaglines[Math.floor(Math.random() * bottomTaglines.length)]);
+        });
+    </script>
 </body>
 
 </html>

@@ -12,6 +12,7 @@ class MainSiteController extends Controller
     public function index()
     {
         $blogs = Blog::all();
+
         return view('main.home', ['blogs' => $blogs]);
     }
 
@@ -74,5 +75,20 @@ class MainSiteController extends Controller
     public function showTermsAndConditions()
     {
         return view('main.terms-condition');
+    }
+
+    public function socialAnalyticsInner()
+    {
+        return view('main.features.social-analytics-inner');
+    }
+
+    public function socialPostingInner()
+    {
+        return view('main.features.social-posting-inner');
+    }
+
+    public function socialListeningInner()
+    {
+        return view('main.features.social-listening-inner');
     }
 }

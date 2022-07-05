@@ -60,8 +60,11 @@ Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function
     Route::controller(MainSiteController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/solutions/socialAnalytics', 'socialAnalytics')->name('socialAnalytics');
+        Route::get('/solutions/socialAnalytics/socialAnalyticsInner', 'socialAnalyticsInner')->name('socialAnalyticsInner');
         Route::get('/solutions/socialPosting', 'socialPosting')->name('socialPosting');
+        Route::get('/solutions/socialAnalytics/socialPostingInner', 'socialPostingInner')->name('socialPostingInner');
         Route::get('/solutions/socialListening', 'socialListening')->name('socialListening');
+        Route::get('/solutions/socialAnalytics/socialListeningInner', 'socialListeningInner')->name('socialListeningInner');
         Route::get('/blogs/{blog}', 'blog')->name('blog');
         Route::get('/pricing', 'pricing')->name('pricing');
         Route::get('/contact', 'contact')->name('contact');
@@ -78,7 +81,7 @@ Route::group(['domain' => config('app.domains.app')], function () {
         return redirect()->route('login');
     });
 
-    Route::get('image/{file}', [CommonController::class, 'displayImage'])->name('image.displayImage');
+    Route::get('media/{dir}/{file}', [CommonController::class, 'displayMedia'])->name('media.displayMedia');
 
     Route::get('/getStatesList', [ListController::class, 'getStateList'])->name('get_states_list');
     Route::get('/getCityList', [ListController::class, 'getCityList'])->name('get_city_list');

@@ -3,9 +3,9 @@
 namespace Laravel\Telescope\Watchers;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Events\NotificationSent;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Laravel\Telescope\ExtractTags;
 use Laravel\Telescope\FormatModel;
 use Laravel\Telescope\IncomingEntry;
@@ -32,7 +32,7 @@ class NotificationWatcher extends Watcher
      */
     public function recordNotification(NotificationSent $event)
     {
-        if (! Telescope::isRecording()) {
+        if (!Telescope::isRecording()) {
             return;
         }
 
@@ -73,7 +73,7 @@ class NotificationWatcher extends Watcher
                 return is_array($route) ? implode(',', $route) : $route;
             }, $notifiable->routes);
 
-            return 'Anonymous:'.implode(',', $routes);
+            return 'Anonymous:' . implode(',', $routes);
         }
 
         return get_class($notifiable);

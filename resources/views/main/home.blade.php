@@ -133,7 +133,7 @@
 									<div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
 										<ul class="navigation clearfix">
 											<li class="current"><a href="{{ route('main.index') }}">Home</a></li>
-                                            <li><a href="{{ route('main.videos') }}">Videos</a></li>
+											<li><a href="{{ route('main.videos') }}">Videos</a></li>
 											<li class="dropdown">
 												<a href="javascript:void();">Solutions</a>
 												<ul>
@@ -247,6 +247,9 @@
 					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
 						<a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
+					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
+						<a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-youtube" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+					</li>
 				</ul>
 			</div>
 			<div class="slider-box">
@@ -288,7 +291,7 @@
 															src="images/modules/site/home/globe-500.hevc.mp4"> -->
 														<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/globe-500.h264.mp4') }}">
 													</video>
-													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w" sizes="(max-width: 700px) 70vw, 700px" src="{{ asset('main/images/modules/site/home/globe.jpg') }}" alt="Planet earth with visualization of GitHub activity crossing the globe" class="width-full height-auto js-globe-fallback-image" loading="lazy" decoding="async" width="1238" height="1404" hidden>
+													<img srcset="{{ asset('main/images/modules/site/home/globe-700.jpg')}} 700w, {{ asset('main/images/modules/site/home/globe.jpg') }} 1400w" sizes="(max-width: 700px) 70vw, 700px" src="{{ asset('main/images/modules/site/home/globe.jpg') }}" alt="Upview power of collecting data from the globe" class="width-full height-auto js-globe-fallback-image" loading="lazy" decoding="async" width="1238" height="1404" hidden>
 
 													<canvas width="900" height="900" class="webgl-canvas js-globe-canvas" style="display: block; width: 900px; height: 900px;"></canvas>
 												</div>
@@ -299,7 +302,6 @@
 									</div>
 								</div>
 
-								<!-- <img src="{{ asset('main/images/modules/site/home/hero-glow.svg') }}" alt="" class="position-absolute home-hero-glow events-none z-1"> -->
 								<video loop="" muted="" playsinline="" preload="none" class="js-globe-aurora position-absolute top-0 left-0 right-0 bottom-0" style="margin: auto; z-index: -1; min-width: 100%; min-height: 100%;" hidden="">
 									<source type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" src="{{ asset('main/images/modules/site/home/aurora.h264.mp4') }}">
 								</video>
@@ -312,13 +314,12 @@
 										<div class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
 											<picture>
 												<source srcset="{{ asset('main/images/modules/site/home/astro-mona.webp') }}" type="image/webp">
-												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="Mona looking at GitHub activity across the globe">
+												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="">
 											</picture>
 										</div>
 									</div>
 								</div>
 							</div>
-
 						</div>
 
 						<div class="mx-auto container-xl p-responsive py-8 py-md-9 overflow-hidden d-flex gutter gutter-spacious js-build-in-trigger" data-build-margin-bottom="20">
@@ -338,7 +339,7 @@
 						<h3>Our Services</h3>
 					</div>
 					<h2>
-						Better Discussions, Greater Conversions.<br />We offer solutions for everyone – Startups, Brands, Ad-Agencies & Influencers.
+						Take Social Media Management to the next level
 					</h2>
 				</div>
 				<div class="row">
@@ -350,12 +351,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialPosting') }}">Scheduling & Publishing</a>
+									<a href="{{ route('main.socialPosting') }}">Make publishing easy</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										With Upview, it’s so easy to publish on multiple social media channels with automated scheduling. Get an overview of your schedule and get teams working efficiently. You don’t even need to be in the office when you can drive everything remotely. Smooth and streamlined collaboration gets your team working in harmony without publishing delays, setbacks, or mistakes.
+										Individually updating every social channel you handle is error-prone and time-consuming. On UPVIEW, you hit publish once and watch as all your channels get updated. You can even schedule your posts to a time when your content gets higher engagement.
 									</p>
 								</div>
 							</div>
@@ -370,12 +371,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialAnalytics') }}">Analytics </a>
+									<a href="{{ route('main.socialAnalytics') }}">Take Strategic decisions backed by data</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Access Next-Gen Intelligence.End the guesswork when defining your strategy.Have your marketing strategies mapped instantly to drive engaging and conversion-boosting campaigns. Understand the behaviors, demographics, and influencers of your audience. With Upview, it now takes only seconds to gather all the crucial insights in one place. Complex strategy decisions are now much simpler.
+										Take the guesswork out of decision-making by building your social media strategy based on actual audience behavior. UPVIEW’s intuitive dashboard presents actionable insights based on social data. You can also generate visual reports for your team effortlessly.
 									</p>
 								</div>
 							</div>
@@ -390,12 +391,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialListening') }}">Social Listening</a>
+									<a href="{{ route('main.socialListening') }}">Tune in to social conversations</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										Eavesdrop into the social conversation with social listening. Upview gives marketers a clear view of the most important trends and opportunities for their brands. Get a clear picture to stand up against your competition. You can count on Upview to reveal what other brands do to succeed and in-depth sentiment analysis to help you understand your campaign's performance globally.
+										Keep up with consumer opinions, track competitors, and maintain brand health with our advanced Social Listening tool. Our sentiment analysis provides real-time updates and identifies key influencers driving conversations about your brand on the web.
 									</p>
 								</div>
 							</div>
@@ -410,12 +411,12 @@
 							</div>
 							<div class="title">
 								<h3>
-									<a href="{{ route('main.socialListening') }}">Brand Analysis</a>
+									<a href="{{ route('main.socialListening') }}">Build a loyal brand following</a>
 								</h3>
 								<div class="border-box"></div>
 								<div class="inner-text">
 									<p>
-										It’s time you put your brand on the right digital path with real-time branding. Stay ahead of the competition. Track every move your competitor makes on social media and measure it's impact. Every post, every hashtag, every reply, every user interaction. It’s all recorded & measured so you can understand exactly what your competition is doing.
+										Consumers reward brands that deliver content tailored to their preferences. By putting powerful tools at your disposal, UPVIEW helps you understand your audience, track the competition, and study market trends that always keep you one step ahead.
 									</p>
 								</div>
 							</div>
@@ -443,8 +444,15 @@
 								About Us
 							</h2>
 							<p>
-								Upview is a listening & analytics company that empowers brands and agencies to optimise the impact of their communication efforts. At Upview, we value quality, creativity, problem-solving, team building, and storytelling to grow your business. Our specialised services answer your most demanding requirements with precision and innovative solutions that deliver relentless growth for your brand.<br /><br />
-								Our creative, strategic, and data-driven online advertising will boost your business growth and revenue to place you above the competition. We provide proven and effective marketing services to ensure your company remains competitive now and in the future.
+								Creators and brands who develop a large following and engagement on social media platforms put their audience at the heart of all decisions. They use social media not just to talk to consumers but also to listen to them.<br /><br />
+
+								At UPVIEW, we are building tools for creators, agencies, and marketers that enable these
+								two-way conversations. That’s why we have brought together all the essential tools you
+								need to push content and measure performance under one roof.<br /><br />
+
+								We are a team of engineers and marketers based in Mumbai passionate about bringing
+								advanced technology to a broader group of people and companies. We are constantly adding
+								more capabilities to UPVIEW so that everyone can harness the true power of social media.
 							</p>
 						</div>
 					</div>
@@ -464,9 +472,7 @@
 					<!-- Testimonial Block -->
 					<div class="testimonial-block">
 						<div class="inner-box">
-							<div class="text">I must have used more than 3 platforms but have never been more
-								satisfied with the features of a platform than with Upview. A permanent
-								user of Upview forever!</div>
+							<div class="text">I have used more than three platforms before. But Upview provides the best combination of features that simply work. Count me in as a permanent user of Upview!</div>
 							<div class="info-box">
 								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/viral.jpg') }}" alt=""></div>
 								<h4 class="name">Viral Rathod</h4>
@@ -478,10 +484,7 @@
 					<!-- Testimonial Block -->
 					<div class="testimonial-block">
 						<div class="inner-box">
-							<div class="text">Upview has been a saviour, I was struggling in keeping up with the
-								posting but now I can easily schedule it all together and not have to
-								worry about anything. And to add to it, I can assess what was working
-								for me and what was not.</div>
+							<div class="text">I was struggling to keep with updating my social channels. But now I can batch my publishing and schedule the content to go up in the future. And to add to it, I can assess which content worked for my audience and which did not.</div>
 							<div class="info-box">
 								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/chavda.jpg') }}" alt=""></div>
 								<h4 class="name">Siddhantraj Chavda</h4>
@@ -493,10 +496,7 @@
 					<!-- Testimonial Block -->
 					<div class="testimonial-block">
 						<div class="inner-box">
-							<div class="text">One issue I was facing with other applications is that they are limited
-								to just one or two platforms and I use several different platforms to
-								post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not
-								only removed all these hassles but saved a lot of time as well.</div>
+							<div class="text">One issue I was facing with other applications is that they are limited to just one or two platforms and I use several different platforms to post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not only removed all these hassles but saved me a lot of time as well.</div>
 							<div class="info-box">
 								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/rashmi.jpg') }}" alt=""></div>
 								<h4 class="name">Rashmi Mishra</h4>
@@ -519,7 +519,7 @@
 			<div class="container">
 				<div class="sec-title text-center">
 					<h2>
-						We Get You Ready For The Millions Watching You!
+						UP YOUR GAME WITH UPVIEW
 					</h2>
 				</div>
 				<div class="row">
@@ -550,11 +550,27 @@
 					<div class="col-xl-6">
 						<div class="about-style1_content-box about-style2_content-box">
 							<h2>
-								Improve your social strategy by understanding Metrics that Matter
+								Creators & Influencers
 							</h2>
 							<div class="text">
 								<p>
-									Spend less time on manual tasks and more time connecting with your audience. Billions of conversations take place on social media every day. Those discussions help people to make purchasing decisions and influence public perceptions. Whatever kind of business you’re in, people on social media are talking about your industry, your competitors, and you. If you fail to pay attention, you will miss out on a lot of opportunities. Upview can help you start listening.
+									UPVIEW gives you the tools to publish content to your social channels quickly. Plan your content strategy by understanding your audience's behavior and preferences through our analytics.
+								</p>
+							</div>
+							<h2>
+								Agencies
+							</h2>
+							<div class="text">
+								<p>
+									Manage multiple brands with UPVIEW’s intuitive interface. Go granular in studying your audience and adjusting your strategy based on real-time numbers. Align teams through easy-to-generate reports.
+								</p>
+							</div>
+							<h2>
+								Companies
+							</h2>
+							<div class="text">
+								<p>
+									Social media is not just a tool for branding and marketing. Understanding your consumers and listening to their conversations can deeply impact product development and CRM.
 								</p>
 							</div>
 						</div>
@@ -578,7 +594,7 @@
 											<span class="count-text" data-speed="3000" data-stop="302">0</span>
 										</div>
 										<div class="title">
-											<h6 style="color: #FFF;">Brands Build</h6>
+											<h6 style="color: #FFF;">Happy Customers</h6>
 										</div>
 									</div>
 								</li>
@@ -611,7 +627,7 @@
 											<span class="count-text" data-speed="3000" data-stop="335">0</span>
 										</div>
 										<div class="title">
-											<h6 style="color: #FFF;">Expert Team</h6>
+											<h6 style="color: #FFF;">Posts Published</h6>
 										</div>
 									</div>
 								</li>
@@ -635,7 +651,7 @@
 					<div class="col-xl-12">
 						<div class="working-process-inner" style="height: 6in;">
 							<div class="title">
-								<h2 style="color: #ffffff; font-size: 30px; margin-top: -70px;">A social media tool which is all ears into the industry.<br />Start your Upview journey today!</h2>
+								<h2 style="color: #ffffff; font-size: 30px; margin-top: -70px;">Everyone has different needs. That’s why we have developed three pricing plans. Pay for the features that suit your needs. Get in touch with us for a customized plan.</h2>
 							</div>
 						</div>
 					</div>
@@ -652,8 +668,7 @@
 						<h3>Blogs</h3>
 					</div>
 					<h2>
-						Come check these few blogs to get an idea of how eye catching and impeccable your social media
-						could look!
+						Insights, tactics, and developments from the world of social media
 					</h2>
 				</div>
 				<div class="row text-right-rtl owl-carousel owl-theme portfolio-carousel ">
@@ -719,16 +734,16 @@
 							<div class="inner">
 								<div class="text">
 									<h6>Ready to get started?</h6>
-									<h2>Get in touch, or create an account.</h2>
+									<h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
 								</div>
 								<div class="button-box">
-									<a class="btn-one" href="#">
+									<a class="btn-one" href="{{ route('main.contact') }}">
 										<div class="border_line">
 											<img src="{{ asset('main/assets/images/shape/button-border.png') }}" alt="" />
 										</div>
 										<div class="left_round"></div>
 										<div class="right_round"></div>
-										<span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+										<span class="txt">Book a Demo<i class="flaticon-plus-1 plusicon"></i></span>
 									</a>
 								</div>
 							</div>
@@ -747,11 +762,6 @@
 									<div class="footer-logo">
 										<a href="{{ route('main.index') }}">
 											<img src="{{ asset('main/assets/images/resources/logo-white.svg') }}" width="161px" height="60px" alt="" /></a>
-									</div>
-									<div class="text-box">
-										<p style="font-size: 19px;">
-											We help transform relevant information into desired results.
-										</p>
 									</div>
 									<div class="copyright-text style2">
 										<p>
@@ -804,30 +814,45 @@
 								<ul class="instagram-box">
 									<li>
 										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
-											<div class="overlay">
+											<div>
 												<div class="inner">
-													<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="https://instagram.com/upviewindia"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
 									</li>
 									<li>
 										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
-											<div class="overlay">
+											<div>
 												<div class="inner">
-													<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.facebook.com/upviewIndia/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
 									</li>
 									<li>
 										<div class="img-holder">
-											<img src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
-											<div class="overlay">
+											<div>
 												<div class="inner">
-													<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.linkedin.com/showcase/upview-india"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://youtube.com/channel/UCyfrXeg5UCAHgth9k_1vBYA"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://twitter.com/UpviewIndia"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
@@ -889,17 +914,15 @@
 	<script>
 		$(document).ready(function() {
 			var taglines = [
-				"Our Skills<br /> Your Growth",
-				"Frame Your<br />Social Space",
-				"Edge out<br />the Competion"
+				"Tap into the power of social media",
+				"The all-in-one social media management tool",
+				"Adding intelligence to social media management"
 			];
 
 			var bottomTaglines = [
-				"We get you ready for the million watching you.",
-				"We are ready to serve you differently.",
-				"Be where the world is going.",
-				"Creating, rejuvenating, repositioning brands.",
-				"Social Media Beyond Expectation."
+				"A suite of products to streamline publishing, build data-backed strategies, and develop audience intelligence via social listening.",
+				"Grow your brand online with UPVIEW’s powerful Publishing, Analytics, and Social Listening features.",
+				"Build, protect, and grow your brand online with UPVIEW’s powerful Publishing, Analytics, and Social Listening features."
 			];
 
 			$("#randomTagLine").html(taglines[Math.floor(Math.random() * taglines.length)]);

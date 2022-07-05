@@ -195,6 +195,9 @@ return [
         // Permissions Providers
         App\Providers\UserPermissionsServiceProvider::class,
         App\Providers\AdminPermissionsServiceProvider::class,
+
+        // Google reCaptcha
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
     ],
 
     /*
@@ -250,6 +253,7 @@ return [
 
         'Functions' => App\Helper\Functions::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ],
 
 ];

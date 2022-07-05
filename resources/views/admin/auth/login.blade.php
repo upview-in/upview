@@ -1,3 +1,7 @@
+@section('custom-scripts')
+    {!! NoCaptcha::renderJs() !!}
+@endsection
+
 <x-admin.guest-layout bodyClasses="bg-login">
 	<div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
 		<div class="container-fluid">
@@ -51,6 +55,14 @@
 												<label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
 											</div>
 										</div>
+
+										{!! NoCaptcha::display() !!}
+										@error('g-recaptcha-response')
+										<span class="invalid-feedback d-block" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
+
 										<div class="col-12">
 											<div class="d-grid">
 												<button type="submit" class="btn btn-primary"><em class="bi bi-lock-open"></em>Sign in</button>

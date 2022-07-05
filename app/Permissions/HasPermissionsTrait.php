@@ -4,6 +4,7 @@ namespace App\Permissions;
 
 use App\Models\UserPermission;
 use App\Models\UserRole;
+use UserPermissionHelper;
 
 trait HasPermissionsTrait
 {
@@ -68,6 +69,23 @@ trait HasPermissionsTrait
     public function permissions()
     {
         return $this->belongsToMany(UserPermission::class);
+    }
+
+    public function hasGroupPermission(string $group): bool
+    {
+        $permissions = (new UserPermissionHelper())->getPermissionsFromSlugOfGroup($group);
+        return appUser()->hasAnyPermissions($permissions);
+    }
+
+    public function hasAnyPermissions(array $permissions): bool
+    {
+        foreach ($permissions as $permission) {
+            if (appUser()->can($permission)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function hasPermission($permission)

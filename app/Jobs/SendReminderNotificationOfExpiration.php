@@ -2,12 +2,15 @@
 
 namespace App\Jobs;
 
+use App\Http\Controllers\SMSGatewayController;
+use App\Models\UserOrder;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class SendReminderNotificationOfExpiration implements ShouldQueue
 {
@@ -30,6 +33,13 @@ class SendReminderNotificationOfExpiration implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $orders = UserOrder::with(['plan', 'user'])->where('status', 1)->where('expired_at', '<', Carbon::now()->addDays(7))->get();
+        Log::alert('Send Reminder Notification Of Expiration | ' . json_encode($orders, JSON_PRETTY_PRINT));
+
+        foreach ($orders as $order) {
+            if (!empty($order->user->mobile_number) && !empty($order->user->name)) {
+                (new SMSGatewayController())->sendSMS([$order->user->mobile_number], 'Hello, ' . $order->user->name . '. Your subscription to UPVIEW is expiring in ' . Carbon::now()->diffInDays($order->expired_at) . ' days. Visit upview.in and renew to continue enjoying our services.', 'plan_expiring_in');
+            }
+        }
     }
 }

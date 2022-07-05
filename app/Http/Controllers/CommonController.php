@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
 class CommonController extends Controller
 {
-    public function displayImage(Request $request, $file)
+    public function displayMedia(Request $request, $dir, $file)
     {
-        try {
-            $file = decrypt($file);
-        } catch (DecryptException $e) {
-            return abort(404);
-        }
-
-        $file = storage_path('app/' . $file);
+        $file = storage_path('app/' . $dir . '/' . $file);
 
         if (!File::exists($file)) {
             return abort(404);

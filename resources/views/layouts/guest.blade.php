@@ -16,6 +16,7 @@
 
     <!-- Core css -->
     <link href="{{ asset('vendor/phone-number/css/intlTelInput.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme-app.min.css') }}" rel="stylesheet">
 
     <style>
@@ -46,14 +47,19 @@
     <script src="{{ asset('vendor/phone-number/js/utils.js') }}"></script>
     <script src="{{ asset('vendor/phone-number/js/data.min.js') }}"></script>
     <script src="{{ asset('vendor/phone-number/js/intlTelInput-jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
+            $('.select2').select2({
+                allowClear: true,
+            });
+
             if ($("#phoneNumber").length) {
                 var telInputErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
                 $("#phoneNumber").intlTelInput({
                     placeholderNumberType: "MOBILE",
-                    initialCountry: "auto",
+                    initialCountry: "IN",
                 });
 
                 $('form').submit(function (e) {
