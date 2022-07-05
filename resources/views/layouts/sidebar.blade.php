@@ -11,6 +11,7 @@
                 </a>
             </li>
 
+            @if (appUser()->hasGroupPermission('analyze'))
             <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -82,6 +83,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
 
             <li class="nav-item dropdown {{ request()->is('panel/user/measure/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -177,6 +179,7 @@
                 </ul>
             </li>
 
+            @if (!empty(Auth::user()->awario_profile_hash))
             <li class="nav-item dropdown {{ request()->routeIs('panel.user.social') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.user.social') }}" target="_blank">
                     <span class="icon-holder">
@@ -185,6 +188,7 @@
                     <span class="title">{{ __('Social Listening') }}</span>
                 </a>
             </li>
+            @endif
 
             <!-- <li class="nav-item dropdown {{ request()->routeIs('panel.dashboard') ? 'active' : '' }}">
                 <a class="dropdown-toggle" href="{{ route('panel.dashboard') }}">

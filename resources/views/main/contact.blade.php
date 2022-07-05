@@ -50,6 +50,7 @@
     <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="32x32" />
     <link rel="icon" type="image/png" href="{{ asset('main/assets/images/favicon/favico.svg') }}" sizes="16x16" />
 
+    {!! NoCaptcha::renderJs() !!}
 
 </head>
 
@@ -258,6 +259,14 @@
                                                     <label>Message</label>
                                                     <textarea id="message" name="message" placeholder="Enter your message..." required=""></textarea>
                                                 </div>
+
+                                                {!! NoCaptcha::display() !!}
+                                                @error('g-recaptcha-response')
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+
                                                 <div class="button-box">
                                                     <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
                                                     <button class="btn-one" type="submit" data-loading-text="Please wait...">
@@ -296,7 +305,7 @@
                                                 <h3>Telephone</h3>
                                             </div>
                                             <div class="inner_text">
-                                                <p><a href="tel:+919324633735">+91 9324633735</a></p>
+                                                <p><a href="tel:+919820909500">+91 9820909500</a></p>
                                             </div>
                                         </div>
                                     </li>
@@ -319,9 +328,10 @@
                                             </div>
                                             <div class="inner_text">
                                                 <ul class="social-link">
-                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                    <li><a href="https://www.facebook.com/upviewIndia/"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="https://twitter.com/UpviewIndia"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="https://instagram.com/upviewindia"><i class="fa fa-instagram"></i></a></li>
+                                                    <li><a href="https://instagram.com/upviewindia"><i class="fa fa-linkedin"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -364,7 +374,7 @@
                             <div class="inner">
                                 <div class="text">
                                     <h6>Ready to get started?</h6>
-                                    <h2>Get in touch, or create an account.</h2>
+                                    <h4 style="color: #fff;">Book a demo to explore UPVIEW’s powerful Publishing, Analytics, and Social Listening tools.</h4>
                                 </div>
                                 <div class="button-box">
                                     <a class="btn-one" href="{{ route('main.contact') }}">
@@ -373,7 +383,7 @@
                                         </div>
                                         <div class="left_round"></div>
                                         <div class="right_round"></div>
-                                        <span class="txt">Explore Now<i class="flaticon-plus-1 plusicon"></i></span>
+                                        <span class="txt">Book a Demo<i class="flaticon-plus-1 plusicon"></i></span>
                                     </a>
                                 </div>
                             </div>
@@ -447,37 +457,52 @@
                                     <h3>Our Socials</h3>
                                 </div>
                                 <ul class="instagram-box">
-                                    <li>
-                                        <div class="img-holder">
-                                            <img alt="" src="{{ asset('main/assets/images/footer/instagram-1.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img alt="" src="{{ asset('main/assets/images/footer/instagram-2.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-holder">
-                                            <img alt="" src="{{ asset('main/assets/images/footer/instagram-3.jpg') }}" alt="" />
-                                            <div class="overlay">
-                                                <div class="inner">
-                                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://instagram.com/upviewindia"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://www.facebook.com/upviewIndia/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://www.linkedin.com/showcase/upview-india"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://youtube.com/channel/UCyfrXeg5UCAHgth9k_1vBYA"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="img-holder">
+											<div>
+												<div class="inner">
+													<a href="https://twitter.com/UpviewIndia"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
 
                                 <div class="bottom-box">
                                     <ul>

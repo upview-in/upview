@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use App\Concerns\Models\Searchable;
-use App\Notifications\Auth\QueuedVerifyEmail;
 use App\Permissions\HasPermissionsTrait;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
@@ -16,7 +14,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable implements HasMedia, MustVerifyEmail
+class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens, HasPermissionsTrait, HasFactory, Notifiable, InteractsWithMedia, Searchable, SoftDeletes;
 
@@ -36,7 +34,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'city',
         'state',
         'country',
-        'pincode',
         'currency',
         'awario_profile_hash',
     ];
@@ -57,9 +54,9 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'city',
         'state',
         'country',
-        'pincode',
         'currency',
         'awario_profile_hash',
+        'verified_at',
     ];
 
     /**
@@ -78,7 +75,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'verified_at' => 'datetime',
         'enabled' => 'boolean',
     ];
 
@@ -87,11 +84,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         $this->addMediaConversion('thumb')
             ->width(400)
             ->height(400);
-    }
-
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify((new QueuedVerifyEmail)->onQueue('email-verification'));
     }
 
     public function getUserSupportChatCountAttribute()

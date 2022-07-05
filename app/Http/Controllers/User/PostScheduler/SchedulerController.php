@@ -54,8 +54,14 @@ class SchedulerController extends Controller
             array_push($userTags, ['username' => $mentions, 'x' => 1.0, 'y' => 1.0]);
         }
 
+        // Getting Youtube Title
+        $ytTitle = $request->yt_title;
+        if (in_array('Youtube', $enabledPlatforms) && empty($ytTitle)) {
+            return redirect()->back()->with('validation_error', 'Youtube Title is required for YouTube');
+        }
+
         //  Getting schedule date and time to schedule the post
-        $scheduledData = $request->has('scheduled_at') ? $request->scheduled_at . ':00Z' : false;
+        $scheduledData = !empty($request->scheduled_at) ? $request->scheduled_at . ':00Z' : false;
 
         // Check if request has post media or not. If present check for the post type (scheduled or unscheduled).
         // Check for platforms where post media is required
@@ -67,9 +73,12 @@ class SchedulerController extends Controller
                     return redirect()->back()->with('validation_error', $val['validation_msg']);
                 }
             }
-            $fileInfo = $request->file('post_media')->store('User');
-            $mediaURL = encrypt($fileInfo);
-            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('image.displayImage', $mediaURL)], 'profile_key' => decrypt($request->profile_select)];
+            $mediaURL = $request->file('post_media')->store('User');
+            $splittedMediaUrl = explode('/', $mediaURL);
+            $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'profile_key' => decrypt($request->profile_select)];
+            if (in_array('Youtube', $enabledPlatforms)) {
+                $data['youTubeOptions'] = ['title' => $ytTitle];
+            }
         } elseif (in_array('Instagram', $enabledPlatforms) || in_array('Youtube', $enabledPlatforms) || in_array('Pinterest', $enabledPlatforms)) {
             return redirect()->back()->with('validation_error', 'Selected Platform(s) require to have Image/Video.');
         } else {
@@ -90,9 +99,9 @@ class SchedulerController extends Controller
             $post_info = [];
         }
 
-        if ($request->has('scheduled_at')) {
+        if (!empty($request->scheduled_at)) {
             $postData->caption = $request->caption . ' ' . $tags;
-            $postData->media_url = [route('image.displayImage', $mediaURL)];
+            $postData->media_url = [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])];
             $postData->is_scheduled = 1; //Scheduled
             $postData->ayrId = $response['id'];
             $postData->scheduled_at = $request->scheduled_at;
@@ -101,24 +110,21 @@ class SchedulerController extends Controller
             $postData->save();
 
             return redirect()->back()->with('message2', 'Post Successfully Scheduled!');
-
-        } else {
-            foreach ($response['postIds'] as $post) {
-                $post_info[] = $post;
-            }
-
-            $postData->post_info = $post_info;
-            $postData->caption = $request->caption . ' ' . $tags;
-            $postData->media_url = [route('image.displayImage', $mediaURL)];
-            $postData->is_scheduled = 0; //Posted
-            $postData->ayrId = $response['id'];
-            $postData->ayrRefId = $response['refId'];
-            $postData->posted_by = $request->posted_by;
-            $postData->save();
-
-            return redirect()->back()->with('message2', 'Sucsessfully Posted!');
-
         }
+        foreach ($response['postIds'] as $post) {
+            $post_info[] = $post;
+        }
+
+        $postData->post_info = $post_info;
+        $postData->caption = $request->caption . ' ' . $tags;
+        $postData->media_url = [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])];
+        $postData->is_scheduled = 0; //Posted
+        $postData->ayrId = $response['id'];
+        $postData->ayrRefId = $response['refId'];
+        $postData->posted_by = $request->posted_by;
+        $postData->save();
+
+        return redirect()->back()->with('message2', 'Sucsessfully Posted!');
     }
 
     private static function validateUploadMedia($fileInfo, $platforms)

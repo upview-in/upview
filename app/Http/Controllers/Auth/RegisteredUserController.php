@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserOrder;
+use App\Models\UserRole;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,11 +37,13 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'companyName' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => ['required', 'string', 'max:255'],
+            'companyName' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::min(8)],
             'mobile_number' => ['required', 'phone:AUTO'],
+            'country' => ['required', 'exists:countries,_id'],
+            'g-recaptcha-response' => ['required', 'captcha'],
         ]);
 
         $user = User::create([
@@ -47,7 +52,26 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'mobile_number' =>  $request->mobile_number,
+            'country' => $request->country,
         ]);
+
+        // Add free plan to new registered user
+        $trial_plan = UserRole::getTrialPlan();
+
+        if (!empty($trial_plan)) {
+            $order = new UserOrder();
+            $order->payment_gateway_using = 0;
+            $order->user_id = $user->id;
+            $order->plan_id = $trial_plan->id;
+            $order->status = 1;
+            $order->payment_id = '0';
+            $order->purchased_at = Carbon::now();
+            $order->expired_at = Carbon::now()->addDays($trial_plan->plan_validity);
+            $order->response_message = 'Free plan added successfully.';
+            $order->save();
+
+            $user->roles()->attach([$trial_plan->id]);
+        }
 
         event(new Registered($user));
 

@@ -25,8 +25,5 @@ class DatabaseSeeder extends Seeder
         // User
         (new PopulateUserPermissions())->run();
         (new PopulateUsersRoles())->run();
-
-        // Seed example fake users
-        User::factory(100)->create();
     }
 }

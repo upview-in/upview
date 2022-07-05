@@ -2,13 +2,13 @@
 
 namespace Laravel\Telescope\Watchers;
 
-use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as IlluminateResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Laravel\Telescope\FormatModel;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
@@ -36,7 +36,7 @@ class RequestWatcher extends Watcher
      */
     public function recordRequest(RequestHandled $event)
     {
-        if (! Telescope::isRecording() ||
+        if (!Telescope::isRecording() ||
             $this->shouldIgnoreStatusCode($event)) {
             return;
         }
@@ -57,6 +57,19 @@ class RequestWatcher extends Watcher
             'duration' => $startTime ? floor((microtime(true) - $startTime) * 1000) : null,
             'memory' => round(memory_get_peak_usage(true) / 1024 / 1024, 1),
         ]));
+    }
+
+    /**
+     * Determine if the content is within the set limits.
+     *
+     * @param  string  $content
+     * @return bool
+     */
+    public function contentWithinLimits($content)
+    {
+        $limit = $this->options['size_limit'] ?? 64;
+
+        return intdiv(mb_strlen($content), 1000) <= $limit;
     }
 
     /**
@@ -85,7 +98,8 @@ class RequestWatcher extends Watcher
             return $header[0];
         })->toArray();
 
-        return $this->hideParameters($headers,
+        return $this->hideParameters(
+            $headers,
             Telescope::$hiddenRequestHeaders
         );
     }
@@ -98,7 +112,8 @@ class RequestWatcher extends Watcher
      */
     protected function payload($payload)
     {
-        return $this->hideParameters($payload,
+        return $this->hideParameters(
+            $payload,
             Telescope::$hiddenRequestParameters
         );
     }
@@ -119,37 +134,6 @@ class RequestWatcher extends Watcher
         }
 
         return $data;
-    }
-
-    /**
-     * Extract the session variables from the given request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    private function sessionVariables(Request $request)
-    {
-        return $request->hasSession() ? $request->session()->all() : [];
-    }
-
-    /**
-     * Extract the input from the given request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    private function input(Request $request)
-    {
-        $files = $request->files->all();
-
-        array_walk_recursive($files, function (&$file) {
-            $file = [
-                'name' => $file->getClientOriginalName(),
-                'size' => $file->isFile() ? ($file->getSize() / 1000).'KB' : '0',
-            ];
-        });
-
-        return array_replace_recursive($request->input(), $files);
     }
 
     /**
@@ -176,7 +160,7 @@ class RequestWatcher extends Watcher
         }
 
         if ($response instanceof RedirectResponse) {
-            return 'Redirected to '.$response->getTargetUrl();
+            return 'Redirected to ' . $response->getTargetUrl();
         }
 
         if ($response instanceof IlluminateResponse && $response->getOriginalContent() instanceof View) {
@@ -187,19 +171,6 @@ class RequestWatcher extends Watcher
         }
 
         return 'HTML Response';
-    }
-
-    /**
-     * Determine if the content is within the set limits.
-     *
-     * @param  string  $content
-     * @return bool
-     */
-    public function contentWithinLimits($content)
-    {
-        $limit = $this->options['size_limit'] ?? 64;
-
-        return intdiv(mb_strlen($content), 1000) <= $limit;
     }
 
     /**
@@ -218,9 +189,40 @@ class RequestWatcher extends Watcher
                     'class' => get_class($value),
                     'properties' => json_decode(json_encode($value), true),
                 ];
-            } else {
-                return json_decode(json_encode($value), true);
             }
+
+            return json_decode(json_encode($value), true);
         })->toArray();
+    }
+
+    /**
+     * Extract the session variables from the given request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    private function sessionVariables(Request $request)
+    {
+        return $request->hasSession() ? $request->session()->all() : [];
+    }
+
+    /**
+     * Extract the input from the given request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    private function input(Request $request)
+    {
+        $files = $request->files->all();
+
+        array_walk_recursive($files, function (&$file) {
+            $file = [
+                'name' => $file->getClientOriginalName(),
+                'size' => $file->isFile() ? ($file->getSize() / 1000) . 'KB' : '0',
+            ];
+        });
+
+        return array_replace_recursive($request->input(), $files);
     }
 }

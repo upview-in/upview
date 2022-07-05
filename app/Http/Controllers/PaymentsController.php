@@ -32,7 +32,7 @@ class PaymentsController extends Controller
                 $checkout_session = Session::create([
                     'line_items' => [[
                         'price_data' => [
-                            'currency' => 'usd',
+                            'currency' => 'inr',
                             'product_data' => [
                                 'name' => $plan->name,
                                 'metadata' => [
@@ -144,7 +144,7 @@ class PaymentsController extends Controller
                 $pg_order = $pg_api->order->create([
                     'receipt'         => 'payment_' . $order->id,
                     'amount'          => $amount,
-                    'currency'        => 'USD',
+                    'currency'        => 'INR',
                 ]);
                 $order->payment_id = $pg_order->id;
                 $order->update();
@@ -170,7 +170,7 @@ class PaymentsController extends Controller
                 $pg_api->utility->verifyPaymentSignature([
                     'razorpay_order_id' => $request->razorpay_order_id,
                     'razorpay_signature' => $request->razorpay_signature,
-                    'razorpay_payment_id' => $request->razorpay_payment_id
+                    'razorpay_payment_id' => $request->razorpay_payment_id,
                 ]);
 
                 if (Auth::id() === $order->user_id) {

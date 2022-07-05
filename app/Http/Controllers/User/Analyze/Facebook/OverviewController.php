@@ -7,14 +7,14 @@ use App\Http\Controllers\Api\Facebook\FacebookController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Facebook\Account\GetMineAccountDetails;
 use App\Http\Requests\Api\Facebook\GetFBPageInsights;
+use App\Http\Requests\User\Analyze\Facebook\ViewOverviewRquest;
 use Exception;
 use Facebook\Exceptions\FacebookResponseException;
-use Illuminate\Http\Request;
 use Locale;
 
 class OverviewController extends Controller
 {
-    public function overview(Request $request)
+    public function overview(ViewOverviewRquest $request)
     {
         if (!count(TokenHelper::getAuthToken_FB())) {
             return redirect()->route('panel.user.account.accounts_manager');
@@ -224,7 +224,6 @@ class OverviewController extends Controller
                                 $data['chartData']['page_views_by_internal_referer_logged_in_unique'] = $tempData;
                                 $data['page_views_by_internal_referer_logged_in_unique']['desc'] = $desc;
 
-
                                 $tempData = [];
                                 $tempData[] = ['Metric', 'Impressions'];
                                 $desc = $data['page_views_by_site_logged_in_unique']['desc'] ?? [];
@@ -240,7 +239,6 @@ class OverviewController extends Controller
                                 }
                                 $data['chartData']['page_views_by_site_logged_in_unique'] = $tempData;
                                 $data['page_views_by_site_logged_in_unique']['desc'] = $desc;
-
 
                                 // $tempData = [];
                                 // $tempData[] = ['Metric', 'Impressions'];

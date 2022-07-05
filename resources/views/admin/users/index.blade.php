@@ -88,7 +88,7 @@
                                     @csrf
                                     <div class="form-check form-switch">
                                         <input type="hidden" name="verified" value="false">
-                                        <input class="form-check-input" name="verified" type="checkbox" value="true" onchange="$(this).closest('form').submit();" {{ ((bool)$user->email_verified_at)?'checked':'' }}>
+                                        <input class="form-check-input" name="verified" type="checkbox" value="true" onchange="$(this).closest('form').submit();" {{ ((bool)$user->verified_at)?'checked':'' }}>
                                     </div>
                                 </form>
                             </td>

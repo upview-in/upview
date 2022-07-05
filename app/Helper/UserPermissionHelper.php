@@ -107,6 +107,16 @@ class UserPermissionHelper
         return '';
     }
 
+    public function getPermissionsFromSlugOfGroup(string $group): array
+    {
+        return UserPermission::enabled()->where('slug', 'LIKE', $group . '.%.%')->pluck('slug')->toArray();
+    }
+
+    public function getPermissionsFromSlugOfGroupAndModule(string $group, string $module): array
+    {
+        return UserPermission::enabled()->where('slug', 'LIKE', $group . '.' . $module . '.%')->pluck('slug')->toArray();
+    }
+
     public function getPermissionFromSlug(string $slug): ?UserPermission
     {
         return $this->userPermissions->where('slug', $slug)->first();
