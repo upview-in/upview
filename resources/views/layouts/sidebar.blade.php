@@ -11,7 +11,7 @@
                 </a>
             </li>
 
-            @if (appUser()->hasGroupPermission('analytics'))
+            @if (appUser()->hasGroupPermission('analyze'))
             <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">

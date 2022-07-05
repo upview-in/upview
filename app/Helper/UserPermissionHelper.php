@@ -8,7 +8,7 @@ class UserPermissionHelper
 
     public function __construct()
     {
-        $this->userPermissions = UserPermission::enabled();
+        $this->userPermissions = UserPermission::enabled()->get();
     }
 
     public function getGroups(): array
@@ -109,12 +109,12 @@ class UserPermissionHelper
 
     public function getPermissionsFromSlugOfGroup(string $group): array
     {
-        return $this->userPermissions->where('slug', 'LIKE', $group . '.%.%')->pluck('slug')->toArray();
+        return UserPermission::enabled()->where('slug', 'LIKE', $group . '.%.%')->pluck('slug')->toArray();
     }
 
     public function getPermissionsFromSlugOfGroupAndModule(string $group, string $module): array
     {
-        return $this->userPermissions->where('slug', 'LIKE', $group . '.' . $module . '.%')->pluck('slug')->toArray();
+        return UserPermission::enabled()->where('slug', 'LIKE', $group . '.' . $module . '.%')->pluck('slug')->toArray();
     }
 
     public function getPermissionFromSlug(string $slug): ?UserPermission
