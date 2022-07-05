@@ -233,7 +233,7 @@
                             <div class="title">
                                 <h2><a href="javascript:void();">SOCIAL MEDIA<br />MANAGEMENT</a></h2>
                                 <hr />
-                                <h2 class="mt-3">₹3,999</h2>
+                                <h2 class="mt-3">INR 3,999</h2>
                                 <div class="inner-text">
                                     <p>
                                         Post Management<br /><br />
@@ -258,7 +258,7 @@
                             <div class="title">
                                 <h2><a href="javascript:void();">SOCIAL LISTENING<br />STARTER</a></h2>
                                 <hr />
-                                <h2 class="mt-3">₹18,999</h2>
+                                <h2 class="mt-3">INR 18,999</h2>
                                 <div class="inner-text">
                                     <p>
                                         YouTube & Facebook Analysis<br /><br />
@@ -285,7 +285,7 @@
                             <div class="title">
                                 <h2><a href="javascript:void();">SOCIAL LISTENING<br />PRO</a></h2>
                                 <hr />
-                                <h2 class="mt-3">₹49,999</h2>
+                                <h2 class="mt-3">INR 49,999</h2>
                                 <div class="inner-text">
                                     <p>
                                         YouTube & Facebook Analysis<br /><br />
