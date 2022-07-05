@@ -11,6 +11,7 @@
                 </a>
             </li>
 
+            @if (appUser()->hasGroupPermission('analytics'))
             <li class="nav-item dropdown {{ request()->is('panel/user/analyze/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -82,6 +83,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
 
             <li class="nav-item dropdown {{ request()->is('panel/user/measure/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
