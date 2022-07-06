@@ -63,6 +63,7 @@ class UserOrder extends Model
         'plan_id',
         'payment_details',
         'payment_status',
+        'amount_received',
         'status',
         'response_message',
         'purchased_at',

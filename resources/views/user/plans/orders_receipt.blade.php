@@ -31,14 +31,11 @@
                     @endif
 
                     @foreach ($orders_history as $key => $order)
-                        @php
-                            $paid_amount = $order->payment_details['amount_received'] ?? 0;
-                        @endphp
                         <tr>
                             <td>{{ $key }}</td>
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->plan->name ?? '' }}</td>
-                            <td>${{ $paid_amount != 0 ? round($paid_amount / 100) : 0 }}</td>
+                            <td>INR {{ $order->amount_received ?? 0 }}</td>
                             <td>{{ \Carbon\Carbon::parse($order->purchased_at)->toDateString() }}</td>
                             <td>{{ \Carbon\Carbon::parse($order->expired_at)->toDateString() }}</td>
                             <td class="font-weight-bolder text-{{ \App\Models\UserOrder::$status_color[$order->status ?? 0] }}">{{ \App\Models\UserOrder::$status[$order->status ?? 0] }}</td>
