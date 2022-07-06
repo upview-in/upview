@@ -51,19 +51,15 @@
                             <em class="anticon font-size-10 anticon-right"></em>
                         </div>
                     </a>
-                    @if (!empty($planStatus['display']))
-                        @if (!empty($planStatus['can_dismiss']))
-                        <a href="{{ route('panel.user.account.accounts_manager') }}" class="dropdown-item d-block p-h-15 p-v-10">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <em class="anticon opacity-04 font-size-16 anticon-lock"></em>
-                                    <span class="m-l-10">Accounts Management</span>
-                                </div>
-                                <em class="anticon font-size-10 anticon-right"></em>
+                    <a href="{{ route('panel.user.account.accounts_manager') }}" class="dropdown-item d-block p-h-15 p-v-10">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <em class="anticon opacity-04 font-size-16 anticon-lock"></em>
+                                <span class="m-l-10">Accounts Management</span>
                             </div>
-                        </a>
-                        @endif
-                    @endif
+                            <em class="anticon font-size-10 anticon-right"></em>
+                        </div>
+                    </a>
                     <a href="{{ route('logout') }}" class="dropdown-item d-block p-h-15 p-v-10">
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
