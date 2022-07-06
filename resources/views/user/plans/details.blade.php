@@ -19,7 +19,7 @@
                 <p>{!! $plan->shortDescription !!}</p>
                 <div class="mt-3">
                     <label class="font-weight-bolder h1">
-                        Rs. {{ $plan->price }}
+                        INR {{ $plan->price }}
                     </label>
                     <label>For {{ \App\Http\Controllers\User\PlansController::getFormattedPlanValidity($plan->plan_validity) }}</label>
                 </div>

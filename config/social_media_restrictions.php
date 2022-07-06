@@ -7,7 +7,7 @@ return [
 
     'instagram' => [
         'image' => [
-            'supported_types' => ['image/jpeg', 'image/jpeg'],
+            'supported_types' => ['image/jpeg', 'image/png', 'image/jpg'],
             'max_size' => 8388608,
         ],
         'video' => [
@@ -17,7 +17,7 @@ return [
     ],
     'facebook' => [
         'image' => [
-            'supported_types' => ['image/jpeg', 'image/bmp', 'image/jpeg', 'image/gif', 'image/tiff'],
+            'supported_types' => ['image/jpeg', 'image/jpg', 'image/bmp', 'image/png', 'image/gif', 'image/tiff'],
             'max_size' => 10485760,
         ],
         'video' => [
@@ -27,7 +27,7 @@ return [
     ],
     'linkedin' => [
         'image' => [
-            'supported_types' => ['image/jpeg', 'image/jpeg', 'image/gif'],
+            'supported_types' => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'],
             'max_size' => 5242880,
         ],
         'video' => [
@@ -37,7 +37,7 @@ return [
     ],
     'telegram' => [
         'image' => [
-            'supported_types' => ['image/jpeg', 'image/bmp', 'image/jpeg', 'image/gif', 'image/tiff'],
+            'supported_types' => ['image/jpeg', 'image/jpg', 'image/bmp', 'image/gif', 'image/tiff'],
             'max_size' => 10485760,
         ],
         'video' => [
@@ -47,7 +47,7 @@ return [
     ],
     'pinterest' => [
         'image' => [
-            'supported_types' => ['image/jpeg', 'image/bmp', 'image/jpeg', 'image/gif', 'image/tiff'],
+            'supported_types' => ['image/jpeg', 'image/jpg', 'image/bmp', 'image/gif', 'image/tiff'],
             'max_size' => 10485760,
         ],
         'video' => [
@@ -67,7 +67,7 @@ return [
     ],
     'twitter' => [
         'image' => [
-            'supported_types' => ['image/jpeg', 'image/jpeg', 'image/gif', 'image/webp'],
+            'supported_types' => ['image/jpeg', 'image/jpg', 'image/gif', 'image/webp'],
             'max_size' => 5242880,
         ],
         'video' => [

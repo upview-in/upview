@@ -4,7 +4,7 @@ namespace App\Http\Requests\User\Analyze\Facebook;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ViewOverviewRquest extends FormRequest
+class ViewOverviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
