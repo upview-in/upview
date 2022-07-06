@@ -77,6 +77,7 @@ class PaymentsController extends Controller
                     $order->status = 1;
                     $order->purchased_at = Carbon::now();
                     $order->expired_at = Carbon::now()->addDays($plan_details->plan_validity);
+                    $order->amount_received = $plan_details->price;
 
                     $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
                     if (!in_array($plan_details->id, $roles_ids)) {
@@ -180,6 +181,7 @@ class PaymentsController extends Controller
                         if ($order->status !== 1) {
                             $order->purchased_at = Carbon::now();
                             $order->expired_at = Carbon::now()->addDays($plan_details->plan_validity);
+                            $order->amount_received = $plan_details->price;
 
                             $roles_ids = Auth::user()->roles()->pluck('_id')->toArray();
                             if (!in_array($plan_details->id, $roles_ids)) {
