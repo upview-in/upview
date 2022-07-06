@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\Analyze\Instagram;
+namespace App\Http\Requests\User\PostScheduler;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ViewOverviewRequest extends FormRequest
+class ViewPostManagementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class ViewOverviewRequest extends FormRequest
      */
     public function authorize()
     {
-        return appUser()->can('analyze.instagram.view-overview');
+        return appUser()->can('posts.management.post-management');
     }
 
     /**

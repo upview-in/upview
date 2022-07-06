@@ -193,7 +193,7 @@
                     </div>
                     <div class="price text-white mt-3 mb-3">
                         <label class="font-weight-bolder h1 w-100">
-                            Rs. {{ $plan->price }}
+                            INR {{ $plan->price }}
                         </label>
                         <label class="w-100">For {{ \App\Http\Controllers\User\PlansController::getFormattedPlanValidity($plan->plan_validity) }}</label>
                     </div>
