@@ -1,5 +1,5 @@
 @section('custom-scripts')
-    {!! NoCaptcha::renderJs() !!}
+{!! NoCaptcha::renderJs() !!}
 @endsection
 
 <x-app.guest-layout>
@@ -90,7 +90,7 @@
                                         <label class="font-weight-semibold" for="country">{{ __('Country') }}</label>
                                         <select class="select2 {{ $errors->has('country')?'is-invalid':'is-valid' }}" id="country" name="country" placeholder="Select Country">
                                             @foreach (\App\Models\Country::all() as $country)
-                                                <option value="{{ $country->_id }}" {{ Str::lower($country->name) != 'india'?: 'selected' }}>{{ ucfirst($country->name) }}</option>
+                                            <option value="{{ $country->_id }}" {{ Str::lower($country->name) != 'india'?: 'selected' }}>{{ ucfirst($country->name) }}</option>
                                             @endforeach
                                         </select>
                                         @error('country')
@@ -98,6 +98,30 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <style>
+                                            @-webkit-keyframes blinker {
+                                                from {
+                                                    opacity: 1.0;
+                                                }
+
+                                                to {
+                                                    opacity: 0.0;
+                                                }
+                                            }
+
+                                            .blink {
+                                                text-decoration: blink;
+                                                -webkit-animation-name: blinker;
+                                                -webkit-animation-duration: 0.6s;
+                                                -webkit-animation-iteration-count: infinite;
+                                                -webkit-animation-timing-function: ease-in-out;
+                                                -webkit-animation-direction: alternate;
+                                            }
+                                        </style>
+                                        <label class="font-weight-semibold" for="country">For Any Assistance Related to Login/Registration,Checkout Our <a class="blink" href="{{ route('main.videos') }}" target="_blank">Video Section.</a></label>
                                     </div>
 
                                     <div class="form-group col-12">

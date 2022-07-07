@@ -97,6 +97,8 @@ Route::group(['domain' => config('app.domains.app')], function () {
         });
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/maintenance', [DashboardController::class, 'maintenance'])->name('maintenance');
+
 
         Route::prefix('user')->as('user.')->group(function () {
             Route::get('/social', [SocialListeningController::class, 'index'])->name('social');

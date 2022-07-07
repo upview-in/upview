@@ -23,4 +23,9 @@ class DashboardController extends Controller
 
         return ['linkedAccountsCount'=>$lnkedAccountsCount, 'totalReports'=>$totalReports, 'accountLevel'=>$modulesActive];
     }
+
+    public function maintenance()
+    {
+        return view('layouts.maintenance');
+    }
 }
