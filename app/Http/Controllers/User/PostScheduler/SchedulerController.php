@@ -77,7 +77,7 @@ class SchedulerController extends Controller
             $splittedMediaUrl = explode('/', $mediaURL);
             $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'profile_key' => decrypt($request->profile_select)];
             if (in_array('Youtube', $enabledPlatforms)) {
-                $data['youTubeOptions'] = ['title' => $ytTitle];
+                $data['youTubeOptions'] = ['title' => $ytTitle, 'youTubeVisibility' => $request->yt_visibility];
             }
         } elseif (in_array('Instagram', $enabledPlatforms) || in_array('Youtube', $enabledPlatforms) || in_array('Pinterest', $enabledPlatforms)) {
             return redirect()->back()->with('validation_error', 'Selected Platform(s) require to have Image/Video.');

@@ -25,7 +25,7 @@
                     @if (!$orders_history->count())
                         <tr>
                             <td colspan="100" class="text-center">
-                                No any order purchased yet.
+                                No Orders Yet.
                             </td>
                         </tr>
                     @endif
