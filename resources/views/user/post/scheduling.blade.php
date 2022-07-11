@@ -90,8 +90,10 @@
         $('#cbyoutube').on('change', function() {
             if ($('#cbyoutube').is(":checked")) {
                 $("#yt_title").css('display', 'block');
+                $("#yt_visibility").css('display', 'block');
             } else {
                 $("#yt_title").css('display', 'none');
+                $("#yt_visibility").css('display', 'none');
             }
         })
 
@@ -243,6 +245,30 @@
                     <div class="form-group col-12" id="yt_title" style="display: none;">
                         <label class="font-weight-semibold" for="yt_title">{{ __('Youtube Title') }}:<sup>*</sup></label>
                         <input type="text" class="form-control" max="100" id="yt_title" name="yt_title" placeholder="Enter Youtube title here">
+                    </div>
+
+                    <div class="form-group col-12" id="yt_visibility" style="display: none;">
+                        <div>
+                            <label class="font-weight-semibold">{{ __('YouTube Video Visibility') }}:<sup></sup></label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="yt_visibility" id="private" value="private" checked>
+                            <label class="form-check-label" for="private">
+                                Private
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="yt_visibility" id="public" value="public">
+                            <label class="form-check-label" for="public">
+                                Public
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input " type="radio" name="yt_visibility" id="unlisted" value="unlisted">
+                            <label class="form-check-label" for="unlisted">
+                                Unlisted
+                            </label>
+                        </div>
                     </div>
 
                     <div class="form-group col-12">
