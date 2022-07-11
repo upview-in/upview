@@ -60,12 +60,13 @@
 
 # List of PHP Extensions required:
 
-- php-gd
-- php-mongodb
 - php-curl
-- php-intl
 - php-exif
+- php-gd
+- php-intl
 - php-iconv
+- php-mbstring
+- php-mongodb
 - php-redis
 - php-zip
 
@@ -74,7 +75,7 @@
 
 	sudo crontab -e
 		- Add below text at last without double quotes
-			"* * * * * cd /var/lib/jenkins/workspace/upview-prod && sudo php artisan schedule:run >> /dev/null 2>&1"
+			"* * * * * cd /var/lib/jenkins/workspace/upview-{replace with env} && sudo php artisan schedule:run >> /dev/null 2>&1"
 	sudo service cron restart
 
 
