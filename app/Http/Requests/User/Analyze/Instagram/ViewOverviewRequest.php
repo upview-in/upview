@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\Analyze\Facebook;
+namespace App\Http\Requests\User\Analyze\Instagram;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ViewOverviewRquest extends FormRequest
+class ViewOverviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class ViewOverviewRquest extends FormRequest
      */
     public function authorize()
     {
-        return appUser()->can('analyze.facebook.view-overview');
+        return appUser()->can('analyze.instagram.view-overview');
     }
 
     /**

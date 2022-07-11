@@ -8,16 +8,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Ayrshare\AyrActiveSocialAccount;
 use App\Http\Requests\Api\Ayrshare\AyrSocialMediaPosts;
 use App\Http\Requests\User\PostScheduler\UploadMediaRequest;
+use App\Http\Requests\User\PostScheduler\ViewPostManagementRequest;
 use App\Models\AyrUserProfile;
 use App\Models\PostHistory;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Owenoj\LaravelGetId3\GetId3;
 
 class SchedulerController extends Controller
 {
-    public function index(Request $request)
+    public function index(ViewPostManagementRequest $request)
     {
         $userProfiles = AyrUserProfile::where(['user_id' => Auth::id()])->get();
         if ($request->ajax() && $request->has('profile_key')) {
@@ -77,7 +77,7 @@ class SchedulerController extends Controller
             $splittedMediaUrl = explode('/', $mediaURL);
             $data = $scheduledData ? ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'scheduleDate' => $scheduledData, 'profile_key' => decrypt($request->profile_select)] : ['post' => $request->caption . ' ' . $tags, 'platforms' => $enabledPlatforms, 'mediaUrls' => [route('media.displayMedia', [$splittedMediaUrl[0], $splittedMediaUrl[1]])], 'profile_key' => decrypt($request->profile_select)];
             if (in_array('Youtube', $enabledPlatforms)) {
-                $data['youTubeOptions'] = ['title' => $ytTitle];
+                $data['youTubeOptions'] = ['title' => $ytTitle, 'youTubeVisibility' => $request->yt_visibility];
             }
         } elseif (in_array('Instagram', $enabledPlatforms) || in_array('Youtube', $enabledPlatforms) || in_array('Pinterest', $enabledPlatforms)) {
             return redirect()->back()->with('validation_error', 'Selected Platform(s) require to have Image/Video.');
