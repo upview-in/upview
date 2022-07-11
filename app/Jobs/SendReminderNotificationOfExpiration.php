@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Controllers\EmailGatewayController;
 use App\Http\Controllers\SMSGatewayController;
 use App\Models\UserOrder;
 use Carbon\Carbon;
@@ -38,7 +39,9 @@ class SendReminderNotificationOfExpiration implements ShouldQueue
 
         foreach ($orders as $order) {
             if (!empty($order->user->mobile_number) && !empty($order->user->name)) {
-                (new SMSGatewayController())->sendSMS([$order->user->mobile_number], 'Hello, ' . $order->user->name . '. Your subscription to UPVIEW is expiring in ' . Carbon::now()->diffInDays($order->expired_at) . ' days. Visit upview.in and renew to continue enjoying our services.', 'plan_expiring_in');
+                $diff_days = Carbon::now()->diffInDays($order->expired_at);
+                (new SMSGatewayController)->sendSMS([$order->user->mobile_number], 'Hello, ' . $order->user->name . '. Your subscription to UPVIEW is expiring in ' . $diff_days . ' days. Visit upview.in and renew to continue enjoying our services.', 'plan_expiring_in');
+                (new EmailGatewayController)->sendMailWithDefault($order->user->email, ['user_name' => $order->user->name, 'remaining_days' => $diff_days], 'plan_expiring_in');
             }
         }
     }
