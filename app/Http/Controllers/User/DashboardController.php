@@ -28,4 +28,9 @@ class DashboardController extends Controller
     {
         return view('layouts.maintenance');
     }
+
+    public function invoice()
+    {
+        return view('payment-gateway.template.one');
+    }
 }
