@@ -22,7 +22,6 @@ class OverviewController extends Controller
                     return response()->json(app(InstagramController::class)->listInstaBusinessAccountsData(), 200);
                     break;
                 case 'Analytics':
-                    if ($request->has(['fields'])) {
                         $data = [];
                         $response = app(InstagramController::class)->getMineAccountInsights(new GetMineAccountDetails($request->all(['id'])))->getData();
 
@@ -40,15 +39,9 @@ class OverviewController extends Controller
                         $data['status'] = 200;
 
                         return response()->json(collect($data), 200);
-                    }
-
-                        return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-
-                    break;
-
                 case 'accountDetails':
                     $data = [];
-                    $response = app(InstagramController::class)->getMineAccountData(new GetMineAccountDetails($request->all(['fields'])))->getData();
+                    $response = app(InstagramController::class)->getMineAccountInsights(new GetMineAccountDetails($request->all(['id'])))->getData();
 
                     $data['id'] = $response->id;
                     $data['name'] = $response->name;
@@ -66,7 +59,6 @@ class OverviewController extends Controller
                     return response()->json(collect($data));
                 default:
                     return response()->json(['status' => 400, 'message' => 'Missing required fields']);
-                    break;
             }
         }
 
