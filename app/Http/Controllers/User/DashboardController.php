@@ -23,4 +23,14 @@ class DashboardController extends Controller
 
         return ['linkedAccountsCount'=>$lnkedAccountsCount, 'totalReports'=>$totalReports, 'accountLevel'=>$modulesActive];
     }
+
+    public function maintenance()
+    {
+        return view('layouts.maintenance');
+    }
+
+    public function invoice()
+    {
+        return view('payment-gateway.template.one');
+    }
 }

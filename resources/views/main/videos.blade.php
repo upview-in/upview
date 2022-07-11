@@ -192,7 +192,7 @@
 
         <!--Start breadcrumb area-->
         <section class="breadcrumb-area">
-            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Pricing.png') }} );">
+            <div class="breadcrumb-area-bg" style="background-image: url( {{ asset('main/assets/images/breadcrumb/Our_Videos.png') }} );">
             </div>
 
             <div class="container">

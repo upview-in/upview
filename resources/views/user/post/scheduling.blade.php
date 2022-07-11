@@ -90,8 +90,10 @@
         $('#cbyoutube').on('change', function() {
             if ($('#cbyoutube').is(":checked")) {
                 $("#yt_title").css('display', 'block');
+                $("#yt_visibility").css('display', 'block');
             } else {
                 $("#yt_title").css('display', 'none');
+                $("#yt_visibility").css('display', 'none');
             }
         })
 
@@ -131,6 +133,11 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header p-15 ml-3 w-500">
+                <a href="{{ route('panel.user.profile.manage') }}">
+                    <button class="btn btn-md btn-outline-primary float-right" type="button">
+                        <em class="anticon anticon-user-add"></em> Manage Profiles
+                    </button>
+                </a>
                 <h4 class="h3 m-0">{{ __('Post Details') }}</h4>
                 <span>To know more about platform requirements <a href="" data-toggle="modal" data-target="#postStandards">click here</a>.</span>
             </div>
@@ -195,7 +202,7 @@
                             </div>
                             <div class="col-md-2">
                                 <input id="cbyoutube" name="platform[]" value="{{ App\Helper\TokenHelper::$PLATFORMS['youtube'] }}" disabled type="checkbox">
-                                <label for="cbyoutube">YouTube</label>&nbsp;<sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="Default visibility of video uploaded to YouTube is Private."></em></sup>
+                                <label for="cbyoutube">YouTube</label>&nbsp;<sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right" title="Default visibility of video uploaded to YouTube is Private."></em></sup>
                             </div>
 
                             <div class="col-md-2">
@@ -240,6 +247,30 @@
                         <input type="text" class="form-control" max="100" id="yt_title" name="yt_title" placeholder="Enter Youtube title here">
                     </div>
 
+                    <div class="form-group col-12" id="yt_visibility" style="display: none;">
+                        <div>
+                            <label class="font-weight-semibold">{{ __('YouTube Video Visibility') }}:<sup></sup></label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="yt_visibility" id="private" value="private" checked>
+                            <label class="form-check-label" for="private">
+                                Private
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="yt_visibility" id="public" value="public">
+                            <label class="form-check-label" for="public">
+                                Public
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input " type="radio" name="yt_visibility" id="unlisted" value="unlisted">
+                            <label class="form-check-label" for="unlisted">
+                                Unlisted
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="form-group col-12">
                         <label class="font-weight-semibold" for="mention">{{ __('Mention Users') }}:</label>
                         <div class="input-group">
@@ -271,7 +302,7 @@
                     </div>
 
                     <div class="form-group col-12">
-                        <label class="font-weight-semibold" for="scheduled_at">{{ __('Schedule Post') }}:</label><sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right"  title="Currently we are supporting UTC time zone. Please check the timezones before scheduling."></em></sup>
+                        <label class="font-weight-semibold" for="scheduled_at">{{ __('Schedule Post') }}:</label><sup><em class="anticon anticon-info-circle" data-toggle="tooltip" data-placement="right" title="Currently we are supporting UTC time zone. Please check the timezones before scheduling."></em></sup>
                         <input type="datetime-local" class="form-control" id="scheduled_at" name="scheduled_at" placeholder="Select Date & Time">
                         @error('scheduled_at')
                         <span class="invalid-feedback d-block" role="alert">
