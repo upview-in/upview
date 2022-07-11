@@ -39,7 +39,7 @@
             var country = "";
 
             cb(__startDate, __endDate);
-            loadData();
+            loadData(null);
             loadPagesList();
             google.charts.load('current', {
                 'packages': ['corechart', 'controls']
@@ -133,7 +133,7 @@
 
                     },
                     success: function() {
-                       loadData();
+                       loadData(data._id);
                     }
                 });
             });
@@ -143,12 +143,12 @@
 
             $.ajax({
                     data: {
-                        part: 'RefreshPages',
+                        part: 'LoadFacebookPages',
                     },
                     dataType: "json",
                     success: function(_PageData) {
-                        $('#select2Pages').val(_PageData["{{ session('PagesIndex_IG', 0) }}"]['id']).trigger('change');
-                        $('#select2Pages').select2({
+                        $('#select2InstaAccounts').val(_PageData["{{ session('PagesIndex_IG', 0) }}"]['id']).trigger('change');
+                        $('#select2InstaAccounts').select2({
                             data: {
                                 results: _PageData
                             },
@@ -167,8 +167,8 @@
                 })
             }
 
-            $('#select2Pages').on('change', function(e) {
-            var data = $('#select2Pages').select2('data');
+            $('#select2InstaAccounts').on('change', function(e) {
+            var data = $('#select2InstaAccounts').select2('data');
             console.log();
             $.ajax({
                 url: '{{ route("panel.user.account.setSessionDefaultPage") }}',
@@ -178,12 +178,13 @@
 
                 },
                 success: function() {
-                    var data = $('#select2Pages').select2('data');
+                    var data = $('#select2InstaAccounts').select2('data');
                     loadAnalytics(data.id);
                     loadInstaInsights(data.id);
                 }
             });
             });
+
 
 
             let listRanges = {
@@ -231,51 +232,56 @@
 
 
 
-            function loadData() {
-                __BS("ChannelMainDiv");
-                __BS("ChannelHighlights");
+            function loadData(pageID) {
+
+                if($pageid != NULL)
+                {
+                    __BS("ChannelMainDiv");
+                    __BS("ChannelHighlights");
 
 
-                $.ajax({
-                    data: {
-                        part: 'accountDetails',
-                        fields: 'id,name,followers_count,follows_count,ig_id,media_count,profile_picture_url,username',
-                    },
-                    dataType: "json",
-                    success: function(response) {
+                    $.ajax({
+                        data: {
+                            part: 'accountDetails',
+                            id: pageID
+                        },
+                        dataType: "json",
+                        success: function(response) {
 
-                        let data = response;
-                        console.log(data);
-                        if(data.status == 200)
-                        {
-                            $("#igPage1ProfileImage").attr('data-src', data.profile_picture_url);
-                            $("#igPagelProfileImage").attr('src',
-                                "{{ asset('images/others/loading.gif') }}");
-                            loadImages(); //Remember to call after loading images for LazyLoader
+                            let data = response;
+                            console.log(data);
+                            if(data.status == 200)
+                            {
+                                $("#igPage1ProfileImage").attr('data-src', data.profile_picture_url);
+                                $("#igPagelProfileImage").attr('src',
+                                    "{{ asset('images/others/loading.gif') }}");
+                                loadImages(); //Remember to call after loading images for LazyLoader
 
-                            $("#igPage1Name").html((data.name));
-                            $("#igPage1UserName").html((data.username));
-                            $("#igPage1FollowersCount").html(convertToInternationalCurrencySystem(data
-                                .followers_count));
-                            $("#igPage1FollowingCount").html(convertToInternationalCurrencySystem(data
-                            .follows_count));
-                            $("#igPage1MediaCount").html(convertToInternationalCurrencySystem(data
-                            .media_count));
+                                $("#igPage1Name").html((data.name));
+                                $("#igPage1UserName").html((data.username));
+                                $("#igPage1FollowersCount").html(convertToInternationalCurrencySystem(data
+                                    .followers_count));
+                                $("#igPage1FollowingCount").html(convertToInternationalCurrencySystem(data
+                                .follows_count));
+                                $("#igPage1MediaCount").html(convertToInternationalCurrencySystem(data
+                                .media_count));
 
-                            $("#igPageVerifiedStatusIcon").attr('class', "fas fa-lg fa-check-circle");
+                                $("#igPageVerifiedStatusIcon").attr('class', "fas fa-lg fa-check-circle");
 
-                            if(data.is_verified == true) $("#igPageVerifiedStatusIcon").attr('style', "color:#3333ff;");
-                            else $("#igPageVerifiedStatusIcon").attr('style', "color:#D5D4D4;");
+                                if(data.is_verified == true) $("#igPageVerifiedStatusIcon").attr('style', "color:#3333ff;");
+                                else $("#igPageVerifiedStatusIcon").attr('style', "color:#D5D4D4;");
+                            }
+
+                            __AC("ChannelMainDiv");
+
+
+                            if(data.status != 200){
+                                $("#ChannelMainDiv").html(noData);
+                            }
                         }
-
-                        __AC("ChannelMainDiv");
-
-
-                        if(data.status != 200){
-                            $("#ChannelMainDiv").html(noData);
-                        }
-                    }
-                });
+                    });
+                }
+                else $("#ChannelMainDiv").html(noData);
             }
 
             function loadAnalytics(pageID) {
@@ -331,10 +337,10 @@
     <div class="container-fluid">
         <div class="row mb-3 justify-content-end">
             <div class="col-md-5 col-12">
-                <input class="shadow" id="select2Pages" />
+                <input class="shadow" id="select2Accounts" />
             </div>
             <div class="col-md-5 col-12">
-                <input class="shadow" id="select2Accounts" />
+                <input class="shadow" id="select2InstaAccounts" />
             </div>
         </div>
         <div class="card-header p-15 ml-3">
