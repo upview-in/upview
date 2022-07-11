@@ -71,6 +71,10 @@ class MainSiteController extends Controller
     {
         return view('main.privacy-policy');
     }
+    public function showAppPrivacyPolicy()
+    {
+        return view('main.app-privacy-policy');
+    }
 
     public function showTermsAndConditions()
     {

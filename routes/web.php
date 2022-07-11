@@ -70,6 +70,7 @@ Route::group(['domain' => config('app.domains.main'), 'as' => 'main.'], function
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/videos', 'videos')->name('videos');
         Route::get('/privacy-policy', 'showPrivacyPolicy')->name('privacy-policy');
+        Route::get('/app-privacy-policy', 'showAppPrivacyPolicy')->name('app-privacy-policy');
         Route::get('/terms-conditions', 'showTermsAndConditions')->name('terms-conditions');
         Route::post('/contact-us', 'contactUs')->name('contact-us');
     });
