@@ -184,7 +184,7 @@
                             <li><a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a></li>
                             <li><a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a></li>
                             <li><a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a></li>
-                            <li><a href="https://instagram.com/upviewindia"><span class="fab fa fa-instagram-square"></span></a></li>
+                            <li><a href="https://instagram.com/upview.in"><span class="fab fa fa-instagram-square"></span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -331,7 +331,7 @@
 										<div class="img-holder">
 											<div>
 												<div class="inner">
-													<a href="https://instagram.com/upviewindia"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="https://instagram.com/upview.in"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
