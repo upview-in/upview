@@ -205,7 +205,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: left;">
-                                            <img class="w320" height="40" src="{{ asset('images/logo/named_logo.svg') }}" alt="Upview_Logo"></a>
+                                            <img class="w320" height="40" src="{{ asset('images/logo/named_logo.png') }}" alt="Upview_Logo"></a>
                                         </td>
                                         <td align="right" style="color: #5702aa; font-size: 18px;" class="mobile-hide">
                                             <div>
@@ -226,7 +226,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="font-size:35px; font-weight: 400; color: #ffffff; text-align:center;">
-                                                        <img src="{{ asset('images/logo/named_logo.svg') }}" class="desktop-hide" height="40" style="margin: 0 auto;" />
+                                                        <img src="{{ asset('images/logo/named_logo.png') }}" class="desktop-hide" height="40" style="margin: 0 auto;" />
                                                         <div class="mobile-br">&nbsp;</div>
                                                         Welcome to Upview, {{ appUser()->name }}
                                                         <br>
@@ -370,11 +370,11 @@
                                             <td style="background-color:#e8ecf0; text-align:center;">
                                                 <br>
                                                 <br>
-                                                <a href="https://instagram.com/upviewindia"><em width="30" class="fab fa-instagram" /></a>
+                                                <a href="https://instagram.com/upview.in"><em width="30" class="fab fa-instagram" /></a>
                                                 <a href="https://www.facebook.com/upviewIndia/"><em width="30" class="fab fa-facebook" /></a>
                                                 <a href="https://twitter.com/UpviewIndia"><em width="30" class="fab fa-twitter" /></a>
                                                 <a href="https://www.linkedin.com/showcase/upview-india"><em width="30" class="fab fa-linkedin" /></a>
-                                                <a href="https://instagram.com/upviewindia"><em width="30" class="fab fa-youtube" /></a>
+                                                <a href="https://instagram.com/upview.in"><em width="30" class="fab fa-youtube" /></a>
                                                 <br>
                                                 <br>
                                             </td>
