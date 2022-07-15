@@ -498,9 +498,21 @@
 						<div class="inner-box">
 							<div class="text">One issue I was facing with other applications is that they are limited to just one or two platforms and I use several different platforms to post on Youtube, Instagram, Facebook, LinkedIn & Twitter. Upview not only removed all these hassles but saved me a lot of time as well.</div>
 							<div class="info-box">
-								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/rashmi.jpg') }}" alt=""></div>
-								<h4 class="name">Rashmi Mishra</h4>
-								<span class="designation">Actor/Model</span>
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/firdaus.jpeg') }}" alt=""></div>
+								<h4 class="name">Firdaus Shaikh</h4>
+								<span class="designation">Social Media Manager</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Testimonial Block -->
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="text">My employer is totally dependent on the research I do and the data I acquire. Upview's smart social listening reduces my research time by days if not weeks. Put in a tracker and let Upview work on its own. The single button export feature is also awesome.</div>
+							<div class="info-box">
+								<div class="thumb"><img src="{{ asset('main/assets/images/testimonial/jinay.jpeg') }}" alt=""></div>
+								<h4 class="name">Jinay Shah</h4>
+								<span class="designation">Sr. Consultant at Praxis Global Alliance, Mumbai</span>
 							</div>
 						</div>
 					</div>
