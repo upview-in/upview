@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailGatewayController;
 use App\Models\User;
 use App\Models\UserOrder;
 use App\Models\UserRole;

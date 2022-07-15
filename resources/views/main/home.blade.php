@@ -222,7 +222,7 @@
 								<a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a>
 							</li>
 							<li>
-								<a href="https://instagram.com/upviewindia?igshid=YmMyMTA2M2Y="><span class="fab fa fa-instagram"></span></a>
+								<a href="https://instagram.com/upview.in?igshid=YmMyMTA2M2Y="><span class="fab fa fa-instagram"></span></a>
 							</li>
 						</ul>
 					</div>
@@ -245,10 +245,10 @@
 						<a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
-						<a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+						<a href="https://instagram.com/upview.in" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 					<li class="wow slideInDown" data-wow-delay="200ms" data-wow-duration="3000ms">
-						<a href="https://instagram.com/upviewindia" target="_blank"><i class="fa fa-youtube" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+						<a href="https://instagram.com/upview.in" target="_blank"><i class="fa fa-youtube" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -828,7 +828,7 @@
 										<div class="img-holder">
 											<div>
 												<div class="inner">
-													<a href="https://instagram.com/upviewindia"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="https://instagram.com/upview.in"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>

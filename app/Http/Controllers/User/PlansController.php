@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailGatewayController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\SMSGatewayController;
 use App\Http\Requests\Payment\InitPaymentRequest;
@@ -85,7 +86,8 @@ class PlansController extends Controller
 
         if ($flag) {
             Auth::user()->roles()->sync(array_diff($role_ids, $expired_role_ids));
-            (new SMSGatewayController())->sendSMS([Auth::user()->mobile_number], 'Hello, ' . Auth::user()->name . ". Your subscription to UPVIEW has expired. Don't worry, you can renew the subscription and continue to enjoy our subscription.", 'plan_expired');
+            (new SMSGatewayController)->sendSMS([appUser()->mobile_number], 'Hello, ' . appUser()->name . ". Your subscription to UPVIEW has expired. Don't worry, you can renew the subscription and continue to enjoy our subscription.", 'plan_expired');
+            (new EmailGatewayController)->sendMailWithDefault(appUser()->email, ['user_name' => appUser()->name], 'plan_expired');
         }
     }
 
