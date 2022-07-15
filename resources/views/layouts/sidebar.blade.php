@@ -46,7 +46,7 @@
                             </li> --}}
                         </ul>
                     </li>
-                    {{-- Instagram Here --}}
+                    @if (appUser()->can('analyze.instagram.view-overview'))
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="title">{{ __('Instagram') }}</span>
@@ -55,16 +55,14 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('panel.user.analyze.instagram.overview') }}">{{ __('Overview') }}</a> {{-- {{ route('panel.dashboard.insta') }} --}}
+                            <li class="{{ request()->routeIs('panel.user.analyze.instagram.overview') ? 'active' : '' }}">
+                                <a href="{{ route('panel.user.analyze.instagram.overview') }}">{{ __('Overview') }}</a>
                             </li>
-                            {{-- <li>
-                                <a href="#">{{ __('Media') }}</a>
-                            </li> --}}
                         </ul>
                     </li>
+                    @endif
 
-                    {{-- Facebook Here --}}
+                    @if (appUser()->can('analyze.facebook.view-overview'))
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
                             <span class="title">{{ __('Facebook') }}</span>
@@ -73,14 +71,12 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
+                            <li class="{{ request()->routeIs('panel.user.analyze.facebook.overview') ? 'active' : '' }}">
                                 <a href="{{ route('panel.user.analyze.facebook.overview') }}">{{ __('Overview') }}</a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ route('panel.user.analyze.facebook.media') }}">{{ __('Media') }}</a>
-                            </li> --}}
                         </ul>
                     </li>
+                    @endif
                 </ul>
             </li>
             @endif
@@ -130,14 +126,17 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu ">
-                    <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.scheduler') ? 'active' : '' }}">
-                        <a href="{{ route('panel.user.post.scheduler') }}">
-                            <span class="icon-holder">
-                                <em class="fas fa-calendar-day text-warning"></em>
-                            </span>
-                            <span class="title">{{ __('Post Management') }}</span>
-                        </a>
-                    </li>
+                    @if (appUser()->can('posts.management.post-management'))
+                        <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.scheduler') ? 'active' : '' }}">
+                            <a href="{{ route('panel.user.post.scheduler') }}">
+                                <span class="icon-holder">
+                                    <em class="fas fa-calendar-day text-warning"></em>
+                                </span>
+                                <span class="title">{{ __('Post Management') }}</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if (appUser()->can('posts.management.post-history'))
                     <li class="nav-item dropdown {{ request()->routeIs('panel.user.post.history') ? 'active' : '' }}">
                         <a href="{{ route('panel.user.post.history') }}">
                             <span class="icon-holder">
@@ -146,6 +145,7 @@
                             <span class="title">{{ __('Post History') }}</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
 
