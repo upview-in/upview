@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailGatewayController;
 use App\Http\Controllers\SMSGatewayController;
 use App\Models\UserRole;
 use App\Providers\RouteServiceProvider;
@@ -69,6 +70,7 @@ class VerificationController extends Controller
 
             (new SMSGatewayController())->sendSMS([$formatted_number], 'Welcome, ' . appUser()->name . ' to UPVIEW. Visit upview.in and login now to enjoy your personal ' . $trial_plan->plan_validity . ' day trial to our services.', 'welcome_message');
             (new SMSGatewayController())->sendSMS(['917990719157'], "Alert! New use registered on UPVIEW.\nID - " . $user->id . "\nName - " . $user->name . "\nEmail - " . $user->email . "\nMobile - " . $user->mobile_number, 'new_user_registered_alert_to_admin');
+            (new EmailGatewayController)->sendMailWithDefault(appUser()->email, [], 'welcome');
 
             return redirect()->to(RouteServiceProvider::HOME);
         }
@@ -93,6 +95,7 @@ class VerificationController extends Controller
 
         if (is_null(session('user_otp_sended_time')) || Carbon::now()->gte(Carbon::parse(session('user_otp_sended_time'))->addMinutes(session('user_can_resend_otp_in', 1)))) {
             (new SMSGatewayController())->sendSMS([$formatted_number], $otp . ' is your OTP for Registration in UPVIEW. OTP valid for 10 mins.', 'registration_otp');
+            (new EmailGatewayController)->sendMailWithDefault(appUser()->email, ['otp' => $otp], 'registration_otp');
 
             session([
                 'user_otp' => $otp,
