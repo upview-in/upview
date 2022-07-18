@@ -237,11 +237,37 @@
                     <div class="col-xl-4 col-lg-6 col-lg-6">
                         <div class="single-team-style1 wow fadeInRight animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="img-holder">
-                                <iframe src="https://player.vimeo.com/video/716777486?h=a0ad228ed5" title="" width="370" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://player.vimeo.com/video/716777486?h=a0ad228ed5" title="About Upview" width="370" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="title-holder">
                                 <div class="title">
                                     <h3><a href="#">About Upview</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-lg-6">
+                        <div class="single-team-style1 wow fadeInRight animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            <div class="img-holder">
+                                <iframe src="https://player.vimeo.com/video/730891309?h=f8ecd6ab6a" title="How to register?" width="370" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="title-holder">
+                                <div class="title">
+                                    <h3><a href="#">How to register?</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-lg-6">
+                        <div class="single-team-style1 wow fadeInRight animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            <div class="img-holder">
+                                <iframe src="https://player.vimeo.com/video/730922400?h=c0d691535d" title="How to login?" width="370" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="title-holder">
+                                <div class="title">
+                                    <h3><a href="#">How to login?</a></h3>
                                 </div>
                             </div>
                         </div>
