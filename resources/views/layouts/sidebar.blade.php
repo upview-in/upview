@@ -81,6 +81,7 @@
             </li>
             @endif
 
+            @if (appUser()->hasGroupPermission('measure'))
             <li class="nav-item dropdown {{ request()->is('panel/user/measure/*') ? 'open' : '' }}">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -114,7 +115,9 @@
                     </li>
                 </ul>
             </li>
+            @endif
 
+            @if (appUser()->hasGroupPermission('posts'))
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -148,6 +151,7 @@
                     @endif
                 </ul>
             </li>
+            @endif
 
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">

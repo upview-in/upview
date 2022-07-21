@@ -31,10 +31,6 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        if (empty(Auth::user()->is_verified)) {
-            return redirect()->intended(route('login'));
-        }
-
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
