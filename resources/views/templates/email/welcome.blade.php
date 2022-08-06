@@ -372,7 +372,7 @@
                                                 <br>
                                                 <a href="https://instagram.com/upview.in"><em width="30" class="fab fa-instagram" /></a>
                                                 <a href="https://www.facebook.com/upviewIndia/"><em width="30" class="fab fa-facebook" /></a>
-                                                <a href="https://twitter.com/UpviewIndia"><em width="30" class="fab fa-twitter" /></a>
+                                                <a href="https://twitter.com/upview_in"><em width="30" class="fab fa-twitter" /></a>
                                                 <a href="https://www.linkedin.com/showcase/upview-india"><em width="30" class="fab fa-linkedin" /></a>
                                                 <a href="https://instagram.com/upview.in"><em width="30" class="fab fa-youtube" /></a>
                                                 <br>
