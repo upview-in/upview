@@ -216,7 +216,7 @@
 								<a href="https://www.facebook.com/upviewIndia/"><span class="fab fa fa-facebook-square"></span></a>
 							</li>
 							<li>
-								<a href="https://twitter.com/UpviewIndia"><span class="fab fa fa-twitter-square"></span></a>
+								<a href="https://twitter.com/upview_in"><span class="fab fa fa-twitter-square"></span></a>
 							</li>
 							<li>
 								<a href="https://www.linkedin.com/showcase/upview-india"><span class="fab fa fa-linkedin-square"></span></a>
@@ -239,7 +239,7 @@
 						<a href="https://www.facebook.com/upviewIndia/" target="_blank"><i class="fa fa-facebook" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 					<li class="wow slideInDown" data-wow-delay="400ms" data-wow-duration="2000ms">
-						<a href="https://twitter.com/UpviewIndia" target="_blank"><i class="fa fa-twitter" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
+						<a href="https://twitter.com/upview_in" target="_blank"><i class="fa fa-twitter" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
 					</li>
 					<li class="wow slideInDown" data-wow-delay="300ms" data-wow-duration="2500ms">
 						<a href="https://www.linkedin.com/showcase/upview-india" target="_blank"><i class="fa fa-linkedin" aria-hidden="true" style="transform: rotate(265deg);"></i></a>
@@ -332,7 +332,7 @@
 		<!-- End Main Slider -->
 
 		<!--Start Service Style3 Area-->
-		<section class="service-style3-area">
+		<section class="service-style3-area" id="our-services">
 			<div class="container">
 				<div class="sec-title text-center">
 					<div class="sub-title">
@@ -429,7 +429,7 @@
 		<!--End Service Style3 Area-->
 
 		<!--Start SKill style1 Area-->
-		<section class="skill-style1-area">
+		<section class="skill-style1-area" id="about-us">
 			<div class="container">
 				<div class="row">
 					<div class="col-xl-5">
@@ -462,7 +462,7 @@
 		<!--End SKill style1 Area-->
 
 		<!--Start Testimonial style1 Area-->
-		<section class="testimonial-section">
+		<section class="testimonial-section" id="testimonial">
 			<div class="large-container">
 				<div class="sec-title">
 					<h2>This is what the <span style="color: #0e52dd;">Upview</span> family has to say!</h2>
@@ -673,7 +673,7 @@
 		<!--End Working process area -->
 
 		<!--Start Blog Style1 Area-->
-		<section class="blog-style1-area">
+		<section class="blog-style1-area" id="blogs">
 			<div class="container">
 				<div class="sec-title text-center">
 					<div class="sub-title">
@@ -864,7 +864,7 @@
 										<div class="img-holder">
 											<div>
 												<div class="inner">
-													<a href="https://twitter.com/UpviewIndia"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+													<a href="https://twitter.com/upview_in"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 												</div>
 											</div>
 										</div>
