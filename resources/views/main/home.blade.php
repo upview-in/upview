@@ -313,8 +313,8 @@
 									<div class="d-flex flex-justify-center flex-lg-justify-end color-bg-default">
 										<div class="col-8 col-sm-7 col-md-6 col-lg-5 position-relative z-2 right-lg-n12 events-none">
 											<picture>
-												<source srcset="{{ asset('main/images/modules/site/home/astro-mona.webp') }}" type="image/webp">
-												<img src="{{ asset('main/images/modules/site/home/astro-mona.svg') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="">
+												<source srcset="{{ asset('main/images/modules/site/home/Astronaut_sketch_6.png') }}" type="image/png">
+												<img src="{{ asset('main/images/modules/site/home/Astronaut_sketch_6.png') }}" width="960" height="967" class="home-astro-mona width-full position-absolute bottom-0 height-auto" alt="">
 											</picture>
 										</div>
 									</div>
