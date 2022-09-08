@@ -67,19 +67,12 @@
     <!-- Smartsupp Live Chat script -->
     <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
-        _smartsupp.key = 'f5aee1c7586cf61819760d4593ca25417042dc39';
-        window.smartsupp || (function(d) {
-            var s, c, o = smartsupp = function() {
-                o._.push(arguments)
-            };
-            o._ = [];
-            s = d.getElementsByTagName('script')[0];
-            c = d.createElement('script');
-            c.type = 'text/javascript';
-            c.charset = 'utf-8';
-            c.async = true;
-            c.src = 'https://www.smartsuppchat.com/loader.js?';
-            s.parentNode.insertBefore(c, s);
+        _smartsupp.key = 'd5e6c35d6d5031a94025f0964a9f012a8a5e9e32';
+        window.smartsupp||(function(d) {
+          var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+          s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+          c.type='text/javascript';c.charset='utf-8';c.async=true;
+          c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
         })(document);
     </script>
 
